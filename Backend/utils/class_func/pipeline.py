@@ -61,8 +61,43 @@ creature was granted in N generations -- every companion check proved nothing"),
 `test_skill_ranks.py` does it for the Multi Talented ordering branch. The two mechanisms answer
 different questions and neither substitutes for the other: the seal fails in-process the moment
 order is wrong, the census fails in CI when coverage silently drops to zero.
+
+WHERE A PHASE'S OUTPUTS GO
+--------------------------
+Decided before the gear/PoW/feat blocks were extracted, because they are the first phases whose
+outputs are mostly not character state.
+
+A runtime census answered it. At the moment the payload is built, its literal reads **98 function
+locals**. Making `build_payload(character)` work -- the payload built from the character alone --
+means promoting 88 of them to attributes, on an object that already carries ~200. It also collides
+with four existing attributes that hold DIFFERENT values under the same name: `character.feats` is
+the pre-`separate_feats_func` list, `character.martial_disciplines` and `character.deity` are data
+TABLES rather than choices, and `character.archetype_info` is the dict whose `json.dumps` the local
+holds. Three of those four were found by comparing values at runtime; none is visible by reading.
+A character object at ~290 attributes is the payload wearing a different name, and a manifest gate
+over it gates something nobody can reason about.
+
+So outputs are sorted three ways, and the test is *who else needs this*:
+
+1. **Character state** -- another phase reads it, or it is what the character IS.
+   Goes on the character; declared in `provides`. (`armor_dict`, `feats`, `spellbooks`.)
+2. **Derivable at export** -- a pure unpacking of state the character already has.
+   Stored NOWHERE; computed inside `build_payload`. (`armor_name` and its five siblings come out of
+   `character.armor_dict`; `deity_name` out of `deity_choice`; `school` out of `chosen_school`.)
+3. **Phase output that is neither** -- a real result of the phase that only the export reads.
+   Rides a `PhaseRecord` the phase returns, declared in `returns`. (`equipment_list`, `armor_ac`,
+   `weapon_enhancement_chosen_list`.)
+
+Ticket 06 ruled out return-threading as "positional soup", and it was right about a 15-element
+TUPLE. A record is not a tuple: `gear.weapon_name` names itself at the call site, cannot be
+mis-ordered, and is checked by `returns` on the way out exactly as `provides` is. The objection was
+to positionality, not to returning.
+
+**`returns` is exhaustive, like `provides`, and for the same reason** -- it is checked on the way
+out, so an over-declared field fails on the first run rather than drifting.
 """
 import functools
+import types
 
 # Attributes whose value is legitimately falsy when set (0, '', {}), so presence must be tested with
 # hasattr rather than truthiness. Everything else also accepts "set but empty" -- the check is about
@@ -74,12 +109,26 @@ class PhaseOrderError(RuntimeError):
     """A phase ran before something it depends on."""
 
 
-def phase(requires=(), provides=()):
+class PhaseRecord(types.SimpleNamespace):
+    """What a phase hands forward that is NOT character state.
+
+    Category 3 in the module docstring: a real output of the phase that only the export reads.
+    Deliberately not a dict -- attribute access means a typo raises here instead of arriving in the
+    payload as a missing key, which is the failure mode this whole map exists to close."""
+
+    def __repr__(self):
+        fields = ', '.join(sorted(vars(self)))
+        return f"PhaseRecord({fields})"
+
+
+def phase(requires=(), provides=(), returns=()):
     """Declare a pipeline phase's prerequisites and outputs.
 
     ``requires`` are attribute names that must exist on the character before the phase runs;
     ``provides`` are the ones it is expected to set, checked on the way out so a phase that silently
     stops setting something is caught at its own boundary rather than at a distant reader.
+    ``returns`` names the fields of the ``PhaseRecord`` the phase hands back, checked the same way --
+    for outputs that are not character state (see WHERE A PHASE'S OUTPUTS GO, above).
     """
     def decorate(func):
         @functools.wraps(func)
@@ -97,10 +146,17 @@ def phase(requires=(), provides=()):
                 raise PhaseOrderError(
                     f"phase {func.__name__!r} declares it provides {', '.join(not_set)} "
                     f"but did not set {'them' if len(not_set) > 1 else 'it'}")
+            if returns:
+                absent = [name for name in returns if not hasattr(result, name)]
+                if absent:
+                    raise PhaseOrderError(
+                        f"phase {func.__name__!r} declares it returns {', '.join(absent)} "
+                        f"but its record does not carry {'them' if len(absent) > 1 else 'it'}")
             return result
 
         wrapper.requires = tuple(requires)
         wrapper.provides = tuple(provides)
+        wrapper.returns = tuple(returns)
         return wrapper
     return decorate
 

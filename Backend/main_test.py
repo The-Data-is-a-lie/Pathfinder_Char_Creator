@@ -65,7 +65,8 @@ from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
-from utils.class_func.pipeline					import phase, seal, require_sealed
+from utils.class_func.pipeline					import phase, seal, require_sealed, PhaseRecord
+from utils.payload							import build_payload, gear_display, PAYLOAD_KEYS
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
@@ -473,15 +474,22 @@ def phase_class_options(character):
 	was being written to the character mid-block anyway, and `full_domain` was a bare alias of
 	`character.chosen_domain` -- safe to drop here because domain_chooser is its only writer and runs
 	exactly once, which is precisely what was NOT true of the spell aliases in phase_hp_and_spellbooks.
+	Identical code, opposite verdicts, and the discriminator is the WRITER COUNT rather than anything
+	visible at the alias site -- so it is checked rather than remembered:
+	`scripts/gates/validate_alias_invariants.py` fails if either call count moves.
 
 	THREE LOCALS ARE DEAD and stay only for their draws: `favored_class_chosen` has no reader anywhere
-	in the repo, and pre_oracle_mystery/oracle_mystery are consumed inside the block.
+	in the repo, and pre_oracle_mystery/oracle_mystery are consumed inside the block. The reason each
+	survives is recorded AT the line, not here, because that is where someone will be standing when
+	they consider deleting it.
 
 	`chosen_school` IS SEEDED TO None ON PURPOSE. The local it replaces was conditionally bound --
-	only a wizard ever reached the assignment -- which is why the export site reads it inside a
-	`try/except NameError`. An attribute cannot raise NameError, so those handlers are now dead. They
-	are left standing because deleting them is a cleanup and this commit is a pure move; the None
-	seeding is what keeps the non-wizard path landing on "N/A" exactly as it did before.
+	only a wizard ever reached the assignment -- which is why the export site read it inside a
+	`try/except NameError`. An attribute cannot raise NameError, so those handlers were unreachable;
+	they have since been deleted in their own commit, and the None seeding is what keeps the
+	non-wizard path landing on "N/A" exactly as it did before. Removing the seeding would not raise
+	either -- it would put `None` where "N/A" belongs, on the sheet, silently. That is why
+	`chosen_school` and `chosen_opposing_school` are declared in `provides`.
 	'''
 	#this is to allow for talent choice stat pre-reqs (self.chooseable)
 	chooseable_list(character) 		
@@ -500,7 +508,12 @@ def phase_class_options(character):
 	human_flag_assigner(character)
 	favored_class_list = favored_class_option(character, )
 	favored_class = favored_class_option_chooser(character, favored_class_list, character.human_flag)
-	character.skill_rank_level, _favored_class_chosen = favored_class_calculator(character, favored_class)		
+	# `_favored_class_chosen` has NO reader anywhere in the repo -- it is unpacked and discarded. Do
+	# not "clean up" by dropping the call: favored_class_calculator is what sets skill_rank_level and
+	# does the `Total_HP += level` write-after-write this phase requires. Only the second element of
+	# the tuple is dead, and it stays unpacked rather than becoming `_` so that the name still says
+	# what was thrown away.
+	character.skill_rank_level, _favored_class_chosen = favored_class_calculator(character, favored_class)
 
 	# domain_chance still drives the inquisitor's inquisitions-vs-domains gate; the druid's
 	# companion-vs-domain flip moved to the bonded-creature resolver (see below).
@@ -684,6 +697,1073 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 	return professions, skill_ranks
 
 
+@phase(requires=['armor_type', 'gold'],
+	   provides=['armor_dict', 'weapon_type', 'weapon_dict', 'shield_flag', 'shield_dict',
+				 'mind_blade'],
+	   returns=['weapon_name', 'equipment_list', 'equip_descrip', 'armor_ac', 'shield_ac',
+				'weapon_enhancement_chosen_list', 'weapon_enhancement_bonus',
+				'armor_enhancement_chosen_list', 'armor_enhancement_bonus',
+				'shield_enhancement_chosen_list', 'shield_enhancement_bonus'])
+def phase_gear_and_equipment(character):
+	'''Pick what the character wears and carries, then spend the purse on it.
+
+	The order inside here is the constraint, and it is one the file already got wrong once:
+	`item_chooser` used to run before `plan_enhancements` and drained the purse, so no character
+	could ever afford an enhancement tier and enhancement_effects_dict was empty for every
+	realistically funded NPC. Enhancements now take their reserved share FIRST and ordinary gear
+	spends what is left. `shield_flag` has to be known before that split, so a shieldless character
+	is charged nothing for a shield.
+
+	requires `armor_type` (armor_chooser sets it, and list_selection limits on it) and `gold`
+	(assign_gold fills the purse every spender below draws down).
+	'''
+	character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
+
+	# required to set up weapon_type
+	weapon_chooser(character)
+	character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
+
+	weapon_name = list(character.weapon_dict.keys())[0]
+	limits = shield_chooser(character, character.weapon_dict)
+	character.shield_flag = shield_flag_func(character, limits=limits)
+	character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
+
+	# Magic enhancements get first claim on a reserved share of the purse (utils/class_func/
+	# armor_and_enhancements.py: ENHANCEMENT_SHARE / ENHANCEMENT_SPLIT). Runs here, after
+	# shield_flag is known, so a shieldless character is charged nothing for a shield.
+	_enhancements = plan_enhancements(character)
+	armor_enhancement = _enhancements['armor']
+	weapon_enhancement = _enhancements['weapon']
+	shield_enhancement = _enhancements['shield']
+
+	# ... and ordinary gear spends whatever is left.
+	# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
+	# Open JSON file to see if name is in that list, otherwise reroll and document
+	# This breaks perm server if Double \\
+	foundry_item_names = character.foundry_item_names
+	equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
+
+	armor_ac = ac_bonus_calculator(character, character.armor_dict)
+	shield_ac = ac_bonus_calculator(character, character.shield_dict)
+
+	weapon_type_flag = weapon_type_flag_func(character, character.weapon_dict)
+
+	weapon_enhancement_chosen_list, weapon_enhancement_bonus = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
+
+	# The soulknife wields a mind blade, which is a weapon SHAPE rather than a purchase: the
+	# rolled weapon keeps its damage dice, crit range and groups, but it is renamed for what it
+	# is and its enhancement bonus comes from the class table. The class table REPLACES the
+	# purse's number rather than raising it -- a mind blade is manifested, not bought, so no
+	# amount of gold buys a +5 one at 1st level. The special abilities enhancement_chooser
+	# picked still stand: that is the Enhanced Mind Blade feature spending its own grant.
+	_mind_blade = mind_blade(character, melee=(weapon_type_flag == 'Melee'))
+	# Stashed for choose_psionics_attr further down, which puts it on the soulknife's manifester
+	# entry. Passed rather than recomputed so the equipped weapon and the psionics tab cannot
+	# disagree about which blade this is.
+	character.mind_blade = _mind_blade
+	if _mind_blade:
+		weapon_name = _mind_blade['name']
+		weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']
+	armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
+	shield_enhancement_chosen_list, shield_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
+
+	return PhaseRecord(
+		weapon_name=weapon_name,
+		equipment_list=equipment_list,
+		equip_descrip=equip_descrip,
+		armor_ac=armor_ac,
+		shield_ac=shield_ac,
+		weapon_enhancement_chosen_list=weapon_enhancement_chosen_list,
+		weapon_enhancement_bonus=weapon_enhancement_bonus,
+		armor_enhancement_chosen_list=armor_enhancement_chosen_list,
+		armor_enhancement_bonus=armor_enhancement_bonus,
+		shield_enhancement_chosen_list=shield_enhancement_chosen_list,
+		shield_enhancement_bonus=shield_enhancement_bonus,
+	)
+
+
+@phase(requires=['chosen_race', 'skill_rank_budget'],
+	   returns=['selected_traits', 'hero_points', 'hair_color', 'hair_type', 'eye_color',
+				'appearance', 'language_text'])
+def phase_appearance_and_traits(character, skill_ranks):
+	'''The flavour rolls: traits, hero points, colouring, and the languages the character speaks.
+
+	Nothing downstream branches on any of this -- every output is read once, by the export. That is
+	precisely why it is a record rather than seven more character attributes.
+
+	These are RNG draws, so this phase's position in the file is load-bearing in a way its
+	`requires` cannot express: moving it changes the draw order and every golden fixture with it.
+	What `requires` CAN express is the one real dependency -- language_chooser is handed the skill
+	ranks, so `skill_rank_budget` (which only phase_professions_and_skills sets) forces this to run
+	after the skills are spent. Without it, the languages are chosen against an empty rank sheet.
+
+	requires `chosen_race`: the appearance tables and the racial language list are keyed by race.
+	'''
+	selected_traits = trait_selector(character, 8)
+	# pre export data manip start
+	hero_points = hero_point_generator()
+
+
+	hair_color = randomize_apperance_attr(character, "hair_colors")
+	hair_type = randomize_apperance_attr(character, "hair_types")
+	eye_color = randomize_apperance_attr(character, "eye_colors")
+	appearance = randomize_apperance_attr(character, "appearance")
+	language_text = language_chooser(character, skill_ranks)
+	return PhaseRecord(
+		selected_traits=selected_traits,
+		hero_points=hero_points,
+		hair_color=hair_color,
+		hair_type=hair_type,
+		eye_color=eye_color,
+		appearance=appearance,
+		language_text=language_text,
+	)
+
+
+@phase(requires=['classes', 'chosen_race'],
+	   returns=['class_ability', 'class_ability_desc', 'older_brothers', 'younger_brothers',
+				'older_sisters', 'younger_sisters', 'parents'])
+def phase_class_abilities_and_family(character):
+	'''The class-ability summary and the family the character was born into.
+
+	Two adjacent things that share one property: both are read ONLY by the export, so neither is
+	character state. The class-ability text is a rendering of `character.classes` rather than a
+	choice, and the siblings/parents are flavour rolls nothing downstream branches on.
+
+	`actual_class_abilities` stays a local -- it is the raw lookup that feeds the description call
+	two lines later and has no reader outside this phase.
+	'''
+	actual_class_abilities = get_class_abilities(character)
+	class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
+
+	older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
+	parents = randomize_parents(character)
+	return PhaseRecord(
+		class_ability=class_ability,
+		class_ability_desc=class_ability_desc,
+		older_brothers=older_brothers,
+		younger_brothers=younger_brothers,
+		older_sisters=older_sisters,
+		younger_sisters=younger_sisters,
+		parents=parents,
+	)
+
+
+@phase(requires=['bloodline_sorc', 'bloodline_rager'], provides=['bloodline'])
+def phase_bloodline_resolution(character):
+	'''Collapse whichever bloodline table was filled into the one name the rest of the run uses.
+
+	`phase_class_options` sets `bloodline_sorc` OR `bloodline_rager` (or neither); this reduces them
+	to a single `character.bloodline` string, defaulting to "N/A". It has to run before
+	`phase_class_bonus_feats`, whose bonus-feat list is drawn from that name -- and that ordering is
+	a contract rather than a comment because getting it wrong does not raise: the list comes back
+	empty and the refund silently converts the unfilled slots into ordinary feats.
+
+	The `except (NameError, AttributeError)` is NOT the dead kind that was removed from the school
+	reads. `bloodline_sorc`/`bloodline_rager` are only set for bloodline classes, so the
+	AttributeError arm is live for everyone else -- which is exactly why both names are declared in
+	`requires`, so a reordering fails loudly instead of falling into that arm and reading "N/A".
+	'''
+	try:
+		if character.bloodline_sorc:
+			bloodline_full = character.bloodline_sorc
+			bloodline = next(iter(bloodline_full.keys()), "N/A")
+		elif character.bloodline_rager:
+			bloodline_full = character.bloodline_rager
+			bloodline = next(iter(bloodline_full.keys()), "N/A")
+		else:
+			bloodline = "N/A"
+
+	except (NameError, AttributeError):
+		bloodline = "N/A"
+
+	character.bloodline = bloodline
+
+
+@phase(requires=['bab_total', 'bloodline', 'feat_amounts'],
+	   provides=['teamwork_feats', 'combat_feats'],
+	   returns=['bloodline_feats', 'bloodline_feat_labels', 'ranger_style_feats',
+				'monk_bonus_feats'])
+def phase_class_bonus_feats(character):
+	'''The feats a class GRANTS, as opposed to the ones the character chooses.
+
+	Everything here runs before the normal-feat selection, and the order is the whole point: the
+	granted picks are registered in `character.chooseable` first, so no_prereq_loop skips them and
+	the general pool cannot re-pick the same feat (duplicate Weapon Focus), while the feat-tax
+	engine still sees them as owned.
+
+	requires `bloodline`: the bonus-feat list is the bloodline's own, so running before the
+	bloodline is resolved silently hands a Sorcerer an empty list -- and the refund below then
+	quietly converts every unfilled slot into an ordinary feat, so the count still looks right.
+
+	requires `feat_amounts` because this phase REFUNDS into it: a bonus list too short to fill its
+	granted slots gives those slots back to the normal track. See ticket 08 -- the budget is
+	mutated from six places and this is two of them.
+	'''
+	# Campaign feat-tax rule (homebrew_rules.md 4): Combat Expertise / Power Attack / Deadly Aim /
+	# Piranha Strike are FREE for anyone with BAB >= 1, so they're never spent as a chosen feat.
+	# Seeding them into chooseable BEFORE any feat selection makes every chooser skip them, while
+	# feats that list them as a prerequisite still qualify (no_prereq_loop treats chooseable as owned).
+	if getattr(character, 'bab_total', 0) >= 1:
+		add_feats_to_chooseable(character, FREE_AT_BAB1)
+	# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
+	# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
+	# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
+	_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
+	bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
+	bloodline_feats = filter_free_feats(bloodline_feats)  # safety net (bonus lists may bypass chooseable)
+	bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
+	# If the bloodline list is too short to fill every granted slot (e.g. a high-level
+	# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
+	# so the total feat count is preserved. No-op when the list covers every slot.
+	character.feat_amounts += max(len(_bl_levels) - len(bloodline_feats), 0)
+	#class specific feats choosers (capture results; they are merged into character.feats after
+	# the normal-feat selection below, which would otherwise reassign over them)
+	ranger_style_feats = ranger_feats_chooser(character) or []
+	monk_bonus_feats = monk_feats_chooser(character) or []
+	# Reallocate monk/ranger bonus-feat slots their lists couldn't fill to normal feats (monk's
+	# total is preserved; ranger now actually gains its combat-style feats). No-op otherwise.
+	character.feat_amounts += getattr(character, 'ranger_feat_surplus', 0) + getattr(character, 'monk_feat_surplus', 0)
+	# Register the class-granted picks (bloodline / ranger style / monk bonus) in
+	# character.chooseable BEFORE the normal-feat selection: no_prereq_loop skips chooseable
+	# members, so the general pool can no longer re-pick the same feat (duplicate Weapon
+	# Focus etc.), and the feat-tax engine correctly sees them as owned.
+	add_feats_to_chooseable(character, bloodline_feats, ranger_style_feats, monk_bonus_feats)
+	# Determine extra teamwork feats
+	extra_teamwork_feats(character)
+	# determine extra combat feats
+	extra_combat_feats(character)
+	return PhaseRecord(
+		bloodline_feats=bloodline_feats,
+		bloodline_feat_labels=bloodline_feat_labels,
+		ranger_style_feats=ranger_style_feats,
+		monk_bonus_feats=monk_bonus_feats,
+	)
+
+
+@phase(requires=['classes', 'bab_total', 'feat_amounts', 'profession_feats'],
+	   provides=['path_of_war_paths', 'sphere_count', 'spheres_flag'],
+	   returns=['_pow_funded_n', '_pow_mentor_feats', '_pow_mentor_names', '_sphere_mentor_talents', 'casting_tradition', 'combat_talent_items', 'dedicated_trainer_specs', 'homebrew_feat_desc_dict', 'initiation_stat', 'initiator_level', 'magic_talent_items', 'maneuvers_choose_from', 'maneuvers_desc_dict', 'maneuvers_known_list', 'maneuvers_readied_list', 'maneuvers_readied_names', 'manifesters', 'martial_disciplines', 'mt_feat_tax', 'mt_feats', 'powers_desc_dict', 'sphere_boons', 'sphere_counts', 'sphere_drawbacks', 'sphere_feat_tax', 'sphere_feats', 'sphere_mana_pool', 'sphere_traits', 'spheres_chosen', 'stances_chosen', 'style_feat_tax', 'style_feats'])
+def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
+	'''Path of War, psionics and Spheres of Power -- the three homebrew subsystems, and the
+	feat-budget reservation that pays for all of them.
+
+	This is the block ticket 08 is about. It rolls each system's desired size, decides how much of
+	that the character can actually afford, and then RESERVES the cost out of `character.feat_amounts`
+	through a `max(0, ...)` that clamps silently when the reservation exceeds the budget.
+	`scripts/tests/test_feat_budget.py` is what makes that clamp audible; see ticket 08 for why the
+	arithmetic was left alone rather than replaced with a FeatBudget object.
+
+	Thirty-two values cross out of here and not one of them is character state -- they are the
+	subsystem bundles the export and the feat-tax block read. That is why they ride a record: as
+	character attributes they would be thirty-two more names on an object already carrying ~200, and
+	as a tuple they would be thirty-two positions nobody can read.
+
+	requires `profession_feats` because the reservation subtracts them, so running this before
+	`phase_professions_and_skills` would reserve nothing for professions and over-fill the feat track.
+	requires `feat_amounts` for the same reason `phase_class_bonus_feats` does: this phase mutates the
+	budget rather than merely reading it.
+	'''
+# ------------------- Path of War section -------------------#
+	# Initiator classes (stalker/warlord/...) draw disciplines + maneuver counts from their
+	# own class tables; everyone else may roll "martial paths" (house rule: BAB L 0-1,
+	# M/H 0-2, +1 to both bounds at level 20+) accessed via the Martial Training feat chain
+	# taken as deep as bab_total allows (I/III/V paid; II/IV/VI free via feat tax).
+	# ----- PoW + Spheres selection guarantee (house rule) -----
+	# Roll both systems' COUNTS uncapped, then guarantee delivery with feat-budget PRIORITY over
+	# normal feats. 75% "lean": realize ceil(half) of the desired homebrew feats. 25%
+	# "trainer-backed": realize >= half, with 2 dedicated trainers funding the rest off-budget
+	# (their caliber rolls) and any surplus capacity becoming bonus sphere talents.
+	randomize_path_of_war_num(character)
+	character.spheres_flag = spheres_flag
+	randomize_spheres_num(character)
+	_is_initiator = any(c['name'] in data.path_of_war_class for c in character.classes)
+	_sc = int(getattr(character, 'sphere_count', 0) or 0)
+	desired_sphere = (_sc + random.randint(0, MAX_EXTRA_TALENT_FEATS)) if _sc > 0 else 0
+	_mt_depth = martial_training_depth(character)
+	_paid_per_chain = (_mt_depth // 2) if _mt_depth else 0
+	_paths = int(getattr(character, 'path_of_war_paths', 0) or 0)
+	desired_pow = (_paths * _paid_per_chain) if (not _is_initiator and _mt_depth and _paths) else 0
+	if _is_initiator:
+		pow_data = choose_path_of_war_attr(character)        # maneuvers/stances free from the class
+		desired_style = len(pow_data.get('style_feats', []))
+	else:
+		pow_data = None
+		desired_style = 0
+	selected_amount = desired_pow + desired_style + desired_sphere
+	_sphere_mentor_cal, _pow_mentor_cal, _overflow_n, _priority_reserve, _mentor_talents_n = 0, 0, 0, 0, 0
+	realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
+	if selected_amount > 0:
+		_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
+		# The draw happens even when trainers are switched off, so a replayed seed still lines up
+		# with the same character minus its mentors; opting out just lands in the ordinary 75%
+		# branch, where the character funds this training out of the normal feat budget. Gating
+		# here rather than only at select_trainer_feats is what makes "Trainers: No" mean it --
+		# these mentors render as "(Trainer N - Path of War)" / "(Trainer N - Spheres)" rows too.
+		if random.random() < 0.25 and trainers_enabled:
+			# "trainer-backed": ONE dedicated mentor PER SYSTEM the character actually has content in,
+			# each rolling its own caliber 1-4 (8/45/45/2). A mentor funds `caliber` FEATS' worth of the
+			# training that lies beyond the character's own half-share -- 2*caliber sphere talents (capped
+			# at the flat-8, so total talents never bloat) or `caliber` Martial Training / style feats.
+			# Whatever it funds leaves the normal feat track and renders under its own "(Trainer N)" slot
+			# instead, so a funded feat is never listed twice. Rolling per system is what finally lets a
+			# pure-martial NPC have a mentor at all: the old single roll was spent raising the PoW
+			# realization while line ~848 still billed the character for it, then suppressed itself.
+			_sphere_mentor_cal = roll_caliber() if desired_sphere > 0 else 0
+			_pow_mentor_cal = roll_caliber() if (desired_pow + desired_style) > 0 else 0
+			_mentor_talents_n = 2 * _sphere_mentor_cal
+		realize_total = _half
+		_priority_reserve = _half                       # the budget-funded portion (mentor funding is off-budget)
+		if realize_total < selected_amount:
+			_dpow = desired_pow + desired_style
+			_rpow = max(0, min(round(realize_total * _dpow / selected_amount), _dpow))
+			realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
+			# Don't let the proportional split zero out a system that WAS selected: keep each
+			# present system its minimum unit (1 sphere feat / one whole PoW chain or style feat)
+			# when the realized budget can still cover it.
+			if desired_sphere > 0 and realize_sphere == 0 and realize_total >= 1:
+				realize_sphere = 1
+			_rpow = max(0, min(realize_total - realize_sphere, _dpow))
+			_pow_min = _paid_per_chain if (not _is_initiator and desired_pow > 0) else (1 if (_is_initiator and desired_style > 0) else 0)
+			if _pow_min and _rpow < _pow_min and (realize_total - realize_sphere) >= _pow_min:
+				_rpow = _pow_min
+				realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
+			realize_style, realize_pow = (_rpow, 0) if _is_initiator else (0, _rpow)
+		# The PoW mentor tops up ITS OWN system beyond that half-share (the Spheres Mentor's capacity
+		# rides `_mentor_talents_n` instead -- sphere talents are a flat 8 either way, so its caliber
+		# only moves who pays). Non-initiator capacity buys WHOLE chains: a part-paid chain grants
+		# nothing, so `caliber % paid_per_chain` falls through to refunding already-realized feats
+		# below. Initiator style bases cost one feat each, so they top up one at a time.
+		if _pow_mentor_cal:
+			if _is_initiator:
+				realize_style = min(desired_style, realize_style + _pow_mentor_cal)
+			elif _paid_per_chain:
+				realize_pow = min(desired_pow, realize_pow + (_pow_mentor_cal // _paid_per_chain) * _paid_per_chain)
+	if not _is_initiator:
+		pow_data = choose_path_of_war_attr(
+			character, max_chains=((realize_pow // _paid_per_chain) if _paid_per_chain else 0))
+	martial_disciplines     = pow_data['martial_disciplines']
+	initiator_level         = pow_data['initiator_level']
+	maneuvers_known_list    = pow_data['maneuvers_known_list']
+	maneuvers_readied_list  = pow_data['maneuvers_readied_list']
+	maneuvers_choose_from   = pow_data['maneuvers_choose_from']
+	maneuvers_readied_names = pow_data['maneuvers_readied_names']
+	stances_chosen          = pow_data['stances_chosen']
+	mt_feats                = pow_data['mt_feats']
+	mt_feat_tax             = pow_data['mt_feat_tax']
+	initiation_stat         = pow_data['initiation_stat']
+	maneuvers_desc_dict     = pow_data['maneuvers_desc_dict']
+	# Psionics rides alongside Path of War rather than inside it: the two systems are
+	# independent, and a character can be an initiator, a manifester, both or neither. The
+	# bundle is empty for a non-manifester, so this is unconditional.
+	psionics_data           = choose_psionics_attr(character)
+	manifesters             = psionics_data['manifesters']
+	powers_desc_dict        = psionics_data['powers_desc_dict']
+	style_feats             = pow_data['style_feats']
+	style_feat_tax          = pow_data['style_feat_tax']
+	homebrew_feat_desc_dict = pow_data['homebrew_feat_desc_dict']
+	# Cap initiator style chains to the realized amount decided by the guarantee block above
+	# (PoW maneuvers are class-free; only the feat-funded style bases are scaled). Non-initiators
+	# have no style feats. The feat-budget reservation now happens after the Spheres section.
+	style_feats = style_feats[:realize_style]
+	style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
+	# Which PoW feats the mentor paid for. Chains / style bases are realized in order, so the TRAILING
+	# ones are precisely what its capacity bought; once the top-up is exhausted the leftover caliber
+	# keeps paying, refunding feats the character's own half-share had realized (mirroring the Spheres
+	# Mentor, which at caliber 4 funds all 8 talents and leaves the character paying for none). Capped
+	# at the PoW that actually exists. These feats stay OUT of the normal feat track from here on:
+	# they are excluded from the budget reservation and from `feats`, and render under the mentor's
+	# "(Trainer N - Path of War)" label instead, so the freed slots refill with ordinary feats.
+	_pow_all_feats = mt_feats + style_feats
+	_pow_funded_n = min(_pow_mentor_cal, len(_pow_all_feats))
+	_pow_mentor_feats = _pow_all_feats[len(_pow_all_feats) - _pow_funded_n:] if _pow_funded_n else []
+	_pow_mentor_names = set(_pow_mentor_feats)
+
+# ------------------- Spheres (Power / Might) section -------------------#
+	# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
+	# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
+	# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
+	sphere_data          = choose_spheres_attr(character, trainer_backed=bool(_sphere_mentor_cal), mentor_talents=_mentor_talents_n)
+	magic_talent_items   = sphere_data['magic_talent_items']
+	combat_talent_items  = sphere_data['combat_talent_items']
+	sphere_feats         = sphere_data['sphere_feats']
+	sphere_feat_tax      = sphere_data['sphere_feat_tax']
+	sphere_mana_pool     = sphere_data['sphere_mana_pool']
+	spheres_chosen       = sphere_data['spheres_chosen']
+	sphere_counts        = sphere_data['sphere_counts']
+	casting_tradition    = sphere_data['casting_tradition']
+	sphere_drawbacks     = sphere_data['sphere_drawbacks']
+	sphere_boons         = sphere_data['sphere_boons']
+	sphere_traits        = sphere_data['sphere_traits']
+	homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
+	# 25% "trainer-backed" branch: the dedicated mentors, rendered in the Trainers block. The Spheres
+	# Mentor needs a NAMED row of its own because the talents it funded render elsewhere (the magic /
+	# combat talent sections), so this row is the only record of who paid for them. The PoW mentor
+	# gets no such row -- its funded Martial Training / style feats ARE its content and render as its
+	# "(Trainer N - Path of War)" group below, so a header row would be the content-free mentor this
+	# block has always refused to emit.
+	dedicated_trainer_specs = []
+	_sphere_mentor_talents = []
+	if _sphere_mentor_cal:
+		_overflow_talent_items = []
+		if _overflow_n > 0 and sphere_data.get('_chosen'):
+			_ov_magic, _ov_combat = add_overflow_talents(
+				character, sphere_data['_chosen'], sphere_data['_counts'], _overflow_n)
+			magic_talent_items = magic_talent_items + _ov_magic
+			combat_talent_items = combat_talent_items + _ov_combat
+			_overflow_talent_items = _ov_magic + _ov_combat
+		# Off-budget talents the mentor funded (the non-budget-paid flat-8 portion = 2*caliber) -> HR1
+		# Extra-Talent feats + the talent names (user's requested format). Only emit a Spheres Mentor
+		# when it actually funded something off-budget; otherwise there is nothing for it to teach.
+		# Never pad to a fixed count and never add a content-free fallback mentor: a dedicated trainer
+		# that funded nothing would render as a blank "(Continued Study)" / generic slot.
+		_sphere_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items
+		if _sphere_mentor_talents:
+			dedicated_trainer_specs = [("Spheres Mentor", mentor_sphere_summary(spheres_chosen, _sphere_mentor_talents))]
+	# Priority funding (reserve EXACTLY the homebrew feats that get appended into the normal feat
+	# list, so each one REPLACES a normal feat -- the "consume feat budget" house rule -- and the
+	# track lands at precisely normal_feat_amount). Those appended feats are: paid Martial Training
+	# picks (mt_feats) + initiator style-chain bases (style_feats), both extended into `feats` just
+	# below, and the budget-paid sphere Extra-Talent / magic bonus feats (sphere_feats) appended
+	# after the feat-tax pass. The previous formula reserved a proportional roll-estimate
+	# (_priority_reserve + max(0, sphere_feat_budget_count - realize_sphere)) that drifted off this
+	# true count: over-reserving silently dropped the top "(Feat N)" slots (the "missing feats"
+	# bug), under-reserving spilled feats past the character's top level. Sphere-mentor funding is
+	# already off-budget (those talents produce no Extra-Talent feat at all, so they are not in
+	# sphere_feats); PoW-mentor funding needs the explicit `_pow_funded_n` term because those feats
+	# DO exist -- they just move to the mentor's trainer group instead of the normal track, which is
+	# exactly what hands the character back that many ordinary feat slots.
+	_prof_feat_n = len(getattr(character, 'profession_feats', []) or [])
+	character.feat_amounts = max(0, character.feat_amounts - (len(mt_feats) + len(style_feats) - _pow_funded_n)
+								 - len(sphere_feats) - _prof_feat_n)
+	# Profession feats (True Calling / Multi Talented / Always Improving) are appended into the feat
+	# list AFTER the feat-count guarantee, so -- unlike the homebrew feats above -- they can't be
+	# trimmed to fit. Reserve their slots by ALSO lowering the guarantee target (normal_feat_amount):
+	# each profession feat then REPLACES a normal feat (the "feat cost" house rule), or, when the
+	# budget is too small, takes over the track and clamps the normal feats down to 0.
+	character.normal_feat_amount = max(0, character.normal_feat_amount - _prof_feat_n)
+
+	return PhaseRecord(
+		_pow_funded_n=_pow_funded_n,
+		_pow_mentor_feats=_pow_mentor_feats,
+		_pow_mentor_names=_pow_mentor_names,
+		_sphere_mentor_talents=_sphere_mentor_talents,
+		casting_tradition=casting_tradition,
+		combat_talent_items=combat_talent_items,
+		dedicated_trainer_specs=dedicated_trainer_specs,
+		homebrew_feat_desc_dict=homebrew_feat_desc_dict,
+		initiation_stat=initiation_stat,
+		initiator_level=initiator_level,
+		magic_talent_items=magic_talent_items,
+		maneuvers_choose_from=maneuvers_choose_from,
+		maneuvers_desc_dict=maneuvers_desc_dict,
+		maneuvers_known_list=maneuvers_known_list,
+		maneuvers_readied_list=maneuvers_readied_list,
+		maneuvers_readied_names=maneuvers_readied_names,
+		manifesters=manifesters,
+		martial_disciplines=martial_disciplines,
+		mt_feat_tax=mt_feat_tax,
+		mt_feats=mt_feats,
+		powers_desc_dict=powers_desc_dict,
+		sphere_boons=sphere_boons,
+		sphere_counts=sphere_counts,
+		sphere_drawbacks=sphere_drawbacks,
+		sphere_feat_tax=sphere_feat_tax,
+		sphere_feats=sphere_feats,
+		sphere_mana_pool=sphere_mana_pool,
+		sphere_traits=sphere_traits,
+		spheres_chosen=spheres_chosen,
+		stances_chosen=stances_chosen,
+		style_feat_tax=style_feat_tax,
+		style_feats=style_feats,
+	)
+
+
+@phase(requires=['classes', 'chosen_domain', 'chosen_school'],
+	   returns=['class_features', 'class_feature_levels', 'class_feature_owners',
+				'casting_level_str_foundry'])
+def phase_class_features_and_bonus_spells(character, casting_level_str):
+	'''Close the class-features bucket, then spend the bonus spells that read out of it.
+
+	The seal is the whole point of the ordering. `data_dict['class features']` exists from the first
+	line of generation, so a presence check cannot tell "no chooser ran" from "this class has no
+	choices" -- and the bonus-spell lookups below would quietly return {} rather than raise. `seal`
+	and `require_sealed` bracket that: every chooser has run by the time this phase starts, and a
+	chooser added after it fails loudly instead of being silently missed.
+
+	`casting_level_str_foundry` is CONDITIONALLY BOUND and seeded here to 'None' for the same reason
+	`chosen_school` is seeded in phase_class_options: the branch only fires for low/high/mid casters,
+	and the export needs the string to exist for everyone else. Seeding it inside the phase (rather
+	than 900 lines earlier at the top of generate_random_char) is what lets `returns` check it.
+	'''
+	# Every class-choice chooser (domains, school, bloodline, hexes, talents, ...) has run by here,
+	# so the bucket is closed. Sealing is what makes the two reads below safe to check: the key
+	# always EXISTS from the first line of generation, so a presence test cannot tell "no chooser
+	# ran" from "this class has no choices" -- and a chooser added AFTER this point would silently
+	# leave both the snapshot here and the bonus-spell lookups below reading an unfinished dict.
+	casting_level_str_foundry = 'None'
+	seal(character, 'class features')
+	# For some reason class_features is being created as a dict inside a list, rather than a dict
+	class_features = character.data_dict['class features']
+	# Level at which each class choice was picked (bucket -> choice -> level), for the sheet.
+	class_feature_levels = character.data_dict.get('class feature levels', {})
+	# Which class granted each bucket (bucket -> class name), for per-class feature dividers.
+	class_feature_owners = character.data_dict.get('class feature owners', {})
+
+	# Prep casting level string for foundry:
+	if casting_level_str.lower() in ("low", "high"):
+		casting_level_str_foundry = casting_level_str.lower()
+	elif casting_level_str == "mid":
+		casting_level_str_foundry = "med"
+
+	
+
+	# Start of turning class_features into a dictionary for oracle
+	
+	if isinstance(class_features, list) and len(class_features) > 0:
+		combined_dict = {}
+		for i, feature in enumerate(class_features):
+			if not isinstance(feature, dict):
+				continue
+			combined_dict.update(feature)
+
+		# Assign the merged dictionary back to class_features
+		class_features = combined_dict
+
+	# print("class features 1st check", class_features)
+	#End of turning class_features into a dictionary for oracle
+	# NOTE: the homebrew Trainers / Professions / Skill Unlock entries are injected into
+	# class_features further down (inject_homebrew_class_features), after the feat section has
+	# computed the trainer feats + tax chains.
+
+
+#--------------- Spell addition options ---------------#
+	# Bonus spells are looked up out of the class-features bucket below, so it must be finished.
+	# This used to be an unguarded read: move a chooser after this point and every bonus-spell
+	# lookup quietly returns {} instead of raising.
+	require_sealed(character, 'class features', 'the bonus-spell section')
+	# each addition targets the granting CLASS's own spellbook (multiclass-aware); for a
+	# single-class character that book is the legacy scalar's object, so behavior is unchanged
+	def _book_for(*names):
+		return next((c for c in character.classes
+					 if c['name'] in names and c.get('spell_list_choose_from')), None)
+# Bloodlines
+	_bloodline_book = _book_for('sorcerer', 'bloodrager')
+	if _bloodline_book is not None and character.bloodline != "N/A":
+		bonus_spells = character.data_dict['class features'].get("Talents", {}).get(character.bloodline, {}).get("bonus spells", [])
+		add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
+# Domains
+	_cleric_book = _book_for('cleric')
+	if character.chosen_domain not in ([], None) and _cleric_book is not None:
+		for i, domain in enumerate(character.chosen_domain):
+			bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
+			add_bonus_spells(character, bonus_spells, _cleric_book['spell_list_choose_from'])
+
+	_druid_book = _book_for('druid')
+	if character.chosen_domain not in ([], None) and _druid_book is not None:
+		for i, domain in enumerate(character.chosen_domain):
+			bonus_spells = character.data_dict['class features'].get(domain, {}).get("bonus spells", [])
+			add_bonus_spells(character, bonus_spells, _druid_book['spell_list_choose_from'])
+# Inquisitions
+	# Don't get bonus spells
+# Schools
+	# Schools spells are just recommended spells (not bonus spells), but we'll mnake sure wizards take them
+	_wizard_book = _book_for('wizard')
+	if character.chosen_school not in ([], None) and _wizard_book is not None:
+		try:
+			bonus_spells_dict = character.data_dict['class features'].get(character.chosen_school).get("spells", [])
+			add_bonus_spells_from_dict(character, bonus_spells_dict, _wizard_book['spell_list_choose_from'])
+			# print("bonus_spells_dict", bonus_spells_dict)
+			# print("character.spell_list_choose_from", character.spell_list_choose_from)
+		except:
+			print("wizard, but wizard spell list has no bonus spells")
+
+
+	return PhaseRecord(
+		class_features=class_features,
+		class_feature_levels=class_feature_levels,
+		class_feature_owners=class_feature_owners,
+		casting_level_str_foundry=casting_level_str_foundry,
+	)
+
+
+@phase(requires=['chooseable', 'feat_amounts', 'class_feats_amount'],
+	   provides=['feats'],
+	   returns=['casting_level_str', 'teamwork_feats', 'teamwork_feat_labels'])
+def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, teamwork_feats):
+	'''Choose the character's ordinary feats, then its teamwork feats.
+
+	Two of the six `character.feat_amounts` mutation sites ticket 08 catalogued live here: the
+	teamwork-overflow refund and the class-bonus-feat fold-in. Both are `+=` refunds -- "give back
+	slots something could not spend" -- and they must happen BEFORE the chooser runs, because
+	`feat_amount=character.feat_amounts` is what sizes the selection.
+
+	`teamwork_feats` arrives as the integer COUNT on the character and leaves as the chosen LIST, on
+	the record. That shadowing is deliberate and pre-existing; the record is what finally makes the
+	two distinguishable at the call site (`character.teamwork_feats` vs `fs.teamwork_feats`).
+
+	requires `chooseable`: the free-at-BAB1 feats and every class-granted pick are seeded into it by
+	phase_class_bonus_feats, and no_prereq_loop treats chooseable as owned. Run this first and the
+	general pool happily re-picks feats the character already has.
+	'''
+	# Feat Selector
+	casting_level_str = character.class_data[character.c_class]['casting level'].lower()
+	# If a class is granted more teamwork-feat slots than the (filtered) teamwork pool can
+	# fill, reallocate the unfilled slots to normal feats. Normally a no-op (~53 teamwork
+	# feats vs <=13 requested); fires only for filtered caster builds. Computed here because
+	# teamwork feats themselves are chosen after the normal-feat selection below.
+	if character.teamwork_feats > 0:
+		character.feat_amounts += max(character.teamwork_feats - teamwork_pool_size(character, casting_level_str), 0)
+	# print("character.chooseable", character.chooseable)
+	character.feat_amounts += character.class_feats_amount
+	if truly_random_feats.upper() == "Y":
+	# Truly Random Feats
+	# full casters + mid casters with low BAB
+		if character.bab == "L" and casting_level_str in ("mid", "high"):
+				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)
+
+		# full casters + mid casters with med BAB
+		elif character.bab == "M" and casting_level_str in ("mid", "high"):
+			random_dice = random.randint(1, 100)
+			if random_dice <= 50:
+				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)					
+			else:
+				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat',info_column = 'description', feat_amount = character.feat_amounts)
+		else:
+			character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat', info_column = 'description', feat_amount = character.feat_amounts)
+
+	else:
+		# Curated List of feats
+		# build selector can potentially grab high level feats at a lower level (so a 9th rogue can take vital strike any level)
+		# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
+		build_selector_feats = build_selector(character)
+		character.feats.extend(build_selector_feats)
+
+	# Merge the class-specific bonus feats selected above (monk bonus feats / ranger combat-style
+	# feats) into the feat list. The truly-random branch reassigns character.feats, so we add them
+	# here for BOTH paths so they survive (single merge point, replacing the choosers' old extend).
+	# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
+	character.feats.extend(capitalize_feats(character, list(grants.ranger_style_feats)))
+	character.feats.extend(capitalize_feats(character, list(grants.monk_bonus_feats)))
+	# Belt-and-braces: same feat arriving from two sources with different casing would
+	# otherwise survive to the sheet as a duplicate entry.
+	character.feats = dedupe_feats_case_insensitive(character.feats)
+
+	# Shared shortfall top-up (both feat paths): the type/caster-filtered pools can run dry
+	# before the budget is met (and the dedupe above can drop a cross-source duplicate).
+	# Target = the requested budget plus the class-granted ranger/monk merges, which sit on
+	# top of character.feat_amounts (only their unfilled surplus was folded into it).
+	_expected_feat_total = character.feat_amounts + len(grants.ranger_style_feats) + len(grants.monk_bonus_feats)
+	if len(character.feats) < _expected_feat_total:
+		character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
+
+	# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
+	# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
+	# have bypassed the pool.
+	character.feats = filter_free_feats(character.feats)
+	# Skill-choosing feats (Skill Focus / Prodigy) -> point them at the character's professions
+	# (highest rank first); their numeric bonus is recorded on the chosen profession.
+	specialize_skill_choice_feats(character, character.feats, skill_ranks)
+
+	# Teamwork feats selector
+	if character.teamwork_feats > 0:
+		teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
+
+	# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to
+	# teamwork_feats. Slots span every rolled class, same source as the count.
+	teamwork_feat_labels = []
+	if isinstance(teamwork_feats, list):
+		teamwork_feat_labels = [f"{d} {lvl}" for d, lvl in teamwork_feat_slots(character)][:len(teamwork_feats)]
+
+	# Add later -> to allow for specialized class feats
+	# if character.class_feats_amount > 0:
+	# 	class_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
+
+	feats = character.feats 
+
+	return PhaseRecord(
+		casting_level_str=casting_level_str,
+		teamwork_feats=teamwork_feats,
+		teamwork_feat_labels=teamwork_feat_labels,
+	)
+
+
+@phase(requires=['feat_amounts', 'normal_feat_amount', 'chooseable'],
+	   returns=['feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats', 'feat_budget', 'story_feat_tax_dict', 'flaw_feat_tax_dict', 'flavor_feat_tax_dict', 'class_feat_tax_dict', 'feats_feat_tax_dict', 'trainer_feat_tax_dict', 'class_feat_labels', 'trainer_feats', 'trainer_feat_labels', 'trainer_calibers', '_trainer_group_meta', 'profession_feats', 'profession_feat_desc', 'profession_ranks', 'profession_pool', 'teamwork_feats', 'teamwork_feat_labels'])
+def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
+							teamwork_feats, teamwork_feat_labels, trainers_enabled):
+	'''The feat-tax engine, the trainer rows, and the count guarantee -- the last and hardest block.
+
+	Ticket 07 called this one out to be done last, and the reason holds: 320-odd lines containing six
+	`feat_tax_func` calls, two near-duplicated `assign_feats_to_levels` reorder passes, trainer-row
+	synthesis for two different subsystems, a tax-child strip with a two-round backfill, and the final
+	count guarantee. It reads `character.feat_amounts` roughly 250 lines after the last thing that
+	mutated it.
+
+	What makes it EXTRACTABLE rather than merely long is that every one of those mutations now happens
+	upstream, inside a phase that declares it -- so this block only ever READS the budget. That is why
+	it takes no `provides` on the budget and why ticket 08 had to be settled first: the six
+	non-adjacent mutation sites are exactly what used to stop this block being contiguous.
+
+	Twenty-three values cross out, all of them to the export. `feats` arrives as the merged list and
+	leaves split five ways by `separate_feats_func`, which is why it appears in both the parameters
+	and the record -- the same name, deliberately, because the split IS the block's job.
+	'''
+# ------------------- Last minute Feat swapping process -------------------#
+	story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
+	# Paid Martial Training picks and style-chain bases join the normal bucket (their slots
+	# were reserved out of the ask before the chooser ran); the feat-tax passes below bundle
+	# the free partners/followers. Style children register as owned so nothing re-picks them.
+	# The PoW mentor's feats are deliberately NOT here -- they render under its "(Trainer N)"
+	# group instead, which is what keeps them off the normal track and out of a second listing.
+	feats.extend([f for f in pw.mt_feats if f not in pw._pow_mentor_names])
+	feats.extend([f for f in pw.style_feats if f not in pw._pow_mentor_names])
+	# NOTE: pw.sphere_feats are appended AFTER the feat-tax pass (below), not here -- they share a base
+	# name ("Extra Combat Talent") that feat_tax_func would wrongly chain/strip together.
+	add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
+	add_feats_to_chooseable(character, pw.sphere_feats)
+	add_feats_to_chooseable(character, [c for ch in pw.style_feat_tax.values() for c in ch])
+
+	# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
+	# Trainers teach feats grouped under "(Trainer N)" tags; profession feats are named homebrew
+	# feats (True Calling / Multi Talented / Always Improving). Both sit ON TOP of the normal
+	# budget (like bloodline/teamwork) and are registered as owned so nothing re-picks them. Chosen
+	# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
+	if trainers_enabled:
+		trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
+	else:
+		# Empty lists, not a skipped variable: every downstream reader already tolerates empty
+		# trainer data (a Yes-run can legitimately roll 0 trainer slots), so opting out is just
+		# the zero case made deliberate.
+		trainer_feats, trainer_feat_labels, trainer_calibers = [], [], []
+	add_feats_to_chooseable(character, trainer_feats)
+	profession_feats = list(getattr(character, 'profession_feats', []) or [])
+	profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
+	profession_ranks = list(getattr(character, 'profession_data', []) or [])
+	profession_pool = getattr(character, 'profession_pool', 0)
+	add_feats_to_chooseable(character, profession_feats)
+
+	# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to
+	# class_feats. Slots span EVERY rolled class (same source as the class_feats count), so a
+	# multiclass gunslinger dip labels as "(Gunslinger 4)" instead of the sheet's default counter.
+	_class_feat_slots = class_bonus_feat_slots(character)
+	_class_feat_levels = [lvl for _, lvl in _class_feat_slots]
+	class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
+	# Per-bucket feat-row budget: what the sheet SHOULD show. Captured pre-tax-strip; normal
+	# absorbs the human bonus, reallocated surpluses, and the ranger/monk merges.
+	feat_budget = {
+		"story": character.story_feat_amount,
+		"flaw": character.flaw_feat_amount,
+		"flavor": character.flavor_feat_amount,
+		"class": character.class_feats_amount,
+		"normal": character.feat_amounts - character.story_feat_amount - character.flaw_feat_amount
+			- character.flavor_feat_amount - character.class_feats_amount
+			+ len(grants.ranger_style_feats) + len(grants.monk_bonus_feats)
+			+ len(pw.mt_feats) + len(pw.style_feats) - pw._pow_funded_n,
+		"teamwork": character.teamwork_feats,
+		"bloodline": len(grants.bloodline_feats),
+		# The mentor rows are appended after the feat-tax pass below, so count them here or the
+		# "feat rows ->" audit reports a phantom trainer deficit.
+		"trainer": len(trainer_feats) + len(pw.dedicated_trainer_specs) + pw._pow_funded_n,
+		"profession": len(profession_feats),
+	}
+	# add all feats to character.chooseable (for feat taxing purposes)
+
+
+	# Feat tax portion — pass per-feat acquisition levels so each progression chain releases
+	# one free feat every two levels since the primary was gained (feat-tax rule e).
+	# Normal feats land at L1,3,5,…; story feats at L1,5,10,15,…; flaw/flavor at creation (L1);
+	# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
+	_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
+	_normal_levels = [2 * i + 1 for i in range(len(feats))]
+	# One shared granted-set across all five calls: overlapping chains (e.g. riptide attack
+	# under both Improved Drag and Improved Trip) bundle a child onto exactly one primary;
+	# call order below decides which primary wins it.
+	_tax_already_granted = set()
+	story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels, already_granted=_tax_already_granted)
+	flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats), already_granted=_tax_already_granted)
+	flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats), already_granted=_tax_already_granted)
+	class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)], already_granted=_tax_already_granted)
+	feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels, already_granted=_tax_already_granted)
+	# Trainer feats are feat-taxed too (a trainer who teaches a base feat also imparts its chain),
+	# treated as learned early in the career ([1]*) like flaw/flavor feats.
+	trainer_feat_tax_dict = feat_tax_func(character, trainer_feats, feat_levels=[1] * len(trainer_feats), already_granted=_tax_already_granted)
+	# Profession feats (True Calling / Multi Talented / Always Improving) are named homebrew feats
+	# (not in feats.csv). They are NOT attributed to a trainer and are never feat-taxed: each renders
+	# as its own ordinary feat in the general feat track and costs a feat -- see the append AFTER the
+	# feat-count guarantee below (the slot cost was reserved out of feat_amounts / normal_feat_amount
+	# above).
+	# Dedicated PoW/Spheres mentors (25% "trainer-backed" branch): extra "(Trainer N)" slots whose
+	# caliber rolls funded homebrew training the character's own half-share couldn't reach. The label
+	# names the system ("(Trainer 3 - Path of War)") so the Feats tab says which mentor taught what;
+	# both the module and the web sheet print the label verbatim, so no JS change is needed.
+	# `_trainer_group_meta` records each group's true FEATS' WORTH for the backstory rank -- inferring
+	# it from the row count only works for ordinary trainers (see the backstory section below).
+	_next_trainer_n = len(trainer_calibers) + 1
+	_trainer_group_meta = {}
+	# The PoW mentor has no row of its own: the Martial Training / style feats it paid for ARE its
+	# content, sharing one label so they group. Their tax chains move here from feats_feat_tax_dict
+	# (below) since these feats are no longer in the normal track.
+	if pw._pow_mentor_feats:
+		_pow_mentor_label = f"(Trainer {_next_trainer_n} - Path of War)"
+		_next_trainer_n += 1
+		for _pow_feat in pw._pow_mentor_feats:
+			trainer_feats.append(_pow_feat)
+			trainer_feat_labels.append(_pow_mentor_label)
+			trainer_feat_tax_dict[_pow_feat] = list(pw.mt_feat_tax.get(_pow_feat) or pw.style_feat_tax.get(_pow_feat) or [])
+		_trainer_group_meta[_pow_mentor_label] = (len(pw._pow_mentor_feats), "Path of War", list(pw._pow_mentor_feats))
+	for _mentor_name, _mentor_desc in pw.dedicated_trainer_specs:
+		_sphere_mentor_label = f"(Trainer {_next_trainer_n} - Spheres)"
+		trainer_feats.append(_mentor_name)
+		trainer_feat_labels.append(_sphere_mentor_label)
+		_next_trainer_n += 1
+		trainer_feat_tax_dict.setdefault(_mentor_name, [])
+		pw.homebrew_feat_desc_dict[_mentor_name] = _mentor_desc
+		# Rank by the Extra-Talent feats the funded talents bundle into, and name the TALENTS it
+		# taught -- the row name ("Spheres Mentor") is the funding record, not the lesson.
+		_trainer_group_meta[_sphere_mentor_label] = (
+			mentor_feat_worth(pw._sphere_mentor_talents), "Spheres",
+			[str(_t.get('name', '')) for _t in pw._sphere_mentor_talents if _t.get('name')])
+	# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
+	# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
+	# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
+	# per chain) and register the free partners in the shared granted-set, mirroring the
+	# style-chain handling below.
+	# Every child registers in the granted-set no matter who funded its parent, or the backfill
+	# re-picks a partner that was already granted; only the DICT merge is split by funder, since a
+	# mentor-funded parent now lives in trainer_feat_tax_dict.
+	for _mt_children in pw.mt_feat_tax.values():
+		_tax_already_granted.update(str(c).lower() for c in _mt_children)
+	feats_feat_tax_dict.update({k: v for k, v in pw.mt_feat_tax.items() if k not in pw._pow_mentor_names})
+	# Style-chain followers are ALWAYS granted in full ("feat tax all the way through").
+	# They are Metzofitz homebrew absent from data/feats.csv, so feat_tax_func can't see
+	# them -- merge the hand-built bundle directly; registering the children in the shared
+	# granted-set keeps the strip/backfill/no-duplicate invariants intact.
+	for _style_children in pw.style_feat_tax.values():
+		_tax_already_granted.update(str(c).lower() for c in _style_children)
+	feats_feat_tax_dict.update({k: v for k, v in pw.style_feat_tax.items() if k not in pw._pow_mentor_names})
+	# Spheres Extra-Talent feats (HR1): one slot grants a free duplicate ("Extra Talent > Extra
+	# Talent"), bundling 2 talents. Hand-built (homebrew, not in feats.csv) -> merge like style chains.
+	for _sphere_children in pw.sphere_feat_tax.values():
+		_tax_already_granted.update(str(c).lower() for c in _sphere_children)
+	feats_feat_tax_dict.update(pw.sphere_feat_tax)
+
+	# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
+	# own standalone entry (children are granted cross-group via character.chooseable).
+	_taxed_children = {
+		c.lower()
+		for d in (story_feat_tax_dict, flaw_feat_tax_dict, flavor_feat_tax_dict,
+				  class_feat_tax_dict, feats_feat_tax_dict)
+		for children in d.values() for c in children
+	}
+	if _taxed_children:
+		story_feats  = [f for f in story_feats  if f.lower() not in _taxed_children]
+		flaw_feats   = [f for f in flaw_feats   if f.lower() not in _taxed_children]
+		flavor_feats = [f for f in flavor_feats if f.lower() not in _taxed_children]
+		feats        = [f for f in feats        if f.lower() not in _taxed_children]
+		# class_feats carries a parallel label list -> filter in lockstep
+		class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _taxed_children)
+		# teamwork / bloodline lists are exported separately -> strip bundled children there
+		# too (labels in lockstep), so a tax child never doubles as its own standalone entry.
+		if isinstance(teamwork_feats, list) and teamwork_feats:
+			teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _taxed_children)
+		if isinstance(grants.bloodline_feats, list) and grants.bloodline_feats:
+			grants.bloodline_feats, grants.bloodline_feat_labels = strip_labeled_bucket(grants.bloodline_feats, grants.bloodline_feat_labels, _taxed_children)
+
+	# Backfill: tax children are FREE under the house rule, so a slot freed by the strip (its
+	# feat now renders bundled on its primary) is refilled with a fresh pick. Draws are sized
+	# by budget distance rather than strip counts, so they also heal any residual selection
+	# shortfall. Normal + class buckets only; other buckets stay visible in the budget log.
+	# Granted children are NOT in character.chooseable -- register them first, or the draw
+	# below could re-pick one (instant standalone+bundled duplicate).
+	add_feats_to_chooseable(character, sorted(_tax_already_granted))
+	need_class  = max(0, feat_budget["class"]  - len(class_feats))
+	need_normal = max(0, feat_budget["normal"] - len(feats))
+	if need_class + need_normal > 0:
+		replacements = topup_feat_chooser(character, casting_level_str, need_class + need_normal)
+		add_feats_to_chooseable(character, replacements)
+		class_repl, normal_repl = replacements[:need_class], replacements[need_class:]
+		class_feats.extend(class_repl)
+		feats.extend(normal_repl)
+		class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
+		# One feat-tax pass over the replacements only (same shared granted-set, so overlapping
+		# chains still bundle a child exactly once); positional levels match the convention above.
+		_repl_class_levels = [_class_feat_levels[i] if i < len(_class_feat_levels) else character.c_class_level
+							  for i in range(len(class_feats) - len(class_repl), len(class_feats))]
+		_repl_normal_levels = [2 * i + 1 for i in range(len(feats) - len(normal_repl), len(feats))]
+		class_feat_tax_dict.update(feat_tax_func(character, class_repl, feat_levels=_repl_class_levels, already_granted=_tax_already_granted))
+		feats_feat_tax_dict.update(feat_tax_func(character, normal_repl, feat_levels=_repl_normal_levels, already_granted=_tax_already_granted))
+		# Second (terminal) strip round: a replacement can itself be a tax primary whose chain
+		# bundles an EXISTING standalone feat. Strip those and draw once more WITHOUT another
+		# tax pass (terminal draws never tax -> guaranteed convergence).
+		_children_2 = {c for d in (class_feat_tax_dict, feats_feat_tax_dict)
+					   for ch in d.values() for c in ch} - _taxed_children
+		if _children_2:
+			story_feats  = [f for f in story_feats  if f.lower() not in _children_2]
+			flaw_feats   = [f for f in flaw_feats   if f.lower() not in _children_2]
+			flavor_feats = [f for f in flavor_feats if f.lower() not in _children_2]
+			feats        = [f for f in feats        if f.lower() not in _children_2]
+			class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _children_2)
+			if isinstance(teamwork_feats, list) and teamwork_feats:
+				teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _children_2)
+			if isinstance(grants.bloodline_feats, list) and grants.bloodline_feats:
+				grants.bloodline_feats, grants.bloodline_feat_labels = strip_labeled_bucket(grants.bloodline_feats, grants.bloodline_feat_labels, _children_2)
+			add_feats_to_chooseable(character, sorted(_children_2))
+			need2_class  = max(0, feat_budget["class"]  - len(class_feats))
+			need2_normal = max(0, feat_budget["normal"] - len(feats))
+			if need2_class + need2_normal > 0:
+				final_repl = topup_feat_chooser(character, casting_level_str, need2_class + need2_normal)
+				add_feats_to_chooseable(character, final_repl)
+				class_feats.extend(final_repl[:need2_class])
+				feats.extend(final_repl[need2_class:])
+				class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
+
+	# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
+	# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
+	# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
+	# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
+	# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
+	# the post-strip positional order if anything goes wrong, so a generation never crashes here.
+	try:
+		_post_class_slots = _class_feat_slots[:len(class_feats)]
+		feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
+			character, feats, class_feats,
+			[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+		# the returned class levels are the input multiset re-sorted ascending, so a stable
+		# sort of the slot pairs by level re-pairs each level with its granting class
+		_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
+		class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
+	except Exception:
+		pass
+
+	# Story / flaw / flavor buckets are thinned by the same tax-child strip above but were never
+	# refilled (only class/normal were), so a story feat that chained into another feat's tax left a
+	# hole and dropped the top "(Story Feat N)" slot (e.g. the level-20 story feat). Top them back up
+	# to their budgeted counts -- terminal draw, no further tax (convergence); fresh picks render
+	# standalone, and the sheet labels these buckets positionally so restoring the COUNT brings the
+	# high slots back.
+	for _sb_list, _sb_key in ((story_feats, "story"), (flaw_feats, "flaw"), (flavor_feats, "flavor")):
+		_sb_need = max(0, feat_budget[_sb_key] - len(_sb_list))
+		if _sb_need:
+			_sb_fill = topup_feat_chooser(character, casting_level_str, _sb_need)
+			add_feats_to_chooseable(character, _sb_fill)
+			_sb_list.extend(_sb_fill)
+
+	# Row-count audit: actual/budget per bucket. Normal, class, story, flaw, and flavor are all
+	# backfilled, so a deficit there means a regression; other buckets may legally run under (tax-bundled).
+	print(f"feat rows -> normal {len(feats)}/{feat_budget['normal']}, story {len(story_feats)}/{feat_budget['story']}, "
+		f"flaw {len(flaw_feats)}/{feat_budget['flaw']}, flavor {len(flavor_feats)}/{feat_budget['flavor']}, "
+		f"class {len(class_feats)}/{feat_budget['class']}, teamwork {(len(teamwork_feats) if isinstance(teamwork_feats, list) else 0)}/{feat_budget['teamwork']}, "
+		f"bloodline {len(grants.bloodline_feats)}/{feat_budget['bloodline']}, "
+		f"trainer {len(trainer_feats)}/{feat_budget['trainer']}, profession {len(profession_feats)}/{feat_budget['profession']}")
+	if pw.martial_disciplines or pw.mt_feats or pw.style_feats:
+		print(f"PoW -> disciplines {pw.martial_disciplines}, IL {pw.initiator_level}, "
+			f"known {sum(pw.maneuvers_known_list)} by-level {pw.maneuvers_known_list}, "
+			f"readied {sum(pw.maneuvers_readied_list)}, "
+			f"stances {len(pw.stances_chosen)}, mt {pw.mt_feats}, styles {pw.style_feats}")
+
+	# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
+	# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
+	# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
+	# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
+	# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
+	# the post-strip positional order if anything goes wrong, so a generation never crashes here.
+	try:
+		_post_class_slots = _class_feat_slots[:len(class_feats)]
+		feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
+			character, feats, class_feats,
+			[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+		# the returned class levels are the input multiset re-sorted ascending, so a stable
+		# sort of the slot pairs by level re-pairs each level with its granting class
+		_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
+		class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
+	except Exception:
+		pass
+
+	# Re-home feat-tax bundles to the bucket each primary ACTUALLY ended in -- done AFTER the FINAL
+	# reorder above. assign_feats_to_levels treats normal + class-bonus feats as one pool, so a feat
+	# can migrate between the two buckets; the sheet applies each bucket's tax dict only to its own
+	# bucket, so a migrated primary (e.g. a Martial Training tier reseated as a class row) would lose
+	# its "Primary > Child" chain unless its tax bundle moves with it. (Previously this ran after the
+	# first of the two reorders, so the second reorder's migrations left tax in the wrong dict.)
+	_feats_l = {str(f).lower() for f in feats}
+	_class_l = {str(f).lower() for f in class_feats}
+	for _moved in [k for k in feats_feat_tax_dict if str(k).lower() in _class_l and str(k).lower() not in _feats_l]:
+		class_feat_tax_dict[_moved] = feats_feat_tax_dict.pop(_moved)
+	for _moved in [k for k in class_feat_tax_dict if str(k).lower() in _feats_l and str(k).lower() not in _class_l]:
+		feats_feat_tax_dict[_moved] = class_feat_tax_dict.pop(_moved)
+
+	# Append the sphere Extra-Talent feats LAST -- after the level-assignment reorder so they keep
+	# their hand-built HR1 tax (pw.sphere_feat_tax, merged into feats_feat_tax_dict above) and aren't
+	# migrated into the class-bonus pool / chained by feat_tax_func. They land at the end of the
+	# Feats list (highest "(Feat N)" numbers). Their budget cost was already reserved out of
+	# feat_amounts above, so the normal chooser/backfill left room for them.
+	feats.extend(pw.sphere_feats)
+
+	# ---- Final feat-count guarantee: the general feat track == normal_feat_amount EXACTLY ----
+	# The sheet labels feats positionally (1,3,5,…), so a list of length N renders feats at the
+	# character's real feat levels with no gaps and nothing past their level. Never short (defensive
+	# backfill -- RC1 should already prevent it) and never over: when homebrew (Martial Training +
+	# sphere Extra-Talent feats) outnumbers the slots, trim the lowest-priority excess -- the sphere
+	# Extra-Talent feat SLOTS first (their talents stay on the sheet as native combat/magic talents;
+	# only the tracking feat is dropped), then any remaining tail. (House rule: cap to exact.)
+	_feat_target = int(getattr(character, "normal_feat_amount", len(feats)) or 0)
+	if len(feats) > _feat_target:
+		_over = len(feats) - _feat_target
+		_sphere_lower = {str(s).lower() for s in pw.sphere_feats}
+		_kept = []
+		for _f in reversed(feats):                       # sphere Extra-Talent feats are the appended tail
+			if _over > 0 and str(_f).lower() in _sphere_lower:
+				_over -= 1
+				continue
+			_kept.append(_f)
+		feats = list(reversed(_kept))
+		if len(feats) > _feat_target:                    # rare: homebrew exceeds slots even after trimming sphere slots
+			feats = feats[:_feat_target]
+	elif len(feats) < _feat_target:                      # defensive guarantee against any future regression
+		_fill = topup_feat_chooser(character, casting_level_str, _feat_target - len(feats))
+		add_feats_to_chooseable(character, _fill)
+		feats.extend(_fill)
+	print(f"feat guarantee -> general {len(feats)}/{_feat_target}, story {len(story_feats)}/{feat_budget['story']}"
+		f", class {len(class_feats)}/{feat_budget['class']} | generator {GENERATOR_VERSION}")
+
+	# Now drop the profession feats into the general feat track -- AFTER the feat-tax passes and the
+	# count guarantee, so they are never chained/taxed and never trimmed (their slots were reserved
+	# out of feat_amounts / normal_feat_amount above, so each costs a feat). Each renders as its own
+	# ordinary feat; register descriptions in pw.homebrew_feat_desc_dict (case-insensitive) so the
+	# module / description backfill resolve them instead of hitting the CSV.
+	if profession_feats:
+		feats.extend(profession_feats)
+		for _pf_name, _pf_desc in profession_feat_desc.items():
+			pw.homebrew_feat_desc_dict[_pf_name] = _pf_desc
+
+	return PhaseRecord(
+		feats=feats,
+		story_feats=story_feats,
+		flaw_feats=flaw_feats,
+		flavor_feats=flavor_feats,
+		class_feats=class_feats,
+		feat_budget=feat_budget,
+		story_feat_tax_dict=story_feat_tax_dict,
+		flaw_feat_tax_dict=flaw_feat_tax_dict,
+		flavor_feat_tax_dict=flavor_feat_tax_dict,
+		class_feat_tax_dict=class_feat_tax_dict,
+		feats_feat_tax_dict=feats_feat_tax_dict,
+		trainer_feat_tax_dict=trainer_feat_tax_dict,
+		class_feat_labels=class_feat_labels,
+		trainer_feats=trainer_feats,
+		trainer_feat_labels=trainer_feat_labels,
+		trainer_calibers=trainer_calibers,
+		_trainer_group_meta=_trainer_group_meta,
+		profession_feats=profession_feats,
+		profession_feat_desc=profession_feat_desc,
+		profession_ranks=profession_ranks,
+		profession_pool=profession_pool,
+		teamwork_feats=teamwork_feats,
+		teamwork_feat_labels=teamwork_feat_labels,
+	)
+
+
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
@@ -734,13 +1814,18 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		professions_enabled = str(professions_flag or "Y").upper() not in ("N", "NO", "FALSE", "0")
 		trainers_enabled = str(trainers_flag or "Y").upper() not in ("N", "NO", "FALSE", "0")
 
-		casting_level_str_foundry = 'None'
-
 		character = CreateNewCharacter(
 			character_json_config)
 		character.instantiate_full_data_dict()
 		character.data_dict['class features'] = {}
 		character.data_dict['class feature levels'] = {}
+		# Seeded alongside its two siblings so the payload SHAPE never depends on the character.
+		# It used to appear only when some chooser called generic_func's setdefault, so a character
+		# with no class choices at all (fighter 1) shipped a payload one key shorter than everyone
+		# else -- and both consumers read this contract positionally. Found by
+		# validate_payload_shape.py comparing two different characters, which is the check that
+		# exists precisely because a golden fixture can only say "this character didn't change".
+		character.data_dict['class feature owners'] = {}
 
 		# Flag that allows for homebrew feats to be added
 		character.homebrew_feat_amount = homebrew_feat_amount
@@ -802,67 +1887,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
 
 
-		character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
-		
-		# required to set up weapon_type
-		weapon_chooser(character)
-		character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
-
-		weapon_name = list(character.weapon_dict.keys())[0]
-		limits = shield_chooser(character, character.weapon_dict)
-		character.shield_flag = shield_flag_func(character, limits=limits)
-		character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
-
-		# Magic enhancements get first claim on a reserved share of the purse (utils/class_func/
-		# armor_and_enhancements.py: ENHANCEMENT_SHARE / ENHANCEMENT_SPLIT). Runs here, after
-		# shield_flag is known, so a shieldless character is charged nothing for a shield.
-		_enhancements = plan_enhancements(character)
-		armor_enhancement = _enhancements['armor']
-		weapon_enhancement = _enhancements['weapon']
-		shield_enhancement = _enhancements['shield']
-
-		# ... and ordinary gear spends whatever is left.
-		# Pre-loading JSON data (so we only do it 1x per item and not multiple times)
-		# Open JSON file to see if name is in that list, otherwise reroll and document
-		# This breaks perm server if Double \\
-		foundry_item_names = character.foundry_item_names
-		equipment_list, equip_descrip = item_chooser(character, foundry_item_names)
-
-		armor_ac = ac_bonus_calculator(character, character.armor_dict)
-		shield_ac = ac_bonus_calculator(character, character.shield_dict)
-
-		weapon_type_flag = weapon_type_flag_func(character, character.weapon_dict)
-
-		weapon_enhancement_chosen_list, weapon_enhancement_bonus = enhancement_chooser(character, character.weapon_qualities,weapon_enhancement, weapon_type_flag)
-
-		# The soulknife wields a mind blade, which is a weapon SHAPE rather than a purchase: the
-		# rolled weapon keeps its damage dice, crit range and groups, but it is renamed for what it
-		# is and its enhancement bonus comes from the class table. The class table REPLACES the
-		# purse's number rather than raising it -- a mind blade is manifested, not bought, so no
-		# amount of gold buys a +5 one at 1st level. The special abilities enhancement_chooser
-		# picked still stand: that is the Enhanced Mind Blade feature spending its own grant.
-		_mind_blade = mind_blade(character, melee=(weapon_type_flag == 'Melee'))
-		# Stashed for choose_psionics_attr further down, which puts it on the soulknife's manifester
-		# entry. Passed rather than recomputed so the equipped weapon and the psionics tab cannot
-		# disagree about which blade this is.
-		character.mind_blade = _mind_blade
-		if _mind_blade:
-			weapon_name = _mind_blade['name']
-			weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']
-		armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
-		shield_enhancement_chosen_list, shield_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
+		gear = phase_gear_and_equipment(character)
 
 
-		selected_traits = trait_selector(character, 8)
-		# pre export data manip start
-		hero_points = hero_point_generator()
-
-
-		hair_color = randomize_apperance_attr(character, "hair_colors")
-		hair_type = randomize_apperance_attr(character, "hair_types")
-		eye_color = randomize_apperance_attr(character, "eye_colors")
-		appearance = randomize_apperance_attr(character, "appearance")
-		language_text = language_chooser(character, skill_ranks)
+		look = phase_appearance_and_traits(character, skill_ranks)
 		character_full_name = f_name + ' ' + l_name
 		# deity.json "Name" is a LIST of aliases since the homebrew-deities rework (091da54) -- export
 		# one string: pf1's details.deity is a StringField, and an array crashes the actor's data
@@ -875,37 +1903,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		print("deity", deity_choice)
 		# skill_ranks = json.dumps(skill_ranks)  # disabled: ship the dict so Flask serializes it as a JSON object and the Foundry module parses it		
 
-		if isinstance(character.armor_dict, dict):
-			armor_name = list(character.armor_dict.keys())[0]
-			armor_dict = character.armor_dict.get(next(iter(character.armor_dict), 0), 0)
-			armor_spell_failure = armor_dict.get('spell_failure', 0)
-			armor_armor_check_penalty = armor_dict.get('armor check penalty', 0)
-			armor_weight = armor_dict.get('weight', 0)
-			armor_max_dex_bonus = armor_dict.get('max dex bonus', 0)
-			if armor_max_dex_bonus == None:
-				armor_max_dex_bonus = 0
-		else:
-			armor_name = 0
-			armor_spell_failure = 0
-			armor_armor_check_penalty = 0
-			armor_weight = 0
-			armor_max_dex_bonus = 0
-
-
-		if isinstance(character.shield_dict, dict) and character.shield_dict != None:
-			shield_name = list(character.shield_dict.keys())[0]
-			shield_dict = character.shield_dict.get(next(iter(character.shield_dict), 0), 0)
-			shield_spell_failure = shield_dict.get('spell_failure', 0)
-			shield_armor_check_penalty = shield_dict.get('shield check penalty', 0)
-			shield_weight = shield_dict.get('weight', 0)			
-			shield_max_dex_bonus = armor_dict.get('max dex bonus', 0)
-
-		else:
-			shield_name = " "
-			shield_spell_failure = " "
-			shield_armor_check_penalty = " "
-			shield_weight = " "
-			shield_max_dex_bonus = " "
 
 
 		# All spending is done by here. Every spender (item_chooser, enhancement_calculator) now checks
@@ -923,746 +1920,76 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 
 
-		try:
-			if character.bloodline_sorc:
-				bloodline_full = character.bloodline_sorc
-				bloodline = next(iter(bloodline_full.keys()), "N/A")
-			elif character.bloodline_rager:
-				bloodline_full = character.bloodline_rager
-				bloodline = next(iter(bloodline_full.keys()), "N/A")
-			else:
-				bloodline = "N/A"
+		phase_bloodline_resolution(character)
 
-		except (NameError, AttributeError):
-			bloodline = "N/A"
+		# These two reads used to sit inside `try/except NameError`, because the locals they replaced
+		# were CONDITIONALLY BOUND -- only a wizard ever reached the assignment, so on every other
+		# class the name did not exist and the handler was the non-wizard path. phase_class_options
+		# seeds both attributes to None precisely to preserve that, and an attribute lookup raises
+		# AttributeError, never NameError -- so the handlers had become unreachable. They were left
+		# standing while the extraction was in flight (a pure move must not fold in a cleanup) and
+		# are removed here, once, now that it has landed. The `if ... else "N/A"` is what carries the
+		# non-wizard path now, exactly as the handler did.
+		# The equipped-kit display fields are a PURE derivation of character.armor_dict /
+		# shield_dict, so they are owned by utils/payload.py rather than stored anywhere. Two of
+		# them are read here as well, by the build-archetype scorer below; calling the same helper
+		# is what keeps the scorer and the exported sheet from disagreeing about what is worn.
+		_gd = gear_display(character)
+		armor_name = _gd['armor_name']
+		shield_name = _gd['shield_name']
 
-
-		try:
-			school = character.chosen_school if character.chosen_school else "N/A"
-		except NameError:
-			school = "N/A"
-
-		try:
-			opposing_school = (character.chosen_opposing_school
-							   if character.chosen_opposing_school else "N/A")
-		except NameError:
-			opposing_school = "N/A"
-
-		character.bloodline = bloodline
 
 
 	# end of pre export data manip
 
 		# Start of Extra feats list generation section
-		# Campaign feat-tax rule (homebrew_rules.md §4): Combat Expertise / Power Attack / Deadly Aim /
-		# Piranha Strike are FREE for anyone with BAB >= 1, so they're never spent as a chosen feat.
-		# Seeding them into chooseable BEFORE any feat selection makes every chooser skip them, while
-		# feats that list them as a prerequisite still qualify (no_prereq_loop treats chooseable as owned).
-		if getattr(character, 'bab_total', 0) >= 1:
-			add_feats_to_chooseable(character, FREE_AT_BAB1)
-		# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
-		# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
-		# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
-		_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
-		bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
-		bloodline_feats = filter_free_feats(bloodline_feats)  # safety net (bonus lists may bypass chooseable)
-		bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
-		# If the bloodline list is too short to fill every granted slot (e.g. a high-level
-		# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
-		# so the total feat count is preserved. No-op when the list covers every slot.
-		character.feat_amounts += max(len(_bl_levels) - len(bloodline_feats), 0)
-		#class specific feats choosers (capture results; they are merged into character.feats after
-		# the normal-feat selection below, which would otherwise reassign over them)
-		ranger_style_feats = ranger_feats_chooser(character) or []
-		monk_bonus_feats = monk_feats_chooser(character) or []
-		# Reallocate monk/ranger bonus-feat slots their lists couldn't fill to normal feats (monk's
-		# total is preserved; ranger now actually gains its combat-style feats). No-op otherwise.
-		character.feat_amounts += getattr(character, 'ranger_feat_surplus', 0) + getattr(character, 'monk_feat_surplus', 0)
-		# Register the class-granted picks (bloodline / ranger style / monk bonus) in
-		# character.chooseable BEFORE the normal-feat selection: no_prereq_loop skips chooseable
-		# members, so the general pool can no longer re-pick the same feat (duplicate Weapon
-		# Focus etc.), and the feat-tax engine correctly sees them as owned.
-		add_feats_to_chooseable(character, bloodline_feats, ranger_style_feats, monk_bonus_feats)
-		# Determine extra teamwork feats
-		extra_teamwork_feats(character)
-		# determine extra combat feats
-		extra_combat_feats(character)
+		grants = phase_class_bonus_feats(character)
 
-	# ------------------- Path of War section -------------------#
-		# Initiator classes (stalker/warlord/...) draw disciplines + maneuver counts from their
-		# own class tables; everyone else may roll "martial paths" (house rule: BAB L 0-1,
-		# M/H 0-2, +1 to both bounds at level 20+) accessed via the Martial Training feat chain
-		# taken as deep as bab_total allows (I/III/V paid; II/IV/VI free via feat tax).
-		# ----- PoW + Spheres selection guarantee (house rule) -----
-		# Roll both systems' COUNTS uncapped, then guarantee delivery with feat-budget PRIORITY over
-		# normal feats. 75% "lean": realize ceil(half) of the desired homebrew feats. 25%
-		# "trainer-backed": realize >= half, with 2 dedicated trainers funding the rest off-budget
-		# (their caliber rolls) and any surplus capacity becoming bonus sphere talents.
-		randomize_path_of_war_num(character)
-		character.spheres_flag = spheres_flag
-		randomize_spheres_num(character)
-		_is_initiator = any(c['name'] in data.path_of_war_class for c in character.classes)
-		_sc = int(getattr(character, 'sphere_count', 0) or 0)
-		desired_sphere = (_sc + random.randint(0, MAX_EXTRA_TALENT_FEATS)) if _sc > 0 else 0
-		_mt_depth = martial_training_depth(character)
-		_paid_per_chain = (_mt_depth // 2) if _mt_depth else 0
-		_paths = int(getattr(character, 'path_of_war_paths', 0) or 0)
-		desired_pow = (_paths * _paid_per_chain) if (not _is_initiator and _mt_depth and _paths) else 0
-		if _is_initiator:
-			pow_data = choose_path_of_war_attr(character)        # maneuvers/stances free from the class
-			desired_style = len(pow_data.get('style_feats', []))
-		else:
-			pow_data = None
-			desired_style = 0
-		selected_amount = desired_pow + desired_style + desired_sphere
-		_sphere_mentor_cal, _pow_mentor_cal, _overflow_n, _priority_reserve, _mentor_talents_n = 0, 0, 0, 0, 0
-		realize_pow, realize_style, realize_sphere = desired_pow, desired_style, desired_sphere
-		if selected_amount > 0:
-			_half = (selected_amount + 1) // 2          # ceil(selected_amount / 2)
-			# The draw happens even when trainers are switched off, so a replayed seed still lines up
-			# with the same character minus its mentors; opting out just lands in the ordinary 75%
-			# branch, where the character funds this training out of the normal feat budget. Gating
-			# here rather than only at select_trainer_feats is what makes "Trainers: No" mean it --
-			# these mentors render as "(Trainer N - Path of War)" / "(Trainer N - Spheres)" rows too.
-			if random.random() < 0.25 and trainers_enabled:
-				# "trainer-backed": ONE dedicated mentor PER SYSTEM the character actually has content in,
-				# each rolling its own caliber 1-4 (8/45/45/2). A mentor funds `caliber` FEATS' worth of the
-				# training that lies beyond the character's own half-share -- 2*caliber sphere talents (capped
-				# at the flat-8, so total talents never bloat) or `caliber` Martial Training / style feats.
-				# Whatever it funds leaves the normal feat track and renders under its own "(Trainer N)" slot
-				# instead, so a funded feat is never listed twice. Rolling per system is what finally lets a
-				# pure-martial NPC have a mentor at all: the old single roll was spent raising the PoW
-				# realization while line ~848 still billed the character for it, then suppressed itself.
-				_sphere_mentor_cal = roll_caliber() if desired_sphere > 0 else 0
-				_pow_mentor_cal = roll_caliber() if (desired_pow + desired_style) > 0 else 0
-				_mentor_talents_n = 2 * _sphere_mentor_cal
-			realize_total = _half
-			_priority_reserve = _half                       # the budget-funded portion (mentor funding is off-budget)
-			if realize_total < selected_amount:
-				_dpow = desired_pow + desired_style
-				_rpow = max(0, min(round(realize_total * _dpow / selected_amount), _dpow))
-				realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
-				# Don't let the proportional split zero out a system that WAS selected: keep each
-				# present system its minimum unit (1 sphere feat / one whole PoW chain or style feat)
-				# when the realized budget can still cover it.
-				if desired_sphere > 0 and realize_sphere == 0 and realize_total >= 1:
-					realize_sphere = 1
-				_rpow = max(0, min(realize_total - realize_sphere, _dpow))
-				_pow_min = _paid_per_chain if (not _is_initiator and desired_pow > 0) else (1 if (_is_initiator and desired_style > 0) else 0)
-				if _pow_min and _rpow < _pow_min and (realize_total - realize_sphere) >= _pow_min:
-					_rpow = _pow_min
-					realize_sphere = max(0, min(realize_total - _rpow, desired_sphere))
-				realize_style, realize_pow = (_rpow, 0) if _is_initiator else (0, _rpow)
-			# The PoW mentor tops up ITS OWN system beyond that half-share (the Spheres Mentor's capacity
-			# rides `_mentor_talents_n` instead -- sphere talents are a flat 8 either way, so its caliber
-			# only moves who pays). Non-initiator capacity buys WHOLE chains: a part-paid chain grants
-			# nothing, so `caliber % paid_per_chain` falls through to refunding already-realized feats
-			# below. Initiator style bases cost one feat each, so they top up one at a time.
-			if _pow_mentor_cal:
-				if _is_initiator:
-					realize_style = min(desired_style, realize_style + _pow_mentor_cal)
-				elif _paid_per_chain:
-					realize_pow = min(desired_pow, realize_pow + (_pow_mentor_cal // _paid_per_chain) * _paid_per_chain)
-		if not _is_initiator:
-			pow_data = choose_path_of_war_attr(
-				character, max_chains=((realize_pow // _paid_per_chain) if _paid_per_chain else 0))
-		martial_disciplines     = pow_data['martial_disciplines']
-		initiator_level         = pow_data['initiator_level']
-		maneuvers_known_list    = pow_data['maneuvers_known_list']
-		maneuvers_readied_list  = pow_data['maneuvers_readied_list']
-		maneuvers_choose_from   = pow_data['maneuvers_choose_from']
-		maneuvers_readied_names = pow_data['maneuvers_readied_names']
-		stances_chosen          = pow_data['stances_chosen']
-		mt_feats                = pow_data['mt_feats']
-		mt_feat_tax             = pow_data['mt_feat_tax']
-		initiation_stat         = pow_data['initiation_stat']
-		maneuvers_desc_dict     = pow_data['maneuvers_desc_dict']
-		# Psionics rides alongside Path of War rather than inside it: the two systems are
-		# independent, and a character can be an initiator, a manifester, both or neither. The
-		# bundle is empty for a non-manifester, so this is unconditional.
-		psionics_data           = choose_psionics_attr(character)
-		manifesters             = psionics_data['manifesters']
-		powers_desc_dict        = psionics_data['powers_desc_dict']
-		style_feats             = pow_data['style_feats']
-		style_feat_tax          = pow_data['style_feat_tax']
-		homebrew_feat_desc_dict = pow_data['homebrew_feat_desc_dict']
-		# Cap initiator style chains to the realized amount decided by the guarantee block above
-		# (PoW maneuvers are class-free; only the feat-funded style bases are scaled). Non-initiators
-		# have no style feats. The feat-budget reservation now happens after the Spheres section.
-		style_feats = style_feats[:realize_style]
-		style_feat_tax = {k: v for k, v in style_feat_tax.items() if k in style_feats}
-		# Which PoW feats the mentor paid for. Chains / style bases are realized in order, so the TRAILING
-		# ones are precisely what its capacity bought; once the top-up is exhausted the leftover caliber
-		# keeps paying, refunding feats the character's own half-share had realized (mirroring the Spheres
-		# Mentor, which at caliber 4 funds all 8 talents and leaves the character paying for none). Capped
-		# at the PoW that actually exists. These feats stay OUT of the normal feat track from here on:
-		# they are excluded from the budget reservation and from `feats`, and render under the mentor's
-		# "(Trainer N - Path of War)" label instead, so the freed slots refill with ordinary feats.
-		_pow_all_feats = mt_feats + style_feats
-		_pow_funded_n = min(_pow_mentor_cal, len(_pow_all_feats))
-		_pow_mentor_feats = _pow_all_feats[len(_pow_all_feats) - _pow_funded_n:] if _pow_funded_n else []
-		_pow_mentor_names = set(_pow_mentor_feats)
-
-	# ------------------- Spheres (Power / Might) section -------------------#
-		# Build the spheres: flat-8 talents + a feat slot per BUDGET-PAID talent (Extra Talent feats,
-		# 2 talents each, HR1). trainer_backed (25% branch) -> only ~half the talents are budget-paid
-		# (the rest ride the Spheres Mentor trainers below); lean chars pay for all their talents.
-		sphere_data          = choose_spheres_attr(character, trainer_backed=bool(_sphere_mentor_cal), mentor_talents=_mentor_talents_n)
-		magic_talent_items   = sphere_data['magic_talent_items']
-		combat_talent_items  = sphere_data['combat_talent_items']
-		sphere_feats         = sphere_data['sphere_feats']
-		sphere_feat_tax      = sphere_data['sphere_feat_tax']
-		sphere_mana_pool     = sphere_data['sphere_mana_pool']
-		spheres_chosen       = sphere_data['spheres_chosen']
-		sphere_counts        = sphere_data['sphere_counts']
-		casting_tradition    = sphere_data['casting_tradition']
-		sphere_drawbacks     = sphere_data['sphere_drawbacks']
-		sphere_boons         = sphere_data['sphere_boons']
-		sphere_traits        = sphere_data['sphere_traits']
-		homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
-		# 25% "trainer-backed" branch: the dedicated mentors, rendered in the Trainers block. The Spheres
-		# Mentor needs a NAMED row of its own because the talents it funded render elsewhere (the magic /
-		# combat talent sections), so this row is the only record of who paid for them. The PoW mentor
-		# gets no such row -- its funded Martial Training / style feats ARE its content and render as its
-		# "(Trainer N - Path of War)" group below, so a header row would be the content-free mentor this
-		# block has always refused to emit.
-		dedicated_trainer_specs = []
-		_sphere_mentor_talents = []
-		if _sphere_mentor_cal:
-			_overflow_talent_items = []
-			if _overflow_n > 0 and sphere_data.get('_chosen'):
-				_ov_magic, _ov_combat = add_overflow_talents(
-					character, sphere_data['_chosen'], sphere_data['_counts'], _overflow_n)
-				magic_talent_items = magic_talent_items + _ov_magic
-				combat_talent_items = combat_talent_items + _ov_combat
-				_overflow_talent_items = _ov_magic + _ov_combat
-			# Off-budget talents the mentor funded (the non-budget-paid flat-8 portion = 2*caliber) -> HR1
-			# Extra-Talent feats + the talent names (user's requested format). Only emit a Spheres Mentor
-			# when it actually funded something off-budget; otherwise there is nothing for it to teach.
-			# Never pad to a fixed count and never add a content-free fallback mentor: a dedicated trainer
-			# that funded nothing would render as a blank "(Continued Study)" / generic slot.
-			_sphere_mentor_talents = list(sphere_data.get('mentor_funded_talents', [])) + _overflow_talent_items
-			if _sphere_mentor_talents:
-				dedicated_trainer_specs = [("Spheres Mentor", mentor_sphere_summary(spheres_chosen, _sphere_mentor_talents))]
-		# Priority funding (reserve EXACTLY the homebrew feats that get appended into the normal feat
-		# list, so each one REPLACES a normal feat -- the "consume feat budget" house rule -- and the
-		# track lands at precisely normal_feat_amount). Those appended feats are: paid Martial Training
-		# picks (mt_feats) + initiator style-chain bases (style_feats), both extended into `feats` just
-		# below, and the budget-paid sphere Extra-Talent / magic bonus feats (sphere_feats) appended
-		# after the feat-tax pass. The previous formula reserved a proportional roll-estimate
-		# (_priority_reserve + max(0, sphere_feat_budget_count - realize_sphere)) that drifted off this
-		# true count: over-reserving silently dropped the top "(Feat N)" slots (the "missing feats"
-		# bug), under-reserving spilled feats past the character's top level. Sphere-mentor funding is
-		# already off-budget (those talents produce no Extra-Talent feat at all, so they are not in
-		# sphere_feats); PoW-mentor funding needs the explicit `_pow_funded_n` term because those feats
-		# DO exist -- they just move to the mentor's trainer group instead of the normal track, which is
-		# exactly what hands the character back that many ordinary feat slots.
-		_prof_feat_n = len(getattr(character, 'profession_feats', []) or [])
-		character.feat_amounts = max(0, character.feat_amounts - (len(mt_feats) + len(style_feats) - _pow_funded_n)
-									 - len(sphere_feats) - _prof_feat_n)
-		# Profession feats (True Calling / Multi Talented / Always Improving) are appended into the feat
-		# list AFTER the feat-count guarantee, so -- unlike the homebrew feats above -- they can't be
-		# trimmed to fit. Reserve their slots by ALSO lowering the guarantee target (normal_feat_amount):
-		# each profession feat then REPLACES a normal feat (the "feat cost" house rule), or, when the
-		# budget is too small, takes over the track and clamps the normal feats down to 0.
-		character.normal_feat_amount = max(0, character.normal_feat_amount - _prof_feat_n)
+		pw = phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled)
 
 		# Cached dataset without prerequisites -> allows them to take rage powers / rogue talents / etc. without normal feats ()
 		print("cached dataset without prereqs allows for feats to buy class specific talents ")
 		print("character.cached_dataset_without_prerequisites", sorted(character.cached_dataset_without_prerequisites))
 
-		# Feat Selector
-		casting_level_str = character.class_data[character.c_class]['casting level'].lower()
-		# If a class is granted more teamwork-feat slots than the (filtered) teamwork pool can
-		# fill, reallocate the unfilled slots to normal feats. Normally a no-op (~53 teamwork
-		# feats vs <=13 requested); fires only for filtered caster builds. Computed here because
-		# teamwork feats themselves are chosen after the normal-feat selection below.
-		if character.teamwork_feats > 0:
-			character.feat_amounts += max(character.teamwork_feats - teamwork_pool_size(character, casting_level_str), 0)
-		# print("character.chooseable", character.chooseable)
-		character.feat_amounts += character.class_feats_amount
-		if truly_random_feats.upper() == "Y":
-		# Truly Random Feats
-		# full casters + mid casters with low BAB
-			if character.bab == "L" and casting_level_str in ("mid", "high"):
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)
-
-			# full casters + mid casters with med BAB
-			elif character.bab == "M" and casting_level_str in ("mid", "high"):
-				random_dice = random.randint(1, 100)
-				if random_dice <= 50:
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'metamagic',info_column = 'description', feat_amount = character.feat_amounts)					
-				else:
-					character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat',info_column = 'description', feat_amount = character.feat_amounts)
-			else:
-				character.feats = generic_feat_chooser(character, character.c_class, casting_level_str,'combat', info_column = 'description', feat_amount = character.feat_amounts)
-
-		else:
-			# Curated List of feats
-			# build selector can potentially grab high level feats at a lower level (so a 9th rogue can take vital strike any level)
-			# because we run get_data_without_prerequisites before build_selector -> updating character.chooseable
-			build_selector_feats = build_selector(character)
-			character.feats.extend(build_selector_feats)
-
-		# Merge the class-specific bonus feats selected above (monk bonus feats / ranger combat-style
-		# feats) into the feat list. The truly-random branch reassigns character.feats, so we add them
-		# here for BOTH paths so they survive (single merge point, replacing the choosers' old extend).
-		# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
-		character.feats.extend(capitalize_feats(character, list(ranger_style_feats)))
-		character.feats.extend(capitalize_feats(character, list(monk_bonus_feats)))
-		# Belt-and-braces: same feat arriving from two sources with different casing would
-		# otherwise survive to the sheet as a duplicate entry.
-		character.feats = dedupe_feats_case_insensitive(character.feats)
-
-		# Shared shortfall top-up (both feat paths): the type/caster-filtered pools can run dry
-		# before the budget is met (and the dedupe above can drop a cross-source duplicate).
-		# Target = the requested budget plus the class-granted ranger/monk merges, which sit on
-		# top of character.feat_amounts (only their unfilled surplus was folded into it).
-		_expected_feat_total = character.feat_amounts + len(ranger_style_feats) + len(monk_bonus_feats)
-		if len(character.feats) < _expected_feat_total:
-			character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
-
-		# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
-		# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
-		# have bypassed the pool.
-		character.feats = filter_free_feats(character.feats)
-		# Skill-choosing feats (Skill Focus / Prodigy) -> point them at the character's professions
-		# (highest rank first); their numeric bonus is recorded on the chosen profession.
-		specialize_skill_choice_feats(character, character.feats, skill_ranks)
-
-		# Teamwork feats selector
-		if character.teamwork_feats > 0:
-			teamwork_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
-
-		# Label teamwork feats with their granting class + level (e.g. "Inquisitor 3"), parallel to
-		# teamwork_feats. Slots span every rolled class, same source as the count.
-		teamwork_feat_labels = []
-		if isinstance(teamwork_feats, list):
-			teamwork_feat_labels = [f"{d} {lvl}" for d, lvl in teamwork_feat_slots(character)][:len(teamwork_feats)]
-
-		# Add later -> to allow for specialized class feats
-		# if character.class_feats_amount > 0:
-		# 	class_feats = generic_feat_chooser(character, character.c_class, casting_level_str, 'Null', info_column = 'description', override=True, special_type="teamwork", feat_amount = character.teamwork_feats)
-
-		feats = character.feats 
+		fs = phase_feat_selection(character, grants, skill_ranks, truly_random_feats, teamwork_feats)
+		casting_level_str = fs.casting_level_str
+		teamwork_feats = fs.teamwork_feats
+		teamwork_feat_labels = fs.teamwork_feat_labels
+		# `feats` is an alias of character.feats, not a separate value -- it lives on the character
+		# (declared in the phase's `provides`) because choosers and no_prereq_loop read it there.
+		feats = character.feats
 
 
 
-		actual_class_abilities = get_class_abilities(character)
-		class_ability_desc, class_ability =get_class_abilties_desc(character, actual_class_abilities)
+		kin = phase_class_abilities_and_family(character)
 
-		older_brothers, younger_brothers, older_sisters, younger_sisters = randomize_siblings(character)
-		parents = randomize_parents(character)		
+		cf = phase_class_features_and_bonus_spells(character, casting_level_str)
 
-		# Every class-choice chooser (domains, school, bloodline, hexes, talents, ...) has run by here,
-		# so the bucket is closed. Sealing is what makes the two reads below safe to check: the key
-		# always EXISTS from the first line of generation, so a presence test cannot tell "no chooser
-		# ran" from "this class has no choices" -- and a chooser added AFTER this point would silently
-		# leave both the snapshot here and the bonus-spell lookups below reading an unfinished dict.
-		seal(character, 'class features')
-		# For some reason class_features is being created as a dict inside a list, rather than a dict
-		class_features = character.data_dict['class features']
-		# Level at which each class choice was picked (bucket -> choice -> level), for the sheet.
-		class_feature_levels = character.data_dict.get('class feature levels', {})
-		# Which class granted each bucket (bucket -> class name), for per-class feature dividers.
-		class_feature_owners = character.data_dict.get('class feature owners', {})
-
-		# Prep casting level string for foundry:
-		if casting_level_str.lower() in ("low", "high"):
-			casting_level_str_foundry = casting_level_str.lower()
-		elif casting_level_str == "mid":
-			casting_level_str_foundry = "med"
-
-		
-
-		# Start of turning class_features into a dictionary for oracle
-		
-		if isinstance(class_features, list) and len(class_features) > 0:
-			combined_dict = {}
-			for i, feature in enumerate(class_features):
-				if not isinstance(feature, dict):
-					continue
-				combined_dict.update(feature)
-
-			# Assign the merged dictionary back to class_features
-			class_features = combined_dict
-
-		# print("class features 1st check", class_features)
-		#End of turning class_features into a dictionary for oracle
-		# NOTE: the homebrew Trainers / Professions / Skill Unlock entries are injected into
-		# class_features further down (inject_homebrew_class_features), after the feat section has
-		# computed the trainer feats + tax chains.
-
-
-	#--------------- Spell addition options ---------------#
-		# Bonus spells are looked up out of the class-features bucket below, so it must be finished.
-		# This used to be an unguarded read: move a chooser after this point and every bonus-spell
-		# lookup quietly returns {} instead of raising.
-		require_sealed(character, 'class features', 'the bonus-spell section')
-		# each addition targets the granting CLASS's own spellbook (multiclass-aware); for a
-		# single-class character that book is the legacy scalar's object, so behavior is unchanged
-		def _book_for(*names):
-			return next((c for c in character.classes
-						 if c['name'] in names and c.get('spell_list_choose_from')), None)
-	# Bloodlines
-		_bloodline_book = _book_for('sorcerer', 'bloodrager')
-		if _bloodline_book is not None and bloodline != "N/A":
-			bonus_spells = character.data_dict['class features'].get("Talents", {}).get(bloodline, {}).get("bonus spells", [])
-			add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
-	# Domains
-		_cleric_book = _book_for('cleric')
-		if character.chosen_domain not in ([], None) and _cleric_book is not None:
-			for i, domain in enumerate(character.chosen_domain):
-				bonus_spells = character.data_dict.get('class features', {}).get(domain.title(), {}).get("bonus spells", {})
-				add_bonus_spells(character, bonus_spells, _cleric_book['spell_list_choose_from'])
-
-		_druid_book = _book_for('druid')
-		if character.chosen_domain not in ([], None) and _druid_book is not None:
-			for i, domain in enumerate(character.chosen_domain):
-				bonus_spells = character.data_dict['class features'].get(domain, {}).get("bonus spells", [])
-				add_bonus_spells(character, bonus_spells, _druid_book['spell_list_choose_from'])
-	# Inquisitions
-		# Don't get bonus spells
-	# Schools
-		# Schools spells are just recommended spells (not bonus spells), but we'll mnake sure wizards take them
-		_wizard_book = _book_for('wizard')
-		if character.chosen_school not in ([], None) and _wizard_book is not None:
-			try:
-				bonus_spells_dict = character.data_dict['class features'].get(character.chosen_school).get("spells", [])
-				add_bonus_spells_from_dict(character, bonus_spells_dict, _wizard_book['spell_list_choose_from'])
-				# print("bonus_spells_dict", bonus_spells_dict)
-				# print("character.spell_list_choose_from", character.spell_list_choose_from)
-			except:
-				print("wizard, but wizard spell list has no bonus spells")
-
-
-	# ------------------- Last minute Feat swapping process -------------------#
-		story_feats, flaw_feats, flavor_feats, class_feats, feats = separate_feats_func(character, feats)
-		# Paid Martial Training picks and style-chain bases join the normal bucket (their slots
-		# were reserved out of the ask before the chooser ran); the feat-tax passes below bundle
-		# the free partners/followers. Style children register as owned so nothing re-picks them.
-		# The PoW mentor's feats are deliberately NOT here -- they render under its "(Trainer N)"
-		# group instead, which is what keeps them off the normal track and out of a second listing.
-		feats.extend([f for f in mt_feats if f not in _pow_mentor_names])
-		feats.extend([f for f in style_feats if f not in _pow_mentor_names])
-		# NOTE: sphere_feats are appended AFTER the feat-tax pass (below), not here -- they share a base
-		# name ("Extra Combat Talent") that feat_tax_func would wrongly chain/strip together.
-		add_feats_to_chooseable(character, story_feats, flaw_feats, flavor_feats, class_feats, feats)
-		add_feats_to_chooseable(character, sphere_feats)
-		add_feats_to_chooseable(character, [c for ch in style_feat_tax.values() for c in ch])
-
-		# ------------------- Trainer & profession bonus feats (homebrew, additive) -------------------#
-		# Trainers teach feats grouped under "(Trainer N)" tags; profession feats are named homebrew
-		# feats (True Calling / Multi Talented / Always Improving). Both sit ON TOP of the normal
-		# budget (like bloodline/teamwork) and are registered as owned so nothing re-picks them. Chosen
-		# AFTER the normal feats are in chooseable, so trainer picks never duplicate the main list.
-		if trainers_enabled:
-			trainer_feats, trainer_feat_labels, trainer_calibers = select_trainer_feats(character, casting_level_str)
-		else:
-			# Empty lists, not a skipped variable: every downstream reader already tolerates empty
-			# trainer data (a Yes-run can legitimately roll 0 trainer slots), so opting out is just
-			# the zero case made deliberate.
-			trainer_feats, trainer_feat_labels, trainer_calibers = [], [], []
-		add_feats_to_chooseable(character, trainer_feats)
-		profession_feats = list(getattr(character, 'profession_feats', []) or [])
-		profession_feat_desc = dict(getattr(character, 'profession_feat_desc', {}) or {})
-		profession_ranks = list(getattr(character, 'profession_data', []) or [])
-		profession_pool = getattr(character, 'profession_pool', 0)
-		add_feats_to_chooseable(character, profession_feats)
-
-		# Label each class bonus feat with its granting class + level (e.g. "Fighter 1"), parallel to
-		# class_feats. Slots span EVERY rolled class (same source as the class_feats count), so a
-		# multiclass gunslinger dip labels as "(Gunslinger 4)" instead of the sheet's default counter.
-		_class_feat_slots = class_bonus_feat_slots(character)
-		_class_feat_levels = [lvl for _, lvl in _class_feat_slots]
-		class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
-		# Per-bucket feat-row budget: what the sheet SHOULD show. Captured pre-tax-strip; normal
-		# absorbs the human bonus, reallocated surpluses, and the ranger/monk merges.
-		feat_budget = {
-			"story": character.story_feat_amount,
-			"flaw": character.flaw_feat_amount,
-			"flavor": character.flavor_feat_amount,
-			"class": character.class_feats_amount,
-			"normal": character.feat_amounts - character.story_feat_amount - character.flaw_feat_amount
-				- character.flavor_feat_amount - character.class_feats_amount
-				+ len(ranger_style_feats) + len(monk_bonus_feats)
-				+ len(mt_feats) + len(style_feats) - _pow_funded_n,
-			"teamwork": character.teamwork_feats,
-			"bloodline": len(bloodline_feats),
-			# The mentor rows are appended after the feat-tax pass below, so count them here or the
-			# "feat rows ->" audit reports a phantom trainer deficit.
-			"trainer": len(trainer_feats) + len(dedicated_trainer_specs) + _pow_funded_n,
-			"profession": len(profession_feats),
-		}
-		# add all feats to character.chooseable (for feat taxing purposes)
-
-
-		# Feat tax portion — pass per-feat acquisition levels so each progression chain releases
-		# one free feat every two levels since the primary was gained (feat-tax rule e).
-		# Normal feats land at L1,3,5,…; story feats at L1,5,10,15,…; flaw/flavor at creation (L1);
-		# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
-		_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
-		_normal_levels = [2 * i + 1 for i in range(len(feats))]
-		# One shared granted-set across all five calls: overlapping chains (e.g. riptide attack
-		# under both Improved Drag and Improved Trip) bundle a child onto exactly one primary;
-		# call order below decides which primary wins it.
-		_tax_already_granted = set()
-		story_feat_tax_dict  = feat_tax_func(character, story_feats,  feat_levels=_story_levels, already_granted=_tax_already_granted)
-		flaw_feat_tax_dict   = feat_tax_func(character, flaw_feats,   feat_levels=[1] * len(flaw_feats), already_granted=_tax_already_granted)
-		flavor_feat_tax_dict = feat_tax_func(character, flavor_feats, feat_levels=[1] * len(flavor_feats), already_granted=_tax_already_granted)
-		class_feat_tax_dict  = feat_tax_func(character, class_feats,  feat_levels=_class_feat_levels[:len(class_feats)], already_granted=_tax_already_granted)
-		feats_feat_tax_dict  = feat_tax_func(character, feats,        feat_levels=_normal_levels, already_granted=_tax_already_granted)
-		# Trainer feats are feat-taxed too (a trainer who teaches a base feat also imparts its chain),
-		# treated as learned early in the career ([1]*) like flaw/flavor feats.
-		trainer_feat_tax_dict = feat_tax_func(character, trainer_feats, feat_levels=[1] * len(trainer_feats), already_granted=_tax_already_granted)
-		# Profession feats (True Calling / Multi Talented / Always Improving) are named homebrew feats
-		# (not in feats.csv). They are NOT attributed to a trainer and are never feat-taxed: each renders
-		# as its own ordinary feat in the general feat track and costs a feat -- see the append AFTER the
-		# feat-count guarantee below (the slot cost was reserved out of feat_amounts / normal_feat_amount
-		# above).
-		# Dedicated PoW/Spheres mentors (25% "trainer-backed" branch): extra "(Trainer N)" slots whose
-		# caliber rolls funded homebrew training the character's own half-share couldn't reach. The label
-		# names the system ("(Trainer 3 - Path of War)") so the Feats tab says which mentor taught what;
-		# both the module and the web sheet print the label verbatim, so no JS change is needed.
-		# `_trainer_group_meta` records each group's true FEATS' WORTH for the backstory rank -- inferring
-		# it from the row count only works for ordinary trainers (see the backstory section below).
-		_next_trainer_n = len(trainer_calibers) + 1
-		_trainer_group_meta = {}
-		# The PoW mentor has no row of its own: the Martial Training / style feats it paid for ARE its
-		# content, sharing one label so they group. Their tax chains move here from feats_feat_tax_dict
-		# (below) since these feats are no longer in the normal track.
-		if _pow_mentor_feats:
-			_pow_mentor_label = f"(Trainer {_next_trainer_n} - Path of War)"
-			_next_trainer_n += 1
-			for _pow_feat in _pow_mentor_feats:
-				trainer_feats.append(_pow_feat)
-				trainer_feat_labels.append(_pow_mentor_label)
-				trainer_feat_tax_dict[_pow_feat] = list(mt_feat_tax.get(_pow_feat) or style_feat_tax.get(_pow_feat) or [])
-			_trainer_group_meta[_pow_mentor_label] = (len(_pow_mentor_feats), "Path of War", list(_pow_mentor_feats))
-		for _mentor_name, _mentor_desc in dedicated_trainer_specs:
-			_sphere_mentor_label = f"(Trainer {_next_trainer_n} - Spheres)"
-			trainer_feats.append(_mentor_name)
-			trainer_feat_labels.append(_sphere_mentor_label)
-			_next_trainer_n += 1
-			trainer_feat_tax_dict.setdefault(_mentor_name, [])
-			homebrew_feat_desc_dict[_mentor_name] = _mentor_desc
-			# Rank by the Extra-Talent feats the funded talents bundle into, and name the TALENTS it
-			# taught -- the row name ("Spheres Mentor") is the funding record, not the lesson.
-			_trainer_group_meta[_sphere_mentor_label] = (
-				mentor_feat_worth(_sphere_mentor_talents), "Spheres",
-				[str(_t.get('name', '')) for _t in _sphere_mentor_talents if _t.get('name')])
-		# Martial Training chains are taken once PER DISCIPLINE and discipline-labeled (e.g.
-		# "Martial Training I (Broken Blade)"), so they aren't in data/feats.csv and feat_tax_func
-		# can't resolve them. Merge the hand-built bundle directly (paid I/III/V -> free II/IV/VI
-		# per chain) and register the free partners in the shared granted-set, mirroring the
-		# style-chain handling below.
-		# Every child registers in the granted-set no matter who funded its parent, or the backfill
-		# re-picks a partner that was already granted; only the DICT merge is split by funder, since a
-		# mentor-funded parent now lives in trainer_feat_tax_dict.
-		for _mt_children in mt_feat_tax.values():
-			_tax_already_granted.update(str(c).lower() for c in _mt_children)
-		feats_feat_tax_dict.update({k: v for k, v in mt_feat_tax.items() if k not in _pow_mentor_names})
-		# Style-chain followers are ALWAYS granted in full ("feat tax all the way through").
-		# They are Metzofitz homebrew absent from data/feats.csv, so feat_tax_func can't see
-		# them -- merge the hand-built bundle directly; registering the children in the shared
-		# granted-set keeps the strip/backfill/no-duplicate invariants intact.
-		for _style_children in style_feat_tax.values():
-			_tax_already_granted.update(str(c).lower() for c in _style_children)
-		feats_feat_tax_dict.update({k: v for k, v in style_feat_tax.items() if k not in _pow_mentor_names})
-		# Spheres Extra-Talent feats (HR1): one slot grants a free duplicate ("Extra Talent > Extra
-		# Talent"), bundling 2 talents. Hand-built (homebrew, not in feats.csv) -> merge like style chains.
-		for _sphere_children in sphere_feat_tax.values():
-			_tax_already_granted.update(str(c).lower() for c in _sphere_children)
-		feats_feat_tax_dict.update(sphere_feat_tax)
-
-		# Strip feats now bundled as a tax-child onto a primary so they don't ALSO render as their
-		# own standalone entry (children are granted cross-group via character.chooseable).
-		_taxed_children = {
-			c.lower()
-			for d in (story_feat_tax_dict, flaw_feat_tax_dict, flavor_feat_tax_dict,
-					  class_feat_tax_dict, feats_feat_tax_dict)
-			for children in d.values() for c in children
-		}
-		if _taxed_children:
-			story_feats  = [f for f in story_feats  if f.lower() not in _taxed_children]
-			flaw_feats   = [f for f in flaw_feats   if f.lower() not in _taxed_children]
-			flavor_feats = [f for f in flavor_feats if f.lower() not in _taxed_children]
-			feats        = [f for f in feats        if f.lower() not in _taxed_children]
-			# class_feats carries a parallel label list -> filter in lockstep
-			class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _taxed_children)
-			# teamwork / bloodline lists are exported separately -> strip bundled children there
-			# too (labels in lockstep), so a tax child never doubles as its own standalone entry.
-			if isinstance(teamwork_feats, list) and teamwork_feats:
-				teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _taxed_children)
-			if isinstance(bloodline_feats, list) and bloodline_feats:
-				bloodline_feats, bloodline_feat_labels = strip_labeled_bucket(bloodline_feats, bloodline_feat_labels, _taxed_children)
-
-		# Backfill: tax children are FREE under the house rule, so a slot freed by the strip (its
-		# feat now renders bundled on its primary) is refilled with a fresh pick. Draws are sized
-		# by budget distance rather than strip counts, so they also heal any residual selection
-		# shortfall. Normal + class buckets only; other buckets stay visible in the budget log.
-		# Granted children are NOT in character.chooseable -- register them first, or the draw
-		# below could re-pick one (instant standalone+bundled duplicate).
-		add_feats_to_chooseable(character, sorted(_tax_already_granted))
-		need_class  = max(0, feat_budget["class"]  - len(class_feats))
-		need_normal = max(0, feat_budget["normal"] - len(feats))
-		if need_class + need_normal > 0:
-			replacements = topup_feat_chooser(character, casting_level_str, need_class + need_normal)
-			add_feats_to_chooseable(character, replacements)
-			class_repl, normal_repl = replacements[:need_class], replacements[need_class:]
-			class_feats.extend(class_repl)
-			feats.extend(normal_repl)
-			class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
-			# One feat-tax pass over the replacements only (same shared granted-set, so overlapping
-			# chains still bundle a child exactly once); positional levels match the convention above.
-			_repl_class_levels = [_class_feat_levels[i] if i < len(_class_feat_levels) else character.c_class_level
-								  for i in range(len(class_feats) - len(class_repl), len(class_feats))]
-			_repl_normal_levels = [2 * i + 1 for i in range(len(feats) - len(normal_repl), len(feats))]
-			class_feat_tax_dict.update(feat_tax_func(character, class_repl, feat_levels=_repl_class_levels, already_granted=_tax_already_granted))
-			feats_feat_tax_dict.update(feat_tax_func(character, normal_repl, feat_levels=_repl_normal_levels, already_granted=_tax_already_granted))
-			# Second (terminal) strip round: a replacement can itself be a tax primary whose chain
-			# bundles an EXISTING standalone feat. Strip those and draw once more WITHOUT another
-			# tax pass (terminal draws never tax -> guaranteed convergence).
-			_children_2 = {c for d in (class_feat_tax_dict, feats_feat_tax_dict)
-						   for ch in d.values() for c in ch} - _taxed_children
-			if _children_2:
-				story_feats  = [f for f in story_feats  if f.lower() not in _children_2]
-				flaw_feats   = [f for f in flaw_feats   if f.lower() not in _children_2]
-				flavor_feats = [f for f in flavor_feats if f.lower() not in _children_2]
-				feats        = [f for f in feats        if f.lower() not in _children_2]
-				class_feats, class_feat_labels = strip_labeled_bucket(class_feats, class_feat_labels, _children_2)
-				if isinstance(teamwork_feats, list) and teamwork_feats:
-					teamwork_feats, teamwork_feat_labels = strip_labeled_bucket(teamwork_feats, teamwork_feat_labels, _children_2)
-				if isinstance(bloodline_feats, list) and bloodline_feats:
-					bloodline_feats, bloodline_feat_labels = strip_labeled_bucket(bloodline_feats, bloodline_feat_labels, _children_2)
-				add_feats_to_chooseable(character, sorted(_children_2))
-				need2_class  = max(0, feat_budget["class"]  - len(class_feats))
-				need2_normal = max(0, feat_budget["normal"] - len(feats))
-				if need2_class + need2_normal > 0:
-					final_repl = topup_feat_chooser(character, casting_level_str, need2_class + need2_normal)
-					add_feats_to_chooseable(character, final_repl)
-					class_feats.extend(final_repl[:need2_class])
-					feats.extend(final_repl[need2_class:])
-					class_feat_labels = [f"{d} {lvl}" for d, lvl in _class_feat_slots][:len(class_feats)]
-
-		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
-		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
-		# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
-		# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
-		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
-		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
-		try:
-			_post_class_slots = _class_feat_slots[:len(class_feats)]
-			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
-				character, feats, class_feats,
-				[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
-			# the returned class levels are the input multiset re-sorted ascending, so a stable
-			# sort of the slot pairs by level re-pairs each level with its granting class
-			_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
-			class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
-		except Exception:
-			pass
-
-		# Story / flaw / flavor buckets are thinned by the same tax-child strip above but were never
-		# refilled (only class/normal were), so a story feat that chained into another feat's tax left a
-		# hole and dropped the top "(Story Feat N)" slot (e.g. the level-20 story feat). Top them back up
-		# to their budgeted counts -- terminal draw, no further tax (convergence); fresh picks render
-		# standalone, and the sheet labels these buckets positionally so restoring the COUNT brings the
-		# high slots back.
-		for _sb_list, _sb_key in ((story_feats, "story"), (flaw_feats, "flaw"), (flavor_feats, "flavor")):
-			_sb_need = max(0, feat_budget[_sb_key] - len(_sb_list))
-			if _sb_need:
-				_sb_fill = topup_feat_chooser(character, casting_level_str, _sb_need)
-				add_feats_to_chooseable(character, _sb_fill)
-				_sb_list.extend(_sb_fill)
-
-		# Row-count audit: actual/budget per bucket. Normal, class, story, flaw, and flavor are all
-		# backfilled, so a deficit there means a regression; other buckets may legally run under (tax-bundled).
-		print(f"feat rows -> normal {len(feats)}/{feat_budget['normal']}, story {len(story_feats)}/{feat_budget['story']}, "
-			f"flaw {len(flaw_feats)}/{feat_budget['flaw']}, flavor {len(flavor_feats)}/{feat_budget['flavor']}, "
-			f"class {len(class_feats)}/{feat_budget['class']}, teamwork {(len(teamwork_feats) if isinstance(teamwork_feats, list) else 0)}/{feat_budget['teamwork']}, "
-			f"bloodline {len(bloodline_feats)}/{feat_budget['bloodline']}, "
-			f"trainer {len(trainer_feats)}/{feat_budget['trainer']}, profession {len(profession_feats)}/{feat_budget['profession']}")
-		if martial_disciplines or mt_feats or style_feats:
-			print(f"PoW -> disciplines {martial_disciplines}, IL {initiator_level}, "
-				f"known {sum(maneuvers_known_list)} by-level {maneuvers_known_list}, "
-				f"readied {sum(maneuvers_readied_list)}, "
-				f"stances {len(stances_chosen)}, mt {mt_feats}, styles {style_feats}")
-
-		# Reorder the surviving normal + class-bonus feats (one combined pool) onto their level slots so
-		# each lands at a level whose prerequisites are actually met: prereq feats placed at earlier (lower)
-		# levels, and BAB / class-level gates respected (e.g. Greater Feint never before Improved Feint nor
-		# before its +6 BAB level). Done AFTER the tax-child strip because removing children reindexes the
-		# positional normal-feat levels. class_feat_labels are rebuilt in lockstep. Falls back (except) to
-		# the post-strip positional order if anything goes wrong, so a generation never crashes here.
-		try:
-			_post_class_slots = _class_feat_slots[:len(class_feats)]
-			feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
-				character, feats, class_feats,
-				[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
-			# the returned class levels are the input multiset re-sorted ascending, so a stable
-			# sort of the slot pairs by level re-pairs each level with its granting class
-			_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
-			class_feat_labels = [f"{d} {lvl}" for d, lvl in _post_class_slots][:len(class_feats)]
-		except Exception:
-			pass
-
-		# Re-home feat-tax bundles to the bucket each primary ACTUALLY ended in -- done AFTER the FINAL
-		# reorder above. assign_feats_to_levels treats normal + class-bonus feats as one pool, so a feat
-		# can migrate between the two buckets; the sheet applies each bucket's tax dict only to its own
-		# bucket, so a migrated primary (e.g. a Martial Training tier reseated as a class row) would lose
-		# its "Primary > Child" chain unless its tax bundle moves with it. (Previously this ran after the
-		# first of the two reorders, so the second reorder's migrations left tax in the wrong dict.)
-		_feats_l = {str(f).lower() for f in feats}
-		_class_l = {str(f).lower() for f in class_feats}
-		for _moved in [k for k in feats_feat_tax_dict if str(k).lower() in _class_l and str(k).lower() not in _feats_l]:
-			class_feat_tax_dict[_moved] = feats_feat_tax_dict.pop(_moved)
-		for _moved in [k for k in class_feat_tax_dict if str(k).lower() in _feats_l and str(k).lower() not in _class_l]:
-			feats_feat_tax_dict[_moved] = class_feat_tax_dict.pop(_moved)
-
-		# Append the sphere Extra-Talent feats LAST -- after the level-assignment reorder so they keep
-		# their hand-built HR1 tax (sphere_feat_tax, merged into feats_feat_tax_dict above) and aren't
-		# migrated into the class-bonus pool / chained by feat_tax_func. They land at the end of the
-		# Feats list (highest "(Feat N)" numbers). Their budget cost was already reserved out of
-		# feat_amounts above, so the normal chooser/backfill left room for them.
-		feats.extend(sphere_feats)
-
-		# ---- Final feat-count guarantee: the general feat track == normal_feat_amount EXACTLY ----
-		# The sheet labels feats positionally (1,3,5,…), so a list of length N renders feats at the
-		# character's real feat levels with no gaps and nothing past their level. Never short (defensive
-		# backfill -- RC1 should already prevent it) and never over: when homebrew (Martial Training +
-		# sphere Extra-Talent feats) outnumbers the slots, trim the lowest-priority excess -- the sphere
-		# Extra-Talent feat SLOTS first (their talents stay on the sheet as native combat/magic talents;
-		# only the tracking feat is dropped), then any remaining tail. (House rule: cap to exact.)
-		_feat_target = int(getattr(character, "normal_feat_amount", len(feats)) or 0)
-		if len(feats) > _feat_target:
-			_over = len(feats) - _feat_target
-			_sphere_lower = {str(s).lower() for s in sphere_feats}
-			_kept = []
-			for _f in reversed(feats):                       # sphere Extra-Talent feats are the appended tail
-				if _over > 0 and str(_f).lower() in _sphere_lower:
-					_over -= 1
-					continue
-				_kept.append(_f)
-			feats = list(reversed(_kept))
-			if len(feats) > _feat_target:                    # rare: homebrew exceeds slots even after trimming sphere slots
-				feats = feats[:_feat_target]
-		elif len(feats) < _feat_target:                      # defensive guarantee against any future regression
-			_fill = topup_feat_chooser(character, casting_level_str, _feat_target - len(feats))
-			add_feats_to_chooseable(character, _fill)
-			feats.extend(_fill)
-		print(f"feat guarantee -> general {len(feats)}/{_feat_target}, story {len(story_feats)}/{feat_budget['story']}"
-			f", class {len(class_feats)}/{feat_budget['class']} | generator {GENERATOR_VERSION}")
-
-		# Now drop the profession feats into the general feat track -- AFTER the feat-tax passes and the
-		# count guarantee, so they are never chained/taxed and never trimmed (their slots were reserved
-		# out of feat_amounts / normal_feat_amount above, so each costs a feat). Each renders as its own
-		# ordinary feat; register descriptions in homebrew_feat_desc_dict (case-insensitive) so the
-		# module / description backfill resolve them instead of hitting the CSV.
-		if profession_feats:
-			feats.extend(profession_feats)
-			for _pf_name, _pf_desc in profession_feat_desc.items():
-				homebrew_feat_desc_dict[_pf_name] = _pf_desc
+		ft = phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
+								      teamwork_feats, teamwork_feat_labels, trainers_enabled)
+		feats = ft.feats
+		story_feats = ft.story_feats
+		flaw_feats = ft.flaw_feats
+		flavor_feats = ft.flavor_feats
+		class_feats = ft.class_feats
+		feat_budget = ft.feat_budget
+		story_feat_tax_dict = ft.story_feat_tax_dict
+		flaw_feat_tax_dict = ft.flaw_feat_tax_dict
+		flavor_feat_tax_dict = ft.flavor_feat_tax_dict
+		class_feat_tax_dict = ft.class_feat_tax_dict
+		feats_feat_tax_dict = ft.feats_feat_tax_dict
+		trainer_feat_tax_dict = ft.trainer_feat_tax_dict
+		class_feat_labels = ft.class_feat_labels
+		trainer_feats = ft.trainer_feats
+		trainer_feat_labels = ft.trainer_feat_labels
+		trainer_calibers = ft.trainer_calibers
+		_trainer_group_meta = ft._trainer_group_meta
+		profession_feats = ft.profession_feats
+		profession_feat_desc = ft.profession_feat_desc
+		profession_ranks = ft.profession_ranks
+		profession_pool = ft.profession_pool
+		teamwork_feats = ft.teamwork_feats
+		teamwork_feat_labels = ft.teamwork_feat_labels
 
 
 
@@ -1677,13 +2004,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# the class-features renderer anymore; only the Skill Unlock still does.
 		profession_ability_items = build_profession_ability_items(character)
 
-		if isinstance(class_features, dict):
+		if isinstance(cf.class_features, dict):
 
 			# 3) Skill unlock: dict of "{N} Ranks" -> benefit (rendered as bold-labelled bullets).
 			if skill_unlock:
 				_unlock = skill_unlock.get("unlock") or {}
 				_su_val = {f"{_r} Ranks": _unlock[_r] for _r in ("5", "10", "15", "20") if _unlock.get(_r)}
-				class_features["Skill Unlock: " + skill_unlock["skill"]] = _su_val or {"Skill Unlock": skill_unlock["skill"]}
+				cf.class_features["Skill Unlock: " + skill_unlock["skill"]] = _su_val or {"Skill Unlock": skill_unlock["skill"]}
 
 	# ------------------- Last minute Spell Alphabetize + dedupe process -------------------#
 		# Per spellbook (multiclass): alphabetize + dedupe each book's final list, then re-derive
@@ -1716,7 +2043,6 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 	# ------------------- Last minute modded char sheet -------------------#
 		mod_char_sheet_var = modded_char_sheet_func(modded_char_sheet)
 	#-------------------- Start of export process --------------------#
-		archetype_info = json.dumps(character.archetype_info, indent=4)
 		character.land_speed = character.races.get(character.chosen_race, {}).get('speed', 30)
 
 	# ------------------- Build archetype (deterministic scorer; Ollama only breaks near-ties) -------------------#
@@ -1743,16 +2069,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'classes': [f"{c['name']} {c['level']}" for c in character.classes],
 			'main_stat': character.main_stat,
 			'stats': f"{character.str}/{character.dex}/{character.con}/{character.int}/{character.wis}/{character.cha}",
-			'weapon': weapon_name,
+			'weapon': gear.weapon_name,
 			'weapon_category': _wd.get('category'),
 			'weapon_groups': _weapon_groups,
 			'armor': armor_name if isinstance(armor_name, str) else '',
 			'shield': shield_name if character.shield_flag else '',
 			'feats': feats,
-			'disciplines': martial_disciplines,
-			'stances': stances_chosen,
-			'maneuvers': [n for _grp in maneuvers_readied_names for n in (_grp if isinstance(_grp, list) else [_grp])],
-			'spheres': spheres_chosen,
+			'disciplines': pw.martial_disciplines,
+			'stances': pw.stances_chosen,
+			'maneuvers': [n for _grp in pw.maneuvers_readied_names for n in (_grp if isinstance(_grp, list) else [_grp])],
+			'spheres': pw.spheres_chosen,
 			'casting': _arch_casting,
 			'spells': _arch_spells,
 			# signal-extraction facts (see _signals() in build_archetype.py)
@@ -1762,7 +2088,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'primary_class': character.c_class,
 			'bab_tier': str(character.class_data.get(character.c_class, {}).get('bab', 'M')),
 			'spell_levels': _arch_spell_levels,
-			'initiator_level': initiator_level,
+			'initiator_level': pw.initiator_level,
 			'armor_type': character.armor_type,
 			'shield_flag': character.shield_flag,
 			'weapon_special': _wd.get('special'),
@@ -1770,9 +2096,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'stat_dict': {'str': character.str, 'dex': character.dex, 'con': character.con,
 						  'int': character.int, 'wis': character.wis, 'cha': character.cha},
 			'feat_buckets': character.feat_buckets,
-			'class_feature_names': list(class_features) if isinstance(class_features, dict) else [],
+			'class_feature_names': list(cf.class_features) if isinstance(cf.class_features, dict) else [],
 			'companion': bool(getattr(character, 'chosen_animal', None)),
-			'sphere_mana_pool': sphere_mana_pool,
+			'sphere_mana_pool': pw.sphere_mana_pool,
 		}
 		# The "use backstory API" toggle gates the optional Ollama near-tie arbiter only; the
 		# deterministic scorer runs (identically) either way.
@@ -1810,16 +2136,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				c['name'] for i, c in enumerate(character.classes)
 				if i != character.primary_class_index),
 			'level': character.c_class_level, 'main_stat': character.main_stat,
-			'martial_disciplines': martial_disciplines, 'notable_feats': feats,
-			'traits': getattr(character, 'selected_traits_desc', None) or selected_traits,
+			'martial_disciplines': pw.martial_disciplines, 'notable_feats': feats,
+			'traits': getattr(character, 'selected_traits_desc', None) or look.selected_traits,
 			'personality_traits': character.personality_traits, 'mannerisms': character.mannerisms,
 			'flaw': character.flaw,
 			'background_traits': character.background_traits, 'professions': _bs_professions,
 			'craft': character.craft_chosen, 'trainers': _bs_trainers,
-			'appearance': appearance, 'parents': parents,
-			'siblings': [older_brothers, younger_brothers, older_sisters, younger_sisters],
+			'appearance': look.appearance, 'parents': kin.parents,
+			'siblings': [kin.older_brothers, kin.younger_brothers, kin.older_sisters, kin.younger_sisters],
 			# structured_bio-only fields (the prose prompt keeps appearance as one field)
-			'hair_type': hair_type, 'hair_color': hair_color, 'eye_color': eye_color,
+			'hair_type': look.hair_type, 'hair_color': look.hair_color, 'eye_color': look.eye_color,
 			'build_archetype': build_archetype, 'build_tactics': build_tactics,
 		}
 		# Prose backstory disabled for now: the structured fact block below is meant to serve as a
@@ -1829,209 +2155,12 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Scannable fact block shown on the sheet's Biography tab (empty prose = no Backstory section).
 		formatted_bio = structured_bio(_bs_brief)
 
-		payload = {
-				# The generated character, assembled as ONE ordered dict. This used to be four
-				# parallel lists -- 146 values and 146 key strings, 80 lines apart, held in
-				# alignment by nothing but position, with a length assert on one pair and none on
-				# the other (a miscount there silently zip-truncated a key off the payload).
-				# Insertion order here is the order the module and web sheet have always seen.
-				"region": character.region,
-				"chosen_race": character.chosen_race,
-				"land_speed": character.land_speed,
-				"character_full_name": character_full_name,
-				"c_class": character.c_class,
-				"c_class_display": character.c_class_display,
-				"c_class_2": character.c_class_2,
-				"alignment": character.alignment_display,
-				"age_number": character.age,
-				"height_number": character.height,
-				"weight_number": character.weight,
-				"dex": character.dex,
-				"str": character.str,
-				"con": character.con,
-				"int": character.int,
-				"wis": character.wis,
-				"cha": character.cha,
-				"inherents": character.inherents,
-				"level_up_stats": character.level_up_stats,
-				"racial_stats": character.racial_stats,
-				"flaw": character.flaw,
-				"Total_HP": character.Total_HP,
-				"sheet_health": character.sheet_health,
-				"bab_total": character.bab_total,
-				"armor_ac": armor_ac,
-				"shield_ac": shield_ac,
-				"armor_name": armor_name,
-				"armor_spell_failure": armor_spell_failure,
-				"armor_weight": armor_weight,
-				"armor_armor_check_penalty": armor_armor_check_penalty,
-				"armor_max_dex_bonus": armor_max_dex_bonus,
-				"shield_name": shield_name,
-				"shield_spell_failure": shield_spell_failure,
-				"shield_weight": shield_weight,
-				"shield_armor_check_penalty": shield_armor_check_penalty,
-				"shield_max_dex_bonus": shield_max_dex_bonus,
-				# Saving throws are derived by the pf1 engine / the web sheet, not exported:
-				# fort_saving_throw, reflex_saving_throw, wisdom_saving_throw.
-				"spell_list_choose_from": character.spell_list_choose_from,
-				"day_list": character.spells_per_day_list,
-				"known_list": character.spells_known_list,
-				"spells_prepared_per_level": character.spells_prepared_per_level,
-				"martial_disciplines": martial_disciplines,
-				"initiator_level": initiator_level,
-				"maneuvers_known_list": maneuvers_known_list,
-				"maneuvers_readied_list": maneuvers_readied_list,
-				"maneuvers_choose_from": maneuvers_choose_from,
-				"maneuvers_readied_names": maneuvers_readied_names,
-				"stances_chosen": stances_chosen,
-				"mt_feats": mt_feats,
-				"initiation_stat": initiation_stat,
-				# Psionics: a list beside spellbooks, one entry per psionic class. Its sibling
-				# powers_desc_dict sits with the other description dicts further down, exactly as
-				# maneuvers_desc_dict does for Path of War.
-				"manifesters": manifesters,
-				"magic_talent_items": magic_talent_items,
-				"combat_talent_items": combat_talent_items,
-				"sphere_feats": sphere_feats,
-				"sphere_feat_tax": sphere_feat_tax,
-				"sphere_mana_pool": sphere_mana_pool,
-				"spheres_chosen": spheres_chosen,
-				"sphere_counts": sphere_counts,
-				"casting_tradition": casting_tradition,
-				"sphere_drawbacks": sphere_drawbacks,
-				"sphere_boons": sphere_boons,
-				"sphere_traits": sphere_traits,
-				"deity_name": deity_name,
-				"skill_ranks": skill_ranks,
-				"weapon_enhancement_chosen_list": weapon_enhancement_chosen_list,
-				"armor_enhancement_chosen_list": armor_enhancement_chosen_list,
-				"shield_enhancement_chosen_list": shield_enhancement_chosen_list,
-				"weapon_enhancement_bonus": weapon_enhancement_bonus,
-				"armor_enhancement_bonus": armor_enhancement_bonus,
-				"shield_enhancement_bonus": shield_enhancement_bonus,
-				"selected_traits": selected_traits,
-				"equipment_list": equipment_list,
-				"level": character.c_class_level,
-				# Subrace data (chosen_subrace, subrace_description) is deliberately not exported -- FoundryVTT
-				# doesn't use it and the generator's subrace handling needs fixing first.
-				"archetype1": character.archetype1,
-				"hair_color": hair_color,
-				"hair_type": hair_type,
-				"eye_color": eye_color,
-				"appearance": appearance,
-				"language_text": language_text,
-				"feats": feats,
-				"teamwork_feats": teamwork_feats,
-				"teamwork_feat_labels": teamwork_feat_labels,
-				"story_feats": story_feats,
-				"flaw_feats": flaw_feats,
-				"class_feats": class_feats,
-				"class_feat_labels": class_feat_labels,
-				"flavor_feats": flavor_feats,
-				"bloodline_feats": bloodline_feats,
-				"bloodline_feat_labels": bloodline_feat_labels,
-				"trainer_feats": trainer_feats,
-				"trainer_feat_labels": trainer_feat_labels,
-				"trainer_feat_tax_dict": trainer_feat_tax_dict,
-				"trainer_calibers": trainer_calibers,
-				"profession_feats": profession_feats,
-				"profession_feat_desc": profession_feat_desc,
-				"profession_ranks": profession_ranks,
-				"profession_pool": profession_pool,
-				"profession_ability_items": profession_ability_items,
-				"skill_unlock": skill_unlock,
-				"gold": character.gold,
-				"platnium": character.platnium,
-				# Animal companion stat block (issue #15, sheet repo): everything the
-				# generator already computed for a companion druid — species stats
-				# (with the 7th-level advancement block), the level chassis row from
-				# animal_companion.json, and the rolled feats (previously discarded).
-				# None when the druid went domain or there is no druid.
-				# FROZEN, DELIBERATELY (#37 grill, 2026-08-03). This key is the deprecated
-				# alias D7 keeps for the sheet repo's #15 consumer; `name`, `sex`, `gear`
-				# and `gear_source` live only on `bonded_creatures` (#32). Do not "fix" the
-				# missing name here — a deprecated key that is never worse than its
-				# replacement never dies, and the name is the only reason to migrate.
-				"animal_companion": ({
-					"species": character.chosen_animal,
-					"kind": getattr(character, "chosen_animal_kind", None),
-					"species_stats": character.chosen_animal_description,
-					"chassis": character.companion_info,
-					"feats": sorted(character.animal_companion_feats) if character.animal_companion_feats else [],
-				} if getattr(character, "chosen_animal", None) else None),
-				# D7 / #32: the list that replaces the singular alias above. One entry per bonded
-				# creature -- companion, mount, familiar, eidolon -- INCLUDING the absences, whose
-				# `outcome` is the only record of why a druid has a domain instead of a wolf.
-				# `stats` is the finished block from #31 and is FINAL: D2 makes this the sole source
-				# of a companion's numbers, because the standalone web sheet has no game system to
-				# derive them from. A renderer displays them; it never re-derives them, and it never
-				# re-applies `stats.size_change`, which is provenance for numbers already totalled in.
-				"bonded_creatures": getattr(character, "bonded_creatures", None) or [],
-				"full_domain": character.chosen_domain,
-				"school": school,
-				"opposing_school": opposing_school,
-				"bloodline": bloodline,
-				"background_traits": character.background_traits,
-				# NOT the personality flavour list rolled in phase_alignment_and_level -- these are
-				# the TRAINER professions from phase_professions_and_skills, which used to overwrite
-				# the same local 240 lines later. Two unrelated things shared one name; only this one
-				# was ever read.
-				"professions": professions,
-				"craft_type": character.craft_chosen,
-				"mannerisms": character.mannerisms,
-				"personality_traits": character.personality_traits,
-				"hero_points": hero_points,
-				"gender": character.chosen_gender,
-				"class_ability_desc": class_ability_desc,
-				"class_ability": class_ability,
-				"class_features": class_features,
-				"class_feature_levels": class_feature_levels,
-				"archetype_info": archetype_info,
-				"parents": parents,
-				"older_brothers": older_brothers,
-				"younger_brothers": younger_brothers,
-				"older_sisters": older_sisters,
-				"younger_sisters": younger_sisters,
-				"weapon_name": weapon_name,
-				"specialty_schools": character.specialty_schools,
-				"counter_schools": character.counter_schools,
-				"chosen_spell_descriptor": character.chosen_descriptors,
-				"counter_spell_descriptor": character.counter_descriptors,
-				"total_rolled_hp": character.total_hp_rolls,
-				"mini_alignment": character.mini_alignment,
-				"casting_level_str_foundry": casting_level_str_foundry,
-				"main_stat": character.main_stat,
-				"story_feat_tax_dict": story_feat_tax_dict,
-				"flaw_feat_tax_dict": flaw_feat_tax_dict,
-				"flavor_feat_tax_dict": flavor_feat_tax_dict,
-				"class_feat_tax_dict": class_feat_tax_dict,
-				"feats_feat_tax_dict": feats_feat_tax_dict,
-				"feat_budget": feat_budget,
-				"mod_char_sheet_var": mod_char_sheet_var,
-				"backstory": backstory,
-				"formatted_bio": formatted_bio,
-				# --- multiclass (new keys; the legacy keys above keep their old semantics:
-				#     "level" = primary-class level, "c_class"/"c_class_2" = primary/second class) ---
-				"classes": [{'name': c['name'], 'display': c['display'], 'level': c['level'],
-					'archetype': character.archetypes_per_class[i]
-								 if i < len(character.archetypes_per_class) else {}}
-					for i, c in enumerate(character.classes)],
-				"total_level": character.level,
-				"save_bases": character.save_bases,
-				"spellbooks": [{**{k: b.get(k) for k in (
-					'name', 'display', 'level', 'capped_level', 'casting_level_string',
-					'casting_level_num', 'highest_spell_known', 'spells_known_list',
-					'spells_per_day_list', 'spell_list_choose_from', 'spells_prepared_per_level')},
-					'casting_stat': casting_stat_for(b['name']),
-					'divine': b['name'] in data.divine_casters}
-					for b in character.spellbooks],
-				"class_feature_owners": class_feature_owners,
-				"build_archetype": build_archetype,
-				"build_tactics": build_tactics,
-				# Replay handle: pass this back as generate_random_char(seed=...) to reproduce this
-				# exact character. See Backend/scripts/tests/test_golden_payload.py.
-				"generation_seed": seed,
-				}
+		payload = build_payload(
+			character, gear=gear, look=look, kin=kin, cf=cf, pw=pw, grants=grants, ft=ft,
+			professions=professions, skill_ranks=skill_ranks, skill_unlock=skill_unlock, seed=seed,
+			backstory=backstory, formatted_bio=formatted_bio, build_archetype=build_archetype,
+			build_tactics=build_tactics, mod_char_sheet_var=mod_char_sheet_var,
+			profession_ability_items=profession_ability_items, f_name=f_name, l_name=l_name)
 		
 		# Feat buff side-maps (populated below, once the placed-feat list exists). Empty dicts here so the
 		# export references stay stable; the populate block mutates these same objects in place.
@@ -2043,10 +2172,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		class_feature_conditionals_dict = {}
 		payload.update({
 				"spell_list_choose_from_dict": character.spell_list_choose_from,
-				"equip_descrip": equip_descrip,
-				"maneuvers_desc_dict": maneuvers_desc_dict,
-				"powers_desc_dict": powers_desc_dict,
-				"homebrew_feat_desc_dict": homebrew_feat_desc_dict,
+				"equip_descrip": gear.equip_descrip,
+				"maneuvers_desc_dict": pw.maneuvers_desc_dict,
+				"powers_desc_dict": pw.powers_desc_dict,
+				"homebrew_feat_desc_dict": pw.homebrew_feat_desc_dict,
 				"feat_changes_dict": feat_changes_dict,
 				"feat_conditionals_dict": feat_conditionals_dict,
 				"spell_changes_dict": spell_changes_dict,
@@ -2076,10 +2205,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# already described (homebrew / sphere / profession) are left untouched.
 		_render_feat_names = []
 		for _b in (feats, story_feats, flaw_feats, flavor_feats, class_feats,
-				   trainer_feats, bloodline_feats, teamwork_feats):
+				   trainer_feats, grants.bloodline_feats, teamwork_feats):
 			if isinstance(_b, list):
 				_render_feat_names.extend(str(_x) for _x in _b)
-		_have_desc = {str(_k).lower() for _k in homebrew_feat_desc_dict}
+		_have_desc = {str(_k).lower() for _k in pw.homebrew_feat_desc_dict}
 		_need_desc = [_n for _n in dict.fromkeys(_render_feat_names) if _n.lower() not in _have_desc]
 		if _need_desc:
 			_desc_info = feat_spell_searcher(character, character.c_class, list(_need_desc),
@@ -2088,7 +2217,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						for _k, _v in _desc_info.items()}
 			for _n in _need_desc:
 				# Metzofitz picks are absent from data/feats.csv; their library supplies the text.
-				homebrew_feat_desc_dict[_n] = (_desc_ci.get(_n.lower(), "")
+				pw.homebrew_feat_desc_dict[_n] = (_desc_ci.get(_n.lower(), "")
 											   or metzofitz_description(_n))
 
 		# --- Feat numeric buffs (Foundry "Changes" tab) + active-feat toggle conditionals --------------
@@ -2134,7 +2263,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# item_changes_overrides.json merged on top at build time. Keyed by lowercase backend item name; the
 		# module overlays entries onto the matched/synthesized equipment item (deduped by change target, so
 		# items every_item.json already automates don't double-apply).
-		_matched_items, _g = match_buffs("item", equipment_list or []);   _buff_gaps += _g
+		_matched_items, _g = match_buffs("item", gear.equipment_list or []);   _buff_gaps += _g
 		for _item_name, _ic_entry in _matched_items.items():
 			if _ic_entry:
 				item_changes_dict[_item_name] = _ic_entry
@@ -2162,9 +2291,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# The shield list is matched against the ARMOR section on purpose -- quality_effects.json keeps
 		# one armor section covering both the Armor and Shield quality lists.
 		for _section, _chosen, _qe_section, _desc_map in (
-				("weapon", weapon_enhancement_chosen_list, "weapon", _wq_desc),
-				("armor", armor_enhancement_chosen_list, "armor", _aq_desc),
-				("shield", shield_enhancement_chosen_list, "armor", _aq_desc)):
+				("weapon", gear.weapon_enhancement_chosen_list, "weapon", _wq_desc),
+				("armor", gear.armor_enhancement_chosen_list, "armor", _aq_desc),
+				("shield", gear.shield_enhancement_chosen_list, "armor", _aq_desc)):
 			_matched_q, _g = match_buffs("quality", _chosen or [], section=_qe_section)
 			_buff_gaps += _g
 			for _q_name in dict.fromkeys(_chosen or []):
@@ -2178,7 +2307,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# --- Class-choice power effects (rage powers, ki powers, hexes, talents, arcana, ...) ----------
 		# class_feature_effects.json is GENERATED by scripts/build_class_feature_changes.py (auto-drafts
 		# parsed from the class_data pools + class_feature_effects_overrides.json curated on top).
-		# Sections match the class_features buckets; keys are normalized power names (lowercase, no
+		# Sections match the cf.class_features buckets; keys are normalized power names (lowercase, no
 		# (Su)/(Ex)/(Sp)). Curated entries ship changes/contextNotes (-> class_feature_changes_dict,
 		# module overlays them on the class-feature item, toggled with the parent state for while-raging
 		# style powers), weapon toggle conditionals (-> class_feature_conditionals_dict, feat pattern),
@@ -2201,7 +2330,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_bucket_classes = {"rage_powers": ("barbarian", "skald"), "hexes": ("witch", "shaman"),
 						   "ninja_talents": ("rogue", "ninja"), "slayer_talents": ("rogue", "slayer")}
 		_cfe_buckets = set(buff_sections("class_feature"))
-		for _bucket, _powers in (class_features or {}).items():
+		for _bucket, _powers in (cf.class_features or {}).items():
 			if _bucket not in _cfe_buckets or not isinstance(_powers, dict):
 				continue
 			_owner = next((_c for _c in _bucket_classes.get(_bucket, ()) if _c in _class_levels), None)
@@ -2305,13 +2434,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# print("character.feats", character.feats)
 		# # Why are character.feats different from feats??????????? -> B/c cached dataset without prereqs allows for feats to buy class specific talents (rage powers / rogue talents / etc.)
 		# print("feats", feats)
-		# print("class_features", class_features)
+		# print("class_features", cf.class_features)
 		# print("character.chooseable", character.chooseable)
 		# print("character.skipped_feats", character.skipped_feats)
-		# for key in class_features["rage_powers"].keys():
-		# 	print("key", key, "prereqs", class_features["rage_powers"][key])
+		# for key in cf.class_features["rage_powers"].keys():
+		# 	print("key", key, "prereqs", cf.class_features["rage_powers"][key])
 
-		# print(sorted(list(class_features["rage_powers"].keys())))
+		# print(sorted(list(cf.class_features["rage_powers"].keys())))
 
 		print(".")
 		print(".")
