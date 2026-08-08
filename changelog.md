@@ -19,6 +19,49 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Seven classes now make the choice they are built around.** Every gap class-choices ticket 02
+  found is built. Each was generating an **empty class-features dict** — the bard, hunter, shifter,
+  psion, vampire hunter, omdura, and the witch's patron.
+  - **bard** — three buckets (versatile performances, martial performances, expanded versatility).
+    The picker already worked; its results were returned in a tuple the call site discarded. Each
+    bucket now has its own schedule instead of the three sharing one budget split by a coin flip,
+    so a bard gains **more total picks than before** — intended, not incidental.
+  - **hunter** — Animal Focus, two frozen picks at 1st (one for herself, one for her companion).
+  - **shifter** — aspects at 1st, 9th, 14th and 20th.
+  - **psion** — the discipline that decides which of its powers are legal.
+  - **vampire hunter** — vampiric foci at 1st, 8th and 16th (the only gap that is not a single pick).
+  - **omdura** — an invocation, the first pick to use ticket 02's roll-once-and-freeze rule.
+  - **witch** — a patron, **and its spells**, level-gated: a patron grants nine spells at witch
+    levels 2–18, which are spell levels 1–9 in order, so the list is truncated at the witch's own
+    level. Closes the *"need to add patron spells to the witch spell list"* TODO that shipped with
+    the file. The patron is the gap that **hid inside a non-empty row** — the witch already had a
+    `hexes` row, so a sweep that only inspected empty rows would have missed it.
+  - **Archetype-gated options now work through the existing prerequisite engine.** 144 of the
+    hunter's aspects are gated on an archetype named in the option's own `prerequisites`, and the
+    engine could already check that — it just never had the archetype. Rolled archetype names are
+    seeded into `character.chooseable`, minus 18 that are also the name of a selectable option
+    (`brawler` is both an archetype and a rage power, and a prereq string cannot say which it
+    meant). This does **not** model archetype feature *swaps*; that ruling is unchanged.
+  - Two pools were harvested from `pf-content` by a new
+    `build_collab_class_options.py`. They needed different extractions: the vampire hunter's 10
+    foci are each their own Item, while the omdura's 9 invocations are **bolded headings inside one
+    item's description** — which is why a name search found nothing and ticket 02 recorded the
+    omdura as having no source at all.
+  - **Data repairs found on the way.** The hunter's pool was missing Snake: one aspect's name cell
+    was empty in the scrape, so the base list read as 11 plus a blank. Filtering blanks — the
+    obvious defensive move — would have shipped 11 aspects forever; the key is repaired and the
+    gate now pins the base list at RAW's twelve. One witch patron's key/value split mid-citation
+    because the scrape broke on a comma *inside* the sourcebook parenthetical.
+  - **A pool must MOVE, not be copied.** Extracting the shifter's aspects while leaving them in
+    `class_data.json` made all 27 silently unpickable and raised nothing:
+    `chooseable_list_class_features` seeds every feature key into `chooseable`, and
+    `no_prereq_loop` skips any option already there. The gate now fails on it, and immediately
+    found four pre-existing single-option cases, baselined as plausibly benign.
+  - Six of the seven leave all 7 goldens byte-identical. Only `manifester.json` moves, because it
+    carries a psion. The bard would have moved all seven — its picker draws from the RNG stream
+    before checking whether the character is a bard — so that draw is kept deliberately.
+
+### Added
 - **Class choices are gated on every push, in two layers that deliberately share no code.**
   Class-choices ticket 05. Every class-specific pick — rogue talents, rage powers, aegis
   customizations, bloodlines, orders and the other 51 buckets — now has something that fails when

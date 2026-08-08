@@ -868,7 +868,7 @@ outsider spirits** · **buffs/conditionals** for occult picks, mirroring §4/§7
 check of all six.
 
 ## 11. Class choices — ⚙️ BACKEND BUILT (2026-08-07), rendering outstanding
-**Status: the backend half is built and gated; the renderer half is not.** Every rollable class
+**Status: the backend half is built, gated, and the seven known gaps are closed; the renderer half is not.** Every rollable class
 either makes its class-specific choices — rogue talents, rage powers, aegis customizations,
 bloodlines, orders and 47 other buckets — the right number of them at the right class levels, or
 carries a written verdict saying why it makes none. Charted in `tickets: feature/class-choices`;
@@ -894,17 +894,36 @@ school, the five Path of War classes, the psionic power-pickers — their notes 
 symbol), `other-effort` (the summoner's eidolon, §8's), `aliased` (the unchained variants, which
 pick through their base class's row), and `gap`.
 
-**Known gaps — not yet built.** Each is its own build slice:
+**The seven gaps are BUILT (2026-08-07).** Every class ticket 02 found generating an empty
+class-features dict now makes its choice:
 
-| Class | Missing |
-| --- | --- |
-| bard | versatile performances are rolled and the result discarded |
-| hunter | Animal Focus — the pool exists in `class_data/hunter.json` with no reader |
-| shifter | shifter aspects — the pool exists inside `class_data.json`'s `shifter` entry |
-| psion | discipline — 1 of 7 at 1st level, and it gates which powers are legal |
-| vampire hunter | vampiric focus |
-| omdura | invocation |
-| witch | patron — `witch_patrons.json` has no reader. **Hides inside a class whose row is not empty**, which is why the sweep covered filled rows too. |
+| Class | Bucket(s) | Schedule |
+| --- | --- | --- |
+| bard | `versatile_performances`, `martial_performance`, `expanded_versatility` | 2nd, then every 4 — each bucket on its own row |
+| hunter | `animal_focus` | two at 1st (herself + companion), frozen |
+| shifter | `shifter_aspects` | 1st, 9th, 14th, 20th |
+| psion | `psion_discipline` | 1st |
+| vampire hunter | `vampiric_foci` | 1st, 8th, 16th |
+| omdura | `invocation` | 1st, frozen |
+| witch | `patron` | 1st — **and its spells join her list**, level-gated |
+
+The witch's patron is the one worth remembering: it **hid inside a non-empty row**. The witch
+already had a `hexes` row, so a sweep that only inspected empty rows would have missed it — which
+is why ticket 02 swept classes that already had buckets.
+
+**Archetype prerequisites are honoured; archetype SWAPS still are not.** 144 of the hunter's
+aspects and 3 of the shifter's are gated on an archetype named in the option's own `prerequisites`,
+and `no_prereq_loop` could already check that — it just never had the archetype. Rolled archetype
+names are seeded into `character.chooseable` by `chooseable_list_archetypes`, minus 18 that are
+also the name of a selectable option (`brawler` is both an archetype and a rage power, and a prereq
+string cannot say which it meant). An archetype that trades a bucket *away* still leaves it in
+place; that non-guarantee is unchanged.
+
+**Three schedules are `unverified` and owed a Sieg's Guide check:** the shifter's (its own text
+implies five aspects by 20th where the levels it names yield four), and the bard's
+`martial_performance` and `expanded_versatility`. `martial_performance` is **undocumented house
+content** — it maps Perform categories to weapon groups, which is not RAW and is written down
+nowhere. It was kept and made visible rather than deleted.
 
 **Per-use choices are rolled once and frozen.** A feature re-chosen at every use or every day has
 no home in a static snapshot. The medium's daily seance (§10) was the one-off precedent; it is now
