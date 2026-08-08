@@ -139,11 +139,11 @@ lore = ["Goblin Lore",
 "Kuo-Toa Lore"
 ]
 
-formulas = {
-    'favored_terrains': 'ceil((character.c_class_level - 2) / 5)',
-    'favored_enemies': '1 + floor(character.c_class_level / 5)',
-    'manuevers': 'floor((character.c_class_level + 1)/4)'
-}
+# `formulas` lived here: three eval'd strings that were the FOURTH pick-count convention, read by
+# feats.simple_list_chooser. Ticket 02 moved ranger favored_terrains/favored_enemies and brawler
+# manuevers into Backend/json/class_choice_schedule.json, which is now the only place a pick count
+# is written down. Deleted rather than deprecated: a second schedule nobody reads is the failure
+# CLAUDE.md's stale-`critical` story is about.
 
 armor_type_mapping = {
     ('monk', 'unchained_monk'): None,

@@ -110,8 +110,14 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 character.data_dict['class features'] = {dict_name: {choice: description}}
             else:
                 character.data_dict['class features'].setdefault(dict_name, {})[choice] = description
-            # Single-pick class features (bloodline, order, mystery, curse) are gained at 1st level.
-            _record_choice_level(character, dict_name, choice, 1)
+            # Single-pick class features (bloodline, order, mystery, curse) are gained at 1st
+            # level -- and that 1 used to be hardcoded right here, which made every single-pick
+            # bucket invisible to the schedule table and therefore to ticket 05's gate. The rows
+            # now exist (`levels: [1]`) and this reads them, so "a call site with no row" is a
+            # detectable state rather than a silently correct one. The fallback keeps a missing
+            # row from changing a stamp; catching it is validate_class_choices.py's job.
+            single = levels_for(character, class_1, dict_name, class_level)
+            _record_choice_level(character, dict_name, choice, single[0] if single else 1)
             record_bucket_owner(character, dict_name, class_entry['name'])
 
             chosen_desc = {choice: description}

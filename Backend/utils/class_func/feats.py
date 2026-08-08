@@ -522,17 +522,35 @@ def bloodline_feat_chooser(character, c_class, bloodline_name, feat_amount):
 
 
 def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf'), **kwargs):
-    if class_entry_for(character, class_1.lower()) is not None:
+    """Ranger favoured terrains/enemies and brawler maneuvers: pick N from a flat data.py list.
+
+    THE FOURTH PICK-COUNT CONVENTION, and the one ticket 01 never saw. The count used to come from
+    `data.formulas` -- eval'd strings like 'ceil((character.c_class_level - 2) / 5)' -- which is why
+    reading the three known chooser call sites did not find it. Ticket 02's sweep found it by
+    generating a character for all 68 classes and asking which buckets landed.
+
+    Migrating it to levels_for() fixed a MULTICLASS BUG for free: `c_class_level` is an alias of the
+    PRIMARY class's level (createACharacter.py:94), so a rogue 16 / ranger 4 sized its favoured
+    enemies off the rogue's 16. The schedule is per-class and reads this class's own entry, which is
+    the property ticket 01 ruling 3 exists to protect.
+
+    These buckets hold a LIST, not the {choice: description} dict every other bucket holds, and they
+    record no level stamp (hence `stamps: false` on their rows). Both are ticket 04's to rule on.
+    """
+    class_entry = class_entry_for(character, class_1.lower())
+    if class_entry is not None:
         chosen = []
         chosen_dict = {}
         for dataset_name in dataset_names:
             dataset_input = getattr(data, dataset_name)
             dataset = character.json_list_grabber(dataset_input, ',', **kwargs)
-            formula_calc = formula_grabber(character, dataset_name, **kwargs)
+            levels = levels_for(character, class_1.lower(), dataset_name, class_entry['level'])
             if isinstance(dataset, dict):
                 dataset = list(dataset.keys())
-            # chosen.append(random.sample(dataset, k=min(formula_calc, max_num)))
-            chosen_dict[dataset_name] = random.sample(dataset, k=min(formula_calc, max_num))
+            # min() against the pool too: random.sample raises when k exceeds the population, and
+            # nothing caps these counts at 20th any more.
+            chosen_dict[dataset_name] = random.sample(
+                dataset, k=min(len(levels), max_num, len(dataset)))
             # Merge like the other choosers (generic_func.py) — a straight assignment clobbers the
             # buckets earlier classes wrote (bloodline/hexes/...) on a multiclass roll.
             if character.data_dict['class features'] in ([], {}):
@@ -541,8 +559,3 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
                 character.data_dict['class features'].update(chosen_dict)
             record_bucket_owner(character, dataset_name, class_1.lower())
         return chosen
-
-def formula_grabber(character, dataset_name):
-    formula = getattr(data, 'formulas').get(dataset_name,1)
-    amount = eval(formula)
-    return amount  
