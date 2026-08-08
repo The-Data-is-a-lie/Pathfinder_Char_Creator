@@ -695,9 +695,20 @@
       }
     },
     "shifter": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "Shifter aspects -- the class's defining feature, and no chooser exists anywhere in class_func/. The POOL ALREADY EXISTS: class_data.json's `shifter` entry carries the ~25 animal aspects (bat, bear, boar, ... wolverine) as prose keys, interleaved with the favoured-class racial keys a chooser would have to skip. Per-use in the same sense as the hunter's focus, so the same ruling applies."
+      "buckets": {
+        "shifter_aspects": {
+          "dataset": "aspects",
+          "bucket": "shifter_aspects",
+          "levels": [
+            1,
+            9,
+            14,
+            20
+          ],
+          "source": "unverified",
+          "note": "ONLY THE LEVELS THE DATA NAMES (Daniel, 2026-08-07). The shifter's own prose gives 1st (first aspect), 9th (chimeric: assume two at once), 14th (greater chimeric: three) and 20th ('gains access to a fifth aspect'). The 9th and 14th entries are about how many she can ASSUME simultaneously, not how many she knows, and when aspects 2-4 are learned is stated nowhere in the repo. KNOWN DISCREPANCY: this yields four by 20th where that 20th-level text implies five. Recorded rather than smoothed over -- a tidier [1,5,10,15,20] was rejected because it invents three levels to satisfy one inferred total. Flagged for Sieg's Guide alongside the ranger and gunslinger rows. Permanent build choice, NOT per-use, so nothing is frozen. Pool extracted from class_data.json's shifter entry; three aspects named their gating archetype in the KEY and now carry it as a real prerequisites field."
+        }
+      }
     },
     "skald": {
       "buckets": {

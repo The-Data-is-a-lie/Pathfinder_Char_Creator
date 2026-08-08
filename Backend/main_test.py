@@ -187,6 +187,7 @@ character_json_config = {
 	'rogue': Load_when_needed('Backend/json/class_data/rogue.json'),
 	'shaman': Load_when_needed('Backend/json/class_data/shaman.json'),
 	'skald': Load_when_needed('Backend/json/class_data/skald.json'),
+	'shifter': Load_when_needed('Backend/json/class_data/shifter.json'),
 	'slayer': Load_when_needed('Backend/json/class_data/slayer.json'),
 	'samurai': Load_when_needed('Backend/json/class_data/samurai.json'),
 	'sorcerer': Load_when_needed('Backend/json/class_data/sorcerer.json'),
@@ -688,6 +689,11 @@ def phase_class_options(character):
 	# Two picks, both at 1st, and both frozen: the aspect is re-chosen per use, but the hunter
 	# applies one to HERSELF and one to her ANIMAL COMPANION, so a snapshot legitimately holds two.
 	get_data_without_prerequisites(character, class_1="hunter", dataset_name="aspects", dict_name = 'animal_focus')
+	# Shifter aspects -- the class's defining feature, and unlike the hunter's these are a PERMANENT
+	# build choice rather than a per-use one, so nothing is frozen here. Also prerequisite-aware:
+	# three of the 27 (dragon, fey, swarm) are archetype-only, and the pool records that as a real
+	# `prerequisites` field so the same engine gates them.
+	get_data_without_prerequisites(character, class_1="shifter", dataset_name="aspects", dict_name = 'shifter_aspects')
 
 	grand_discovery_chooser(character) #fix this later
 

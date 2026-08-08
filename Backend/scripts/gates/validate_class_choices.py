@@ -63,6 +63,22 @@ def _walk_options(node):
 HUNTER_BASE_ASPECTS = {"bat", "bear", "bull", "falcon", "frog", "monkey", "mouse", "owl", "snake",
                        "stag", "tiger", "wolf"}
 
+# Options whose name matches one of their own class's feature keys, which makes them unpickable
+# (see check 5d). All four are ONE option in a large pool, and all four are plausibly benign: the
+# option duplicates a feature the class already has, so skipping it is arguably correct -- every
+# alchemist has `mutagen`, so a discovery of that name is redundant. Recorded rather than fixed,
+# because "fixing" means editing authored game data on a reading nobody has checked.
+#
+# The pathological case this check exists for is different in kind: the shifter's 27 aspects lived
+# in BOTH places, so its entire pool was unpickable and the chooser returned nothing with no error.
+# A whole pool must never be baselined -- move it out of class_data.json instead.
+SHADOWED_BASELINE = {
+    ("alchemist", "mutagen"),
+    ("fighter", "weapon mastery"),
+    ("ninja", "ki pool"),
+    ("slayer", "swift tracker"),
+}
+
 REASONS = {"none-by-design", "other-subsystem", "other-effort", "aliased", "gap"}
 SOURCES = {"raw", "approximation", "unverified", "bug"}
 
@@ -294,6 +310,38 @@ def main():
         check(not blank,
               f"hunter aspects contain {len(blank)} blank key(s) -- a blank name is selectable and "
               f"renders as an empty row")
+
+    # ---- 5d. an option pool may not ALSO be class_data.json feature keys --------------------
+    # chooseable_list_class_features seeds every class_data.json feature key into
+    # character.chooseable, and no_prereq_loop SKIPS any option already there. So an option that is
+    # also a feature key is silently unselectable -- the shifter's 27 aspects lived in both places
+    # and the chooser returned nothing at all, with no error. Extraction has to MOVE a pool, not
+    # copy it, and this is what says so.
+    class_data = json.loads((REPO / "Backend/json/class_data.json").read_text(encoding="utf-8"))
+    shadowed_seen = set()
+    for cls, bucket in sorted(declared):
+        spec = table[cls]["buckets"][bucket]
+        path = CLASS_DATA_DIR / f"{cls}.json"
+        if not path.exists():
+            continue
+        options = json.loads(path.read_text(encoding="utf-8")).get(spec.get("dataset")) or {}
+        if not isinstance(options, dict):
+            continue
+        shadowed = sorted(set(options) & set(class_data.get(cls) or {}))
+        shadowed_seen |= {(cls, name) for name in shadowed}
+        unexpected = [n for n in shadowed if (cls, n) not in SHADOWED_BASELINE]
+        check(not unexpected,
+              f"{cls}.{bucket}: {len(unexpected)} option(s) are ALSO feature keys in class_data.json "
+              f"({unexpected[:5]}) -- chooseable_list_class_features seeds those, and no_prereq_loop "
+              f"skips anything already in chooseable, so they can never be picked. Move the pool out "
+              f"of class_data.json rather than adding it to SHADOWED_BASELINE")
+    # Aggregated across every bucket, not per bucket: the fighter's `weapon mastery` shadows in
+    # weapon_training and not in armor_training, so a per-bucket staleness test calls it stale while
+    # looking at the other bucket.
+    stale = sorted(SHADOWED_BASELINE - shadowed_seen)
+    check(not stale,
+          f"SHADOWED_BASELINE lists {stale}, which no longer shadow anything -- delete the entry so "
+          f"the baseline keeps meaning what it says")
 
     # ---- 6. the behaviour check's skip list matches its stated cause ------------------------
     inv = INVARIANTS.read_text(encoding="utf-8")
