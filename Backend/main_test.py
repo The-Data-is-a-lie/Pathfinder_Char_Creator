@@ -204,9 +204,15 @@ character_json_config = {
 	# Psionics section. The per-class option files (aegis.json, cryptic.json, ...) are GENERATED
 	# from the scrape by Backend/scripts/build_psionic_class_data.py and are registered under the
 	# class's own name, because generic_class_option_chooser reads them as getattr(character,
-	# <class name>). Nine of the twelve have one; the voyager's choice feature grants bonus feats
-	# rather than options, and the psion and wilder choose powers instead.
+	# <class name>). TEN of the twelve have one; the voyager's choice feature grants bonus feats
+	# rather than options, and the wilder chooses powers instead.
+	#
+	# The psion was left out of that count and should not have been (class-choices ticket 02): its
+	# discipline is a real 1st-level pick that gates which powers are legal. A missing registration
+	# here is not a quiet no-op -- the chooser reads getattr(character, 'psion', {}) and calls
+	# random.choice on an empty list, so the omission crashes rather than under-delivering.
 	'aegis': Load_when_needed('Backend/json/class_data/aegis.json'),
+	'psion': Load_when_needed('Backend/json/class_data/psion.json'),
 	'cryptic': Load_when_needed('Backend/json/class_data/cryptic.json'),
 	'dread': Load_when_needed('Backend/json/class_data/dread.json'),
 	'highlord': Load_when_needed('Backend/json/class_data/highlord.json'),
@@ -597,8 +603,15 @@ def phase_class_options(character):
 	# pick 1 or N from a {name: description} list -- so no new chooser module exists. The pick
 	# schedules live in data.amount; the option lists are generated per class by
 	# Backend/scripts/build_psionic_class_data.py. The voyager is absent on purpose (its
-	# Voyager Knowledge feature grants bonus feats, not options) and so are the psion and
-	# wilder, which choose powers rather than a subsystem.
+	# Voyager Knowledge feature grants bonus feats, not options) and so is the wilder, which
+	# chooses powers rather than a subsystem.
+	#
+	# The psion was in that "chooses powers" list too, and should not have been (class-choices
+	# ticket 02). Its discipline is a real 1st-level pick, and not a cosmetic one: the discipline
+	# decides which powers are legal, so a psion that never chose one had 39 powers nothing could
+	# check. The pool is derived from psionic_powers.json's own discipline tags by
+	# build_psionic_class_data.py, so the pick and the powers it gates read one source.
+	generic_class_option_chooser(character, "psion", "disciplines", dict_name = 'psion_discipline')
 	generic_class_option_chooser(character, "vitalist", "methods", dict_name = 'vitalist_method')
 	generic_class_option_chooser(character, "psychic warrior", "warrior paths", dict_name = 'warrior_path')
 	generic_class_option_chooser(character, "marksman", "combat styles", dict_name = 'combat_style')

@@ -525,9 +525,17 @@
       }
     },
     "psion": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "DISCIPLINE. Every psion picks one of seven disciplines at 1st level, and nothing picks it -- psionic_class_options.json has entries for nine psionic classes and no `psion` among them. Not cosmetic: the discipline gates which powers are legal and grants its own abilities, so an unset discipline makes the 39 powers a psion 20 does receive unverifiable. Powers themselves stay section 9's."
+      "buckets": {
+        "psion_discipline": {
+          "dataset": "disciplines",
+          "bucket": "psion_discipline",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick at 1st. NOT cosmetic: the discipline decides which powers are legal, so a psion who never chose one had 39 powers nothing could check -- which is why ticket 02 filed this as a gap the charting table never named. The pool is DERIVED, not harvested: the roster comes from the class prose that names all seven disciplines, the counts from psionic_powers.json own tags, so the pick and the powers it gates read one source. The pf1-psionics compendium carries only a single Discipline feature item and no options behind it."
+        }
+      }
     },
     "psychic": {
       "buckets": {

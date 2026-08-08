@@ -87,9 +87,65 @@ def build_entry(name: str, src: dict) -> OrderedDict:
     return out
 
 
+# The psion's seven disciplines, DERIVED rather than harvested (class-choices ticket 02).
+#
+# The psion was the one psionic class with no entry in psionic_class_options.json, so it reached
+# 20th level with 39 powers and no discipline -- which is not cosmetic, because the discipline is
+# what decides which powers are legal. The scrape never carried the list, and neither does the
+# pf1-psionics compendium: it has a single `Discipline` feature item and no options behind it.
+#
+# But psionic_powers.json tags all 660 powers with their discipline, so the roster is already here.
+# Deriving it from that file rather than authoring it means the discipline a psion picks and the
+# powers that pick is supposed to gate can never disagree -- they are read from one source.
+#
+# Sub-disciplines and descriptors are stripped: the data carries "Metacreativity (Creation)" and
+# "Telepathy [Mind-Affecting]", which are the same seven disciplines with extra tagging.
+# The ROSTER comes from the class's own prose, which names all seven in one sentence; the COUNTS
+# come from the powers. Deriving the roster from the powers' own tags was tried first and produced
+# 22, because that field carries case variants, alternatives ("Psychokinesis or clairsentience"),
+# comma lists, and a stray `telekinesis` -- a set union over dirty tags is not a roster. Taking the
+# roster from the prose and matching the tags against it keeps both halves honest: an unmatched tag
+# is invisible, but a discipline the prose names and no power carries is a hard failure below.
+DISCIPLINE_SENTENCE = re.compile(r"seven disciplines are (.+?)\.", re.I | re.S)
+DISCIPLINE_BLURB = ("{count} powers belong to this discipline. A psion who specializes in it gains "
+                    "its restricted powers and its discipline abilities, and can no longer learn "
+                    "powers restricted to any other discipline.")
+
+
+def psion_disciplines() -> dict:
+    prose = json.loads(CLASS_DATA.read_text(encoding="utf-8"))["psion"]["psionic disciplines"]
+    match = DISCIPLINE_SENTENCE.search(prose)
+    if not match:
+        raise SystemExit("the psion's `psionic disciplines` prose no longer names the seven "
+                         "disciplines -- the roster has no other source in the repo")
+    roster = [part.strip().strip(".").capitalize()
+              for part in re.split(r",|\band\b", match.group(1)) if part.strip()]
+    if len(roster) != 7:
+        raise SystemExit(f"parsed {len(roster)} disciplines from the psion's prose, expected 7: "
+                         f"{roster}")
+
+    powers = load("psionic_powers.json")
+    counts = {name: 0 for name in roster}
+    for power in powers.values():
+        tag = (power.get("discipline") or "").lower()
+        for name in roster:
+            # substring, not equality: a power's tag is "Metacreativity (Creation)" or
+            # "Psychometabolism or telepathy", and both genuinely belong to the discipline named.
+            if name.lower() in tag:
+                counts[name] += 1
+    empty = sorted(n for n, c in counts.items() if not c)
+    if empty:
+        raise SystemExit(f"disciplines with no powers: {empty} -- the prose and "
+                         f"psionic_powers.json disagree, and a psion could specialize into nothing")
+    return {name: DISCIPLINE_BLURB.format(count=counts[name]) for name in sorted(roster)}
+
+
 def main() -> int:
     classes = load("psionic_classes.json")
     options = load("psionic_class_options.json")
+    # Merged in rather than written back into psionic_class_options.json: that file is the scrape's
+    # own shape and the psion's list is not scraped, it is derived from the powers beside it.
+    options["psion"] = {"disciplines": psion_disciplines()}
 
     target = json.loads(CLASS_DATA.read_text(encoding="utf-8"),
                         object_pairs_hook=OrderedDict)
