@@ -477,9 +477,17 @@
       }
     },
     "omdura": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "Invocation -- 'she must select one type of invocation from those listed below'. Per-use (re-selected each time the power is called), so the freeze ruling applies. Every other omdura feature is automatic."
+      "buckets": {
+        "invocation": {
+          "dataset": "invocations",
+          "bucket": "invocation",
+          "levels": [
+            1
+          ],
+          "source": "approximation",
+          "note": "Single pick at 1st, FROZEN. RAW the omdura re-selects an invocation type every time she calls the power and may swap it as a swift action; the generator emits a static snapshot, so one is rolled and kept. Same house ruling as the medium daily seance, which ticket 02 promoted from a one-off to the general rule for per-use choices. `approximation` rather than `raw` because the freeze is the approximation, not the level. Pool parsed from bolded headings inside the pack's `Invocation` item's own description -- the nine types are not items, which is why ticket 02 filed this as having no source."
+        }
+      }
     },
     "oracle": {
       "buckets": {

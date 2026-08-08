@@ -241,6 +241,7 @@ character_json_config = {
 	# Paizo collab classes. Same convention again: GENERATED files (by
 	# Backend/scripts/build/build_collab_class_options.py), registered under the class's own name.
 	'vampire hunter': Load_when_needed('Backend/json/class_data/vampire hunter.json'),
+	'omdura': Load_when_needed('Backend/json/class_data/omdura.json'),
 }
 
 def strip_labeled_bucket(feat_list, label_list, children):
@@ -658,6 +659,11 @@ def phase_class_options(character):
 	# rules text says "at 8th and 16th level, the vampire hunter learns an additional vampiric
 	# focus", so the schedule is [1, 8, 16].
 	generic_class_option_chooser(character, "vampire hunter", dataset_name="vampiric foci", multiple='yes', dict_name = 'vampiric_foci')
+	# The omdura's invocation is a PER-USE choice -- she re-selects a type every time she calls the
+	# power, and may swap it as a swift action. The generator emits a static snapshot, so one is
+	# rolled and frozen, exactly as the medium's daily seance already is (section 10). Ticket 02
+	# made that the general rule rather than the medium's one-off.
+	generic_class_option_chooser(character, "omdura", "invocations", dict_name = 'invocation')
 
 
 
