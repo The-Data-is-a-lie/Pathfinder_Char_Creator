@@ -893,6 +893,15 @@
           "every": 2,
           "source": "unverified",
           "note": "RAW grants a hex at 1st as well as 2nd; this list starts at 2nd. Authored, so not touched."
+        },
+        "patron": {
+          "dataset": "patrons",
+          "bucket": "patron",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick at 1st. THE GAP THAT HID INSIDE A NON-EMPTY ROW: witch_patrons.json had no reader anywhere, and the witch already had a filled hexes row, so a sweep that only looked at empty rows would have missed it. The pool moved into class_data/witch.json because that is where the chooser reads it from; witch_patrons.json is deleted. Its spells DO reach the spell list, level-gated -- a patron grants nine spells at witch levels 2,4,...,18, which are spell levels 1-9 in order, so truncating by the witch's own level maps straight onto add_bonus_spells' positional convention."
         }
       }
     },

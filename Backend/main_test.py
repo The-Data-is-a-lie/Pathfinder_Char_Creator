@@ -598,8 +598,12 @@ def phase_class_options(character):
 	generic_class_option_chooser(character,"fighter", dataset_name="weapon_train", multiple='yes', dict_name = 'weapon_training')
 	generic_class_option_chooser(character,"arcanist", dataset_name="basic", dataset_name_2="greater", multiple='yes', level=10, dict_name = 'exploits')
 	
-	#need to add patron spells to the witch spell list (like how clerics + druids + s
-	# orcs get their own added)
+	# The patron -- a real 1st-level build choice that nothing made until class-choices ticket 02.
+	# witch_patrons.json sat with no reader at all, and the witch's filled `hexes` row hid the gap,
+	# which is why the sweep had to cover classes that already had buckets. Its spells DO join the
+	# witch's list, level-gated, in phase_class_features_and_bonus_spells below -- closing the
+	# "need to add patron spells to the witch spell list" TODO that lived on this line.
+	generic_class_option_chooser(character,"witch", "patrons", dict_name = 'patron')
 	generic_class_option_chooser(character,"witch", dataset_name="basic", dataset_name_2="greater", dataset_name_3="grand", multiple='yes', level=10, level_2=18, dict_name = 'hexes')
 
 	generic_class_option_chooser(character,"shaman", "spirits", dict_name = 'spirits')
@@ -1339,6 +1343,22 @@ def phase_class_features_and_bonus_spells(character, casting_level_str):
 	if _bloodline_book is not None and character.bloodline != "N/A":
 		bonus_spells = character.data_dict['class features'].get("Talents", {}).get(character.bloodline, {}).get("bonus spells", [])
 		add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
+# Patrons
+	# LEVEL-GATED, unlike the bloodline above. A patron grants its nine spells at witch levels 2,
+	# 4, 6 ... 18, and those are spell levels 1-9 in order -- which is exactly the positional
+	# convention add_bonus_spells already uses (entry i goes to spell_groups[i+1]). So truncating
+	# the list at the witch's own level hands it the right spells at the right levels, and a 3rd-
+	# level witch gets `jump` rather than `shapechange`.
+	_witch_book = _book_for('witch')
+	if _witch_book is not None:
+		_witch_entry = next((c for c in character.classes if c['name'] == 'witch'), None)
+		for _patron in (character.data_dict['class features'].get('patron') or {}).values():
+			if not isinstance(_patron, dict):
+				continue
+			_levels = _patron.get('witch levels') or []
+			_spells = _patron.get('bonus spells') or []
+			_due = [s for lv, s in zip(_levels, _spells) if lv <= (_witch_entry or {}).get('level', 0)]
+			add_bonus_spells(character, _due, _witch_book['spell_list_choose_from'])
 # Domains
 	_cleric_book = _book_for('cleric')
 	if character.chosen_domain not in ([], None) and _cleric_book is not None:
