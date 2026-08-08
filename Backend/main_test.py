@@ -237,6 +237,10 @@ character_json_config = {
 	'mesmerist': Load_when_needed('Backend/json/class_data/mesmerist.json'),
 	'psychic': Load_when_needed('Backend/json/class_data/psychic.json'),
 	'spiritualist': Load_when_needed('Backend/json/class_data/spiritualist.json'),
+
+	# Paizo collab classes. Same convention again: GENERATED files (by
+	# Backend/scripts/build/build_collab_class_options.py), registered under the class's own name.
+	'vampire hunter': Load_when_needed('Backend/json/class_data/vampire hunter.json'),
 }
 
 def strip_labeled_bucket(feat_list, label_list, children):
@@ -645,6 +649,15 @@ def phase_class_options(character):
 	generic_class_option_chooser(character, "psychic", "disciplines", dict_name = 'psychic_discipline')
 	generic_class_option_chooser(character, "psychic", dataset_name="phrenic amplifications", multiple='yes', dict_name = 'phrenic_amplifications')
 	generic_class_option_chooser(character, "spiritualist", "emotional focus", dict_name = 'emotional_focus')
+
+	# Paizo collab classes (class-choices ticket 02). Both were generating NOTHING: their defining
+	# choice existed only as prose in class_data.json naming options the repo did not have. The
+	# pools are harvested by Backend/scripts/build/build_collab_class_options.py.
+	#
+	# The vampire hunter is the only one of the seven gaps that is NOT a single pick -- its own
+	# rules text says "at 8th and 16th level, the vampire hunter learns an additional vampiric
+	# focus", so the schedule is [1, 8, 16].
+	generic_class_option_chooser(character, "vampire hunter", dataset_name="vampiric foci", multiple='yes', dict_name = 'vampiric_foci')
 
 
 

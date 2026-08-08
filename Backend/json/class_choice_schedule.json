@@ -770,9 +770,19 @@
       }
     },
     "vampire hunter": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "Vampiric focus -- 'at 1st level, the vampire hunter must select one common vampiric power to mimic', a genuine single pick with no chooser. Technique feats are bonus feats and belong to the feat pipeline."
+      "buckets": {
+        "vampiric_foci": {
+          "dataset": "vampiric foci",
+          "bucket": "vampiric_foci",
+          "levels": [
+            1,
+            8,
+            16
+          ],
+          "source": "raw",
+          "note": "The class's own rules text states it: 'At 1st level, the vampire hunter must select one common vampiric power to mimic... At 8th and 16th level, the vampire hunter learns an additional vampiric focus.' The only one of ticket 02's seven gaps that is not a single pick -- the sweep's write-up called it one, and the pack text corrected that. Pool harvested by build_collab_class_options.py; 10 foci, gated on system.associations.classes."
+        }
+      }
     },
     "vigilante": {
       "buckets": {
