@@ -135,6 +135,108 @@ def check(condition, message):
     return REPORT.check(condition, message)
 
 
+# ---------------------------------------------------------------- class choices (ticket 05)
+# Buckets this check cannot attribute, and why. Each is a KNOWN defect owned by class-choices
+# ticket 04, not an excuse: asserting on them would fail on characters that are behaving exactly
+# as the (wrong) code intends, which trains people to ignore the gate.
+CHOICE_SKIP = {
+    ('oracle', 'mysteries'):
+        "the mystery and the revelations share one bucket -- both call sites pass "
+        "dict_name='mysteries' -- so neither count can be read alone (ticket 02 -> 04)",
+    ('sorcerer', 'Talents'): "default bucket name; see below",
+    ('bloodrager', 'Talents'): "default bucket name; see below",
+    ('cavalier', 'Talents'): "default bucket name; see below",
+    ('samurai', 'Talents'): "default bucket name; see below",
+    ('warpriest', 'Talents'): "default bucket name; see below",
+    ('inquisitor', 'Talents'): "default bucket name; see below",
+}
+# The 'Talents' entries above share one cause: six call sites omit dict_name=, so bloodlines,
+# orders, blessings and inquisitions all land in generic_class_option_chooser's DEFAULT bucket.
+# On a single-class sweep character the count would in fact be readable -- but the moment two of
+# those classes are rolled together the bucket merges and the count is meaningless, so this check
+# refuses to assert on a bucket whose name is known not to identify its contents. Deleting these
+# entries is part of ticket 04's fix, and the gate below fails if the list stops matching the table.
+CHOICE_COVERAGE = {'chars': 0, 'buckets': 0, 'picks': 0, 'stamps': 0, 'skipped': 0, 'capped': 0}
+
+
+def check_class_choices(cell, payload):
+    """Every rolled class holds exactly the picks its schedule promises, in every bucket.
+
+    THE GENERALISATION of the psionics-only check further down (class-choices ticket 05). That one
+    covered 12 classes through SUBSYSTEM_BUCKET; this covers all 68 through the schedule table, and
+    it rides the sweep the file already runs, so it costs no extra generations -- the coverage
+    question ticket 05 raised turned out to be answerable for free.
+
+    The expectation is ticket 03's ruling: min(scheduled, |pool|, max_num). All three terms matter
+    and each is load-bearing on a real row -- the tactician runs out of strategies at 40th, the
+    brawler is held to 8 by its call site's max_num, and everyone else is bounded by the schedule.
+    An unresolvable pool means NO cap rather than a free pass, so a real shortfall still fails.
+    """
+    classes = payload['classes']
+    features = payload.get('class_features') or {}
+    stamps = payload.get('class_feature_levels') or {}
+    CHOICE_COVERAGE['chars'] += 1
+
+    # A bucket two rolled classes both declare cannot be attributed to either (barbarian + skald
+    # share rage_powers by design). Skip it rather than guess -- and count the skip, so a sweep
+    # that quietly stopped asserting anything is visible in the summary.
+    declared = {}
+    for entry in classes:
+        for bucket in (schedule_row_names(entry['name'])):
+            declared.setdefault(bucket, []).append(entry)
+
+    for entry in classes:
+        name = entry['name']
+        for bucket in schedule_row_names(name):
+            if len(declared.get(bucket, [])) > 1:
+                CHOICE_COVERAGE['skipped'] += 1
+                continue
+            if (name, bucket) in CHOICE_SKIP:
+                CHOICE_COVERAGE['skipped'] += 1
+                continue
+            levels = schedule_levels(SCHEDULE, name, bucket, entry['level'])
+            if levels is None:
+                continue
+            row = schedule_row(SCHEDULE, name, bucket) or {}
+            want = len(levels)
+            pool = _subsystem_pool_size(name, bucket)
+            if pool is not None and pool < want:
+                want, capped = pool, True
+            else:
+                capped = False
+            if row.get('max_num') is not None and row['max_num'] < want:
+                want, capped = row['max_num'], True
+            if capped:
+                CHOICE_COVERAGE['capped'] += 1
+
+            got = len(features.get(bucket) or ())
+            CHOICE_COVERAGE['buckets'] += 1
+            CHOICE_COVERAGE['picks'] += got
+            check(got == want,
+                  f"{cell}: {name} bucket {bucket!r} holds {got} picks, expected {want} at class "
+                  f"level {entry['level']} -- picks that never land appear nowhere on a sheet"
+                  + (f" (capped: pool={pool}, max_num={row.get('max_num')})" if capped else ""))
+
+            # The level stamp comes off the same list as the count (ticket 01 ruling 3), so a wrong
+            # count and a wrong stamp are one bug. Asserting the stamps are a SUBSET of the
+            # scheduled levels catches the investigator's old even-level stamping without assuming
+            # which k a given pick was.
+            if row.get('stamps') is False:
+                continue
+            got_stamps = set((stamps.get(bucket) or {}).values())
+            if not got_stamps:
+                continue
+            CHOICE_COVERAGE['stamps'] += len(got_stamps)
+            stray = sorted(got_stamps - set(levels))
+            check(not stray,
+                  f"{cell}: {name} bucket {bucket!r} stamps picks at class level(s) {stray}, which "
+                  f"the schedule does not grant ({levels}) -- the stamp reaches both sheets")
+
+
+def schedule_row_names(class_name):
+    return list(((SCHEDULE.get(class_name) or {}).get('buckets') or {}))
+
+
 _POOL_CACHE = {}
 
 
@@ -209,6 +311,7 @@ def check_character(cell, payload):
     check(sum(c['level'] for c in classes) == L,
           f"{cell}: class levels {[c['level'] for c in classes]} sum to "
           f"{sum(c['level'] for c in classes)}, not the total level {L}")
+    check_class_choices(cell, payload)
     for c in classes:
         check(1 <= c['level'] <= MAX_CHARACTER_LEVEL,
               f"{cell}: {c['name']} is level {c['level']}, outside 1..{MAX_CHARACTER_LEVEL}")
@@ -658,6 +761,44 @@ def check_bonded_creatures(cell, payload):
     BOND['druid_flip'] += 1
 
 
+def check_choice_caps():
+    """Generate the two classes whose pick counts are CAPPED, at a level where the cap bites.
+
+    Separate from the sweep, and cheap on purpose -- the same shape as `check_level_ceiling` below.
+    The standing sweep tops out at 20th, and no cap fires at or below 20: the schedules are smaller
+    than the pools there, so `check_class_choices` reported `0 capped` across all 1,020 generations.
+    Two of ticket 03's three terms were therefore never exercised, which is how the class-choices
+    map's own note ("nothing yet KEEPS high levels running") would have come true again.
+
+    The two cases, both real and both different:
+      brawler   `max_num=8` at the call site holds it to 8 where the schedule grants 10 at 40th.
+      tactician the POOL runs out -- 12 strategies exist and the schedule grants 13.
+
+    Adding levels 25 and 40 to the whole 68-class matrix would have tripled the sweep's runtime to
+    cover two rows. This costs two generations.
+    """
+    for name in ('brawler', 'tactician'):
+        cell = f"cap {name} L40"
+        try:
+            with redirect_stdout(io.StringIO()):
+                payload = main_test.generate_random_char(
+                    class_choice=name, chosen_BAB='high', multi_class='N',
+                    userInput_race='random', userInput_region='Tal-Falko',
+                    alignment_input='random', userInput_gender='random',
+                    high_level=40, low_level=40, gold_num=10000,
+                    num_dice='4', num_sides='6', use_backstory_api='N',
+                    spheres_flag='N', seed=9090)
+        except Exception:
+            tail = traceback.format_exc().strip().splitlines()
+            REPORT.error(f"{cell}: generation raised -- {tail[-1]}")
+            continue
+        check_character(cell, payload)
+    check(CHOICE_COVERAGE['capped'] > 0,
+          "no class-choice bucket was capped by its pool or max_num anywhere in this run -- the "
+          "min(scheduled, |pool|, max_num) branch is untested, so a regression in it would pass")
+    print(f"  class-choice caps: exercised at 40th (brawler max_num, tactician pool)")
+
+
 def check_level_ceiling():
     """Ask for characters ABOVE the ceiling and confirm they come back at it.
 
@@ -743,6 +884,7 @@ def main():
     # Runs on every invocation, including `--classes fighter`: it is three generations, and it is
     # the only thing that exercises the clamp at all.
     check_level_ceiling()
+    check_choice_caps()
 
     # Existence check only on a sweep big enough that zero picks means the wiring broke, not luck.
     if total >= 100:
@@ -784,6 +926,16 @@ def main():
     print(f"  occult classes: {OCCULT['chars']} rolled, {OCCULT['picks']} picks, "
           f"{OCCULT['multi_pick_buckets']} multi-pick buckets "
           f"({OCCULT['kineticists']} kineticist, {OCCULT['casters']} caster)")
+
+    # Branch coverage for the class-choice check, same rule as BOND and OCCULT: every assertion in
+    # it is conditional on a rolled class declaring a bucket, so a sweep that reached none would
+    # print PASS having asserted nothing about the map's whole subject.
+    check(CHOICE_COVERAGE['buckets'] > 0,
+          "the class-choice check asserted on zero buckets -- it is passing vacuously")
+    print(f"  class choices: {CHOICE_COVERAGE['buckets']} bucket(s) asserted across "
+          f"{CHOICE_COVERAGE['chars']} character(s), {CHOICE_COVERAGE['picks']} picks, "
+          f"{CHOICE_COVERAGE['stamps']} level stamps, {CHOICE_COVERAGE['capped']} capped by "
+          f"pool/max_num, {CHOICE_COVERAGE['skipped']} skipped (see CHOICE_SKIP)")
 
     return REPORT.finish(f'{REPORT.checks} checks')
 

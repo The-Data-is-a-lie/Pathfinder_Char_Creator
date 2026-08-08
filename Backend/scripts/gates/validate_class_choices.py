@@ -1,0 +1,246 @@
+"""Gate the class-choice schedule against the pool, the buckets and the call sites.
+
+    C:\\Python310\\python.exe Backend/scripts/gates/validate_class_choices.py
+
+Class-choices map, ticket 05 -- the CONFIG half. Its sibling is the behaviour half, the
+`check_class_choices` block in `tests/test_house_invariants.py`, which asserts generated characters
+against the same table. The split is the point, and it is not arbitrary:
+
+    tests/  catches the CHOOSER drifting from the schedule -- it generates characters.
+    gates/  catches the CONFIG drifting -- a class with no row, a row with no chooser, a chooser
+            with no row, a verdict with no reason. It generates nothing and runs in milliseconds.
+
+**This file re-reads the JSON from disk and never imports `generic_func.levels_for`.** A gate that
+derived the schedule from the generator's own accessor would compare the data with itself and
+confirm nothing -- the self-comparison trap scripts-ticket 12 named. The behaviour check makes the
+same choice for the same reason, expanding the table a second time in `_harness`.
+
+WHAT NO GATE CAN DO is re-derive the `source` field: whether a hand-authored number matches Sieg's
+Guide is a one-time human judgment. That is why it is a field rather than an assumption, and why
+this gate checks only that every row HAS one from the vocabulary.
+
+The most valuable assertion here is the cheapest: a class that joins the rollable pool without a
+schedule row fails immediately, so onboarding cannot skip the class-choices map.
+"""
+import ast
+import json
+import re
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+sys.path.insert(0, str(HERE))
+from _harness import REPO, Report                                       # noqa: E402
+from validate_class_roster import expected_roster                       # noqa: E402
+from validate_class_roster import _data                                 # noqa: E402
+
+SCHEDULE_PATH = REPO / "Backend/json/class_choice_schedule.json"
+MAIN = REPO / "Backend/main_test.py"
+INVARIANTS = REPO / "Backend/scripts/tests/test_house_invariants.py"
+CLASS_DATA_DIR = REPO / "Backend/json/class_data"
+
+REASONS = {"none-by-design", "other-subsystem", "other-effort", "aliased", "gap"}
+SOURCES = {"raw", "approximation", "unverified", "bug"}
+
+# Ticket 03: every path by which one class can satisfy another's prerequisite runs between classes
+# that interoperate in RAW, measured two ways. These three are the whole set -- a fourth appearing
+# means a re-scrape introduced a cross-class dependency nobody ruled on, which is a finding rather
+# than a pass.
+FOREIGN_CLASS_REFS = {("ninja", "rogue"), ("slayer", "rogue"), ("skald", "barbarian")}
+
+# Buckets the behaviour check cannot attribute, each a known ticket-04 defect. Kept in sync here so
+# that fixing the defect FORCES the skip to be deleted: a skip that outlives its cause is a hole.
+EXPECTED_SKIPS = {
+    ("oracle", "mysteries"),
+    ("sorcerer", "Talents"), ("bloodrager", "Talents"), ("cavalier", "Talents"),
+    ("samurai", "Talents"), ("warpriest", "Talents"), ("inquisitor", "Talents"),
+}
+
+REPORT = Report("validate_class_choices")
+
+
+def check(cond, msg):
+    return REPORT.check(cond, msg)
+
+
+def call_sites(src):
+    """{(class, bucket)} for every class-choice chooser call in main_test.py.
+
+    Parsed with `ast` rather than a regex: the call sites carry six optional keyword arguments in
+    varying order, and the bucket is `dict_name` when present and the chooser's own default when
+    not -- a default that differs per chooser. A regex that got that wrong would produce a gate
+    which passes by failing to see things.
+    """
+    found = set()
+    for node in ast.walk(ast.parse(src)):
+        if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Name):
+            continue
+        fn = node.func.id
+        kw = {k.arg: k.value for k in node.keywords if k.arg}
+
+        def const(x):
+            return x.value if isinstance(x, ast.Constant) and isinstance(x.value, str) else None
+
+        pos = [const(a) for a in node.args[1:]]      # drop `character`
+        if fn in ("generic_class_option_chooser", "get_data_without_prerequisites"):
+            cls = pos[0] if pos else const(kw.get("class_1"))
+            if not cls:
+                continue
+            # dict_name defaults to "Talents" on the option chooser; the prereq chooser always
+            # passes one explicitly, and a missing one there is itself worth failing on.
+            bucket = const(kw.get("dict_name"))
+            if bucket is None:
+                bucket = "Talents" if fn == "generic_class_option_chooser" else None
+            if bucket:
+                found.add((cls, bucket))
+        elif fn == "generic_multi_chooser":
+            cls = pos[0] if pos else const(kw.get("class_1"))
+            dataset = pos[1] if len(pos) > 1 else const(kw.get("dataset_name"))
+            if cls and dataset:
+                found.add((cls, dataset))          # this chooser buckets by dataset name
+        elif fn == "simple_list_chooser":
+            cls = pos[0] if pos else None
+            for dataset in pos[1:]:
+                if cls and dataset:
+                    found.add((cls.lower(), dataset))
+    # choose_gun_func is not a generic chooser -- it is the fifth convention, with its class and
+    # bucket both hardcoded inside gunslinger.py. Named here so the table's row is not orphaned.
+    if "choose_gun_func(" in src:
+        found.add(("gunslinger", "gun training"))
+    return found
+
+
+def main():
+    doc = json.loads(SCHEDULE_PATH.read_text(encoding="utf-8"))
+    table = doc.get("classes") or {}
+    pool, _groups = expected_roster()
+
+    # ---- 1. the roster and the table are the same set -------------------------------------
+    missing = sorted(pool - set(table))
+    extra = sorted(set(table) - pool)
+    check(not missing,
+          f"rollable classes with NO schedule row: {missing} -- a class joined the pool without "
+          f"passing through the class-choices map, so nobody decided what it picks")
+    check(not extra,
+          f"schedule rows for classes that are not rollable: {extra} -- either the holdback lists "
+          f"moved or the row is dead")
+
+    # ---- 2. every row is well formed -------------------------------------------------------
+    for name in sorted(set(table) & pool):
+        row = table[name]
+        buckets = row.get("buckets") or {}
+        if not buckets:
+            reason = row.get("reason")
+            check(reason in REASONS,
+                  f"{name}: empty row carries reason {reason!r}, not one of {sorted(REASONS)}")
+            check(bool((row.get("note") or "").strip()),
+                  f"{name}: empty row has reason {reason!r} but no note -- the verdict is the "
+                  f"reason PLUS why, or the next sweep re-derives it")
+            check("reason" not in row or row.get("buckets") is not None,
+                  f"{name}: row has neither buckets nor a buckets key")
+            continue
+        check("reason" not in row,
+              f"{name}: row has buckets AND a reason {row.get('reason')!r} -- the buckets are the "
+              f"verdict, so the reason is stale")
+        for bucket, spec in buckets.items():
+            tag = f"{name}.{bucket}"
+            compact = "start" in spec and "every" in spec
+            explicit = "levels" in spec
+            check(compact ^ explicit,
+                  f"{tag}: declares {'both' if compact and explicit else 'neither'} a compact "
+                  f"{{start, every}} rule nor an explicit {{levels}} list -- exactly one")
+            check(spec.get("source") in SOURCES,
+                  f"{tag}: source {spec.get('source')!r} not one of {sorted(SOURCES)}")
+            if explicit:
+                lv = spec["levels"]
+                check(isinstance(lv, list) and lv and all(isinstance(x, int) for x in lv),
+                      f"{tag}: levels must be a non-empty list of ints, got {lv!r}")
+                check(lv == sorted(lv),
+                      f"{tag}: levels {lv} are not ascending -- the k-th pick's stamp is "
+                      f"levels[k-1], so an unsorted list mis-dates every pick")
+                check(not (spec.get("repeat") and spec.get("then_every")),
+                      f"{tag}: declares both `repeat` and `then_every`; they are alternatives")
+            else:
+                check(spec.get("every", 0) > 0, f"{tag}: `every` must be positive")
+                check(spec.get("start", 0) > 0, f"{tag}: `start` must be positive")
+            check(spec.get("bucket", bucket) == bucket,
+                  f"{tag}: row's `bucket` field says {spec.get('bucket')!r} but it is keyed "
+                  f"{bucket!r}")
+
+    # ---- 3. call sites and rows agree, both ways -------------------------------------------
+    sites = call_sites(MAIN.read_text(encoding="utf-8"))
+    declared = {(n, b) for n, r in table.items() for b in (r.get("buckets") or {})}
+
+    for cls, bucket in sorted(sites):
+        # An unchained variant picks through its base row on purpose (ticket 02, `aliased`), and
+        # the call sites name the base class, so a site is satisfied by the base class's row.
+        if (cls, bucket) in declared:
+            continue
+        check(False,
+              f"chooser call site {cls!r} -> bucket {bucket!r} has NO schedule row. Its count and "
+              f"level stamp are therefore whatever the chooser falls back to, which is the state "
+              f"ticket 01 existed to remove")
+
+    for cls, bucket in sorted(declared):
+        check((cls, bucket) in sites,
+              f"schedule row {cls}.{bucket} has no chooser call site in main_test.py -- either the "
+              f"call was deleted and the row is dead, or the bucket was renamed and the picks are "
+              f"now landing somewhere the table does not describe")
+
+    # ---- 4. the datasets a row names actually exist ----------------------------------------
+    for cls, bucket in sorted(declared):
+        spec = table[cls]["buckets"][bucket]
+        dataset = spec.get("dataset")
+        if not dataset:
+            continue
+        # A pool lives in ONE of two places, and which one depends on the chooser: the generic
+        # choosers read class_data/<class>.json, while simple_list_chooser does
+        # getattr(data, dataset_name) against data.py. Resolving in either is enough -- an earlier
+        # version of this check knew only about the first and failed the ranger's two rows, which
+        # is the gate correctly refusing to pass something it did not understand.
+        if hasattr(_data, dataset):
+            continue
+        path = CLASS_DATA_DIR / f"{cls}.json"
+        if not path.exists():
+            continue                    # the gunslinger's firearms pool is built, not authored
+        keys = json.loads(path.read_text(encoding="utf-8"))
+        check(dataset in keys,
+              f"{cls}.{bucket}: dataset {dataset!r} is neither an attribute of data.py nor a key "
+              f"of class_data/{cls}.json (has {sorted(keys)[:6]}...) -- the chooser would draw "
+              f"from an empty pool")
+
+    # ---- 5. ticket 03's measured bounds stay measured --------------------------------------
+    foreign = set()
+    level_ref = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in pool), key=len,
+                                                    reverse=True)) + r")\b\s*\d+", re.I)
+    for path in sorted(CLASS_DATA_DIR.glob("*.json")):
+        if path.stem not in pool:
+            continue
+        try:
+            blob = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for other in {m.group(1).lower() for m in level_ref.finditer(blob)}:
+            if other != path.stem.lower() and other in pool:
+                foreign.add((path.stem.lower(), other))
+    check(foreign <= FOREIGN_CLASS_REFS,
+          f"a pool's prerequisites now name a class outside the measured interop set: "
+          f"{sorted(foreign - FOREIGN_CLASS_REFS)}. Ticket 03 ruled `chooseable` may stay shared "
+          f"BECAUSE every cross-class path runs between classes that interoperate in RAW; a new "
+          f"pair means that ruling needs re-taking, not that this line needs relaxing")
+
+    # ---- 6. the behaviour check's skip list matches its stated cause ------------------------
+    inv = INVARIANTS.read_text(encoding="utf-8")
+    for cls, bucket in sorted(EXPECTED_SKIPS):
+        check(f"('{cls}', '{bucket}')" in inv,
+              f"CHOICE_SKIP in test_house_invariants.py no longer skips {cls}.{bucket} -- if the "
+              f"ticket-04 defect behind it is fixed, delete it from EXPECTED_SKIPS here too")
+
+    print(f"  {len(pool)} rollable classes, {len(declared)} bucket rows, {len(sites)} call sites, "
+          f"{sum(1 for r in table.values() if not r.get('buckets'))} verdicts")
+    return REPORT.finish(f"{REPORT.checks} checks")
+
+
+if __name__ == "__main__":
+    sys.exit(main())
