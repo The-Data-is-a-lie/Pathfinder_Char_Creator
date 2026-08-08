@@ -138,9 +138,32 @@
       "note": "Picks rage_powers through the `barbarian` row. The call site passes the base name and class_entry_for strips ' (unchained)', so the unchained entry resolves to the base class's schedule. VERIFIED by generation, not by reading: an unchained barbarian 20 receives 10 rage powers, the same as a chained one."
     },
     "bard": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "VERSATILE PERFORMANCES ARE ROLLED AND THROWN AWAY. versatile_perfomance(character) runs in phase_class_options, fills character.performance_chosen_list and returns it to nobody -- the return value is discarded and no other module reads the attribute, so the picks never reach `class features` and nothing renders. Confirmed by generation: a bard 20 ships an empty class-features dict. The cheapest of the gaps -- the picker exists and looks correct; only the wiring is absent."
+      "buckets": {
+        "versatile_performances": {
+          "dataset": "versatile_perfomances",
+          "bucket": "versatile_performances",
+          "start": 2,
+          "every": 4,
+          "source": "raw",
+          "note": "2nd, then every 4 levels -- the schedule the old picker already carried as choose_list. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        },
+        "martial_performance": {
+          "dataset": "martial_performance",
+          "bucket": "martial_performance",
+          "start": 2,
+          "every": 4,
+          "source": "unverified",
+          "note": "UNDOCUMENTED HOUSE CONTENT. Maps Perform categories to WEAPON GROUPS (act -> close, double), which is not RAW and appears nowhere in docs/ or the OKF bundle -- it exists only in bard_choices.json and the picker whose output was thrown away. Kept and made visible rather than deleted; schedule assumed to match versatile performance. Flagged for Sieg s Guide. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        },
+        "expanded_versatility": {
+          "dataset": "expanded_versatility",
+          "bucket": "expanded_versatility",
+          "start": 2,
+          "every": 4,
+          "source": "unverified",
+          "note": "Adds a skill to an existing versatile performance. Schedule assumed to match versatile performance; the old picker gated it on the same list. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        }
+      }
     },
     "bloodrager": {
       "buckets": {

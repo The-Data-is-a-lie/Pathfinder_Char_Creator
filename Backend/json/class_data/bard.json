@@ -1,0 +1,112 @@
+{
+ "versatile_perfomances": {
+  "act": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: bluff, disguise."
+  },
+  "comedy": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: bluff, intimidate."
+  },
+  "dance": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: acrobatics, fly."
+  },
+  "keyboard instruments": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: diplomacy, intimidate."
+  },
+  "oratory": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: diplomacy, sense motive."
+  },
+  "percussion": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: handle animal, intimidate."
+  },
+  "sing": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: bluff, sense motive."
+  },
+  "string": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: bluff, diplomacy."
+  },
+  "wind": {
+   "prerequisites": "",
+   "description": "Substitutes this Perform check for: diplomacy, handle animal."
+  }
+ },
+ "martial_performance": {
+  "act": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): close, double."
+  },
+  "comedy": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): flails, thrown."
+  },
+  "dance": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): monk, spears."
+  },
+  "keyboard instruments": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): hammers, siege engines."
+  },
+  "oratory": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): heavy blades, light blades."
+  },
+  "percussion": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): close, hammers."
+  },
+  "sing": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): close, natural."
+  },
+  "string": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): axes, bows."
+  },
+  "wind": {
+   "prerequisites": "",
+   "description": "Treats this Perform as training with the weapon group(s): monk, thrown."
+  }
+ },
+ "expanded_versatility": {
+  "bluff": {
+   "prerequisites": "",
+   "description": "Adds Bluff to an existing versatile performance."
+  },
+  "diplomacy": {
+   "prerequisites": "",
+   "description": "Adds Diplomacy to an existing versatile performance."
+  },
+  "disguise": {
+   "prerequisites": "",
+   "description": "Adds Disguise to an existing versatile performance."
+  },
+  "escape artist": {
+   "prerequisites": "",
+   "description": "Adds Escape Artist to an existing versatile performance."
+  },
+  "handle animal": {
+   "prerequisites": "",
+   "description": "Adds Handle Animal to an existing versatile performance."
+  },
+  "intimidate": {
+   "prerequisites": "",
+   "description": "Adds Intimidate to an existing versatile performance."
+  },
+  "sense motive": {
+   "prerequisites": "",
+   "description": "Adds Sense Motive to an existing versatile performance."
+  },
+  "use magic device": {
+   "prerequisites": "",
+   "description": "Adds Use Magic Device to an existing versatile performance."
+  }
+ }
+}

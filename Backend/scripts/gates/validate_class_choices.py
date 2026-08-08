@@ -143,9 +143,27 @@ def call_sites(src):
             for dataset in pos[1:]:
                 if cls and dataset:
                     found.add((cls.lower(), dataset))
+    return found
+
+
+def all_call_sites():
+    """Chooser calls across every module that makes them, not just main_test.py.
+
+    Most live in phase_class_options, but not all: the bard's three are inside
+    versatile_performance.py, because that module already owned the bard's picking and the
+    stream-guard draw has to stay where it was. A gate that only read main_test.py would call those
+    rows dead -- which it did, on the first run after the bard was wired up.
+    """
+    found = set()
+    sources = [MAIN] + sorted((REPO / "Backend/utils/class_func").glob("*.py"))
+    for path in sources:
+        try:
+            found |= call_sites(path.read_text(encoding="utf-8"))
+        except (OSError, SyntaxError):
+            continue
     # choose_gun_func is not a generic chooser -- it is the fifth convention, with its class and
     # bucket both hardcoded inside gunslinger.py. Named here so the table's row is not orphaned.
-    if "choose_gun_func(" in src:
+    if "choose_gun_func(" in MAIN.read_text(encoding="utf-8"):
         found.add(("gunslinger", "gun training"))
     return found
 
@@ -208,7 +226,7 @@ def main():
                   f"{bucket!r}")
 
     # ---- 3. call sites and rows agree, both ways -------------------------------------------
-    sites = call_sites(MAIN.read_text(encoding="utf-8"))
+    sites = all_call_sites()
     declared = {(n, b) for n, r in table.items() for b in (r.get("buckets") or {})}
 
     for cls, bucket in sorted(sites):
@@ -223,7 +241,7 @@ def main():
 
     for cls, bucket in sorted(declared):
         check((cls, bucket) in sites,
-              f"schedule row {cls}.{bucket} has no chooser call site in main_test.py -- either the "
+              f"schedule row {cls}.{bucket} has no chooser call site in main_test.py or class_func/ -- either the "
               f"call was deleted and the row is dead, or the bucket was renamed and the picks are "
               f"now landing somewhere the table does not describe")
 
