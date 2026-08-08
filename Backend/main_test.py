@@ -175,6 +175,7 @@ character_json_config = {
 	'bloodrager': Load_when_needed('Backend/json/class_data/bloodrager.json'),
 	'cavalier': Load_when_needed('Backend/json/class_data/cavalier.json'),
 	'fighter': Load_when_needed('Backend/json/class_data/fighter.json'),
+	'hunter': Load_when_needed('Backend/json/class_data/hunter.json'),
 	'inquisitor': Load_when_needed('Backend/json/class_data/inquisitor.json'),
 	'investigator': Load_when_needed('Backend/json/class_data/investigator.json'),
 	'magus': Load_when_needed('Backend/json/class_data/magus.json'),
@@ -678,6 +679,15 @@ def phase_class_options(character):
 	get_data_without_prerequisites(character, class_1="barbarian",dataset_name="basic", dict_name = 'rage_powers')
 	get_data_without_prerequisites(character, class_1="skald",dataset_name="basic", dict_name = 'rage_powers')
 	get_data_without_prerequisites(character, class_1="magus",dataset_name="basic", dict_name = 'arcana')
+	# Animal Focus. PREREQUISITE-AWARE on purpose, which is why it sits with the talent choosers
+	# rather than the single-pick ones above: 143 of the hunter's 155 aspects are gated on an
+	# archetype, named in the option's own `prerequisites`, and chooseable_list_archetypes seeds
+	# the rolled archetypes so no_prereq_loop can honour that. A plain hunter therefore draws from
+	# the 12 base aspects and a Verminous Hunter also reaches its own.
+	#
+	# Two picks, both at 1st, and both frozen: the aspect is re-chosen per use, but the hunter
+	# applies one to HERSELF and one to her ANIMAL COMPANION, so a snapshot legitimately holds two.
+	get_data_without_prerequisites(character, class_1="hunter", dataset_name="aspects", dict_name = 'animal_focus')
 
 	grand_discovery_chooser(character) #fix this later
 

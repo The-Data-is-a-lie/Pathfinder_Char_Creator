@@ -274,9 +274,18 @@
       }
     },
     "hunter": {
-      "buckets": {},
-      "reason": "gap",
-      "note": "Animal Focus. class_data/hunter.json's only key, `aspects`, has no reader anywhere in Backend/. Per-use choice: resolved by the ruling below -- roll one and freeze it, the way the medium's seance already is. Teamwork feats ARE chosen, via the shared feat chooser, and the animal companion is section 8's."
+      "buckets": {
+        "animal_focus": {
+          "dataset": "aspects",
+          "bucket": "animal_focus",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "approximation",
+          "note": "Two picks at 1st, both FROZEN. The aspect is re-chosen per use, but the class text gives two simultaneous applications -- one to the hunter herself, one to her animal companion -- so a static snapshot legitimately holds two rather than one. Per-use freeze ruling, ticket 02; source is approximation because the freeze is the approximation, not the count. PREREQUISITE-AWARE: 143 of the 155 aspects are gated on an archetype named in their own prerequisites, so this draws through no_prereq_loop and chooseable_list_archetypes rather than a filter -- a plain hunter gets the 12 base aspects, a Verminous Hunter also reaches its own. The 12 were 11 until ticket 02 repaired a scraped key whose name cell was empty; validate_class_choices.py now pins the base list so a re-scrape cannot lose one silently."
+        }
+      }
     },
     "inquisitor": {
       "buckets": {

@@ -58,6 +58,11 @@ def _walk_options(node):
                 yield from _walk_options(value)
 
 
+# RAW's base Animal Focus list -- the aspects a hunter with no archetype may take. Everything else
+# in the pool is archetype-gated and reached through the prerequisite engine.
+HUNTER_BASE_ASPECTS = {"bat", "bear", "bull", "falcon", "frog", "monkey", "mouse", "owl", "snake",
+                       "stag", "tiger", "wolf"}
+
 REASONS = {"none-by-design", "other-subsystem", "other-effort", "aliased", "gap"}
 SOURCES = {"raw", "approximation", "unverified", "bug"}
 
@@ -271,6 +276,24 @@ def main():
           f"{sorted(set(ARCHETYPE_PREREQ_COLLISIONS) - collisions)}. A name in both sets cannot be "
           f"told apart from the option in a prereq string, so seeding it would unlock options the "
           f"character has not earned")
+
+    # ---- 5c. the hunter's base Animal Focus list is exactly RAW's twelve --------------------
+    # Pinned because this pool arrived DAMAGED: one aspect's name cell was empty in the scrape, so
+    # the prereq-free list read as 11 with a blank twelfth. Filtering blanks would have silently
+    # dropped Snake; ticket 02 repaired the key instead. A re-scrape that loses a name again would
+    # otherwise reintroduce exactly that, and the symptom is a blank pick on a sheet.
+    hunter = CLASS_DATA_DIR / "hunter.json"
+    if hunter.exists():
+        aspects = json.loads(hunter.read_text(encoding="utf-8")).get("aspects") or {}
+        base = {n for n, opt in aspects.items() if not (opt.get("prerequisites") or "").strip()}
+        check(base == HUNTER_BASE_ASPECTS,
+              f"the hunter's prereq-free aspects are {sorted(base)}, not RAW's twelve. Missing: "
+              f"{sorted(HUNTER_BASE_ASPECTS - base)}; unexpected: {sorted(base - HUNTER_BASE_ASPECTS)}"
+              f" -- a blank or renamed key here reaches a sheet as a nameless pick")
+        blank = sorted(n for n in aspects if not n.strip())
+        check(not blank,
+              f"hunter aspects contain {len(blank)} blank key(s) -- a blank name is selectable and "
+              f"renders as an empty row")
 
     # ---- 6. the behaviour check's skip list matches its stated cause ------------------------
     inv = INVARIANTS.read_text(encoding="utf-8")
