@@ -48,7 +48,7 @@ from utils.class_func.appearance 					import randomize_apperance_attr, randomize
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
                                                                  shield_flag_func, ac_bonus_calculator, weapon_type_flag_func)
-from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race#, chooseable_list_class 
+from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race, chooseable_list_archetypes#, chooseable_list_class
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
 from utils.class_func.domain_inquisition 			import domain_chance, domain_chooser#, inquisition_chooser
@@ -535,6 +535,12 @@ def phase_class_options(character):
 		character.archetype_info if i == character.primary_class_index
 		else character.archetype_data(entry['name'])
 		for i, entry in enumerate(character.classes)]
+	# The rolled archetypes join the prerequisite pool HERE, before the first chooser below, because
+	# 144 of the hunter's aspects are gated on an archetype name and the prereq engine can already
+	# check that -- it just never had the name. Anything after this line can see it; the choosers
+	# start on the next line, so "before the choosers" and "after the archetypes are rolled" is a
+	# one-line window.
+	chooseable_list_archetypes(character, archetypes_per_class)
 
 	# generic single choices (the choosers gate themselves on any matching class entry)
 	character.bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")

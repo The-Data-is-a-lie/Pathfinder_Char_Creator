@@ -40,6 +40,24 @@ MAIN = REPO / "Backend/main_test.py"
 INVARIANTS = REPO / "Backend/scripts/tests/test_house_invariants.py"
 CLASS_DATA_DIR = REPO / "Backend/json/class_data"
 
+sys.path.insert(0, str(REPO / "Backend"))
+from utils.class_func.chooseable import ARCHETYPE_PREREQ_COLLISIONS   # noqa: E402
+
+PREREQ_KEYS = ("prerequisites", "prerequisite", "prereq")
+
+
+def _walk_options(node):
+    """Every (name, option) in a pool file, at whatever depth the pool nests it."""
+    if not isinstance(node, dict):
+        return
+    for key, value in node.items():
+        if isinstance(value, dict):
+            if {k.lower() for k in value} & set(PREREQ_KEYS):
+                yield key, value
+            else:
+                yield from _walk_options(value)
+
+
 REASONS = {"none-by-design", "other-subsystem", "other-effort", "aliased", "gap"}
 SOURCES = {"raw", "approximation", "unverified", "bug"}
 
@@ -229,6 +247,30 @@ def main():
           f"{sorted(foreign - FOREIGN_CLASS_REFS)}. Ticket 03 ruled `chooseable` may stay shared "
           f"BECAUSE every cross-class path runs between classes that interoperate in RAW; a new "
           f"pair means that ruling needs re-taking, not that this line needs relaxing")
+
+    # ---- 5b. the archetype-name collision baseline is still the truth -----------------------
+    # chooseable.py seeds rolled archetype names so archetype-gated options can meet their
+    # prerequisites, EXCEPT names that are also the name of a selectable option -- 'brawler' is
+    # both an archetype and a rage power, and a prereq string cannot say which it meant. That
+    # exclusion list is a constant there (computing it means reading ~73 pool files, and it runs
+    # inside every generation), so the real intersection is computed HERE and the constant is
+    # checked against it. A new same-named archetype is then a failure rather than a silent unlock.
+    arch = json.loads((REPO / "Backend/json/archetypes.json").read_text(encoding="utf-8"))
+    arch_names = {k.lower().strip() for v in arch.values() if isinstance(v, dict) for k in v}
+    option_names = set()
+    for path in sorted(CLASS_DATA_DIR.rglob("*.json")):
+        try:
+            option_names |= {n.lower().strip() for n, _ in _walk_options(
+                json.loads(path.read_text(encoding="utf-8")))}
+        except (OSError, ValueError):
+            continue
+    collisions = arch_names & option_names
+    check(collisions == set(ARCHETYPE_PREREQ_COLLISIONS),
+          f"ARCHETYPE_PREREQ_COLLISIONS in chooseable.py is stale. Newly colliding: "
+          f"{sorted(collisions - set(ARCHETYPE_PREREQ_COLLISIONS))}; no longer colliding: "
+          f"{sorted(set(ARCHETYPE_PREREQ_COLLISIONS) - collisions)}. A name in both sets cannot be "
+          f"told apart from the option in a prereq string, so seeding it would unlock options the "
+          f"character has not earned")
 
     # ---- 6. the behaviour check's skip list matches its stated cause ------------------------
     inv = INVARIANTS.read_text(encoding="utf-8")
