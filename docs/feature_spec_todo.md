@@ -867,6 +867,88 @@ occult variants**, unread · kineticist **burn** as a tracked resource · the me
 outsider spirits** · **buffs/conditionals** for occult picks, mirroring §4/§7 · a live Foundry import
 check of all six.
 
+## 11. Class choices — ⚙️ BACKEND BUILT (2026-08-07), rendering outstanding
+**Status: the backend half is built and gated; the renderer half is not.** Every rollable class
+either makes its class-specific choices — rogue talents, rage powers, aegis customizations,
+bloodlines, orders and 47 other buckets — the right number of them at the right class levels, or
+carries a written verdict saying why it makes none. Charted in `tickets: feature/class-choices`;
+this section is that map's destination. Tickets 01, 02, 03 and 05 are resolved; **04 (what
+"reaches the sheet" means per bucket) is open and owns everything below the line.**
+
+**The schedules are not in this document.** Per the docs doctrine, prose must not restate a tuning
+constant — it names the symbol that owns it. That symbol is
+**`Backend/json/class_choice_schedule.json`**: one row for every one of the 68 rollable classes,
+each bucket declaring either a compact `{start, every}` rule or an explicit `{levels: [...]}`, with
+`generic_func.levels_for()` the generator's only reader. See `docs/CODEBASE_MAP.md` for its shape.
+
+**What the table replaced: five pick-count conventions, not three.** Ticket 01 found and migrated
+three. Ticket 02's sweep found two more — `data.formulas` + `eval()` behind `simple_list_chooser`,
+and an inline `floor((level-1)/4)` in `choose_gun_func`. Neither was reachable from `data.amount`
+or from the three known call sites, and **only generating a character for all 68 classes found
+them**. That is the section's governing lesson: this subsystem's failures are invisible to reading.
+
+**Every row is a verdict.** 41 rows carry buckets; the other 27 are empty and say why —
+`none-by-design` (the four NPC classes, and the swashbuckler, whose deeds are granted by level in
+RAW so *no chooser is correct*), `other-subsystem` (the cleric's and druid's domains, the wizard's
+school, the five Path of War classes, the psionic power-pickers — their notes name the owning
+symbol), `other-effort` (the summoner's eidolon, §8's), `aliased` (the unchained variants, which
+pick through their base class's row), and `gap`.
+
+**Known gaps — not yet built.** Each is its own build slice:
+
+| Class | Missing |
+| --- | --- |
+| bard | versatile performances are rolled and the result discarded |
+| hunter | Animal Focus — the pool exists in `class_data/hunter.json` with no reader |
+| shifter | shifter aspects — the pool exists inside `class_data.json`'s `shifter` entry |
+| psion | discipline — 1 of 7 at 1st level, and it gates which powers are legal |
+| vampire hunter | vampiric focus |
+| omdura | invocation |
+| witch | patron — `witch_patrons.json` has no reader. **Hides inside a class whose row is not empty**, which is why the sweep covered filled rows too. |
+
+**Per-use choices are rolled once and frozen.** A feature re-chosen at every use or every day has
+no home in a static snapshot. The medium's daily seance (§10) was the one-off precedent; it is now
+the general rule and governs the hunter, shifter and omdura gaps above. *Rejected:* emitting the
+whole pool as a reference bucket — a new bucket kind both renderers would have to learn.
+
+**What the generator guarantees about legality — narrowly, on purpose.** It enforces prerequisites
+the string engine can evaluate (option names, class levels, ability/BAB/caster thresholds — 93.9%
+of prerequisite parts), no duplicates in a bucket, and no cross-bucket bleed. It **knowingly does
+not** enforce the other 6.1%: disjunctive prose, `"any two X"` counting, mutual exclusion,
+once-only, or buckets an archetype trades away. Archetype feature swaps remain modelled **for the
+companion bond only** — the standing ruling extends here unchanged, and is stated as an explicit
+non-guarantee rather than left unsaid. Under-delivery is legal exactly when the pool is provably
+dry: `min(scheduled, |pool|, max_num)`.
+
+**`character.chooseable` stays shared across classes**, on measured grounds: the only pools whose
+prerequisites name a foreign class are ninja→rogue, slayer→rogue and skald→barbarian — all RAW
+interop — so a rage power cannot be unlocked by a rogue level. The gate fails if a fourth appears.
+
+**What keeps it true.** Two layers that share no code, both run by CI:
+`Backend/scripts/gates/validate_class_choices.py` (config: the table vs the roster, the call sites,
+the datasets) and `check_class_choices` in `Backend/scripts/tests/test_house_invariants.py`
+(behaviour: characters vs the table). Neither imports `levels_for` — a table cannot be its own
+witness, which the build demonstrated: perturbing the table and re-running the behaviour check
+*passes*, because the generator reads the same file.
+
+---
+
+**Open, and owned by ticket 04 (rendering).** Four defects are known, documented per row, and
+deliberately unfixed here because each moves a shipped payload:
+
+- **Six call sites omit `dict_name=`**, so sorcerer and bloodrager bloodlines and cavalier and
+  samurai orders land in the default bucket `Talents`, shared with warpriest blessings and
+  inquisitor inquisitions. A warpriest/inquisitor multiclass merges them.
+- **`manuevers` is a typo** — spelled that way in `data.py`, at the call site, and on both sheets.
+- **The oracle's mystery shares the `mysteries` bucket with its revelations**, so neither count can
+  be read alone.
+- **Three buckets hold a list, not a `{choice: description}` dict** (ranger favoured
+  terrains/enemies, brawler maneuvers), and mercies, cruelties and ki powers carry no level stamp
+  at all.
+
+The behaviour gate skips seven class/bucket pairs for these reasons, prints the skip count every
+run, and **fails if a skip is deleted before its cause is**.
+
 ## 12. Class roster and the selector — ✅ BUILT (2026-08-04)
 **Status: BUILT.** 68 rollable classes, in five families the FoundryVTT dropdown groups by. This
 section owns *who is in the pool and how you pick them*; §10 owned the occult six specifically, and

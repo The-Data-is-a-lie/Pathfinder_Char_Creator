@@ -19,6 +19,116 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Class choices are gated on every push, in two layers that deliberately share no code.**
+  Class-choices ticket 05. Every class-specific pick — rogue talents, rage powers, aegis
+  customizations, bloodlines, orders and the other 51 buckets — now has something that fails when
+  it drifts.
+  - **`Backend/scripts/gates/validate_class_choices.py`** (new, 506 checks, generates nothing)
+    catches **config** drift: a rollable class with no schedule row, a row with no chooser call
+    site, a call site with no row, a bad `reason`/`source` token, an empty verdict note, a dataset
+    that resolves to no pool. Call sites are parsed with `ast` rather than a regex, because the
+    bucket is `dict_name` when present and the chooser's own default when not — and that default
+    differs per chooser. 51 call sites resolve against 51 rows, asserted in both directions.
+  - **`check_class_choices` in `test_house_invariants.py`** catches **behaviour** drift: every
+    rolled class holds `min(scheduled, |pool|, max_num)` picks per bucket, and every level stamp is
+    one the schedule actually grants. It **costs no new generations** — it rides the sweep the file
+    already runs, so the "coverage vs runtime" worry turned out to be free (3,637 → 3,724 checks).
+  - **Why two layers and not one:** perturbing the schedule table and re-running the behaviour
+    check *passes*, because the generator reads the same file — a table can never be its own
+    witness. Config drift is the gate's job; behaviour drift is the sweep's. Neither imports
+    `levels_for`; the gate re-reads the JSON and the check expands it a second time.
+  - **The most valuable assertion is the cheapest:** a class that joins the rollable pool without a
+    schedule row fails immediately, naming the class — so onboarding a new class cannot silently
+    skip deciding what it picks.
+  - The behaviour check skips 7 class/bucket pairs, each a named renderer-side defect, and
+    **prints the skip count every run**; the gate fails if a skip outlives its stated cause.
+  - **Two generations at 40th cover what 1,020 at 1–20 could not.** The first full sweep reported
+    `0 capped by pool/max_num` — no cap bites at or below 20th, so two of the three terms in
+    `min(scheduled, |pool|, max_num)` were never exercised. `check_choice_caps` generates a brawler
+    (held to 8 by its call site's `max_num`) and a tactician (12 strategies exist, 13 scheduled) at
+    40th, and a guard fails the run if nothing anywhere is capped. Adding levels 25 and 40 to the
+    whole 68-class matrix would have tripled the sweep's runtime to cover two rows.
+
+### Fixed
+- **A gunslinger level no longer erases every other class's class features.**
+  `choose_gun_func` ended `phase_class_options` with
+  `data_dict.update({'class features': result})` — a straight assignment that replaced the whole
+  bucket dict. Because it ran last, any character with a gunslinger level shipped **only**
+  `gun training`: a dread/spiritualist/gunslinger lost its terrors and its emotional focus, a
+  gunslinger/ninja lost its ninja tricks. The `class feature owners` side-table went on naming
+  those buckets, so the payload advertised owners for buckets that no longer existed — the
+  "generated but invisible" failure in its worst form, with the picks not merely unreachable but
+  gone. Every other chooser carries a comment saying *merge, never assign*; this one did the
+  opposite. Found by class-choices ticket 02's sweep.
+  - `gun training` now records a bucket owner too, so it has a home on the Foundry sheet's Class
+    Features tab instead of landing under no class.
+  - A gunslinger 1–4 no longer emits an **empty** `gun training` bucket. Gun training starts at
+    5th, and an empty bucket with an owner draws its own empty divider.
+  - The category loop gained the pool-exhaustion break its siblings have. It filtered candidates
+    *inside* `while len(chosen) < x`, so a firearms list with fewer useable categories than the
+    count would spin forever — unreachable only while levels stopped at 20.
+- **A multiclass ranger's favoured enemies and terrains were sized off the wrong class.** The
+  counts came from `data.formulas`, whose strings read `character.c_class_level` — an alias of the
+  **primary** class's level, not the ranger's. A ranger 3 / skald 13 received 3 favoured enemies
+  and 3 favoured terrains where RAW grants 1 and 1. Now read per-class from the schedule table.
+
+### Changed
+- **The generator now states what it guarantees about a pick's legality — narrowly, and on
+  purpose.** Class-choices ticket 03. It enforces prerequisites the string engine can evaluate
+  (option names, class levels, ability/BAB/caster thresholds — 93.9% of the 4,883 comma-split
+  prerequisite parts), no duplicates within a bucket, and no cross-bucket bleed. It **knowingly
+  does not** enforce the other 6.1%: disjunctive prose (`"animal fury rage power or a natural bite
+  attack"`), `"any two X"` counting, mutual exclusion and once-only, or buckets an archetype trades
+  away. Measuring that tail at 6.1% is what settled the question — the choice looked like
+  best-effort-versus-a-rules-engine only while nobody knew whether it was 5% or 50%. *Rejected:*
+  structured prerequisites in the data, because the pools are **re-scraped**, so the parse and its
+  review would recur forever.
+  - **Under-delivery is legal exactly when the pool is provably dry** — the gate asserts
+    `min(scheduled, |pool|, max_num)`. Of the three live under-deliveries, only the tactician's is
+    real exhaustion; the brawler's is its own `max_num` cap and the oracle's is a bucket-naming
+    defect, so a simpler "under-delivered ⇒ pool dry" rule would have been wrong twice out of three.
+  - **A rage power cannot be unlocked by a rogue level.** `character.chooseable` stays shared
+    across classes, now on measured rather than assumed grounds: the only pools naming a foreign
+    class are ninja→rogue, slayer→rogue and skald→barbarian, and the gate fails if a fourth appears.
+  - Found on the way: the scraper's field-glue bug also corrupts `prerequisites`, not just
+    descriptions — one entry's prereq field has swallowed its benefit text.
+- **The pick-schedule table is the whole story: five conventions, not three.** Class-choices
+  ticket 01 migrated three count arithmetics into
+  `Backend/json/class_choice_schedule.json`; ticket 02's sweep — generating a character for all 68
+  rollable classes and asking which buckets actually landed — found **two more that no one had
+  counted**, and both are now rows:
+  - **The fourth**, `data.formulas` + `eval()` in `feats.formula_grabber`, read by
+    `simple_list_chooser` (ranger favoured terrains/enemies, brawler maneuvers). `data.formulas` is
+    **deleted**, not deprecated: a second schedule nobody reads is exactly the decay CLAUDE.md's
+    stale-`critical` story warns about.
+  - **The fifth**, an inline `floor((level - 1) / 4)` in `gunslinger.choose_gun_func`.
+  - *Why reading the code missed them:* neither was reachable from `data.amount` or from the three
+    known chooser call sites. Only generating characters found them. That is the sweep's real
+    lesson, and it is why the gate ticket 05 builds must assert against **behaviour**, not only
+    against config.
+- **Single-pick class features now read their level from the table instead of a hardcoded `1`.**
+  Bloodlines, orders, mysteries, curses, spirits, methods and the rest were stamped by a literal
+  `1` inside `generic_class_option_chooser`, which made every single-pick bucket invisible to the
+  schedule — so "a call site with no row" was silently correct rather than detectable. All 14 now
+  declare `levels: [1]`. Behaviour is unchanged (all 7 goldens byte-identical); what changes is
+  that the table is now the **complete inventory** of class choices, which is what lets ticket
+  05's gate assert that every chooser call site has a row.
+- **Per-use choices are rolled once and frozen.** A feature re-chosen at every use or every day has
+  no home in a static snapshot. The medium's daily seance already worked this way as a one-off
+  house ruling (§10); it is now the **general rule**, and the hunter's animal focus, the shifter's
+  aspect and the omdura's invocation will follow it. *Rejected:* emitting the whole pool as a
+  reference bucket — honest about the mechanic, but a new bucket kind both renderers would have to
+  learn, and it would mean re-doing the medium to match.
+
+### Removed
+- **`gunslinger_deeds_dares.json` and `spirits.json`** — pools with no reader anywhere in
+  `Backend/`. Gunslinger deeds are granted by level in RAW rather than chosen, so the file was
+  never a missing chooser; `spirits.json` was superseded by `class_data/shaman.json`, which is
+  where the shaman actually reads its spirits. `witch_patrons.json` is the third orphan and is
+  **kept**: a witch's patron is a genuine 1st-level pick that nothing makes, so it is a logged gap
+  rather than dead weight.
+
+### Added
 - **The web sheet's Companions tab now pre-fills from the generated character** *(sibling repo:
   `Pathfinder-Character-Sheet`)* — the last gate on the Companion Sheets map. A druid's rolled
   companion arrives with its HP/AC/saves, abilities, skills, attack lines and notes already in place,

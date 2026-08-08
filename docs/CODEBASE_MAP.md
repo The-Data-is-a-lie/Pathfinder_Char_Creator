@@ -103,15 +103,23 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   (`data.occult_classes` is now empty). Spec: `docs/feature_spec_todo.md` §10.
 - **Class pick schedules — one table, `Backend/json/class_choice_schedule.json`.** How many options
   each class chooses and at which of *its own* class levels. One row per rollable class (all 68), so
-  a class joining the pool without a schedule is visible rather than silent; an empty `buckets` with
-  a `reason` is a verdict, and `reason: "unswept"` means nobody has ruled yet. A bucket declares
-  either `{start, every, until}` or `{levels: [...]}`, and **`generic_func.levels_for()` is the only
-  reader in the generator** — the count is `len()`, the k-th pick's level stamp is `[k-1]`. Scripts
-  read it through `_harness.schedule_levels()` / `schedule_due()` instead, a deliberately separate
-  expansion so a check cannot confirm the generator against itself. Replaced `data.amount` plus the
-  divisor arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (class-choices
-  ticket 01). Buckets are keyed by the *rendered* bucket name (`arcana`, `rage_powers`), with the
-  data key in each row's `dataset` field.
+  a class joining the pool without a schedule is visible rather than silent. **All 68 are swept**
+  (ticket 02): 41 rows carry buckets, and the other 27 are empty with a `reason` —
+  `none-by-design` / `other-subsystem` / `other-effort` / `aliased` / `gap` — plus a `note` saying
+  why. A bucket declares either `{start, every}` or `{levels: [...]}`, and
+  **`generic_func.levels_for()` is the only reader in the generator** — the count is `len()`, the
+  k-th pick's level stamp is `[k-1]`. Scripts read it through `_harness.schedule_levels()` /
+  `schedule_due()` instead, a deliberately separate expansion so a check cannot confirm the
+  generator against itself. It replaced **all five** pick-count conventions: `data.amount`, the
+  divisor arithmetic in `get_data_without_prerequisites` and `generic_multi_chooser` (ticket 01),
+  and — found by ticket 02's generate-every-class sweep — `data.formulas` + `eval()` behind
+  `simple_list_chooser` and an inline `floor((level-1)/4)` in `choose_gun_func`. Buckets are keyed
+  by the *rendered* bucket name (`arcana`, `rage_powers`), with the data key in each row's
+  `dataset` field; `max_num` mirrors a call-site cap where one exists.
+  **Both halves are gated** (ticket 05): `gates/validate_class_choices.py` checks the table against
+  the roster, the call sites (parsed with `ast`) and the datasets; `check_class_choices` in
+  `tests/test_house_invariants.py` checks generated characters against the table, riding the
+  existing sweep at no extra generation cost.
   **Nothing caps at 20.** Class levels reach `level_and_bab.MAX_CHARACTER_LEVEL` (40) and above 20th the game is homebrew, so picks keep
   coming: only spells and maneuvers freeze, via `capped_level` (`level_and_bab.py:53`). An explicit
   list continues with `repeat` (tile it, so deliberate holes like the shaman's wandering-hex levels
@@ -222,7 +230,8 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   - Still absent: `familiar_master_table.json`, `familiar_choices.json`, `eidolon_base_forms.json`.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
-  witch_patrons.json, spirits.json, items.json/items_best.json, weapons_data.json,
+  witch_patrons.json (**no reader** — a witch's patron is a real 1st-level pick nothing makes;
+  class-choices ticket 02 logged it as a gap), items.json/items_best.json, weapons_data.json,
   armor/weapon_qualities.json, feat_tax.json, profession_*.json, campaign_lore.json,
   foundry_item_names.json, spells_known/per_day.json.
 
