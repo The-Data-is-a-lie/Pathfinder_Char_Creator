@@ -18,6 +18,15 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
    `.title()` it: that produced `Tal-Falko` / `Kaeru No Tochi`, which key nothing, so those NPCs drew
    names from a random other region. `validate_name_data.py` gates reachability (all ten, by name
    and by random draw) and the in-repo clients' option lists (`sheet.js`, `index.html`).
+   Then **`phase_luck_stake`** (`class_func/luck.py`) — luck's INTENT only: type, buy-or-sell,
+   magnitude, a seller's bonus feat slots, and the reserved E-Kat feat slots (granted to buyers AND
+   sellers). It must run here, after the level and the feat economy but before any budget is
+   allocated; each pool then settles its own share at its own site (`luck.settle`, called from
+   `skill_rank_budget`, `total_hp_calc` and `level_up_stats`). Gated on `misc_homebrew_rules`.
+   The two directions draw magnitude from different scales — buyers from
+   `LUCK_MAGNITUDE_BASE + level//2`, sellers from `luck.sell_magnitude()`, which reaches the −50
+   floor at any level with depth weighted by level. The optional `luck_direction` API input
+   (`'buy'`/`'sell'`) forces the branch for testing.
 3. Stats: `roll_stats` → `apply_racial_stats` → `assign_stats` → HP.
 4. Spells: per class entry `caster_formula` / `spells_known_*` / `spells_per_day_*` → spellbooks.
 5. Prereq pool prep: `chooseable_list*` (stats, class levels, class features, race → `character.chooseable`).
@@ -28,7 +37,32 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 7. Feats (`feats.py`, trainers/professions bonus feats, feat-count guarantee), PoW + Spheres
    selection (house rule guarantees), gunslinger, gear (`armor_chooser`, `item_chooser`),
    skills/professions/skill unlock, traits, backstory.
-8. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
+8. **`phase_luck_resolution`** — luck's final state, computed AFTER the feat tax and swap pass
+   because the E-Kat feats feed luck back and a swap can remove one. Also **buys the Luck Traits**:
+   the E-Kat reserve is feat-gated (no E-Kat feats ⇒ none earned) and "must be spent", so it buys
+   `floor(earned ÷ 25)` from `Backend/json/feats/luck_traits.json` and carries the remainder. Luck
+   Traits are NOT in `data/traits.csv` — "they may only be purchased with E-Kats". Luck also comes
+   from feats OUTSIDE the E-Kat set — hero point and luck feats already in `data/feats.csv`, rostered
+   in `Backend/json/feats/luck_feats.json` because no column marks them. The eight negative traits
+   with real mechanics carry `changes` / `context_notes` / `death_hp_pool_bonus` in
+   `luck_traits.json` and are exported as `luck.trait_changes`; formulas are LIVE and read
+   `@resources.personalLuck.value`, which only resolves because the module pins that item's
+   `system.tag` (`class-features.js`). **A SELLER'S PAYOUT IS DELIVERED AS pf1 CHANGES**, not added
+   to the budgets: `hp_rolls` / `skill_ranks` / `stats` settle only the BUY side, and `luck.audit` +
+   `luck.payout_changes` carry the sale onto `mhp` / `bonusSkillRanks` / the ability keys via the
+   *Negative Luck Payout* item. The module builds actor HP from `total_rolled_hp`, so anything added
+   to `Total_HP` never reaches Foundry — which is why the payout moved. Consumers that do not apply
+   pf1 changes (the standalone web sheet) will not see it. `effects` stays reserved for the five backend-applied
+   constants that pair with a symbol in `luck.py` — `validate_luck` pins the count at five.
+   **A SELLER GAINS NO LUCK FROM FEATS AT ALL** — that suppression is what lets sellers hold E-Kat feats (and so reach the
+   ten negative Luck Traits) without selling becoming a free-money loop; the two are a pair, and
+   neither is safe alone. The nine-row E-Kat spend
+   table (`Backend/json/feats/e_kat_exchange.json`) and any purchased Luck Traits are spliced to the
+   **top of `data_dict['class features']`** at the call site — rebuilt in place, because the payload
+   holds the same dict object. Exports the
+   nested `luck` block (and `hero_points`, which *It Just Works* adds to). See
+   `docs/feature_spec_todo.md` §13.
+9. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
    built from the `effects`/`changes` JSONs (grep `_load_buffmap`).
 
 Flask: `Backend/app.py` (`POST /update_character_data`, `GET /license` — the OGL
@@ -235,7 +269,7 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   armor/weapon_qualities.json, feat_tax.json, profession_*.json, campaign_lore.json,
   foundry_item_names.json, spells_known/per_day.json.
 
-`data/` — CSVs: feats.csv / feats_new.csv (main feat data), Metzofitz_Feats.csv (homebrew),
+`data/` — CSVs: feats.csv / feats_new.csv (main feat data; **`feats_new.csv` has NO runtime reader** — only `compile_feats_new.py` writes it, which is why its `type="E-Kat"` rows were unreachable and now live curated in `Backend/json/feats/e_kat_feats.json`), Metzofitz_Feats.csv (homebrew),
 spells.csv, traits.csv, class_ability.csv.
 
 ## `Backend/utils/class_func/` module index (grep the function, not the file)
@@ -253,11 +287,20 @@ picks, dated slots, feat tax, animal flaws) · companion_stats.py (the advanceme
 stat block, and the D14 fold of feats/flaws; runs after `companion_feats`, writes `entry['stats']`
 and nothing else) ·
 versatile_performance.py ·
-traits.py · flaws.py / randomize_flaw.py · feat_tax.py · trainers.py / profession_chooser.py /
+traits.py · flaws.py / randomize_flaw.py · feat_tax.py ·
+feat_level_assignment.py (`assign_feats_to_levels` reorders normal + class-bonus feats onto
+prerequisite-legal slots; `normal_feat_slot_levels` owns the normal-feat slot SCHEDULE — the odd
+ladder capped at the character's level, surplus creation/bonus/negative-luck feats seated at 1) ·
+trainers.py / profession_chooser.py /
 profession_abilities.py · backstory.py / build_archetype.py (Ollama build→archetype classifier,
 heuristic fallback) / personality.py / appearance.py / family_func.py ·
 alignment_and_deity.py · race_func.py · favored_class.py · language.py · chooseable.py /
-feats_to_chooseable.py / flag_assign.py · luck_and_mythic.py · hero_point_generator.py ·
+feats_to_chooseable.py / flag_assign.py ·
+**luck.py** (the inherent-luck subsystem — caps, the mod and its rounding, all six exchange rates,
+propensity/type/currency weights, per-pool ceilings, the Vault, the E-Kat reserve formula; it owns
+EVERY luck number, nothing else in the tree holds one) ·
+luck_and_mythic.py (`randomize_mythic` only — `randomize_luck` was deleted, it implemented a
+different rule) · hero_point_generator.py ·
 class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_discovery.py
 
 ## `Backend/scripts/` index

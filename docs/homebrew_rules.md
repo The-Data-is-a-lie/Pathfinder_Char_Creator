@@ -155,7 +155,7 @@ Highest-value, most generation-relevant first:
 | [Deities](https://docs.google.com/document/d/1uDLW8VEryGgC_YcvG58rn6ef0oLEtx3IhRGKkvqWFxM/edit) | ⏳ | Med (deity randomization) |
 | [Rulesets/Fiats](https://docs.google.com/document/d/14EA3U5LZiBPIv0CzrcYv1--G368IcqaQ0lWSSVpXhOI/edit) | ⏳ | Med |
 | [Combat References](https://docs.google.com/document/d/1ANXtDCF8-6gzV1GeRiMHHtRKFFbXA7i2SLZMCUv-zas/edit) | ⏳ | Med |
-| [Luck](https://docs.google.com/document/d/1po0ieGEU2efK9iyj2QNeG0eeEyS9mXgIf6ptHE8v1pU/edit) | ⏳ | Med (hero points / E-Kat feats) |
+| [Luck](https://docs.google.com/document/d/1po0ieGEU2efK9iyj2QNeG0eeEyS9mXgIf6ptHE8v1pU/edit) | ✅ | **BUILT 2026-08-08** (generator side) — `class_func/luck.py`, spec §13; score, E-Kat feats, the 34 Luck Traits and the spent reserve; in-play d100 table still open |
 | [Techniques](https://docs.google.com/document/d/1j7mPSoMalZE5wLs9wmwRzycNpyfNwCRhqOiCP2tG-iA/edit) | ⏳ | Med (Path-of-War-like) |
 | [Spellcrafting](https://docs.google.com/document/d/1h5-RPODN97x-cs5cNkz10d65xY5-r1Y2mdikQQBbKC8/edit) | ⏳ | Med |
 | [Oaths](https://docs.google.com/document/d/1v3XJO4avOaKbCf5xosZ-BHcVy2vFJPPK6RmL7_VkoSs/edit) | ⏳ | Low/Med |

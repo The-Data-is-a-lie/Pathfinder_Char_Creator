@@ -19,6 +19,257 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The negative Luck Traits now do on the sheet what they say on the page.** All ten shipped with
+  `effects: {}` — six of them already flagged `pf1_change_candidate` as the curator's own TODO — so
+  a player read the benefit text and applied it by hand. Eight carry real mechanics; each is now
+  routed to the place pf1 can actually express it, and three of them cannot be automated at all,
+  which is stated rather than fudged.
+  - **Four become real Changes:** Hardened Mind → `will`, Hardened Body → `fort`, Hardened Reflexes
+    → `ref`, Tough Skin → `nac`.
+  - **THE SIGN IS THE MAGNITUDE, and this is the load-bearing ruling.** A luck mod is *negative*, so
+    "add your luck mod to Will saves" read literally is a −9 **penalty** on a trait costing 25
+    E-Kats. These are compensation for being cursed — the names all connote resilience, and DR and
+    natural AC cannot be negative at all. The traits resolve positive, and the gate asserts no trait
+    bonus is ever a penalty at any score in range.
+  - **The formula negates the floor rather than flooring an absolute value**, because
+    `floor(abs(-44)/5)` is 8 where the true magnitude is 9. `-floor(@resources.personalLuck.value/5)`
+    is exact, uses only constructs already proven in `custom_buffs.json` (`floor()` and a leading
+    unary minus), and needs no `abs()`. Asserted numerically against `luck.luck_mod` for every score
+    from −50 to −1, which also pins `luck_mod`'s rounding: if it were ever "fixed" to truncate toward
+    zero, the sheet and the score would silently disagree by one.
+  - **Formulas are live, not baked**, so a GM editing the score mid-campaign moves every derived
+    bonus with it. That required giving the Personal Luck item an explicit `system.tag` — pool items
+    ship `tag: ''` and pf1 falls back to deriving a resource's key from the item NAME, which the
+    `(Negative)` prefix would have moved, silently zeroing every trait bonus.
+  - **Bonus type is `untyped`, not `luck`.** These represent hardening, not a luck bonus, and
+    `untyped` is on pf1's stacking list — so a seller holding *Luck God* (which emits `type: "luck"`)
+    gets both. Typing them `luck` would have suppressed the smaller bonus with nothing on the sheet
+    to explain why.
+  - **Trauma Survivor extends the Death HP Pool** rather than inventing a second number. That house
+    tracker already *is* the death threshold on this sheet, so a separate value would have disagreed
+    with it immediately.
+  - **Three cannot be automated, and say so.** pf1 has no DR change target (DR is
+    `system.traits.dr`, not a target), and no saving-throw conditional target at all — so *Tough
+    Luck* and *Seen it all* ride context notes on `ac` and `allSavingThrows`. *Never-Ending
+    Suffering* penalises an **enemy's** Perception, so there is nothing on this character's sheet to
+    attach it to; a note on `skill.per` would surface in the wrong actor's tooltip. Its
+    `no_change_reason` is recorded in the data so a later pass does not re-flag it.
+    *Rejected:* an always-on `+N` to `allSavingThrows` for *Seen it all*, which is simply wrong — it
+    would apply against poison and everything else the trait does not cover.
+- **A `Negative Luck Payout` item that DELIVERS the payout as pf1 changes**, at the bottom of Class
+  Features. Building an audit to prove the payout was applied turned up the reason it could not be
+  proved: **the luck hit points never reached the Foundry sheet at all.** The module builds actor HP
+  from `total_rolled_hp` — the raw dice — and never from `Total_HP`, so everything the backend added
+  there was invisible on the sheet the character is played from. Two sellers paid 18 and 8 HP both
+  shipped the same `hp.base`.
+  - The three budgets no longer apply the payout themselves. It arrives on pf1's own targets —
+    `mhp`, `bonusSkillRanks`, and the ability keys — so it is visible and attributable on the
+    Changes tab instead of folded silently into a total that one consumer then ignored.
+  - **Attribute points are now rolled per ability**, main-stat weighted: the character's main stat
+    takes half the draw and the other five split the rest (5/10 and 1/10 each, summing to exactly
+    1). They used to disappear into the uniform level-up bumps, where a bought point was
+    indistinguishable from an ordinary increase.
+  - Skill ranks land in the sheet's own bonus-rank pool rather than being pre-scattered across
+    skills, leaving them for the player to place — the honest shape for something the character
+    chose to buy.
+  - The item still shows the audit table (each pool's budget, what the sale paid, and where it
+    arrives), plus **`Luck cost` and a running `Total spent`** — each row priced at the Doc's own
+    rates, inverted in `luck.sell_cost` so the renderer never restates them. The four costs sum to
+    the luck actually sold, so the table **closes against the sale** instead of being four unrelated
+    numbers, and the total row says so in words. Compared against what was *sold* rather than the
+    final score, since a Luck Trait can move the score afterwards and only the sale bought the rows.
+    The table renders for sellers only; `record_audit` runs for every character, so without that
+    gate three-quarters of NPCs would carry an all-zero table. The sweep asserts every row balances, that no pool is on both sides
+    of the trade, that HP and skill-rank budgets still match `Total_HP` and `skill_rank_budget`, and
+    that **every route the sale bought arrives as a change carrying the promised number** — without
+    that last one the payout could stop being delivered and nothing would notice, because the
+    budgets no longer move.
+  - **Consumers that do not process pf1 changes will not see the payout.** The standalone web sheet
+    reads `Total_HP` and `skill_rank_budget` directly, and those now exclude it by design.
+- **"Force luck direction (dev)" module setting**, so negative luck can actually be seen. A
+  negative-luck character is roughly **1 in 13** by design (a quarter of characters take a stake, a
+  quarter of those sell — measured at 6 in 120 full generations). That is the right number for play
+  and a useless one for testing: ten characters in a row showing none is a coin flip. The backend's
+  `luck_direction` input existed for exactly this but no client sent it, so the only way to exercise
+  the negative side was still hand-editing `LUCK_PROPENSITY` / `LUCK_SELL_SHARE` — the footgun that
+  input was added to remove. Client-scoped and defaults to off, matching the other dev toggles, so
+  it never syncs to players and cannot ship enabled.
+- **The luck block's field roster is now asserted, not just printed.** `BLOCK_KEYS` in
+  `validate_luck.py` existed only to report a count; both renderers index the block by name, so a
+  renamed field is a blank panel rather than a crash. The behaviour sweep now compares a generated
+  block against an independently declared roster.
+
+### Fixed
+- **A character that sold luck for two feats only got one.** Reported from a real sheet: the
+  derivation read "2 feat(s)" and exactly one `(-5 Luck)` row appeared. Three separate faults, each
+  of which alone lost feats the character had paid a currency for.
+  - **The ledger was guessing.** It named the sale's feats by taking the tail of the general feat
+    list minus everything another subsystem had reserved. That worked while sellers held no E-Kat
+    feats; once they did, a 20th-level seller's entire normal track was E-Kat, profession and
+    Martial Training picks, and the guess had nothing left to name — **15% of sellers under-reported
+    silently**. The slots are now reserved and drawn up front, like every other subsystem's, so the
+    ledger names them by identity. Measured across 7 classes × 5 levels: **105 of 105 exact**.
+  - **The slots were being eaten before they could be spent.** `feat_amounts` is one shared pool, so
+    the E-Kat and profession reservations were free to consume the very slots the sale had just
+    added — the character sold luck for a feat and the feat became someone else's reservation. The
+    luck slots are now taken first and are not clamped by the remaining budget: they are additive,
+    because selling luck *gains* a feat rather than reallocating one.
+  - **The final feat-count cap was deleting them.** `feats[:normal_feat_amount]` keeps the head and
+    drops the tail, and the separately-paid-for picks are appended last — so the cap took exactly
+    the feats whose slots had been bought. Worse, `phase_luck_stake` raised `feat_amounts` without
+    raising `normal_feat_amount`, breaking their documented "move together" invariant, so the cap
+    never knew the slots existed; with the profession reservation *lowering* the target, a 1st-level
+    seller's target reached **zero and the cap wiped every general feat it had**. The cap now trims
+    in priority order — sphere tracking feats, then ordinary picks, then E-Kat, and luck-bought last
+    — because those are the only ones the character spent a currency for.
+  - Luck-bought feats are also held out of the story/flaw/flavour/class buckets (they were being
+    consumed as *story feats*) and pinned to the normal track, since the module lifts them out of
+    `feats` by name and a migrated one would render both as a class bonus feat and under Negative
+    Luck. The ledger invariant is now `==` rather than `<=`; the old tolerance was hiding the bug.
+
+- **Negative-luck characters were generated correctly and then shown almost nothing.** Selling luck
+  worked end to end — all four payout routes paid out — but the sheet gave a seller no score, no
+  derivation, and no way to tell luck had been traded away at all. Three separate causes, each of
+  which alone made the negative half of the subsystem look like it did nothing.
+  - **The score was gated on being positive.** The Personal Luck item is the only place the sheet
+    shows the numeric score and the `derivation` audit trail explaining it, and the module added it
+    only when `score > 0` — on the reasoning that a negative character has no DR pool to spend.
+    True, and it threw away the readout with the pool. A negative score now renders as negative
+    charges (`-8 / -8`) on an item named **(Negative) Personal Luck**, matching the module's
+    existing `(E-Kat Trait) X` / `(-5 Luck) Y` prefix convention.
+    *Rejected:* a 0/0 pool, which reads as a bug to anyone who did not write it; and dropping the
+    charges for a bare readout, which loses the number the player actually wants.
+  - **All ten NEGATIVE Luck Traits were unreachable by any character.** Sellers were excluded from
+    E-Kat feat slots to stop a free-money loop — a character sold 2 luck, drew *Ass Pull* and *It
+    Just Works*, and finished at +8. That closed the loop by denying sellers the feats, which also
+    denied them the E-Kat reserve, and Luck Traits may only be bought with E-Kats. The loop is now
+    closed at its source instead: **a seller's feats grant zero luck**, so the feats come back
+    without the free money. The feats stay on the sheet — *Defiant Luck* and the rest carry real
+    mechanics beyond the +1 — and the derivation says what was withheld
+    (`+12 from 6 luck feat(s) -- not applied (luck was sold)`) rather than silently not adding up.
+    *Rejected:* stripping the feats from a seller's draw, which denies abilities bought with the
+    character's own slots; and hard-flooring the score, which voids feats without explaining why.
+  - **A seller could finish positive.** The six ordinary Paizo luck feats grant +1 each and had no
+    seller exclusion, so a low-magnitude seller who drew two rendered as *lucky*. Same fix; the
+    house-invariant sweep now asserts a seller's score equals exactly what it sold.
+- **Feat acquisition levels ran off the end of the character.** The normal-feat schedule was walked
+  positionally as `2i+1`, but a character always holds more normal feats than the odd-level ladder
+  has rungs — two homebrew creation feats, a human racial bonus, and now up to ten sold for negative
+  luck. A 20th-level wizard with 12 normal feats produced slots at **levels 21 and 23**. Not merely
+  a bad label: those levels are the gate `assign_feats_to_levels` schedules against, so a phantom
+  level-23 slot would seat a feat whose BAB or class-level prerequisite the character never met —
+  the exact bug that module exists to prevent. One `normal_feat_slot_levels()` helper now caps the
+  ladder at the character's level and seats the surplus at level 1, where it was in fact granted,
+  and replaces the expression at all four call sites.
+  *Still open:* the sheet computes its own `(Feat N)` label from `start + index * step` and will
+  keep printing `(Feat 21)` until the real levels are exported and consumed.
+
+### Changed
+- **Sellers can sell all the way to the −50 floor, at any level.** The sell side shared the buy
+  side's magnitude formula, which capped a 20th-level seller at −12 — while the negative Luck Traits
+  are written against floors from −10 to −50, so nine of the ten could not have been bought even
+  after the exclusion above was lifted. The two sides are no longer symmetric, and deliberately so:
+  buying is bounded by what a character can afford, selling is bounded by nothing because it *pays*.
+  Depth is now drawn on its own scale whose mode rises with level, so the deep end is common at 20th
+  and rare but reachable at 1st.
+  *Rejected:* capping the payout to what the pools can bear. A character that sells −50 is entitled
+  to the whole of it; `_plan_payout` already spends the magnitude down across routes, so it is ten
+  feats *or* a hundred HP, never both. Also rejected: lowering the trait floors to match what
+  generation produced — those floors come from Sieg's Guide, and the Doc is the authority, not the
+  code.
+- **`luck_direction` is a new optional API input** (`'buy'` / `'sell'`, absent → the ordinary
+  weighted rolls). Exercising the negative side previously meant hand-editing `LUCK_PROPENSITY` and
+  `LUCK_SELL_SHARE` in `luck.py` — two live constants that then had to be remembered before
+  shipping, which is precisely how this subsystem went untested for so long.
+- The negative-luck feat ledger no longer bills E-Kat feats to the sale. Their slots are carved out
+  of the feat budget, so the sale did not pay for them — the same trap profession feats hit, newly
+  reachable the moment sellers gained E-Kat slots.
+- Seller derivations are itemised from the payout actually drawn (`Sold -45 luck for 22 HP, 38 skill
+  points, 1 attribute point(s), 2 feat(s)`) instead of naming all four routes on every seller.
+
+### Added
+- **Characters now carry inherent luck.** Sieg's Guide's luck subsystem is wired end to end on the
+  generator side: a **bought** luck score, one of three luck types, a luck mod, an earned-and-spent
+  E-Kat reserve, a Vault ceiling, the ten **E-Kat feats** and the 34 **Luck Traits** they pay for —
+  none of which a generated character could previously reach. It rides `misc_homebrew_rules`, which is now an exposed API input; with the flag off a
+  character carries no luck state at all.
+  - **The purchase is real.** Luck is bought, not rolled — about a quarter of characters take a
+    stake, paying from skill ranks (60%), HP (30%) or level-up attribute bumps (10%), with a
+    per-pool ceiling so no budget is gutted. Roughly one stake in four goes the other way and
+    **sells** luck, taking a negative score in exchange for HP, skill points, attribute points or
+    extra feat slots at the Doc's own rates.
+    *Rejected:* letting nobody buy and making luck purely feat-driven — the simplest option, and it
+    would have left luck invisible on 99% of characters. Also rejected: spending only level-up
+    bumps, the currency the Doc rates 1:1, because `floor(level/4)` caps it at +5 luck at 20th and
+    a permanent −1 to an ability score for +0.2 luck mod is the worst trade on the board.
+  - **Luck needed two phases.** A seller's bonus feat slots must exist *before* feat selection sizes
+    its draw, but the E-Kat feats feed luck *back* and which feats a character keeps is not final
+    until the feat-tax and swap pass. So `phase_luck_stake` records intent and each pool settles its
+    own share where the real budget is known, and `phase_luck_resolution` computes the final state
+    at the far end — the `phase_bloodline_resolution` shape.
+    *Rejected:* one phase. It cannot be both before feat counting and after feat swapping.
+  - **The E-Kat feats reach a character through a curated table**,
+    `Backend/json/feats/e_kat_feats.json`, with machine-readable effects and *corrected*
+    prerequisites. They are not Metzofitz feats — none of the ten is in `Metzofitz_Feats.csv`; they
+    sit in `data/feats_new.csv`, which **no runtime module reads**, with two prerequisite chains
+    that are unsatisfiable as data (`"Asspull"` glued, and `"All of the above"`, a summarising
+    phrase). They never join the generic pool, and their slots are carved **out of** the feat budget
+    the way Path of War and professions reserve theirs.
+    *Rejected:* wiring all ~3,300 rows of `feats_new.csv` into the runtime — that is the long-parked
+    unified-feat-pool spec, and it is a much larger problem than luck. Also rejected: retyping the
+    ten rows into `Metzofitz_Feats.csv`, which is cheapest and records them as something they are
+    not, destroying the only marker that lets the reserve formula count them.
+  - **Luck is not a pf1 `change`.** Default Luck applies to percentile rolls and the daily DR pool,
+    not to d20 rolls, so the score and mod stay displayed numbers. The one real modifier is **Luck
+    God's** +2 to saves, attacks, ability checks, skill checks, AC and caster-level checks, added to
+    `feat_changes.json` and typed `luck` so it does not stack with itself.
+  - **The E-Kat reserve is earned, then spent.** Each per-level term is gated on the feat that
+    produces that kind of E-Kat — *Sweet Dreams* for long rests, *Stream of Luck* for discoveries —
+    and *Double Down* doubles the rate of both but never the `feats × 5`; the whole thing doubles
+    if Dimorphic. So **a character with no E-Kat feats starts with none**. What it does earn is a
+    creation-time budget rather than an opening balance ("These points must be spent"): it buys
+    `floor(earned ÷ 25)` **Luck Traits** and carries the remainder. The 99 is a *storage* cap and
+    bounds only what is carried.
+    *Rejected:* the level-driven reserve for everybody, which handed a 20th-level character with no
+    involvement in the luck system 40 free E-Kats. Because the Doc never defines "Long Rest E-Kats"
+    or "Discovery E-Kats", the formula is a table ruling — so the gate asserts it against the
+    table's own worked examples rather than against a re-reading.
+  - **Hero point feats and luck feats grant +1 Luck too.** The rule is "every positive luck based
+    feat", not just the E-Kat ones, so **Blood of Heroes, Hero's Fortune, Luck of Heroes, Defiant
+    Luck, Fortunate One** and **Adaptive Fortune** — all already selectable from the ordinary pool —
+    now each contribute. They needed recognising rather than reaching, and nothing in
+    `data/feats.csv` marks a feat as luck-related, so the roster is curated and gated. One
+    consequence worth knowing: a character with no luck stake at all can now finish with a positive
+    score, and a seller's negative score can be partially offset.
+    *Not modelled:* **Aristeia** feats also qualify, and none exists anywhere in the repo's data.
+    *Rejected:* the level-driven reserve for everybody, which handed a 20th-level character with no
+    involvement in the luck system 40 free E-Kats — invisible while the reserve was inert, and worth
+    a free Luck Trait the moment it wasn't.
+  - **The E-Kat spend table reaches the sheet.** An **E-Kat Exchange** section at the top of class
+    features lists all nine exchange rows verbatim — the +1/-1 on any roll, the stabilize, the hero
+    point conversion both ways, the borrowed feat or mythic spell, the Luck Trait purchase and the
+    two 99-E-Kat capstones — led by the character's carried reserve, with a **Luck Traits** section
+    beneath showing what that reserve already bought. Only characters actually in the E-Kat economy
+    get them, so an NPC with no luck is unchanged.
+  - **All 34 Luck Traits**, in the Doc's three categories (19 standard / 10 negative / 5 Dimorphic),
+    bought at 25 E-Kats each with a variety-first picker. Category is an eligibility gate: Dimorphic
+    traits need the Dimorphic type, negative traits need a negative score. Five carry machine-
+    readable effects — Expanded Luck raises the luck cap, Increase Luck the score, Enhanced Luck
+    Storage the E-Kat cap, Extra Spin the Twist of Fate uses, Big Savings the Vault cap; the rest
+    are in-play actions and ride as text.
+    *Rejected:* treating them as ordinary character traits in `data/traits.csv`. The Doc is explicit
+    — *"Luck Traits may only be purchased with E-Kats"* — so a trait pool can never be the route,
+    and they also never collect the generic +1 Luck that the E-Kat feats do.
+  - **The ten Negative Luck traits are unreachable, by construction.** Negative luck comes only from
+    selling, sellers take no E-Kat feats, no feats means no reserve, and no reserve means no
+    purchase. They are curated anyway so the roster is complete and a player can hand-add one — and
+    the behaviour gate *asserts* the unreachability rather than assuming it, so if any of those
+    three rulings changes, the suite says so.
+  - Two gate layers that share no code: `Backend/scripts/gates/validate_luck.py` (data and
+    constants, no generation) and `check_luck` in `test_house_invariants.py` (generated behaviour,
+    hung on the existing sweep for zero extra generations). The behaviour layer restates the Doc's
+    numbers as literals on purpose — importing `LUCK_CAP_POSITIVE` would make the assertion
+    `25 == 25` whatever the constant became.
 - **Seven classes now make the choice they are built around.** Every gap class-choices ticket 02
   found is built. Each was generating an **empty class-features dict** — the bard, hunter, shifter,
   psion, vampire hunter, omdura, and the witch's patron.
@@ -93,6 +344,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     whole 68-class matrix would have tripled the sweep's runtime to cover two rows.
 
 ### Fixed
+- **The psionics sweep no longer passes by standing one point inside an excused branch.**
+  `test_psionics_sweep` skips its power checks when the manifesting stat is **below** 10 ("cannot
+  manifest at all"). It missed the boundary by one: a stat of **exactly 10** gives
+  `max_power_level` 0, so no power of level 1 or higher is legal and the chooser correctly returns
+  none — but the test still demanded the class table's full `powers_known`. The expectation is now
+  zero when `max_power_level` is zero.
+  Surfaced by the luck work, which shifted RNG consumption and moved a seed-4242 marksman from WIS 9
+  to WIS 10. **The generator never changed** — that character knew zero powers before and after;
+  only which side of the escape it landed on did. Two cells were affected (marksman and psychic
+  warrior at 5th).
 - **A gunslinger level no longer erases every other class's class features.**
   `choose_gun_func` ended `phase_class_options` with
   `data_dict.update({'class features': result})` — a straight assignment that replaced the whole
@@ -164,6 +425,12 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   learn, and it would mean re-doing the medium to match.
 
 ### Removed
+- **`randomize_luck()`** (`class_func/luck_and_mythic.py`) — deleted rather than repaired, because
+  it did not implement a weakened version of the luck rule, it implemented a *different* one: a
+  5%/5% roll of ±1–40, where the house rule's luck is **bought** and caps at +25/−50. There was
+  nothing in it to keep. It was already unwired, so nothing changed behaviour when it went. The
+  real subsystem is `class_func/luck.py`. `randomize_mythic` in the same file is untouched — it
+  belongs to the Mythic effort.
 - **`gunslinger_deeds_dares.json` and `spirits.json`** — pools with no reader anywhere in
   `Backend/`. Gunslinger deeds are granted by level in RAW rather than chosen, so the file was
   never a missing chooser; `spirits.json` was superseded by `class_data/shaman.json`, which is

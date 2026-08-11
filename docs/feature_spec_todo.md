@@ -1084,3 +1084,141 @@ entry-prerequisite engine and base-class-level gating the generator has no model
 for the seven new classes · the 26 **Spheres** classes
 in `pf1spheres.classes`, which the sweep found and nothing consumes (`data.spheres_classes` is still
 empty) · a live Foundry import check of the seven.
+
+---
+
+## 13. Inherent luck — ✅ GENERATOR BUILT (2026-08-08), in-play half outstanding
+**Status: the generator-side subsystem is built and gated; the table-side half is not.** Every
+generated character carries a full luck state — a bought score, one of three luck types, a luck mod,
+an E-Kat reserve, a Vault ceiling and hero points — earned through a modelled purchase and fed by
+the ten E-Kat feats. Charted in `tickets: feature/inherent-luck`; this section is that map's
+destination. Tickets 01, 02, 03, 04 and 06 are resolved; **05 (where the in-play d100 table lives)
+is open** and owns the danger-level shift, the outcome table and the DR pool as a tracked resource.
+
+**The rule is not in this document.** The authority is Sieg's Guide's Luck sub-doc, extracted to
+**`oks/pathfinder/house-rules/luck.md`** in the OKF `pathfinder` bundle. Read the leaf, not this
+section, for anything you intend to implement.
+
+**The numbers are not in this document either.** Per the docs doctrine, prose must not restate a
+tuning constant — it names the symbol that owns it. That symbol is
+**`Backend/utils/class_func/luck.py`**: caps, the mod divisor and its rounding, all six exchange
+rates, the propensity and type weightings, the per-pool ceilings, the Vault and the E-Kat reserve
+formula. Nothing else in the tree holds a luck constant.
+
+**Luck needed TWO phases, and that is the section's governing lesson.** The feedback loop has both
+ends: a seller trades luck for **feat slots**, which must exist before `phase_feat_selection` sizes
+its draw, while the E-Kat feats feed luck **back** (+1 per positive luck feat, +4 for Ass Pull,
+It Just Works and Luck God) and which feats a character keeps is not final until
+`phase_feat_tax_and_swaps` has run its tax chains and child strip. One phase cannot be both before
+feat counting and after feat swapping. So `phase_luck_stake` records *intent* and each pool settles
+its own share at its own allocation site, where the real budget is known; `phase_luck_resolution`
+computes the final state at the far end. Same shape as `phase_bloodline_resolution`.
+
+**The deduction is declared, never silent.** `test_house_invariants` already asserts the 2→4 rank
+floor, the 3-ranks-per-level cap and the full-HP house rule. A luck spend that quietly violated any
+of them would put the two gate layers in conflict, so skill ranks come off the **budget** (leaving
+`sum(ranks) == skill_rank_budget` true) and HP comes off **`Total_HP`** and never off
+`sheet_health`, which *is* the full-HP house rule. Both invariants were taught about luck rather
+than weakened.
+
+**Two findings the map did not predict.** Re-reading the Doc mid-build corrected the bundle leaf in
+four places — the three *selectable* types are Default, Proximity and **Dimorphic** (Negative Luck
+is a **sign on the score**, not a type), Dimorphic's cap is **40**, the negative-luck exchange has
+explicit rates, and Twist Fate is a real mechanic the Vault exists to fuel. And a generated
+character exposed a design hole no reading would have: a seller who then drew E-Kat feats got the
+luck straight back and finished **positive**, making the lossy exchange rates pointless. Sellers are
+now excluded from the E-Kat feat economy — that is what selling means.
+
+**The E-Kat feats are new machinery, not repair.** They are *not* Metzofitz feats: none of the ten
+appears in `data/Metzofitz_Feats.csv`. They live in `data/feats_new.csv` typed `E-Kat`, a file **no
+runtime module reads**, and two of the four prerequisite chains are unsatisfiable *as data*
+(`"Asspull"` glued; `"All of the above"`, a summarising phrase). They reach a character through
+`Backend/json/feats/e_kat_feats.json` — ten curated rows with corrected prerequisites and
+machine-readable effects, because the CSV's effects are prose and the feedback loop cannot be
+computed from prose. They never join the generic pool: `no_prereq_loop` appends to a **shared**
+accumulator later choosers read, so they get their own chooser and slots **carved out of** the feat
+budget, the way Path of War, spheres and professions reserve theirs.
+
+**Luck is not a pf1 `change`.** Default Luck applies to percentile rolls and the daily DR pool, not
+to d20 rolls, so the score and mod stay displayed numbers. The one real modifier is **Luck God's**
+flat +2 to saves, attacks, ability checks, skill checks, AC and caster-level checks, which rides
+`Backend/json/feats/feat_changes.json` like every other feat buff, typed `luck` so it does not stack.
+
+**It reaches the sheet.** The E-Kat spend table (`Backend/json/feats/e_kat_exchange.json`, nine rows
+verbatim) renders as an **E-Kat Exchange** section at the **top of class features**, led by the
+character's carried reserve, with a **Luck Traits** section beneath listing what the reserve bought
+(stacks shown as `(x2)`). Both are spliced in at the call site after `phase_luck_resolution`, by
+rebuilding `data_dict['class features']` **in place** — `cf.class_features` is the same dict object,
+captured before luck resolved, so rebinding would leave the payload reading the old one with the
+sections silently absent. Shown only to characters actually in the E-Kat economy; three quarters of
+generated NPCs have no luck at all and do not need a nine-row reference table. Labels are ASCII
+because they become class-feature **keys**, and keys travel through the module's name matching.
+
+**Gates.** Two layers, sharing no code, because the class-choices map proved a table can never be
+its own witness. `validate_luck.py` gates the **data** with no generation — the roster against the
+Doc, every prerequisite resolvable and acyclic, the no-double-count rule, the constants' arithmetic
+relationships (including that buying must cost more than selling returns, or the exchange is a
+free-money loop), and the payload block's position. `check_luck` in `test_house_invariants.py` gates
+**behaviour**, hung on the existing `check_character` sweep for **zero** new generations, and
+restates the Doc's numbers as literals rather than importing them — importing `LUCK_CAP_POSITIVE`
+would make the assertion `25 == 25` no matter what the constant became.
+
+**The Luck Traits are a separate economy, and the first pass got it wrong.** The Doc:
+*"25 Permanent E-Kats can be used to purchase a Luck Trait"*, and decisively *"Luck Traits may only
+be purchased with E-Kats. These Traits do not grant 1 extra luck."* They are **not** character
+traits — an earlier pass put two of them in `data/traits.csv` where `trait_selector` would hand them
+out, which is a rules error, and both were removed. There are **34** in three categories
+(19 standard / 10 negative / 5 Dimorphic), curated in **`Backend/json/feats/luck_traits.json`**,
+with machine-readable effects on the only five that move a computed number — Expanded Luck (cap),
+Increase Luck (score), Enhanced Luck Storage (E-Kat store cap), Extra Spin (Twist of Fate/day) and
+Big Savings (Vault cap). Category is an **eligibility gate**, not a label.
+
+**The starting reserve is a budget, not a balance** — *"These points must be spent"* — so
+`phase_luck_resolution` buys `floor(earned ÷ 25)` traits, variety-first, and carries the remainder.
+
+**The reserve formula is a table ruling, not a reading, and it took three attempts.** "Long Rest
+E-Kats" and "Discovery E-Kats" are never defined anywhere in the Doc. Each per-level term is gated
+on the feat that produces that kind of E-Kat, and Double Down doubles the **rate of both** — never
+the `feats × 5`:
+
+```
+long_rest = 2 if Double Down else 1,  but only with Sweet Dreams    (else 0)
+discovery = 2 if Double Down else 1,  but only with Stream of Luck  (else 0)
+earned    = level×long_rest + level×discovery + (E-Kat feats × 5)   ... ×2 if Dimorphic
+```
+
+**A character with no E-Kat feats earns none.** The first implementation gave everyone `level × 2`
+regardless, which handed a 20th-level character uninvolved with luck 40 free E-Kats — enough, once
+traits landed, to buy one. **The gate encodes the table's own worked examples** (L10 Sweet Dreams +
+Lucky Boy = 20; + Stream of Luck = 30; + Double Down = 55, *not* 59; L20 all ten = 130; each
+doubling if Dimorphic), because a ruling can only be witnessed by worked examples — two earlier
+readings each produced plausible arithmetic and both were wrong. The 99 is a *storage* cap and
+bounds only what is carried, never the computation.
+
+**What grants +1 Luck is wider than the E-Kat feats.** *"Every positive luck based feat grants a +1
+Luck"*, and *"every e-kat and hero point feat grant an extra luck point"* — so hero point feats
+count too. Six such feats already exist in `data/feats.csv` and are already selectable, so they
+needed **recognising, not reaching**: Blood of Heroes, Hero's Fortune, Luck of Heroes, Defiant Luck,
+Fortunate One and Adaptive Fortune, curated in `Backend/json/feats/luck_feats.json` because nothing
+in the CSV marks a feat as luck-related. **Aristeia feats also qualify — and none exists in the
+repo's data**, so that rule is recorded and unattached. Because these ride the ordinary pool, a
+character with *no* luck stake can still finish with a positive score, and a seller's negative score
+can be partially offset.
+
+**The ten Negative Luck traits are unreachable, and the gate asserts it rather than assuming it.**
+Negative luck comes only from selling; sellers take no E-Kat feats; no feats means no reserve; no
+reserve means no purchase. Each link is a deliberate ruling and the dead end is their product — the
+same unsatisfiable-tail shape as the feat prereqs, arriving from a different direction.
+
+**Deferred (not built):** the **in-play half** — the twelve-band d100 outcome table, the
+danger-level quartile shift and luck-as-DR as a tracked pf1 resource (ticket 05, and it lands in the
+two *consumer* repos, not this one) · the **99-E-Kat "Destined" template**, a once-per-player
+capstone with no meaning for a generated NPC · the **attacker/defender luck combination** on attack
+rolls, which is a two-character computation unlike anything else on either sheet · **Vaulted
+Interest as live state** (generated characters start with an empty Vault; it banks in play) · the
+`misc_homebrew_rules` **UI toggle** in the FoundryVTT module and the web sheet — the backend accepts
+the input, but nothing sends it yet · the **Negative Luck traits' pf1 modifiers** (Tough Luck's DR/−,
+Tough Skin's natural AC, the three Hardened saves, Seen it all) — marked `pf1_change_candidate` in
+the curated table but not wired into `feat_changes.json`, because nothing can currently buy them ·
+the **`E-Kat Exchange: Rotten Luck`** cost formula, which did not survive extraction · **spending the
+carried remainder** in play (the sub-25 leftover is exported, never used).
