@@ -1,0 +1,243 @@
+{
+  "_README": {
+    "what": "The 10 E-Kat feats from Sieg's Guide, with machine-readable effects. Authority is oks/pathfinder/house-rules/luck.md; the rule text itself is the Luck Google Doc.",
+    "why_curated": "data/feats_new.csv rows 3278-3287 carry these feats but NO runtime module opens that file, and its effects are prose only ('Gain 4 E-Kats per session ... and a +4 Luck'). phase_luck_resolution has to compute a feedback loop from these numbers, which prose cannot supply. Ten rows is small enough to hand-curate; see docs/CODEBASE_MAP.md.",
+    "csv_defects_recorded": "Two prerequisite chains are unsatisfiable AS DATA in feats_new.csv and are corrected here, not there: 'It Just Works' reads prerequisite 'Asspull' (glued, never matches 'Ass pull'), and 'Luck God' reads 'All of the above' (a summarising phrase, not a feat name). compile_feats_new.py REGENERATES feats_new.csv, so patching the CSV would be overwritten -- this file is authoritative for the runtime.",
+    "generic_luck_rule": "Every positive luck-based feat grants +1 Luck, EXCEPT those stating a larger explicit bonus (Ass Pull, It Just Works, Luck God at +4 each) which do not additionally collect the +1. grants_generic_luck encodes that; validate_luck.py asserts luck_bonus and grants_generic_luck are never both set.",
+    "effect_fields": {
+      "luck_bonus": "explicit permanent Luck granted by this feat (0 means it takes the generic +1 instead)",
+      "grants_generic_luck": "whether the generic +1 Luck per positive luck feat applies",
+      "doubles_acquisition": "Double Down -- doubles permanent E-Kat acquisition, feeding luck.e_kat_reserve()",
+      "halves_e_kat_costs": "Luck God -- in-play spend discount, carried for the sheets, not applied at generation",
+      "e_kats_per_session": "permanent E-Kats gained each session",
+      "e_kats_per_long_rest": "permanent E-Kats gained per in-game long rest",
+      "temporary_e_kats_per_session": "E-Kats that expire at session end (do not enter the starting reserve)",
+      "e_kats_per_hostile_hero_point": "Middle Finger -- situational, GM-driven",
+      "hero_points_per_session": "temporary hero points granted per session (It Just Works)",
+      "roll_bonus_multiplier": "multiplier on roll-based E-Kat bonuses (Lucky Boy 2, Very Lucky Boy 3)",
+      "forced_rerolls_per_day": "Luck God's once-per-day favourable reroll"
+    }
+  },
+
+  "Double Down": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Double Down",
+    "prerequisites": [],
+    "benefit": "Double permanent E-Kat acquisition.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": true,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Stream of Luck": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Stream of luck",
+    "prerequisites": [],
+    "benefit": "Gain one E-Kat per session (character played), two if you have Double Down.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 1,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Sweet Dreams": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Sweet Dreams",
+    "prerequisites": ["Stream of Luck"],
+    "benefit": "Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 1,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Lucky Boy": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Lucky Boy",
+    "prerequisites": [],
+    "benefit": "E-Kat (roll based) bonuses are doubled.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 2,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Very Lucky Boy": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Very Lucky Boy",
+    "prerequisites": ["Lucky Boy"],
+    "benefit": "E-Kat (roll based) bonuses are increased to triple.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 3,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Ass Pull": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Ass pull",
+    "prerequisites": [],
+    "benefit": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "effects": {
+      "luck_bonus": 4,
+      "grants_generic_luck": false,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 4,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "It Just Works": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "It Just Works",
+    "csv_prerequisite_defect": "feats_new.csv reads 'Asspull' -- glued, never matches 'Ass pull'. Unsatisfiable as data; corrected here.",
+    "prerequisites": ["Ass Pull"],
+    "benefit": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
+    "effects": {
+      "luck_bonus": 4,
+      "grants_generic_luck": false,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 1,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Middle Finger": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Middle Finger",
+    "prerequisites": [],
+    "benefit": "Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 1,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Right of Deferment": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Right of Deferment",
+    "prerequisites": [],
+    "benefit": "You may wait to apply E-Kats after a roll for no penalty.",
+    "effects": {
+      "luck_bonus": 0,
+      "grants_generic_luck": true,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": false,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 0
+    }
+  },
+
+  "Luck God": {
+    "type": "E-Kat",
+    "source": "Sieg's Feats Doc",
+    "csv_name": "Luck God",
+    "csv_prerequisite_defect": "feats_new.csv reads 'All of the above' -- a summarising phrase, not a feat name, which the string prereq engine can never resolve. Expanded here to the nine feats it summarises.",
+    "prerequisites": [
+      "Double Down",
+      "Stream of Luck",
+      "Sweet Dreams",
+      "Lucky Boy",
+      "Very Lucky Boy",
+      "Ass Pull",
+      "It Just Works",
+      "Middle Finger",
+      "Right of Deferment"
+    ],
+    "benefit": "All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
+    "effects": {
+      "luck_bonus": 4,
+      "grants_generic_luck": false,
+      "doubles_acquisition": false,
+      "halves_e_kat_costs": true,
+      "e_kats_per_session": 0,
+      "e_kats_per_long_rest": 0,
+      "temporary_e_kats_per_session": 0,
+      "e_kats_per_hostile_hero_point": 0,
+      "hero_points_per_session": 0,
+      "roll_bonus_multiplier": 1,
+      "forced_rerolls_per_day": 1
+    }
+  }
+}

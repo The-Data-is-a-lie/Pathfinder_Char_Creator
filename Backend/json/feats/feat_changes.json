@@ -688,6 +688,58 @@
       }
     ]
   },
+  "Luck God": {
+    "changes": [
+      {
+        "formula": "2",
+        "target": "allSavingThrows",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "attack",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "allChecks",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "skills",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "ac",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      },
+      {
+        "formula": "2",
+        "target": "cl",
+        "type": "luck",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "contextNotes": [
+      {
+        "text": "All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are halved. Once per day you may force a reroll in your favor and choose which roll you prefer.",
+        "target": "allChecks"
+      }
+    ]
+  },
   "Mobility": {
     "changes": [],
     "contextNotes": [

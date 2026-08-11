@@ -1,6 +1,7 @@
 import random
 from math import floor
 from utils.util import roll_dice
+from utils.class_func import luck
 
 def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     if not isinstance(num_dice, int) or num_dice <= 0:
@@ -134,7 +135,26 @@ def level_up_stats(stats, character, main_stat=None):
 
 
     num_of_stats = floor(character.level / 4)
-    for i in range(num_of_stats):
+    # Luck (oks/pathfinder/house-rules/luck.md) trades against this pool in both directions: a buyer
+    # converts bumps to luck 1:1, a seller gains "an additional attribute point for -5 luck". The
+    # deduction happens HERE, where the real pool size is known, rather than in phase_luck_stake --
+    # so what the character actually paid is recorded and can never exceed what it had.
+    stake = luck.stake_of(character)
+    _before = num_of_stats
+    _spent = luck.settle(stake, luck.CURRENCY_LEVEL_UP_POINTS, num_of_stats)
+    num_of_stats -= _spent
+    # THE PAYOUT IS NO LONGER FOLDED INTO THE LEVEL-UP BUMPS. Those bumps are uniform across the six
+    # abilities and reach Foundry as the "Level-up Stats" buff; a luck-bought point is a different
+    # thing and is delivered as its own pf1 ability change on the Negative Luck Payout item, where
+    # it is attributable instead of vanishing into a pool of ordinary level-up increases.
+    #
+    # It is also weighted rather than uniform (luck.roll_attribute_payout): half the draw goes to
+    # the character's main stat, so a bought point usually lands where the character plays.
+    _received = luck.payout(stake, luck.PAYOUT_ATTRIBUTE_POINTS)
+    character.luck_attribute_bumps = luck.roll_attribute_payout(
+        _received, getattr(character, 'main_stat', None))
+    luck.record_audit(character, 'attribute_points', _before, _spent, _received, max(0, num_of_stats))
+    for i in range(max(0, num_of_stats)):
         attribute = random.choice(list(level_up_stats.keys()))
         level_up_stats[attribute] += 1
 

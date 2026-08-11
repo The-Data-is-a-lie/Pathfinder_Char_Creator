@@ -42,5 +42,10 @@ def trait_selector_limits(character, trait_data):
                 )
                 #   trait_data['requirement_faith'] == ,
                 #   trait_data['requirement_alignment'] == character.alignment
-                    
+
+    # NOTE for anyone tempted to add Luck Traits here: they do not belong in this pool. The Luck doc
+    # is explicit -- "Luck Traits may only be purchased with E-Kats" -- so they are not character
+    # traits at all. An earlier pass did add two of them (Expanded Luck, Big Savings) to
+    # data/traits.csv and gate them here; both are removed. The real system is the 25-E-Kat purchase
+    # in phase_luck_resolution, reading Backend/json/feats/luck_traits.json.
     return conditions

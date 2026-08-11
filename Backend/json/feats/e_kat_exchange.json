@@ -1,0 +1,57 @@
+{
+  "_README": {
+    "what": "The E-Kat spend table, verbatim from Sieg's Guide. Rendered on the character sheet as an 'E-Kat Exchange' section at the TOP of class features, so a player can see what their reserve actually buys without opening the Doc.",
+    "why_data_not_code": "This is rule TEXT the sheet displays, not behaviour. Per the docs doctrine the generator owns behaviour and data owns content; keeping the table here means correcting a wording is a data edit, and validate_luck.py can gate the roster against the Doc.",
+    "order_matters": "A list, not an object: the rows render in the Doc's own order, cheapest first, with the two 99-E-Kat capstones last.",
+    "in_play_only": "Nothing here is applied at generation. The generator spends the starting reserve on Luck Traits (25 each) and exports the remainder; every other row is a table action the GM adjudicates.",
+    "cross_check": "The 25-E-Kat row is the one the generator acts on -- luck.LUCK_TRAIT_COST must agree with it, and validate_luck.py asserts that.",
+    "ascii_labels": "Labels are ASCII on purpose. They become KEYS in the class-features block, and keys travel through the FoundryVTT module's name matching -- a stray em-dash or arrow is exactly the casing/character mismatch that has orphaned rows in this stack before."
+  },
+  "rows": [
+    {
+      "cost": 2,
+      "label": "2 E-Kats: bonus",
+      "text": "Gain a +1 on ANY roll; +2 if declared before the roll."
+    },
+    {
+      "cost": 2,
+      "label": "2 E-Kats: penalty",
+      "text": "Inflict a -1 on ANY roll; -2 if declared before the roll."
+    },
+    {
+      "cost": 5,
+      "label": "5 E-Kats: stabilize",
+      "text": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization."
+    },
+    {
+      "cost": 10,
+      "label": "10 E-Kats: hero point",
+      "text": "Use as a Hero Point (you can store it if you have room)."
+    },
+    {
+      "cost": -5,
+      "label": "Hero point for 5 E-Kats",
+      "text": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
+    },
+    {
+      "cost": 20,
+      "label": "20 E-Kats: borrow a feat or spell",
+      "text": "Gain the ability to use a feat or mythic spell you qualify for, excluding the mythic requirement. Feats last one minute; spells last for the duration of the spell."
+    },
+    {
+      "cost": 25,
+      "label": "25 E-Kats: Luck Trait",
+      "text": "25 permanent E-Kats can be used to purchase a Luck Trait."
+    },
+    {
+      "cost": 99,
+      "label": "99 E-Kats: Destined Template",
+      "text": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character."
+    },
+    {
+      "cost": 99,
+      "label": "99 E-Kats: survive anything",
+      "text": "You may exchange 99 E-Kats to survive anything."
+    }
+  ]
+}

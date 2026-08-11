@@ -1,0 +1,357 @@
+{
+  "_README": {
+    "what": "The 34 Luck Traits from Sieg's Guide, in the Doc's own three categories. Authority is oks/pathfinder/house-rules/luck.md; the rule text is the Luck Google Doc.",
+    "the_purchase_rule": "'25 Permanent E-Kats can be used to purchase a Luck Trait.' And, decisively: 'Luck Traits may only be purchased with E-Kats. These Traits do not grant 1 extra luck.' They are NOT character traits -- data/traits.csv must never contain them and trait_selector must never draw them. An earlier pass put Expanded Luck and Big Savings in that CSV; both were removed.",
+    "no_double_count": "'These Traits do not grant 1 extra luck' is the mirror of the E-Kat feats' rule. No trait here contributes the generic +1 Luck. Only 'Increase Luck' moves the score at all, by its own stated +1 per stack; validate_luck.py asserts no other trait carries luck_score_bonus.",
+    "repeatable": "The Doc marks ten traits 'Repeatable' and the three Loot Boxes 'Does not stack'. The remainder are unmarked, and are recorded here as repeatable:false -- the conservative reading, and the one the variety-first picker wants anyway. If the Doc is later clarified, this field is the single place to change.",
+    "categories": "standard (19) | negative (10) | dimorphic (5). Category is an ELIGIBILITY GATE: dimorphic traits require the Dimorphic luck type; negative traits require a negative luck score.",
+    "negative_traits_are_unreachable": "No generated character can buy the ten negative-luck traits, and this is a consequence of three separate rulings rather than an oversight: negative luck comes only from selling; sellers take no E-Kat feats (or the feats' luck bonus would hand the sold luck straight back, making selling free money); no E-Kat feats means no starting reserve; no reserve means no purchase. They are curated anyway so the roster is complete, a player can hand-add one with real data behind it, and check_luck can ASSERT the unreachability rather than assume it.",
+    "pf1_change_candidate": "Marks traits whose effect is a real pf1 modifier (DR, natural AC, save bonuses) rather than an in-play action. None is wired into feat_changes.json: every one of them sits in the unreachable negative set, so nothing would ever emit them. Wire them at the same time as whatever makes those traits reachable.",
+    "effect_fields": {
+      "luck_cap_step": "raises the positive luck cap, per stack",
+      "luck_score_bonus": "raises the luck score itself, per stack",
+      "e_kat_store_step": "raises the 99 E-Kat storage cap, per stack",
+      "twist_fate_bonus": "extra Twist of Fate uses per day, per stack",
+      "vault_cap_step": "raises the Vaulted Interest limit cap, per stack"
+    },
+    "prerequisites": "Luck Traits have prerequisites in three forms and all three are enforced by luck_trait_chooser: (a) another TRAIT -- the Loot Box chain and Never-Ending Suffering; (b) requires_luck_at_most, a FLOOR on how negative the score must be, which every negative trait carries; (c) requires_luck_assets_per_stack, Inevitable's count of luck feats+traits, which scales per stack. The Doc's trait section bleeds into the feat list -- Very Lucky Boy, It Just Works and Luck God appear there with prerequisites but are FEATS, and live in e_kat_feats.json."
+  },
+  "Expanded Luck": {
+    "category": "standard",
+    "benefit": "Your luck cap is increased by +5.",
+    "repeatable": true,
+    "effects": {
+      "luck_cap_step": 5
+    },
+    "prerequisites": []
+  },
+  "Lucky Survivor": {
+    "category": "standard",
+    "benefit": "Each Luck Point can reduce damage by 2 rather than one.",
+    "repeatable": true,
+    "effects": {},
+    "prerequisites": []
+  },
+  "Increase Luck": {
+    "category": "standard",
+    "benefit": "Gain a +1 to your luck score.",
+    "repeatable": true,
+    "effects": {
+      "luck_score_bonus": 1
+    },
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Enhanced Luck Storage": {
+    "category": "standard",
+    "benefit": "+100 max E-Kats",
+    "repeatable": true,
+    "effects": {
+      "e_kat_store_step": 100
+    },
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Momentum": {
+    "category": "standard",
+    "benefit": "+1 E-Kat everytime you are on the receiving end of a crit or crit failure that results in a benefit for you.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "Lucky Survival": {
+    "category": "standard",
+    "benefit": "Add your luck score to your AC/Saves against a single attack once per day.",
+    "repeatable": true,
+    "effects": {},
+    "prerequisites": []
+  },
+  "God Has Failed Us": {
+    "category": "standard",
+    "benefit": "Gain 2 E-Kats in any session the GM does not place an E-Kat onscreen.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Loaded Dice": {
+    "category": "standard",
+    "benefit": "Choose the result of one percentile for 40 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Pull": {
+    "category": "standard",
+    "benefit": "Reroll a percentile, choose between the 2 results for 10 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Aim-Bot": {
+    "category": "standard",
+    "benefit": "After a roll which did not crit, reroll twice and if any dice crit use those instead for 10 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Auto-Dodge": {
+    "category": "standard",
+    "benefit": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Loot Box": {
+    "category": "standard",
+    "benefit": "Increase loot table roll by one category before the roll for 25 E-Kats.",
+    "repeatable": false,
+    "does_not_stack": true,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Premium Loot Box": {
+    "category": "standard",
+    "benefit": "Increase loot table roll by two categories before the roll for 50 E-Kats.",
+    "repeatable": false,
+    "does_not_stack": true,
+    "effects": {},
+    "prerequisites": [
+      "E-Kat Exchange: Loot Box"
+    ]
+  },
+  "E-Kat Exchange: Deluxe Loot Box": {
+    "category": "standard",
+    "benefit": "Increase loot table roll by three categories before the roll for 75 E-Kats.",
+    "repeatable": false,
+    "does_not_stack": true,
+    "effects": {},
+    "prerequisites": [
+      "E-Kat Exchange: Premium Loot Box"
+    ]
+  },
+  "E-Kat Exchange: Optimal Allocation": {
+    "category": "standard",
+    "benefit": "Choose the allocation for 1 earned inherent roll for 10 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Convenient Failure": {
+    "category": "standard",
+    "benefit": "Instant fail a skill check, save, or attack of your choice for a cost of 1 E-Kat.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Lucky Navigator": {
+    "category": "standard",
+    "benefit": "Succeed on a navigation check for 5 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Blind Luck": {
+    "category": "standard",
+    "benefit": "Ignore Miss Chance that would have negated a successful attack for 5 E-Kats.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": []
+  },
+  "E-Kat Exchange: Rotten Luck": {
+    "category": "standard",
+    "benefit": "Ignore targets luck and any luck bonuses for one roll for a number of E-kats according to the following formula.",
+    "repeatable": false,
+    "note": "The Doc says 'according to the following formula' and the formula did not come through the extraction. Re-read before anything depends on the cost.",
+    "effects": {},
+    "prerequisites": []
+  },
+  "When It Counts": {
+    "category": "negative",
+    "benefit": "Once per day you may use your negative luck as a luck pool as if you had the feat 'lucky survivor', mitigating the damage to a minimum of one.",
+    "repeatable": false,
+    "effects": {},
+    "prerequisites": [],
+    "requires_luck_at_most": -50
+  },
+  "Trauma Survivor": {
+    "category": "negative",
+    "benefit": "Add your negative luck score to the hitpoint threshold at which you die.",
+    "repeatable": false,
+    "effects": {},
+    "changes": [],
+    "context_notes": [],
+    "death_hp_pool_bonus": "-@resources.personalLuck.value",
+    "prerequisites": [],
+    "requires_luck_at_most": -25,
+    "pf1_change_candidate": true
+  },
+  "Never-Ending Suffering": {
+    "category": "negative",
+    "benefit": "When unconscious with Trauma Survivor active, enemies take a penalty equal to your luck score to notice you.",
+    "repeatable": false,
+    "effects": {},
+    "changes": [],
+    "context_notes": [],
+    "prerequisites": [
+      "Trauma Survivor"
+    ],
+    "pf1_change_candidate": false,
+    "no_change_reason": "Penalises an ENEMY's Perception check to notice you, so there is nothing on this character's own sheet to attach it to. A note on skill.per would surface in the wrong actor's tooltip. The benefit text renders on the trait item; the GM applies it."
+  },
+  "Tough Luck": {
+    "category": "negative",
+    "benefit": "Gain DR/- equal to your luck mod.",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [],
+    "context_notes": [
+      {
+        "text": "Damage reduction equal to the magnitude of your luck modifier, overcome by nothing (DR n/-).",
+        "target": "ac"
+      }
+    ],
+    "prerequisites": [],
+    "requires_luck_at_most": -10
+  },
+  "Tough Skin": {
+    "category": "negative",
+    "benefit": "Gain Natural AC equal to your luck mod.",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [
+      {
+        "formula": "-floor(@resources.personalLuck.value / 5)",
+        "target": "nac",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "context_notes": [],
+    "prerequisites": [],
+    "requires_luck_at_most": -30
+  },
+  "Seen it all": {
+    "category": "negative",
+    "benefit": "Add your luck Mod to any Fear, Morale, or Illusion based Saves.",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [],
+    "context_notes": [
+      {
+        "text": "Add the magnitude of your luck modifier to saving throws against Fear, Morale or Illusion effects.",
+        "target": "allSavingThrows"
+      }
+    ],
+    "prerequisites": [],
+    "requires_luck_at_most": -40
+  },
+  "Hardened Mind": {
+    "category": "negative",
+    "benefit": "Add your luck mod to Will Saves",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [
+      {
+        "formula": "-floor(@resources.personalLuck.value / 5)",
+        "target": "will",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "context_notes": [],
+    "prerequisites": [],
+    "requires_luck_at_most": -25
+  },
+  "Hardened Body": {
+    "category": "negative",
+    "benefit": "Add your luck mod to Fort Saves",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [
+      {
+        "formula": "-floor(@resources.personalLuck.value / 5)",
+        "target": "fort",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "context_notes": [],
+    "prerequisites": [],
+    "requires_luck_at_most": -25
+  },
+  "Hardened Reflexes": {
+    "category": "negative",
+    "benefit": "Add your luck mod to Ref Saves",
+    "repeatable": false,
+    "pf1_change_candidate": true,
+    "effects": {},
+    "changes": [
+      {
+        "formula": "-floor(@resources.personalLuck.value / 5)",
+        "target": "ref",
+        "type": "untyped",
+        "operator": "add",
+        "priority": 0
+      }
+    ],
+    "context_notes": [],
+    "prerequisites": [],
+    "requires_luck_at_most": -25
+  },
+  "Been there done that": {
+    "category": "negative",
+    "benefit": "Crit Penalty Luck Rolls are one category higher.",
+    "repeatable": false,
+    "note": "Applies only to rolls beneath 0.",
+    "effects": {},
+    "prerequisites": [],
+    "requires_luck_at_most": -15
+  },
+  "Fated Survival": {
+    "category": "dimorphic",
+    "benefit": "Upon failing a Twist of Fate you may reroll and try again once a day.",
+    "repeatable": true,
+    "effects": {},
+    "prerequisites": []
+  },
+  "Extra Spin": {
+    "category": "dimorphic",
+    "benefit": "You gain an additional Twist of Fate per day.",
+    "repeatable": true,
+    "effects": {
+      "twist_fate_bonus": 1
+    },
+    "prerequisites": []
+  },
+  "Interest Growth": {
+    "category": "dimorphic",
+    "benefit": "Upon rolling below 0 on a percentile you gain an additional 1 interest.",
+    "repeatable": true,
+    "effects": {},
+    "prerequisites": []
+  },
+  "Big Savings": {
+    "category": "dimorphic",
+    "benefit": "Increase Vaulted Interest Limit Cap by 77.",
+    "repeatable": true,
+    "effects": {
+      "vault_cap_step": 77
+    },
+    "prerequisites": []
+  },
+  "Inevitable": {
+    "category": "dimorphic",
+    "benefit": "Auto wins a single Twist of Fate per day.",
+    "repeatable": true,
+    "effects": {},
+    "prerequisites": [],
+    "requires_luck_assets_per_stack": 10,
+    "note": "\"10 Luck Feats/Traits/E-kat Feats are required for each time you take this feat\" -- the requirement scales with the stack, so a second Inevitable needs 20."
+  }
+}

@@ -13,12 +13,14 @@ def randomize_mythic(character):
     return character.mythic_rank
 
 
-def randomize_luck(character):
-    if random.randint(1, 100) >= 95:
-        character.luck_score = random.randint(1, 40)
-    #using a -40 to make it a negative luck score when you roll low
-    elif random.randint(1, 100) <= 5:
-        character.luck_score = random.randint(1, 40) - 40
-    else:
-        character.luck_score = 0
-    return character.luck_score
+# randomize_luck() was DELETED here, deliberately, rather than repaired.
+#
+# It did not implement a weakened version of the luck rule -- it implemented a different rule. The
+# Doc's luck is BOUGHT (point buy / level-up points / 5 skill ranks or HP) and caps at +25/-50;
+# randomize_luck rolled +-1..40 on a 5%/5% chance. There was nothing in it to keep. It was also
+# already unwired (its import in main_test.py had been commented out), so nothing changed behaviour
+# when it went.
+#
+# The real subsystem lives in class_func/luck.py, resolved by phase_luck_stake and
+# phase_luck_resolution. randomize_mythic above is untouched: it belongs to the Mythic map, which
+# owns the other half of this file.

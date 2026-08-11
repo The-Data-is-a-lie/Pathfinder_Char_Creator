@@ -59,7 +59,12 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                   			chooseable_list_class_features, feat_spell_searcher, generic_multi_chooser,
                                                             simple_list_chooser, generic_feat_chooser, bloodline_feat_chooser, teamwork_pool_size,
                                                             capitalize_feats, dedupe_feats_case_insensitive, topup_feat_chooser,
-                                                            metzofitz_description)
+                                                            metzofitz_description, e_kat_feat_chooser,
+                                                            e_kat_feat_table, e_kat_description,
+                                                            luck_trait_table, luck_trait_chooser,
+                                                            luck_trait_description, luck_feat_table,
+                                                            held_luck_feats, luck_sheet_sections,
+                                                            e_kat_exchange_rows)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
@@ -78,7 +83,10 @@ from utils.class_func.hp_rolls 						import roll_hp, total_hp_calc, hit_dice_cal
 from utils.class_func.item_and_price 				import item_chooser
 from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
-# from utils.class_func.luck_and_mythic 				import randomize_luck, randomize_mythic
+from utils.class_func 								import luck
+# randomize_luck() is gone (see luck.py): it implemented a DIFFERENT rule -- a 5% roll of +-1..40,
+# where the Doc's luck is bought and caps at +25/-50. randomize_mythic still lives in
+# luck_and_mythic.py and belongs to the Mythic map, not this one.
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr, martial_training_depth
 from utils.class_func.psionics 						import choose_psionics_attr, mind_blade
 from utils.class_func.backstory 					import generate_backstory, structured_bio
@@ -96,7 +104,7 @@ from utils.class_func.race_func 					import apply_racial_stats
 # from utils.class_func.race_func 					import (race_ability_score_changes, race_ability_split,
 #                                                      		race_traits_chooser, subrace_chooser)#, full_race_data
 from utils.class_func.randomize_flaw 				import randomize_flaw_amount
-from utils.class_func.skill_ranks 					import skills_selector
+from utils.class_func.skill_ranks 					import skills_selector, misc_homebrew_enabled, homebrew_enabled
 from utils.class_func.spells 						import (extra_spells_divine, spells_known_attr,
 										   					spells_known_extra_roll, spells_known_selection,
                                                    	        spells_per_day_attr, spells_per_day_from_ability_mod,
@@ -107,7 +115,7 @@ from utils.class_func.spells 						import (extra_spells_divine, spells_known_att
 from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and_dedupe_func
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
 from utils.class_func.separate_feats_func 			import separate_feats_func
-from utils.class_func.feat_level_assignment import assign_feats_to_levels
+from utils.class_func.feat_level_assignment import assign_feats_to_levels, normal_feat_slot_levels
 from utils.class_func.traits 						import trait_selector
 from utils.class_func.versatile_performance 		import versatile_perfomance
 from utils.class_func.wizard_school 				import wizard_school_chooser, wizard_opposing_school
@@ -380,6 +388,72 @@ def phase_alignment_and_level(character, alignment_input, deity_flag, low_level,
 		if high_level <= 1:
 			high_level = 2
 	randomize_level(character, low_level, high_level, flaw_amount)
+
+
+@phase(requires=['level', 'feat_amounts'], provides=['luck_stake', 'e_kat_feat_slots'])
+def phase_luck_stake(character):
+	'''Decide this character's INTENT toward luck, before a single budget has been allocated.
+
+	Luck is bought (oks/pathfinder/house-rules/luck.md), and the three currencies it can be bought
+	with here -- level-up attribute bumps, skill ranks, HP -- are all allocated by phases that run
+	after this one. So this phase spends nothing. It records what the character wants, and each pool
+	settles its own share at its own site (luck.settle), where the real budget is known and the
+	house-rule floors can be respected.
+
+	THE SPLIT IS NOT COSMETIC. A seller trades luck for feat slots, and feat slots have to exist
+	before phase_feat_selection sizes its draw off character.feat_amounts. But the E-Kat feats feed
+	luck BACK -- +1 per positive luck feat, +4 for Ass Pull / It Just Works / Luck God -- and which
+	feats a character ends up with is not final until phase_feat_tax_and_swaps has had its say. One
+	phase cannot be both before feat counting and after feat swapping, so there are two:
+	this one, and phase_luck_resolution at the far end.
+
+	requires `feat_amounts`: the seller's bonus slots are added to it here, so update_level must
+	already have set the feat economy (phase_alignment_and_level).
+
+	Gated on misc_homebrew_rules -- the house-rule catch-all, now an exposed input -- rather than on
+	the feat flag. A character generated with house rules off carries NO luck state at all, rather
+	than a half-built one; `provides` still holds because both attributes are set either way.
+	'''
+	character.luck_stake = None
+	character.e_kat_feat_slots = 0
+	if not misc_homebrew_enabled(character):
+		return
+
+	stake = luck.plan_stake(character.level, getattr(character, 'luck_direction', None))
+	character.luck_stake = stake
+	if not stake:
+		return
+
+	# "You may gain a feat for -5 luck." These are genuinely NEW slots -- the character sold
+	# something for them -- unlike the E-Kat reservation below, which is carved out of the budget.
+	#
+	# BOTH budgets move, and that is not optional. `feat_amounts` is the pool the choosers draw
+	# from, but `normal_feat_amount` is the GUARANTEE TARGET the final feat-count cap trims to
+	# ("house rule: cap to exact"), and the two are documented as moving together so that
+	# feat_amounts == normal + flaw + story + flavor stays true. Raising only the pool left the cap
+	# unaware of the extra slots, so it trimmed them straight back off the tail -- and because the
+	# profession/PoW reservations LOWER the target, a level-1 seller's target reached zero and the
+	# cap wiped every general feat it had.
+	character.feat_amounts += stake['bonus_feat_slots']
+	character.normal_feat_amount += stake['bonus_feat_slots']
+
+	# E-Kat feats are reachable only through reserved slots, and now for SELLERS TOO.
+	#
+	# Sellers used to be excluded here, for a reason a generated character had proved: one sold 2
+	# luck for skill points, then drew Ass Pull and It Just Works and finished at +8. Selling was
+	# free money, and "negative luck" was a label almost nothing wore. But the exclusion was the
+	# wrong instrument -- it closed the loop by denying sellers the FEATS, which also denied them
+	# the E-Kat reserve, which is the only currency Luck Traits can be bought with ("Luck Traits may
+	# only be purchased with E-Kats"). The consequence was that all ten NEGATIVE Luck Traits were
+	# unreachable by any generated character: eligible_luck_traits opens that category at score < 0,
+	# and nothing could ever afford one.
+	#
+	# The loop is now closed at its source instead -- phase_luck_resolution credits a seller ZERO
+	# luck from feats -- so the feats can come back without the free money coming with them. See the
+	# suppression block there; the two are a pair, and neither is safe alone.
+	# The reservation itself is taken in phase_feat_selection, out of the budget, not on top of it.
+	if homebrew_enabled(character):
+		character.e_kat_feat_slots = luck.e_kat_slots(character.level, len(e_kat_feat_table()))
 
 
 @phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
@@ -1424,6 +1498,50 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 		character.feat_amounts += max(character.teamwork_feats - teamwork_pool_size(character, casting_level_str), 0)
 	# print("character.chooseable", character.chooseable)
 	character.feat_amounts += character.class_feats_amount
+	# Reserved E-Kat slots (homebrew luck). Carved OUT of the budget, exactly as path_of_war /
+	# spheres / professions reserve theirs above -- never added on top, so a lucky character spends
+	# its OWN feats on luck. Taken before the chooser because feat_amount=character.feat_amounts is
+	# what sizes the draw. These feats never enter the generic pool: e_kat_feat_chooser resolves the
+	# chains itself and leaves chooseable_talents alone (see feats.py).
+	# Feats the character SOLD LUCK FOR ("You may gain a feat for -5 luck"), reserved and drawn HERE
+	# -- FIRST, ahead of the E-Kat reservation below.
+	#
+	# phase_luck_stake adds these slots to feat_amounts, and that used to be the whole mechanism: the
+	# general draw simply picked more, and phase_luck_resolution guessed WHICH of them the sale had
+	# paid for by taking the tail of the feat list minus everything reserved by another subsystem.
+	# Both halves of that were wrong once sellers gained E-Kat feats. The budget is a single pool, so
+	# the E-Kat and profession reservations below were free to consume the very slots the sale had
+	# just added -- a character sold luck for a feat and the feat became an E-Kat reservation. And the
+	# guess had nothing left to name: on a measured 20th-level seller all twelve normal rows were
+	# E-Kat, profession or Martial Training picks, so the ledger silently printed fewer "(-5 Luck)"
+	# rows than the character had bought (6 of 39 sellers, and the reason this was reported as a bug).
+	#
+	# Reserving up front fixes both at once: the slots cannot be eaten, and the ledger names the exact
+	# feats instead of inferring them. topup_feat_chooser is the established "draw N more ordinary
+	# feats" helper -- it widens the pool as it goes and registers every pick in character.chooseable,
+	# so the general draw below cannot re-pick one.
+	luck_bought_feats = []
+	_luck_stake = luck.stake_of(character)
+	_luck_slots = (_luck_stake or {}).get('bonus_feat_slots', 0)
+	if _luck_slots:
+		# NOT clamped to the remaining budget, unlike the E-Kat reservation below. These slots are
+		# ADDITIVE -- the character sold luck to GAIN a feat, so the feat must exist however little
+		# budget the professions / Path of War / Spheres reservations left behind. Clamping made the
+		# sale silently buy nothing on a low-level or heavily-subsystemed character (7 of 60 across a
+		# class x level sweep). phase_luck_stake already added these to feat_amounts, so subtracting
+		# them here returns the pool to its pre-sale size and the drawn feats are the net gain.
+		character.feat_amounts = max(0, character.feat_amounts - _luck_slots)
+		luck_bought_feats = topup_feat_chooser(character, casting_level_str, _luck_slots)
+	character.luck_bought_feats = list(luck_bought_feats)
+
+	e_kat_feats_chosen = []
+	if getattr(character, 'e_kat_feat_slots', 0):
+		_reserved = min(character.e_kat_feat_slots, max(0, character.feat_amounts))
+		character.feat_amounts -= _reserved
+		e_kat_feats_chosen = e_kat_feat_chooser(character, _reserved)
+	# Recorded on the character so separate_feats_func can keep these out of the story / flaw /
+	# flavour / class buckets -- an E-Kat feat is an ordinary feat and must render as one.
+	character.e_kat_feats_chosen = list(e_kat_feats_chosen)
 	if truly_random_feats.upper() == "Y":
 	# Truly Random Feats
 	# full casters + mid casters with low BAB
@@ -1453,6 +1571,16 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
 	character.feats.extend(capitalize_feats(character, list(grants.ranger_style_feats)))
 	character.feats.extend(capitalize_feats(character, list(grants.monk_bonus_feats)))
+	# E-Kat picks join here, in canonical casing straight from the curated table -- the Foundry
+	# module and the resolution phase both match on these names, and capitalize_feats would re-case
+	# them. They ride the same dedupe and the same feat-tax/swap pass as everything else, which is
+	# precisely why phase_luck_resolution counts feats at the far end instead of trusting this list.
+	character.feats.extend(e_kat_feats_chosen)
+	# The luck-bought feats join the same list: they ARE ordinary feats, just ones whose slot was
+	# paid for by selling luck rather than earned at a level. They ride the same dedupe, feat-tax and
+	# swap passes as everything else -- which is why phase_luck_resolution intersects this list with
+	# the FINAL feats before billing it, rather than trusting what was drawn here.
+	character.feats.extend(luck_bought_feats)
 	# Belt-and-braces: same feat arriving from two sources with different casing would
 	# otherwise survive to the sheet as a duplicate entry.
 	character.feats = dedupe_feats_case_insensitive(character.feats)
@@ -1583,7 +1711,7 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 	# Normal feats land at L1,3,5,…; story feats at L1,5,10,15,…; flaw/flavor at creation (L1);
 	# class bonus feats at their granting levels (_class_feat_levels, e.g. Fighter 1/2/4).
 	_story_levels  = ([1] + [5 * k for k in range(1, len(story_feats) + 1)])[:len(story_feats)]
-	_normal_levels = [2 * i + 1 for i in range(len(feats))]
+	_normal_levels = normal_feat_slot_levels(character, len(feats))
 	# One shared granted-set across all five calls: overlapping chains (e.g. riptide attack
 	# under both Improved Drag and Improved Trip) bundle a child onto exactly one primary;
 	# call order below decides which primary wins it.
@@ -1698,7 +1826,9 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 		# chains still bundle a child exactly once); positional levels match the convention above.
 		_repl_class_levels = [_class_feat_levels[i] if i < len(_class_feat_levels) else character.c_class_level
 							  for i in range(len(class_feats) - len(class_repl), len(class_feats))]
-		_repl_normal_levels = [2 * i + 1 for i in range(len(feats) - len(normal_repl), len(feats))]
+		# Tail of the full schedule -- the levels are no longer a pure function of the index (the
+		# surplus seats at level 1), so the slice comes off the whole list rather than a range().
+		_repl_normal_levels = normal_feat_slot_levels(character, len(feats))[len(feats) - len(normal_repl):]
 		class_feat_tax_dict.update(feat_tax_func(character, class_repl, feat_levels=_repl_class_levels, already_granted=_tax_already_granted))
 		feats_feat_tax_dict.update(feat_tax_func(character, normal_repl, feat_levels=_repl_normal_levels, already_granted=_tax_already_granted))
 		# Second (terminal) strip round: a replacement can itself be a tax primary whose chain
@@ -1736,7 +1866,7 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 		_post_class_slots = _class_feat_slots[:len(class_feats)]
 		feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
 			character, feats, class_feats,
-			[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+			normal_feat_slot_levels(character, len(feats)), [lvl for _, lvl in _post_class_slots])
 		# the returned class levels are the input multiset re-sorted ascending, so a stable
 		# sort of the slot pairs by level re-pairs each level with its granting class
 		_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
@@ -1780,7 +1910,7 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 		_post_class_slots = _class_feat_slots[:len(class_feats)]
 		feats, class_feats, _normal_levels, _post_class_levels = assign_feats_to_levels(
 			character, feats, class_feats,
-			[2 * i + 1 for i in range(len(feats))], [lvl for _, lvl in _post_class_slots])
+			normal_feat_slot_levels(character, len(feats)), [lvl for _, lvl in _post_class_slots])
 		# the returned class levels are the input multiset re-sorted ascending, so a stable
 		# sort of the slot pairs by level re-pairs each level with its granting class
 		_post_class_slots = sorted(_post_class_slots, key=lambda s: s[1])
@@ -1817,17 +1947,37 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 	# only the tracking feat is dropped), then any remaining tail. (House rule: cap to exact.)
 	_feat_target = int(getattr(character, "normal_feat_amount", len(feats)) or 0)
 	if len(feats) > _feat_target:
-		_over = len(feats) - _feat_target
+		# TRIM IN PRIORITY ORDER, cheapest slot first. This used to trim sphere feats and then slice
+		# the head (`feats[:target]`), which dropped whatever sat at the END of the list -- and the
+		# end is exactly where the separately-paid-for picks are appended. A seller lost the feats it
+		# had just sold luck for, and a lucky character lost E-Kat picks its reservation had bought.
+		#
+		# At low level the budget is genuinely oversubscribed (a 1st-level character has 3 normal
+		# slots and can owe 3 professions, an E-Kat pick and 2 luck-bought feats), so something MUST
+		# go. The order says which: sphere tracking feats first (their talents stay on the sheet
+		# regardless), then ordinary picks, then E-Kat picks, and the luck-bought feats last of all,
+		# because those are the only ones the character spent a currency for.
 		_sphere_lower = {str(s).lower() for s in pw.sphere_feats}
-		_kept = []
-		for _f in reversed(feats):                       # sphere Extra-Talent feats are the appended tail
-			if _over > 0 and str(_f).lower() in _sphere_lower:
-				_over -= 1
-				continue
-			_kept.append(_f)
-		feats = list(reversed(_kept))
-		if len(feats) > _feat_target:                    # rare: homebrew exceeds slots even after trimming sphere slots
-			feats = feats[:_feat_target]
+		_ekat_lower = {str(n).lower() for n in (getattr(character, 'e_kat_feats_chosen', None) or [])}
+		_luck_lower = {str(n).lower() for n in (getattr(character, 'luck_bought_feats', None) or [])}
+
+		def _trim_by(predicate):
+			"""Drop feats matching `predicate` from the TAIL until the target is met."""
+			over = len(feats) - _feat_target
+			if over <= 0:
+				return feats
+			kept = []
+			for _f in reversed(feats):
+				if over > 0 and predicate(str(_f).lower()):
+					over -= 1
+					continue
+				kept.append(_f)
+			return list(reversed(kept))
+
+		feats = _trim_by(lambda f: f in _sphere_lower)
+		feats = _trim_by(lambda f: f not in _ekat_lower and f not in _luck_lower)
+		feats = _trim_by(lambda f: f in _ekat_lower)
+		feats = _trim_by(lambda f: f in _luck_lower)
 	elif len(feats) < _feat_target:                      # defensive guarantee against any future regression
 		_fill = topup_feat_chooser(character, casting_level_str, _feat_target - len(feats))
 		add_feats_to_chooseable(character, _fill)
@@ -1872,13 +2022,345 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 	)
 
 
+def _luck_payout_changes(character, stake):
+	"""The seller's payout as pf1 `changes`, for the Negative Luck Payout item to carry.
+
+	The three pools no longer apply their payout themselves (see hp_rolls / skill_ranks / stats);
+	this is what delivers it, and it is delivered on the Changes tab where a player can see the
+	number and where it came from. HP in particular was never reaching the sheet at all: the module
+	builds actor HP from `total_rolled_hp`, so everything the backend added to `Total_HP` was
+	invisible in Foundry.
+
+	Targets are pf1's own (`mhp`, `bonusSkillRanks`, and the six ability keys), typed `untyped` so
+	they stack -- these are not luck bonuses in the pf1 sense, they are what the sale bought.
+	"""
+	if not stake or stake['direction'] != 'sell':
+		return []
+	pay = stake.get('payout', {})
+	out = []
+	def _add(formula, target, flavor):
+		out.append({'formula': str(formula), 'target': target, 'type': 'untyped',
+					'operator': 'add', 'priority': 0, 'flavor': flavor})
+	if pay.get(luck.PAYOUT_HP):
+		_add(pay[luck.PAYOUT_HP], 'mhp', 'Negative luck payout')
+	if pay.get(luck.PAYOUT_SKILL_POINTS):
+		_add(pay[luck.PAYOUT_SKILL_POINTS], 'bonusSkillRanks', 'Negative luck payout')
+	# One change per ABILITY, not one per point: two points on the same ability read as a single +2
+	# on the Changes tab, which is how pf1 shows every other stacked bonus.
+	for _ability, _bumps in sorted((getattr(character, 'luck_attribute_bumps', None) or {}).items()):
+		_add(_bumps, _ability, 'Negative luck payout')
+	return out
+
+
+def _luck_audit_rows(character, negative_feats):
+	"""The per-pool luck audit, closed out against the numbers the SHEET finally shows.
+
+	`luck.record_audit` captured before/spent/received/after at each pool's own site, which is the
+	only place those exist. This adds `final` -- the value that reaches the sheet -- because later
+	phases legitimately move the same budgets (`favored_class` adds +level HP, `skill_ranks` adds the
+	background points). Without it the rows would look like they disagreed with the character sheet
+	and the whole audit would read as broken rather than as evidence.
+
+	NOTE the arithmetic: `before - spent == after`. `received` is NOT folded in, because the payout
+	is no longer applied to these budgets at all -- it is delivered as pf1 changes (see
+	`_luck_payout_changes`). The row therefore reads "here is the budget, here is what luck took from
+	it, and here is what the sale is owed and where it arrives", which is the honest shape now.
+
+	The feat row is built from the ledger rather than from the stake: the stake is the PLAN, and a
+	plan cannot be evidence for itself.
+	"""
+	rows = dict(getattr(character, 'luck_audit', None) or {})
+	# Feat slots are not a running budget, so `before`/`after` are both zero and only `received`
+	# carries meaning. Keeping the same shape lets the same `before - spent == after` check run over
+	# every row rather than special-casing this one out of the invariant.
+	rows['feats'] = {'before': 0, 'spent': 0, 'received': len(negative_feats), 'after': 0}
+	finals = {
+		'hp': getattr(character, 'Total_HP', None),
+		'skill_ranks': getattr(character, 'skill_rank_budget', None),
+		'attribute_points': sum((getattr(character, 'level_up_stats', None) or {}).values()) or 0,
+		'feats': len(negative_feats),
+	}
+	for name, row in rows.items():
+		_final = finals.get(name)
+		row['final'] = int(_final) if _final is not None else int(row['after'])
+		# What this row COST in luck, inverting the Doc's rates. The four costs sum to the magnitude
+		# sold, so the table closes against the luck score instead of being four unrelated numbers --
+		# which is the whole reason to show a running total at all.
+		row['luck_cost'] = luck.sell_cost(luck.AUDIT_POOL_TO_PAYOUT[name], row['received'])
+	return rows
+
+
+@phase(requires=['luck_stake', 'level'], returns=['luck', 'hero_points'])
+def phase_luck_resolution(character, feats, hero_points, general_feats=(), reserved_feats=()):
+	'''Turn the settled stake plus the feats the character ACTUALLY kept into its final luck state.
+
+	This runs last for one reason: the E-Kat feats feed luck back into itself, and which ones a
+	character holds is not final until phase_feat_tax_and_swaps has run its tax chains, its child
+	strip and its two-round backfill. A swap can remove an E-Kat feat after the fact, so counting at
+	selection time would credit luck for a feat that is no longer on the sheet -- the "generated but
+	invisible" failure inverted. Same shape as phase_bloodline_resolution: resolve a value once all
+	its inputs exist, not at the point the inputs are chosen.
+
+	THE NO-DOUBLE-COUNT RULE is the subtle one. Every positive luck-based feat grants +1 Luck, but
+	Ass Pull, It Just Works and Luck God state their own +4 and do NOT additionally collect the +1.
+	The curated table encodes that as `grants_generic_luck`, and validate_luck.py asserts the two
+	fields are never both set, so the rule cannot rot into a silent +5.
+
+	Luck score is deliberately NOT a pf1 change: Default Luck applies to percentile rolls and the
+	daily DR pool, not to d20 rolls, so it stays a displayed number. The one real modifier in the
+	system is Luck God's flat +2, which rides feat_changes.json like every other feat buff.
+
+	THE LUCK TRAITS ARE BOUGHT HERE, and this is the only place they can be. "25 Permanent E-Kats
+	can be used to purchase a Luck Trait", the reserve that pays for them is feat-gated, and the
+	feats are not final until the swap pass -- so the purchase cannot happen any earlier. Note they
+	are NOT character traits: "Luck Traits may only be purchased with E-Kats", which is why
+	trait_selector never draws them and data/traits.csv does not contain them.
+	'''
+	if not misc_homebrew_enabled(character):
+		return PhaseRecord(luck=None, hero_points=hero_points)
+
+	table = e_kat_feat_table()
+	canonical = {name.lower(): name for name in table}
+	# Dedupe while preserving order -- the same feat can arrive from two sources with different
+	# casing, and counting it twice would inflate both the score and the reserve.
+	held = list(dict.fromkeys(canonical[f.lower()] for f in feats if str(f).lower() in canonical))
+
+	feat_luck = 0
+	double_down = False
+	bonus_hero_points = 0
+	for name in held:
+		effects = table[name]['effects']
+		if effects['luck_bonus']:
+			feat_luck += effects['luck_bonus']
+		elif effects['grants_generic_luck']:
+			feat_luck += luck.GENERIC_LUCK_FEAT_BONUS
+		double_down = double_down or effects['doubles_acquisition']
+		bonus_hero_points += effects['hero_points_per_session']
+
+	# The luck-granting set is BROADER than the ten E-Kat feats: "every e-kat and hero point feat
+	# grant an extra luck point", and Aristeia feats qualify too (none exist in the data). These are
+	# ordinary Paizo rows already in the generic pool -- Blood of Heroes, Hero's Fortune, Luck of
+	# Heroes, Defiant Luck, Fortunate One, Adaptive Fortune -- so they need recognising, not
+	# reaching. Each grants the flat +1; none states a larger bonus, so none is exempt from it.
+	luck_feats = held_luck_feats(feats)
+	e_kat_luck = feat_luck                       # kept apart so the sheet can show the derivation
+	other_luck = len(luck_feats) * luck.GENERIC_LUCK_FEAT_BONUS
+	feat_luck += other_luck
+
+	stake = character.luck_stake
+	luck_type = stake['luck_type'] if stake else 'Default'
+	dimorphic = luck_type == 'Dimorphic'
+
+	# A SELLER CANNOT CLIMB BACK. Feats grant +1 Luck each and nothing in the Doc forbids a seller
+	# holding them, but a character who sold its luck must not buy it back for free -- a -2 seller
+	# who drew two luck feats used to finish at 0 and render as lucky, and with E-Kat slots now open
+	# to sellers (phase_luck_stake) Ass Pull's +4 would make that routine rather than rare.
+	#
+	# The feats STAY on the sheet: Defiant Luck, Ass Pull and the rest carry real mechanics of their
+	# own beyond the +1, and stripping them would deny a character abilities it legitimately bought
+	# with its own feat slots. Only the luck they grant is withheld. e_kat_luck / other_luck stay
+	# computed so the derivation can SAY that, rather than the score silently not adding up.
+	selling = bool(stake) and stake['direction'] == 'sell'
+	suppressed_luck = feat_luck if selling else 0
+	if selling:
+		feat_luck = 0
+
+	# ---- the E-Kats this character EARNED, and what it spends them on -------------------------
+	# Feat-gated: the two per-level terms only accrue if the character has the feat that produces
+	# them, so a character with no E-Kat feats earns nothing. Uncapped -- the 99 governs storage,
+	# and "These points must be spent."
+	earned = luck.e_kat_reserve(character.level, held, dimorphic)
+	# The score BEFORE traits decides which categories are eligible; only Increase Luck moves it
+	# afterwards, and it can never flip a sign.
+	base_score = luck.resolve_purchased_luck(stake) + feat_luck
+	luck_traits = luck_trait_chooser(luck.luck_traits_afforded(earned), luck_type, base_score,
+									 luck_feat_count=len(held) + len(luck_feats))
+
+	# Stacks are counted by the EFFECT FIELD rather than by trait name, so renaming a trait in the
+	# curated table cannot silently stop its bonus applying. Each trait grants exactly one step.
+	trait_table = luck_trait_table()
+	def _stacks(field):
+		return sum(1 for name in luck_traits if trait_table[name]['effects'].get(field))
+	expanded_stacks = _stacks('luck_cap_step')
+	storage_stacks = _stacks('e_kat_store_step')
+	vault_stacks = _stacks('vault_cap_step')
+	twist_stacks = _stacks('twist_fate_bonus')
+	# "These Traits do not grant 1 extra luck" -- no trait collects the generic +1 the way a feat
+	# does. Increase Luck is the only one that touches the score, by its own stated amount.
+	trait_luck = sum(trait_table[name]['effects'].get('luck_score_bonus', 0) for name in luck_traits)
+
+	raw_score = base_score + trait_luck
+	score = luck.clamp_luck(raw_score, luck_type, expanded_stacks)
+
+	# The derivation, for the Personal Luck item's description -- the sheet shows WHY the number is
+	# what it is, the way the hand-built reference sheets do ("13 Luck Skill Ranks / 12 Luck e-kat
+	# feats"). Built from the parts already computed above rather than recomputed, so it can never
+	# disagree with the score it explains.
+	purchased = luck.resolve_purchased_luck(stake)
+	derivation = []
+	if stake and stake['direction'] == 'buy':
+		_paid = stake.get('paid', {})
+		_bits = [f"{_paid.get(k, 0)} {label}" for k, label in (
+			(luck.CURRENCY_SKILL_RANKS, 'skill ranks'), (luck.CURRENCY_HP, 'HP'),
+			(luck.CURRENCY_LEVEL_UP_POINTS, 'level-up points')) if _paid.get(k, 0)]
+		derivation.append(f"Bought {purchased:+d} ({', '.join(_bits) or 'nothing spent'})")
+	elif stake and stake['direction'] == 'sell':
+		# Itemised from what the sale ACTUALLY bought. This used to name all four routes on every
+		# seller regardless of which were drawn, which read as a fixed slogan rather than a ledger.
+		_pay = stake.get('payout', {})
+		_sold = [f"{_pay.get(k, 0)} {label}" for k, label in (
+			(luck.PAYOUT_HP, 'HP'), (luck.PAYOUT_SKILL_POINTS, 'skill points'),
+			(luck.PAYOUT_ATTRIBUTE_POINTS, 'attribute point(s)'),
+			(luck.PAYOUT_FEATS, 'feat(s)')) if _pay.get(k, 0)]
+		derivation.append(f"Sold {purchased:+d} luck for {', '.join(_sold) or 'nothing'}")
+	if selling and suppressed_luck:
+		# Say it out loud. A seller holding luck feats whose score ignores them is the one place the
+		# arithmetic on this sheet does not visibly add up, so the sheet explains itself.
+		derivation.append(f"{suppressed_luck:+d} from {len(held) + len(luck_feats)} luck feat(s) "
+						  f"-- not applied (luck was sold)")
+	if e_kat_luck and not selling:
+		derivation.append(f"{e_kat_luck:+d} from {len(held)} E-Kat feat(s)")
+	if other_luck and not selling:
+		derivation.append(f"{other_luck:+d} from {len(luck_feats)} hero point / luck feat(s)")
+	if trait_luck:
+		derivation.append(f"{trait_luck:+d} from Increase Luck")
+	if score != raw_score:
+		derivation.append(f"= {raw_score}, clamped to {score} by the cap")
+	else:
+		derivation.append(f"= {score}")
+
+	# Which feats the negative luck actually bought ("a feat for -5 luck"), labelled with the running
+	# total the way the reference sheet does: (-5 Luck) X, (-10 Luck) Y. Feats inside a feat-tax chain
+	# are skipped -- pulling a primary or a child into its own sheet section would orphan the chain,
+	# so the ledger takes FEWER rows rather than break one.
+	# The feats the sale actually bought, named EXACTLY rather than inferred. phase_feat_selection
+	# reserves these slots before any other subsystem can take them and records what it drew on
+	# `character.luck_bought_feats`; all this has to do is drop any that did not survive the feat-tax
+	# and swap pass, which is precisely why the resolution runs at the far end of the pipeline.
+	#
+	# The old approach guessed -- "the tail of the feat list, minus everything another subsystem
+	# reserved" -- and silently under-reported whenever the guess ran out of candidates. It did, on
+	# 15% of sellers, because a 20th-level seller's normal track is mostly E-Kat, profession and
+	# Martial Training picks. There is no filtering left to get wrong here.
+	negative_feats = []
+	if stake and stake['direction'] == 'sell' and stake['payout'].get(luck.PAYOUT_FEATS):
+		# Matched on the BASE name. A chosen feat can reach the sheet renamed -- the specialization
+		# choosers append their picks, so "Prodigy" becomes "Prodigy (Profession (Blacksmith),
+		# Profession (Mob Kindler))" -- and an exact match silently drops it from the ledger.
+		_base = lambda f: str(f).lower().split(' (')[0].strip()
+		_held_now = {}
+		for f in (general_feats or []):
+			_held_now.setdefault(_base(f), f)
+		_bought = [_held_now[_base(f)] for f in (getattr(character, 'luck_bought_feats', None) or [])
+				   if _base(f) in _held_now]
+		# A reserved pick can still be absorbed by the feat-tax strip: it becomes a CHILD of another
+		# feat's chain, so the character keeps the feat but it renders inside that chain's row. Its
+		# slot was still bought with luck, so the ledger must not shrink -- it falls back to the
+		# marginal ordinary feats, skipping anything another subsystem already paid for. This is the
+		# old inference, now a backstop for the rare absorbed pick rather than the primary mechanism.
+		_short = stake['payout'][luck.PAYOUT_FEATS] - len(_bought)
+		if _short > 0:
+			_taken = {_base(f) for f in _bought}
+			# Everything another subsystem already paid for. `reserved_feats` carries the Path of
+			# War / Spheres picks, which live on that phase's record rather than the character --
+			# without them the backstop billed "Martial Training I (Mithral Current)" to negative
+			# luck, a slot the PoW reservation had bought.
+			_spoken_for = {_base(f) for f in held}
+			_spoken_for |= {_base(f) for f in (reserved_feats or [])}
+			_spoken_for |= {_base(f) for f in (getattr(character, 'profession_feats', None) or [])}
+			_spoken_for |= {_base(f) for f in (getattr(character, 'e_kat_feats_chosen', None) or [])}
+			_spare = [f for f in (general_feats or [])
+					  if _base(f) not in _taken and _base(f) not in _spoken_for]
+			_bought += _spare[-_short:] if _spare else []
+		negative_feats = [{'name': str(n), 'cumulative': -luck.SELL_LUCK_PER_FEAT * (i + 1)}
+						  for i, n in enumerate(_bought)]
+	luck_block = {
+		'type': luck_type,
+		'score': score,
+		'values': luck.typed_values(score, luck_type),
+		'mod': luck.luck_mod(score),
+		'cap': luck.luck_cap(luck_type, expanded_stacks),
+		'floor': luck.luck_floor(luck_type),
+		# What the formula produced, before anything was spent -- exported so the derivation is
+		# visible on the sheet instead of only the leftovers.
+		'e_kat_earned': earned,
+		# What is actually carried into play: the remainder after buying traits, under the store
+		# cap. Under one trait's price by definition, so the cap only ever binds if a future change
+		# stops spending.
+		'e_kat_reserve': luck.carried_e_kats(earned, len(luck_traits), storage_stacks),
+		'e_kat_store_cap': luck.e_kat_store_cap(storage_stacks),
+		'traits': luck_traits,
+		# Rules text for exactly the traits bought, so the FoundryVTT module can render an item per
+		# trait without shipping its own copy of the 34-trait table (which would then drift).
+		'trait_benefits': {name: trait_table[name]['benefit'] for name in set(luck_traits)},
+		# The MECHANICS of those traits, in pf1's own change/contextNote shape, for the same reason.
+		# Emitted only for traits that actually carry one, so the module can attach without probing.
+		#
+		# The formulas are LIVE (`-floor(@resources.personalLuck.value / 5)`) rather than numbers
+		# baked here, so a GM editing the score mid-campaign moves every derived bonus with it. Note
+		# the shape: `floor(abs(score)/5)` would be off by one for any score not divisible by 5 --
+		# at -44 the true mod is -9 (magnitude 9) but floor(44/5) is 8 -- so the sign is negated
+		# OUTSIDE the floor. luck.luck_mod() is the same rounding, and validate_luck asserts the two
+		# agree on every score in range rather than trusting this comment.
+		'trait_changes': {
+			name: {
+				'changes': trait_table[name].get('changes') or [],
+				'contextNotes': trait_table[name].get('context_notes') or [],
+				'death_hp_pool_bonus': trait_table[name].get('death_hp_pool_bonus') or '',
+			}
+			for name in set(luck_traits)
+			if trait_table[name].get('changes') or trait_table[name].get('context_notes')
+			or trait_table[name].get('death_hp_pool_bonus')
+		},
+		'vault': luck.VAULT_STARTING_BALANCE,
+		'vault_cap': luck.vault_cap(vault_stacks),
+		'dr_pool': luck.dr_pool(score),
+		# Doc-native to Dimorphic, but exported for every type so the sheets read one shape.
+		'twist_fate_per_day': (luck.twist_fate_per_day(score) + twist_stacks) if dimorphic else 0,
+		'feats': held,
+		# Non-E-Kat luck feats that contributed +1 each. Separate from `feats` because they are
+		# ordinary Paizo feats the character reached through the normal pool, not reserved slots.
+		'luck_feats': luck_feats,
+		# Human-readable working, shown on the Personal Luck item so the score is auditable.
+		'derivation': derivation,
+		# Ordinary feats the negative luck paid for, with the running cost. Empty for buyers.
+		'negative_feats': negative_feats,
+		# WHAT EACH POOL ACTUALLY DID, recorded at the pool's own site as it happened
+		# (luck.record_audit). The derivation above is the PLAN, read back from the same stake that
+		# produced it -- it cannot prove the HP and skill budgets moved. This can: every row carries
+		# the budget before, what luck took, what luck paid, and the budget after, so the sheet shows
+		# arithmetic that either reconciles or visibly does not. The feat row has no budget site of
+		# its own (feat slots are not a running total), so it is filled from the ledger actually
+		# built above rather than from the stake -- which is the only reason it means anything.
+		#
+		# Each row also carries `final`: the number the SHEET ends up showing. It is not the same as
+		# `after`, and the gap is the point -- favored_class adds +level HP and skill_ranks adds the
+		# background points, both AFTER luck has been applied. A row that only showed the luck step
+		# would look wrong against the sheet and get dismissed; showing `after` and `final` together
+		# lets the reader see the luck movement AND watch it reconcile to the printed total.
+		'audit': _luck_audit_rows(character, negative_feats),
+		# The payout as pf1 changes, carried by the Negative Luck Payout item. This is the DELIVERY
+		# mechanism, not a report: the three budgets above no longer apply it themselves.
+		'payout_changes': _luck_payout_changes(character, stake),
+		# Which abilities the attribute payout landed on, main-stat weighted. Exported alongside the
+		# changes so the sheet can name them in prose as well as apply them.
+		'attribute_bumps': dict(getattr(character, 'luck_attribute_bumps', None) or {}),
+		'stake': stake,
+	}
+	# "Gain one free Hero Point per session" (It Just Works). Temporary by the Doc's own wording, so
+	# it is also carried inside the block; the flat roll stays the starting count, and the 10-E-Kat
+	# conversion remains an in-play spend the GM adjudicates, not a generation-time computation.
+	return PhaseRecord(luck=luck_block, hero_points=hero_points + bonus_hero_points)
+
+
 # Non random feats sometiems break at 20+
 # Make sure to make a flag for adding metzofitz feats later
 # Make sure to add a flag for path of war feats later
 def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", userInput_race='Orc', class_choice='wizard', chosen_BAB='low', chosen_caster_level = 'random', multi_class='N', 
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
-						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y", ):
+						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
+						 luck_direction=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -1940,6 +2422,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Catch-all flag for homebrew rules too small for their own input question (2->4 rank
 		# floor, ...); internal-only, not an API input -- see skill_ranks.misc_homebrew_enabled.
 		character.misc_homebrew_rules = misc_homebrew_rules
+		# DEBUG override: 'buy' / 'sell' forces the luck branch and guarantees a stake. None (the
+		# default, and what every real client sends) leaves the ordinary weighted rolls alone.
+		character.luck_direction = luck_direction
 		# Instantitae character.class_feats_amount
 		character.class_feats_amount = 0
 		# Instantitae teamwork_feats
@@ -1953,6 +2438,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 
 		#add an optional flaws rule function
 		phase_alignment_and_level(character, alignment_input, deity_flag, low_level, high_level)
+
+		# Luck's INTENT, before any budget exists to spend. Must follow the level (it scales the
+		# magnitude) and the feat economy (a seller's bonus slots land on feat_amounts), and must
+		# precede stats, HP and skill ranks -- each of those settles its own share.
+		phase_luck_stake(character)
 
 		stats = phase_roll_and_assign_stats(character, num_dice, num_sides, inherents)
 
@@ -2098,6 +2588,36 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		profession_pool = ft.profession_pool
 		teamwork_feats = ft.teamwork_feats
 		teamwork_feat_labels = ft.teamwork_feat_labels
+
+		# Luck resolves HERE, on the post-tax, post-swap feat list -- see phase_luck_resolution.
+		# EVERY bucket, not just the general one: separate_feats_func front-pops the merged list into
+		# story / flaw / flavor / class slots, so an E-Kat feat can land in any of them. Counting only
+		# `feats` undercounted a wizard by 4 Luck and made It Just Works look like it had lost its
+		# prerequisite, when Ass Pull was simply sitting in class_feats. The buckets are presentation
+		# slots; the character holds all of them.
+		_held_feat_names = [*feats, *story_feats, *flaw_feats, *flavor_feats, *class_feats,
+							*trainer_feats]
+		lk = phase_luck_resolution(character, _held_feat_names, look.hero_points,
+								   general_feats=feats,
+								   reserved_feats=list(pw.mt_feats or []) + list(pw.style_feats or [])
+												  + list(pw.sphere_feats or []))
+
+		# Put the E-Kat spend table and any purchased Luck Traits at the TOP of class features, so a
+		# player sees what their reserve buys without opening the Doc. Done here rather than inside
+		# the phase because it reaches into another phase's bucket, and that should be visible at the
+		# call site rather than buried.
+		#
+		# Rebuilt IN PLACE (clear + reinsert) rather than reassigned: `cf.class_features` is the same
+		# dict object, captured by phase_class_features_and_bonus_spells before luck resolved, and
+		# that is what the payload exports. Binding a new dict here would leave the payload reading
+		# the old one -- silently, with the sections simply absent.
+		_luck_sections = luck_sheet_sections(lk.luck)
+		if _luck_sections:
+			_cf_bucket = character.data_dict['class features']
+			_existing = dict(_cf_bucket)
+			_cf_bucket.clear()
+			_cf_bucket.update(_luck_sections)
+			_cf_bucket.update(_existing)
 
 
 
@@ -2264,7 +2784,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		formatted_bio = structured_bio(_bs_brief)
 
 		payload = build_payload(
-			character, gear=gear, look=look, kin=kin, cf=cf, pw=pw, grants=grants, ft=ft,
+			character, gear=gear, look=look, kin=kin, cf=cf, pw=pw, grants=grants, ft=ft, lk=lk,
 			professions=professions, skill_ranks=skill_ranks, skill_unlock=skill_unlock, seed=seed,
 			backstory=backstory, formatted_bio=formatted_bio, build_archetype=build_archetype,
 			build_tactics=build_tactics, mod_char_sheet_var=mod_char_sheet_var,
@@ -2300,6 +2820,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# asserted against the house formula directly).
 				"skill_rank_budget": getattr(character, 'skill_rank_budget', None),
 				"normal_feat_amount": character.normal_feat_amount,
+				# Inherent luck (oks/pathfinder/house-rules/luck.md) -- ONE nested block, appended at
+				# the tail of the content keys so no existing key shifts position for the two
+				# consumers that parse this order. None when misc_homebrew_rules is off, which is a
+				# character with no luck state at all rather than a half-built one.
+				# validate_payload_shape only guards the outer order; the block's own shape is
+				# asserted by scripts/gates/validate_luck.py.
+				"luck": lk.luck,
 				})
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat
@@ -2325,8 +2852,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						for _k, _v in _desc_info.items()}
 			for _n in _need_desc:
 				# Metzofitz picks are absent from data/feats.csv; their library supplies the text.
+				# So are the E-Kat feats and Luck Traits -- they live in curated JSON, and without
+				# this they reached the sheet as a bare name with no rules text at all (the module
+				# synthesizes the row either way, so the failure was silent).
 				pw.homebrew_feat_desc_dict[_n] = (_desc_ci.get(_n.lower(), "")
-											   or metzofitz_description(_n))
+											   or metzofitz_description(_n)
+											   or e_kat_description(_n)
+											   or luck_trait_description(_n))
 
 		# --- Feat numeric buffs (Foundry "Changes" tab) + active-feat toggle conditionals --------------
 		# Curated, hand-vetted side-maps keyed by feat name. feat_changes.json -> always-on pf1 `changes`
@@ -2600,12 +3132,5 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 if __name__ == "__main__":
 	generate_random_char()
 
-# ----- Planned add ons  ----- #
-	# Stuff to add later
-		# Inherents option
-		# path of war
-		# Spheres of power
 		# Mythic
 		# Luck
-		# Attack Macros???
-		# Subrace???

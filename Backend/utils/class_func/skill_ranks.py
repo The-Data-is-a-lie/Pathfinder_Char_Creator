@@ -1,4 +1,5 @@
 from utils import data
+from utils.class_func import luck
 import random, re
 from math import floor
 # Start of major task: skills assignment
@@ -95,7 +96,26 @@ def skill_rank_budget(character, skill_ranks_level):
     for entry in character.classes:
         points = class_skill_points(character, entry['name'])
         budget += max(1, points + mental_mod) * entry['level']
-    return budget + skill_ranks_level
+    budget += skill_ranks_level
+    # Luck's workhorse currency (oks/pathfinder/house-rules/luck.md): 5 ranks buy +1 luck, and a
+    # seller gets "2 ... skill points for -1 luck". Applied to the BUDGET rather than to the
+    # allocation, so skills_selector still spends every rank it is given and the existing
+    # sum(skill_ranks) == skill_rank_budget invariant stays true -- the budget itself shrank, which
+    # is exactly the property ticket 06 asserts.
+    stake = luck.stake_of(character)
+    _before = budget
+    _spent = luck.settle(stake, luck.CURRENCY_SKILL_RANKS, budget)
+    budget -= _spent
+    # THE PAYOUT IS NO LONGER ADDED HERE. It rides a pf1 `bonusSkillRanks` change on the Negative
+    # Luck Payout item, which lands on system.details.skills.bonus -- the sheet's own "bonus ranks"
+    # pool. That leaves the ranks UNSPENT for the player to place rather than pre-scattered by
+    # skills_selector, which is the honest shape for a payout the character chose to buy.
+    #
+    # The buy side still settles here: it shrinks a budget this function owns, and the existing
+    # sum(skill_ranks) == skill_rank_budget invariant depends on that happening before allocation.
+    _received = luck.payout(stake, luck.PAYOUT_SKILL_POINTS)
+    luck.record_audit(character, 'skill_ranks', _before, _spent, _received, max(0, budget))
+    return max(0, budget)
 
 
 def skills_selector(character, skills, skill_rank_level):

@@ -1,4 +1,4 @@
-import re, random
+import json, re, random
 import pandas as pd
 from math import ceil, floor
 
@@ -7,6 +7,7 @@ from math import ceil, floor
 from utils.class_func.generic_func import *
 from utils.class_func.chooseable import *
 from utils.class_func.skill_ranks import homebrew_enabled
+from utils.class_func import luck
 from utils.paths import repo_path
 
 def _divine_arcane_flags(character):
@@ -321,6 +322,327 @@ def metzofitz_description(name):
         frame = metzofitz_feat_frame()
         _METZ_DESCS = {str(n).lower(): d for n, d in zip(frame['name'], frame['description'])}
     return _METZ_DESCS.get(str(name).lower(), '')
+
+
+# E-Kat feats (oks/pathfinder/house-rules/luck.md), behind the SAME homebrew flag as the Metzofitz
+# library. They are deliberately NOT concatenated into the generic pool, for two reasons:
+#   * they are not General/Combat feats -- data/feats_new.csv types them 'E-Kat', and nothing in the
+#     runtime reads that file at all, which is why they have never been reachable;
+#   * no_prereq_loop appends every eligible name to character.chooseable_talents, a SHARED
+#     accumulator later choosers draw from. Feeding E-Kats through it would leak them into every
+#     subsequent generic draw, which is exactly what the reserved-slot design exists to avoid.
+# So they get their own pool, their own chooser, and slots carved out of the feat budget.
+_E_KAT_LOCATION = 'Backend/json/feats/e_kat_feats.json'
+_E_KAT_CACHE = None
+
+
+def e_kat_feat_table():
+    """The curated 10, keyed by canonical name. Cached like the feat CSVs -- static during a run."""
+    global _E_KAT_CACHE
+    if _E_KAT_CACHE is None:
+        raw = json.loads(repo_path(_E_KAT_LOCATION).read_text(encoding='utf-8'))
+        _E_KAT_CACHE = {k: v for k, v in raw.items() if not k.startswith('_')}
+    return _E_KAT_CACHE
+
+
+def e_kat_description(name):
+    """Rules text for an E-Kat feat (case-insensitive); '' when unknown. Same role as
+    metzofitz_description -- these feats are absent from data/feats.csv, and a nameless description
+    would make the Foundry module synthesize an empty row."""
+    for feat_name, info in e_kat_feat_table().items():
+        if feat_name.lower() == str(name).lower():
+            return info.get('benefit', '')
+    return ''
+
+
+def e_kat_feat_chooser(character, amount):
+    """Pick up to `amount` E-Kat feats, honouring the chains.
+
+    Prerequisites here are a structured LIST of exact feat names, not the comma-joined string the
+    generic engine parses -- which is what lets 'Luck God' name the nine feats it requires instead of
+    the literal 'All of the above' in the CSV, a phrase no string engine can ever resolve.
+
+    Picks register in character.chooseable (lowercased, as the generic chooser does) so no later pass
+    re-picks one, but never touch chooseable_talents, so nothing leaks back into the generic pool.
+    """
+    if not amount or amount <= 0:
+        return []
+    pool = e_kat_feat_table()
+    picked = []
+    for _ in range(amount):
+        eligible = [
+            name for name, info in pool.items()
+            if name.lower() not in character.chooseable
+            and all(p.lower() in character.chooseable for p in info['prerequisites'])
+        ]
+        if not eligible:
+            break
+        # A chain continuation is any feat with prerequisites -- by construction its prereqs are
+        # already owned, so it finishes something the character started.
+        continuations = [n for n in eligible if pool[n]['prerequisites']]
+        if continuations and random.random() < luck.E_KAT_CHAIN_BIAS:
+            eligible = continuations
+        chosen = random.choice(sorted(eligible))
+        picked.append(chosen)
+        character.chooseable.add(chosen.lower())
+    return picked
+
+
+# The E-Kat spend table, rendered onto the sheet rather than applied. Everything in it except the
+# 25-E-Kat Luck Trait purchase is an in-play action the GM adjudicates; the generator's job is to
+# put it in front of the player next to the reserve it bought them.
+_E_KAT_EXCHANGE_LOCATION = 'Backend/json/feats/e_kat_exchange.json'
+_E_KAT_EXCHANGE_CACHE = None
+
+# TESTING AID (2026-08-08): list the whole 10-feat E-Kat roster in the E-Kat Exchange section,
+# marking which ones this character actually holds, so all ten can be checked on a single sheet.
+# Set to False to show a character only what it has. This is a display switch -- it changes nothing
+# about what the character IS, and no gate depends on it.
+LIST_ALL_E_KAT_FEATS = True
+
+
+def e_kat_exchange_rows():
+    global _E_KAT_EXCHANGE_CACHE
+    if _E_KAT_EXCHANGE_CACHE is None:
+        raw = json.loads(repo_path(_E_KAT_EXCHANGE_LOCATION).read_text(encoding='utf-8'))
+        _E_KAT_EXCHANGE_CACHE = raw['rows']
+    return _E_KAT_EXCHANGE_CACHE
+
+
+def luck_sheet_sections(luck_block):
+    """Class-feature sections for the sheet: what the reserve buys, and what it already bought.
+
+    Returned as ``{section_name: {sub_label: text}}`` -- the shape ``data_dict['class features']``
+    already uses -- so the caller can splice them in without the sheet needing to learn anything new.
+
+    Shown only to characters actually in the E-Kat economy (a luck stake, an E-Kat feat, a carried
+    E-Kat, or a purchased trait). A nine-row reference table on every NPC in the game would be
+    clutter, and three quarters of them have no luck at all.
+    """
+    if not luck_block:
+        return {}
+    in_economy = (luck_block.get('stake') or luck_block.get('feats')
+                  or luck_block.get('e_kat_reserve') or luck_block.get('traits'))
+    if not in_economy:
+        return {}
+
+    sections = {}
+    # Grouped, not one flat list: the section carries three different KINDS of thing -- what you
+    # have, what you took, and what you can do with it -- and running them together made a
+    # twenty-row wall. The module renders a nested dict as a sub-heading plus its own list.
+    reserve = {
+        'Your reserve': (
+            f"{luck_block['e_kat_reserve']} E-Kat(s) carried into play, of "
+            f"{luck_block['e_kat_earned']} earned at creation "
+            f"({len(luck_block['traits'])} spent on Luck Traits at "
+            f"{luck.LUCK_TRAIT_COST} each). Storage cap {luck_block['e_kat_store_cap']}."),
+    }
+
+    # The E-Kat feat roster, split by what the character ACTUALLY holds.
+    #
+    # "Feats Taken" once listed all ten with a "[HELD]" / "[not taken]" marker buried in the value.
+    # The marker was accurate and the heading was a lie -- a sheet showing "Feats Taken: Luck God"
+    # for a character without Luck God is worse than showing nothing, because it reads as true at a
+    # glance. The two are separate groups now, and only the held one carries that name.
+    #
+    # LIST_ALL_E_KAT_FEATS is a TESTING switch: it adds the untaken remainder as a clearly-labelled
+    # reference group. Off, a sheet shows only what the character has.
+    held = {n.lower() for n in luck_block.get('feats', [])}
+
+    def _row(info):
+        effects = info['effects']
+        gain = effects['luck_bonus'] or (luck.GENERIC_LUCK_FEAT_BONUS
+                                         if effects['grants_generic_luck'] else 0)
+        return f"[+{gain} Luck] {info['benefit']}"
+
+    taken, untaken = {}, {}
+    for name, info in e_kat_feat_table().items():
+        target = taken if name.lower() in held else untaken
+        target[f"Feat: {name}"] = _row(info)
+
+    # The base spend table, plus a note when a held feat CHANGES it. The nine rows are static text:
+    # they say "2 E-Kats" and "+1 on any roll" regardless of Luck God halving every cost or Very
+    # Lucky Boy tripling the bonus, so a sheet that shows only the table is quietly wrong for
+    # exactly the characters who invested most.
+    actions = {}
+    table = e_kat_feat_table()
+    modifiers = []
+    if any(table[n]['effects']['halves_e_kat_costs'] for n in luck_block.get('feats', [])):
+        modifiers.append('every E-Kat cost below is HALVED (Luck God), except the 99 tier and Luck Traits')
+    _mult = max([table[n]['effects']['roll_bonus_multiplier']
+                 for n in luck_block.get('feats', [])] or [1])
+    if _mult > 1:
+        modifiers.append(f"roll-based E-Kat bonuses are multiplied by {_mult} "
+                         f"({'Very Lucky Boy' if _mult >= 3 else 'Lucky Boy'})")
+    if any(table[n]['effects']['doubles_acquisition'] for n in luck_block.get('feats', [])):
+        modifiers.append('permanent E-Kat acquisition is doubled (Double Down)')
+    if modifiers:
+        # Upper-case the first letter only -- str.capitalize() lower-cases everything after it, which
+        # turned "Very Lucky Boy" and "E-Kat" into "very lucky boy" and "e-kat".
+        _mods = '; '.join(modifiers)
+        actions['Active modifiers'] = _mods[0].upper() + _mods[1:] + '.'
+    actions.update({row['label']: row['text'] for row in e_kat_exchange_rows()})
+
+    # Actions unlocked by PURCHASED Luck Traits. The "E-Kat Exchange: ..." traits are exactly that --
+    # each buys the right to a new action with its own per-use cost -- so they belong beside the
+    # base table rather than buried among the passive traits.
+    trait_table = luck_trait_table()
+    purchased_actions = {}
+    for name in dict.fromkeys(luck_block.get('traits', [])):
+        if not name.startswith('E-Kat Exchange:'):
+            continue
+        count = luck_block['traits'].count(name)
+        label = name.split('E-Kat Exchange:', 1)[1].strip()
+        info = trait_table[name]
+        # Name the prerequisite on the row: these chain (Loot Box -> Premium -> Deluxe), and a
+        # sheet listing the action without its gate reads as if anyone could buy it.
+        prereq = info.get('prerequisites') or []
+        gate = ''
+        if prereq:
+            _names = ', '.join(x.split('E-Kat Exchange:', 1)[-1].strip() for x in prereq)
+            gate = f' [requires {_names}]'
+        _key = f"{label} (x{count})" if count > 1 else label
+        purchased_actions[_key] = f"{info['benefit']}{gate}"
+
+    exchange = {'Reserve': reserve}
+    if taken:
+        exchange['Feats Taken'] = taken
+    if untaken and LIST_ALL_E_KAT_FEATS:
+        exchange['Feats Not Taken (reference)'] = untaken
+    exchange['Actions'] = actions
+    if purchased_actions:
+        exchange['Actions (Purchased)'] = purchased_actions
+    sections['E-Kat Exchange'] = exchange
+
+    # Purchased Luck Traits are NOT listed here. They render as "(E-kat Trait) X" items on the
+    # Traits tab (module: build/feats.js), matching the hand-built reference sheet -- and a real
+    # item can carry pf1 changes later, which a text block never could. The block exports
+    # `trait_benefits` so the module has the rules text without duplicating the 34-trait table.
+    return sections
+
+
+# Positive luck-based feats that are NOT E-Kat feats -- hero point feats and the luck-subject feats
+# -- which still grant the generic +1 Luck. Unlike the E-Kat feats these are ordinary Paizo rows in
+# data/feats.csv, already in the generic pool, so nothing needs to reach them; they only need to be
+# RECOGNISED. No column marks them (every one is typed General), so the roster is curated.
+_LUCK_FEAT_LOCATION = 'Backend/json/feats/luck_feats.json'
+_LUCK_FEAT_CACHE = None
+
+
+def luck_feat_table():
+    global _LUCK_FEAT_CACHE
+    if _LUCK_FEAT_CACHE is None:
+        raw = json.loads(repo_path(_LUCK_FEAT_LOCATION).read_text(encoding='utf-8'))
+        _LUCK_FEAT_CACHE = {k: v for k, v in raw.items() if not k.startswith('_')}
+    return _LUCK_FEAT_CACHE
+
+
+def held_luck_feats(feat_names):
+    """The non-E-Kat luck feats a character holds, matched case-insensitively and deduped.
+
+    Case-insensitive because these names travel through capitalize_feats and the feat-tax passes;
+    'Blood Of Heroes' and 'Blood of Heroes' are the same feat and must not count twice.
+    """
+    table = luck_feat_table()
+    canonical = {name.lower(): name for name in table}
+    return list(dict.fromkeys(
+        canonical[str(f).lower()] for f in (feat_names or []) if str(f).lower() in canonical))
+
+
+# Luck Traits are NOT feats and NOT character traits -- "Luck Traits may only be purchased with
+# E-Kats" -- but they load like the E-Kat feat table and are chosen by the same kind of curated
+# picker, so they live next to it rather than in traits.py (whose pool they must never enter).
+_LUCK_TRAIT_LOCATION = 'Backend/json/feats/luck_traits.json'
+_LUCK_TRAIT_CACHE = None
+
+
+def luck_trait_table():
+    """The curated 34, keyed by canonical name. Cached like the feat tables."""
+    global _LUCK_TRAIT_CACHE
+    if _LUCK_TRAIT_CACHE is None:
+        raw = json.loads(repo_path(_LUCK_TRAIT_LOCATION).read_text(encoding='utf-8'))
+        _LUCK_TRAIT_CACHE = {k: v for k, v in raw.items() if not k.startswith('_')}
+    return _LUCK_TRAIT_CACHE
+
+
+def luck_trait_description(name):
+    """Benefit text for a purchased Luck Trait (case-insensitive); '' when unknown."""
+    for trait_name, info in luck_trait_table().items():
+        if trait_name.lower() == str(name).lower():
+            return info.get('benefit', '')
+    return ''
+
+
+def eligible_luck_traits(luck_type, score):
+    """Which traits this character may buy at all, before prerequisites between traits.
+
+    Two gates:
+      * CATEGORY -- dimorphic traits are written in terms of Twist of Fate and the Vault, negative
+        traits in terms of a negative score. A character that has neither cannot use them.
+      * SCORE THRESHOLD -- "(Prerequisites : -25 luck)". A floor on how negative the score must be,
+        so a character at -10 cannot take a trait that wants -25.
+    """
+    allowed = {luck.TRAIT_CATEGORY_STANDARD}
+    if luck_type == 'Dimorphic':
+        allowed.add(luck.TRAIT_CATEGORY_DIMORPHIC)
+    if score < 0:
+        allowed.add(luck.TRAIT_CATEGORY_NEGATIVE)
+    out = {}
+    for name, info in luck_trait_table().items():
+        if info['category'] not in allowed:
+            continue
+        floor = info.get('requires_luck_at_most')
+        if floor is not None and score > floor:
+            continue
+        out[name] = info
+    return out
+
+
+def luck_trait_chooser(amount, luck_type, score, luck_feat_count=0):
+    """Buy `amount` Luck Traits, preferring variety.
+
+    Prerequisites are enforced in all three forms the Doc uses -- another trait, a luck-score floor
+    (via eligible_luck_traits), and Inevitable's per-stack count of luck feats and traits. Without
+    this a character could buy Deluxe Loot Box having never bought Loot Box.
+
+    Distinct traits are drawn first; a Repeatable trait is only taken a second time once every
+    eligible one is already held. At realistic reserves (two to four traits) a repeat never happens
+    -- the branch exists for the 40th-level Dimorphic outlier that can afford a dozen, where the
+    alternative is a character holding Increase Luck sixteen times.
+
+    Returns a list in purchase order, so duplicates sit adjacent and the sheet reads as stacks.
+    """
+    if not amount or amount <= 0:
+        return []
+    pool = eligible_luck_traits(luck_type, score)
+    if not pool:
+        return []
+
+    def _legal(name, held, assets):
+        info = pool[name]
+        # (a) another TRAIT: the Loot Box chain, and Never-Ending Suffering <- Trauma Survivor.
+        if any(p not in held for p in info.get('prerequisites', [])):
+            return False
+        # (b) a COUNT that scales with the stack: Inevitable wants 10 luck feats/traits per copy,
+        # so a second one needs 20. `assets` already includes everything bought so far.
+        per_stack = info.get('requires_luck_assets_per_stack')
+        if per_stack and assets < per_stack * (held.count(name) + 1):
+            return False
+        return True
+
+    bought = []
+    for _ in range(amount):
+        assets = luck_feat_count + len(bought)
+        legal = [n for n in pool if _legal(n, bought, assets)]
+        unheld = sorted(n for n in legal if n not in bought)
+        if unheld:
+            bought.append(random.choice(unheld))
+            continue
+        repeatable = sorted(n for n in legal if pool[n]['repeatable'])
+        if not repeatable:
+            break                      # nothing legal left that may stack
+        bought.append(random.choice(repeatable))
+    return bought
 
 
 def teamwork_pool_size(character, casting_level_str):

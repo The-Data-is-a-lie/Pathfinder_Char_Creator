@@ -158,7 +158,8 @@ def backstory_stats():
     from utils.usage_counter import snapshot
     return jsonify(snapshot())
 
-def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y"):
+def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y",
+                         misc_homebrew_rules="Y", luck_direction=None):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -196,7 +197,7 @@ def process_input_values(input_values, spheres_flag="N", seed=None, professions_
         with _GENERATION_LOCK:
             return generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
-            seed, professions_flag, trainers_flag
+            seed, professions_flag, trainers_flag, misc_homebrew_rules, luck_direction
             )
 
     except ValueError as ve:
@@ -223,6 +224,16 @@ def update_character_data():
     # Foundry module and any client that never sends them keep getting professions and trainers.
     professions_flag = (data.pop('professions', 'y') or 'y')
     trainers_flag = (data.pop('trainers', 'y') or 'y')
+    # The house-rule catch-all, read by NAME for exactly the same reason and popped before `items` is
+    # built. It gates the 2->4 skill-rank floor, the diminishing flaw-feat grant and -- as of the
+    # inherent-luck work -- the whole luck subsystem. It was internal-only until luck needed to be
+    # switchable from the client; default 'y' keeps today's behaviour for every existing consumer.
+    misc_homebrew_rules = (data.pop('misc_homebrew_rules', 'y') or 'y')
+    # DEBUG input, read by NAME and popped before `items` like the flags above. 'buy' or 'sell'
+    # forces the luck branch and guarantees a stake; absent -> None -> the ordinary weighted rolls.
+    # It exists so the negative side can be exercised without hand-editing LUCK_PROPENSITY /
+    # LUCK_SELL_SHARE in luck.py -- constants that then had to be remembered before shipping.
+    luck_direction = data.pop('luck_direction', None) or None
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -238,7 +249,8 @@ def update_character_data():
             value = value.strip()
         non_input_data.append(value)
 
-    results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag)
+    results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag,
+                                   misc_homebrew_rules, luck_direction)
     # Promote the generator's bare '/license' path to an absolute URL. The Foundry module stores this
     # payload on an Actor and may surface the pointer long after the request, in a context that has no
     # idea which backend produced it -- a relative path would resolve against Foundry's own host.

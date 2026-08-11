@@ -225,6 +225,7 @@ PAYLOAD_KEYS = (
 	'class_feature_conditionals_dict',
 	'skill_rank_budget',
 	'normal_feat_amount',
+	'luck',
 	'buff_gaps',
 	'generator_version',
 	'license_url',
@@ -289,7 +290,7 @@ def _deity_name(character):
 	return deity_name
 
 
-def build_payload(character, *, gear, look, kin, cf, pw, grants, ft, professions, skill_ranks,
+def build_payload(character, *, gear, look, kin, cf, pw, grants, ft, lk, professions, skill_ranks,
 				  skill_unlock, seed, backstory, formatted_bio, build_archetype, build_tactics,
 				  mod_char_sheet_var, profession_ability_items, f_name, l_name):
 	"""Assemble the ordered payload. Key ORDER is the contract -- see PAYLOAD_KEYS."""
@@ -463,7 +464,11 @@ def build_payload(character, *, gear, look, kin, cf, pw, grants, ft, professions
 			"craft_type": character.craft_chosen,
 			"mannerisms": character.mannerisms,
 			"personality_traits": character.personality_traits,
-			"hero_points": look.hero_points,
+			# From the LUCK record, not the appearance one: phase_appearance_and_traits still rolls
+			# the starting count, but "It Just Works" grants a free hero point per session and that
+			# feat is not known until the feat tax and swap pass has finished. Same value on every
+			# character without the feat.
+			"hero_points": lk.hero_points,
 			"gender": character.chosen_gender,
 			"class_ability_desc": kin.class_ability_desc,
 			"class_ability": kin.class_ability,

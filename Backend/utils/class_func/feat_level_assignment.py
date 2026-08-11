@@ -40,6 +40,31 @@ _LEVEL_BEFORE_RE = re.compile(r'(\d+)(?:st|nd|rd|th)\s+(?:character\s+)?level') 
 _HD_RE = re.compile(r'(\d+)\s*(?:hd|hit dice)')                                  # "10 hit dice"
 
 
+def normal_feat_slot_levels(character, count):
+    """The acquisition levels of a character's `count` NORMAL feat slots, ascending.
+
+    PF1 grants a feat at every odd level, so the schedule is 1, 3, 5, ... -- but a character always
+    holds MORE normal feats than that ladder has rungs. The house feat economy adds two creation
+    feats (`level_and_bab.update_level`), humans add a racial bonus feat, and a negative-luck seller
+    can add up to ten more ("a feat for -5 luck"). Those are all granted AT CREATION or by a trade,
+    not earned at a level the character has yet to reach.
+
+    Walking the ladder positionally -- `[2 * i + 1 for i in range(len(feats))]`, which is what every
+    call site used to do -- therefore ran off the end of the character: a 20th-level wizard with 12
+    normal feats produced slots at levels 21 and 23. That is not merely a cosmetic label. These
+    levels are the gate `assign_feats_to_levels` schedules against, so a phantom level-23 slot will
+    happily seat a feat whose BAB or class-level prerequisite the character does not actually meet
+    -- the exact bug this module exists to prevent.
+
+    The surplus seats at level 1, where it was in fact granted, and the ladder stops at the
+    character's level.
+    """
+    count = max(0, int(count or 0))
+    level = max(1, int(getattr(character, 'level', 1) or 1))
+    ladder = [lvl for lvl in (2 * i + 1 for i in range(count)) if lvl <= level]
+    return sorted([1] * (count - len(ladder)) + ladder)
+
+
 def _bab_to_level(bab_type, bab_req):
     """First character level at which a single-classed character of this BAB progression reaches
     `bab_req`. Mirrors _update_bab_total: H -> level, M -> floor(level*0.75), L -> floor(level*0.5)."""
@@ -117,6 +142,19 @@ def assign_feats_to_levels(character, feats, class_feats, normal_slot_levels, cl
         pn.discard(lower)
         prereq_names.append(pn)
 
+    # E-Kat feats are pinned to the NORMAL track. This scheduler treats normal + class-bonus feats
+    # as one pool, so without this an E-Kat feat migrates into a class-bonus slot and renders as a
+    # *Class Bonus Feat* -- six of ten did, on a measured character. They are ordinary feats bought
+    # with ordinary feat slots; a class did not grant them. Pinning here rather than at the two call
+    # sites because both of them run this same reorder.
+    #
+    # The luck-bought feats are pinned for the same reason plus a sharper one: the FoundryVTT module
+    # lifts them out of the ordinary feat list to render its "Negative Luck" section, and it does
+    # that by name against `feats` ONLY. One that migrated into a class-bonus slot would therefore
+    # survive in class_feats AND appear under Negative Luck -- the same feat twice on one sheet.
+    pinned_normal = {str(n).lower() for n in (getattr(character, 'e_kat_feats_chosen', None) or [])}
+    pinned_normal |= {str(n).lower() for n in (getattr(character, 'luck_bought_feats', None) or [])}
+
     # Slots tagged by origin bucket, considered lowest-level first.
     slots = [(lvl, 'normal') for lvl in normal_slot_levels] + [(lvl, 'class') for lvl in class_slot_levels]
     free = sorted(range(len(slots)), key=lambda s: slots[s][0])
@@ -136,8 +174,12 @@ def assign_feats_to_levels(character, feats, class_feats, normal_slot_levels, cl
             ready = list(remaining)
         elem = min(ready, key=lambda i: (min_lvl[i], i))
         floor = max([min_lvl[elem]] + [name_level[p] for p in prereq_names[elem] if p in name_level])
-        chosen = next((s for s in free if not used[s] and slots[s][0] >= floor), None)
-        if chosen is None:                               # no legal slot left -> best effort: highest remaining
+        # A pinned feat may only take a normal slot; everything else takes the lowest legal slot.
+        want = (lambda s: slots[s][1] == 'normal') if pool[elem][1] in pinned_normal else (lambda s: True)
+        chosen = next((s for s in free if not used[s] and slots[s][0] >= floor and want(s)), None)
+        if chosen is None:                               # no legal slot at/above the floor
+            chosen = next((s for s in free if not used[s] and want(s)), None)
+        if chosen is None:                               # pinned track full -> best effort, any slot
             chosen = next((s for s in reversed(free) if not used[s]), None)
         used[chosen] = True
         placement[elem] = chosen
