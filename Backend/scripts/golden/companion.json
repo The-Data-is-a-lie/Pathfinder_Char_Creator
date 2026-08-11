@@ -970,6 +970,71 @@
   "wis": 0
  },
  "license_url": "/license",
+ "luck": {
+  "attribute_bumps": {},
+  "audit": {
+   "attribute_points": {
+    "after": 3,
+    "before": 3,
+    "final": 3,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "feats": {
+    "after": 0,
+    "before": 0,
+    "final": 0,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "hp": {
+    "after": 222,
+    "before": 222,
+    "final": 236,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "skill_ranks": {
+    "after": 162,
+    "before": 162,
+    "final": 190,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   }
+  },
+  "cap": 25,
+  "derivation": [
+   "= 0"
+  ],
+  "dr_pool": 0,
+  "e_kat_earned": 0,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "feats": [],
+  "floor": -50,
+  "luck_feats": [],
+  "mod": 0,
+  "negative_feats": [],
+  "payout_changes": [],
+  "score": 0,
+  "stake": null,
+  "trait_benefits": {},
+  "trait_changes": {},
+  "traits": [],
+  "twist_fate_per_day": 0,
+  "type": "Default",
+  "values": {
+   "default": 0,
+   "negative": 0,
+   "proximity": 0
+  },
+  "vault": 0,
+  "vault_cap": 77
+ },
  "magic_talent_items": [],
  "main_stat": "wis",
  "maneuvers_choose_from": [],

@@ -1,21 +1,21 @@
 {
- "Total_HP": 120,
+ "Total_HP": 150,
  "age_number": 48,
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Hazel-eyed"
+  "Pouty lips"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Storm Caller\": {\n        \"source\": \"Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.\",\n        \"stormy eidolon\": \" A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.\",\n        \"summon storm's fury (sp)\": \" A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities.\",\n        \"electrical polarity (su)\": \" At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.\",\n        \"storm's wings (su)\": \" At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.\"\n    }\n}",
- "armor_ac": "8",
- "armor_armor_check_penalty": "-7",
+ "armor_ac": "7",
+ "armor_armor_check_penalty": "-6",
  "armor_enhancement_bonus": 2,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "0",
- "armor_name": "Agile half-plate",
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Banded mail",
  "armor_spell_failure": 0,
- "armor_weight": "55 lbs.",
+ "armor_weight": "35 lbs.",
  "bab_total": 10,
  "background_traits": [
   "Inspiring Rush"
@@ -35,20 +35,32 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Overcharge"
+   "Easy Focus",
+   "Fortified Casting"
   ],
   "boons_detail": [
    {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
    }
   ],
-  "casting_ability_modifier": "Intelligence",
+  "casting_ability_modifier": "Charisma",
   "drawbacks": [
+   "Draining Casting",
    "Extended Casting",
-   "Somatic Casting"
+   "Somatic Casting",
+   "Prepared Caster"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
    {
     "counts_as": 2,
     "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
@@ -58,10 +70,15 @@
     "counts_as": 1,
     "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
     "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
    }
   ]
  },
- "cha": 10,
+ "cha": 15,
  "character_full_name": "Pauline Dupont",
  "chosen_race": "Human",
  "chosen_spell_descriptor": [
@@ -98,11 +115,11 @@
     "Imagination"
    ]
   },
-  "Skill Unlock: Disguise": {
-   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15 Ranks": "You can create a disguise as a full-round action.",
-   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  "Skill Unlock: Heal": {
+   "10 Ranks": "When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.",
+   "15 Ranks": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.",
+   "20 Ranks": "When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care.",
+   "5 Ranks": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day."
   },
   "Strength": {
    "Might of the Gods (Su)": [
@@ -215,11 +232,11 @@
     "Imagination"
    ]
   },
-  "Skill Unlock: Disguise": {
-   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15 Ranks": "You can create a disguise as a full-round action.",
-   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  "Skill Unlock: Heal": {
+   "10 Ranks": "When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.",
+   "15 Ranks": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.",
+   "20 Ranks": "When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care.",
+   "5 Ranks": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day."
   },
   "Strength": {
    "Might of the Gods (Su)": [
@@ -278,7 +295,7 @@
   }
  ],
  "combat_talent_items": [],
- "con": 9,
+ "con": 12,
  "counter_schools": [
   "illusion",
   "transmutation"
@@ -289,33 +306,37 @@
  ],
  "craft_type": "Locks",
  "day_list": [
-  0,
+  1,
+  6,
   5,
-  4,
   3
  ],
  "deity_name": "Kurgess",
- "dex": 11,
+ "dex": 10,
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this snakeskin belt's buckle is shaped\r like a serpent's head. The wearer\r gains a +2 enhancement bonus to\r strength and a +2 competence bonus\r on grapple combat maneuver checks. \r treat the enhancement bonus to strength as temporary ability\r bonus for the first 24 hours the belt is worn. In addition, the\r belt grants the wearer the constrict ability (bestiary 298) for\r 1d6 points of damage plus the wearer's strength modifier. ",
-   "item_name": "Anaconda's Coils"
+   "description": " this wide leather is held together with\r two strands of oxen skin threaded\r through holes on each end. The belt's\r wearer is affected as though subject to a\r permanent ant haul spell (advanced player's guide). ",
+   "item_name": "Heavyload Belt"
   },
-  "body": {
-   "description": " this hole-ridden burlap robe would appear completely worthless if not for the immaculate red velvet lining its interior. When worn inside out, a liar's robe enshrouds the wearer in a continually shifting array of colors, features, and faces that obscure his entire appearance and make physical recognition all but impossible. This effect lasts for 1 hour, during which time the wearer can go back and forth between wearing the robe inside out (disguising himself) and right side out (revealing his true form) any number of times. Witnesses to a creature wearing a liar's robe must use true seeing or a similar effect in order to pierce through this disguise; otherwise, they see the wearer only as a continually shifting humanoid form. The wearer's voice, scent, and other tangible cues are also continually altered and distorted, though indirect magical means of identification (such as detect thoughts or locate creature) may still be used to recognize the individual. Since even the most magically disinclined individuals can clearly tell that the wearer is enshrouded in an illusion, a liar's robe is typically used in circumstances when it's appropriate to protect the wearer's anonymity without the wearer feigning another identity or hiding her presence. ",
-   "item_name": "Liar's Robe"
+  "chest": {
+   "description": " absorbent fibers line this heavy\r canvas coat. Once per day as a\r standard action, the wearer can pour\r a potion onto this lining, suffusing\r it into the coat. If the potion has an\r instantaneous duration, the wearer\r can activate the coat as a swift action\r to consume the potion. If the potion's\r duration is measured in rounds, the wearer can activate the\r coat as a swift action to gain the potion's benefits for 1 round, \r repeating as desired each round until the potion's entire duration\r has been used. These rounds do not need to be consecutive. The\r coat absorbs only potions with instantaneous or round-based\r durations, and only those which affect creatures (for example, it\r does not work on oils). Once the coat absorbs a potion, the potion\r cannot be retrieved from it, only used as described above. The\r absorbed potion loses its powers after 24 hours, even if unused. ",
+   "item_name": "Sipping Jacket"
   },
-  "rings": {
-   "description": "The surface of this silver ring never tarnishes, but when an evil creature is wearing it, its luster diminishes. Whenever the wearer takes the total defense action, he can activate the ring, creating a magic circle against evil effect centered on him. This effect lasts 10 rounds per day, though the rounds don't need to be spent consecutively. Once activated, the effect expends rounds until the user ends it as a move action or the rounds run out. s a standard action while the magic circle is active, the wearer can release the protective circle's energy as a violent blast. This functions as holy smite centered on the wearer, but the wearer can exclude a 10-foot-radius area from the center of the affected area. Releasing the energy expends all the ring's remaining rounds and can be done only if at least 5 rounds remain. The ring's power renews each day at dawn.",
-   "item_name": "Heavenly Aegis Ring"
+  "feet": {
+   "description": " two times per day, the wearer of these shoes can call forth\r 1d4 spirit servants to aid her. The spirit servants are invisible, \r mindless, shapeless beings that act as servants summoned\r by the unseen servant spell. The spirits return to the shoes\r after 3 hours have passed. The wearer can choose to dismiss\r one or more of the spirit servants early. Once per day, the wearer can command the ghostly\r spirits inside her haunted shoes to emerge and swirl around\r her, making her difficult to target in combat. The wearer\r gains concealment (20% miss chance) for 3 minutes. The\r spirits cannot be harmed, but a true seeing spell ignores\r the concealment effect. The concealment effect cannot be\r activated while any of the spirits are currently being used as unseen servants ",
+   "item_name": "Haunted Shoes"
+  },
+  "head": {
+   "description": " this leather mask is vaguely animalistic, and is inlaid with various primitive designs. Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature. Each mask is attuned to one type of animal from the animal focus list, chosen when the mask is created. ",
+   "item_name": "Aspect Mask"
   }
  },
  "equipment_list": [
-  "Anaconda's Coils",
-  "Liar's Robe",
-  "Steelhand Circle",
-  "Heavenly Aegis Ring"
+  "Heavyload Belt",
+  "Sipping Jacket",
+  "Haunted Shoes",
+  "Aspect Mask"
  ],
  "eye_color": [
   "Blue"
@@ -325,118 +346,67 @@
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 6,
+  "normal": 9,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 15
+  "trainer": 3
  },
  "feat_changes_dict": {
-  "Coordinated Maneuvers": {
-   "changes": [],
-   "contextNotes": [
+  "Weapon Focus": {
+   "changes": [
     {
-     "target": "cmb",
-     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
-    }
-   ]
-  },
-  "Focused Discipline": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+2 on all saving throws against fear effects."
-    }
-   ]
-  }
- },
- "feat_conditionals_dict": {
-  "Desperate Battler": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
      "target": "attack",
-     "type": "morale"
+     "type": "untyped"
     },
     {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "wdamage",
+     "type": "untyped"
     }
    ],
-   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
-  },
-  "Focused Discipline": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round)."
+   "contextNotes": []
   }
  },
+ "feat_conditionals_dict": {},
  "feats": [
-  "Alertness",
-  "Endurance",
-  "Coordinated Maneuvers",
-  "Desperate Battler",
-  "Martial Training I (Solar Wind)",
-  "Martial Training III (Solar Wind)",
-  "Basic Magic Training",
-  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)",
+  "Throw Anything",
+  "Spell Twists (elementer)",
+  "Celestial Obedience",
+  "Point-Blank Shot",
+  "Martial Charge",
+  "Quick Preparation",
+  "Prone Slinger",
+  "Martial Training I (Roaring Mouse)",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Alertness": [
-   "uncanny alertness"
+  "Martial Training I (Roaring Mouse)": [
+   "Martial Training II (Roaring Mouse)"
   ],
-  "Endurance": [
-   "altitude affinity",
-   "cold celerity",
-   "diehard",
-   "drunken brawler",
-   "fast healer",
-   "stalwart"
+  "Martial Training III (Roaring Mouse)": [
+   "Martial Training IV (Roaring Mouse)"
   ],
-  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": [
-   "Extra Magic Talent"
+  "Point-Blank Shot": [
+   "charging hurler",
+   "disrupting shot",
+   "far shot",
+   "improved charging hurler",
+   "precise shot"
   ],
-  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": [
-   "Extra Magic Talent"
-  ],
-  "Martial Training I (Solar Wind)": [
-   "Martial Training II (Solar Wind)"
-  ],
-  "Martial Training III (Solar Wind)": [
-   "Martial Training IV (Solar Wind)"
+  "Throw Anything": [
+   "ricochet splash weapon"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Cloud Gazer"
+  "Outflank"
  ],
  "flaw": [
   "Animal Phobia",
@@ -466,18 +436,12 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Improved Disarm": [
-   "greater disarm",
-   "disarming strike",
-   "hold the blade"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Improved Disarm",
-  "Blighted Critical"
+  "Allied Spellcaster",
+  "Improved Shield Bash"
  ],
- "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Solar Wind, Steel Serpent\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An average trainer who taught them Scribe Scroll, Giant Slayer\n- Training: An excellent trainer who taught them Out of the Sun, Venemous Strike (combat), Shield Focus\n- Training: An average trainer who taught them Firesight, Improved Quick Draw\n- Training: An excellent trainer who taught them Ensemble, Improved Steal, Cooperative Crafting\n- Training: An average trainer who taught them Focused Discipline, Bouncing Spell\n- Training: An average (Path of War) trainer who taught them Martial Training I (Steel Serpent), Martial Training III (Steel Serpent)\n- Training: An excellent (Spheres) trainer who taught them Nature’s Movement, Fog Mastery, Air, Nature Lord, Ranged Geomancy, Whispering Elements\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 1 Older Brother\n- 2 Younger Brothers\n- 2 Younger Sisters\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Roaring Mouse\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Nemesis, Weapon Focus, Expert Trainer\n\nFamily\n- Dead Mother\n- Absent Father\n- Raised In An Orphanage\n- No Siblings\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Touseled White\n- Eyes: Blue\n- Build: Pouty Lips",
  "full_domain": [
   "Luck",
   "Strength"
@@ -485,112 +449,71 @@
  "gender": "Female",
  "generation_seed": 5002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 1292,
+ "gold": 4020,
  "hair_color": [
-  "Red"
+  "White"
  ],
  "hair_type": [
-  "Frizzy"
+  "Touseled"
  ],
  "height_number": "5'8\"",
  "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Acrobatic": "You are skilled at leaping, jumping, and flying",
-  "Alertness": "You often notice things that others might miss",
-  "Astrology": "You have come to understand that the workings of the universe and even the capricious machinations of the gods can all be divined from the motions of the heavens. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use prognostication one additional time per day. Spending 1 minute consulting a star chart or cosmogram that is accurate for the world or plane you are currently on, prior to attempting a Sense Motive check, grants you a +2 insight bonus on the check. Special A zodiac, or a path of the mage vizier, can expend uses of their stargazing or personal astrarium ability to use prognostication an additional time per day. you can perform the prognostication occult skill unlock even if you cant use psychic magic, though you must employ this occult skill unlock via horoscopy. with a dc 10 + creature's hit die prognostication task you can determine the astrological conditions at the time of a creature's birth. this can allow you to ascertain information about a creature that is based on those astrological conditions such as a creature's date of birth or the they would receive from the auspicious birth feat. this task follows the normal rules for the prognostication occult skill unlock.",
-  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Riding Fog (Nature)",
-  "Blighted Critical": "With a critical hit from a spell or spell-like ability, you give the target a minor spellblight",
-  "Bouncing Spell": "You can direct a failed spell against a different target",
-  "Cloud Gazer": "Your insight into your elemental heritage gives you a clarity of sight few humans possess",
-  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
-  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
-  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
-  "Endurance": "Harsh conditions or long exertions do not easily tire you",
-  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
-  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
-  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Speak With The Elements (Nature): You may spend a spell point to commune with the elements for 1 minute per caster level.  Air: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has tou\n- Instill Spirit (Nature): As a standard action you may touch a small container of liquid and instill a spirit effect inside it, which functions as a potion or oil. Spirit effects with an instantaneous or concentration duration cannot be instilled, and if you do not have the ability to grant spirit effects to other creatures,",
-  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Wild Instinct (Nature): While concentrating on any Nature sphere ability, you gain the benefits of uncanny dodge. You may take this talent twice, upon taking this talent a second time, you also gain the benefits of improved uncanny dodge using your caster level in place of class level to determine the minimum rogue level r\n- Nature’s Carapace (Nature): You may spend a spell point as a move action to wrap an element around yourself for 1 minute per caster level. This allows you to grant yourself one of the benefits outlined below, dependent on the packages you possess:  Air: Buffeting Winds: You gain a 10% miss chance vs. ranged attacks, +10% per 5",
-  "Firesight": "Fire no longer blinds you, and smoke conceals nothing from your gaze",
-  "Focused Discipline": "Familiarity with the military traditions of your homeland inspires uncommon valor in you",
-  "Giant Slayer": "You know how to turn a foes size and reach against them. when you make a charge attack, you do not provoke attacks of opportunity from the target of your charge. in addition, you gain a +1 bonus on attack rolls made during charges for each size category larger than you the target of the attack is.",
-  "Improved Disarm": "You are skilled at knocking weapons from a foe's grasp",
-  "Improved Quick Draw": "Even with your weapon still sheathed, your presence is enough to threaten enemies. you are considered to be threatening all squares within reach of your weapon even if it is sheathed, and can draw your weapon when making an attack of opportunity. when you draw your weapon in this way, you may sheath weapon without provoking attacks of opportunity after the attack is resolved.",
-  "Improved Steal": "You have a knack for snatching items from your opponents",
-  "Martial Training I (Solar Wind)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training I (Steel Serpent)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Solar Wind)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training II (Steel Serpent)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Solar Wind)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Steel Serpent)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Solar Wind)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Steel Serpent)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Allied Spellcaster": "With the aid of an ally, you are skilled at piercing the protections of other creatures with your spells",
+  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
+  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
+  "Expert Trainer": "You have a special knack for a certain profession and take to it with ease",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
+  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Martial Training I (Roaring Mouse)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Roaring Mouse)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Roaring Mouse)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Roaring Mouse)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Out of the Sun": "Your allies use the sun's glare to their advantage",
-  "Quick Draw": "You can draw weapons faster than most",
-  "Scribe Scroll": "You can create magic scrolls",
-  "Shield Focus": "You are skilled at def lecting blows with your shield",
-  "Shielded Caster": "Your allies cover you while you cast complicated spells",
-  "Spheres Mentor": "<strong>Spheres funded:</strong> Nature (Power)<br><br>Extra Magic Talent > Extra Magic Talent<br>Extra Magic Talent > Extra Magic Talent<br>Extra Magic Talent > Extra Magic Talent<br><br>Nature’s Movement (Nature)<br>Fog Mastery (Nature)<br>Air (Nature)<br>Nature Lord (Nature)<br>Ranged Geomancy (Nature)<br>Whispering Elements (Nature)",
+  "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
+  "Nemesis": "A past enemy seeks your ruin",
+  "Outflank": "You look for every edge when flanking an enemy",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
+  "Quick Preparation": "Early on in your adventuring career, you learned (perhaps the hard way) how to prepare your spells even when put under extreme time constraints",
+  "Spell Twists (elementer)": "The following lists all available spell twists to an elementer. Elementers can select any spell twist from this list at 2nd level and every three levels thereafter. Element The spell twists element, which can be air, earth, fire, or water, or any. The elementer must sacrifice a prepared elemental spell of the matching element to use the spell twist. In the case of an any spell twist, she can use any elemental spell, and the spell twists effect changes depending on the element used. Effect The resulting effect of the spell twist. The effects listed here are for sacrificing a 1st level spell. Boost If the elementer sacrifices an elemental spell of a higher level than 1st, the spell twist gains more power as described in this section. Element Fire Effect You conjure scorching ash to blind your foes. A single creature within 30 feet of you must make a Reflex save or be blinded for 1d4 rounds. Boost For every spell level above 1st, you can target an additional creature. All targets must be within range. Element Earth Effect The earth rises at your command. This functions similar to a wall of stone, except it has a range of 30 feet, and the stone is only 1 inch thick and occupies a single 5-foot square. You cannot double the walls area by halving its thickness, as you normally could with wall of stone. The wall must be on solid ground or near a similar earthen surface (like a cavern wall). Boost For every spell above 1st, you can create an additional two 5-foot squares of stone and the thickness of the stone increases by 1 inch (to a maximum depth of six inches). The wall must be contiguous. Element Any Effect You create a destructive ray of planar force. Make a ranged touch attack against a target within 30 feet. On a hit, you deal 1d8 damage per caster level (max 3d8) of a type based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). Boost For every spell level above 1st, the max damage increases by 3d8 and the range increases by 10 feet. Element Fire Effect You set the world ablaze. You create a single 10-foot cube of fire, which must be created adjacent to your space. Creatures in the blaze take 1d6 points of fire damage each round they are in the flames; a Reflex save halves the damage. The flames last a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the damage increases by 1d6 and you can create an additional 10-foot cube of flames. The cubes must all be adjacent to one another (with one needing to be adjacent to you). Element Water Effect A powerful current backs your movement. As a swift action, you gain a swim speed of 40 feet, a +8 bonus on Swim checks, and can breath underwater. If you already have a swim speed, you increase it by 20 feet, instead. This swim speed lasts for a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the swim speed (or bonus to a swim speed) increases by 10 feet, the Swim bonus by +1, and the duration by 1 round. If the slot used is at least 3rd level, you suffer no penalties for attacking while underwater. If the slot used is at least 6th, you are unaffected by hazards from being deep underwater, such as pressure damage. Element Water Effect A surge of ocean water fills a creatures lungs. A single creature within 30 feet of you takes 2d6 nonlethal damage and is staggered for 1 round. A Fortitude save halves the damage and negates the staggering effect. A creature that can breathe underwater or doesnt need to breathe at all is unaffected by this spell twist, as are creatures with no discernible anatomy to affect (such as oozes or an air elemental). Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature. All targets must be within 30 feet of you. Element Any Boost For every spell level above 1st, you can target an additional willing creature and the effect lasts an additional round. For every three spell levels above 1st, the damage bonus increases by 1d6. Element Fire Effect You quickly vanish and reappear a short distance away, your image flickering like fire. You teleport up to 20 feet away. Creatures and combustible objects within 5 feet of your destination take 2d6 fire damage. A Reflex save halves the damage taken. Boost For every spell level above 1st, the maximum distance you can teleport increases by 20 feet, and the damage increases by 2d6. Element Water Effect A sudden wave crashes in front of you. The water fills a 15-foot cone directly in front of you with torrential water. Non-magical fires in the area are extinguished immediately. Medium-sized (or smaller) creatures and objects in the area are pushed back make a separate bull-rush attempt against each. You may substitute your elementer level in place of your base attack bonus and your Intelligence in place of your Strength bonus for these bull rush attempts, and the attempts do not provoke attacks of opportunity. Both the bull rush and the pushing of the objects cant exceed 5 feet beyond the cones end. Boost For every spell level above 1st, the amount of water increases significantly. The range of the cone increases by 5 feet, and you gain an additional +1 bonus to your bull rush attempts. For every two spell levels above 1st, the maximum size of creatures and objects you can push increases by one size category. Element Water Effect You conjure a powerful chill to encase a target. A single creature or object within 30 feet of you takes 2d6 cold damage; an affected creature is entangled for 1d4 rounds. A Fortitude save halves the damage and negates the entangling effect. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature or object. All targets must be within 30 feet of you. Element Earth Effect A gout of acidic earth sprays upon a target within 30 feet. The target takes 2d6 acid damage; a creature struck is also sickened for 1 round. A Fortitude save halves the damage and negates the sickening effect. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature or object. All targets must be within 30 feet of you. Element Air Effect Bellowing winds rush forth from you. The winds fill a 10-foot radius burst around you, acting as a strong wind (about 25 mph) directly away from you for 1 round. This follows all of the normal rules for strong winds, including dispersing harmful gases, mists, and vapors, penalizing ranged attacks, pushing creatures, and so on. Boost For every spell level above 1st, you can increase the radius of the burst by 10 feet. For every two spell levels above 1st, the strength of the winds increases by one category. If you use a 9th level spell to create tornado-strength winds, creatures are still pushed away rather than pulled inwards toward you. Element Fire Effect A burst of sweltering heat emits from your hand in a 20-foot cone. Creatures in this area take 2d6 nonlethal fire damage and are fatigued. A Fortitude save halves the damage and negates the fatigue effect. This cannot cause a fatigued creature to become exhausted. Boost For every spell level above 1st, the nonlethal damage increases by 2d6. For every two slots above 1st, the range of the cone increases by 5 feet. Element Any Effect Elemental energies disrupt your opponents casting. As an immediate action, you counter a spell that appears in the same elemental category as the spell you used, or has one of the following descriptors based on the element of spell used air (air, electricity, or sonic), earth (acid, earth), fire (fire, light), or water (cold, water). The countered spell must be 1st level or lower. Boost For every spell level above 1st, the level of spell you can counter increases by 1. Element Fire Effect You set the target alight. A target creature or object within 30 feet of you takes 2d6 fire damage and is set on fire, taking 1d6 fire damage each round thereafter. A Reflex save halves the initial damage and negates the burning effect. A creature or object set on fire can make a Reflex save at the start of each turn, extinguishing the flames on a successful save. Submersing or dousing the target with water will not stop the burning, but does immediately grant a new save with a +4 bonus. The object or creature keeps this bonus on subsequent saves so long as it remains sufficiently doused or submersed. If not extinguished, the flames die out after a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the initial damage increases by 2d6 and the burning damage increases by 1d6. Element Water Effect Your body disperses into vapor as an immediate action, granting you total concealment (50% miss chance). This does not prevent creatures from targeting you. The effect ends after you are targeted by a single attack or effect (whether it hits or not) or at the start of your turn, whichever comes first. Boost For every spell level above 1st, the concealment lasts against an additional attack or effect. Element Earth Effect The ground beneath your foe violently shakes. A single creature within 30 feet takes 2d6 bludgeoning damage and falls prone; this damage is considered magical for the purpose of overcoming damage reduction. A Reflex save halves the damage and negates the prone effect. Only creatures of Medium size or smaller are knocked prone on a failed save. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature and the maximum size of creature you can knock prone increases by one size category. Element Air Effect A lightning bolt strikes your target. A creature or object within 30 feet takes 2d6 electricity damage; a creature struck is dazed and takes a -2 penalty to AC for 1 round. A Reflex save halves the damage and AC penalty and negates the daze effect. Boost For every spell level above 1st, the damage increases by 2d6 and the AC penalty increases by 1. Element Air Effect The wind surges around you. As a swift action, you gain a fly speed of 40 feet with good maneuverability for a number of rounds equal to your Intelligence modifier (minimum 1). If you already have a fly speed, you increase it by 20 feet, instead. When the effect ends, if you do not have a fly speed from another source, you fall slowly to the ground (as a fly spell). Boost For every spell level above 1st, the fly speed (or bonus to a fly speed) increases by 10 feet and the duration increases by 1 round. For every three spell levels above 1st, your maneuverability increases by one step (from average to good, then from good to perfect). Element Earth Effect You conjure a piercing stone shard to impale your foes. Make a ranged attack against a target within 30 feet. The stone deals 1d6 piercing damage on a hit per caster level (max 3d6); this counts as magical for the purpose of overcoming damage reduction. If you hit a creature, it begins bleeding for 1d6 damage each round. Boost For every spell level above 1st, the maximum initial damage increases by 3d6. For every two levels above 1st, the bleed damage increases by 1d6. Element Air Effect You surround a single willing creature within 30 feet of you with a crackling aura of electricity. Any creature striking the target with a non-reach melee weapon, unarmed strike, or natural attack takes 1d6 electricity damage. The effect lasts for a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the duration increases by 1 round. For every two levels above 1st, the damage increases by 1d6. Element Earth Effect Your body turns to stone. As a swift action, you solidify into solid rock. While stone, you add your Intelligence modifier to your Armor Class and CMD (minimum +1) and gain DR 2/adamantine. You cannot take any actions, move, or speak while turned to stone, though you are not considered helpless. The effect lasts until the start of your next turn. Boost For every spell level above 1st, increase the bonus to your CMD by 2 and the DR you gain by 1. For every two spell levels above 1st, increase your bonus to AC by 1, and you gain a stacking 25% chance to negate critical hits and sneak attacks while you are stone. Element Air Effect A deafening burst of thunder erupts from you. Creatures within 10 feet of you take 2d6 sonic damage and are deafened for 1 minute. A Fortitude save halves the damage and negates the deafening effect. Boost For every spell level above 1st, increase the damage by 2d6. For every two levels above 1st, you can increase the radius of the burst by 10 feet. Element Any Effect You protect an ally from the elements. A willing creature within 30 feet takes half damage from a single energy type for a number of rounds equal to your Intelligence modifier (minimum 1). This reduction is applied after energy resistance, protection from energy, and other similar effects. The type of damage is based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). Boost For every spell level above 1st, you can target an additional ally. All targets must be in range and are protected against the same damage type. Element Any Effect You infuse yourself with power as a swift action. The next damaging spell or spell twist you use this turn deals +1 damage per die rolled. Additionally, you can change the damage of that spell or spell twist to a type based on the element of the spell you sacrificed acid (earth), cold (water), electricity (air), or fire (fire). You can only warp a spell of 1st level or lower or a spell twist created from sacrificing a 1st level elemental spell. Boost For every spell level above 1st, you can warp a spell or spell twist one level higher. effect you infuse an ally with elemental energy. their weapon attacks deal an additional 1d6 damage, with the damage type based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). this damage is not multiplied on a critical hit and does not stack with other energy damage of the same type the creature deals with its weapons attacks. you must grant it to a single willing creature within 30 feet, and the lasts for a number of rounds equal to your intelligence modifier (minimum 1).",
+  "Throw Anything": "You are used to throwing things you have on hand",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Venemous Strike (combat)": "A poisonous sting accompanies your attacks. you can use this a number of times per day equal to your wisdom modifier (minimum 1). you can choose to use this ability as a free action after you hit the enemy with the attack. this is a supernatural ability."
+  "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
+  "Weapon Focus": "Choose one type of weapon You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat"
  },
  "inherents": {
-  "cha": 8,
+  "cha": 4,
   "con": 0,
-  "dex": 4,
+  "dex": 6,
   "int": 0,
-  "str": 7,
+  "str": 8,
   "wis": 0
  },
- "initiation_stat": "int",
+ "initiation_stat": "cha",
  "initiator_level": 7,
- "int": 19,
+ "int": 17,
  "item_changes_dict": {
-  "Anaconda's Coils": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "str",
-     "type": "enh"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "cmb",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "strChecks",
-     "text": "Treat the enhancement bonus to strength as temporary ability bonus for the first [[24]] hours the belt is worn. In addition, the belt grants the wearer the constrict ability (bestiary 298) for [[1d6]] points of damage plus the wearer's strength modifier."
-    }
-   ]
-  },
-  "Heavenly Aegis Ring": {
+  "Aspect Mask": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "This effect lasts 10 rounds per day, though the rounds don't need to be spent consecutively. Once activated, the effect expends rounds until the user ends it as a move action or the rounds run out. This functions as holy smite centered on the wearer, but the wearer can exclude a 10-foot-radius area from the center of the affected area. Releasing the energy expends all the ring's remaining rounds and can be done only if at least 5 rounds remain."
+    "Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature."
    ]
   },
-  "Liar's Robe": {
+  "Haunted Shoes": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "This effect lasts for 1 hour, during which time the wearer can go back and forth between wearing the robe inside out (disguising himself) and right side out (revealing his true form) any number of times."
+    "Two times per day, the wearer of these shoes can call forth 1d4 spirit servants to aid her. The spirits return to the shoes after 3 hours have passed. Once per day, the wearer can command the ghostly spirits inside her haunted shoes to emerge and swirl around her, making her difficult to target in combat. The wearer gains concealment (20% miss chance) for 3 minutes. The spirits cannot be harmed, but a true seeing spell ignores the concealment effect. The concealment effect cannot be activated while any of the spirits are currently being used as unseen servants"
    ]
   },
-  "Steelhand Circle": {
+  "Sipping Jacket": {
    "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally."
-    }
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day as a standard action, the wearer can pour a potion onto this lining, suffusing it into the coat. If the potion has an instantaneous duration, the wearer can activate the coat as a swift action to consume the potion. If the potion's duration is measured in rounds, the wearer can activate the coat as a swift action to gain the potion's benefits for 1 round, repeating as desired each round until the potion's entire duration has been used. The absorbed potion loses its powers after 24 hours, even if unused."
    ]
   }
  },
@@ -603,21 +526,22 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Terran",
   "Sphinx",
-  "Gnoll",
-  "Giant",
-  "Aquan",
-  "Halfling",
-  "Draconic",
-  "Aklo",
-  "Protean",
+  "Tengu",
   "Auran",
+  "Undercommon",
+  "Aquan",
+  "Terran",
+  "Draconic",
+  "Ignan",
+  "Giant",
+  "Grippli",
   "Kelish",
+  "Gnoll",
+  "Celestial",
   "Elven",
-  "Drow Sign Language",
-  "Gnome",
-  "Dwarven"
+  "Orc",
+  "Abyssal"
  ],
  "level": 9,
  "level_up_stats": {
@@ -629,345 +553,196 @@
   "wis": 1
  },
  "license_url": "/license",
- "magic_talent_items": [
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may create clouds of fog attached to yourself or to other creatures. A fog cloud attached to a creature is called a riding fog. This functions as a regular fog and can be dispersed by wind, except that it moves with the creature it is attached to, becomes inactive if that creature is knocked unconscious and is dispelled if they are killed. The fog continues to function if it goes beyond the range of its creator.\n\nThe recipient must be within range of your geomancing. An unwilling creature can have a riding fog attached to them as a touch attack; A creature is allowed a Will save to prevent having the fog attached to them and may attempt another saving throw each round to end the fog. The Break Enchantment talent from the Life sphere or a similar effect can dispel the riding fog before its natural duration expires. An enemy with a riding fog attached to them still receives any saving throws the fog allows to avoid being affected. A successful save causes the fog to immediately dissipate.\n\nSpell resistance can prevent a riding fog from being attached to a creature. Failing to bypass the intended target's spell resistance in attempting to attach the fog dispels the fog.",
-   "name": "Riding Fog",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
+ "luck": {
+  "attribute_bumps": {},
+  "audit": {
+   "attribute_points": {
+    "after": 3,
+    "before": 3,
+    "final": 3,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "feats": {
+    "after": 0,
+    "before": 0,
+    "final": 0,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "hp": {
+    "after": 135,
+    "before": 135,
+    "final": 150,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "skill_ranks": {
+    "after": 150,
+    "before": 150,
+    "final": 180,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   }
   },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "While concentrating on any Nature sphere ability, you gain the benefits of uncanny dodge. You may take this talent twice, upon taking this talent a second time, you also gain the benefits of improved uncanny dodge using your caster level in place of class level to determine the minimum rogue level required to flank you.",
-   "name": "Wild Instinct",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
+  "cap": 25,
+  "derivation": [
+   "= 0"
+  ],
+  "dr_pool": 0,
+  "e_kat_earned": 0,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "feats": [],
+  "floor": -50,
+  "luck_feats": [],
+  "mod": 0,
+  "negative_feats": [],
+  "payout_changes": [],
+  "score": 0,
+  "stake": null,
+  "trait_benefits": {},
+  "trait_changes": {},
+  "traits": [],
+  "twist_fate_per_day": 0,
+  "type": "Default",
+  "values": {
+   "default": 0,
+   "negative": 0,
+   "proximity": 0
   },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may spend a spell point as a move action to wrap an element around yourself for 1 minute per caster level. This allows you to grant yourself one of the benefits outlined below, dependent on the packages you possess:\n\nAir: Buffeting Winds: You gain a 10% miss chance vs. ranged attacks, +10% per 5 caster levels. This does not affect ranged weapons that are unusually massive, such as boulders or siege weapons.\n\nEarth: Stoneskin: You gain DR/adamantine equal to 1/2 your caster level. Once this has absorbed damage equal to 10 per caster level, it immediately ends even if its duration has not expired.\n\nFire: Flame Mantle: You place fire around yourself as a mantle. This does not deal fire damage to yourself, but all adjacent creatures take fire damage equal to the largest fire you can create at the end of each of your turns, and must succeed at a Reflex save or catch fire.\n\nMetal: Iron Body: You wrap yourself in thick iron. You count as a creature comprised mostly of metal and gain a +6 armor bonus and a -3 armor check penalty, both of which increase by 1 per 4 caster levels, and you are considered to be wearing heavy armor, such as when calculating movement speed. You are considered armed when making unarmed attacks, and gain a +2 bonus to Strength and a -2 penalty to Dexterity, both of which increase by 2 for every 8 caster levels you possess.\n\nPlant: Barkskin: You gain a +1 enhancement bonus to natural armor, +1 per 5 caster levels. In addition, in natural environments you gain a circumstance bonus to Stealth equal to 1/2 your caster level (minimum 1). You lose this circumstance bonus to Stealth in any round that you move more than 5 feet.\n\nWater: Seamantle: You wrap water around yourself, gaining a circumstance bonus to Escape Artist checks and combat maneuver checks made to escape a grapple, as well as to your CMD to avoid being grappled, equal to your caster level. Additionally, the distortion from the water grants you a 10% chance to negate critical hits and precision damage, +10% per 5 caster levels.",
-   "name": "Nature’s Carapace",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may spend a spell point to commune with the elements for 1 minute per caster level.\n\nAir: Speak With Clouds: You gain the Auran language, and may speak with clouds of fog or mist. This is not truly accomplished with speech, but rather by interacting with the cloud you may learn what else has touched it, passed through it, is hidden within it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nEarth: Speak With Stone: You gain the Terran language, and may speak with natural or worked stone. This is not truly accomplished through speech, but rather by touching a stone you may learn what else has touched it, passed by it, what is hidden underneath it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nFire: Speak With Fire: You gain the Ignan language, and may speak with fire or smoke. This is not truly accomplished through speech, but rather by gazing into the flames and smoke you may learn what else has touched it, passed by it, what is responsible for creating it, etc. You can tell weight, size, and number of passers-by, but not more detailed information.\n\nMetal: Speak With Metal: You gain the Aklo language, and may speak with natural ore or worked metal. This is not truly accomplished through speech, but rather by touching a piece of metal you may learn what else has touched it, worn it, passed by it, what is hidden inside it, details of its forging, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information.\n\nPlant: Speak With Plants: You gain the Sylvan language, and may speak with normal plants and plant creatures. You can communicate with normal plants and plant creatures and can ask questions and receive answers from them. A normal plant's sense of its surroundings is limited, so it will not be able to give (or recognize) detailed descriptions of creatures or answer questions about events outside its immediate vicinity.\n\nWater: Speak With Water: You gain the Aquan language, and may speak with pools or bodies of water. This is not truly accomplished through speech, but rather by dipping a limb into the water you may learn what else has touched it, passed by it, what is hidden inside it, etc. You can tell depth, weight, size, and number of passers-by, but not more detailed information. You can speak with both fresh or salt bodies of water, and if attempting to converse with particularly large bodies of water, such as oceans, you can only acquire information from a portion of the body of water, to a maximum distance of 1000 feet + 100 feet per caster level.",
-   "name": "Speak With The Elements",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "As a standard action you may touch a small container of liquid and instill a spirit effect inside it, which functions as a potion or oil. Spirit effects with an instantaneous or concentration duration cannot be instilled, and if you do not have the ability to grant spirit effects to other creatures, the instilled liquid is only usable by you.\n\nAn instilled liquid remains potent until you rest to regain spell points. If you have equipment on hand (such as an alchemy lab), the cost of bottles and water is considered negligible. You may target food but not an already-magical item, such as a potion. All spell points must be spent and all variables of the sphere effect must be chosen at the time the instilled liquid is created. You cannot instill multiple effects in a single liquid, nor create multiple instilled liquids with a single action.",
-   "name": "Instill Spirit",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may spend a standard action to gain one of the following benefits for 1 round. You may spend a spell point to gain one of the following benefits for 1 minute per caster level. You may move up to your speed with the granted move type as part of activating this sphere effect, so long as the action used was at least a move action. The movements you can choose are determined by the packages you possess.\n\nAir: Air Ball: You gain a rideable sphere of compressed air, which can support 200 + 20 lbs. per caster level. This ball can float up to 5 feet + 5 feet per 5 caster levels above the ground, and has a movement speed equal to your base land speed. This ball is only usable by you, but others may ride along if the ball can support the weight of all riders. The ball is treated as a mount, but requires no Ride or Fly checks to use and cannot be affected by uses of those skills such as cover or spur mount, nor can be targeted by opponents.\n\nEarth: Burrow: You can tunnel through sand, loose soil, or gravel, at a burrow speed equal to half your land speed (minimum 10 feet) or at a burrow speed equal to a quarter of your land speed through stone (minimum 5 feet). While burrowing with this talent you cannot charge or run. This ability does not grant you the ability to breathe underground, so when passing through loose material, you must hold your breath and take only short trips or else you may suffocate.\n\nFire: Ride the Flames: You may use heat waves to push yourself, gaining a fly speed equal to your base land speed, with a maneuverability of clumsy. This fly speed only functions on your turn. If you are not on a surface that can support you on the end of your turn, you glide safely to the ground, at a speed of 60 feet per round, taking no falling damage. You cannot use this fly speed to hover.\n\nMetal: Ironshod: You become difficult to impede with traps, hazards, and difficult terrain. You reduce any damage you take from traps, hazards, and difficult terrain (including caltrops and spike stones) by your caster level, and you can still 5-foot step through difficult terrain. When moving through difficult terrain, you may completely ignore 5 feet of difficult terrain + 5 feet per 5 caster levels when calculating your movement for a round.\n\nPlant: Brachiate: You gain a climb speed equal to half your land speed (minimum 10 feet), granting you all the usual benefits of a Climb speed, including a racial +8 bonus to Climb checks. In addition, you can move through the upper canopies of jungles and forests with the same ease you move along the ground. You can use your base land speed to move through any heavily forested area without touching the ground by leaping and swinging from tree to tree. You can also use this among the rafters of a building, or even stalactites on a cavern ceiling.\n\nWater: Water Walk: You gain the ability to walk on water. Water and all other liquid becomes solid to you, allowing you to move over it as if it were normal ground. Especially turbulent water (such as during a storm) may count as difficult terrain. You may always choose to sink into the water and swim if you so desire, in which case you are considered to have a Swim speed equal to your land speed, granting you all the usual benefits of a Swim speed, including a racial +8 bonus to Swim checks. This does not, however, grant you the ability to breathe underwater.",
-   "name": "Nature’s Movement",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you create Fog, you may add one of the following additional effects depending on what other packages you possess.\n\nAir: Wind Blades: Your fog attacks those inside it with blades of wind. Any creature or object moving through this fog must succeed at a Reflex save or suffer 1d6 + 1 per 2 caster levels points of slashing damage for every 5 feet of movement spent entering or moving through this fog.\n\nEarth: Sandstorm: Requires loose dirt or sand instead of water. You create a sandstorm. In addition to the fog, this also functions as a Vortex, except it travels over land and extends into the air, and can even leave the ground and travel in the air. The obscuring effect only applies to the actual area of the vortex, and creatures that possess earthsight or tremorsense do not have their vision obscured by this effect.\n\nFire: Smokescreen: Requires fire instead of water. You may create a fog out of smoke instead of mist. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become blinded for 1 minute. In addition, creatures suffer -2 penalty on attack rolls and Perception checks for as long as they remain inside and for 1 round after exiting the smoke. Creatures that possess firesight do not have their vision obscured by clouds modified with this effect.\n\nMetal: Acid Rain: You may spend an additional spell point to create acid rain. An acid fog deals 1d6 acid damage per 2 caster levels (minimum 1d6, no save) to creatures inside it. This fog deals damage when you first create it and each subsequent round at the beginning of your turn. Any creature who enters the cloud immediately suffers damage, but only once even if they leave and re-enter the cloud as part of their movement. Creatures that possess metalsight do not have their vision obscured by this effect.\n\nPlant: Spore Cloud: Requires grass, weeds, or trees instead of water. You may create a cloud of spores. Creatures that begin their turn within or enter the cloud must succeed at a Fortitude save or become sickened for as long as they remain within the fog + 1d6 rounds after leaving. If a creature fails its Fortitude save against this effect while already sickened, it also becomes nauseated for 1 round. Creatures and objects that exit the cloud are covered in visible sticky spores that remain until removed as a full-round action; outlining their form and revealing their position, and making invisibility impossible without first cleaning off the spores. Creatures that possess greensight or plantsight do not have their vision obscured by this effect.\n\nWater: Solid Fog: You may make your fog so thick that it becomes effectively solid. Creatures move at half their speed through the fog, cannot make 5-foot steps, and suffer a -1 penalty to all weapon attacks and damage rolls made within or that pass through this area -1 per 10 caster levels. Objects that fall within this area are slowed so that each 10 feet of fog reduces the falling damage by 1d6, +1d6 per 10 caster levels.",
-   "name": "Fog Mastery",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Breeze: Concentration, requires air. You create a light wind that remains swirling around a target. The breeze grants the target a circumstance bonus equal to 2 + 1 per 5 caster levels on saves against very hot conditions, severe heat, and saves against clouds, vapors, and gases (such as cloudkill, stinking cloud, and inhaled poisons).\n\nGust Of Wind: Concentration, requires air. You may create a line-shaped gust of wind emanating out from you out to the edge of your geomancing range, affecting all creatures and objects within that line. The severity level of the wind is 3 + 1 per 5 caster levels (see the Wind category of the Weather sphere for more information). If maintaining Gust Of Wind via concentration, you may spend a spell point as a free action to increase the severity level of its wind by 1 for that round. Walls and other barriers block this wind.\n\nAuthor's Note: If Gust Of Wind is used in an area of existing wind severity level 3 or greater, the geomancing ability may have different effects depending upon what direction your line-shaped gust is blowing versus the existing weather.\n\nGust Of Wind blowing in same direction of Existing Wind: instead increase the wind severity in the line-shaped gust by 1 + 1 per 5 caster levels.\n\nGust Of Wind blowing in opposite direction of Existing Wind: instead decrease the wind severity in the line-shaped gust by 3 + 1 per 5 caster levels.\n\nGust Of Wind blowing in perpendicular directions of Existing Wind: Gust Of Wind overrides the existing wind severity and direction in that line-shaped gust, but otherwise remains unchanged.\n\nPurify Air: Concentration, requires air, gas, or vaporous substance. You may convert polluted air or a non-breathable gas or vapor into a cloud of breathable air in a 5 feet + 5 feet per 5 caster levels radius area centered within range. This has no effect on supernatural or other magically created clouds (such as a vampire's gaseous form or a cloudkill spell). Creatures who are entirely within the area of the cloud are able to breathe in sufficient air to sustain them.",
-   "name": "Air",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Treat your caster level as 5 higher when determining the maximum area radius and height you can affect with your geomancing abilities that affect an area (such as Bury, Dust Storm, Entangle, Fog, Gust Of Wind, Purify Air, Tremor, or Vortex).\n\nWhen using a geomancing ability dependent on size (such as Affect Fire, Create Fire, Magnetize, Pummel, or Recover Ore), increase the maximum size object you can create or target by 1 size category.\n\nWhen using Freeze, you may affect twice as many equivalent Medium-sized creatures without affecting the thickness of the ice.\n\nAuthor's Note: You can apply this effect to each applicable effect. For example, if using the Create Nature talent to both Create Fire and Affect Fire, both abilities will receive the size increases from the Nature Lord talent",
-   "name": "Nature Lord",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "The range of your geomancing abilities increases from close to medium range. You may select this talent up to 2 times. Each time it is selected, the range increases by 1 step (close to medium, medium to long).",
-   "name": "Ranged Geomancy",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": true,
-   "changes": [],
-   "contextNotes": [],
-   "description": "As an instantaneous effect, you may as a standard action spend a spell point to send a message or sound through an element corresponding to a package you possess (air, earth, water, etc.) to a designated spot anywhere in the world. The message travels to the destination, provided that the location is familiar to you and that it can find a way to the location through its chosen medium. The message can travel as slowly as 1 mile per hour or as quickly as 1 mile per 10 minutes, though if it cannot reach its destination within 1 hour per caster level, the effect ends without delivering the message. If choosing plant or fire the message can travel without a medium, provided the end location possesses either plantlife or a fire for the message to be delivered through.\n\nThe message is gentle and unnoticed until it reaches the location, where it then delivers its whisper-quiet message or other sound to all creatures within 10 feet + 5 feet per 5 caster levels of the destination. Note that the message is delivered regardless of whether anyone is present to hear it.\n\nAt time of casting, you can prepare the effect to bear a message of no more than 20 + your caster level words, cause the talent to deliver other sounds for 1 round per 2 caster levels, or merely have the message seem to be a faint manifestation of the chosen element.\n\nThe message cannot speak verbal components, use command words, or activate magical effects.",
-   "name": "Whispering Elements",
-   "sphere": "Nature",
-   "system": "Spheres of Power",
-   "type": "advanced",
-   "uses": null
-  }
- ],
+  "vault": 0,
+  "vault_cap": 77
+ },
+ "magic_talent_items": [],
  "main_stat": "int",
  "maneuvers_choose_from": [
   [
-   "Curving Ray Shot",
-   "Horizon Wind Lancet",
-   "Hunting Serpent Blow",
-   "Sting of the Rattler"
+   "Give Me a Hand",
+   "Squeak By"
   ],
   [
-   "Intercepting Shade",
-   "Solar Flare",
-   "Fading Dodge",
-   "Iron Fang"
+   "Rat Takes the Cheese",
+   "Rat Trap"
   ],
   [
-   "Phantom Wind Ray",
-   "Solar Reflection",
-   "Sickening Venom Strike",
-   "Sight Piercing Fang"
+   "Cat Takes the Rat",
+   "Underhanded Strike"
   ],
   [
-   "Dazzling Solar Flare",
-   "Poison Blood"
+   "Rat Race"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Curving Ray Shot": {
-   "action": "1 standard action",
-   "description": "The disciples keen eyes allow him to fire his weapon around his foes cover. The initiator makes an opposed Perception check against targets Armor Class before making a single ranged attack; if successful then the foes cover is negated.",
-   "discipline": "Solar Wind",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Ranged attack",
-   "type": "strike"
-  },
-  "Dazzling Solar Flare": {
-   "action": "1 standard action",
-   "description": "With swift and deadly precision, the disciple attacks with the force of the scorching sun. The initiator makes a ranged attack against a foe, and if successful the attack inflicts an additional 4d6 points of fire damage and dazes the target on a failed Fortitude saving throw DC 14 + initiation modifier for 1d4 rounds. If the save is successful, the target is dazzled instead for one round. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "1d4 rounds",
-   "level": 4,
-   "range": "Ranged attack",
-   "type": "strike"
-  },
-  "Fading Dodge": {
-   "action": "1 immediate action",
-   "description": "By using his knowledge of anatomy to contort away from a strike, the Steel Serpent disciple may bend away from an attackers grasp and make a swift counter-offensive. As an immediate action, the disciple makes a Heal skill check against the attackers roll to bend or otherwise contort himself to evade an attack. If successful he negates the attack and may make a free dirty trick attempt without provoking attacks of opportunity.",
-   "discipline": "Steel Serpent",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "One attack",
-   "type": "counter"
-  },
-  "Horizon Wind Lancet": {
+  "Cat Takes the Rat": {
    "action": "1 swift action",
-   "description": "The tenets of the Solar Wind have taught the disciple how to place more force behind his attacks. The initiator inflicts an additional 1d6 points of damage on a single ranged attack he makes this round. If the initiator is making multiple attacks in this round, this bonus applies to the first attack the initiator makes.",
-   "discipline": "Solar Wind",
-   "duration": "Instantaneous",
+   "description": "Its not nice to play with your food, but that never stopped you. Upon initiating this boost, select one opponent with the tricked condition within range. The next successful attack within 1 round against them deals an extra 3 damage per round of the tricked condition they have remaining at the time you initiated this boost, to a maximum of 3 times your initiator level. Exploit: The maximum limit of extra damage is doubled, to 6 times your initiator level. Upon using this exploit, the target is immune to this exploit for two rounds.",
+   "discipline": "Roaring Mouse",
+   "duration": "1 round",
+   "level": 3,
+   "range": "Close 25 ft. + 5ft./2 levels",
+   "type": "boost"
+  },
+  "Crouching Lion": {
+   "action": "1 swift action",
+   "description": "You move with a strange grace, befuddling your enemies. While maintaining this stance, any Roaring Mouse maneuvers with durations greater than instantaneous last for 1 round longer than normal including the duration of effects or conditions imparted by these maneuvers. This increases by 1 additional round for every 6 initiator levels you have. The maneuver must be performed while you are in this stance, and if you leave it, this effect immediately ends. In addition, any creature you hit with a melee weapon including natural weapons becomes tricked for a number of rounds equal to your initiation modifier. This stances effect resolves after other effects relating to the attack such as strikes or weapon properties.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Give Me a Hand": {
+   "action": "1 swift action",
+   "description": "You know how to gang up on your enemies, using your allies to your advantage. Upon initiating this boost, you and your allies are considered to be flanking any foe so long as you are adjacent to them, regardless of your actual position. Additionally, if your ally is maintaining a Roaring Mouse stance, you both gain a +2 bonus on attacks against the foe that you are flanking.",
+   "discipline": "Roaring Mouse",
+   "duration": "One round",
    "level": 1,
    "range": "Personal",
    "type": "boost"
   },
-  "Hunting Serpent Blow": {
+  "Pussyfoot Stance": {
+   "action": "1 swift action",
+   "description": "You are always just out of sight, striking where your foes least expect it. While maintaining this stance you can share the space of allies. Doing so does not incur the normal penalties for sharing space on either you or your ally. While doing so, you gain concealment 20% miss chance against opponents and count as flanking with that ally. This concealment allows you to use Stealth and other abilities that depend on concealment, so long as that ally is visible and not using Stealth themself. If your ally is also maintaining a Roaring Mouse stance, your concealment cannot be pierced by effects that allow foes to ignore concealment. Finally, regardless of whether you are sharing space with an ally, any foes hit by your attacks are tricked for a number of rounds equal to your initiation modifier.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Rat Race": {
    "action": "1 standard action",
-   "description": "The disciple hunts his foe through the emulation of a hunting serpent, obfuscating his true attack until the moment he strikes. The disciple makes a Heal check with a difficulty equal to his opponents armor class. If this check is successful, then the target is made flat-footed and the disciple may make a melee attack against him, inflicting an additional 1d6 points of damage if successful. If this Heal check fails, then his opponent sees through this ruse, and the disciple makes his melee attack with a -2 penalty as the enemy is anticipating his attack.",
-   "discipline": "Steel Serpent",
-   "duration": "Instantaneous",
-   "level": 1,
+   "description": "Sometimes you just need to know when to bail. Make a melee attack. If successful, you deal damage as normal and the target is tricked for a number of rounds equal to your initiation modifier. Additionally, make an Escape Artist check with a DC equal to the targets CMD. If successful, you may move up to your speed even if youve already moved this round and the target is dazed for one round. Your movement does not provoke attacks of opportunity. Exploit: The target is stunned instead of dazed. Upon using this exploit, the target is immune to this exploit for three rounds.",
+   "discipline": "Roaring Mouse",
+   "duration": "Instantaneous see text",
+   "level": 4,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Intercepting Shade": {
-   "action": "1 immediate action",
-   "description": "Sometimes a good offense can be used as a good defense, so the Solar Wind discipline learns, as he uses his range to dissuade attacks by his sheer skill and exceptional aim. The initiator makes an opposed attack roll against his foes attack roll on an incoming attack such as an arrow or thrown weapon, a charging barbarian, or a skillful slash from a sword, but not a spell or similar attack targeting himself or an ally he can see within his weapons first range increment; if successful then the attack is negated.",
-   "discipline": "Solar Wind",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal, or weapons first range increment",
-   "type": "counter"
-  },
-  "Iron Fang": {
-   "action": "1 standard action",
-   "description": "By hardeningkialong edge of his weapon, the Steel Serpent disciple uses the pressure of hiskito penetrate the defenses of his foe. The disciple makes an attack against a foe which if successful inflicts an additional 2d6 points of damage and ignores any damage reduction the target may possess. Additionally, if the disciple is using poison or a prana maneuver with this strike, increase the saving throw DC by +2. This is a supernatural ability.",
-   "discipline": "Steel Serpent",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack or ranged attack",
-   "type": "strike"
-  },
-  "Phantom Wind Ray": {
+  "Rat Takes the Cheese": {
    "action": "1 swift action",
-   "description": "The disciples knowledge of the desert mirages caused by the sun grants him the ability to obscure his attacks, using gaps in a foes perception. The target must make a Perception check opposed by the initiators next attack roll against the target; if the Perception check fails then he is caught flat-footed against the attack and the attack is resolved against his flat-footed armor class. This is a supernatural ability.",
-   "discipline": "Solar Wind",
+   "description": "Your opponent wasnt using that anyways. Upon initiating this boost, make a steal or disarm attempt, using an Escape Artist check in place of the normal CMB roll against the target's CMD. Exploit: You may stow the item you took from the target as a free action that does not provoke attacks of opportunity.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
-   "level": 3,
-   "range": "Personal",
+   "level": 2,
+   "range": "Melee attack",
    "type": "boost"
   },
-  "Poison Blood": {
+  "Rat Trap": {
    "action": "1 immediate action",
-   "description": "Every disciple of Steel Serpent has long accepted that in battle, sometimes the superior warrior gets injured. The Steel Serpent however, believes that for every wound inflicted upon the disciple, a wound must be inflicted upon the attacker. By forcingkienergies into his blood at the point of being wounded, the blood lost from this attack sprays at the disciples foe as a caustic acid. To use this counter, the disciple must have been struck in combat by a slashing or piercing weapon. Upon the initiating of this counter, the attacker takes acid damage equal to twice the disciples initiator level. This is a supernatural ability.",
-   "discipline": "Steel Serpent",
+   "description": "You got your tail caught, but you make the most of it. Make an Escape Artist attempt against your foes attack roll. If you succeed, you halve the damage, trick your target for a number of rounds equal to your initiation modifier, and may gain an extra effect of your choice. Neither you nor your foes movement provokes an attack of opportunity. Exploit: You negate the attack instead of halving its damage.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
-   "level": 4,
-   "range": "One attack that inflicts slashing or piercing damage",
+   "level": 2,
+   "range": "Personal",
    "type": "counter"
   },
-  "Poisoners Stance": {
-   "action": "1 swift action",
-   "description": "One of the first lessons of Steel Serpent disciples is the knowledge of mundane poisons and how to use them with expertise. While in this stance, the disciple gains the poison use class feature the disciple no longer risks accidentally poisoning himself when attempting to apply poison to a weapon and gains a +1 DC per two initiator levels as a competence bonus maximum +10 to the saving throw DCs of any poison mundane, magical, sting maneuver or prana maneuver he applies through the use of this stance.",
-   "discipline": "Steel Serpent",
-   "duration": "Stance",
+  "Squeak By": {
+   "action": "1 immediate action",
+   "description": "Your agility offers you unique opportunities when countering attacks. Make an Escape Artist attempt against your foes attack roll. If you succeed, you negate the attack and may gain an extra effect of your choice. Neither you nor your foes movement provokes an attack of opportunity. Exploit: Make an Escape Artist check with a DC equal to the targets CMD. If successful, you may knock your foe prone.",
+   "discipline": "Roaring Mouse",
+   "duration": "Instantaneous",
    "level": 1,
    "range": "Personal",
-   "type": "stance"
+   "type": "counter"
   },
-  "Sickening Venom Strike": {
+  "Underhanded Strike": {
    "action": "1 standard action",
-   "description": "With a sharp jab of sickeningkienergy, the Steel Serpent disciple can rob an enemy of his will to continue to fight as their body rebels against them. Make an attack against an opponent, and if this is successful, the strike inflicts an additional 2 points of Constitution damage and has the chance to sicken the target for 1d4 rounds. A successful Fortitude save DC 13 + initiation modifier negates the sickened effect. This is a supernatural ability.",
-   "discipline": "Steel Serpent",
-   "duration": "Instantaneous, 1d4 rounds",
-   "level": 3,
-   "range": "Melee attack or ranged attack",
-   "type": "strike"
-  },
-  "Sight Piercing Fang": {
-   "action": "1 standard action",
-   "description": "With the swiftness of a striking snake, the disciple makes a jab at his opponents face to temporarily steal its vision. The disciple makes a melee attack against his target which if successful inflicts an additional 2d6 points of damage and the target must make a Reflex save DC 13 + initiation modifier. If this save is unsuccessful, the target is blinded for 1 minute as his eyes are temporarily rendered useless.",
-   "discipline": "Steel Serpent",
-   "duration": "1 minute",
+   "description": "Fair fights are for suckers. Make a melee attack. If successful, you deal damage as normal and the target is tricked for a number of rounds equal to your initiation modifier. Additionally, make an Escape Artist check with a DC equal to the targets CMD. If successful, this strike gains an extra effect of your choice. Exploit: Gain may use both of the extra effects.",
+   "discipline": "Roaring Mouse",
+   "duration": "Instantaneous",
    "level": 3,
    "range": "Melee attack",
    "type": "strike"
-  },
-  "Solar Flare": {
-   "action": "1 standard action",
-   "description": "Where the light of the sun touches, so does the burning reach of the Solar Wind disciple, allowing him to curve his weapons around impossible angles. The initiator makes a ranged attack against a target creature, and this attack ignores any cover defense that the creature possesses and inflicts an additional 2d6 points of fire damage. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Ranged attack",
-   "type": "strike"
-  },
-  "Solar Reflection": {
-   "action": "1 full round action",
-   "description": "As reflective surfaces bounce the rays of the sun, so can the Solar Wind disciple ricochet a missile weapon from one target to another. The initiator makes a single ranged attack roll and if this roll is successful, he may apply this same attack roll against another opponent within 20-ft. of the first. This strike inflicts an additional 2d6 points of damage to the first target, and normal damage to the second target. Each reflection attack is considered a separate attack for the purposes of determining the effectiveness of single attack boosting abilities, such as boosts that affect one attack or spells liketrue strike.If the ammunition had special properties, the ammunition retains its properties on each attack until the strike ends.",
-   "discipline": "Solar Wind",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Ranged attack",
-   "type": "strike"
-  },
-  "Stance of Piercing Rays": {
-   "action": "1 swift action",
-   "description": "A Solar Wind disciple learns to cause his ammunition to pierce like the burning rays of the sun itself. While in this stance, the initiators ranged attacks inflict an additional 1d6 points of fire damage. This bonus damage increases by an additional 1d6 points of fire damage every eight initiator levels. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Steel Coils": {
-   "action": "1 swift action",
-   "description": "In this stance, the movements and motions of the disciple become more sinuous and deliberate, as if he were a serpent coiled to strike. While in this stance, the disciple may make grapple attempts without provoking attacks of opportunity, and if the disciple successfully grapples a foe, he may constrict his opponent to inflict 4d6 + his Strength modifier in damage. The manner in which he must carry himself in this stance, muscles taught and stiffened, grants him some degree of protection, adding a +4 bonus to his natural armor.",
-   "discipline": "Steel Serpent",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Sting of the Rattler": {
-   "action": "1 standard action",
-   "description": "Disciples of Steel Serpent learn to emulate the swift and powerful strikes of the serpent kingdom and leave lasting wounds through the power of theirki.By focusing this harmful energy into a single attack, the disciple may cause more grievous injuries than his opponent would register immediately. The disciple makes an attack and if successful, inflicts an additional 1d4 points of damage. The following round on the disciples turn, the enemy takes an additional 1d4 points of damage due to the venomouskithat has built up in the wound. This is a supernatural ability.",
-   "discipline": "Steel Serpent",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack or ranged attack",
-   "type": "strike"
-  },
-  "Sunwalker Stance": {
-   "action": "1 swift action",
-   "description": "Using the hunting techniques of the ancient days of the White Steppes, the Solar Wind disciple hunts on the move, making attacks while chasing down his prey. The initiator gains the benefits of the Shot on the Run feat As a full-round action, you can move up to your speed and make a single ranged attack at any point during your movement while in this stance he does not need to meet the prerequisites of this feat, and he gains a +2 circumstance bonus to his armor class against attacks if he moves more than 10-ft. during his turn.",
-   "discipline": "Solar Wind",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
   }
  },
  "maneuvers_known_list": [
-  4,
-  4,
-  4,
-  2
+  2,
+  2,
+  2,
+  1
  ],
  "maneuvers_readied_list": [
   0,
+  1,
   2,
-  4,
-  2
+  1
  ],
  "maneuvers_readied_names": [
   [],
   [
-   "Intercepting Shade",
-   "Iron Fang"
+   "Rat Takes the Cheese"
   ],
   [
-   "Phantom Wind Ray",
-   "Solar Reflection",
-   "Sight Piercing Fang",
-   "Sickening Venom Strike"
+   "Underhanded Strike",
+   "Cat Takes the Rat"
   ],
   [
-   "Dazzling Solar Flare",
-   "Poison Blood"
+   "Rat Race"
   ]
  ],
  "manifesters": [],
@@ -978,22 +753,19 @@
   "Crouches"
  ],
  "martial_disciplines": [
-  "Solar Wind",
-  "Steel Serpent"
+  "Roaring Mouse"
  ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Solar Wind)",
-  "Martial Training III (Solar Wind)",
-  "Martial Training I (Steel Serpent)",
-  "Martial Training III (Steel Serpent)"
+  "Martial Training I (Roaring Mouse)",
+  "Martial Training III (Roaring Mouse)"
  ],
  "normal_feat_amount": 8,
- "older_brothers": " you have 1 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a poor household",
+ "parents": "dead mother, absent father, raised in an orphanage",
  "personality_traits": [
   "Enthusiastic",
   "Agreeable",
@@ -1001,7 +773,7 @@
   "Judicious",
   "Gregarious"
  ],
- "platnium": 129.2,
+ "platnium": 402.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1373,55 +1145,55 @@
  "shield_name": " ",
  "shield_spell_failure": " ",
  "shield_weight": " ",
- "skill_rank_budget": 165,
+ "skill_rank_budget": 180,
  "skill_ranks": {
   "acrobatics": 0,
-  "appraise": 11,
+  "appraise": 19,
   "bluff": 0,
   "climb": 0,
-  "craft": 7,
+  "craft": 9,
   "diplomacy": 0,
-  "disable device": 5,
-  "disguise": 5,
+  "disable device": 7,
+  "disguise": 6,
   "escape artist": 3,
   "fly": 10,
-  "handle animal": 16,
-  "heal": 0,
+  "handle animal": 10,
+  "heal": 9,
   "intimidate": 0,
   "knowledge arcana": 0,
   "knowledge dungeoneering": 1,
-  "knowledge engineering": 3,
+  "knowledge engineering": 1,
   "knowledge geography": 5,
-  "knowledge history": 10,
-  "knowledge local": 8,
-  "knowledge nature": 12,
-  "knowledge nobility": 23,
-  "knowledge planes": 0,
+  "knowledge history": 13,
+  "knowledge local": 12,
+  "knowledge nature": 9,
+  "knowledge nobility": 22,
+  "knowledge planes": 5,
   "knowledge religion": 0,
-  "linguistics": 11,
+  "linguistics": 13,
   "perception": 0,
   "perform": 2,
   "profession": 0,
   "ride": 0,
-  "sense motive": 6,
-  "sleight of hand": 12,
+  "sense motive": 5,
+  "sleight of hand": 6,
   "spellcraft": 4,
   "stealth": 4,
   "survival": 0,
   "swim": 0,
-  "use magic device": 7
+  "use magic device": 5
  },
  "skill_unlock": {
-  "base_skill": "disguise",
-  "ranks": 5,
-  "skill": "Disguise",
+  "base_skill": "heal",
+  "ranks": 9,
+  "skill": "Heal",
   "unlock": {
-   "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15": "You can create a disguise as a full-round action.",
-   "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5": "You can create a disguise in 1d3 minutes."
+   "10": "When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.",
+   "15": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.",
+   "20": "When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care.",
+   "5": "When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day."
   },
-  "unlock_html": "<h2>Disguise</h2><p><strong>5 Ranks</strong>: You can create a disguise in 1d3 minutes.</p><p><strong>10 Ranks</strong>: You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.</p><p><strong>15 Ranks</strong>: You can create a disguise as a full-round action.</p><p><strong>20 Ranks</strong>: You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.</p>"
+  "unlock_html": "<h2>Heal</h2><p><strong>5 Ranks</strong>: When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day.</p><p><strong>10 Ranks</strong>: When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.</p><p><strong>15 Ranks</strong>: When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.</p><p><strong>20 Ranks</strong>: When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care.</p>"
  },
  "specialty_schools": [
   "divination",
@@ -1584,13 +1356,13 @@
     4
    ],
    "spells_per_day_list": [
-    0,
+    1,
+    6,
     5,
-    4,
     3
    ],
    "spells_prepared_per_level": [
-    0,
+    1,
     5,
     4,
     3
@@ -1672,134 +1444,75 @@
   }
  ],
  "spells_prepared_per_level": [
-  0,
+  1,
   5,
   4,
   3
  ],
  "sphere_boons": [
-  "Overcharge"
+  "Easy Focus",
+  "Fortified Casting"
  ],
- "sphere_counts": {
-  "Nature": {
-   "advanced": 1,
-   "feats": 0,
-   "normal": 10
-  }
- },
+ "sphere_counts": {},
  "sphere_drawbacks": [
-  "Extended Casting",
-  "Somatic Casting"
- ],
- "sphere_feat_tax": {
-  "Extra Magic Talent (Speak With The Elements / Instill Spirit)": [
-   "Extra Magic Talent"
-  ],
-  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)": [
-   "Extra Magic Talent"
-  ]
- },
- "sphere_feats": [
-  "Basic Magic Training",
-  "Extra Magic Talent (Wild Instinct / Nature’s Carapace)",
-  "Extra Magic Talent (Speak With The Elements / Instill Spirit)"
- ],
- "sphere_mana_pool": 5,
- "sphere_traits": [
+  "Draining Casting",
   "Extended Casting",
   "Somatic Casting",
-  "Overcharge"
+  "Prepared Caster"
  ],
- "spheres_chosen": [
-  {
-   "sphere": "Nature",
-   "system": "power"
-  }
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Draining Casting",
+  "Extended Casting",
+  "Somatic Casting",
+  "Prepared Caster",
+  "Easy Focus",
+  "Fortified Casting"
  ],
+ "spheres_chosen": [],
  "stances_chosen": [
-  "Stance of Piercing Rays",
-  "Sunwalker Stance",
-  "Steel Coils",
-  "Poisoners Stance"
+  "Crouching Lion",
+  "Pussyfoot Stance"
  ],
- "story_feat_tax_dict": {
-  "Quick Draw": [
-   "improved quick draw"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Quick Draw",
-  "Astrology",
-  "Shielded Caster",
-  "Acrobatic"
+  "Urban Tracking",
+  "Gunsmithing",
+  "Natural Telekinetic",
+  "Exotic Weapon Proficiency"
  ],
- "str": 12,
+ "str": 10,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 15,
  "total_rolled_hp": 112,
  "trainer_calibers": [
-  2,
-  3,
-  2,
-  3,
-  2
+  3
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 3)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 5)",
-  "(Trainer 5)",
-  "(Trainer 6 - Path of War)",
-  "(Trainer 6 - Path of War)",
-  "(Trainer 7 - Spheres)"
+  "(Trainer 1)"
  ],
  "trainer_feat_tax_dict": {
-  "Improved Steal": [
-   "greater steal",
-   "quick steal"
-  ],
-  "Martial Training I (Steel Serpent)": [
-   "Martial Training II (Steel Serpent)"
-  ],
-  "Martial Training III (Steel Serpent)": [
-   "Martial Training IV (Steel Serpent)"
-  ],
-  "Scribe Scroll": [
-   "cypher magic"
-  ],
-  "Spheres Mentor": []
+  "Weapon Focus": [
+   "greater weapon focus",
+   "weapon specialization",
+   "greater weapon specialization"
+  ]
  },
  "trainer_feats": [
-  "Scribe Scroll",
-  "Giant Slayer",
-  "Out of the Sun",
-  "Venemous Strike (combat)",
-  "Shield Focus",
-  "Firesight",
-  "Improved Quick Draw",
-  "Ensemble",
-  "Improved Steal",
-  "Cooperative Crafting",
-  "Focused Discipline",
-  "Bouncing Spell",
-  "Martial Training I (Steel Serpent)",
-  "Martial Training III (Steel Serpent)",
-  "Spheres Mentor"
+  "Nemesis",
+  "Weapon Focus",
+  "Expert Trainer"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Morningstar",
+ "weapon_name": "Mere club",
  "weight_number": 217,
- "wis": 13,
- "younger_brothers": " you have 2 younger brothers",
- "younger_sisters": " you have 2 younger sisters"
+ "wis": 12,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
 }
