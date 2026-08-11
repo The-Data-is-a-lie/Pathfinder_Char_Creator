@@ -158,6 +158,499 @@ CHOICE_SKIP = {
 # entries is part of ticket 04's fix, and the gate below fails if the list stops matching the table.
 CHOICE_COVERAGE = {'chars': 0, 'buckets': 0, 'picks': 0, 'stamps': 0, 'skipped': 0, 'capped': 0}
 
+# ---- Inherent luck (map: inherent-luck, ticket 06) -------------------------------------------- #
+# The BEHAVIOUR layer. Its partner is scripts/gates/validate_luck.py, which asserts the DATA without
+# generating anything. The two share no code ON PURPOSE: the class-choices map proved that
+# perturbing a table and re-running a behaviour check PASSES, because the generator reads the same
+# table. A table can never be its own witness.
+#
+# So the Doc's numbers are restated HERE as literals rather than imported from
+# utils.class_func.luck. That looks like duplication and is the opposite: it is what makes
+# sabotaging luck.py fail this file. Importing LUCK_CAP_POSITIVE would make the assertion
+# "25 == 25" no matter what the constant became.
+LUCK_CAP_POS = 25            # "The positive cap for luck is +25 ..."
+LUCK_CAP_NEG = -50           # "... and the negative cap is -50."
+LUCK_CAP_DIMORPHIC = 40      # "each value is equal and has a natural cap of 40"
+LUCK_DIVISOR = 5             # "Luck Mod = Luck Score / 5", floored (table ruling)
+E_KAT_CAP = 99
+LUCK_BUY = {'skill_ranks': 5, 'hp': 5, 'level_up_points': 1}
+LUCK_COVERAGE = {'chars': 0, 'stakes': 0, 'buy': 0, 'sell': 0, 'with_feats': 0, 'chains': 0,
+                 'with_traits': 0, 'negative_traits': 0, 'deep_sale': 0,
+                 'Default': 0, 'Proximity': 0, 'Dimorphic': 0, 'negative': 0, 'nonzero_mod': 0}
+# The ten NEGATIVE Luck Traits, by name. They were unreachable by any generated character until
+# sellers were let back into the E-Kat economy, so the census below asserts that at least one is
+# actually bought across the sweep -- a count of zero means the unlock has silently regressed, and
+# that is invisible from the trait total alone.
+NEGATIVE_TRAIT_NAMES = set()
+# The luck block's field roster, re-declared here rather than imported from validate_luck.py -- the
+# same deliberate duplication as LUCK_CAP_POS above, so sabotaging one layer cannot satisfy the other.
+LUCK_BLOCK_KEYS = {'type', 'score', 'values', 'mod', 'cap', 'floor', 'e_kat_earned', 'e_kat_reserve',
+                   'e_kat_store_cap', 'traits', 'trait_benefits', 'trait_changes', 'vault',
+                   'vault_cap', 'dr_pool', 'twist_fate_per_day', 'feats', 'luck_feats',
+                   'derivation', 'negative_feats', 'audit', 'payout_changes', 'attribute_bumps', 'stake'}
+# The pools the audit accounts for. `skill_ranks` is the BUDGET that moved; the stake's payout calls
+# the same thing `skill_points` (what the Doc sells). Both spellings are real and neither is a typo.
+LUCK_AUDIT_POOLS = {'hp', 'skill_ranks', 'attribute_points', 'feats'}
+# The pf1 targets the payout is allowed to arrive on. `mhp` and `bonusSkillRanks` are pf1's own
+# names for max hit points and the sheet's bonus-skill-rank pool; the six abilities carry the
+# attribute points. A target outside this set would not crash Foundry -- the change would simply
+# never apply, which is invisible until someone re-adds the numbers by hand.
+PF1_ABILITIES = ('str', 'dex', 'con', 'int', 'wis', 'cha')
+PF1_PAYOUT_TARGETS = {'mhp', 'bonusSkillRanks', *PF1_ABILITIES}
+# pf1 change targets this project is allowed to emit for Luck Traits. A whitelist rather than a
+# comment, on the MOD_CRITICAL precedent: a stale `critical: "onCrit"` in a doc silently broke six
+# weapons, and only a validator caught it. An unknown target is not a crash in Foundry -- the change
+# simply never applies, which is invisible until someone audits a save by hand.
+PF1_CHANGE_TARGETS = {'will', 'fort', 'ref', 'nac', 'ac', 'allSavingThrows', 'allChecks',
+                      'attack', 'skills', 'cmd', 'cmb', 'init', 'mhp', 'cl'}
+PF1_BONUS_TYPES = {'untyped', 'untypedPerm', 'base', 'enh', 'dodge', 'haste', 'inherent',
+                   'deflection', 'morale', 'luck', 'sacred', 'insight', 'resist', 'profane',
+                   'trait', 'racial', 'size', 'competence', 'circumstance', 'alchemical'}
+# Distinct seeds for check_luck_branches. The main sweep's three seeds cannot reach selling or
+# Dimorphic -- luck is rolled early enough to be seed-locked, so 1,020 generations sample three luck
+# draws. These are fixed, so the coverage is deterministic, not flaky.
+LUCK_BRANCH_SEED_BASE = 40000
+LUCK_BRANCH_SEEDS = 200
+
+with open(BACKEND / 'json' / 'feats' / 'e_kat_feats.json', encoding='utf-8') as f:
+    E_KAT_TABLE = {k: v for k, v in json.load(f).items() if not k.startswith('_')}
+with open(BACKEND / 'json' / 'feats' / 'luck_traits.json', encoding='utf-8') as f:
+    LUCK_TRAIT_TABLE = {k: v for k, v in json.load(f).items() if not k.startswith('_')}
+NEGATIVE_TRAIT_NAMES.update(k for k, v in LUCK_TRAIT_TABLE.items() if v.get('category') == 'negative')
+# Positive luck feats that are NOT E-Kat feats -- hero point feats and the luck-subject feats. They
+# ride the ordinary pool, so any character can hold one, including a seller and a character with no
+# luck stake at all. Each grants a flat +1.
+with open(BACKEND / 'json' / 'feats' / 'luck_feats.json', encoding='utf-8') as f:
+    LUCK_FEAT_TABLE = {k: v for k, v in json.load(f).items() if not k.startswith('_')}
+
+
+def _feat_luck(names):
+    """Luck owed for a set of held E-Kat feats, recomputed from the curated effects.
+
+    The generic +1 applies only to feats with NO explicit bonus -- Ass Pull, It Just Works and Luck
+    God state +4 each and do not also collect it. Getting this wrong in the pipeline is a silent +5,
+    which is exactly what this recomputation exists to catch.
+    """
+    total = 0
+    for name in names:
+        effects = E_KAT_TABLE[name]['effects']
+        total += effects['luck_bonus'] or (1 if effects['grants_generic_luck'] else 0)
+    return total
+
+
+def check_luck(cell, payload):
+    """The luck subsystem on a generated character (map: inherent-luck).
+
+    Hung on the existing sweep rather than given its own generations: class-choices ticket 05 added
+    its whole coverage for ZERO new characters that way, and this needs the same population.
+    """
+    lk = payload.get('luck')
+    # misc_homebrew_rules defaults on for the sweep, so every character must carry a block. A None
+    # here means the flag silently flipped, not that this character happens to be unlucky.
+    if lk is None:
+        check(False, f"{cell}: no luck block -- misc_homebrew_rules is on for this sweep")
+        return
+    LUCK_COVERAGE['chars'] += 1
+
+    # ---- the block's SHAPE, against an independently declared roster ----
+    # validate_luck.py declares the same names as its DATA-layer contract. Both renderers index this
+    # block by name, so a field silently renamed or dropped is a blank panel on the sheet rather than
+    # a crash -- which is exactly the failure this file exists to catch early.
+    check(set(lk) == LUCK_BLOCK_KEYS,
+          f"{cell}: luck block keys drifted -- missing {sorted(LUCK_BLOCK_KEYS - set(lk))}, "
+          f"unexpected {sorted(set(lk) - LUCK_BLOCK_KEYS)}")
+
+    score, cap = lk['score'], lk['cap']
+    LUCK_COVERAGE[lk['type']] = LUCK_COVERAGE.get(lk['type'], 0) + 1
+
+    # ---- the caps hold, at EVERY level in the supported band ----
+    base_cap = LUCK_CAP_DIMORPHIC if lk['type'] == 'Dimorphic' else LUCK_CAP_POS
+    check(cap >= base_cap and (cap - base_cap) % 5 == 0,
+          f"{cell}: luck cap {cap} is not {base_cap} plus a whole number of Expanded Luck steps")
+    check(LUCK_CAP_NEG <= score <= cap,
+          f"{cell}: luck score {score} outside [{LUCK_CAP_NEG}, {cap}]")
+
+    # ---- the derived field cannot drift from its source ----
+    # Floor toward -infinity, which is the ruling: -12 // 5 == -3, not -2.
+    check(lk['mod'] == score // LUCK_DIVISOR,
+          f"{cell}: luck mod {lk['mod']} != floor({score}/{LUCK_DIVISOR}) = {score // LUCK_DIVISOR}")
+    check(lk['dr_pool'] == max(0, score),
+          f"{cell}: DR pool {lk['dr_pool']} != the positive part of the score ({max(0, score)})")
+
+    # ---- the audit must ACCOUNT, on every character ----
+    # It exists to prove the payout reached the budgets, so an audit that does not reconcile is
+    # worse than none at all -- it would be evidence for a number that never moved. Checked for
+    # buyers and stake-less characters too: their rows are no-ops, and a no-op that fails to
+    # balance means a pool is being adjusted somewhere this record does not see.
+    _audit = lk['audit']
+    check(set(_audit) == LUCK_AUDIT_POOLS,
+          f"{cell}: audit covers {sorted(_audit)}, expected {sorted(LUCK_AUDIT_POOLS)}")
+    for _pool, _row in _audit.items():
+        check(set(_row) == {'before', 'spent', 'received', 'after', 'final', 'luck_cost'},
+              f"{cell}: audit row {_pool} has keys {sorted(_row)}")
+        # `received` is NOT part of this sum. The payout is no longer applied to these budgets --
+        # it is delivered as pf1 changes on the Negative Luck Payout item, because the module builds
+        # actor HP from `total_rolled_hp` and everything the backend added to `Total_HP` was
+        # invisible on the sheet. So the budget arithmetic is purely the BUY side.
+        check(_row['before'] - _row['spent'] == _row['after'],
+              f"{cell}: audit row {_pool} does not balance: "
+              f"{_row['before']} - {_row['spent']} != {_row['after']}")
+        check(_row['spent'] >= 0 and _row['received'] >= 0,
+              f"{cell}: audit row {_pool} has a negative movement: {_row}")
+        # A pool can only move in ONE direction: a character either bought luck with it or was paid
+        # from it. Both non-zero would mean the two halves of the economy ran on the same budget.
+        check(not (_row['spent'] and _row['received']),
+              f"{cell}: audit row {_pool} both spent {_row['spent']} and received "
+              f"{_row['received']} -- a pool cannot be on both sides of the trade")
+    # The two rows whose `final` is a number printed elsewhere on the sheet must equal it, or the
+    # audit is quietly describing a different quantity than the one the player reads.
+    check(_audit['hp']['final'] == payload['Total_HP'],
+          f"{cell}: audit HP final {_audit['hp']['final']} != sheet Total_HP {payload['Total_HP']}")
+    check(_audit['skill_ranks']['final'] == payload['skill_rank_budget'],
+          f"{cell}: audit skill final {_audit['skill_ranks']['final']} != sheet skill_rank_budget "
+          f"{payload['skill_rank_budget']}")
+
+    # THE TABLE MUST CLOSE. Each row's luck_cost inverts the Doc's rate for that route, so the four
+    # sum to the magnitude sold. Checked against the STAKE's target rather than the final score: a
+    # Luck Trait (Increase Luck) can move the score afterwards, and only the sale bought these rows.
+    # Without this the column is decoration -- four numbers nobody can check against anything.
+    if lk['stake'] and lk['stake']['direction'] == 'sell':
+        _cost = sum(_r['luck_cost'] for _r in _audit.values())
+        check(_cost == -lk['stake']['target'],
+              f"{cell}: audit luck costs sum to {_cost} but {-lk['stake']['target']} luck was sold "
+              f"({ {k: v['luck_cost'] for k, v in _audit.items()} })")
+    else:
+        check(all(_r['luck_cost'] == 0 for _r in _audit.values()),
+              f"{cell}: a non-seller carries a luck cost: "
+              f"{ {k: v['luck_cost'] for k, v in _audit.items()} }")
+
+    # ---- the payout is DELIVERED, as pf1 changes ----
+    # Every route the sale bought must arrive as a change carrying the same number the stake
+    # promised. Without this the payout could silently stop being delivered and nothing would
+    # notice: the budgets no longer move, so there is no other evidence it happened.
+    # Read off the block, not the `stake` local -- this check runs before that name is bound, and
+    # the block is the thing both renderers actually see anyway.
+    _changes = lk['payout_changes']
+    _stk = lk['stake']
+    _pay = (_stk or {}).get('payout', {})
+    _selling = bool(_stk) and _stk['direction'] == 'sell'
+    check(bool(_changes) == bool(_selling and (_pay.get('hp') or _pay.get('skill_points')
+                                               or _pay.get('attribute_points'))),
+          f"{cell}: payout_changes {'present' if _changes else 'absent'} does not match the sale")
+    _by_target = {}
+    for _c in _changes:
+        check(set(_c) == {'formula', 'target', 'type', 'operator', 'priority', 'flavor'},
+              f"{cell}: payout change has keys {sorted(_c)}")
+        check(_c['target'] in PF1_PAYOUT_TARGETS,
+              f"{cell}: payout change targets {_c['target']!r}, not a pf1 target that can carry it")
+        check(_c['type'] in PF1_BONUS_TYPES, f"{cell}: payout change type {_c['type']!r}")
+        _by_target[_c['target']] = _by_target.get(_c['target'], 0) + int(_c['formula'])
+    if _selling:
+        check(_by_target.get('mhp', 0) == _pay.get('hp', 0),
+              f"{cell}: mhp change carries {_by_target.get('mhp', 0)}, sale bought {_pay.get('hp', 0)} HP")
+        check(_by_target.get('bonusSkillRanks', 0) == _pay.get('skill_points', 0),
+              f"{cell}: bonusSkillRanks carries {_by_target.get('bonusSkillRanks', 0)}, sale bought "
+              f"{_pay.get('skill_points', 0)}")
+        _bumps = lk['attribute_bumps']
+        check(sum(_bumps.values()) == _pay.get('attribute_points', 0),
+              f"{cell}: attribute bumps {_bumps} total {sum(_bumps.values())}, sale bought "
+              f"{_pay.get('attribute_points', 0)}")
+        check(set(_bumps) <= set(PF1_ABILITIES),
+              f"{cell}: attribute bumps name {sorted(set(_bumps) - set(PF1_ABILITIES))}")
+        for _ab, _n in _bumps.items():
+            check(_by_target.get(_ab, 0) == _n,
+                  f"{cell}: {_ab} change carries {_by_target.get(_ab, 0)}, bumps say {_n}")
+    if lk['mod'] != 0:
+        LUCK_COVERAGE['nonzero_mod'] += 1
+    # The derivation is what the sheet shows to justify the score; empty means a blank panel.
+    check(bool(lk['derivation']), f"{cell}: luck block carries no derivation lines")
+    check(str(lk['derivation'][-1]).startswith('='),
+          f"{cell}: the derivation should end with the total; got {lk['derivation'][-1]!r}")
+
+    # ---- one shape for every character; Dimorphic holds all three EQUAL ----
+    values = lk['values']
+    check(set(values) == {'negative', 'default', 'proximity'},
+          f"{cell}: typed luck values have keys {sorted(values)}")
+    if lk['type'] == 'Dimorphic':
+        check(values['negative'] == values['default'] == values['proximity'] == score,
+              f"{cell}: Dimorphic must hold all three types at equal values; got {values}")
+
+    # ---- the feats ----
+    feats = lk['feats']
+    check(len(set(feats)) == len(feats),
+          f"{cell}: the same E-Kat feat is counted twice: {feats}")
+    unknown = [f for f in feats if f not in E_KAT_TABLE]
+    check(not unknown, f"{cell}: luck block names E-Kat feats that do not exist: {unknown}")
+    if unknown:
+        return
+    # Every E-Kat feat the character holds must ALSO be on its actual feat list -- "generated but
+    # invisible" is the failure this repo keeps rediscovering. Across EVERY bucket:
+    # separate_feats_func splits the merged list five ways, so an E-Kat feat can render as a class
+    # or story feat, and checking only `feats` reports a phantom orphan.
+    on_sheet = {str(x).lower()
+                for key in ('feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats',
+                            'trainer_feats')
+                for x in (payload.get(key) or [])}
+    for name in feats:
+        check(name.lower() in on_sheet,
+              f"{cell}: luck credits {name!r} but it is not on the character's feat list")
+    # The non-E-Kat luck feats, recomputed from what the character actually holds.
+    want_luck_feats = sorted(n for n in LUCK_FEAT_TABLE if n.lower() in on_sheet)
+    check(sorted(lk['luck_feats']) == want_luck_feats,
+          f"{cell}: luck_feats {sorted(lk['luck_feats'])} != {want_luck_feats} -- every hero point "
+          f"and luck feat on the sheet grants +1 Luck")
+    luck_feat_luck = len(want_luck_feats)
+    # Prerequisite chains must be satisfied by what the character actually kept.
+    for name in feats:
+        for prereq in E_KAT_TABLE[name]['prerequisites']:
+            check(prereq in feats,
+                  f"{cell}: holds {name!r} without its prerequisite {prereq!r}")
+    if feats:
+        LUCK_COVERAGE['with_feats'] += 1
+        if any(E_KAT_TABLE[f]['prerequisites'] for f in feats):
+            LUCK_COVERAGE['chains'] += 1
+
+    # ---- an E-Kat feat is an ORDINARY feat and must render as one ----
+    # The four specialised buckets are separate budgets, so a feat sitting in one occupies a
+    # story/flaw/flavour/class slot and renders under that heading. Six of one character's ten used
+    # to land in class_feats, because assign_feats_to_levels reorders normal + class as ONE pool.
+    for _bucket in ('story_feats', 'flaw_feats', 'flavor_feats', 'class_feats'):
+        _stray = [f for f in (payload.get(_bucket) or []) if f in feats]
+        check(not _stray,
+              f"{cell}: E-Kat feat(s) {_stray} rendered under {_bucket} -- they are ordinary feats "
+              f"and must stay in the general feat list")
+    _general = {str(f).lower() for f in (payload.get('feats') or [])}
+    _absent = [f for f in feats if f.lower() not in _general]
+    check(not _absent, f"{cell}: E-Kat feat(s) {_absent} are not in the general feat list")
+
+    # Rules text: without it the module synthesizes a row with a bare name and no benefit -- a
+    # failure that is invisible rather than loud.
+    _descs = payload.get('homebrew_feat_desc_dict') or {}
+    _blank = [f for f in feats if not str(_descs.get(f, '')).strip()]
+    check(not _blank, f"{cell}: E-Kat feat(s) {_blank} carry no description")
+
+    # The sheet's "Feats Taken" group must name exactly the feats the character holds -- no more.
+    _exchange = (payload.get('class features') or {}).get('E-Kat Exchange') or {}
+    if _exchange:
+        _listed = {k[len('Feat: '):] for k in (_exchange.get('Feats Taken') or {})
+                   if k.startswith('Feat: ')}
+        check(_listed == set(feats),
+              f"{cell}: 'Feats Taken' lists {sorted(_listed)} but the character holds "
+              f"{sorted(feats)}")
+
+    # ---- what the character EARNED: each per-level term gated on its own feat ----
+    # "(1, 2 if Double Down)" is verbatim Sweet Dreams and Stream of Luck, so a character holding
+    # neither accrues neither term -- and one with no E-Kat feats at all earns nothing.
+    # Each per-level term is gated on the feat that produces that kind of E-Kat; Double Down doubles
+    # the RATE of both and never the feats x 5 term.
+    rate = 2 if 'Double Down' in feats else 1
+    long_rest = rate if 'Sweet Dreams' in feats else 0
+    discovery = rate if 'Stream of Luck' in feats else 0
+    want_earned = payload['total_level'] * (long_rest + discovery) + len(feats) * 5
+    if lk['type'] == 'Dimorphic':
+        want_earned *= 2
+    check(lk['e_kat_earned'] == want_earned,
+          f"{cell}: earned {lk['e_kat_earned']} != {want_earned} (level {payload['total_level']}, "
+          f"long_rest={long_rest}, discovery={discovery}, {len(feats)} feat(s) x5)")
+    check(bool(feats) or lk['e_kat_earned'] == 0,
+          f"{cell}: no E-Kat feats but earned {lk['e_kat_earned']} E-Kats -- every term carries the "
+          f"feat count as a factor, so this must be zero")
+
+    # ---- the traits it bought with them ----
+    # "25 Permanent E-Kats can be used to purchase a Luck Trait" and "These points must be spent".
+    traits_held = lk['traits']
+    check(len(traits_held) == lk['e_kat_earned'] // 25,
+          f"{cell}: bought {len(traits_held)} Luck Trait(s) from {lk['e_kat_earned']} E-Kats, "
+          f"expected {lk['e_kat_earned'] // 25}")
+    check(lk['e_kat_reserve'] == lk['e_kat_earned'] - len(traits_held) * 25,
+          f"{cell}: carried {lk['e_kat_reserve']} != earned {lk['e_kat_earned']} - "
+          f"{len(traits_held)}x25")
+    check(lk['e_kat_reserve'] <= lk['e_kat_store_cap'],
+          f"{cell}: carried {lk['e_kat_reserve']} exceeds the store cap {lk['e_kat_store_cap']}")
+    unknown_traits = [t for t in traits_held if t not in LUCK_TRAIT_TABLE]
+    check(not unknown_traits, f"{cell}: unknown Luck Trait(s): {unknown_traits}")
+    if unknown_traits:
+        return
+    for t in traits_held:
+        info = LUCK_TRAIT_TABLE[t]
+        # Category is an eligibility gate, not a label.
+        if info['category'] == 'dimorphic':
+            check(lk['type'] == 'Dimorphic',
+                  f"{cell}: holds the Dimorphic trait {t!r} but its luck type is {lk['type']}")
+        # THE UNREACHABILITY IS ASSERTED, NOT ASSUMED. Negative luck comes only from selling;
+        # sellers take no E-Kat feats; no feats means no reserve; no reserve means no purchase. If
+        # a negative trait ever appears here, one of those three rulings has quietly changed.
+        check(info['category'] != 'negative',
+              f"{cell}: holds the negative-luck trait {t!r}, which no generated character should "
+              f"be able to reach -- one of the three rulings behind that has changed")
+        for _pre in info.get('prerequisites', []):
+            check(_pre in traits_held,
+                  f"{cell}: holds the Luck Trait {t!r} without its prerequisite {_pre!r}")
+        _floor = info.get('requires_luck_at_most')
+        check(_floor is None or score <= _floor,
+              f"{cell}: holds {t!r}, which needs a luck score of {_floor} or worse; score is {score}")
+        if not info['repeatable']:
+            check(traits_held.count(t) == 1,
+                  f"{cell}: {t!r} is not repeatable but was bought {traits_held.count(t)} times")
+    # Variety first: a repeat may only appear once every eligible trait is already held.
+    if len(traits_held) != len(set(traits_held)):
+        eligible = sum(1 for i in LUCK_TRAIT_TABLE.values()
+                       if i['category'] == 'standard'
+                       or (i['category'] == 'dimorphic' and lk['type'] == 'Dimorphic'))
+        check(len(set(traits_held)) == eligible,
+              f"{cell}: repeated a Luck Trait with only {len(set(traits_held))} of {eligible} eligible "
+              f"traits held -- variety comes first")
+
+    # ---- trait effects reach the numbers they are supposed to move ----
+    stacks = lambda field: sum(1 for t in traits_held if LUCK_TRAIT_TABLE[t]['effects'].get(field))
+    base_cap = LUCK_CAP_DIMORPHIC if lk['type'] == 'Dimorphic' else LUCK_CAP_POS
+    check(cap == base_cap + 5 * stacks('luck_cap_step'),
+          f"{cell}: cap {cap} != {base_cap} + 5x{stacks('luck_cap_step')} Expanded Luck")
+    check(lk['vault_cap'] == 77 + 77 * stacks('vault_cap_step'),
+          f"{cell}: vault cap {lk['vault_cap']} != 77 + 77x{stacks('vault_cap_step')} Big Savings")
+    check(lk['e_kat_store_cap'] == E_KAT_CAP + 100 * stacks('e_kat_store_step'),
+          f"{cell}: store cap {lk['e_kat_store_cap']} != {E_KAT_CAP} + "
+          f"100x{stacks('e_kat_store_step')} Enhanced Luck Storage")
+    want_twist = (max(0, lk['mod']) + stacks('twist_fate_bonus')) if lk['type'] == 'Dimorphic' else 0
+    check(lk['twist_fate_per_day'] == want_twist,
+          f"{cell}: Twist Fate uses {lk['twist_fate_per_day']} != {want_twist} "
+          f"(mod {lk['mod']} + {stacks('twist_fate_bonus')} Extra Spin)")
+    trait_luck = stacks('luck_score_bonus')
+    if traits_held:
+        LUCK_COVERAGE['with_traits'] += 1
+
+    # ---- the purchase balances, and the source budget actually shrank ----
+    stake = lk['stake']
+    feat_luck = _feat_luck(feats)
+    if stake is None:
+        check(not feats, f"{cell}: holds E-Kat feats with no luck stake: {feats}")
+        # No stake means no E-Kat feats and nothing bought -- but an ordinary luck feat still
+        # grants its +1, so the score is exactly the luck-feat count.
+        check(score == luck_feat_luck,
+              f"{cell}: no stake and {luck_feat_luck} luck feat(s), so the score should be "
+              f"{luck_feat_luck}, not {score}")
+        check(lk['e_kat_earned'] == 0 and not traits_held,
+              f"{cell}: no stake means no E-Kat feats, so it must earn nothing and buy nothing; "
+              f"earned {lk['e_kat_earned']}, traits {traits_held}")
+        return
+    LUCK_COVERAGE['stakes'] += 1
+    LUCK_COVERAGE[stake['direction']] += 1
+    if score < 0:
+        LUCK_COVERAGE['negative'] += 1
+
+    if stake['direction'] == 'buy':
+        check(not lk['negative_feats'],
+              f"{cell}: a buyer carries a negative-luck feat ledger {lk['negative_feats']}")
+        paid = stake['paid']
+        bought = sum(paid.get(k, 0) // rate for k, rate in LUCK_BUY.items())
+        check(score == max(LUCK_CAP_NEG, min(cap, bought + feat_luck + luck_feat_luck + trait_luck)),
+              f"{cell}: luck score {score} != clamp(bought {bought} + E-Kat feats {feat_luck} "
+              f"+ luck feats {luck_feat_luck} + traits {trait_luck})")
+        # It must have paid for what it bought -- never asked for more than it spent.
+        for currency, rate in LUCK_BUY.items():
+            spent = paid.get(currency, 0)
+            check(spent >= 0, f"{cell}: negative spend recorded for {currency}: {spent}")
+            check(spent <= stake['requested'].get(currency, 0),
+                  f"{cell}: paid {spent} {currency} but only requested "
+                  f"{stake['requested'].get(currency, 0)}")
+        # The skill-rank budget on the payload is POST-deduction, so the pre-luck budget is the sum.
+        # A quarter-of-the-pool ceiling means the spend can never be most of the budget.
+        ranks_paid = paid.get('skill_ranks', 0)
+        if ranks_paid:
+            before = payload['skill_rank_budget'] + ranks_paid
+            check(payload['skill_rank_budget'] < before,
+                  f"{cell}: {ranks_paid} rank(s) bought luck but the budget did not shrink")
+            check(ranks_paid * 4 <= before + 3,
+                  f"{cell}: luck took {ranks_paid} of {before} skill ranks -- past the "
+                  f"quarter-of-the-pool ceiling")
+    else:
+        # A SELLER CANNOT CLIMB BACK. Sellers used to be kept out of the E-Kat feat economy
+        # entirely, which closed the free-money loop but also denied them the E-Kat reserve --
+        # the only currency Luck Traits can be bought with -- making all ten NEGATIVE Luck Traits
+        # unreachable by any generated character. Sellers now take E-Kat feats like anyone else,
+        # and the loop is closed at the score instead: their feats grant ZERO luck.
+        #
+        # So the assertion is no longer "holds no E-Kat feats" but the stronger, more direct
+        # property: however many luck feats a seller holds, the score is exactly what it sold.
+        check(score == max(LUCK_CAP_NEG, stake['target']),
+              f"{cell}: sold {stake['target']} luck while holding {len(feats)} E-Kat feat(s) "
+              f"(worth {feat_luck}) and {luck_feat_luck} from ordinary luck feat(s), but the score "
+              f"is {score} -- a seller must gain no luck from feats")
+        check(score <= 0,
+              f"{cell}: a seller finished at {score} -- selling must never yield positive luck")
+        # A trait outside the negative category must still respect its own eligibility; what is new
+        # is that the negative ones are now buyable at all. Count them so the census can prove it.
+        if set(traits_held) & NEGATIVE_TRAIT_NAMES:
+            LUCK_COVERAGE['negative_traits'] += 1
+        # The deep end of the scale -- the reason the sell magnitude was decoupled from the buy
+        # side. Traits floored at -25 and below are unreachable without it.
+        if stake['target'] <= -25:
+            LUCK_COVERAGE['deep_sale'] += 1
+        for _t in traits_held:
+            _floor = LUCK_TRAIT_TABLE.get(_t, {}).get('requires_luck_at_most')
+            check(_floor is None or score <= _floor,
+                  f"{cell}: bought {_t!r} (needs luck <= {_floor}) at a score of {score}")
+        # ---- the MECHANICS reach the payload, and are shaped for pf1 ----
+        # A trait whose data carries a change/note/formula must be exported, or the sheet renders it
+        # as prose the player applies by hand -- which is the whole failure this pass exists to fix.
+        _tc = lk['trait_changes']
+        for _t in set(traits_held):
+            _row = LUCK_TRAIT_TABLE.get(_t, {})
+            _has = bool(_row.get('changes') or _row.get('context_notes')
+                        or _row.get('death_hp_pool_bonus'))
+            check(_has == (_t in _tc),
+                  f"{cell}: {_t!r} carries mechanics in luck_traits.json but is absent from "
+                  f"trait_changes (or vice versa)")
+        for _t, _entry in _tc.items():
+            check(_t in traits_held,
+                  f"{cell}: trait_changes names {_t!r}, which the character does not hold")
+            for _c in _entry['changes']:
+                check(_c['target'] in PF1_CHANGE_TARGETS,
+                      f"{cell}: {_t!r} emits change target {_c['target']!r}, not a pf1 target this "
+                      f"project may use -- it would silently never apply")
+                check(_c['type'] in PF1_BONUS_TYPES,
+                      f"{cell}: {_t!r} emits bonus type {_c['type']!r}, not a pf1 bonus type")
+                # These traits are COMPENSATION for being cursed, so every one resolves positive.
+                # The formula negates the floor rather than flooring an absolute value, because
+                # floor(abs(-44)/5) is 8 where the true magnitude is 9 -- asserted numerically
+                # below rather than trusted from the string.
+                check('@resources.personalLuck' in _c['formula'],
+                      f"{cell}: {_t!r} bakes a literal into {_c['formula']!r}; the formulas are "
+                      f"live so a GM editing the score moves them")
+            for _n in _entry['contextNotes']:
+                check(_n['target'] in PF1_CHANGE_TARGETS,
+                      f"{cell}: {_t!r} note targets {_n['target']!r}, not a pf1 target")
+                check(bool(str(_n['text']).strip()), f"{cell}: {_t!r} carries an empty context note")
+        # The negative-luck ledger: which ordinary feats the sale paid for, at 5 luck each.
+        _ledger = lk['negative_feats']
+        _sold = stake['payout'].get('feats', 0)
+        # EXACTLY the slots sold, not "no more than". This was `<=` while the ledger inferred its
+        # rows from the tail of the feat list, so it tolerated the silent under-reporting that
+        # tolerance was hiding -- 15% of sellers showed fewer "(-5 Luck)" rows than they had bought.
+        # The rows are now named from the reservation itself, so the count is knowable and pinned.
+        check(len(_ledger) == _sold,
+              f"{cell}: ledger lists {len(_ledger)} feat(s) but {_sold} slot(s) were sold")
+        check(len({e['name'] for e in _ledger}) == len(_ledger),
+              f"{cell}: ledger repeats a feat: {[e['name'] for e in _ledger]}")
+        for _i, _e in enumerate(_ledger):
+            check(_e['cumulative'] == -5 * (_i + 1),
+                  f"{cell}: ledger row {_i} reads {_e['cumulative']}, expected {-5 * (_i + 1)}")
+        _prof = {str(x).lower() for x in (payload.get('profession_feats') or [])}
+        _billed = [_e['name'] for _e in _ledger
+                   if _e['name'] in feats or str(_e['name']).lower() in _prof]
+        check(not _billed,
+              f"{cell}: ledger bills {_billed} to negative luck, but those slots were paid for by "
+              f"something else (an E-Kat reservation or a profession slot)")
+
+        payout = stake['payout']
+        owed = (payout['hp'] // 2 + payout['skill_points'] // 2
+                + payout['attribute_points'] * 5 + payout['feats'] * 5)
+        # Against the STAKE, not the final score. These now agree for every seller (feats grant a
+        # seller no luck), but the stake is still the right thing to check: it is what the payout
+        # was computed FROM, so a future rule that moves the score must not silently move this too.
+        check(owed == -stake['target'],
+              f"{cell}: payout {payout} accounts for {owed} luck, but {-stake['target']} was sold")
+
 
 def check_class_choices(cell, payload):
     """Every rolled class holds exactly the picks its schedule promises, in every bucket.
@@ -361,9 +854,17 @@ def check_character(cell, payload):
     base = sum(max(1, skill_points(c['name']) + mental) * c['level'] for c in classes)
     ranks = payload['skill_ranks']
     recorded = payload['skill_rank_budget']
-    favored = recorded - base - 2 * L
+    # Luck's workhorse currency: 5 ranks buy +1 luck, and a seller gets 2 skill points back per -1.
+    # It is applied to the BUDGET, deliberately, so `sum(ranks) == recorded` below stays true and
+    # the deduction is visible here rather than looking like a formula bug. Add back what luck took
+    # (or subtract what it granted) before comparing against the house formula.
+    _stake = (payload.get('luck') or {}).get('stake') or {}
+    luck_ranks = ((_stake.get('paid') or {}).get('skill_ranks', 0)
+                  - (_stake.get('payout') or {}).get('skill_points', 0))
+    favored = recorded + luck_ranks - base - 2 * L
     check(favored in (0, L),
-          f"{cell}: skill budget {recorded} != base {base} + background {2 * L} + favored 0|{L}")
+          f"{cell}: skill budget {recorded} != base {base} + background {2 * L} + favored 0|{L} "
+          f"(luck took {luck_ranks:+d})")
     check(sum(ranks.values()) == recorded,
           f"{cell}: spent {sum(ranks.values())} of skill budget {recorded}")
     over = {s: r for s, r in ranks.items() if r > 3 * L}
@@ -596,9 +1097,16 @@ def check_character(cell, payload):
     check(payload['sheet_health'] == max_hd,
           f"{cell}: sheet_health {payload['sheet_health']} != full-HP hit dice {max_hd}")
     want_hp = max_hd + final_mod(payload, 'con') * L
-    check(payload['Total_HP'] - want_hp in (0, L),
-          f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L})")
+    # Luck trades against HP (5 HP buys +1 luck; a seller gets 2 HP back per -1). It lands on
+    # Total_HP and NOT on sheet_health, so the full-HP house rule above is unaffected -- but this
+    # line has to know about it, or a lucky character reads as an HP bug.
+    _lk = payload.get('luck') or {}
+    _stake = _lk.get('stake') or {}
+    luck_hp = (_stake.get('payout') or {}).get('hp', 0) - (_stake.get('paid') or {}).get('hp', 0)
+    check(payload['Total_HP'] - want_hp - luck_hp in (0, L),
+          f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L}, luck {luck_hp:+d})")
 
+    check_luck(cell, payload)
     check_bonded_creatures(cell, payload)
 
 
@@ -834,6 +1342,109 @@ def check_level_ceiling():
     print(f"  level ceiling: clamped to {MAX_CHARACTER_LEVEL} from 41/60/999")
 
 
+def check_luck_coverage(total):
+    """Every luck branch must FIRE, or the checks above passed without asserting anything.
+
+    Same guard as the bonded-creature and occult sections, and for the same reason: every assertion
+    in check_luck is conditional on the character having rolled the branch. A sweep where nobody
+    bought luck would print PASS having proved nothing about the purchase.
+
+    TWO BRANCHES ARE NOT ASSERTED HERE, and the reason is a measured property of this sweep rather
+    than an excuse. **Luck is seed-locked.** phase_luck_stake runs so early -- immediately after the
+    level -- that the RNG state at that point is nearly identical across classes, so a given seed
+    produces the SAME luck outcome for every class and level. Measured: seed 1101 rolls
+    Proximity/buy for fighter, wizard, rogue and cleric at both L1 and L20; 2202 and 3303 roll no
+    stake at all. This sweep runs 1,020 generations over THREE seeds, so it samples exactly three
+    luck rolls -- it found 0 sellers and 0 Dimorphic characters not because they cannot happen, but
+    because three draws did not contain them. check_luck_branches below is the answer: 200 distinct
+    seeds, where the same code yields 15 sellers and 4 Dimorphic.
+
+    ONE PATH IS NOT CENSUSED AT ALL: the Expanded Luck / Big Savings cap arithmetic. Those are two
+    rows in a 1,129-trait pool drawn 8 at a time, offered only to the quarter of characters with a
+    stake -- roughly 1 in 300. Requiring it would make the suite flaky rather than thorough, so
+    validate_luck.py asserts the cap composition directly instead. Recorded rather than silently
+    skipped, per the no-silent-caps rule.
+    """
+    if total >= 100:
+        check(LUCK_COVERAGE['stakes'] > 0,
+              f"no character took a luck stake in {total} generations -- every purchase, payout "
+              f"and cap assertion in check_luck was skipped, so this run proves nothing")
+        check(LUCK_COVERAGE['buy'] > 0,
+              f"no character BOUGHT luck in {total} generations; the purchase path is unasserted")
+        check(LUCK_COVERAGE['with_feats'] > 0,
+              f"no character reached an E-Kat feat in {total} generations -- the reserved-slot "
+              f"wiring is the only route to them, so this means it is broken")
+        check(LUCK_COVERAGE['chains'] > 0,
+              f"no E-Kat prerequisite chain ever completed in {total} generations -- the corrected "
+              f"prereq data is untested")
+        check(LUCK_COVERAGE['with_traits'] > 0,
+              f"no character bought a Luck Trait in {total} generations -- the whole 25-E-Kat "
+              f"purchase, the effect folding and the category gating are unasserted")
+        check(LUCK_COVERAGE['deep_sale'] > 0,
+              f"no character sold 25 luck or more in {total} generations -- the sell scale is "
+              f"supposed to reach {LUCK_CAP_NEG}, and without the deep end most of the negative "
+              f"trait catalogue is unreachable")
+    print(f"  luck: {LUCK_COVERAGE['stakes']} stake(s) in {LUCK_COVERAGE['chars']} characters "
+          f"({LUCK_COVERAGE['buy']} buy / {LUCK_COVERAGE['sell']} sell, "
+          f"{LUCK_COVERAGE['negative']} negative, {LUCK_COVERAGE['nonzero_mod']} with a live mod)")
+    print(f"  luck types: Default {LUCK_COVERAGE['Default']}, "
+          f"Proximity {LUCK_COVERAGE['Proximity']}, Dimorphic {LUCK_COVERAGE['Dimorphic']} | "
+          f"E-Kat feats on {LUCK_COVERAGE['with_feats']} character(s), "
+          f"{LUCK_COVERAGE['chains']} with a completed chain, "
+          f"{LUCK_COVERAGE['with_traits']} bought a Luck Trait")
+    print(f"  negative luck: {LUCK_COVERAGE['deep_sale']} sale(s) of 25+ luck, "
+          f"{LUCK_COVERAGE['negative_traits']} seller(s) bought a NEGATIVE Luck Trait "
+          f"(of {len(NEGATIVE_TRAIT_NAMES)} in the catalogue)")
+
+
+def check_luck_branches():
+    """The luck branches this sweep's three seeds structurally cannot reach (see check_luck_coverage).
+
+    Its own generations, and it earns them: selling luck and Dimorphic luck are the two branches
+    with no other witness -- the -50 floor, the payout accounting and the 40 cap all hang off them,
+    and the main sweep proved it can run 1,020 characters without touching either.
+
+    The seeds are FIXED, so this is deterministic rather than flaky: it either always passes or
+    always fails. If an upstream change shifts RNG consumption and a branch drops to zero, WIDEN the
+    seed range -- do not delete the check, which is the only thing asserting these paths end to end.
+    ~13s for 200 first-level fighters, on the same order as the class-choices sweep's addition.
+    """
+    seen = {'sell': 0, 'Dimorphic': 0, 'Proximity': 0, 'buy': 0}
+    for offset in range(LUCK_BRANCH_SEEDS):
+        try:
+            with redirect_stdout(io.StringIO()):
+                payload = main_test.generate_random_char(
+                    class_choice='fighter', chosen_BAB='high', multi_class='N',
+                    userInput_race='random', userInput_region='Tal-Falko',
+                    alignment_input='random', userInput_gender='random',
+                    high_level=1, low_level=1, gold_num=10000,
+                    num_dice='4', num_sides='6', use_backstory_api='N',
+                    spheres_flag='N', seed=LUCK_BRANCH_SEED_BASE + offset)
+        except Exception:
+            tail = traceback.format_exc().strip().splitlines()
+            REPORT.error(f"luck branch seed {LUCK_BRANCH_SEED_BASE + offset}: "
+                         f"generation raised -- {tail[-1]}")
+            continue
+        # Free extra coverage: every one of these gets the full per-character check too.
+        check_luck(f"luck branch seed {LUCK_BRANCH_SEED_BASE + offset}", payload)
+        lk = payload.get('luck') or {}
+        seen[lk.get('type')] = seen.get(lk.get('type'), 0) + 1
+        if lk.get('stake'):
+            seen[lk['stake']['direction']] += 1
+
+    check(seen['sell'] > 0,
+          f"no character SOLD luck across {LUCK_BRANCH_SEEDS} distinct seeds -- the negative-luck "
+          f"payout path is unasserted, and with it the -50 floor. Widen LUCK_BRANCH_SEEDS before "
+          f"suspecting the generator")
+    check(seen['Dimorphic'] > 0,
+          f"no Dimorphic character across {LUCK_BRANCH_SEEDS} distinct seeds -- the three-equal-"
+          f"values branch and the 40 cap are unasserted. Widen LUCK_BRANCH_SEEDS first")
+    check(seen['Proximity'] > 0,
+          f"no Proximity character across {LUCK_BRANCH_SEEDS} distinct seeds")
+    print(f"  luck branches ({LUCK_BRANCH_SEEDS} distinct seeds): {seen['buy']} buy, "
+          f"{seen['sell']} sell, Proximity {seen['Proximity']}, Dimorphic {seen['Dimorphic']}")
+
+
 def run(classes, levels, seeds):
     total = len(classes) * len(levels) * len(seeds)
     done = 0
@@ -891,6 +1502,9 @@ def main():
         check(METZ_PICKS[0] > 0,
               f"no Metzofitz homebrew feat appeared in {total} generations -- pool wiring broken?")
     print(f"  Metzofitz picks across the sweep: {METZ_PICKS[0]}")
+
+    check_luck_branches()
+    check_luck_coverage(total)
 
     # The companion checks above are all conditional on a creature existing, so a sweep that rolled
     # none would print PASS having asserted nothing. Say so instead.

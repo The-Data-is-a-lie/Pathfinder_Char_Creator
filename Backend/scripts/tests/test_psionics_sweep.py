@@ -182,6 +182,17 @@ def check_manifester(cell, payload, name, m, class_level):
         f"{m['talents_known']}/{want_talents}" + ('' if named_ok else ' NAMED-MISSING'))
 
     want_known = (table.get('powers_known') or [0] * 20)[row]
+    # A manifesting stat of EXACTLY 10 gives max_power_level 0, so no power of level >= 1 is legal
+    # and the chooser correctly returns none -- the class table's powers_known is what the character
+    # would be owed if it could manifest at all. The `score < 10` escape above misses this by one:
+    # it catches the cannot-manifest case only when the stat is BELOW 10.
+    #
+    # Found when the inherent-luck work shifted RNG consumption and moved a seed-4242 marksman from
+    # WIS 9 to WIS 10. It knew zero powers before and after -- the generator never changed; only
+    # which side of the escape it landed on did. A test that passes because its subject is one point
+    # further into an excused branch is not asserting what it appears to.
+    if want_max == 0:
+        want_known = 0
     got = m['powers_chosen']
     # No power above the cap, per the LEVEL_OF index rather than the emitted buckets: the buckets
     # are what we are trying to verify, so checking them against themselves proves nothing.
