@@ -2896,5 +2896,2157 @@
     "default": false,
     "modifiers": [],
     "tier": "B"
+  },
+  "Vital Strike": {
+    "name": "Vital Strike: Activation: attack action (single attack); Effect: roll the weapon's damage dice twice, extra dice not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "as-weapon-dice",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Improved Vital Strike": {
+    "name": "Improved Vital Strike: Activation: attack action (single attack); Effect: roll the weapon's damage dice three times, extra dice not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "as-weapon-dice + as-weapon-dice",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Greater Vital Strike": {
+    "name": "Greater Vital Strike: Activation: attack action (single attack); Effect: roll the weapon's damage dice four times, extra dice not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "as-weapon-dice + as-weapon-dice + as-weapon-dice",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "B"
+  },
+  "Point-Blank Shot": {
+    "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Precise Shot": {
+    "name": "Precise Shot: Effect: no -4 penalty when firing a ranged weapon into melee",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Improved Precise Shot": {
+    "name": "Improved Precise Shot: Effect: ranged attacks ignore the AC bonus from anything less than total cover and the miss chance from anything less than total concealment",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Far Shot": {
+    "name": "Far Shot: Effect: only -1 per full range increment (instead of -2) with ranged weapons",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Arcane Strike": {
+    "name": "Arcane Strike: Activation: swift action; Effect: +[[max(1, floor(@spells.primary.cl.total / 5))]] damage and weapons count as magic for 1 round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "max(1, floor(@spells.primary.cl.total / 5))",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Sap Adept": {
+    "name": "Sap Adept: Effect: when dealing nonlethal sneak attack damage with a bludgeoning weapon, add +damage equal to the number of sneak attack dice rolled",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sap Master": {
+    "name": "Sap Master: Effect: when dealing nonlethal sneak attack damage with a bludgeoning weapon to a flat-footed opponent, roll sneak attack dice twice",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Deadly Stroke": {
+    "name": "Deadly Stroke: Activation: standard action, single attack with your Greater Weapon Focus weapon vs a stunned or flat-footed opponent; Effect: double damage plus 1 Con bleed (not multiplied on a crit)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dirty Fighting": {
+    "name": "Dirty Fighting: Effect: on a combat maneuver against a foe you flank, trade the +2 flanking bonus for not provoking an AoO (or keep provoking-immunity and take +4 instead)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spirited Charge": {
+    "name": "Spirited Charge: Activation: mounted charge; Effect: melee weapon deals double damage (x3 with a lance)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Ride-By Attack": {
+    "name": "Ride-By Attack: Activation: mounted charge; Effect: move, attack at any point during the movement, then keep moving (no AoO from the target)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Charge Through": {
+    "name": "Charge Through: Effect: while charging, attempt one free overrun against a creature in the path; success lets the charge continue",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Rhino Charge": {
+    "name": "Rhino Charge: Effect: you may ready a charge, moving up to your speed",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Archon Style": {
+    "name": "Archon Style: Activation: move action; Effect: adjacent allies gain +2 dodge AC vs one threatened foe's next melee attack until your next turn; you take -2 AC vs that foe",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Archon Diversion": {
+    "name": "Archon Diversion: Effect: Archon Style's AC penalty drops to -1; once/round, divert one melee attack targeting an adjacent ally to yourself (free); the ally then gets an AoO against the diverted foe",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Archon Justice": {
+    "name": "Archon Justice: Effect: no AC penalty for Archon Style, usable as a swift or move action; when Archon Diversion redirects damage to you, each ally threatening the attacker gets an AoO against it",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Ascetic Style": {
+    "name": "Ascetic Style: Effect: apply Improved-Unarmed-Strike-dependent feats/effects to attacks made with your chosen monk weapon group weapon",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Ascetic Form": {
+    "name": "Ascetic Form: Effect: use chosen weapon with unarmed-strike-only class abilities; counts as monk level = character level for monk-level-based feat uses/day",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Ascetic Strike": {
+    "name": "Ascetic Strike: Effect: use the unarmed strike damage of a monk 4 levels lower (min 1st) instead of chosen weapon's base damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Asura Style": {
+    "name": "Asura Style: Effect: monk weapon/unarmed hit on a divine spellcaster sickens it for [[1d4]] rounds (Fort DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]] reduces to 1 round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Asura Sight": {
+    "name": "Asura Sight: Effect: while using Asura Style, gain improved uncanny dodge as a rogue of your character level",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Asura Spellrend": {
+    "name": "Asura Spellrend: Effect: replace your highest-BAB attack with a no-damage spellrending strike; on a hit, attempt dispel magic vs a harmless divine spell (success also sickens, no save)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Azata Style": {
+    "name": "Azata Style: Effect: moving [[15]]+ ft this round grants +[[1]] dodge AC until the start of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Azata Mischief": {
+    "name": "Azata Mischief: Effect: when a foe misses you with a movement-provoked AoO, attempt a free trip vs it (swift action, no AoO) if still adjacent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Azata Sprint": {
+    "name": "Azata Sprint: Effect: while using Azata Style, +[[10]] ft base speed; ignore movement penalty from the first [[10]] ft of difficult terrain moved through",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Barracuda Style": {
+    "name": "Barracuda Style: Effect: no underwater penalty on unarmed attack rolls/damage; add Wis mod to Swim checks",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Barracuda Slam": {
+    "name": "Barracuda Slam: Effect: on a charge (land or water), first unarmed strike gains an extra +[[@abilities.str.mod]] dmg (doubles Str bonus)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.str.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Barracuda Dash": {
+    "name": "Barracuda Dash: Effect: swim speed = base speed; a hit on a charge lets you immediately charge a second foe (no pounce stacking)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Beastmaster Style": {
+    "name": "Beastmaster Style: Activation: immediate action; Effect: Handle Animal check vs attacker's roll negates a hit on your adjacent animal companion",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Beastmaster Salvation": {
+    "name": "Beastmaster Salvation: Activation: immediate action; Effect: substitute a Handle Animal check for your adjacent animal companion's saving throw",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Beastmaster Ire": {
+    "name": "Beastmaster Ire: Effect: on activating Beastmaster Style, gain +2 melee attack/+4 dmg (+4/+8 if the attack damaged your companion) vs the attacker until end of next turn",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Blinded Blade Style": {
+    "name": "Blinded Blade Style: Effect: while blinded/unable to see, no Str/Dex skill penalty from blindness; +4 hearing/smell Perception; gain/extend scent by 10 ft",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blinded Competence": {
+    "name": "Blinded Competence: Effect: while using Blinded Blade Style and blinded, gain blindsense (no concealment bonus for foes) within melee reach",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blinded Master": {
+    "name": "Blinded Master: Effect: Blinded Competence upgrades to blindsight, range 30 ft; +half character level to DC of Bluff checks to feint you",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blood Frenzy Style": {
+    "name": "Blood Frenzy Style: Activation: immediate action on taking damage; Effect: +2 Str, +2 Con, -2 AC while active",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blood Frenzy Strike": {
+    "name": "Blood Frenzy Strike: Effect: while using Blood Frenzy Style, unarmed/natural hits also deal [[1d6]] bleed (no stacking); Cost: 1/[[1d4]] rounds for one unarmed strike at -[[5]] that deals +[[2d6]] bludgeoning on a hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Blood Frenzy Assault": {
+    "name": "Blood Frenzy Assault: Effect: while using Blood Frenzy Style, full attack gains one extra unarmed/natural attack per adjacent bleeding foe (-2 AC each until next turn); Blood Frenzy Strike's bleed increases to [[2d6]]",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Boar Ferocity": {
+    "name": "Boar Ferocity: Effect: unarmed strikes also deal piercing dmg; +[[2]] Intimidate to demoralize; while using Boar Style, tearing flesh lets you demoralize as a free action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Brute Style": {
+    "name": "Brute Style: Effect: use Vicious Stomp vs any foe within [[10]] ft (if within reach), not just adjacent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Brute Stomp": {
+    "name": "Brute Stomp: Effect: while using Brute Style, a full attack incl. unarmed strike vs an adjacent prone foe gets one extra unarmed strike at your highest BAB; Vicious Stomp usable at full reach",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Brute Assault": {
+    "name": "Brute Assault: Effect: while using Brute Style, an overrun/trip that drops a foe prone also deals [[1d6]] Str damage & halves its speed (Fort DC [[10 + @attributes.bab.total]] reduces to 1 Str dmg, negates speed loss)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bulette Charge Style": {
+    "name": "Bulette Charge Style: Effect: +[[4]] on CMB checks to overrun while using this style",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bulette Leap": {
+    "name": "Bulette Leap: Effect: +Str mod on Acrobatics jump checks; can overrun multiple foes on a charge at cumulative -[[2]] per extra attempt (stop on a failure)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bulette Rampage": {
+    "name": "Bulette Rampage: Effect: while using Bulette Charge Style, a successful overrun deals [[1d8]] (Medium)/[[1d6]] (Small) + half your armor AC bonus + 1.5x Str bonus dmg to the foe",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bull-Catcher Style": {
+    "name": "Bull-Catcher Style: Activation: standard action (readied); Effect: grapple a foe that moves 10+ ft into a threatened square (+2 vs charging foes); grappled foe limited to one natural attack; once/round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bull-Catcher Toss": {
+    "name": "Bull-Catcher Toss: Effect: on a successful Bull-Catcher Style grapple, move the foe into any threatened square, then break grapple (immediate action) to shift it 5 ft further",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Bull-Catcher Wrangler": {
+    "name": "Bull-Catcher Wrangler: Effect: vs a charging foe grappled with Bull-Catcher Style, reposition it (as Bull-Catcher Toss) then break grapple to redirect the charge at another foe in the new threatened area",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cerberus Style": {
+    "name": "Cerberus Style: Activation: standard action; Effect: full-BAB unarmed strike vs a foe in reach; on a hit, repeat vs up to 2 more foes in reach (-[[2]] AC per extra attack until next turn)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cerberus Snare": {
+    "name": "Cerberus Snare: Effect: a foe damaged by Cerberus Style can't 5-ft step and is barred from dimensional travel (as dimensional anchor) until your next turn; SR applies",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cerberus Crush": {
+    "name": "Cerberus Crush: Effect: apply Vital Strike/Improved/Greater Vital Strike to all Cerberus Style attacks",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Charging Stag Style": {
+    "name": "Charging Stag Style: Effect: charge through difficult terrain/allies' squares and turn up to 90 degrees mid-charge (not mounted); still only one attack at the end",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stag Horns": {
+    "name": "Stag Horns: Effect: a successful unarmed hit at the end of a Charging Stag Style charge grants a free grapple check vs the target, no AoO",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stag Submission": {
+    "name": "Stag Submission: Effect: a successful pin while using Charging Stag Style also knocks the foe prone or deals your unarmed strike damage, your choice",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cloak and Dagger Style": {
+    "name": "Cloak and Dagger Style: Effect: attacking with chosen weapon in a surprise round lets you attempt a free dirty trick vs that foe; foes provoke from you when removing a condition you inflicted via dirty trick",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cloak and Dagger Subterfuge": {
+    "name": "Cloak and Dagger Subterfuge: Effect: an AoO with chosen weapon lets you attempt a free dirty trick; a successful dirty trick lets you attempt a free, unnoticed steal",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cloak and Dagger Tactics": {
+    "name": "Cloak and Dagger Tactics: Effect: hitting a flat-footed/flanked/Vital-Strike foe with chosen weapon lets you attempt a free dirty trick (Fort DC [[10 + floor(@attributes.bab.total/2) + @abilities.int.mod]]) for a 1-round bonus condition; once/round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Crane Wing": {
+    "name": "Crane Wing: Effect: fighting defensively with a hand free grants +[[4]] dodge AC vs melee (lost until next turn if a hit misses you by 4 or less); on total defense, deflect one melee attack as a miss",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Crashing Wave Style": {
+    "name": "Crashing Wave Style: Effect: on a successful drag/reposition, move [[5]] ft as an immediate action (even into the foe's old square) without provoking, even after a move action this round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Crashing Wave Buffet": {
+    "name": "Crashing Wave Buffet: Effect: a drag/reposition forces a Fort save (DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]] +2/5 ft moved) or the foe takes -2 attack/CMB/Dex-skills until end of its next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Crashing Wave Fist": {
+    "name": "Crashing Wave Fist: Effect: during a drag/reposition, make one unarmed attack at your highest bonus, +1 more per 5 ft moved beyond the first (cumulative -[[5]] each)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cudgeler Style": {
+    "name": "Cudgeler Style: Effect: nonlethal charge hit deals damage as a weapon one size category larger (first attack only)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cudgeler Sweep": {
+    "name": "Cudgeler Sweep: Effect: a charge hit with Cudgeler Style lets you attempt a free trip check (+[[2]] competence, provokes as normal)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Cudgeler Takedown": {
+    "name": "Cudgeler Takedown: Effect: charge hit with Cudgeler Style deals damage as a weapon one size larger for 1 round/until dropped; a Cudgeler-Sweep trip also forces Fort DC [[10 + @attributes.hd.total + @abilities.str.mod]] or stun 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Deadhand Style": {
+    "name": "Deadhand Style: Effect: while using this style, if you have at least 1 ki point, gain a +2 bonus on saves against fear effects and the Intimidate DC against you increases by 4; Cost: swift action, 1 ki point, to empower your unarmed strikes; Save: Will DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates; Effect: creatures hit become shaken for a number of rounds equal to your Wisdom modifier (mind-affecting fear)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Deadhand Initiate": {
+    "name": "Deadhand Initiate: Effect: while using Deadhand Style with at least 1 ki point, the fear-save bonus increases to +4 and the Intimidate DC increase rises to +8; Activation: immediate action, 1 ki point, when targeted by a fear effect; Effect: gain temporary hit points equal to twice your Hit Dice",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Deadhand Master": {
+    "name": "Deadhand Master: Cost: 2 ki points as a swift action; Activation: when you damage a living creature with an unarmed strike while using Deadhand Style; Effect: inflict 2 temporary negative levels with no saving throw; Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] to remove the negative levels before they become permanent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Demonic Style": {
+    "name": "Demonic Style: Effect: while charging, gain a +1 bonus on the attack roll and deal +2 damage with melee attacks made as part of the charge",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Demonic Momentum": {
+    "name": "Demonic Momentum: Effect: after bull rushing an opponent as part of a charge while using Demonic Style, gain +2 melee weapon damage against that opponent per 5 ft. it was moved (apply per increment manually), lasting until the end of your next turn; stacks with Demonic Style's damage bonus",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Demonic Slaughter": {
+    "name": "Demonic Slaughter: Effect: while using Demonic Style, after successfully bull rushing an opponent as part of a charge, immediately use Great Cleave as though you had taken a standard action to do so; the bull rush target must be the target of the first Great Cleave attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Diabolic Style": {
+    "name": "Diabolic Style: Effect: while using this style, an attack of opportunity with an unarmed strike deals 1 point of nonlethal damage; Save: Will DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.cha.mod ]] negates the target becoming staggered for 1 round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Diabolic Humiliation": {
+    "name": "Diabolic Humiliation: Effect: a foe staggered by your Diabolic Style attack of opportunity can't gain the benefit of any morale bonus for 1 minute; during that minute, further staggered effects from your attacks of opportunity last 2 rounds instead of 1, and durations stack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Diabolic Judgment": {
+    "name": "Diabolic Judgment: Effect: while using Diabolic Style, the first time each round you hit with an attack of opportunity, you can apply the effects of any Vital Strike feat you have to that attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Diva Style": {
+    "name": "Diva Style: Effect: use any Perform skill in place of Bluff to feint in combat; you can attempt a Perform check to feint as a move action when you begin a bardic performance",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Diva Advance": {
+    "name": "Diva Advance: Effect: while using Diva Style, you don't provoke attacks of opportunity from creatures you've successfully feinted, and you can feint against a creature from up to 30 feet away",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Diva Strike": {
+    "name": "Diva Strike: Effect: while using Diva Style, the first time you hit with a melee weapon each round against a target denied its Dexterity bonus to AC, deal extra precision damage equal to your Charisma modifier (not multiplied on a critical hit)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.cha.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "nonCrit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Djinni Style": {
+    "name": "Djinni Style: Cost: gain [[1]] additional Elemental Fist use per day; Effect: while using Elemental Fist to deal electricity damage, add your Wisdom bonus to the electricity damage roll; while using this style with Elemental Fist attempts remaining, gain a +[[2]] dodge bonus to AC against attacks of opportunity (lost if you lose your Dexterity bonus to AC)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Djinni Spirit": {
+    "name": "Djinni Spirit: Cost: gain [[1]] additional Elemental Fist use per day; Effect: while using Djinni Style, gain electricity resistance equal to your base attack bonus or monk level, whichever is higher (lost while denied your Dexterity bonus to AC); Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates deafened for [[1d4]] rounds on creatures taking Elemental Fist electricity damage; creatures damaged by Djinni Spin are deafened even on a success",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dolphin Style": {
+    "name": "Dolphin Style: Effect: +[[1]] bonus on melee attack rolls against a creature adjacent to at least two of its other allies (as long as you aren't flanking it); your melee attacks ignore AC bonuses from the aid another action",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Dolphin Circle": {
+    "name": "Dolphin Circle: Activation: full-round action underwater while using Dolphin Style; Effect: circle along a chosen path (length up to a single move action's swim distance) without provoking attacks of opportunity; you threaten and can be attacked or touched along the entire path until your next turn, when you choose a space along the path to stop circling",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dolphin Dart": {
+    "name": "Dolphin Dart: Activation: standard action underwater while using Dolphin Style; Effect: move up to half your swim speed, make a single melee attack against a creature within reach, then retreat to your previous position; the movement and attack don't provoke attacks of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dragonfly Style": {
+    "name": "Dragonfly Style: Effect: add your Wisdom modifier to Acrobatics checks in addition to Dexterity; while adjacent to a vertical surface capable of supporting your weight, gain a +[[1]] bonus on melee attack rolls against opponents your size or smaller (as if on higher ground)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Dragonfly Wings": {
+    "name": "Dragonfly Wings: Effect: while using Dragonfly Style, the melee attack bonus for being adjacent to a vertical surface increases to +[[2]] and applies to opponents up to two size categories larger than you; you may substitute a creature your size or larger for the vertical surface (Acrobatics check vs. its CMD required if hostile; failing by 5+ provokes an attack of opportunity)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Dragonfly Flight": {
+    "name": "Dragonfly Flight: Activation: move action while using Dragonfly Style; Effect: Acrobatics check to high jump, then glide as the spell for 1 round; if you haven't used your standard action, you can charge while gliding (following the rules for charging with only a standard action)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dwarven Hatred Style": {
+    "name": "Dwarven Hatred Style: Effect: apply your hatred racial trait's bonus to both attack rolls and weapon damage rolls (instead of only attack rolls) against creatures of the appropriate type or subtype, and increase the bonus to +[[2]]",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Dwarven Seething": {
+    "name": "Dwarven Seething: Activation: immediate action while using Dwarven Hatred Style, when an opponent hits you with an attack (including an attack-roll spell); Effect: apply your defensive training or hatred racial trait bonus (your choice) against that target regardless of its type or subtype, until it dies, combat ends, you change styles, or you designate a different opponent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Dwarven Fury": {
+    "name": "Dwarven Fury: Effect: while using Dwarven Seething, maintain the defensive training and hatred racial trait bonuses against any number of opponents simultaneously",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Earth Child Binder": {
+    "name": "Earth Child Binder: Effect: you can trip a creature of the giant subtype regardless of its size; while using Earth Child Style, if a prone giant-subtype creature provokes an attack of opportunity from you by standing up and you hit it with an unarmed strike, you can declare a Stunning Fist attempt after the hit, gaining a +[[4]] bonus to that Stunning Fist's DC",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Efreeti Stance": {
+    "name": "Efreeti Stance: Cost: gain [[1]] additional Elemental Fist use per day; Effect: while using Efreeti Style, gain fire resistance equal to your base attack bonus or monk level plus non-monk base attack bonus, whichever is higher (lost while denied your Dexterity bonus to AC); Save: Reflex DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates catching fire on creatures taking Elemental Fist fire damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Efreeti Touch": {
+    "name": "Efreeti Touch: Cost: [[2]] Elemental Fist attempts; Activation: standard action while using Efreeti Style; Range: [[15]]-foot cone; Save: Reflex DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] halves damage and negates catching fire; Effect: deals your unarmed strike damage plus Elemental Fist fire damage to creatures in the cone",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Electric Eel Style": {
+    "name": "Electric Eel Style: Cost: gain [[1]] additional Elemental Fist use per day; Effect: while using this style, your Elemental Fist attack deals electricity damage; when a creature takes electricity damage from your Elemental Fist, gain a +[[4]] bonus for 1 round on combat maneuver checks to grapple that creature",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Electric Eel Shock": {
+    "name": "Electric Eel Shock: Cost: gain [[1]] additional Elemental Fist use per day; Save: Fortitude DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] negates; Effect: creatures that take electricity damage from your Elemental Fist attack (including from Electric Eel Conduit while grappled) become staggered for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Electric Eel Conduit": {
+    "name": "Electric Eel Conduit: Cost: gain [[1]] additional Elemental Fist use per day; then [[2]] Elemental Fist attempts as a swift action when you successfully grapple a creature; Effect: while you maintain the grapple, the target takes [[1d6]] plus your Wisdom modifier electricity damage each round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6+@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "electricity"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Elven Battle Style": {
+    "name": "Elven Battle Style: Effect: while wielding a longsword, rapier, or weapon with 'elven' in its name, combat maneuver checks made as attacks of opportunity with that weapon don't themselves provoke attacks of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Elven Battle Focus": {
+    "name": "Elven Battle Focus: Effect: while using Elven Battle Style with a longsword, rapier, or 'elven' weapon sized for you, add your Intelligence modifier to that weapon's damage instead of any other ability modifier (do not stack with Strength or another ability-based damage bonus)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.int.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Elven Battle Torrent": {
+    "name": "Elven Battle Torrent: Effect: while using Elven Battle Style, any opponent who misses you with an attack while you're fighting defensively, using total defense, or using Combat Expertise provokes an attack of opportunity from you (once per round even with Combat Reflexes)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Empty Quiver Style": {
+    "name": "Empty Quiver Style: Effect: make melee attacks with your chosen ranged weapon as if it were a heavy mace (light mace for a hand crossbow or one-handed firearm), without automatically threatening the area around you; freely switch between melee and ranged attacks with it, even in the same round; ignore the elf prerequisite for Stabbing Shot, and Stabbing Shot can be used with a crossbow or firearm if you have it",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Empty Quiver Flexibility": {
+    "name": "Empty Quiver Flexibility: Effect: while using Empty Quiver Style, apply feats and class abilities that modify your ranged attack and damage rolls with the chosen weapon to melee attack and damage rolls with it instead; you also threaten the area around you as if wielding a melee weapon",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Empty Quiver Flurry": {
+    "name": "Empty Quiver Flurry: Effect: while using Empty Quiver Style or Stabbing Shot to attack in melee, on a hit, ranged attacks you make with the same weapon against that foe don't provoke attacks of opportunity from it until the start of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Fox Style": {
+    "name": "Fox Style: Effect: use your base attack bonus in place of your Bluff ranks to feint in combat or create a distraction to hide; if Intelligence 19+, gain a +4 bonus on such Bluff checks when adding your Charisma modifier",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Fox Insight": {
+    "name": "Fox Insight: Effect: while using Fox Style, use your base attack bonus in place of Sense Motive ranks to oppose feints, and foes demoralizing you gain no size bonus for being larger (though still suffer a penalty for being smaller); if Intelligence 19+, the DC to demoralize or feint you increases by 4",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Fox Trickery": {
+    "name": "Fox Trickery: Effect: while using Fox Style, perform dirty trick combat maneuvers as attacks of opportunity; if Intelligence 19+, gain a +4 bonus on dirty trick combat maneuver checks",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Grabbing Style": {
+    "name": "Grabbing Style: Effect: no -4 penalty on combat maneuver checks to grapple a foe with only one hand; don't lose your Dexterity bonus to AC while pinning an opponent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Grabbing Drag": {
+    "name": "Grabbing Drag: Effect: while using Grabbing Style, the move-grapple action lets you move yourself and a single grappled target your full speed (instead of half); afterward, a move action lets you both move half speed without an additional combat maneuver check; unusable while grappling two targets",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Grabbing Master": {
+    "name": "Grabbing Master: Effect: while grabbing two opponents with Grabbing Style, use your grapple to move or damage either or both opponents instead of just one",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Illusive Gnome Style": {
+    "name": "Illusive Gnome Style: Cost: sacrifice a spell slot, illusion spell, or gnome magic racial spell; Effect: while feinting with a melee weapon with 'gnome' in its name, gain a bonus on the feint check equal to 1 + the level of the spell sacrificed (sacrificing a 0-level spell locks it out for 24 hours)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Illusive Gnome Surprise": {
+    "name": "Illusive Gnome Surprise: Effect: while using Illusive Gnome Style, gain a +2 bonus on dirty trick combat maneuver checks and Bluff checks to feint; on a successful feint, instead of denying Dexterity bonus to AC, treat a wielded 'gnome' weapon as having one chosen special feature (blocking, brace, disarm, distracting, performance, sunder, or trip) against that foe for a number of rounds equal to your Charisma modifier (minimum 1)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Illusive Gnome Bewilderment": {
+    "name": "Illusive Gnome Bewilderment: Effect: while using Illusive Gnome Style, on a successful feint, deny the target's Dexterity bonus to AC as normal and pick one special weapon feature from Illusive Gnome Surprise's list, or pick two features instead of one",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Indomitable Mountain Style": {
+    "name": "Indomitable Mountain Style: Effect: as long as you don't take a move action, gain a +4 morale bonus to your CMD and to the DC of Bluff checks to feint you; you're treated as one size category larger when creatures attempt Acrobatics checks to move through your threatened squares without provoking attacks of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Indomitable Mountain Peak": {
+    "name": "Indomitable Mountain Peak: Effect: whenever a foe succeeds at a combat maneuver against you or an Acrobatics check to avoid an attack of opportunity from moving through your threatened square, gain a +2 morale bonus to your CMD against the next combat maneuver or to the DC of the next such Acrobatics check; stacks until an attempt fails against you",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Indomitable Mountain Avalanche": {
+    "name": "Indomitable Mountain Avalanche: Effect: when an opponent fails a combat maneuver against you, make an attack of opportunity with your highest attack bonus; on a hit, instead of damage, push the opponent back 5 feet per 5 by which it failed (minimum 5 feet); the same applies to an unarmed attack of opportunity against a foe that failed an Acrobatics check to move through your threatened square; the opponent stops before any obstacle or hazard",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Jabbing Style": {
+    "name": "Jabbing Style: Effect: when you hit a target with an unarmed strike after already hitting that target with an unarmed strike this round, deal an extra [[1d6]] damage to it",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Jabbing Dancer": {
+    "name": "Jabbing Dancer: Effect: each time you hit with an unarmed strike while using Jabbing Style, move 5 feet to a space adjacent to that opponent without provoking an attack of opportunity; using this prevents a 5-foot step on your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Jabbing Master": {
+    "name": "Jabbing Master: Effect: while using Jabbing Style, the extra damage on your second unarmed strike against a single target this round increases to [[2d6]] (up from [[1d6]]), and the extra damage on a third or later such strike increases to [[4d6]]",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Janni Style": {
+    "name": "Janni Style: Effect: while using this style, take only a -1 penalty to AC for charging (instead of -2); opponents that flank you gain only a +1 bonus on attack rolls against you (instead of +2)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kirin Style": {
+    "name": "Kirin Style: Cost: swift action; Effect: make a Knowledge check (DC 15 + creature's CR) to identify a single creature; on success, while using this style, gain a +2 bonus on saves against that creature's attacks and a +2 dodge bonus to AC against its attacks of opportunity for as long as you keep using the style (re-attempt the check if combat with it lapses and resumes)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kirin Strike": {
+    "name": "Kirin Strike: Cost: swift action after hitting; Effect: gain a +[[2]] insight bonus on Knowledge checks to identify creatures; while using Kirin Style against a creature you've identified with it, add twice your Intelligence modifier (minimum 2) in damage to a melee or ranged attack that hit",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "max(2,2*@abilities.int.mod)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Kirin Path": {
+    "name": "Kirin Path: Effect: take 10 on Knowledge checks to identify a creature even under stress or distraction, including via Kirin Style; while using Kirin Style against a creature you've identified with it, if that creature ends its turn in your threatened area, spend a use of attacks of opportunity to move up to 5 feet times your Intelligence modifier (minimum 1) into a square it threatens, without provoking attacks of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kitsune Style": {
+    "name": "Kitsune Style: Effect: while using this style, you can attempt a dirty trick combat maneuver in place of an attack at the end of a charge",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kitsune Tricks": {
+    "name": "Kitsune Tricks: Effect: while using Kitsune Style, apply two different conditions with a single dirty trick combat maneuver check; removing both requires only one action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kitsune Vengeance": {
+    "name": "Kitsune Vengeance: Effect: while using Kitsune Style, when a foe provokes an attack of opportunity from you, attempt a dirty trick combat maneuver instead of a melee attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kobold Groundling": {
+    "name": "Kobold Groundling: Effect: prone creatures are denied their Dexterity bonus to AC against your attacks",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kobold Flood": {
+    "name": "Kobold Flood: Effect: make a grapple combat maneuver check to mount a prone Medium or Large foe; target must break your grapple to stand",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kraken Style": {
+    "name": "Kraken Style: +2 CMB to maintain a grapple; on a successful grapple check, deal bonus bludgeoning damage equal to your Wisdom modifier",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "@abilities.wis.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bludgeoning"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Kraken Throttle": {
+    "name": "Kraken Throttle: Effect: on a successful grapple check while using Kraken Style, bonus bludgeoning damage increases to Wisdom modifier + 2",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod+2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bludgeoning"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Kraken Wrack": {
+    "name": "Kraken Wrack: Effect: on a successful grapple check while using Kraken Style, bonus bludgeoning damage increases to Wisdom modifier + 4",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod+4",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bludgeoning"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Kyton Style": {
+    "name": "Kyton Style: Effect: treat spiked chains as having the monk special weapon feature; with Stunning Fist, spend 1 ki to make a Stunning Fist attack with your spiked chain",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kyton Shield": {
+    "name": "Kyton Shield: Effect: while using Kyton Style and wielding a spiked chain, +1 shield bonus to AC (plus half the chain's enhancement bonus, or full if it has the vicious ability)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Kyton Cut": {
+    "name": "Kyton Cut: Effect: while using Kyton Style, take 1d6 nonlethal damage before a spiked chain attack roll; on a hit, target takes an additional 1d6 nonlethal damage and a -4 penalty on concentration checks for 1 round",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "nonlethal"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Lantern Style": {
+    "name": "Lantern Style: Effect: thrown weapons glow with holy light (20-ft. radius illumination for 1 round); a target damaged by one becomes dazzled for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Lantern Glare": {
+    "name": "Lantern Glare: Effect: on hitting with a thrown weapon, target and creatures within 20 ft. must succeed a Will save or become shaken until they damage you or 24 hours pass",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Lantern Light": {
+    "name": "Lantern Light: Effect: a single thrown weapon attack becomes pure holy light, overcoming the target's damage reduction",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Linnorm Hunter Style": {
+    "name": "Linnorm Hunter Style: +2 attack on attacks of opportunity against a target an allied Linnorm Hunter Style user just hit (once per round)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Linnorm Hunter Coordination": {
+    "name": "Linnorm Hunter Coordination: Effect: coordinated full-round melee attack at highest BAB against a target you and an allied Linnorm Hunter Style user both threaten; on a hit, deal extra damage equal to one of your ally's natural attacks (not multiplied on a crit) — formula not automated: damage amount depends on the ally's natural attack, which is not derivable from this actor's sheet",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Linnorm Hunter Retreat": {
+    "name": "Linnorm Hunter Retreat: Effect: when an allied Linnorm Hunter Style user hits a target you threaten with a melee attack, move 5 ft. as an immediate action without provoking an AoO from that target",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Linnorm Style": {
+    "name": "Linnorm Style: Effect: after a creature hits you with a melee attack, add your Wisdom bonus instead of your Strength bonus to unarmed strike damage against that creature until the start of its next turn ([[-2]] penalty to AC vs melee attacks while active)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.wis.mod - @abilities.str.mod",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Linnorm Vengeance": {
+    "name": "Linnorm Vengeance: Effect: while using Linnorm Style, after an enemy hits you with a melee attack, +[[2]] bonus on unarmed strike attack rolls against that creature until the start of its next turn (you may let a missed attack hit for minimum damage to gain this; a retaliatory unarmed strike is granted if the hit would knock you unconscious or kill you)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Linnorm Wrath": {
+    "name": "Linnorm Wrath: Effect: when using Linnorm Vengeance to allow an enemy's hit, make a retaliatory unarmed strike as an immediate action (counts as an attack of opportunity); once/day, if a melee attack drops you unconscious or kills you, the attacker must succeed at a Fortitude save (DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]]) or be stunned for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Maddening Style": {
+    "name": "Maddening Style: Effect: one additional Stunning Fist use per day; while using this style with [[1]]+ ki point, +[[1]] to the DC of your confusion, madness, and insanity effects (including Maddening Strike); a creature stunned by your Stunning Fist also takes [[1]] point of Wisdom damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Maddening Strike": {
+    "name": "Maddening Strike: Cost: [[1]] ki point; Activation: swift action, imbues your next unarmed strike this turn; Save: Will DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]] reduces to [[2]] Wisdom damage; Effect: on a hit, the target also takes [[1d4+1]] Wisdom damage; if the imbued attack misses, you take [[2]] Wisdom damage",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Maddening Obliteration": {
+    "name": "Maddening Obliteration: Effect: while using Maddening Style with ki available, damaging a foe with an unarmed strike gives it a [[-2]] penalty on saves vs. confusion, madness, and insanity effects for [[1]] round; if a Stunning Fist attack drops a creature below 0 hit points, spend [[2]] ki points to obliterate it as per disintegrate (Fortitude save negates)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Mantis Style": {
+    "name": "Mantis Style: Effect: one additional Stunning Fist attempt per day; while using this style, +[[2]] bonus to the DC of effects delivered with your Stunning Fist",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Mantis Torment": {
+    "name": "Mantis Torment: Cost: [[2]] Stunning Fist attempts; Activation: while using Mantis Style, on an unarmed attack; Effect: one additional Stunning Fist attempt per day; on a hit, unless the target succeeds at its save against your Stunning Fist, it becomes dazzled and staggered with crippling pain until the start of your next turn, then fatigued",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Marid Coldsnap": {
+    "name": "Marid Coldsnap: Cost: [[2]] Elemental Fist attempts; Activation: standard action while using Marid Style; Save: Reflex DC [[10 + floor(@attributes.hd.total/2) + @abilities.wis.mod]] halves damage and negates entangled; Effect: a 30-foot line of frigid water deals your unarmed strike damage plus Elemental Fist cold damage and entangles targets in ice as per Marid Spirit",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Mobile Bulwark Style": {
+    "name": "Mobile Bulwark Style: Effect: while using a tower shield, add the shield's AC bonus (including enhancement bonus) to your CMD against bull rush and overrun; as a move action, use a tower shield to grant yourself total cover along one edge of your space",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Mobile Fortress": {
+    "name": "Mobile Fortress: Effect: while using a tower shield, add half the shield's AC bonus (including enhancement bonus) to your touch AC and take only a [[-1]] penalty on attack rolls for the shield's encumbrance; while using Mobile Bulwark Style, granting yourself total cover with a tower shield also grants total cover to adjacent allies against attacks through that edge",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Mobile Stronghold": {
+    "name": "Mobile Stronghold: Effect: while using a tower shield, no attack roll penalty for the shield's encumbrance; while using Mobile Bulwark Style, gaining total cover with a tower shield also grants partial cover to yourself and adjacent allies against spells through that edge; as an immediate or swift action, gain total cover against a single attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Monkey Moves": {
+    "name": "Monkey Moves: Effect: while using Monkey Style, add your Wisdom bonus on Climb checks, climb and crawl at half speed, take a 5-foot step by jumping/crawling/climbing, and retain your Dexterity bonus to AC while climbing; if you hit an opponent with an unarmed strike twice or more this turn, spend a swift action to take a 5-foot step even after moving",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Octopus Style": {
+    "name": "Octopus Style: Activation: move action; Effect: select a number of creatures you are aware of up to your Dexterity modifier; you can't be flanked by them until the start of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Octopus Focus": {
+    "name": "Octopus Focus: Effect: while using Octopus Style, gain a cumulative +1 bonus on melee attack rolls for each enemy that threatens you (maximum +[[@abilities.dex.mod]], your Dexterity modifier); also reduces the two-hands-free grapple penalty to -2",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "@abilities.dex.mod",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Octopus Thrash": {
+    "name": "Octopus Thrash: Effect: while using Octopus Style, against two adjacent threatened enemies, attempt a single trip combat maneuver check at a [[-5]] penalty in place of a melee attack and apply the result to both",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-5",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Orc Fury Style": {
+    "name": "Orc Fury Style: Effect: while wielding a greataxe, falchion, or weapon with \"orc\" in its name, you can use Bullying Blow on the first attack of a full-attack action or as part of a standard action to make one or more attacks (e.g. with Cleave)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Orc Rampage": {
+    "name": "Orc Rampage: Effect: while using Orc Fury Style, +[[1]] on attack and damage rolls against shaken opponents, and no attack penalty when using Bullying Blow",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Orc Snarl": {
+    "name": "Orc Snarl: Effect: while using Orc Fury Style, +4 bonus on saving throws against effects created by shaken foes",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Outslug Style": {
+    "name": "Outslug Style: Effect: choose a close-fighter-weapon-group weapon; when you take a 5-foot step, gain a +[[1]] dodge bonus to AC and +[[1]] on weapon damage rolls with that weapon until the start of your next turn",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Outslug Weave": {
+    "name": "Outslug Weave: Effect: while using Outslug Style, no longer take the -2 AC penalty from Lunge, and the style's AC dodge bonus and weapon damage roll bonus increase to +[[2]]",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Outslug Sprint": {
+    "name": "Outslug Sprint: Effect: while using Outslug Style, move an additional 5 feet when making a 5-foot step",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Overwatch Style": {
+    "name": "Overwatch Style: Activation: full-round action; Effect: ready two ranged attacks with the chosen weapon, each with its own triggering event, at a [[-2]] penalty on the readied attack rolls",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Overwatch Tactician": {
+    "name": "Overwatch Tactician: Effect: while using Overwatch Style, ready two ranged attacks as a standard action instead of a full-round action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Overwatch Vortex": {
+    "name": "Overwatch Vortex: Activation: full-round action while using Overwatch Style; Effect: ready up to four ranged attacks, each with its own triggering event, at a [[-2]] penalty on the readied attack rolls",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Owl Style": {
+    "name": "Owl Style: Effect: use your base attack bonus in place of Stealth ranks; while in this stance and using Stealth you can charge at an extra -10 penalty, and foes that fail their Perception check are denied their Dexterity bonus to AC against all your attacks during or at the end of that charge",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Owl Swoop": {
+    "name": "Owl Swoop: Effect: while using Owl Style, use your base attack bonus in place of Acrobatics ranks; may attempt Acrobatics checks to move on narrow/slick surfaces and to avoid attacks of opportunity while charging",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Owl Dive": {
+    "name": "Owl Dive: Effect: while using Owl Style, use your base attack bonus in place of Fly ranks; can charge through other creatures' spaces with a successful Acrobatics check, stopping before a failed check's space (attacking that foe instead if threatened)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Panther Style": {
+    "name": "Panther Style: Activation: swift action when a foe makes an attack of opportunity against you for moving through its threatened square; Effect: make a retaliatory unarmed strike against that opponent, resolved after the triggering attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Panther Claw": {
+    "name": "Panther Claw: Effect: while using Panther Style, make the retaliatory unarmed strike as a free action instead of a swift action, up to a number of times per turn equal to your Wisdom modifier",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Perfect Style": {
+    "name": "Perfect Style: Effect: choose a house (iron/flame/wind) for energy resistance 5 (acid/fire/electricity) while using this style; grants a ki pool (1 at 1st level, +1 every 4 levels) used to power the House of Perfection follow-up feats",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Unblinking Flame Feint": {
+    "name": "Unblinking Flame Feint: Effect: while using Perfect Style, use Wisdom instead of Charisma for Bluff checks to feint; spend 1 ki point as a swift action to gain the benefits of Improved Feint for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Unblinking Flame Fist": {
+    "name": "Unblinking Flame Fist: Effect: while using Perfect Style, Stunning Fist save DC +2 vs flat-footed targets; spend 1 ki point to gain the benefits of Improved Feint for 1 round and attempt a feint as part of your movement when charging",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Unfolding Wind Strike": {
+    "name": "Unfolding Wind Strike: Effect: while using Perfect Style, double the range increment of thrown weapons; spend 1 ki point as a swift action to imbue a number of thrown weapons equal to your Wisdom bonus with returning or seeking for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Unfolding Wind Rush": {
+    "name": "Unfolding Wind Rush: Effect: while using Perfect Style and wielding thrown weapons, combine a full-attack action with a single move action (forgo the highest-bonus attack); spend 1 ki point as a swift action to create a wind wall along your movement path for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Untwisting Iron Strength": {
+    "name": "Untwisting Iron Strength: Effect: while using Perfect Style, ignore hardness equal to character level and gain +4 on Strength checks to break objects; spend 1 ki point as a swift action to gain the benefits of Improved Sunder for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Untwisting Iron Skin": {
+    "name": "Untwisting Iron Skin: Effect: while using Perfect Style, gain DR/adamantine equal to 1/3 character level (max 6); breaking an item of hardness 10+ grants temporary DR 1/- scaling with the item's hardness/hp (max 10 rounds); spend 1 ki point as a swift action to double either DR value for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Psychovore Style": {
+    "name": "Psychovore Style: Effect: as a move action, Sense Motive check (DC 15 + target's CR) vs an Int 3+ creature to gain a dodge bonus to AC against it (+1, +2 at 8 Sense Motive ranks, +3 at 13 ranks) until you switch targets or stop using this style",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Psychovore Strike": {
+    "name": "Psychovore Strike: Effect: declared before the attack roll; on hitting the creature you have the Psychovore Style AC bonus against with an unarmed strike, force a Will save (DC 10 + 1/2 character level + Wis mod) or the target is confused for 1d6 rounds (mind-affecting; a confused creature never attacks you); usable 1 + Wis bonus times/day, no more than once per round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Psychovore Master": {
+    "name": "Psychovore Master: Effect: on a critical hit against the creature you have the Psychovore Style AC bonus against with an unarmed strike, the target also takes 1 Intelligence and 1 Wisdom damage and you gain 2d8 temporary hit points (1 hour, doesn't stack)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Pummeling Style": {
+    "name": "Pummeling Style: Effect: when making a full-attack or flurry of blows with unarmed strikes against a single opponent, total the damage from all hits before applying damage reduction",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Pummeling Bully": {
+    "name": "Pummeling Bully: Effect: when using Pummeling Style against a single target and hitting with any attack in the full attack/flurry, attempt a reposition or trip combat maneuver check as a free action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Pummeling Charge": {
+    "name": "Pummeling Charge: Effect: charge and make a full attack or flurry of blows at the end of the charge as part of the charge action, if all attacks qualify for Pummeling Style against a single target",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shaitan Skin": {
+    "name": "Shaitan Skin: Effect: gain 1 additional Elemental Fist use/day; while using Shaitan Style, gain acid resistance equal to base attack bonus (or monk level + non-monk BAB, whichever higher), lost when denied Dex bonus to AC; creatures taking acid damage from your Elemental Fist must succeed at a Reflex save (DC 10 + 1/2 character level + Wis mod) or be staggered for 1 round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shaitan Earthblast": {
+    "name": "Shaitan Earthblast: Cost: [[2]] Elemental Fist attempts; Activation: standard action while using Shaitan Style; Save: Reflex DC [[ 10 + floor(@attributes.hd.total/2) + @abilities.wis.mod ]] halves damage and negates staggered; Effect: a 20-foot column (5-foot radius) of acid erupting within 30 feet deals your unarmed strike damage plus Elemental Fist acid damage and staggers targets for [[1]] round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shapeshifter Style": {
+    "name": "Shapeshifter Style: Effect: if Brutal Attack is chosen, +[[1]] (up to +3 with follow-up feats) damage with one natural/change-shape attack while using this style (alternatively choose Steady Grip: climb speed 10ft, Tensed Sinews: +1 Reflex & +5 speed, or Toughened Hide: +1 natural armor; swap as a swift action)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shapeshifter Twist": {
+    "name": "Shapeshifter Twist: Effect: while using Shapeshifter Style, +2 CMD vs bull rush, drag, grapple, overrun, reposition, and trip; if grappled at the start of your turn, attempt a combat maneuver or Escape Artist check as a move action to break the grapple",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shapeshifter Savage": {
+    "name": "Shapeshifter Savage: Effect: while using Shapeshifter Style, using change shape or wild shape as a standard action also lets you make a single melee attack with a natural weapon at your highest base attack bonus against a foe within reach",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shark Style": {
+    "name": "Shark Style: Effect: unarmed strikes can deal piercing or bludgeoning damage; piercing unarmed strikes and bite attacks deal an additional [[1d6]] bleed damage",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "bleed"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shark Tear": {
+    "name": "Shark Tear: Effect: while using Shark Style, gain scent in water against bleeding creatures only; +[[1]] on attack and damage rolls against bleeding creatures",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shark Leap": {
+    "name": "Shark Leap: Effect: while using Shark Style and underwater, leap upward similar to a charge; a successful piercing unarmed or bite strike deals double damage, and if the attack roll exceeds 11 + target's Swim modifier the target is off-balance until its next turn (partial charges double dice rather than full damage)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shield Gauntlet Style": {
+    "name": "Shield Gauntlet Style: Effect: gauntlet/spiked gauntlet on an empty off hand grants a +[[1]] shield bonus to AC (lost if you attack with it or hold a weapon/shield); counts as Improved Unarmed Strike for Deflect Arrows/Snatch Arrows prerequisites",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shielded Gauntlet Attack": {
+    "name": "Shielded Gauntlet Attack: Effect: while using Shield Gauntlet Style, gauntlet/spiked gauntlet damage uses the warpriest sacred weapon damage table at an effective level equal to your BAB minus [[4]]; gain one extra attack of opportunity per round (beyond your normal maximum) usable only for a gauntlet attack, disarm, or steal combat maneuver, none of which provoke, and the steal can be attempted as this reaction despite normally needing a standard action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shielded Gauntlet Master": {
+    "name": "Shielded Gauntlet Master: Effect: while using Shield Gauntlet Style, keep the style's shield bonus to AC even when attacking with or holding a weapon in the gauntlet hand, and add the gauntlet's enhancement bonus to that shield bonus",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shielded Staff Style": {
+    "name": "Shielded Staff Style: Effect: wielding a combined shielded staff two-handed grants a +[[2]] shield bonus to AC; attacks made with the shielded staff take a penalty",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "-1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shielded Staff Ambush": {
+    "name": "Shielded Staff Ambush: Effect: while in Shielded Staff Style, on a hit with the shielded staff, attempt a bull rush, disarm, sunder, or trip combat maneuver as an immediate action; lose the style's shield bonus to AC until the start of your next turn if you do",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shielded Staff Master": {
+    "name": "Shielded Staff Master: Effect: while using Shielded Staff Style, the style's attack penalty no longer applies, the shield/buckler's enhancement bonus is added to the style's AC bonus, and the higher of the weapon's or shield's enhancement bonus is used for the shielded staff's attack and damage rolls",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shikigami Style": {
+    "name": "Shikigami Style: Effect: improvised weapons deal damage as if one size category larger, plus one more size category per style feat you have that lists this feat as a prerequisite (max three sizes larger)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Shikigami Mimicry": {
+    "name": "Shikigami Mimicry: Effect: while in Shikigami Style, take a penalty on an attack roll to treat an improvised weapon as having one of several special weapon qualities (blocking, brace, disarm, distracting, nonlethal, performance, trip, or jagged if fragile/broken) until the start of your next turn",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "-2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Shikigami Manipulation": {
+    "name": "Shikigami Manipulation: Effect: while using Shikigami Style, a magic item wielded as an improvised weapon grants an enhancement bonus on attack and damage rolls equal to the item's caster level divided by [[4]] (minimum +[[1]], maximum +[[5]])",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Signature Strike Style": {
+    "name": "Signature Strike Style: Effect: a creature hit by your called shot, targeted strike, or targeting deed while using this style and attacking with your Weapon Focus weapon must succeed at a Will save (DC [[10+floor(@attributes.hd.total/2)+@abilities.cha.mod]]) or be shaken for [[1d3]] rounds (fear effect, doesn't stack); if the attack deals damage you can mark the wound, and spending 1 grit/panache point as a free action makes the mark a permanent scar unless the target succeeds at a Fortitude save (DC [[10+floor(@attributes.hd.total/2)+@abilities.cha.mod]]); you gain a +[[2]] bonus on Perception checks to see through the disguises of creatures bearing your mark",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Signature Strike Taunt": {
+    "name": "Signature Strike Taunt: Effect: creatures shaken by your Signature Strike Style take a -[[2]] penalty to AC for the duration of that shaken condition, and you don't provoke attacks of opportunity for combat maneuvers against them while they remain shaken",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Signature Strike Triumph": {
+    "name": "Signature Strike Triumph: Effect: your Signature Strike Style's shaken duration increases to [[1d4+1]] rounds; when you confirm a critical hit against a creature marked by Signature Strike Style, one ally within [[60]] feet who can see you may attempt a new saving throw against one ongoing emotion, fear, or mind-affecting effect caused by the marked creature",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sisterhood Style": {
+    "name": "Sisterhood Style: Effect: while wielding a longsword and a light or heavy shield, gain a +[[1]] bonus on Reflex and Will saves; when entering the stance, choose a teamwork feat you have and, as a swift action, grant it to an ally within [[10]] feet until the beginning of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sisterhood Rampart": {
+    "name": "Sisterhood Rampart: Effect: while using Sisterhood Style, you and adjacent allies gain an additional +[[1]] bonus to the shield bonus granted by Shield Wall, add your shield bonus to AC (excluding enhancement bonuses) to your CMD against bull rush, and no longer provide soft cover against allies' attacks",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Sisterhood Dedication": {
+    "name": "Sisterhood Dedication: Effect: while using Sisterhood Style, its save bonus increases to +[[2]] and you grant half that bonus to allies within [[20]] feet; you can choose up to two teamwork feats when entering the stance and, as a swift action, grant one feat to two allies within [[20]] feet or both feats to one ally within [[20]] feet until the beginning of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Skyseeker Style": {
+    "name": "Skyseeker Style: Effect: once per round, as an immediate action, take a 5-foot step toward an opponent attacking you with a reach weapon; if this takes you out of its threatened squares, gain a +[[4]] bonus to AC against that attack (restricts your next turn's movement)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Skyseeker Thrash": {
+    "name": "Skyseeker Thrash: Effect: while using Skyseeker Style, gain a cumulative +[[1]] bonus on melee damage rolls per size category your opponent is larger than you",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Skyseeker Impact": {
+    "name": "Skyseeker Impact: Effect: while using Skyseeker Style, a melee hit against a larger opponent deals damage as if your weapon were one size category larger",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Slipslinger Style": {
+    "name": "Slipslinger Style: Effect: +1 bonus on damage rolls made with all types of slings, no attack of opportunity for reloading a sling, and sling-named ranged/thrown weapons count as slings for feats, class abilities, and the warslinger racial trait",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Slipslinger Grenadier": {
+    "name": "Slipslinger Grenadier: Effect: while using Slipslinger Style, as a standard action hurl a loaded alchemical splash weapon with your sling; the sling deals its normal damage plus the splash weapon's own effect or damage, which is not multiplied on a critical hit",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Slipslinger Bombardment": {
+    "name": "Slipslinger Bombardment: Effect: hurl alchemical splash weapons with Slipslinger Grenadier during an attack action or full-attack action, loading your sling with such weapons as a free action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Smashing Style": {
+    "name": "Smashing Style: Effect: choose axes, hammers, or flails fighter weapon group; while using this style, a successful sunder combat maneuver against a foe's worn armor lets you immediately attempt a bull rush or trip combat maneuver against that foe at the same CMB, without provoking an attack of opportunity",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Smashing Crush": {
+    "name": "Smashing Crush: Effect: while using Smashing Style, a successful sunder combat maneuver against an object reduces its hardness by [[1]] (minimum 50% of normal hardness), restored when the sunder damage is repaired",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Smashing Dent": {
+    "name": "Smashing Dent: Effect: while using Smashing Style, each successful sunder combat maneuver against a suit of armor reduces its armor bonus to AC by [[1]] and increases its armor check penalty by [[1]] (AC bonus can't drop below 50% of normal, check penalty can't more than double), until the sunder damage is repaired",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Snake Style": {
+    "name": "Snake Style: Effect: +[[2]] bonus on Sense Motive checks; unarmed strikes can deal piercing damage; as an immediate action, substitute a Sense Motive check result for your AC or touch AC against an attack you are aware of and not flat-footed against",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Snake Sidewind": {
+    "name": "Snake Sidewind: Effect: +[[4]] bonus to CMD against trip combat maneuvers and on Acrobatics checks/saving throws to avoid being knocked prone; while using Snake Style, use Sense Motive in place of the attack roll to confirm a critical threat with an unarmed strike, and spend an immediate action to take a 5-foot step after confirming a critical hit with an unarmed strike",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Snake Fang": {
+    "name": "Snake Fang: Effect: while using Snake Style, when an opponent's attack against you misses, make an unarmed strike attack of opportunity against that opponent; if it hits, spend an immediate action to make another unarmed strike against the same opponent",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Snapping Turtle Style": {
+    "name": "Snapping Turtle Style: Effect: while using this style with at least one hand free, gain a +[[1]] shield bonus to AC",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Snapping Turtle Shell": {
+    "name": "Snapping Turtle Shell: Effect: while using Snapping Turtle Style, its shield bonus to AC increases to +[[2]], and enemies take a -[[4]] penalty on critical confirmation rolls made against you",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spear Dancing Style": {
+    "name": "Spear Dancing Style: Effect: choose a polearm or spear fighter weapon group weapon; while using this style, the chosen weapon gains the double weapon feature, using its own statistics on the main-hand end and a light mace's statistics on the off-hand end, and loses the brace and reach features",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spear Dancing Spiral": {
+    "name": "Spear Dancing Spiral: Effect: while using Spear Dancing Style, gain the benefit of Weapon Finesse with the chosen weapon if appropriately sized, and can use any feat or ability that functions with a quarterstaff with the chosen weapon",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spear Dancing Reach": {
+    "name": "Spear Dancing Reach: Effect: while using Spear Dancing Style and making a full attack with the chosen weapon as a double weapon, grant the reach feature to one or both of the weapon's ends until the end of your turn, as a swift action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spring-Heeled Style": {
+    "name": "Spring-Heeled Style: Effect: +2 bonus on weapon attack rolls until the start of your next turn, gained in any round you use a move action to move 10 or more feet while using this style; also grants the AC bonus of Mobility against attacks of opportunity provoked by a ranged attack or loading a ranged weapon",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Spring-Heeled Sprint": {
+    "name": "Spring-Heeled Sprint: Effect: while using Spring-Heeled Style, can move up to twice your speed when using Shot on the Run or Spring Attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Spring-Heeled Reaping": {
+    "name": "Spring-Heeled Reaping: Effect: while using Spring-Heeled Style, when using Shot on the Run or Spring Attack, attack two different creatures at any point during your movement, each at your full attack bonus; a melee target attacked this way cannot make attacks of opportunity against you for that movement",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Startoss Style": {
+    "name": "Startoss Style: Effect: choose a thrown fighter weapon group weapon; while using this style and the chosen weapon (no off-hand weapon or shield besides a buckler), gain a bonus on damage rolls with it equal to 2 plus 2 per style feat you possess that lists Startoss Style as a prerequisite (maximum +6)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "2",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Startoss Comet": {
+    "name": "Startoss Comet: Effect: as a standard action, make a ranged thrown weapon attack at your full attack bonus; on a hit, deal damage normally and make one additional attack at full attack bonus against a target within one range increment of the first (determining cover from the first target's space); Vital Strike feats' extra damage applies only to the initial attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Startoss Shower": {
+    "name": "Startoss Shower: Effect: when you hit while using Startoss Comet, continue attacking foes within one range increment of the most recently hit foe (never the same foe twice this action), determining cover from the most recently hit foe's space, up to a maximum of 1 + 1 per 5 points of base attack bonus attacks; Vital Strike feats' extra damage applies only to the initial attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stick-Fighting Style": {
+    "name": "Stick-Fighting Style: Effect: while fighting with a club, quarterstaff, dan bong, sap, or tonfa you're proficient with, gain a +1 enhancement bonus on attack rolls as though wielding a masterwork weapon (a masterwork stick instead gains the blocking, disarm, distracting, performance, and trip qualities)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "enhancement",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "enhancement",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Stick-Fighting Counter": {
+    "name": "Stick-Fighting Counter: Effect: while fighting defensively, prepare to counter one attack from a chosen opponent each round; if that opponent's melee attack against you misses, it provokes an attack of opportunity from you (must be made with a club, quarterstaff, dan bong, sap, or tonfa)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stick-Fighting Maneuver": {
+    "name": "Stick-Fighting Maneuver: Effect: when making a full attack using only clubs, quarterstaffs, dan bongs, saps, or tonfas, perform a combat maneuver as an extra attack at your full base attack bonus",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stock-Striker Style": {
+    "name": "Stock-Striker Style: Effect: when performing the pistol-whip gunslinger deed while using this style, gain a bonus on the attack roll and on the combat maneuver check to knock the target prone (base +1, increasing to +2 with a two-handed firearm); on a successful knockdown, you don't provoke attacks of opportunity from the target until the end of your next turn when making ranged attacks with your firearm; treat one-handed firearms as light weapons for abilities like Weapon Finesse during the deed",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      },
+      {
+        "formula": "1",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "crit"
+      }
+    ],
+    "tier": "A"
+  },
+  "Stock-Striker Sweep": {
+    "name": "Stock-Striker Sweep: Effect: when using Stock-Striker Style and knocking a target prone with the pistol-whip deed, as a swift action push the target [[5]] feet away or perform the pistol-whip deed a second time against an adjacent foe within reach, at no grit cost",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Stock-Striker Takedown": {
+    "name": "Stock-Striker Takedown: Effect: after knocking a target prone with the pistol-whip deed while using Stock-Striker Style, fire one barrel (or a scattering shot, if applicable) at the target as a move action with no ranged-attack-vs-prone penalty, and the weapon's critical multiplier increases by [[1]] (maximum x[[5]]) for that attack",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Street Style": {
+    "name": "Street Style: Effect: while using this style, once per round as a swift action when you hit with an unarmed strike, deal extra damage and attempt a bull rush combat maneuver against the target (usable only in urban terrain)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "1d6",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Street Sweep": {
+    "name": "Street Sweep: Effect: while using Street Style, the first time each round you damage with an unarmed strike a foe you bull rushed with Street Style since your last turn, that foe must succeed at a Fortitude save (DC [[10+@attributes.bab.total]]) or be knocked prone and staggered for [[1]] round",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Street Carnage": {
+    "name": "Street Carnage: Effect: while using Street Style, the critical multiplier of your unarmed strikes becomes x[[3]] instead of x[[2]]",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swift Iron Style": {
+    "name": "Swift Iron Style: Effect: while using this style, treat your armor's check penalty as [[1]] less and the maximum Dexterity bonus to AC it allows as [[1]] higher",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swift Refuge": {
+    "name": "Swift Refuge: Effect: once per day while using Swift Iron Style, when hit by a weapon, unarmed, or natural attack, treat all dice other than the weapon's base damage dice (sneak attack, critical hit, magic special weapon abilities, Vital Strike, etc.) as having rolled [[1]]s; usable [[2]] times per day at base attack bonus +8, and [[3]] times at +16",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swift Sprint": {
+    "name": "Swift Sprint: Effect: while charging, running, or taking no action but movement on your turn, your armor doesn't reduce your movement",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swordplay Style": {
+    "name": "Swordplay Style: Effect: choose a heavy-blade or light-blade fighter weapon group weapon; while using this style with the chosen weapon and fighting defensively, using total defense, or using Combat Expertise, gain a +[[1]] shield bonus to AC, and don't take the Combat Expertise penalty on your first melee attack each turn (later attacks, including attacks of opportunity, still take the penalty)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swordplay Upset": {
+    "name": "Swordplay Upset: Effect: while using Swordplay Style, as an immediate action attempt a feint against an opponent that makes a melee attack against you and misses",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Swordplay Deflection": {
+    "name": "Swordplay Deflection: Effect: while using Swordplay Style, forgo a melee attack to prepare an action to disrupt an opponent's attack; if your deflection result exceeds the opponent's attack roll, gain a +[[4]] shield bonus to AC against that opponent's attacks until your next turn (functions like a swashbuckler's opportune parry and riposte deed, but grants no riposte)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Tatzlwyrm Claw Style": {
+    "name": "Tatzlwyrm Claw Style: Effect: your unarmed attacks can deal slashing damage; if you strike a target that has another creature grappled or pinned, as a swift action attempt a grapple combat maneuver check against the target's CMD to force it to release a grappled creature or downgrade a pin to a grapple",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Tatzlwyrm Grappler": {
+    "name": "Tatzlwyrm Grappler: Effect: while using Tatzlwyrm Claw Style, when an opponent attempts to initiate a grapple against you, attempt an Escape Artist check; if the result is higher than your CMD, use that result as your CMD against that combat maneuver",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Tatzlwyrm Rake": {
+    "name": "Tatzlwyrm Rake: Effect: while using Tatzlwyrm Claw Style, attempt a combat maneuver check to maintain a grapple without using your arms (must use at least two other limbs; using all your legs prevents movement while maintaining the grapple); if the check succeeds by [[10]] or more, make a single unarmed attack against the grapple's target as a swift action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Tiger Claws": {
+    "name": "Tiger Claws: Effect: while using Tiger Style with both hands free, as a full-round action make a single unarmed strike with both hands using your highest base attack bonus, rolling damage for each hand separately (multiplying both on a critical hit); if using Power Attack, add an additional one-half your Strength bonus to one of the damage rolls; on a hit, attempt a bull rush maneuver without provoking an attack of opportunity (you cannot move with the target if it succeeds)",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "floor(@abilities.str.mod/2)",
+        "target": "damage",
+        "subTarget": "allDamage",
+        "type": "untyped",
+        "damageType": [
+          "as-weapon"
+        ],
+        "critical": "normal"
+      },
+      {
+        "formula": "2",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Twin Fang Style": {
+    "name": "Twin Fang Style: Effect: hitting with both weapons on a full attack while wielding paired daggers or kama reduces the target's armor bonus to AC by [[1]] (to a minimum of +0) until the beginning of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Twin Fang Strike": {
+    "name": "Twin Fang Strike: Effect: while using Twin Fang Style, striking with both primary and off-hand weapons on an attack action applies a penalty to both attack rolls, though single-hit effects like precision damage apply as if you hit only once even if both attacks land",
+    "default": false,
+    "modifiers": [
+      {
+        "formula": "-4",
+        "target": "attack",
+        "subTarget": "allAttack",
+        "type": "untyped",
+        "damageType": [],
+        "critical": "normal"
+      }
+    ],
+    "tier": "A"
+  },
+  "Twin Fang Lunge": {
+    "name": "Twin Fang Lunge: Effect: spend a full-round action to move up to twice your speed and then use Twin Fang Strike as if you were taking the attack action",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Upsetting Shield Style": {
+    "name": "Upsetting Shield Style: Effect: buckler can be used as a light shield for shield bashes and any feats/abilities that apply to light shields; a successful shield bash imposes a [[-2]] penalty on the target's attack rolls against you until the start of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Upsetting Strike": {
+    "name": "Upsetting Strike: Effect: while using Upsetting Shield Style, a foe taking its attack-roll penalty who misses your AC by [[5]] or more with a melee attack provokes an attack of opportunity from you (only one such attack of opportunity per round)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Upsetting Vengeance": {
+    "name": "Upsetting Vengeance: Effect: while using Upsetting Shield Style, the attack-roll penalty from your shield bash applies to the foe's attacks against any target, and if that foe misses any target's AC by [[5]] or more you gain an attack of opportunity (shares a once-per-round limit with Upsetting Strike)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Vanguard Style": {
+    "name": "Vanguard Style: Effect: expend an attack of opportunity to aid another an adjacent ally's Reflex save; that ally gains a [[2]] bonus on all Reflex saves while adjacent to you until the beginning of your next turn",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Vanguard Ward": {
+    "name": "Vanguard Ward: Effect: while using Vanguard Style, expend an attack of opportunity to combine Bodyguard and Vanguard Style to protect an adjacent ally who is attacked or must save; you can trade your shield bonus to AC for an equal shield bonus to that ally for as long as the ally benefits from Vanguard Style's Reflex bonus",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Vanguard Hustle": {
+    "name": "Vanguard Hustle: Effect: add half your shield's enhancement bonus to the shield bonus to AC granted to an ally via Saving Shield; while using Vanguard Style, extend Combat Patrol's threatened area and the benefits of Bodyguard, Saving Shield, and Vanguard Style to allies within that threatened area",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Wyvern Fury Style": {
+    "name": "Wyvern Fury Style: Effect: while using this style, flurry of blows or brawler's flurry can include attacks with a dagger, punching dagger, scorpion whip, spiked gauntlet, or whip (only one attack in the flurry may be made with a whip or scorpion whip)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Wyvern Sting": {
+    "name": "Wyvern Sting: Effect: while using Wyvern Fury Style, hitting a foe with a whip or scorpion whip lets you choose an ally as a swift action; until the beginning of your next turn that ally can leave spaces threatened by that foe without provoking an attack of opportunity from it",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Wyvern Wing": {
+    "name": "Wyvern Wing: Effect: while using Wyvern Fury Style, if you use flurry of blows or brawler's flurry and take a 5-foot step, you can take an additional 5-foot step",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
+  },
+  "Weapon Style Mastery": {
+    "name": "Weapon Style Mastery: Effect: choose one weapon style feat you have (a style feat that lists Weapon Focus as a prerequisite); you can have that chosen style and a second style active at the same time (starting a stance is still a swift action)",
+    "default": false,
+    "modifiers": [],
+    "tier": "B"
   }
 }
