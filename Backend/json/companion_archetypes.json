@@ -5090,6 +5090,10 @@
     ],
     "signed_off": true,
     "source": "Blood of the Coven pg. 16 Some witches find their patrons while in the throes of despair and grief, when all they desire is to see the veneer of civilization peel back to reveal the filth and rot that underlies all things. The arcane power they inherit is bleak and tainted, eating them from the inside out and transforming them into living avatars of entropy.",
+    "species_pool": [
+      "rat",
+      "toad"
+    ],
     "species_pool_raw": [
       "rat",
       "toad"
@@ -5175,7 +5179,12 @@
     "signed_off": true,
     "source": "Reign of Winter Player's Guide pg. 11 , Inner Sea Magic pg. 43 The descendents of Baba Yaga rule the frozen realm of Irrisen, and possess a unique power stemming from their otherworldly origin and their ties to cold magic. This power is partly magical, partly political, and partly cultural. Known as winter witches, these scions of Baba Yaga have not bothered to hide their secrets from outsiders, for they understand that those who see winter witches not native to Irrisen working their frozen magic will simply assume the witches are agents of Irrisen. By opening up their traditions to those who have no direct blood connection to Baba Yaga or the ruling families of Irrisen, they spread the notoriety and infamy of their wintry magic far beyond what they could accomplish on their own. While winter witches are most commonly encountered in Irrisen, they could be encountered in any part of the Inner Sea region, where they work to increase Irrisen's notoriety with each frozen spell and manipulative hex they cast. A winter witch has the following class features.",
     "species_pool": [
-      "cat, small"
+      "bat",
+      "hawk",
+      "owl",
+      "rat",
+      "raven",
+      "weasel"
     ],
     "species_pool_raw": [
       "bat",
@@ -5187,7 +5196,7 @@
       "weasel"
     ],
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
-    "why": "\"limits winter witch familiar choices to\""
+    "why": "\"limits winter witch familiar choices to\" -- resolved against familiar_choices.json (2026-08-13); fox stays in species_pool_raw only, outside the v1 familiar pool"
   },
   "Witch/Wyrm Witch": {
     "archetype": "Wyrm Witch",

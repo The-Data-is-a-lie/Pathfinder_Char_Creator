@@ -43,6 +43,7 @@ from validate_companion_data import EFFECTS                      # noqa: E402
 
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
+FAMILIARS = ROOT / "Backend/json/familiar_choices.json"
 OVERRIDES = ROOT / "Backend/json/companion_archetypes_overrides.json"
 VERIFIED = ROOT / "Backend/json/companion_archetypes_verified.json"
 OUT = ROOT / "Backend/json/companion_archetypes.json"
@@ -156,6 +157,13 @@ DEFAULT_BOND = {
     "Paladin": None, "Cavalier": None, "Samurai": None,     # an ordinary mount
     "Summoner": "eidolon",
 }
+
+# Whose restrictions resolve against the FAMILIAR vocabulary. Kept apart from the animal names on
+# purpose (2026-08-13): one merged vocabulary let druid/cavalier fly-speed restrictions derive
+# familiar bodies (a Diminutive bat as a nature-bond companion), while the familiar classes' own
+# lists resolved against animal names -- which is how Winter Witch's RAW list (bat, hawk, owl,
+# rat, raven, weasel) once shrank to the phantom pool ['cat, small'].
+FAMILIAR_CLASSES = {"Wizard", "Witch", "Sorcerer"}
 
 # The bond yields a different KIND of creature -- a sixth effect #38's vocabulary lacks. Ordered:
 # the first match wins, so "drake companion" beats the generic "companion".
@@ -293,6 +301,9 @@ def classify(body, own_keys, sentences, species_index, cls=None):
     """
     text = bond_text(body, own_keys, sentences)
     replaced = any(verb in ("replaces", "changes") for _, verb, _ in sentences)
+    # The vocabulary follows the class's bond: a witch's restriction names familiars, a druid's
+    # names animals, and cross-resolving either way puts the wrong body on the entry.
+    species_index = species_index["familiar" if cls in FAMILIAR_CLASSES else "animal"]
 
     found, pool_names, pool_property, ctype = [], [], None, None
     pool_raw = []
@@ -421,23 +432,30 @@ def classify(body, own_keys, sentences, species_index, cls=None):
 
 
 def species_index():
-    """Species names, plus the property buckets a restriction can be derived from.
+    """Per-bond vocabularies: {"animal": ..., "familiar": ...}, each carrying the species names
+    plus the property buckets a restriction can be derived from.
 
     Derived rather than hand-listed so "an animal with a fly speed" keeps meaning the right set as
-    species are added to animal_choices.json.
+    species are added to animal_choices.json. The two files stay two vocabularies -- see
+    FAMILIAR_CLASSES on why merging them resolved the wrong bodies in both directions.
     """
-    with open(SPECIES, encoding="utf-8") as fh:
-        data = json.load(fh)
-    index = {"names": set(), "fly": set(), "swim": set()}
-    for tier in data.values():
-        for name, body in tier.items():
-            index["names"].add(name.lower())
-            speed = str((body.get("starting statistics") or {}).get("speed", "")).lower()
-            if "fly" in speed:
-                index["fly"].add(name.lower())
-            if "swim" in speed:
-                index["swim"].add(name.lower())
-    return index
+    out = {}
+    for kind, path in (("animal", SPECIES), ("familiar", FAMILIARS)):
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+        index = {"names": set(), "fly": set(), "swim": set()}
+        for tier, bucket in data.items():
+            if tier == "_readme":
+                continue
+            for name, body in bucket.items():
+                index["names"].add(name.lower())
+                speed = str((body.get("starting statistics") or {}).get("speed", "")).lower()
+                if "fly" in speed:
+                    index["fly"].add(name.lower())
+                if "swim" in speed:
+                    index["swim"].add(name.lower())
+        out[kind] = index
+    return out
 
 
 def build():

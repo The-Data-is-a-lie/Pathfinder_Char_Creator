@@ -32,6 +32,7 @@ from validate_companion_data import (                             # noqa: E402
 ROOT = REPO
 ARCHETYPES = ROOT / "Backend/json/archetypes.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
+FAMILIARS = ROOT / "Backend/json/familiar_choices.json"
 ALIASES = ROOT / "Backend/json/companion_species_aliases.json"
 
 errors = []
@@ -45,9 +46,13 @@ def load(path):
 
 
 def species_index():
-    """Every species key, plus the archetype spellings that alias onto one."""
+    """Every species key, plus the archetype spellings that alias onto one. The familiar pool
+    counts too (2026-08-13): a familiar-bond archetype's species_pool legitimately names the
+    Core Rulebook familiars, which live in familiar_choices.json, not animal_choices.json."""
     data = load(SPECIES)
     keys = {name.lower() for tier in data.values() for name in tier}
+    keys |= {name.lower() for tier, bucket in load(FAMILIARS).items()
+             if tier != "_readme" for name in bucket}
     alias_data = load(ALIASES) if ALIASES.exists() else {}
     aliases = {k.lower(): v.lower() for k, v in (alias_data.get("aliases") or {}).items()}
     unavailable = {k.lower(): v for k, v in (alias_data.get("unavailable") or {}).items()}
