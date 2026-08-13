@@ -1,0 +1,669 @@
+{
+  "_why": "The optimizer's role vocabulary (spec 15, rulings 2026-08-11). A role names 2-3 PRIMARY power-metric axes to push as hard as the rules allow, floors for the rest, and the spine choices that serve them: stat priority, weapon policy, enhancement split, gear ladders, feat spine, dips. The class_roles map picks each class's candidate roles; the generator samples one per character. Tune the JSON, not the engine (the build_archetypes.json precedent). Every vocabulary here is gated by scripts/gates/validate_power_roles.py against the code's own constants in utils/class_func/power_role.py -- a misspelled axis, token, feat or class name fails the build instead of contributing nothing forever.",
+  "_floors_note": "Floors are PROVISIONAL until the optimized A/B distribution exists (ruling 9: measure first, then fix). They are ratio-vs-CR-benchmark bounds asserted by the gate, never the optimizer's stopping rule. dpr is deliberately never floored -- a controller wizard's weapon damage is allowed to be terrible. Race stays random under optimization, so floors must absorb race variance. Tuned once already, by the gate's own first run (2026-08-11): low-level will/ref floors were breaking on honest 4d6 variance.",
+  "_no_blaster_note": "A burst-caster ROLE was cut from v1 by its own gate run: the only class it fit (kineticist) has metric-blind blast damage, so the role starved the weapon budget and lost to its random twin. The burst_raw AXIS stays (alpha uses it); the role returns when the optimizer grows a blast lever to pull -- a kineticist blast rule, or destruction-sphere leaf scoring.",
+  "_margins_note": "MEASURED then made ROBUST, per ruling 9 -- remeasured twice: after the ambient-feat fold, then after v2 (alpha burst min 1.34, striker dpr min 1.79), then after the v3 wall pass (wall ac_combat min 1.44 / med 1.68; its hp tail dipped to 1.03 once the wildshape druid joined the role) (Power Attack alone moved the optimized striker median from 1.50 to 2.06). Source: a 112-generation optimized sweep (each role's mapped classes x L5/10/15/20, wealth-by-level, 4d6), bars set under the sweep MINIMUM (not p25 -- 16 samples underestimate the cross-seed tail, proven twice). Ratchet by re-running the sweep in tests/test_optimized_builds.py's header at higher n. caster_tier carries no margin (chassis, level-scaled, not a lever); the sniper dpr bar is honestly low -- ranged damage carries no ability modifier in metric or model, the recorded next lever for that role.",
+  "roles": {
+    "striker": {
+      "description": "Sustained weapon damage. The classic full-attack martial: hit hard every round.",
+      "casting": false,
+      "primaries": [
+        "dpr_raw",
+        "to_hit"
+      ],
+      "floors": {
+        "ac": 0.7,
+        "hp": 0.7,
+        "fort": 0.6,
+        "ref": 0.5,
+        "will": 0.4,
+        "to_hit": 0.9
+      },
+      "stat_priority": [
+        "str",
+        "primary",
+        "con",
+        "dex",
+        "wis"
+      ],
+      "weapon_policy": "two_handed",
+      "enhancement_split": {
+        "weapon": 0.6,
+        "armor": 0.3,
+        "shield": 0.1
+      },
+      "gear_ladders": {
+        "raw_power": [
+          "weapon_enhancement",
+          "primary_stat_item",
+          "boots_of_speed",
+          "cloak_of_resistance",
+          "amulet_of_natural_armor",
+          "ring_of_protection",
+          "armor_enhancement",
+          "con_item"
+        ],
+        "steady": [
+          "weapon_enhancement",
+          "cloak_of_resistance",
+          "armor_enhancement",
+          "primary_stat_item",
+          "boots_of_speed",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "con_item"
+        ]
+      },
+      "feat_spine": [
+        "Weapon Focus",
+        "Furious Focus",
+        "Improved Critical",
+        "Greater Weapon Focus",
+        "Weapon Specialization"
+      ],
+      "dips": [
+        {
+          "class": "fighter",
+          "levels": 1,
+          "buys": "a bonus combat feat plus every armor proficiency"
+        }
+      ],
+      "margins": {
+        "dpr_raw": 1.4,
+        "to_hit": 1.1
+      }
+    },
+    "alpha": {
+      "description": "Burst and precision. Wins the round that matters: sneak attack, studied strike, smite-class alpha tech.",
+      "casting": false,
+      "primaries": [
+        "burst_raw",
+        "to_hit"
+      ],
+      "floors": {
+        "ac": 0.7,
+        "hp": 0.5,
+        "fort": 0.5,
+        "ref": 0.65,
+        "will": 0.4,
+        "to_hit": 0.85
+      },
+      "stat_priority": [
+        "dex",
+        "str",
+        "con",
+        "wis"
+      ],
+      "weapon_policy": "finesse",
+      "enhancement_split": {
+        "weapon": 0.6,
+        "armor": 0.3,
+        "shield": 0.1
+      },
+      "gear_ladders": {
+        "assassin": [
+          "weapon_enhancement",
+          "primary_stat_item",
+          "boots_of_speed",
+          "cloak_of_resistance",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "con_item",
+          "armor_enhancement"
+        ],
+        "survivable": [
+          "weapon_enhancement",
+          "cloak_of_resistance",
+          "ring_of_protection",
+          "primary_stat_item",
+          "boots_of_speed",
+          "amulet_of_natural_armor",
+          "armor_enhancement",
+          "con_item"
+        ]
+      },
+      "feat_spine": [
+        "Piranha Strike",
+        "Improved Initiative",
+        "Improved Critical"
+      ],
+      "dips": [],
+      "margins": {
+        "burst_raw": 1.2,
+        "to_hit": 1.0
+      }
+    },
+    "wall": {
+      "description": "The AC tank -- fight-state AC (ac_combat: posture, stance, styles, class AC, buffs) plus hit points. dr rejoins the primaries when the measured sweep shows a purchasable floor.",
+      "casting": false,
+      "primaries": [
+        "ac_combat",
+        "hp"
+      ],
+      "floors": {
+        "fort": 0.65,
+        "ref": 0.4,
+        "will": 0.4,
+        "to_hit": 0.65
+      },
+      "stat_priority": [
+        "con",
+        "primary",
+        "dex",
+        "wis"
+      ],
+      "weapon_policy": "one_handed_shield",
+      "enhancement_split": {
+        "weapon": 0.25,
+        "armor": 0.45,
+        "shield": 0.3
+      },
+      "gear_ladders": {
+        "fortress": [
+          "armor_enhancement",
+          "shield_enhancement",
+          "ring_of_protection",
+          "jingasa",
+          "amulet_of_natural_armor",
+          "cloak_of_resistance",
+          "con_item",
+          "primary_stat_item",
+          "weapon_enhancement"
+        ],
+        "deflector": [
+          "ring_of_protection",
+          "jingasa",
+          "amulet_of_natural_armor",
+          "armor_enhancement",
+          "shield_enhancement",
+          "cloak_of_resistance",
+          "con_item",
+          "weapon_enhancement",
+          "primary_stat_item"
+        ]
+      },
+      "feat_spine": [
+        "Crane Style",
+        "Crane Wing",
+        "Snapping Turtle Style",
+        "Toughness",
+        "Shield Focus"
+      ],
+      "dips": [
+        {
+          "class": "fighter",
+          "levels": 1,
+          "buys": "heavy armor and tower shield proficiency plus a bonus combat feat"
+        }
+      ],
+      "margins": {
+        "ac_combat": 1.3,
+        "hp": 1.0
+      }
+    },
+    "juggernaut": {
+      "description": "Saves and hit points. Shrugs the save-or-lose, outlasts the fight.",
+      "casting": false,
+      "primaries": [
+        "hp",
+        "fort",
+        "will"
+      ],
+      "floors": {
+        "ac": 0.65,
+        "ref": 0.55,
+        "to_hit": 0.7
+      },
+      "stat_priority": [
+        "con",
+        "primary",
+        "wis",
+        "dex"
+      ],
+      "weapon_policy": "one_handed_shield",
+      "enhancement_split": {
+        "weapon": 0.3,
+        "armor": 0.5,
+        "shield": 0.2
+      },
+      "gear_ladders": {
+        "outlast": [
+          "con_item",
+          "cloak_of_resistance",
+          "jingasa",
+          "armor_enhancement",
+          "amulet_of_natural_armor",
+          "ring_of_protection",
+          "primary_stat_item",
+          "weapon_enhancement"
+        ],
+        "warded": [
+          "cloak_of_resistance",
+          "con_item",
+          "jingasa",
+          "ring_of_protection",
+          "armor_enhancement",
+          "amulet_of_natural_armor",
+          "weapon_enhancement",
+          "primary_stat_item"
+        ]
+      },
+      "feat_spine": [
+        "Toughness",
+        "Great Fortitude",
+        "Iron Will",
+        "Lightning Reflexes"
+      ],
+      "dips": [],
+      "margins": {
+        "hp": 1.15,
+        "fort": 1.3,
+        "will": 0.4
+      }
+    },
+    "sniper": {
+      "description": "Sustained ranged damage. Added by the gate's first run: alpha's finesse policy was forcing gunslingers onto light melee weapons and losing to their own random twins.",
+      "casting": false,
+      "primaries": [
+        "dpr_raw",
+        "to_hit"
+      ],
+      "floors": {
+        "ac": 0.65,
+        "hp": 0.6,
+        "fort": 0.5,
+        "ref": 0.6,
+        "will": 0.25,
+        "to_hit": 0.9
+      },
+      "stat_priority": [
+        "dex",
+        "primary",
+        "con",
+        "wis"
+      ],
+      "weapon_policy": "ranged",
+      "enhancement_split": {
+        "weapon": 0.6,
+        "armor": 0.3,
+        "shield": 0.1
+      },
+      "gear_ladders": {
+        "deadeye": [
+          "weapon_enhancement",
+          "primary_stat_item",
+          "boots_of_speed",
+          "cloak_of_resistance",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "con_item",
+          "armor_enhancement"
+        ],
+        "skirmisher": [
+          "weapon_enhancement",
+          "cloak_of_resistance",
+          "primary_stat_item",
+          "boots_of_speed",
+          "amulet_of_natural_armor",
+          "ring_of_protection",
+          "armor_enhancement",
+          "con_item"
+        ]
+      },
+      "feat_spine": [
+        "Deadly Aim",
+        "Point-Blank Shot",
+        "Rapid Shot",
+        "Precise Shot",
+        "Improved Critical"
+      ],
+      "dips": [],
+      "margins": {
+        "dpr_raw": 0.3,
+        "to_hit": 1.1
+      }
+    },
+    "controller": {
+      "description": "Save-or-lose casting. Maximum DC on the highest spell or power level reachable.",
+      "casting": true,
+      "primaries": [
+        "dc",
+        "caster_tier"
+      ],
+      "floors": {
+        "ac": 0.6,
+        "hp": 0.6,
+        "fort": 0.5,
+        "ref": 0.5,
+        "will": 0.4
+      },
+      "stat_priority": [
+        "primary",
+        "con",
+        "dex",
+        "wis"
+      ],
+      "weapon_policy": "any",
+      "enhancement_split": {
+        "weapon": 0.15,
+        "armor": 0.85,
+        "shield": 0.0
+      },
+      "gear_ladders": {
+        "dc_stack": [
+          "primary_stat_item",
+          "cloak_of_resistance",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "con_item",
+          "armor_enhancement"
+        ],
+        "hardened": [
+          "primary_stat_item",
+          "cloak_of_resistance",
+          "con_item",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "armor_enhancement"
+        ]
+      },
+      "feat_spine": [
+        "Spell Focus",
+        "Greater Spell Focus",
+        "Spell Penetration",
+        "Improved Initiative"
+      ],
+      "dips": [],
+      "margins": {
+        "dc": 1.1
+      }
+    },
+    "specialist": {
+      "description": "Skills, faces and support chassis. Breadth is the product; combat axes are floored, not pushed.",
+      "casting": true,
+      "primaries": [
+        "skill_breadth",
+        "dc"
+      ],
+      "floors": {
+        "ac": 0.65,
+        "hp": 0.6,
+        "fort": 0.5,
+        "ref": 0.55,
+        "will": 0.45
+      },
+      "stat_priority": [
+        "primary",
+        "secondary",
+        "con",
+        "dex"
+      ],
+      "weapon_policy": "any",
+      "enhancement_split": {
+        "weapon": 0.3,
+        "armor": 0.6,
+        "shield": 0.1
+      },
+      "gear_ladders": {
+        "operative": [
+          "primary_stat_item",
+          "cloak_of_resistance",
+          "con_item",
+          "ring_of_protection",
+          "amulet_of_natural_armor",
+          "armor_enhancement"
+        ],
+        "envoy": [
+          "primary_stat_item",
+          "cloak_of_resistance",
+          "ring_of_protection",
+          "con_item",
+          "amulet_of_natural_armor",
+          "armor_enhancement"
+        ]
+      },
+      "feat_spine": [
+        "Improved Initiative",
+        "Toughness"
+      ],
+      "dips": [],
+      "margins": {
+        "skill_breadth": 12
+      }
+    }
+  },
+  "class_roles": {
+    "adept": [
+      "controller"
+    ],
+    "aegis": [
+      "wall",
+      "juggernaut"
+    ],
+    "alchemist": [
+      "controller",
+      "specialist"
+    ],
+    "antipaladin": [
+      "striker",
+      "juggernaut"
+    ],
+    "arcanist": [
+      "controller"
+    ],
+    "aristocrat": [
+      "specialist"
+    ],
+    "barbarian": [
+      "striker",
+      "juggernaut"
+    ],
+    "barbarian (unchained)": [
+      "striker",
+      "juggernaut"
+    ],
+    "bard": [
+      "specialist",
+      "controller"
+    ],
+    "bloodrager": [
+      "striker"
+    ],
+    "brawler": [
+      "striker"
+    ],
+    "cavalier": [
+      "striker"
+    ],
+    "cleric": [
+      "controller",
+      "juggernaut",
+      "striker"
+    ],
+    "commoner": [
+      "specialist"
+    ],
+    "cryptic": [
+      "striker"
+    ],
+    "dread": [
+      "controller",
+      "specialist"
+    ],
+    "druid": [
+      "controller",
+      "wall"
+    ],
+    "expert": [
+      "specialist"
+    ],
+    "fighter": [
+      "striker",
+      "wall"
+    ],
+    "gunslinger": [
+      "sniper"
+    ],
+    "harbinger": [
+      "striker"
+    ],
+    "highlord": [
+      "striker"
+    ],
+    "hunter": [
+      "striker",
+      "sniper"
+    ],
+    "inquisitor": [
+      "striker",
+      "controller"
+    ],
+    "investigator": [
+      "specialist"
+    ],
+    "kineticist": [
+      "juggernaut"
+    ],
+    "magus": [
+      "striker"
+    ],
+    "marksman": [
+      "sniper"
+    ],
+    "medic": [
+      "specialist"
+    ],
+    "medium": [
+      "specialist"
+    ],
+    "mesmerist": [
+      "controller",
+      "specialist"
+    ],
+    "monk": [
+      "wall",
+      "juggernaut"
+    ],
+    "monk (unchained)": [
+      "wall",
+      "juggernaut"
+    ],
+    "mystic": [
+      "striker"
+    ],
+    "ninja": [
+      "alpha"
+    ],
+    "occultist": [
+      "controller",
+      "striker"
+    ],
+    "omdura": [
+      "striker",
+      "controller"
+    ],
+    "oracle": [
+      "controller",
+      "striker"
+    ],
+    "paladin": [
+      "juggernaut",
+      "wall",
+      "striker"
+    ],
+    "psion": [
+      "controller"
+    ],
+    "psychic": [
+      "controller"
+    ],
+    "psychic warrior": [
+      "striker",
+      "wall"
+    ],
+    "ranger": [
+      "striker",
+      "sniper"
+    ],
+    "rogue": [
+      "alpha"
+    ],
+    "rogue (unchained)": [
+      "alpha"
+    ],
+    "samurai": [
+      "striker",
+      "wall"
+    ],
+    "shaman": [
+      "controller"
+    ],
+    "shifter": [
+      "striker"
+    ],
+    "skald": [
+      "striker",
+      "specialist"
+    ],
+    "slayer": [
+      "alpha",
+      "striker"
+    ],
+    "sorcerer": [
+      "controller"
+    ],
+    "soulknife": [
+      "striker"
+    ],
+    "spiritualist": [
+      "controller"
+    ],
+    "summoner": [
+      "controller"
+    ],
+    "summoner (unchained)": [
+      "controller"
+    ],
+    "swashbuckler": [
+      "striker"
+    ],
+    "tactician": [
+      "specialist"
+    ],
+    "vampire hunter": [
+      "striker"
+    ],
+    "vigilante": [
+      "striker"
+    ],
+    "vitalist": [
+      "specialist"
+    ],
+    "voyager": [
+      "striker"
+    ],
+    "warder": [
+      "wall"
+    ],
+    "warlord": [
+      "striker"
+    ],
+    "warpriest": [
+      "striker",
+      "wall"
+    ],
+    "warrior": [
+      "striker"
+    ],
+    "wilder": [
+      "controller"
+    ],
+    "witch": [
+      "controller"
+    ],
+    "wizard": [
+      "controller"
+    ]
+  },
+  "_ambient_note": "Spines never list the tax_primary_blocklist feats (Power Attack, Dodge, Weapon Finesse, Combat Expertise, ...): those are house-waived AMBIENT -- every qualifying character has them, no pool can offer them, and the metric folds them via power_metric.ambient_feats. Listing one in a spine wastes the spine's top slot forever (the optimized_striker golden's predicate caught exactly that with Power Attack)."
+}

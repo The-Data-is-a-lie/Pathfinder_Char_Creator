@@ -159,7 +159,7 @@ def backstory_stats():
     return jsonify(snapshot())
 
 def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y",
-                         misc_homebrew_rules="Y", luck_direction=None):
+                         misc_homebrew_rules="Y", luck_direction=None, optimize=None):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -197,7 +197,7 @@ def process_input_values(input_values, spheres_flag="N", seed=None, professions_
         with _GENERATION_LOCK:
             return generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
-            seed, professions_flag, trainers_flag, misc_homebrew_rules, luck_direction
+            seed, professions_flag, trainers_flag, misc_homebrew_rules, luck_direction, optimize
             )
 
     except ValueError as ve:
@@ -234,6 +234,10 @@ def update_character_data():
     # It exists so the negative side can be exercised without hand-editing LUCK_PROPENSITY /
     # LUCK_SELL_SHARE in luck.py -- constants that then had to be remembered before shipping.
     luck_direction = data.pop('luck_direction', None) or None
+    # Optimized mode (spec 15), read by NAME and popped before `items` like the flags above.
+    # `true`/`y` turns it on with the role drawn from the class map; a role name forces that role;
+    # absent -> None -> random mode, byte-identical to today.
+    optimize = data.pop('optimize', None)
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -250,7 +254,7 @@ def update_character_data():
         non_input_data.append(value)
 
     results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag,
-                                   misc_homebrew_rules, luck_direction)
+                                   misc_homebrew_rules, luck_direction, optimize)
     # Promote the generator's bare '/license' path to an absolute URL. The Foundry module stores this
     # payload on an Actor and may surface the pointer long after the request, in a context that has no
     # idea which backend produced it -- a relative path would resolve against Foundry's own host.

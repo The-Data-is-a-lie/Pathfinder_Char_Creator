@@ -350,8 +350,19 @@ def select_classes(character, class_choice, chosen_BAB, chosen_caster_level=None
 
     want_multi = isinstance(multi_class, str) and multi_class.lower() in ('y', 'yes')
     if want_multi:
-        count = random.choices([2, 3, 4], weights=[50, 35, 15], k=1)[0]
+        # OPTIMIZED MODE (spec 15, ruling 8): an explicit multi_class='Y' is honoured as the
+        # least-hurt shape -- single class plus ONE dip, and when the first pick casts, the dip
+        # draws from non-casters only, protecting caster level (the one measured multiclass
+        # cost). Random mode keeps its 2/3/4 weighted roll and draw pattern untouched.
+        from utils.class_func.power_role import optimize_requested
+        optimized, _forced = optimize_requested(getattr(character, 'optimize_request', None))
+        if optimized:
+            count = 2
+        else:
+            count = random.choices([2, 3, 4], weights=[50, 35, 15], k=1)[0]
         pool = _prune_class_pool(_available_class_pool(character), picks[0])
+        if optimized and _is_caster(character, picks[0]):
+            pool = [c for c in pool if not _is_caster(character, c)] or pool
         while len(picks) < count and pool:
             # Cap caster classes at 3 (pf1 has only 3 spellbook slots) — once 3 casters are picked,
             # drop the rest of the casters so remaining slots draw from non-casters only.

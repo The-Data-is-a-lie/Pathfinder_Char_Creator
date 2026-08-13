@@ -2,6 +2,7 @@ import random
 from math import floor
 from utils.util import roll_dice
 from utils.class_func import luck
+from utils.class_func.power_role import stat_order
 
 def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     if not isinstance(num_dice, int) or num_dice <= 0:
@@ -29,13 +30,25 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     orig_stats = {attr: roll_dice(num_dice, num_sides) for attr in ['str', 'dex', 'con', 'int', 'wis', 'cha']}
 
 
-    # Identify the original main stat
-    orig_stats = swap_stats(character, main_stat, orig_stats)
+    # OPTIMIZED MODE (spec 15): the dice are honoured -- exactly what was rolled is what is placed
+    # -- but ALL SIX slots are ordered by the role's priority, not just the top two. The dump
+    # stats are simply whatever the role never asked for, and the Con floor is Con's guaranteed
+    # top-half position in every role's priority. Random mode keeps the two swap_stats calls (and
+    # their draw pattern) untouched.
+    placement = stat_order(character)
+    if placement:
+        rolled = sorted(orig_stats.values(), reverse=True)
+        orig_stats = {ability: rolled[placement.index(ability)] for ability in orig_stats}
+        if main_stat_2 is not None:
+            main_stat_2 = main_stat_2.split('/')[0]
+    else:
+        # Identify the original main stat
+        orig_stats = swap_stats(character, main_stat, orig_stats)
 
-    if main_stat_2 != None:
-        main_stat_parts_2 = main_stat_2.split('/')
-        main_stat_2 = random.choice(main_stat_parts_2)      
-        orig_stats = swap_stats(character, main_stat_2, orig_stats, new=True)   
+        if main_stat_2 != None:
+            main_stat_parts_2 = main_stat_2.split('/')
+            main_stat_2 = random.choice(main_stat_parts_2)
+            orig_stats = swap_stats(character, main_stat_2, orig_stats, new=True)
 
     stats = orig_stats.copy()
 
@@ -106,16 +119,29 @@ def create_inherents_func(character, stats, inherents=0):
     for stat in inherent_stats:
         inherent_stats[stat] = 0
 
+    # OPTIMIZED MODE (spec 15): inherent bonuses pour down the role's stat priority, +10 cap per
+    # ability, instead of scattering uniformly. Pure upside by ruling -- no input tangles this pool.
+    placement = stat_order(character)
+    if placement:
+        for ability in placement:
+            if inherents <= 0:
+                break
+            allocation = min(inherents, 10)
+            inherent_stats[ability] = allocation
+            inherents -= allocation
+        character.inherents = inherent_stats
+        return None
+
     while inherents > 0:
         if len(attributes) == 0:
             break
 
         # Randomly pick an attribute
         attribute = random.choice(attributes)
-        
+
         # Calculate the maximum allowable increase for the selected attribute
         max_increase = 10 - inherent_stats[attribute]
-        
+
         if max_increase > 0:
             # Allocate a random amount of inherents to this attribute, up to the maximum allowable increase
             allocation = min(inherents, random.randint(1, max_increase))
@@ -154,6 +180,13 @@ def level_up_stats(stats, character, main_stat=None):
     character.luck_attribute_bumps = luck.roll_attribute_payout(
         _received, getattr(character, 'main_stat', None))
     luck.record_audit(character, 'attribute_points', _before, _spent, _received, max(0, num_of_stats))
+    # OPTIMIZED MODE (spec 15): every level-up bump lands on the role's first-priority ability --
+    # the classic optimal play. Random mode keeps the uniform scatter and its draw pattern.
+    placement = stat_order(character)
+    if placement:
+        level_up_stats[placement[0]] += max(0, num_of_stats)
+        character.level_up_stats = level_up_stats
+        return
     for i in range(max(0, num_of_stats)):
         attribute = random.choice(list(level_up_stats.keys()))
         level_up_stats[attribute] += 1

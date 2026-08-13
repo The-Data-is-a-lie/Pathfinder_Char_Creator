@@ -139,6 +139,15 @@ def build_selector(character):
         if _entry['name'] in specialty_set:
             add_specialty_feats(character, feat_list, _entry['name'])
 
+    # OPTIMIZED MODE (spec 15): the role's feat spine joins the CANDIDATE list here, upstream of
+    # feat_spell_searcher and the prereq filter -- so a spine feat enters the pool exactly when it
+    # is legal, through the same machinery as everything else. Without this the spine could only
+    # claim feats the randomly-drawn bucket slice happened to contain, which is why an optimized
+    # fighter shipped without Power Attack (caught by the optimized_striker golden's predicate).
+    role = getattr(character, 'role', None)
+    if role:
+        feat_list.extend(str(name).lower() for name in role.get('feat_spine') or [])
+
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
     result_dict = transform_result_dict(character, result_dict_pre)
     chosen_feats = get_feats_without_prerequisites(character, character.c_class, result_dict, feat_amount=character.feat_amounts)
@@ -217,6 +226,27 @@ def get_feats_without_prerequisites(character, class_1, dataset_name, level= Non
 
     return chosen_feats
 
+def _spine_pick(character, pool):
+    """The first role feat-spine entry the character does not own and the pool can legally offer.
+
+    OPTIMIZED MODE ONLY (spec 15): returns None the moment there is no role, so random mode's
+    draw pattern is untouched. Prerequisite-locked spine feats (Greater Weapon Focus before its
+    parents) simply are not in the pool yet and are skipped until a later pick unlocks them; the
+    ownership test is character.chooseable, so the spine needs no state of its own.
+    """
+    role = getattr(character, 'role', None)
+    spine = (role or {}).get('feat_spine') or []
+    if not spine:
+        return None
+    lowered = {str(entry).lower(): entry for entry in pool}
+    owned = {str(name).lower() for name in character.chooseable}
+    for name in spine:
+        low = str(name).lower()
+        if low not in owned and low in lowered:
+            return lowered[low]
+    return None
+
+
 def choosing_feats(character, amount, base, total_choices):
     if amount is None or amount <= 0:
         return []
@@ -237,11 +267,16 @@ def choosing_feats(character, amount, base, total_choices):
         if not total_choices_set:
             break
         before = len(chosen_feats)
-        # sorted(), not tuple(): a set of strings iterates in hash order, and Python randomizes string
-        # hashing per process -- so tuple(set) gave a DIFFERENT feat on every run even under a fixed
-        # random.seed(). Sorting makes the draw reproducible (see the seed param on
-        # main_test.generate_random_char); the set is mutated below, so this re-sorts each pass.
-        chosen = random.choice(sorted(total_choices_set))
+        # OPTIMIZED MODE: the role's feat spine claims the slot when one of its entries is legal
+        # in THIS pool right now; otherwise (and always in random mode) the uniform draw below
+        # decides. Spine picks consume no RNG draw, deliberately.
+        chosen = _spine_pick(character, total_choices_set)
+        if chosen is None:
+            # sorted(), not tuple(): a set of strings iterates in hash order, and Python randomizes string
+            # hashing per process -- so tuple(set) gave a DIFFERENT feat on every run even under a fixed
+            # random.seed(). Sorting makes the draw reproducible (see the seed param on
+            # main_test.generate_random_char); the set is mutated below, so this re-sorts each pass.
+            chosen = random.choice(sorted(total_choices_set))
         chosen_feats[chosen.lower()] = None
 
         # Update character's chooseable feats

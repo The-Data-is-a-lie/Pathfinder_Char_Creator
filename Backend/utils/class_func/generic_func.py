@@ -305,7 +305,19 @@ def no_prereq_loop(character, dataset):
 
 
         # Check if all prereqs are met
-        if not prereq_parts or set(prereq_parts).issubset(character.chooseable):
+        satisfied = not prereq_parts or set(prereq_parts).issubset(character.chooseable)
+        if not satisfied and getattr(character, 'role', None) is not None:
+            # OPTIMIZED MODE ONLY (spec 15, wall pass): an or-clause part -- "base attack bonus
+            # +2 or monk level 1st" -- can never be a chooseable member verbatim, which locked
+            # every style feat out of every pool, for everyone, forever. Satisfying ANY
+            # alternative is RAW. Random mode keeps the strict subset test so its pools (and the
+            # seven goldens) do not move; widening it there is a separate, golden-moving change.
+            satisfied = all(
+                part in character.chooseable
+                or (' or ' in part and any(alt.strip() in character.chooseable
+                                           for alt in part.split(' or ')))
+                for part in prereq_parts)
+        if satisfied:
             character.chooseable_talents.append(name_lower)
             seen.add(name_lower)
 

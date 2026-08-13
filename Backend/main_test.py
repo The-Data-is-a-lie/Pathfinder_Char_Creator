@@ -71,6 +71,7 @@ from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feat
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
 from utils.class_func.pipeline					import phase, seal, require_sealed, PhaseRecord
+from utils.class_func.power_role				import phase_power_role
 from utils.payload							import build_payload, gear_display, PAYLOAD_KEYS
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth, roll_talent_budget
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
@@ -1542,6 +1543,18 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	# Recorded on the character so separate_feats_func can keep these out of the story / flaw /
 	# flavour / class buckets -- an E-Kat feat is an ordinary feat and must render as one.
 	character.e_kat_feats_chosen = list(e_kat_feats_chosen)
+	# OPTIMIZED MODE (spec 15, ticket 06's disposition): optimize SUBSUMES truly_random_feats and
+	# forces the build-aware path -- build_selector is literally the build selector, and it is the
+	# only route on which the role's feat spine can fire (the gate's first run caught optimized
+	# gunslingers with no Deadly Aim because the default 'Y' path bypasses choosing_feats).
+	if getattr(character, 'role', None):
+		truly_random_feats = 'N'
+		# The ambient-prereq unlock (wall pass): the house-waived feats are held by rule but
+		# invisible to the prereq vocabulary, so a spine could never chain through Dodge /
+		# Improved Unarmed Strike / Combat Expertise (Crane Style was legal and unpoolable).
+		# Optimize-gated, so random mode's prereq world is untouched.
+		from utils.class_func.power_role import ambient_feat_names
+		character.chooseable.update(ambient_feat_names())
 	if truly_random_feats.upper() == "Y":
 	# Truly Random Feats
 	# full casters + mid casters with low BAB
@@ -2360,7 +2373,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, ):
+						 luck_direction=None, optimize=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2425,6 +2438,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# DEBUG override: 'buy' / 'sell' forces the luck branch and guarantees a stake. None (the
 		# default, and what every real client sends) leaves the ordinary weighted rolls alone.
 		character.luck_direction = luck_direction
+		# The raw optimize request, readable by select_classes (which runs BEFORE the role phase
+		# and needs the on/off bit for its multiclass posture -- ruling 8). phase_power_role is
+		# what turns it into a role.
+		character.optimize_request = optimize
 		# Instantitae character.class_feats_amount
 		character.class_feats_amount = 0
 		# Instantitae teamwork_feats
@@ -2435,6 +2452,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		f_name, l_name = phase_bootstrap_identity(
 			character, userInput_gender, userInput_region, userInput_race,
 			class_choice, chosen_BAB, chosen_caster_level, multi_class)
+
+		# The optimizer's plan object (spec 15): off -> role None and every chooser takes its
+		# existing path, which is what keeps the seven goldens byte-identical. Runs right after
+		# the classes are picked, by ruling -- the role follows the class, never the reverse.
+		phase_power_role(character, optimize)
 
 		#add an optional flaws rule function
 		phase_alignment_and_level(character, alignment_input, deity_flag, low_level, high_level)
@@ -3023,10 +3045,14 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		_buff_gaps += _spell_gaps
 		_buff_gaps += getattr(character, "talent_buff_gaps", None) or []
 		_buff_gaps += getattr(character, "stance_buff_gaps", None) or []
-		# Items the chooser rolled and rejected for not being in foundry_item_names.json. This is the
-		# retry loop working as intended, NOT a defect, so it is summarized rather than added to
-		# buff_gaps -- listing every rejected roll would bury the real mismatches. The names stay on
-		# character.unresolved_items for anyone cleaning up the item data.
+		# Items the chooser rolled and rejected for not being in foundry_item_names.json.
+		# This comment used to read "the retry loop working as intended, NOT a defect". That was
+		# wrong, and believing it cost the generator a third of its item catalogue: the rejections
+		# were a casing mismatch, not missing data, and every "X of Y" item -- the whole big six --
+		# was unbuyable. See item_and_price.canonical_name_map. A NON-ZERO COUNT HERE IS A DATA
+		# SIGNAL WORTH READING, not noise; gates/validate_item_names.py holds the floor.
+		# Still summarized rather than folded into buff_gaps: listing every rejected roll would
+		# bury the real mismatches. The names stay on character.unresolved_items.
 		_unresolved = list(getattr(character, "unresolved_items", None) or {})
 		if _unresolved:
 			print(f"item names not in foundry_item_names.json: {len(_unresolved)} rejected roll(s), "

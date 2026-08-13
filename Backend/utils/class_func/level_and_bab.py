@@ -33,7 +33,13 @@ def randomize_level(character, min_num, max_num, flaw_amount=0):
     # below the rolled class count truncates the picks (a level-2 character caps at 2 classes).
     picks = getattr(character, '_class_picks', None) or [character.c_class]
     picks = picks[:max(1, min(len(picks), level))]
-    class_levels = _split_levels(level, len(picks))
+    # OPTIMIZED MODE (spec 15, ruling 8): a multiclass is a dip -- every extra class takes exactly
+    # 1 level and the primary keeps the rest. Random mode keeps the uniform scatter (and its
+    # draws). The role phase runs before the level phase, so `role` is authoritative here.
+    if getattr(character, 'role', None) and len(picks) > 1:
+        class_levels = [level - (len(picks) - 1)] + [1] * (len(picks) - 1)
+    else:
+        class_levels = _split_levels(level, len(picks))
     _build_classes(character, picks, class_levels)
 
     update_level(character, level, flaw_amount)

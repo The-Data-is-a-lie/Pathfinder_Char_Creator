@@ -221,6 +221,16 @@ def assign_skill_ranks(character, selectable_skills, not_selectable_skills, budg
     remaining = budget
     open_skills = list(dict.fromkeys(selectable_skills))   # dedupe, preserve order
 
+    # OPTIMIZED MODE (spec 15, wall pass): ac_combat-primary roles bank 3 Acrobatics ranks first
+    # -- the RAW fighting-defensively +3 unlock the metric's posture model scores. Random mode
+    # never has a role, and the draw below is untouched either way.
+    role = getattr(character, 'role', None)
+    if role and 'ac_combat' in (role.get('primaries') or []):
+        banked = min(3, max_skill_ranks, remaining)
+        if banked > 0:
+            skill_ranks['acrobatics'] = max(skill_ranks.get('acrobatics', 0), banked)
+            remaining -= banked
+
     while remaining > 0 and open_skills:
         skill = random.choice(open_skills)
         room = max_skill_ranks - skill_ranks.get(skill, 0)
@@ -235,8 +245,10 @@ def assign_skill_ranks(character, selectable_skills, not_selectable_skills, budg
 
 def assign_dummy_zeroes(not_selectable_skills, skill_ranks):
     for unassigned_skill in not_selectable_skills:
-        skill_ranks[unassigned_skill] = 0       
-        # print("breaking at unassigned") 
+        # setdefault, not assignment: the optimized wall pre-banks Acrobatics ranks before the
+        # walk, and an unconditional zero here silently erased them. Identical for random mode,
+        # where no key is ever pre-set.
+        skill_ranks.setdefault(unassigned_skill, 0)
 
     return skill_ranks
 

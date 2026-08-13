@@ -309,6 +309,14 @@ def spells_known_selection(character, class_entry):
 
         query_i = alignment_spell_limits(character, spell_data, i, "alignment_exclusion",
                                          class_entry['class_for_spells'])
+        # OPTIMIZED MODE (spec 15, the sweaty pass): a caster built to a MARTIAL role exists to
+        # pre-buff -- weight the curated buff list (power_adders.json::spell_buffs, the same
+        # table the metric scores) above even the specialty schools' x100. Random mode and
+        # casting-role characters keep the theme weights untouched.
+        _role = getattr(character, 'role', None)
+        if _role and not _role.get('casting'):
+            from utils.class_func.power_role import buff_spell_names
+            query_i.loc[query_i['name'].str.lower().isin(buff_spell_names()), 'weight'] *= 1000
         # Don't want more spells selected than there are in the list
         select_spell=min(select_spell_list[i], len(query_i), select_spell)
         # only sample required number of spells
