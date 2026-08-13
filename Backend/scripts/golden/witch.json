@@ -589,6 +589,7 @@
  ],
  "deity_name": "Kurgess",
  "dex": 8,
+ "enhancement_desc_dict": {},
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {

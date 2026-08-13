@@ -729,6 +729,7 @@
  ],
  "deity_name": "Shelyn",
  "dex": 16,
+ "enhancement_desc_dict": {},
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
