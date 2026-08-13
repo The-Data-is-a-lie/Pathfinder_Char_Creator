@@ -35,6 +35,7 @@ from _harness import REPO, Report                                       # noqa: 
 ROOT = REPO
 DUMP = ROOT / "Backend/json/pf_content_companions.json"
 SPECIES = ROOT / "Backend/json/animal_choices.json"
+FAMILIARS = ROOT / "Backend/json/familiar_choices.json"
 ALIASES = ROOT / "Backend/json/companion_species_aliases.json"
 
 CREATURE_PACKS = ("pf-companions", "pf-familiars")
@@ -88,6 +89,9 @@ def main():
 
     dump = load(DUMP)
     species = load(SPECIES)
+    # The familiar pool resolves by the same clone-by-name rule (PACK_BY_TYPE maps familiar ->
+    # pf-familiars), so its ten species are swept alongside the companion tiers.
+    species = dict(species, **{k: v for k, v in load(FAMILIARS).items() if k != '_readme'})
     alias_data = load(ALIASES) if ALIASES.exists() else {}
     aliases = {k.lower(): v.lower() for k, v in (alias_data.get("aliases") or {}).items()}
 

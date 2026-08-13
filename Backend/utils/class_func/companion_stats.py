@@ -826,5 +826,11 @@ def stat_bonded_creatures(character):
     uniform key set with nulls ships a ghost a renderer will draw.
     """
     for entry in getattr(character, 'bonded_creatures', None) or []:
+        if entry.get('type') == 'familiar' and entry.get('species'):
+            # A familiar's numbers key off the MASTER (half HP, master BAB/saves/ranks), none of
+            # which are final this early in the pipeline -- familiars.stat_familiars is the late
+            # pass that fills these in after phase_luck_resolution. Absence entries still fall
+            # through and get stats: None like everyone else's.
+            continue
         entry['stats'] = companion_stats(character, entry)
     return character.bonded_creatures if hasattr(character, 'bonded_creatures') else []

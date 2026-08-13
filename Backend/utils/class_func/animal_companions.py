@@ -39,10 +39,12 @@ no wealth-by-level). An ABSENCE entry records why there is no creature, so it ca
 WHAT THIS SLICE DOES NOT DO
 ---------------------------
 The advancement merge and the stat-block math are #31. Entries carry the raw species block and the
-chassis row, exactly as the old payload did. Familiars and eidolons resolve to no entry at all,
-because `familiar_choices.json` and `eidolon_base_forms.json` do not exist yet -- their rows are in
-the table and marked `species_data`, so the grantor set stays complete and declarative while the
-resolver stays honest about what it can actually name.
+chassis row, exactly as the old payload did. FAMILIARS resolve here too (2026-08-12, the v1 debt):
+their species come from `familiar_choices.json` via the same bucket lookup, they carry NO chassis
+(their numbers key off the master, computed by `familiars.stat_familiars` in a LATE pass because
+the master's HP/skills/luck are not final when the companion stat pass runs). Eidolons still
+resolve to no entry: `eidolon_base_forms.json` does not exist yet -- the row is in the table and
+marked `species_data`, so the grantor set stays complete while the resolver stays honest.
 """
 import random
 
@@ -130,9 +132,19 @@ def _effective_level(expression, level, character, minimum=None):
     return value
 
 
+def _species_buckets(character):
+    """Every bucket a `species_pool` may draw from: the animal_choices tiers plus the familiar
+    pool. One lookup, so `_find_species` and `_kind_of` can never disagree about who exists."""
+    buckets = dict(getattr(character, 'animal_choices', None) or {})
+    familiar = (getattr(character, 'familiar_choices', None) or {}).get('familiar')
+    if familiar:
+        buckets['familiar'] = familiar
+    return buckets
+
+
 def _standard_pool(character, tiers):
     """Species names from the named animal_choices tiers, or the literal names given."""
-    choices = getattr(character, 'animal_choices', None) or {}
+    choices = _species_buckets(character)
     names = []
     for tier in tiers:
         if tier in choices:
@@ -166,7 +178,7 @@ def _pick_species(character, row, curated):
 
 
 def _find_species(character, name):
-    choices = getattr(character, 'animal_choices', None) or {}
+    choices = _species_buckets(character)
     for bucket in choices.values():
         if name in bucket:
             return bucket[name]
@@ -174,7 +186,7 @@ def _find_species(character, name):
 
 
 def _kind_of(character, name):
-    choices = getattr(character, 'animal_choices', None) or {}
+    choices = _species_buckets(character)
     for tier, bucket in choices.items():
         if name in bucket:
             return tier
@@ -261,8 +273,12 @@ def resolve_bonded_creatures(character):
         if species is None:
             continue
 
+        # A familiar has no chassis row: its numbers key off the MASTER (familiars.py's late
+        # pass), and handing it the companion table here would put wrong data on the entry.
+        chassis = (None if row['creature_type'] == 'familiar'
+                   else _chassis(character, min(effective, character_level or effective)))
         entry = _entry(character, row, grantor, species, kind, _find_species(character, species),
-                       _chassis(character, min(effective, character_level or effective)),
+                       chassis,
                        outcome='granted', archetype=archetype_name,
                        effective_level=effective)
         if fell_back:
@@ -351,7 +367,11 @@ def _stack(character, entries, character_level):
     for entry in seen:
         if character_level:
             entry['effective_level'] = min(entry['effective_level'], character_level)
-        entry['chassis'] = _chassis(character, entry['effective_level'])
+        # A familiar's chassis stays None through the re-read too -- its numbers key off the
+        # master, and handing it the companion table here is exactly the stomp the resolver
+        # already refused once (caught by the invariant sweep, 2026-08-13).
+        if entry['type'] != 'familiar':
+            entry['chassis'] = _chassis(character, entry['effective_level'])
         out.append(entry)
     return out
 

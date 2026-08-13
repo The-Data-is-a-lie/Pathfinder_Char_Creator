@@ -44,6 +44,7 @@ from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alig
 from utils.class_func.animal_companions 			import resolve_bonded_creatures
 from utils.class_func.companion_feats 			import companion_feats
 from utils.class_func.companion_stats 			import stat_bonded_creatures
+from utils.class_func.familiars 				import stat_familiars
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
@@ -157,7 +158,9 @@ character_json_config = {
 	'companion_grantors': Load_when_needed('Backend/json/companion_grantors.json'),
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
 	'deity': Load_when_needed('Backend/json/deity.json'),	
-	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),		
+	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),
+	'familiar_choices': Load_when_needed('Backend/json/familiar_choices.json'),
+	'familiar_master_bonus': Load_when_needed('Backend/json/familiar_master_bonus.json'),
 	'feat_buckets': Load_when_needed('Backend/json/feat_buckets.json'),
 	'feat_tax': Load_when_needed('Backend/json/feat_tax.json'),
 	'first_names_regions': Load_when_needed('Backend/json/first_names_regions.json'),
@@ -2640,6 +2643,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_cf_bucket.clear()
 			_cf_bucket.update(_luck_sections)
 			_cf_bucket.update(_existing)
+
+		# Familiars stat LATE, here and not in stat_bonded_creatures: their numbers key off the
+		# MASTER (half HP, master BAB/saves/ranks), and luck has only just settled Total_HP.
+		# See familiars.py's module docstring.
+		stat_familiars(character, skill_ranks)
 
 
 
