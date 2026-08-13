@@ -1,0 +1,1818 @@
+{
+ "Total_HP": 132,
+ "age_number": 42,
+ "alignment": "Neutral Good",
+ "animal_companion": null,
+ "appearance": [
+  "Skeletal"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Herb Witch\": {\n        \"source\": \"Ultimate Wilderness pg. 89 , Heroes of the Wild pg. 11 Some witches dedicate their lives to the mastery of herb lore. Herb witches brew foul-tasting medicines, sweet poisons, and other concoctions from the untamed plants of the wild.\",\n        \"patron spells\": \" An herb witch must choose a patron with a theme compatible with the needs of the natural world, selected from the following list: ancestors, animals, death, elements, healing, plague, strength, time, water, winter, wisdom, or woodlands. This alters the witch's patron spells.\",\n        \"herb lore (ex)\": \" Herb witches are masters of herbalism, and they can use what they gather from garden or grove to duplicate many of the effects of alchemy. An herb witch can attempt Profession (herbalist) checks in place of Craft (alchemy) checks, and she gains a bonus on Profession (herbalist) checks equal to half her class level. Herb witches are adept at brewing thick herbal cure-alls called remedies. An herb witch prepares these remedies while communing with her familiar, during which she can prepare a number of remedies equal to 3 + her Intelligence modifier (minimum 1 remedy). A remedy becomes inert if it leaves the herb witch's possession, reactivating as soon as it returns to her keeping. A witch can never have more remedies than 3 + her Intelligence modifier. As a standard action, the herb witch can administer a remedy to herself or a creature within reach which consumes the remedy. The herb witch attempts a Profession (herbalist) check against the save DC of any one disease or poison currently afflicting the consumer. If she is successful, the affliction is suppressed for 1 minute. At 10th level, if she exceeds the DC of the check by 10 or more, the affliction immediately ends. If the disease or poison doesn't allow saving throws, the remedy is ineffective. An herb witch can also use a remedy to attempt to remove the blinded, deafened, fatigued, nauseated, sickened, and staggered conditions. This requires a Profession (herbalist) check with a DC equal to the spell or effect that caused the condition, or a DC 25 check if the condition was caused by an effect that doesn't allow a saving throw. If the herb witch succeeds, the condition is removed unless the condition is permanent; at 10th level, if the herb witch succeeds by 10 or more, her remedy can remove a permanent condition. Only a single condition, disease, or poison can be removed with each application of a remedy, and a creature can only benefit from one herbal remedy each day, whether or not the herb witch succeeds at her skill check. This replaces the hexes gained at 1st and 10th levels.\",\n        \"hexes\": \" An herb witch must select cauldron as her hex at 2nd level. The following witch hexes complement the herb witch archetype: fortune, healing, poison steep, swamp hag.\",\n        \"major hexes\": \" The following major hexes complement the herb witch archetype: major healing, weather control, witch's brew.\",\n        \"grand hexes\": \" The following grand hex complements the herb witch archetype: life giver.\"\n    }\n}",
+ "armor_ac": "4",
+ "armor_armor_check_penalty": "-2",
+ "armor_enhancement_bonus": 1,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "5",
+ "armor_name": "Chain coat",
+ "armor_spell_failure": 0,
+ "armor_weight": "40 lbs.",
+ "bab_total": 6,
+ "background_traits": [
+  "Demon Smiter",
+  "Researching the Blot",
+  "Greater Link",
+  "Underworld Explorer"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [
+  {
+   "archetype": "Herb Witch",
+   "chassis": null,
+   "contributors": [
+    "witch"
+   ],
+   "effective_level": 12,
+   "feats": [],
+   "flags": [],
+   "gear": [],
+   "gear_source": "not modelled in v1; when added, funded from character.gold (PF1e: companions have no wealth-by-level)",
+   "grantor": "witch",
+   "kind": "familiar",
+   "master_abilities": {
+    "abilities": [
+     {
+      "name": "alertness",
+      "note": "While the familiar is within arm's reach, the master gains the Alertness feat."
+     },
+     {
+      "name": "improved evasion",
+      "note": "On a Reflex save for half damage, the familiar takes no damage on a success and half damage on a failure."
+     },
+     {
+      "name": "share spells",
+      "note": "The master may cast a spell with a target of 'You' on the familiar (as a touch spell) instead of on himself."
+     },
+     {
+      "name": "empathic link",
+      "note": "The master and familiar share an empathic link to 1 mile; the master cannot see through its eyes."
+     },
+     {
+      "name": "deliver touch spells",
+      "note": "The familiar can deliver touch spells for the master if in contact with him when he casts."
+     },
+     {
+      "name": "speak with master",
+      "note": "The master and familiar can communicate verbally as if using a common language."
+     },
+     {
+      "name": "speak with animals of its kind",
+      "note": "The familiar can communicate with animals of approximately its own kind."
+     },
+     {
+      "name": "spell resistance",
+      "note": "The familiar gains spell resistance equal to the master's level + 5."
+     }
+    ],
+    "species_perk": "+3 bonus on Climb checks"
+   },
+   "name": "Sophie",
+   "outcome": "granted",
+   "sex": "Female",
+   "species": "lizard",
+   "species_stats": {
+    "starting statistics": {
+     "ability scores": {
+      "cha": 2,
+      "con": 8,
+      "dex": 15,
+      "int": 1,
+      "str": 3,
+      "wis": 12
+     },
+     "ac": "+0 natural armor",
+     "attack": "bite (1d4)",
+     "size": "tiny",
+     "special qualities": "low-light vision",
+     "speed": "20 ft. , climb 20 ft. "
+    }
+   },
+   "stats": {
+    "abilities": {
+     "cha": 2,
+     "con": 8,
+     "dex": 15,
+     "int": 11,
+     "str": 3,
+     "wis": 12
+    },
+    "ability_modifiers": {
+     "cha": -4,
+     "con": -1,
+     "dex": 2,
+     "int": 0,
+     "str": -4,
+     "wis": 1
+    },
+    "ac": 20,
+    "attacks": [
+     {
+      "alternative": false,
+      "atk": 4,
+      "count": 1,
+      "crit_multiplier": null,
+      "damage": "1d4-4",
+      "name": "bite",
+      "notes": null
+     }
+    ],
+    "bab": 6,
+    "cmb": 6,
+    "cmd": 12,
+    "flat_footed_ac": 18,
+    "hd": 12,
+    "hit_die": null,
+    "hp": 66,
+    "initiative": 2,
+    "merge_notes": [],
+    "natural_armor": 6,
+    "other": {},
+    "saves": {
+     "fort": 3,
+     "ref": 6,
+     "will": 9
+    },
+    "size": "tiny",
+    "size_change": null,
+    "skills": {
+     "acrobatics": {
+      "ranks": 6,
+      "total": 11
+     },
+     "appraise": {
+      "ranks": 12,
+      "total": 15
+     },
+     "bluff": {
+      "ranks": 12,
+      "total": 11
+     },
+     "diplomacy": {
+      "ranks": 6,
+      "total": 5
+     },
+     "disable device": {
+      "ranks": 3,
+      "total": 8
+     },
+     "disguise": {
+      "ranks": 6,
+      "total": 5
+     },
+     "escape artist": {
+      "ranks": 2,
+      "total": 7
+     },
+     "handle animal": {
+      "ranks": 2,
+      "total": 1
+     },
+     "heal": {
+      "ranks": 8,
+      "total": 12
+     },
+     "intimidate": {
+      "ranks": 9,
+      "total": 8
+     },
+     "knowledge arcana": {
+      "ranks": 5,
+      "total": 8
+     },
+     "knowledge engineering": {
+      "ranks": 3,
+      "total": 6
+     },
+     "knowledge geography": {
+      "ranks": 11,
+      "total": 14
+     },
+     "knowledge history": {
+      "ranks": 5,
+      "total": 8
+     },
+     "knowledge nature": {
+      "ranks": 6,
+      "total": 9
+     },
+     "knowledge nobility": {
+      "ranks": 7,
+      "total": 10
+     },
+     "knowledge religion": {
+      "ranks": 9,
+      "total": 12
+     },
+     "linguistics": {
+      "ranks": 2,
+      "total": 5
+     },
+     "perception": {
+      "ranks": 10,
+      "total": 14
+     },
+     "ride": {
+      "ranks": 9,
+      "total": 14
+     },
+     "sense motive": {
+      "ranks": 6,
+      "total": 10
+     },
+     "sleight of hand": {
+      "ranks": 12,
+      "total": 17
+     },
+     "spellcraft": {
+      "ranks": 11,
+      "total": 14
+     },
+     "stealth": {
+      "ranks": 7,
+      "total": 20
+     },
+     "swim": {
+      "ranks": 7,
+      "total": 6
+     }
+    },
+    "space": 2.5,
+    "special": "alertness, improved evasion, share spells, empathic link, deliver touch spells, speak with master, speak with animals of its kind, spell resistance",
+    "special_attacks": null,
+    "special_qualities": "low-light vision",
+    "speed": "20 ft. , climb 20 ft. ",
+    "spell_resistance": 17,
+    "touch_ac": 14
+   },
+   "type": "familiar"
+  }
+ ],
+ "buff_gaps": [],
+ "build_archetype": "Debuffer",
+ "build_tactics": "Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.",
+ "c_class": "witch",
+ "c_class_2": "",
+ "c_class_display": "Witch",
+ "casting_level_str_foundry": "high",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Easy Focus"
+  ],
+  "boons_detail": [
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   }
+  ],
+  "casting_ability_modifier": "Intelligence",
+  "drawbacks": [
+   "Verbal Casting",
+   "Focus Casting",
+   "Prepared Caster"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   }
+  ]
+ },
+ "cha": 17,
+ "character_full_name": "Lucie Giguère",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "earth",
+  "curseUM"
+ ],
+ "class feature levels": {
+  "hexes": {
+   "Blight (Su)": 6,
+   "Congeal (Su)": 12,
+   "Harrowing Curse (Su)": 10,
+   "Leshy Summoning (Su)": 2,
+   "Nightmares (Su)": 8,
+   "Unnerve Beasts (Su)": 4
+  },
+  "patron": {
+   "Spirits": 1
+  }
+ },
+ "class feature owners": {
+  "hexes": "witch",
+  "patron": "witch"
+ },
+ "class features": {
+  "Skill Unlock: Sense Motive": {
+   "10 Ranks": "After conversing for 1 minute, you can read a creature's surface thoughts at a -20 penalty opposed by its Bluff (as detect thoughts).",
+   "15 Ranks": "You can read surface thoughts after 1 round, and when attacked may attempt an immediate-action Sense Motive check to gain a +2 insight bonus to AC against that foe.",
+   "20 Ranks": "You can read surface thoughts as a standard action, and a successful insight-bonus check negates the triggering attack.",
+   "5 Ranks": "If aware of an opponent before initiative, you can attempt a Sense Motive check as part of initiative to gain a scaling initiative bonus."
+  },
+  "hexes": {
+   "Blight (Su)": [
+    "The witch can curse an animal, plant creature, or plot of land, causing it to wither and die. Blighting an area takes 1 round, during which time the witch and her familiar must be in contact with the target. If it's used on a plot of land, the land begins to wither the following day, and over the next week all plants in the area die. Nothing will grow in that area so long as the curse persists. A witch can affect an area with a radius equal to her class level × 10 feet. Blighting a creature is a standard action that requires a melee touch attack. If used on a creature of the animal or plant type, the creature gains the following curse: Blight Hex—typecurse;saveWill negates;frequency1/day;effect1 Con damage. Both types of curse can be removed with aremove curseor similar magic, using the save DC as the DC to remove the curse. A witch can only have one blight in effect at a time. If another blight hex is made, the first immediately ends."
+   ],
+   "Congeal (Su)": [
+    "The witch can make the water in a 10-foot radius around her sludgy and viscous for 1 minute, causing it to function as difficult terrain for all swimming creatures except herself. This also provides partial cover against physical effects that pass through the affected area."
+   ],
+   "Harrowing Curse (Su)": [
+    "The witch can curse a target creature by touching it with a card randomly drawn from a harrow deck she owns. The target is affected as if by the spellbestow curseusing the witch's caster level, except that the witch can decrease only the ability score that corresponds to the suit of the card drawn. Whether or not the save is successful, a creature cannot be targeted by this hex more than once in 24 hours. At 15th level, this hex acts as amajor cursespell (Pathfinder RPG Ultimate Magic215). A witch with the cartomancer archetype can combine this hex with her spell deck's deliver touch spell ability."
+   ],
+   "Leshy Summoning (Su)": [
+    "The witch counts as a plant creature for the purpose of growing leshys. She addsleaf leshys,gourd leshys,fungus leshys,seaweed leshys, andlotus leshysto the list of creatures she can summon withsummon monster I,II,III,IV, andV, respectively."
+   ],
+   "Nightmares (Su)": [
+    "Calling upon fell powers, a witch can place a hex on a creature within 60 feet that causes its sleep to be tormented by terrible nightmares. This functions as the spellnightmareeach time the affected creature attempts to rest. A Will save negates this effect. If the save is failed, the target must make a new save each night or be unable to rest."
+   ],
+   "Unnerve Beasts (Su)": [
+    "The target becomes offensive to animals (Will negates). Animals become distraught and aggressive in the victim's presence—horses buck, dogs snap and bark, bulls charge, and so on. The hex lasts a number of hours equal to the witch's Intelligence modifier. A creature that saves against the hex cannot be affected by the hex for 1 day. The reaction of the animals is a mind-affecting charm effect, but the hex on the target is not."
+   ]
+  },
+  "patron": {
+   "Spirits": {
+    "bonus spells": [
+     "ghostbane dirge",
+     "invisibility",
+     "speak with dead",
+     "spiritual ally",
+     "mass ghostbane dirge",
+     "shadow walk",
+     "ethereal jaunt",
+     "planar ally",
+     "etherealness"
+    ],
+    "description": "Patron spells (Ultimate Magic pg. 83): 2th - ghostbane dirge; 4th - invisibility; 6th - speak with dead; 8th - spiritual ally; 10th - mass ghostbane dirge; 12th - shadow walk; 14th - ethereal jaunt; 16th - planar ally; 18th - etherealness",
+    "prerequisites": "",
+    "witch levels": [
+     2,
+     4,
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     18
+    ]
+   }
+  }
+ },
+ "class_ability": [
+  "spells_witch",
+  "cantrips_witch",
+  "hex_witch",
+  "here_witch",
+  "witch's familiar_witch",
+  "patron spells_witch",
+  "major hex_witch",
+  "grand hex_witch",
+  "spells gained at a new level_witch",
+  "familiar teaching familiar_witch",
+  "learn from a scroll_witch"
+ ],
+ "class_ability_desc": {
+  "cantrips": "Witches can prepare a number of cantrips, or 0-level spells, each day, as noted on Table 2-10 under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again. Cantrips prepared using other spell slots, due to metamagic feats for example, are expended normally.",
+  "familiar teaching familiar": "A witch's familiar can learn spells from another witch's familiar. To accomplish this, the familiars must spend one hour per level of the spell being taught in communion with one another. At the end of this time, the witch whose familiar is learning a spell must make a Spellcraft check (DC 15 + spell level). If the check succeeds, the familiar has learned the spell and the witch may utilize it the next time she prepares spells. If the check fails, the familiar has failed to learn the spell and cannot try to learn that spell again until the witch has gained another rank in Spellcraft. Most witches require a spell of equal or greater level in return for this service. If a familiar belongs to a witch that has died, it only retains its knowledge of spells for 24 hours, during which time it is possible to coerce or bribe the familiar into teaching its spells to another, subject to GM discretion.",
+  "grand hex": "Starting at 18th level, and every two levels thereafter, a witch can choose one of the following grand hexes whenever she could select a new hex. The full list of hexes can be found",
+  "here": "Adding Spells to a Witch's Familiar Witches can add new spells to their familiars through several methods. A witch can only add spells to her familiar if those spells belong to the witch's spell list.",
+  "hex": "Witches learn a number of magic tricks, called hexes, that grant them powers or weaken foes. At 1st level, a witch gains one hex of her choice. She gains an additional hex at 2nd level and for every 2 levels attained after 2nd level, as noted on Table 2-10. A witch cannot select an individual hex more than once. Unless otherwise noted, using a hex is a standard action that does not provoke an attack of opportunity. The save to resist a hex is equal to 10 + 1/2 the witch's level + the witch's Intelligence modifier. The full list of hexes can be found",
+  "learn from a scroll": "A witch can use a scroll to teach her familiar a new spell. This process takes 1 hour per level of the spell to be learned, during which time the scroll is burned and its ashes used to create a special brew or powder that is consumed by the familiar. This process destroys the scroll. At the end of this time, the witch must make a Spellcraft check (DC 15 + spell level). If the check fails, the process went awry in some way and the spell is not learned, although the scroll is still consumed. Alternate Capstones",
+  "major hex": "Starting at 10th level, and every two levels thereafter, a witch can choose one of the following major hexes whenever she could select a new hex. The full list of hexes can be found",
+  "patron spells": "At 1st level, when a witch gains her familiar, she must also select a patron. This patron is a vague and mysterious force, granting the witch power for reasons that she might not entirely understand. While these forces need not be named, they typically hold influence over one of the following forces. At 2nd level, and every two levels thereafter, a witch's patron adds new spells to a witch's list of spells known. These spells are also automatically added to the list of spells stored by the familiar. The spells gained depend upon the patron chosen. Each patron is listed by its theme. Its actual name is up to the GM and the witch to decide. The full list of patrons can be found here",
+  "spells": "A witch casts arcane spells drawn from the witch spell list . A witch must choose and prepare her spells ahead of time. To learn or cast a spell, a witch must have an Intelligence score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a witch's spell is 10 + the spell level + the witch's Intelligence modifier. A witch can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table 2-10. In addition, she receives bonus spells per day if she has a high Intelligence score (see Table 1-3 of the Pathfinder RPG Core Rulebook ). A witch may know any number of spells. She must choose and prepare her spells ahead of time by getting 8 hours of sleep and spending 1 hour communing with her familiar. While communing, the witch decides which spells to prepare.",
+  "spells gained at a new level": "A witch's familiar learns a certain amount of lore and magic as the witch adventures. Whenever a witch gains a level, she may add two spells from the witch spell list to her familiar. The two free spells must be of spell levels she can cast.",
+  "witch's familiar": "At 1st level, a witch forms a close bond with a familiar, a creature that teaches her magic and helps to guide her along her path. Familiars also aid a witch by granting her skill bonuses, additional spells, and help with some types of magic. This functions like the wizard's arcane bond class feature, except as noted in the Witch's Familiar section. A witch must commune with her familiar each day to prepare her spells. Familiars store all of the spells that a witch knows, and a witch cannot prepare a spell that is not stored by her familiar. A witch's familiar begins play storing all of the 0-level witch spells plus three 1st-level spells of the witch's choice. The witch also selects a number of additional 1st-level spells equal to her Intelligence modifier to store in her familiar. At each new witch level, she adds two new spells of any spell level or levels that she can cast (based on her new witch level) to her familiar. A witch can also add additional spells to her familiar through a special ritual (see sidebar)."
+ },
+ "class_feat_labels": [],
+ "class_feat_tax_dict": {},
+ "class_feats": [],
+ "class_feature_changes_dict": {
+  "Blight (Su)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Blighting an area takes [[1]] round, during which time the witch and her familiar must be in contact with the target. A witch can affect an area with a radius equal to her class level × [[10]] feet. If used on a creature of the animal or plant type, the creature gains the following curse: blight hex—typecurse;savewill negates;frequency1/day;effect1 con damage. Both types of curse can be removed with aremove curseor similar magic, using the save dc as the dc to remove the curse."
+    }
+   ]
+  },
+  "Harrowing Curse (Su)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "The target is affected as if by the spellbestow curseusing the witch's caster level, except that the witch can decrease only the ability score that corresponds to the suit of the card drawn. Whether or not the save is successful, a creature cannot be targeted by this hex more than once in [[24]] hours. At 15th level, this hex acts as amajor cursespell (pathfinder rpg ultimate magic215)."
+    }
+   ]
+  },
+  "Nightmares (Su)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Calling upon fell powers, a witch can place a hex on a creature within [[60]] feet that causes its sleep to be tormented by terrible nightmares. This functions as the spellnightmareeach time the affected creature attempts to rest. A will save negates this effect. If the save is failed, the target must make a new save each night or be unable to rest."
+    }
+   ]
+  },
+  "Unnerve Beasts (Su)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Animals become distraught and aggressive in the victim's presence—horses buck, dogs snap and bark, bulls charge, and so on. A creature that saves against the hex cannot be affected by the hex for 1 day."
+    }
+   ]
+  }
+ },
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "hexes": {
+   "Blight (Su)": 6,
+   "Congeal (Su)": 12,
+   "Harrowing Curse (Su)": 10,
+   "Leshy Summoning (Su)": 2,
+   "Nightmares (Su)": 8,
+   "Unnerve Beasts (Su)": 4
+  },
+  "patron": {
+   "Spirits": 1
+  }
+ },
+ "class_feature_owners": {
+  "hexes": "witch",
+  "patron": "witch"
+ },
+ "class_features": {
+  "Skill Unlock: Sense Motive": {
+   "10 Ranks": "After conversing for 1 minute, you can read a creature's surface thoughts at a -20 penalty opposed by its Bluff (as detect thoughts).",
+   "15 Ranks": "You can read surface thoughts after 1 round, and when attacked may attempt an immediate-action Sense Motive check to gain a +2 insight bonus to AC against that foe.",
+   "20 Ranks": "You can read surface thoughts as a standard action, and a successful insight-bonus check negates the triggering attack.",
+   "5 Ranks": "If aware of an opponent before initiative, you can attempt a Sense Motive check as part of initiative to gain a scaling initiative bonus."
+  },
+  "hexes": {
+   "Blight (Su)": [
+    "The witch can curse an animal, plant creature, or plot of land, causing it to wither and die. Blighting an area takes 1 round, during which time the witch and her familiar must be in contact with the target. If it's used on a plot of land, the land begins to wither the following day, and over the next week all plants in the area die. Nothing will grow in that area so long as the curse persists. A witch can affect an area with a radius equal to her class level × 10 feet. Blighting a creature is a standard action that requires a melee touch attack. If used on a creature of the animal or plant type, the creature gains the following curse: Blight Hex—typecurse;saveWill negates;frequency1/day;effect1 Con damage. Both types of curse can be removed with aremove curseor similar magic, using the save DC as the DC to remove the curse. A witch can only have one blight in effect at a time. If another blight hex is made, the first immediately ends."
+   ],
+   "Congeal (Su)": [
+    "The witch can make the water in a 10-foot radius around her sludgy and viscous for 1 minute, causing it to function as difficult terrain for all swimming creatures except herself. This also provides partial cover against physical effects that pass through the affected area."
+   ],
+   "Harrowing Curse (Su)": [
+    "The witch can curse a target creature by touching it with a card randomly drawn from a harrow deck she owns. The target is affected as if by the spellbestow curseusing the witch's caster level, except that the witch can decrease only the ability score that corresponds to the suit of the card drawn. Whether or not the save is successful, a creature cannot be targeted by this hex more than once in 24 hours. At 15th level, this hex acts as amajor cursespell (Pathfinder RPG Ultimate Magic215). A witch with the cartomancer archetype can combine this hex with her spell deck's deliver touch spell ability."
+   ],
+   "Leshy Summoning (Su)": [
+    "The witch counts as a plant creature for the purpose of growing leshys. She addsleaf leshys,gourd leshys,fungus leshys,seaweed leshys, andlotus leshysto the list of creatures she can summon withsummon monster I,II,III,IV, andV, respectively."
+   ],
+   "Nightmares (Su)": [
+    "Calling upon fell powers, a witch can place a hex on a creature within 60 feet that causes its sleep to be tormented by terrible nightmares. This functions as the spellnightmareeach time the affected creature attempts to rest. A Will save negates this effect. If the save is failed, the target must make a new save each night or be unable to rest."
+   ],
+   "Unnerve Beasts (Su)": [
+    "The target becomes offensive to animals (Will negates). Animals become distraught and aggressive in the victim's presence—horses buck, dogs snap and bark, bulls charge, and so on. The hex lasts a number of hours equal to the witch's Intelligence modifier. A creature that saves against the hex cannot be affected by the hex for 1 day. The reaction of the animals is a mind-affecting charm effect, but the hex on the target is not."
+   ]
+  },
+  "patron": {
+   "Spirits": {
+    "bonus spells": [
+     "ghostbane dirge",
+     "invisibility",
+     "speak with dead",
+     "spiritual ally",
+     "mass ghostbane dirge",
+     "shadow walk",
+     "ethereal jaunt",
+     "planar ally",
+     "etherealness"
+    ],
+    "description": "Patron spells (Ultimate Magic pg. 83): 2th - ghostbane dirge; 4th - invisibility; 6th - speak with dead; 8th - spiritual ally; 10th - mass ghostbane dirge; 12th - shadow walk; 14th - ethereal jaunt; 16th - planar ally; 18th - etherealness",
+    "prerequisites": "",
+    "witch levels": [
+     2,
+     4,
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     18
+    ]
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Herb Witch": {
+     "grand hexes": " The following grand hex complements the herb witch archetype: life giver.",
+     "herb lore (ex)": " Herb witches are masters of herbalism, and they can use what they gather from garden or grove to duplicate many of the effects of alchemy. An herb witch can attempt Profession (herbalist) checks in place of Craft (alchemy) checks, and she gains a bonus on Profession (herbalist) checks equal to half her class level. Herb witches are adept at brewing thick herbal cure-alls called remedies. An herb witch prepares these remedies while communing with her familiar, during which she can prepare a number of remedies equal to 3 + her Intelligence modifier (minimum 1 remedy). A remedy becomes inert if it leaves the herb witch's possession, reactivating as soon as it returns to her keeping. A witch can never have more remedies than 3 + her Intelligence modifier. As a standard action, the herb witch can administer a remedy to herself or a creature within reach which consumes the remedy. The herb witch attempts a Profession (herbalist) check against the save DC of any one disease or poison currently afflicting the consumer. If she is successful, the affliction is suppressed for 1 minute. At 10th level, if she exceeds the DC of the check by 10 or more, the affliction immediately ends. If the disease or poison doesn't allow saving throws, the remedy is ineffective. An herb witch can also use a remedy to attempt to remove the blinded, deafened, fatigued, nauseated, sickened, and staggered conditions. This requires a Profession (herbalist) check with a DC equal to the spell or effect that caused the condition, or a DC 25 check if the condition was caused by an effect that doesn't allow a saving throw. If the herb witch succeeds, the condition is removed unless the condition is permanent; at 10th level, if the herb witch succeeds by 10 or more, her remedy can remove a permanent condition. Only a single condition, disease, or poison can be removed with each application of a remedy, and a creature can only benefit from one herbal remedy each day, whether or not the herb witch succeeds at her skill check. This replaces the hexes gained at 1st and 10th levels.",
+     "hexes": " An herb witch must select cauldron as her hex at 2nd level. The following witch hexes complement the herb witch archetype: fortune, healing, poison steep, swamp hag.",
+     "major hexes": " The following major hexes complement the herb witch archetype: major healing, weather control, witch's brew.",
+     "patron spells": " An herb witch must choose a patron with a theme compatible with the needs of the natural world, selected from the following list: ancestors, animals, death, elements, healing, plague, strength, time, water, winter, wisdom, or woodlands. This alters the witch's patron spells.",
+     "source": "Ultimate Wilderness pg. 89 , Heroes of the Wild pg. 11 Some witches dedicate their lives to the mastery of herb lore. Herb witches brew foul-tasting medicines, sweet poisons, and other concoctions from the untamed plants of the wild."
+    }
+   },
+   "display": "Witch",
+   "level": 12,
+   "name": "witch"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 18,
+ "counter_schools": [
+  "enchantment",
+  "divination"
+ ],
+ "counter_spell_descriptor": [
+  "evil",
+  "electricity"
+ ],
+ "craft_type": "Winemaking",
+ "day_list": [
+  2,
+  6,
+  5,
+  5,
+  4,
+  4,
+  2
+ ],
+ "deity_name": "Kurgess",
+ "dex": 8,
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "belts": {
+   "description": " this belt has a large silver buckle, \r usually depicting the image of a\r tiger. The belt grants the wearer an\r enhancement bonus to dexterity\r of +2, +4, or +6. Treat this as a\r temporary ability bonus for the first 24 hours the belt is worn. ",
+   "item_name": "Belt of Incredible Dexterity +4"
+  },
+  "body": {
+   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
+   "item_name": "Glorious Tabard, Lesser"
+  },
+  "chest": {
+   "description": " this shirt is made of light, gossamer-thin fabric embroidered\r with arrangements of winged feet. Once per day as a swift\r action, the wearer can take an additional move action to move\r and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability. ",
+   "item_name": "Quick Runner's Shirt"
+  },
+  "hands": {
+   "description": " strapped to the hands, these spiked climbing claws grant a +2\r competence bonus on climb checks and acrobatics checks made\r when using both hands to aid in movement, and allow the\r wearer to ignore the normal penalties on those skills for slippery\r or icy surfaces. In addition, up to 3 times per day, the wearer can\r activate the claws as a swift action to gain the benefits of spider\r climb for 1 round. The wearer cannot hold anything else in her\r hands while using claws of the ice bear. If used as a weapon, claws of the ice bear function as spiked gauntlets. ",
+   "item_name": "Claws of the Ice Bear"
+  },
+  "shoulders": {
+   "description": " the wearer of this rough, gray cloak can, as a move action, \r grasp the garment's edge and cause it to harden. The wearer\r can use the hardened edge it as if it were a masterwork light\r wooden shield. Using the cloak in this fashion imposes no\r armor check penalty, but does impose a 5% arcane spell\r failure chance. The edge of the cloak can be dropped and\r made pliant again as a free action. Shield enhancement\r bonuses and special abilities can be added to the cloak as if it\r were a masterwork shield. ",
+   "item_name": "Shield Cloak"
+  },
+  "wrist": {
+   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
+   "item_name": "Sleeves of Many Garments"
+  }
+ },
+ "equipment_list": [
+  "Belt of Incredible Dexterity +4",
+  "Claws of the Ice Bear",
+  "Shield Cloak",
+  "Glorious Tabard, Lesser",
+  "Quick Runner's Shirt",
+  "Sleeves of Many Garments"
+ ],
+ "eye_color": [
+  "Green"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 0,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 8,
+  "profession": 1,
+  "story": 3,
+  "teamwork": 0,
+  "trainer": 5
+ },
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {},
+ "feats": [
+  "Improved Counterspell",
+  "Fleet",
+  "Acrobatic",
+  "Shadowmorph Focus",
+  "Black Market Dealings",
+  "Disruptive Spell",
+  "Dispel Synergy",
+  "Multi Talented"
+ ],
+ "feats_feat_tax_dict": {
+  "Improved Counterspell": [
+   "parry spell"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Ability Focus (malefactions)"
+ ],
+ "flaw": [
+  "Rain Confounded",
+  "Haunted"
+ ],
+ "flaw_effects_dict": {
+  "Haunted": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Haunted: retrieving stored gear is a standard action; dropped items land [[10]] ft away in a random direction."
+    }
+   ],
+   "description": "Malevolent spirits follow you wherever you go, causing minor mishaps and strange occurrences. Retrieving any stored item from your gear requires a standard action, and any item you drop lands 10 feet away in a random direction.",
+   "tier": "major"
+  },
+  "Rain Confounded": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.per",
+     "text": "Rain Confounded: Perception penalties during rain are tripled (e.g. -[[4]] becomes -[[12]])."
+    }
+   ],
+   "description": "Rain on your face leaves you hopelessly distracted. Perception penalties during rain are tripled for you (e.g. a -4 becomes a -12).",
+   "tier": "minor"
+  }
+ },
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [
+  "Biomech Pilot",
+  "Spell Bluff"
+ ],
+ "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Hard to Fool, Spell Hex\n- Training: An excellent trainer who taught them Duck and Cover, Demonic Obedience, Dragoncrafting\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Wavy White\n- Eyes: Green\n- Build: Skeletal",
+ "full_domain": [],
+ "gender": "Female",
+ "generation_seed": 9101,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 100,
+ "hair_color": [
+  "White"
+ ],
+ "hair_type": [
+  "Wavy"
+ ],
+ "height_number": "5'7\"",
+ "hero_points": 3,
+ "homebrew_feat_desc_dict": {
+  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
+  "Acrobatic": "You are skilled at leaping, jumping, and flying",
+  "Additional Traits": "You have more traits than normal",
+  "Animal Affinity": "You are skilled at working with animals and mounts",
+  "Biomech Pilot": "Your mech incorporates many biological parts, offering it versatility not seen in other machines. The following mech enhancements can be selected by a mech pilot with this feat in addition to regular mech enhancements Special If you possess this feat as well as the ability to craft constructs, you may craft constructs with the biomech template and create mechs that use the mech enhancements listed above. your mech is at least partially biological, if not completely so, and as a result has access to many additional abilities. such entities are known as biomechs and possess the biomech template.",
+  "Black Market Dealings": "You walk dark alleys and trade in secrets. in addition, you can use the diplomacy skill to locate merchants who have deeper pockets in a black market or settlement. if you are looking inside a black market, the dc is equal to the black markets access dc. if you are looking more widely in a settlement, use the black markets access dc + 5 (if a settlement has no black market, the dc is 30; pcs can apply the settlements crime modifier to their checks). if successful, you can treat the black market or settlement as one step larger for the purposes of base value, items available, and purchase limit. if the settlement was already a metropolis, nearly all minor and medium magic items are for sale, as well as 3d8 major magic items; the base value is 32,000 gp; and the purchase limit is 200,000 gp. if the black market was already an underworld, nearly all minor and medium magic items are for sale, as well as 4d8 major magic items; the base value is 64,000 gp; and the purchase limit is 300,000 gp. this does not stack with other ways to increase the effective size of a black market or settlement (such as the black market connections rogue talent). you can attempt this check only once per week.",
+  "Craft Wondrous Item": "You can create wondrous items, a type of magic item",
+  "Demonic Obedience": "You physically defile yourself, others, or holy objects in order to prove your blasphemous devotion to a demon lord and gain special boons",
+  "Dispel Synergy": "By tearing away an opponent's magical defenses, you leave your enemy vulnerable, making it difficult for him to resist your spells",
+  "Disruptive Spell": "Your magical energies cling to enemies, interfering with their spellcasting",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
+  "Fleet": "You are faster than most",
+  "Hard to Fool": "You treat strange sights with healthy skepticism. Upon reaching 10 ranks in Perception, the distance you can see through illusions increases to 20 feet. At 15 ranks in Perception, it increases to 30 feet. Normal You only get a saving throw against many illusion effects if you directly interact with that effect. when you come within 10 feet of an active illusion effect that would require you to interact with it to disbelieve the effect, you automatically get a saving throw (as if you interacted with it). the gm should make your saving throw in secret.",
+  "Improved Counterspell": "You are skilled at countering the spells of others using similar spells",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Shadowmorph Focus": "Your shadowmorph spells are more difficult to resist. add +1 to the difficulty class for all saving throws against spells you cast with the shadowmorph descriptor.",
+  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment",
+  "Spell Hex": "You can transform a 1st-level spell into a hex"
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 1,
+  "dex": 0,
+  "int": 8,
+  "str": 10,
+  "wis": 0
+ },
+ "initiation_stat": "int",
+ "initiator_level": 0,
+ "int": 21,
+ "item_changes_dict": {
+  "Belt of Incredible Dexterity +4": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "dex",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "dexChecks",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
+    }
+   ]
+  },
+  "Claws of the Ice Bear": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "Strapped to the hands, these spiked climbing claws grant a +[[2]] competence bonus on climb checks and acrobatics checks made when using both hands to aid in movement, and allow the wearer to ignore the normal penalties on those skills for slippery or icy surfaces. In addition, up to [[3]] times per day, the wearer can activate the claws as a swift action to gain the benefits of spider climb for [[1]] round. If used as a weapon, claws of the ice bear function as spiked gauntlets."
+    }
+   ]
+  },
+  "Glorious Tabard, Lesser": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +[[2]] sacred bonus to her ac and on saving throws for [[10]] minutes. In addition, whenever a greater glorious tabard is activated, all longswords within [[20]] feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for [[3]] rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5."
+    }
+   ]
+  },
+  "Quick Runner's Shirt": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day as a swift action, the wearer can take an additional move action to move and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability."
+   ]
+  },
+  "Shield Cloak": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of this rough, gray cloak can, as a move action, grasp the garment's edge and cause it to harden. The wearer can use the hardened edge it as if it were a masterwork light wooden shield. Using the cloak in this fashion imposes no armor check penalty, but does impose a 5% arcane spell failure chance. The edge of the cloak can be dropped and made pliant again as a free action."
+   ]
+  }
+ },
+ "known_list": [
+  18,
+  8,
+  7,
+  8,
+  13,
+  12,
+  6
+ ],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Orc",
+  "Aquan",
+  "Draconic",
+  "Kelish",
+  "Ignan",
+  "Grippli",
+  "Auran"
+ ],
+ "level": 12,
+ "level_up_stats": {
+  "cha": 1,
+  "con": 0,
+  "dex": 1,
+  "int": 0,
+  "str": 1,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "luck": {
+  "attribute_bumps": {},
+  "audit": {
+   "attribute_points": {
+    "after": 3,
+    "before": 3,
+    "final": 3,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "feats": {
+    "after": 0,
+    "before": 0,
+    "final": 0,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "hp": {
+    "after": 120,
+    "before": 120,
+    "final": 132,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "skill_ranks": {
+    "after": 168,
+    "before": 168,
+    "final": 192,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   }
+  },
+  "cap": 25,
+  "derivation": [
+   "= 0"
+  ],
+  "dr_pool": 0,
+  "e_kat_earned": 0,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "feats": [],
+  "floor": -50,
+  "luck_feats": [],
+  "mod": 0,
+  "negative_feats": [],
+  "payout_changes": [],
+  "score": 0,
+  "stake": null,
+  "trait_benefits": {},
+  "trait_changes": {},
+  "traits": [],
+  "twist_fate_per_day": 0,
+  "type": "Default",
+  "values": {
+   "default": 0,
+   "negative": 0,
+   "proximity": 0
+  },
+  "vault": 0,
+  "vault_cap": 77
+ },
+ "magic_talent_items": [],
+ "main_stat": "int",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "manifesters": [],
+ "mannerisms": [
+  "Rests hand on hip",
+  "Peers over glasses",
+  "Winks",
+  "Lifts chin"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "ng",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "normal_feat_amount": 7,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "dead mother, loving father, raised in a poor household",
+ "personality_traits": [
+  "Compassionate",
+  "Cordial",
+  "Intentional",
+  "Realistic"
+ ],
+ "platnium": 10.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.khi",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.klo",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Ship's Clerk) - rank 10/10. Associate skills (ranks 1/4/7/10): Profession, Sense Motive, Appraise, Sleight of Hand.</em></p><hr><p><strong>Idle Speculation (Ex)</strong></p><p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p><hr><p><strong>Footnote Hoarder (Ex)</strong></p><p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+   "name": "Profession Rank 5: (Ship's Clerk)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Clerk) - rank 7/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Knowledge (local), Perception.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
+   "name": "Profession Rank 5: (Clerk)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dip",
+     "type": "circumstance"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Friar) - rank 10/10. Associate skills (ranks 1/4/7/10): Appraise, Handle Animal, Diplomacy, Use Magic Device.</em></p><hr><p><strong>Whispered Litany (Ex)</strong></p><p>Witch murmurs the rote prayers of the faith without fail, earning the trust of the devout. Grants a +1 <strong>circumstance</strong> bonus on Diplomacy checks made with co-religionists.</p><hr><p><strong>Orisons (Sp)</strong></p><p>You can cast guidance, light, and stabilize at will as spell-like abilities (caster level equal to your character level).</p>",
+   "name": "Profession Rank 5: (Friar)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10."
+ },
+ "profession_feats": [
+  "Multi Talented"
+ ],
+ "profession_pool": 27,
+ "profession_ranks": [
+  {
+   "ability_theme": "scholar",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Profession",
+    "Sense Motive",
+    "Appraise",
+    "Sleight of Hand"
+   ],
+   "cap": 10,
+   "name": "Ship's Clerk",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.khi",
+       "type": "competence"
+      },
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.klo",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Your endless musing about history and rumor makes you a font of half-remembered lore. You gain a +2 competence bonus on Knowledge (history) and Knowledge (local) checks, and once per day you may make a Knowledge check to recall a relevant fact even for a topic in which you have no ranks, treating it as a trained check.</p>",
+     "name": "Idle Speculation (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+     "name": "Footnote Hoarder (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Ship's Clerk)"
+  },
+  {
+   "ability_theme": "scholar",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Sleight of Hand",
+    "Knowledge (local)",
+    "Perception"
+   ],
+   "cap": 10,
+   "name": "Clerk",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
+     "name": "Bookish (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 7,
+   "skill_label": "Profession (Clerk)"
+  },
+  {
+   "ability_theme": "divine",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Appraise",
+    "Handle Animal",
+    "Diplomacy",
+    "Use Magic Device"
+   ],
+   "cap": 10,
+   "name": "Friar",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.dip",
+       "type": "circumstance"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Witch murmurs the rote prayers of the faith without fail, earning the trust of the devout. Grants a +1 <strong>circumstance</strong> bonus on Diplomacy checks made with co-religionists.</p>",
+     "name": "Whispered Litany (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You can cast guidance, light, and stabilize at will as spell-like abilities (caster level equal to your character level).</p>",
+     "name": "Orisons (Sp)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Friar)"
+  }
+ ],
+ "professions": [
+  "Ship's Clerk",
+  "Clerk",
+  "Friar"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 2,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 4,
+  "ref": 4,
+  "will": 8
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Savanna Hunter",
+  "Aballonian Resilience",
+  "Hunter's Blood",
+  "Suspicious",
+  "Horrifying Mind",
+  "Dungeon Dweller",
+  "Long Jumper",
+  "River Rat"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 trait bonus on attacks of opportunity attack rolls made with a shortspear, as well as a +1 racial bonus on Constitution checks to continue running and avoid nonlethal damage from a forced march.",
+   "name": "Savanna Hunter"
+  },
+  {
+   "description": "You gain a +4 trait bonus on saves to avoid nonlethal damage from cold environments. In addition, you begin play with a cold-weather outfit at no cost.",
+   "name": "Aballonian Resilience"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Diplomacy checks to gather information, to Knowledge (religion) checks, and to Survival checks to track undead. Choose one as these as a class skill. Undead gain a +1 bonus on any rolls made to determine if they know anything about you.",
+   "name": "Hunter's Blood"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill for you.",
+   "name": "Suspicious"
+  },
+  {
+   "description": "When a non-evil humanoid attempts to read your mind via a magical effect, the reader must attempt a Will save opposed by your Wisdom or Charisma check (your choice). If the reader fails this save, she is shaken for 1 round. If she fails by 10 or more, she is instead frightened for 1 round, then shaken for 1 round.",
+   "name": "Horrifying Mind"
+  },
+  {
+   "description": "You start with one additional language chosen from the following list: Aklo, Dark Folk, Draconic, Goblin, Necril, Orc, or Undercommon. In addition, whenever you must attempt a Survival check to avoid getting lost in a dungeon, you may roll the check twice and take the better result.",
+   "name": "Dungeon Dweller"
+  },
+  {
+   "description": "When using the Acrobatics skill to make a long jump, you treat the DC of the skill check as if the distance being jumped were 5 feet shorter than it actually is.",
+   "name": "Long Jumper"
+  },
+  {
+   "description": "You gain a +1 trait bonus to damage dealt with a dagger and a +1 trait bonus to Swim checks. Swim is always a class skill for you.",
+   "name": "River Rat"
+  }
+ ],
+ "sheet_health": 72,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 192,
+ "skill_ranks": {
+  "acrobatics": 6,
+  "appraise": 14,
+  "bluff": 16,
+  "climb": 0,
+  "craft": 2,
+  "diplomacy": 6,
+  "disable device": 3,
+  "disguise": 6,
+  "escape artist": 2,
+  "fly": 0,
+  "handle animal": 2,
+  "heal": 8,
+  "intimidate": 9,
+  "knowledge arcana": 5,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 3,
+  "knowledge geography": 11,
+  "knowledge history": 5,
+  "knowledge local": 0,
+  "knowledge nature": 6,
+  "knowledge nobility": 7,
+  "knowledge planes": 0,
+  "knowledge religion": 9,
+  "linguistics": 2,
+  "perception": 10,
+  "perform": 6,
+  "profession": 0,
+  "ride": 9,
+  "sense motive": 6,
+  "sleight of hand": 14,
+  "spellcraft": 11,
+  "stealth": 7,
+  "survival": 0,
+  "swim": 7,
+  "use magic device": 0
+ },
+ "skill_unlock": {
+  "base_skill": "sense motive",
+  "ranks": 6,
+  "skill": "Sense Motive",
+  "unlock": {
+   "10": "After conversing for 1 minute, you can read a creature's surface thoughts at a -20 penalty opposed by its Bluff (as detect thoughts).",
+   "15": "You can read surface thoughts after 1 round, and when attacked may attempt an immediate-action Sense Motive check to gain a +2 insight bonus to AC against that foe.",
+   "20": "You can read surface thoughts as a standard action, and a successful insight-bonus check negates the triggering attack.",
+   "5": "If aware of an opponent before initiative, you can attempt a Sense Motive check as part of initiative to gain a scaling initiative bonus."
+  },
+  "unlock_html": "<h2>Sense Motive</h2><p><strong>5 Ranks</strong>: If aware of an opponent before initiative, you can attempt a Sense Motive check as part of initiative to gain a scaling initiative bonus.</p><p><strong>10 Ranks</strong>: After conversing for 1 minute, you can read a creature's surface thoughts at a -20 penalty opposed by its Bluff (as detect thoughts).</p><p><strong>15 Ranks</strong>: You can read surface thoughts after 1 round, and when attacked may attempt an immediate-action Sense Motive check to gain a +2 insight bonus to AC against that foe.</p><p><strong>20 Ranks</strong>: You can read surface thoughts as a standard action, and a successful insight-bonus check negates the triggering attack.</p>"
+ },
+ "specialty_schools": [
+  "abjuration",
+  "evocation"
+ ],
+ "spell_changes_dict": {
+  "Geniekind": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "nonCrit",
+     "damageType": [
+      "fire"
+     ],
+     "formula": "1d6",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Geniekind: you transform to emulate a chosen genie (djinni, efreeti, marid, or shaitan), gaining a +[[2]] racial bonus on saves vs. paralysis, poison, sleep, and stunning, a +[[4]] enhancement bonus to natural armor, a +[[2]] enhancement bonus to Constitution, and a +[[5]] bonus on Diplomacy with creatures of your genie's elemental subtype. As an efreeti your unarmed strikes and melee weapons deal extra fire damage; you also gain a genie-specific movement and energy resistance [[10]] (electricity djinni, fire efreeti, cold marid, acid shaitan). Duration [[1]] round/level."
+  },
+  "Last Azlanti's Defending Sword": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "nonCrit",
+     "damageType": [
+      "force"
+     ],
+     "formula": "3d6",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Last Azlanti's Defending Sword: create a hovering sword of force (functions as mage's sword but gains no enhancement bonus) within close range ([[25]] ft. + [[5]] ft./[[2]] levels) for [[1]] round/level. While hovering it grants you a +[[4]] shield bonus to AC; the first time a foe damages you or makes you fail a save, the sword triggers and attacks that target, ending the shield bonus."
+  }
+ },
+ "spell_list_choose_from": [
+  [
+   "Acid Splash",
+   "Breeze",
+   "Chameleon Scales",
+   "Dancing Lights",
+   "Detect Fiendish Presence",
+   "Drench",
+   "Flare",
+   "Haunted Fey Aspect",
+   "Light",
+   "Mage Hand",
+   "Open/Close",
+   "Penumbra",
+   "Ray of Frost",
+   "Resistance",
+   "Root",
+   "Scoop",
+   "Scrivener's Chant",
+   "Spark"
+  ],
+  [
+   "Ear-Piercing Scream",
+   "Flare Burst",
+   "Ghostbane Dirge",
+   "Itching Curse",
+   "Shocking Grasp",
+   "Stunning Barrier",
+   "Thunderstomp",
+   "Touch of Combustion",
+   "Unwelcome Halo"
+  ],
+  [
+   "Bullet Ward",
+   "Burst of Radiance",
+   "Crimson Confession",
+   "Fire Sneeze",
+   "Flaming Sphere",
+   "Invisibility",
+   "Protection from Chaos, Communal",
+   "Scorching Ray"
+  ],
+  [
+   "Ablative Sphere",
+   "Apsu's Shining Scales",
+   "Cloak of Winds",
+   "Elemental Aura",
+   "Quell Energy",
+   "Recharge",
+   "Speak with Dead",
+   "Stunning Barrier, Greater",
+   "Thunderstomp, Greater"
+  ],
+  [
+   "Absorb Rune I",
+   "Contingent Scroll",
+   "Creeping Ice",
+   "Dimensional Anchor",
+   "Earth Glide",
+   "Flaming Sphere, Greater",
+   "Ice Storm",
+   "Magic Circle Against Technology",
+   "Mydriatic Spontaneity",
+   "Nondetection, Communal",
+   "Pyrotechnic Eruption",
+   "Resilient Sphere",
+   "Spiritual Ally",
+   "True Form"
+  ],
+  [
+   "Banishing Blade",
+   "Break Enchantment",
+   "Cone of Cold",
+   "Contact Entity III",
+   "Covetous Aura",
+   "Geniekind",
+   "Ghostbane Dirge, Mass",
+   "Globe of Tranquil Water",
+   "Life Bubble",
+   "Nex's Secret Workshop",
+   "Siphon Magic",
+   "Spell Absorption",
+   "Stoneskin, Communal"
+  ],
+  [
+   "Alaznist's Jinx",
+   "Antimagic Field",
+   "Cold Ice Strike",
+   "Dispel Magic, Greater",
+   "Furious Fire Barrage",
+   "Last Azlanti's Defending Sword",
+   "Shadow Walk"
+  ]
+ ],
+ "spell_list_choose_from_dict": [
+  [
+   "Acid Splash",
+   "Breeze",
+   "Chameleon Scales",
+   "Dancing Lights",
+   "Detect Fiendish Presence",
+   "Drench",
+   "Flare",
+   "Haunted Fey Aspect",
+   "Light",
+   "Mage Hand",
+   "Open/Close",
+   "Penumbra",
+   "Ray of Frost",
+   "Resistance",
+   "Root",
+   "Scoop",
+   "Scrivener's Chant",
+   "Spark"
+  ],
+  [
+   "Ear-Piercing Scream",
+   "Flare Burst",
+   "Ghostbane Dirge",
+   "Itching Curse",
+   "Shocking Grasp",
+   "Stunning Barrier",
+   "Thunderstomp",
+   "Touch of Combustion",
+   "Unwelcome Halo"
+  ],
+  [
+   "Bullet Ward",
+   "Burst of Radiance",
+   "Crimson Confession",
+   "Fire Sneeze",
+   "Flaming Sphere",
+   "Invisibility",
+   "Protection from Chaos, Communal",
+   "Scorching Ray"
+  ],
+  [
+   "Ablative Sphere",
+   "Apsu's Shining Scales",
+   "Cloak of Winds",
+   "Elemental Aura",
+   "Quell Energy",
+   "Recharge",
+   "Speak with Dead",
+   "Stunning Barrier, Greater",
+   "Thunderstomp, Greater"
+  ],
+  [
+   "Absorb Rune I",
+   "Contingent Scroll",
+   "Creeping Ice",
+   "Dimensional Anchor",
+   "Earth Glide",
+   "Flaming Sphere, Greater",
+   "Ice Storm",
+   "Magic Circle Against Technology",
+   "Mydriatic Spontaneity",
+   "Nondetection, Communal",
+   "Pyrotechnic Eruption",
+   "Resilient Sphere",
+   "Spiritual Ally",
+   "True Form"
+  ],
+  [
+   "Banishing Blade",
+   "Break Enchantment",
+   "Cone of Cold",
+   "Contact Entity III",
+   "Covetous Aura",
+   "Geniekind",
+   "Ghostbane Dirge, Mass",
+   "Globe of Tranquil Water",
+   "Life Bubble",
+   "Nex's Secret Workshop",
+   "Siphon Magic",
+   "Spell Absorption",
+   "Stoneskin, Communal"
+  ],
+  [
+   "Alaznist's Jinx",
+   "Antimagic Field",
+   "Cold Ice Strike",
+   "Dispel Magic, Greater",
+   "Furious Fire Barrage",
+   "Last Azlanti's Defending Sword",
+   "Shadow Walk"
+  ]
+ ],
+ "spell_riders_dict": {
+  "Banishing Blade": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial (see text); the first time each round the weapon strikes a creature, it attempts a free bull rush combat maneuver check against that creature without provoking attacks of opportunity, using a combat maneuver bonus of [[1d20]] + your caster level, and you do not have to move to push the creature more than [[5]] feet; if a struck creature has spell resistance, you must succeed at a caster level check to overcome it the first time you strike that creature, or the creature is immune to the effects of this casting of banishing blade; the first extraplanar creature whose Hit Dice don't exceed your caster level that is driven back at least [[10]] feet by this bull rush must attempt a Will save or be sent back to its home plane; whether the save succeeds or fails, that creature is staggered for [[1]] round and banishing blade's duration ends; spell resistance: yes (see text)"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial (see text)",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Burst of Radiance": {
+   "attack": null,
+   "riders": [
+    "Range: [[400 + 40*@spells.primary.cl.total]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] partial; creatures in the area are blinded for [[1d4]] rounds, or dazzled for [[1d4]] rounds instead if they succeed at the save; evil creatures in the area take [[(min(5, @spells.primary.cl.total))d4]] damage whether or not they succeed at the save; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Cold Ice Strike": {
+   "attack": null,
+   "riders": [
+    "Range: [[30]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] half; [[ (min(15, @spells.primary.cl.total))d6 ]] cold damage; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "half",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Cone of Cold": {
+   "attack": null,
+   "riders": [
+    "Range: [[60]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] half; [[ (min(15, @spells.primary.cl.total))d6 ]] cold damage, [[60]]-ft. cone; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "half",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Ear-Piercing Scream": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates daze and halves damage; target dazed for [[1]] round; [[ (min(5, floor(@spells.primary.cl.total/2)))d6 ]] sonic damage; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates daze and halves damage",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Flaming Sphere": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] negates; a burning globe rolls in the direction the caster points, moving [[30]] feet per round (able to ascend or jump up to [[30]] feet to strike a target); on entering a creature's space the sphere stops moving for the round and deals [[3d6]] fire damage; the sphere rolls over barriers less than [[4]] feet tall, ignites flammable substances it touches, and illuminates as a torch; it moves only while the caster actively directs it (a move action) and otherwise stays at rest and burns; it can be extinguished by any means that would put out a normal fire of its size; its spongy surface deals no damage except by flame and it cannot push aside unwilling creatures or batter down large obstacles; the sphere winks out if it exceeds the spell's range; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Flaming Sphere, Greater": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] negates; see text; functions as flaming sphere except it deals [[6d6]] fire damage to any creature it strikes; a creature that fails its save catches on fire, and the DC to extinguish the flames equals this spell's save DC; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates; see text",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Flare": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; target is dazzled for [[1]] minute; sightless creatures and creatures already dazzled are unaffected; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Ice Storm": {
+   "attack": null,
+   "riders": [
+    "Range: [[400 + 40*@spells.primary.cl.total]] ft; great magical hailstones pound down as the spell is cast, dealing [[3d6]] points of bludgeoning damage and [[2d6]] points of cold damage to every creature in the area; this damage occurs only once, when the spell is cast; for the remainder of the spell's duration, heavy snow and sleet rain down in the area, imposing a -[[4]] penalty on Perception checks and treating the entire area as difficult terrain; at the end of the duration the snow and hail disappear, leaving no aftereffects other than the damage already dealt; spell resistance: yes"
+   ],
+   "save": null
+  },
+  "Itching Curse": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affects only a living creature with [[5]] HD or fewer; unless the target scratches as a move action, it takes a -[[1]] penalty on attack rolls, saving throws, skill checks, and ability checks; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Mydriatic Spontaneity": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; the target becomes nauseated for the spell's duration; each round the target's pupils randomly become dilated or contracted for [[1]] round; during any round its eyes are dilated, the target is blinded if exposed to bright light or dazzled if exposed to normal light; during any round its eyes are contracted, the target is blinded if exposed to darkness or dazzled if exposed to dim light; any creature can attempt a Stealth check to avoid detection from the target, even if the creature lacks cover or concealment; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Pyrotechnic Eruption": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] half (see text); [[ (min(15, @spells.primary.cl.total))d6 ]] damage; the blaze surrounds the target for the spell's duration, forcing a new Reflex save each round, with the number of damage dice halved each round until the spell would deal no damage, at which point it expires; the blaze follows the target even if it teleports; any creature that attempts to touch the target takes damage using the same number of dice as the last save the target attempted (Reflex half); a creature can take the target's place by bull rushing or grappling it and switching places, whereupon the new creature automatically takes the current round's damage with no save and begins attempting its own Reflex saves starting on its next turn; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "half (see text)",
+    "harmless": false,
+    "type": "reflex"
+   }
+  },
+  "Recharge": {
+   "attack": null,
+   "riders": [
+    "Cost: [[500]] gp material component ([[500]] gp of diamond dust); Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates (object); restores up to [[@spells.primary.cl.total]] charges to a battery, or half that many charges (rounded down) to a technological item capable of being charged by a battery; if used to recharge a battery, there is a [[20]]% chance the battery is destroyed by the attempt; if more charges are restored than the item can hold, the item must succeed at a Fortitude save or take [[1d6]] electricity damage for each excess charge; the caster gains no knowledge of how many charges an item can safely hold but may choose to bestow fewer charges than the maximum to reduce this risk, and must declare the number of charges being restored before casting; spell resistance: yes (object)"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates (object)",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Touch of Combustion": {
+   "attack": "melee",
+   "riders": [
+    "Range: melee touch; Save: Reflex DC [[ 10 + @slvl + @castMod ]] negates catching on fire; see text for a secondary Reflex save against adjacent creatures taking fire damage; if the target fails its save it catches on fire; on the first round after the target catches fire, creatures adjacent to it (including you) must each succeed at a Reflex save or take [[1d4]] fire damage; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates catching on fire; see text for a secondary Reflex save against adjacent creatures taking fire damage",
+    "harmless": false,
+    "type": "reflex"
+   }
+  }
+ },
+ "spellbooks": [
+  {
+   "capped_level": 12,
+   "casting_level_num": 12,
+   "casting_level_string": "high",
+   "casting_stat": "int",
+   "display": "Witch",
+   "divine": false,
+   "highest_spell_known": 6,
+   "level": 12,
+   "name": "witch",
+   "spell_list_choose_from": [
+    [
+     "Acid Splash",
+     "Breeze",
+     "Chameleon Scales",
+     "Dancing Lights",
+     "Detect Fiendish Presence",
+     "Drench",
+     "Flare",
+     "Haunted Fey Aspect",
+     "Light",
+     "Mage Hand",
+     "Open/Close",
+     "Penumbra",
+     "Ray of Frost",
+     "Resistance",
+     "Root",
+     "Scoop",
+     "Scrivener's Chant",
+     "Spark"
+    ],
+    [
+     "Ear-Piercing Scream",
+     "Flare Burst",
+     "Ghostbane Dirge",
+     "Itching Curse",
+     "Shocking Grasp",
+     "Stunning Barrier",
+     "Thunderstomp",
+     "Touch of Combustion",
+     "Unwelcome Halo"
+    ],
+    [
+     "Bullet Ward",
+     "Burst of Radiance",
+     "Crimson Confession",
+     "Fire Sneeze",
+     "Flaming Sphere",
+     "Invisibility",
+     "Protection from Chaos, Communal",
+     "Scorching Ray"
+    ],
+    [
+     "Ablative Sphere",
+     "Apsu's Shining Scales",
+     "Cloak of Winds",
+     "Elemental Aura",
+     "Quell Energy",
+     "Recharge",
+     "Speak with Dead",
+     "Stunning Barrier, Greater",
+     "Thunderstomp, Greater"
+    ],
+    [
+     "Absorb Rune I",
+     "Contingent Scroll",
+     "Creeping Ice",
+     "Dimensional Anchor",
+     "Earth Glide",
+     "Flaming Sphere, Greater",
+     "Ice Storm",
+     "Magic Circle Against Technology",
+     "Mydriatic Spontaneity",
+     "Nondetection, Communal",
+     "Pyrotechnic Eruption",
+     "Resilient Sphere",
+     "Spiritual Ally",
+     "True Form"
+    ],
+    [
+     "Banishing Blade",
+     "Break Enchantment",
+     "Cone of Cold",
+     "Contact Entity III",
+     "Covetous Aura",
+     "Geniekind",
+     "Ghostbane Dirge, Mass",
+     "Globe of Tranquil Water",
+     "Life Bubble",
+     "Nex's Secret Workshop",
+     "Siphon Magic",
+     "Spell Absorption",
+     "Stoneskin, Communal"
+    ],
+    [
+     "Alaznist's Jinx",
+     "Antimagic Field",
+     "Cold Ice Strike",
+     "Dispel Magic, Greater",
+     "Furious Fire Barrage",
+     "Last Azlanti's Defending Sword",
+     "Shadow Walk"
+    ]
+   ],
+   "spells_known_list": [
+    18,
+    8,
+    7,
+    8,
+    13,
+    12,
+    6
+   ],
+   "spells_per_day_list": [
+    2,
+    6,
+    5,
+    5,
+    4,
+    4,
+    2
+   ],
+   "spells_prepared_per_level": [
+    2,
+    6,
+    5,
+    5,
+    4,
+    4,
+    2
+   ]
+  }
+ ],
+ "spells_prepared_per_level": [
+  2,
+  6,
+  5,
+  5,
+  4,
+  4,
+  2
+ ],
+ "sphere_boons": [
+  "Easy Focus"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Verbal Casting",
+  "Focus Casting",
+  "Prepared Caster"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Verbal Casting",
+  "Focus Casting",
+  "Prepared Caster",
+  "Easy Focus"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {
+  "Craft Wondrous Item": [
+   "craft construct"
+  ]
+ },
+ "story_feats": [
+  "Craft Wondrous Item",
+  "Additional Traits",
+  "Animal Affinity"
+ ],
+ "str": 12,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 12,
+ "total_rolled_hp": 66,
+ "trainer_calibers": [
+  2,
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)"
+ ],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [
+  "Hard to Fool",
+  "Spell Hex",
+  "Duck and Cover",
+  "Demonic Obedience",
+  "Dragoncrafting"
+ ],
+ "weapon_enhancement_bonus": 2,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Club",
+ "weight_number": 219,
+ "wis": 15,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}

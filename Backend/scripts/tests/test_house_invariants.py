@@ -72,7 +72,7 @@ METZ_PICKS = [0]
 # "both=0, neither=0 over 400 generations" was measured by a sample that could not reach the path it
 # claimed to clear.
 BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
-        'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0}
+        'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0, 'familiar': 0}
 
 # The feat economy's own data, imported rather than restated -- the pool and the tax allowlist are
 # curated files and this test must fail when a creature strays outside them, not when a copy here
@@ -86,6 +86,9 @@ with open(BACKEND / 'json' / 'animal_companion.json', encoding='utf-8') as _fh:
     _CHASSIS = json.load(_fh)
 COMPANION_POOL = _CHASSIS.get('feats') or []
 COMPANION_TAX_CHILDREN = _CHASSIS.get('tax_children') or []
+# The RAW familiar pool, read from the data file rather than restated, same rule as above.
+with open(BACKEND / 'json' / 'familiar_choices.json', encoding='utf-8') as _fh:
+    FAMILIAR_SPECIES = set(json.load(_fh).get('familiar') or {})
 
 # Metzofitz-only pool names: what metzofitz_feat_frame offers minus every AoN name (collisions
 # resolve to AoN, so only names absent from feats.csv prove a homebrew pick happened).
@@ -1317,10 +1320,33 @@ def check_bonded_creatures(cell, payload):
         check(stats.get('hp', 0) >= 1, f"{tag}: hp {stats.get('hp')}")
         check(stats.get('touch_ac', 0) <= stats.get('ac', 0),
               f"{tag}: touch AC {stats.get('touch_ac')} exceeds full AC {stats.get('ac')}")
-        check(stats.get('hd') == (entry.get('chassis') or {}).get('hd'),
-              f"{tag}: stats.hd {stats.get('hd')} != chassis hd "
-              f"{(entry.get('chassis') or {}).get('hd')} -- the chassis is re-read after stacking, "
-              f"so these cannot disagree")
+        if entry.get('type') == 'familiar':
+            # A familiar has no chassis by design -- every number keys off the MASTER (half HP,
+            # master BAB, HD = master level; familiars.py). Asserted against the payload's own
+            # master numbers, so a drift in the late pass cannot hide behind the entry.
+            BOND['familiar'] += 1
+            check(entry['species'] in FAMILIAR_SPECIES,
+                  f"{tag}: species {entry['species']!r} is not in familiar_choices.json's pool")
+            check(entry.get('chassis') is None,
+                  f"{tag}: a familiar carries a chassis row -- its numbers key off the master")
+            check(stats.get('hd') == payload.get('level'),
+                  f"{tag}: stats.hd {stats.get('hd')} != master level {payload.get('level')}")
+            check(stats.get('bab') == payload.get('bab_total'),
+                  f"{tag}: stats.bab {stats.get('bab')} != master bab_total "
+                  f"{payload.get('bab_total')}")
+            check(stats.get('hp') == max(1, int(payload.get('Total_HP') or 0) // 2),
+                  f"{tag}: stats.hp {stats.get('hp')} != half the master's "
+                  f"{payload.get('Total_HP')}")
+            check(stats.get('hit_die') is None,
+                  f"{tag}: hit_die {stats.get('hit_die')!r} -- familiar HP is derived, never rolled")
+            ma = entry.get('master_abilities')
+            check(isinstance(ma, dict) and (ma.get('abilities') or []),
+                  f"{tag}: master_abilities missing or empty -- level 1 already grants four")
+        else:
+            check(stats.get('hd') == (entry.get('chassis') or {}).get('hd'),
+                  f"{tag}: stats.hd {stats.get('hd')} != chassis hd "
+                  f"{(entry.get('chassis') or {}).get('hd')} -- the chassis is re-read after "
+                  f"stacking, so these cannot disagree")
         check(all(v is not None for k, v in (stats.get('abilities') or {}).items() if k != 'int'),
               f"{tag}: a non-Int ability score is None ({stats.get('abilities')})")
 
@@ -1626,7 +1652,13 @@ def main():
         check(BOND['flaws'] > 0,
               f"{BOND['granted']} bonded creatures were granted but not one flaw was rolled -- "
               f"every D16 flaw check above was skipped")
-    print(f"  bonded creatures: {BOND['granted']} granted, {BOND['absent']} absence entries, "
+        # The familiar checks are their own branch (master-derived numbers, no chassis), so a
+        # sweep that granted only chassis creatures would prove nothing about the late pass.
+        check(BOND['familiar'] > 0,
+              f"no familiar was granted in {total} generations -- the witch grant alone is "
+              f"unconditional, so zero means the familiar resolver or late pass broke")
+    print(f"  bonded creatures: {BOND['granted']} granted ({BOND['familiar']} familiars), "
+          f"{BOND['absent']} absence entries, "
           f"{BOND['druid_flip']} druid flips (both={BOND['both']}, neither={BOND['neither']})")
     print(f"  companion feats: {BOND['feats']} rolled, {BOND['tax']} taxed in, "
           f"{BOND['flaws']} flaws, {BOND['applied']} folded changes")

@@ -182,6 +182,16 @@ CONFIGS = {
                                  chosen_BAB='low', multi_class='N', alignment_input='NG',
                                  userInput_gender='female', high_level=15, low_level=15,
                                  gold_num="", optimize='controller'),
+    # A FAMILIAR, AND AN UNCONDITIONAL ONE (spec section 8's v1 debt, paid 2026-08-13). The eight
+    # fixtures above either roll no familiar grantor or gate it behind an odds roll (the wizard's
+    # 70/30), so the master-derived stat block -- half HP, master BAB, best-of saves, the master
+    # skill-rank overlay, master_abilities -- had no pinned output anywhere. The witch grant has NO
+    # odds roll and this config is single-class, so the coverage cannot be realigned away by a
+    # pool change the way `companion`'s was four times. Level 12 is deliberate: it crosses the
+    # master table's spell-resistance row (11), pinning the one table ability computed in code.
+    'witch': dict(_BASE, seed=9101, userInput_race='Human', class_choice='witch',
+                  chosen_BAB='low', multi_class='N', alignment_input='NG',
+                  userInput_gender='female', high_level=12, low_level=12, gold_num=30000),
 }
 
 
@@ -279,12 +289,32 @@ def _covers_optimized_controller(payload):
     return None
 
 
+def _covers_witch(payload):
+    """A granted familiar at a full master-derived stat block, master_abilities included."""
+    fams = [e for e in (payload.get('bonded_creatures') or [])
+            if e.get('type') == 'familiar' and e.get('species')]
+    if not fams:
+        return ('no granted familiar -- the witch grant is unconditional, so the resolver or the '
+                'late pass broke')
+    entry = fams[0]
+    stats = entry.get('stats') or {}
+    if stats.get('bab') != payload.get('bab_total'):
+        return (f"familiar bab {stats.get('bab')} != master bab_total {payload.get('bab_total')} "
+                f"-- the master-derived numbers did not apply")
+    if not (entry.get('master_abilities') or {}).get('abilities'):
+        return 'familiar carries no master_abilities -- level 1 already grants four'
+    if stats.get('spell_resistance') is None:
+        return 'no spell_resistance at master level 12 -- the table rows past 11 did not apply'
+    return None
+
+
 COVERAGE = {
     'companion': _covers_companion,
     'caster': _covers_caster,
     'manifester': _covers_manifester,
     'optimized_striker': _covers_optimized_striker,
     'optimized_controller': _covers_optimized_controller,
+    'witch': _covers_witch,
 }
 
 
