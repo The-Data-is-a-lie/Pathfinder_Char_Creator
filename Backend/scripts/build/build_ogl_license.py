@@ -7,9 +7,11 @@ section 15 has to name every work the content actually derives from.
 Why the section 15 is curated here rather than inherited: pf1-psionics' own section 15 is
 **incomplete and mis-sourced**. Measured against its LICENSE file, it lists Psionics Unleashed but
 omits *Ultimate Psionics*, *Psionics Expanded: Advanced Psionics Guide* (which the aegis traces to)
-and *Psionics Augmented: Compilation II* -- while carrying Path of War, Path of War Expanded and
-Divergent Paths lines that are copy-pasted from the pf1-pow module and have nothing to do with
-psionics. Inheriting it would understate what we use and overstate what we don't.
+and *Psionics Augmented: Compilation II*. Inheriting it verbatim would understate what we use, so
+the section is curated: unrecognised upstream entries are kept but reported, and ADDITIONS carries
+every work OUR data cites that upstream does not declare (psionics, Mythic Adventures and the other
+Paizo hardcovers the feat/spell CSVs cite, Spheres of Power/Might). The Path of War lines upstream
+copy-pasted from pf1-pow are kept deliberately -- the generator ships PoW mechanics itself.
 
 Why the OGL text itself is COPIED rather than written here: the licence is a legal document whose
 operative text must be reproduced exactly. It is read at build time from an existing verbatim copy
@@ -64,11 +66,14 @@ KEEP_PATTERNS = (
     "Open Game License v 1.0a", "System Reference Document", "Pathfinder RPG Core Rulebook",
     "Pathfinder RPG Bestiary", "Advanced Player", "Modern System Reference Document",
     "Unearthed Arcana", "Hyperconscious", "If Thoughts Could Kill", "Mindscapes",
-    "Psionics Unleashed",
+    "Psionics Unleashed", "Path of War", "Divergent Paths",
 )
-# Lines to DROP from the source's section 15: Path of War and its expansions are pf1-pow's
-# content, present only because upstream copy-pasted that module's licence.
-DROP_PATTERNS = ("Path of War", "Divergent Paths")
+# Lines to DROP from the source's section 15. Path of War and Divergent Paths were dropped here
+# while this file served only the psionics data (upstream had copy-pasted them from pf1-pow's
+# licence); the generator now ships Path of War mechanics itself (six initiator classes plus the
+# Martial Training chain, maneuvers harvested via the pf1-pow compendium), so those lines are kept
+# on their own merit and nothing is dropped.
+DROP_PATTERNS = ()
 
 # Works OUR scraped data actually cites that the source's section 15 does not declare. `verified`
 # marks whether the copyright line has been checked against the published work itself; unverified
@@ -82,6 +87,39 @@ ADDITIONS = [
     ("Psionics Augmented: Compilation II. Copyright 2017, Dreamscarred Press.", False),
     ("Arcforge: Technology Expanded. Copyright 2018, Dreamscarred Press.", False),
     ("Arcforge: Psibertech. Copyright 2019, Dreamscarred Press.", False),
+    # The 2026-08 sweep (mythic ticket 08): the corpus ships feats/spells from many Paizo works and
+    # the whole Spheres system with no section 15 line. Verified lines are quoted from Paizo's own
+    # PRD section 15 (legacy.aonprd.com/openGameLicense.html) or the publisher's legal page; the
+    # two unverified lines carry no author list rather than a composed one.
+    ("Pathfinder Roleplaying Game Mythic Adventures © 2013, Paizo Publishing, LLC; Authors: "
+     "Jason Bulmahn, Stephen Radney-MacFarland, Sean K Reynolds, Dennis Baker, Jesse Benner, "
+     "Ben Bruck, Jim Groves, Tim Hitchcock, Tracy Hurley, Jonathan Keith, Jason Nelson, "
+     "Tom Phillips, Ryan Macklin, F. Wesley Schneider, Amber Scott, Tork Shaw, Russ Taylor, "
+     "and Ray Vallese.", True),
+    ("Pathfinder Roleplaying Game Advanced Race Guide. © 2012, Paizo Publishing, LLC; Authors: "
+     "Dennis Baker, Jesse Benner, Benjamin Bruck, Jason Bulmahn, Adam Daigle, Jim Groves, "
+     "Tim Hitchcock, Hal MacLean, Jason Nelson, Stephen Radney-MacFarland, Owen K.C. Stephens, "
+     "Todd Stewart, and Russ Taylor.", True),
+    ("Pathfinder Roleplaying Game Ultimate Campaign. © 2013, Paizo Publishing, LLC; Authors: "
+     "Jesse Benner, Benjamin Bruck, Jason Bulmahn, Ryan Costello, Adam Daigle, Matt Goetz, "
+     "Tim Hitchcock, James Jacobs, Ryan Macklin, Colin McComb, Jason Nelson, Richard Pett, "
+     "Stephen Radney-MacFarland, Patrick Renie, Sean K Reynolds, F. Wesley Schneider, "
+     "James L. Sutter, Russ Taylor, and Stephen Townshend.", True),
+    ("Pathfinder Roleplaying Game Advanced Class Guide © 2014, Paizo Inc.; Authors: "
+     "Dennis Baker, Ross Byers, Jesse Benner, Savannah Broadway, Jason Bulmahn, Jim Groves, "
+     "Tim Hitchcock, Tracy Hurley, Jonathan H. Keith, Will McCardell, Dale C. McCoy, Jr., "
+     "Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, Sean K Reynolds, Tork Shaw, "
+     "Owen K.C. Stephens, and Russ Taylor.", True),
+    ("Pathfinder Roleplaying Game Occult Adventures. © 2015, Paizo Inc.; Authors: "
+     "John Bennett, Logan Bonner, Robert Brookes, Jason Bulmahn, Ross Byers, John Compton, "
+     "Adam Daigle, Jim Groves, Thurston Hillman, Eric Hindley, Brandon Hodge, Ben McFarland, "
+     "Erik Mona, Jason Nelson, Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, "
+     "Alex Riggs, Robert Schwalb, Mark Seifter, Russ Taylor, and Steve Townshend.", True),
+    ("Pathfinder Roleplaying Game Ultimate Intrigue. © 2016, Paizo Inc.", False),
+    ("Pathfinder Roleplaying Game Horror Adventures. © 2016, Paizo Inc.", False),
+    ("Spheres of Power. © 2014, Drop Dead Studios LLC; Author: Adam Meyers.", True),
+    ("Spheres of Might. © 2017, Drop Dead Studios LLC; Authors: Adam Meyers, Michael Sayre, "
+     "Andrew Stoeckle, N. Jolly.", True),
 ]
 
 HEADER = """\
