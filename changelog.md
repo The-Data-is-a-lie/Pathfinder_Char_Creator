@@ -18,7 +18,63 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Fixed
+- **Familiar-bond archetypes now restrict to familiar species, not phantom animals.** Winter
+  Witch's RAW list (bat, hawk, owl, rat, raven, weasel — fox stays raw-only, outside the v1 pool)
+  had been curated down to the single phantom pool `['cat, small']`, because at curation time no
+  familiar species file existed to resolve against; Putrefactor's rat/toad list had resolved to
+  nothing at all. `build_companion_archetypes.py` now keeps **two vocabularies** — animal names for
+  companion/mount bonds, `familiar_choices.json` names for the familiar classes — rather than one
+  merged set, which in a first attempt let druid/cavalier fly-speed restrictions derive Diminutive
+  familiar bodies as nature-bond companions. The overrides file was corrected, the generated table
+  rebuilt, and `validate_companion_archetypes.py` learned the familiar vocabulary. Caught by the
+  new familiar invariant (a witch's familiar species must come from the RAW pool). Known remaining
+  oddity, recorded not fixed: Swarm Monger (a druid whose nature bond becomes a familiar) keeps
+  its signed-off `['cat, small']` — the resolver takes the creature type from the grantor row, so
+  a type-changing archetype is unmodeled and an animal body is the honest fallback.
+- **`LICENSE-OGL.txt` section 15 now attributes what the repo actually ships** (mythic ticket 08's
+  sweep). Added verified copyright lines for *Mythic Adventures*, *Advanced Race Guide*, *Ultimate
+  Campaign*, *Advanced Class Guide* and *Occult Adventures* (quoted from Paizo's PRD section 15),
+  short-form unverified lines for *Ultimate Intrigue* / *Horror Adventures*, and verified lines for
+  *Spheres of Power* / *Spheres of Might*; stopped dropping the four *Path of War* /
+  *Divergent Paths* lines — that drop predated Path of War being wired into the generator.
+  All changes live in `build_ogl_license.py`'s data (the generated file is never hand-edited).
+  Known remaining gap, recorded in the ticket: the ~50-booklet Player Companion / Campaign Setting
+  tail cited by `data/feats.csv` has no lines yet. Rejected alternative: composing author lists
+  from memory for unverifiable works — short-form year+publisher lines flagged unverified instead.
+
 ### Added
+- **Familiars arrive at a full stat block** (spec §8's v1 debt, companions ticket 02's promise
+  finally kept — a witch used to generate no familiar at all). The `species_pool: ["familiar"]`
+  grantor rows now resolve: species from the ten Core Rulebook base familiars
+  (`json/familiar_choices.json`, schema-matched to `animal_choices.json`), scaling from the
+  master-level table (`json/familiar_master_bonus.json`: natural armor, Int override, special
+  abilities; SR = master level + 5 from 11th). The numbers key off the **master**, not a chassis —
+  half the master's HP, the master's BAB, best-of base saves, the master's skill ranks overlaid at
+  the familiar's own modifiers, HD = master level — so they are computed by a **late pass**
+  (`utils/class_func/familiars.py::stat_familiars`, after luck resolution) instead of inside
+  `stat_bonded_creatures`, where the master's HP/skills/luck are not yet final and every number
+  would be wrong; body geometry reuses `companion_stats`' parsers so the attack/armor rules cannot
+  drift apart. Entries also ship `master_abilities` — the table abilities with one-line rules text
+  plus the species perk — recorded as prose, never folded into the master's math (Alertness is
+  conditional on arm's reach). Gates: new `validate_familiar_data.py` (pool exact, sizes Tiny-,
+  table cumulative and complete); the names gate sweeps the pool against `pf-familiars` (all 10
+  match); the invariant sweep grew a familiar branch asserting the master-derived numbers against
+  the payload's own, with a coverage guard so a sweep that granted none fails. New `witch` golden
+  (unconditional grant — coverage cannot be realigned away by a pool change);
+  `optimized_controller` deliberately rebaselined — the wizard now draws its 70/30 arcane-bond
+  roll and a rat familiar, shifting every later draw for that seed. The other eight goldens are
+  byte-identical, the proof random mode elsewhere never moved. Known simplification: familiar
+  feats (Weapon Finesse et al.) are not modeled, same as companions. Improved familiars stay
+  deferred (unverified prerequisites), recorded in §8.
+- **Foundry module: "Optimized builds (dev)" setting** — a client-scoped checkbox (default off) in
+  the module settings that adds `optimize: true` to the generation request at click time, so
+  optimized mode can be A/B-tested from Foundry without console surgery on `deliverData.json`.
+  Mirrors the `forceLuckDirection` pattern: per-machine, merged in per click (never persisted with
+  the dialog's saved inputs), so it can never ship enabled or leak into a stored request. The hint
+  warns it must stay off against the hosted backend, whose positional parser predates the
+  `optimize` key and would misread the request. Rejected alternative: a dialog field — the dialog
+  rewrites its saved state on every save, which is exactly how the flag kept getting wiped.
 - **The power metric sees burst damage and damage reduction** (spec §15's first design ruling made
   code). `burst_raw`/`burst_expected` score a second declared round-shape — the round-1 alpha, with
   the limited-use class offense the character actually has switched on (rage, smite, challenge,

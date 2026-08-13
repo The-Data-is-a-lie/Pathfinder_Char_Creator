@@ -273,6 +273,19 @@ stat block; `main_test.py` emits `bonded_creatures` beside the frozen `animal_co
 `validate_companion_stats.py` (validators 13 → 14) gates the arithmetic species-by-species and
 `test_house_invariants.py` gates the emitted shape and the druid flip.
 
+**Familiars landed 2026-08-13 — the v1 debt paid.** The `species_pool: ["familiar"]` grantor rows
+resolve from `Backend/json/familiar_choices.json` (the ten Core Rulebook base familiars) and scale
+by `Backend/json/familiar_master_bonus.json` (the 20-row master table). Because every number keys
+off the **master** — half HP, master BAB, best-of base saves, the master's skill ranks overlaid,
+HD = master level — the stat block is computed by a **late pass**
+(`Backend/utils/class_func/familiars.py::stat_familiars`, called after luck resolution) rather
+than in `stat_bonded_creatures`, where those inputs are not yet final; a familiar entry therefore
+carries **no chassis**. The `master_abilities` export field ships the accumulated table abilities
+with rules text plus the species perk, as prose, never folded into the master's math. Gated by
+`validate_familiar_data.py`, the names gate (all ten match `pf-familiars`), the invariant sweep's
+familiar branch, and the `witch` golden. Familiar feats (Weapon Finesse et al.) are not modeled —
+same simplification as companions; improved familiars stay in Deferred.
+
 What is **not** built, and what the remaining sheets wait on:
 
 - **No renderer.** `createCharacter.js` creates exactly one Actor (#33); the web sheet's Companions

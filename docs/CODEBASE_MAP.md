@@ -259,9 +259,16 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
       domain/companion block sits below the bloodline choosers in `main_test.py` rather than where
       `animal_chooser` used to be. Moving it back breaks archetype effects and Arcane-bloodline
       familiars.
-    - Rows whose species data is not authored yet (`familiar`, `eidolon`) carry a `species_data`
+    - Rows whose species data is not authored yet (`eidolon`) carry a `species_data`
       note and resolve to **no entry**, so the table stays complete while the resolver stays honest.
-  - Still absent: `familiar_master_table.json`, `familiar_choices.json`, `eidolon_base_forms.json`.
+  - **Familiars (2026-08-13)**: `familiar_choices.json` (the ten Core Rulebook species, shaped like
+    `animal_choices.json`) + `familiar_master_bonus.json` (the 20-row master table, species perks,
+    ability notes). Resolved by the same grantor path via `_species_buckets`, but a familiar entry
+    carries **no chassis** — every number keys off the master, computed by
+    `class_func/familiars.py::stat_familiars`, a **late pass** called in `main_test.py` after luck
+    resolution (the master's HP/skills are not final where `stat_bonded_creatures` runs). Gated by
+    `gates/validate_familiar_data.py`; the `witch` golden pins the output.
+  - Still absent: `eidolon_base_forms.json`.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json (**no reader** — a witch's patron is a real 1st-level pick nothing makes;
@@ -292,7 +299,8 @@ domain_inquisition.py · gunslinger.py · animal_companions.py (the grantor reso
 stacking, archetype bonds, D9 identity) · companion_feats.py (the companion feat economy — gated
 picks, dated slots, feat tax, animal flaws) · companion_stats.py (the advancement merge, the whole
 stat block, and the D14 fold of feats/flaws; runs after `companion_feats`, writes `entry['stats']`
-and nothing else) ·
+and nothing else) · familiars.py (the familiar stat block — master-derived numbers over a species
+body, the late pass; reuses `companion_stats`' parsers) ·
 versatile_performance.py ·
 traits.py · flaws.py / randomize_flaw.py · feat_tax.py ·
 feat_level_assignment.py (`assign_feats_to_levels` reorders normal + class-bonus feats onto
