@@ -169,6 +169,19 @@ CONFIGS = {
     'manifester': dict(_BASE, seed=8194, userInput_race='Human', class_choice='psion',
                        chosen_BAB='low', multi_class='Y', alignment_input='NG',
                        userInput_gender='female', high_level=14, low_level=14),
+    # OPTIMIZED MODE (spec 15). The seven fixtures above all run with `optimize` absent and are
+    # the proof that random mode never moves; this pair pins the optimizer's whole spine -- the
+    # forced-role input path, the gear ladder, six-slot stat placement, the policy weapon pick,
+    # the feat spine and the role enhancement split. Roles are FORCED, not drawn, so the fixture
+    # does not depend on which candidate the seed happens to sample.
+    'optimized_striker': dict(_BASE, seed=3002, userInput_race='Human', class_choice='fighter',
+                              chosen_BAB='high', multi_class='N', alignment_input='LG',
+                              userInput_gender='male', high_level=16, low_level=16,
+                              gold_num="", optimize='striker'),
+    'optimized_controller': dict(_BASE, seed=5002, userInput_race='Human', class_choice='wizard',
+                                 chosen_BAB='low', multi_class='N', alignment_input='NG',
+                                 userInput_gender='female', high_level=15, low_level=15,
+                                 gold_num="", optimize='controller'),
 }
 
 
@@ -232,10 +245,46 @@ def _covers_manifester(payload):
     return None
 
 
+def _covers_optimized_striker(payload):
+    """The striker spine actually fired: Furious Focus granted, a big-six purchase made.
+
+    Furious Focus, not Power Attack: PA is on feat_tax.json's tax_primary_blocklist -- house-waived
+    AMBIENT, held by rule, never in any payload bucket. This predicate hunting for it is how that
+    was discovered (and how the metric's never-firing Power Attack model was caught). Furious
+    Focus is real spine evidence AND proof the waived-prerequisite machinery grants through it.
+    Feats are read across the same buckets the power metric folds -- separate_feats_func deals a
+    fighter's combat feats into `class_feats`, not `feats`.
+    """
+    feats = set()
+    for key in ('feats', 'class_feats', 'flavor_feats', 'story_feats', 'trainer_feats'):
+        value = payload.get(key)
+        entries = value if isinstance(value, (list, tuple)) else (value or {})
+        for f in entries:
+            feats.add(str(f[0] if isinstance(f, (list, tuple)) and f else f).lower())
+    if 'furious focus' not in feats:
+        return 'no Furious Focus in any feat bucket -- the striker spine did not fire'
+    gear = ' | '.join(str(x) for x in (payload.get('equipment_list') or [])).lower()
+    if 'cloak of resistance' not in gear:
+        return 'no Cloak of Resistance purchase -- the gear ladder did not run'
+    return None
+
+
+def _covers_optimized_controller(payload):
+    """The controller ladder bought the casting-stat headband and the spellbook survived."""
+    gear = ' | '.join(str(x) for x in (payload.get('equipment_list') or [])).lower()
+    if 'headband of vast intelligence' not in gear:
+        return 'no Headband of Vast Intelligence -- the primary_stat_item ladder token did not fire'
+    if not any(b.get('spell_list_choose_from') for b in (payload.get('spellbooks') or [])):
+        return 'no populated spellbook -- optimization broke the caster chassis'
+    return None
+
+
 COVERAGE = {
     'companion': _covers_companion,
     'caster': _covers_caster,
     'manifester': _covers_manifester,
+    'optimized_striker': _covers_optimized_striker,
+    'optimized_controller': _covers_optimized_controller,
 }
 
 

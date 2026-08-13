@@ -38,6 +38,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _harness import (BACKEND, Report, choice_schedule, schedule_due, schedule_levels,  # noqa: E402
                       schedule_row)
+import power_metric  # noqa: E402
+
+# --score (map: optimal-builder, ticket 03). OFF by default, so CI pays nothing: the flag only adds
+# a scoring call to the per-character hook every generation already passes through, which is the
+# class-choices ticket 05 pattern -- a whole coverage layer for ZERO new generations. Generation is
+# the expensive part of this sweep; a check hanging off it is nearly free.
+SCORING = False
+SCORE_ROWS = []
+# Axes no character can legitimately have none of. A zero here is the fold silently failing.
+NONZERO_AXES = ('ac', 'hp', 'to_hit')
 
 # The pick schedule, read from disk rather than through the generator's resolver.
 SCHEDULE = choice_schedule()
@@ -785,9 +795,90 @@ def final_mod(payload, stat):
     return floor((final_score(payload, stat) - 10) / 2)
 
 
+def score_character(cell, payload):
+    """Collect a power profile for this character, when --score is on.
+
+    Deliberately non-asserting: this is a MEASUREMENT phase, and the point of the baseline is to
+    find out what today's random output scores. The assertions live in check_power_metric, which
+    runs once at the end over everything collected -- so a single odd character is a data point
+    rather than a red build.
+    """
+    if not SCORING:
+        return
+    try:
+        profile = power_metric.profile_for(payload)
+    except Exception:
+        tail = traceback.format_exc().strip().splitlines()
+        REPORT.error(f"{cell}: power_metric.profile_for raised -- {tail[-1]}")
+        return
+    profile['cell'] = cell
+    profile['class'] = str(payload.get('c_class') or '')
+    profile['multiclass'] = bool(payload.get('c_class_2'))
+    SCORE_ROWS.append(profile)
+
+
+def check_power_metric():
+    """The BEHAVIOUR layer over the metric: it must actually see the characters it scores.
+
+    Its partner is the CONFIG layer, gates/validate_power_metric.py, which checks the tables resolve
+    without generating anything. Neither imports the other's conclusions.
+
+    The failure this exists to catch is the one ticket 03 names: a metric that silently rates a
+    warder at zero is worse than one that says it cannot see maneuvers yet. So a whole class scoring
+    zero on an axis every character must have is an error, not a finding -- and a run that scored
+    nothing at all fails rather than reporting success having asserted nothing.
+    """
+    if not SCORING:
+        return
+    if not check(SCORE_ROWS, "--score was passed but no character was scored"):
+        return
+
+    by_class = {}
+    for row in SCORE_ROWS:
+        by_class.setdefault(row['class'], []).append(row)
+
+    for axis in NONZERO_AXES:
+        for name, rows in sorted(by_class.items()):
+            if all((row['axes'].get(axis) or {}).get('raw') in (None, 0) for row in rows):
+                check(False,
+                      f"every one of the {len(rows)} scored {name} characters has {axis}=0 -- an "
+                      f"axis the fold has stopped reading, not a weak class")
+
+    # The nova round is the sustained round plus adders (or the better blast), so per character
+    # burst_raw >= dpr_raw is structural -- a violation is scorer arithmetic, never a weak build.
+    # ac_combat >= ac is structural the same way (sheet AC plus defensive folds).
+    for row in SCORE_ROWS:
+        burst = (row['axes'].get('burst_raw') or {}).get('raw') or 0
+        sustained = (row['axes'].get('dpr_raw') or {}).get('raw') or 0
+        if burst < sustained:
+            check(False,
+                  f"a scored {row['class']} L{row['level']} has burst_raw {burst} < dpr_raw "
+                  f"{sustained} -- the nova round can never be lower than the sustained round")
+            break
+        combat_ac = (row['axes'].get('ac_combat') or {}).get('raw') or 0
+        sheet_ac = (row['axes'].get('ac') or {}).get('raw') or 0
+        if combat_ac < sheet_ac:
+            check(False,
+                  f"a scored {row['class']} L{row['level']} has ac_combat {combat_ac} < ac "
+                  f"{sheet_ac} -- the fight-state AC can never be lower than the sheet AC")
+            break
+
+    unknown = sorted({row['diagnostics']['weapon_name'] for row in SCORE_ROWS
+                      if not row['diagnostics']['weapon_known']})
+    if unknown:
+        REPORT.warn(f"{len(unknown)} weapon name(s) do not resolve in weapons_data.json, so their "
+                    f"damage dice scored zero: {unknown[:12]}")
+
+    shortfall = [row for row in SCORE_ROWS if row['diagnostics']['web_sheet_ac_shortfall']]
+    print(f"  power metric: {len(SCORE_ROWS)} characters scored across {len(by_class)} classes; "
+          f"{len(unknown)} unresolved weapon(s); "
+          f"{len(shortfall)} would render AC-low on the web sheet")
+
+
 def check_character(cell, payload):
     L = payload['total_level']
     classes = payload['classes']
+    score_character(cell, payload)
 
     # ---- the level ceiling ----
     # randomize_level CLAMPS a requested level to MAX_CHARACTER_LEVEL rather than rejecting it, and
@@ -1450,6 +1541,12 @@ def run(classes, levels, seeds):
     done = 0
     for name in classes:
         for level in levels:
+            # Paizo wealth-by-level, not a constant. This used to be gold_num=10000 at EVERY
+            # level -- ~7x wealth at L1 and ~1% at L40 -- and the first power baseline read that
+            # fixed purse against a rising benchmark as "characters fall progressively behind the
+            # CR curve". The level bands are only comparable when each is funded the way
+            # production funds it (data.wealth_by_level is also assign_gold's table).
+            purse = data.wealth_by_level(level)
             for seed in seeds:
                 cell = f"{name} L{level} seed {seed}"
                 done += 1
@@ -1459,7 +1556,7 @@ def run(classes, levels, seeds):
                             class_choice=name, chosen_BAB='high', multi_class='N',
                             userInput_race='random', userInput_region='Tal-Falko',
                             alignment_input='random', userInput_gender='random',
-                            high_level=level, low_level=level, gold_num=10000,
+                            high_level=level, low_level=level, gold_num=purse,
                             num_dice='4', num_sides='6', use_backstory_api='N',
                             spheres_flag='N', seed=seed)
                 except Exception:
@@ -1477,7 +1574,14 @@ def main():
     parser.add_argument('--levels', help=f'comma-separated levels (default {LEVELS})')
     parser.add_argument('--seeds', type=int, default=len(SEEDS),
                         help=f'how many of the fixed seeds to run (default {len(SEEDS)})')
+    parser.add_argument('--score', nargs='?', const='-', default=None, metavar='PATH',
+                        help='also score every generated character with power_metric and write '
+                             'the profiles as JSON (default: the scratchpad). Off unless passed, '
+                             'so CI is unaffected.')
     args = parser.parse_args()
+
+    global SCORING
+    SCORING = args.score is not None
 
     classes = args.classes.split(',') if args.classes else generatable_classes()
     unknown = [c for c in classes if c not in CLASS_DATA]
@@ -1550,6 +1654,13 @@ def main():
           f"{CHOICE_COVERAGE['chars']} character(s), {CHOICE_COVERAGE['picks']} picks, "
           f"{CHOICE_COVERAGE['stamps']} level stamps, {CHOICE_COVERAGE['capped']} capped by "
           f"pool/max_num, {CHOICE_COVERAGE['skipped']} skipped (see CHOICE_SKIP)")
+
+    check_power_metric()
+    if SCORING:
+        target = (BACKEND / 'scripts' / '_power_baseline.json') if args.score == '-' \
+            else Path(args.score)
+        target.write_text(json.dumps(SCORE_ROWS, indent=1), encoding='utf-8')
+        print(f"  power metric: {len(SCORE_ROWS)} profile(s) -> {target}")
 
     return REPORT.finish(f'{REPORT.checks} checks')
 

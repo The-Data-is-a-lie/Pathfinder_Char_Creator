@@ -1,0 +1,1581 @@
+{
+ "Total_HP": 241,
+ "age_number": 45,
+ "alignment": "Lawful Good",
+ "animal_companion": null,
+ "appearance": [
+  "Sassy"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Qadira  Dawnflower Dervish\": {\n        \"source\": \"Inner Sea Primer pg. 25 In Qadira, home of the whirlwind, the scorpion, and the djinni, no enemy is as feared as the dervishes of Sarenrae. While dervishes can be clerics, paladins, or rangers, zealous fighters join their ranks as well. These spinning warriors prefer light or no armor and wield scimitars with devastating consequences, moving swiftly over the treacherous desert sands to attack with lightning-fast strikes. They maneuver quickly among their enemies, relying on their speed and their skill to see them through the battle.\",\n        \"suggested feats\": \" Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack.\",\n        \"burst of speed (ex)\": \" At 3rd level, a Dawnflower dervish takes only a -1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1.\",\n        \"desert stride (ex)\": \" At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2.\",\n        \"rapid attack (ex)\": \" At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.\",\n        \"lightning strike (ex)\": \" At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish's highest base attack bonus, but each attack in the round (including the extra one) takes a -2 penalty. This ability replaces armor training 4.\"\n    }\n}",
+ "armor_ac": "9",
+ "armor_armor_check_penalty": "-6",
+ "armor_enhancement_bonus": 5,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Full plate",
+ "armor_spell_failure": 0,
+ "armor_weight": "50 lbs.",
+ "bab_total": 16,
+ "background_traits": [
+  "Precocious Spellcaster",
+  "Arbiter",
+  "Aspiring Bard",
+  "Mummy-Cursed"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [],
+ "buff_gaps": [],
+ "build_archetype": "Bruiser",
+ "build_tactics": "Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.",
+ "c_class": "fighter",
+ "c_class_2": "",
+ "c_class_display": "Fighter",
+ "casting_level_str_foundry": "None",
+ "casting_tradition": {
+  "bonus_spell_points": 0,
+  "boons": [
+   "Overcharge",
+   "Empowered Abilities",
+   "Easy Focus",
+   "Fortified Casting"
+  ],
+  "boons_detail": [
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   }
+  ],
+  "casting_ability_modifier": "Wisdom",
+  "drawbacks": [
+   "Prepared Caster",
+   "Material Casting",
+   "Magical Signs",
+   "Somatic Casting",
+   "Extended Casting",
+   "Addictive Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "name": "Material Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   }
+  ]
+ },
+ "cha": 10,
+ "character_full_name": "Sébastien Dupuy",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "emotion"
+ ],
+ "class feature levels": {
+  "armor_training": {
+   "armored master": 15,
+   "armored sprint (ex)": 7,
+   "quick donning (ex)": 11
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": 9,
+   "item mastery": 13
+  }
+ },
+ "class feature owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class features": {
+  "E-Kat Exchange": {
+   "Actions": {
+    "10 E-Kats: hero point": "Use as a Hero Point (you can store it if you have room).",
+    "2 E-Kats: bonus": "Gain a +1 on ANY roll; +2 if declared before the roll.",
+    "2 E-Kats: penalty": "Inflict a -1 on ANY roll; -2 if declared before the roll.",
+    "20 E-Kats: borrow a feat or spell": "Gain the ability to use a feat or mythic spell you qualify for, excluding the mythic requirement. Feats last one minute; spells last for the duration of the spell.",
+    "25 E-Kats: Luck Trait": "25 permanent E-Kats can be used to purchase a Luck Trait.",
+    "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
+    "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
+    "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
+    "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
+   },
+   "Actions (Purchased)": {
+    "Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
+   },
+   "Feats Not Taken (reference)": {
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
+    "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
+    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
+    "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)"
+   },
+   "Feats Taken": {
+    "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
+    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
+   },
+   "Reserve": {
+    "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
+   }
+  },
+  "Skill Unlock: Linguistics": {
+   "10 Ranks": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15 Ranks": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20 Ranks": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5 Ranks": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
+  },
+  "armor_training": {
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sprint (ex)": {
+    "description": "the fighter gains run as a bonus feat. If the fighter is proficient with heavy armor, he treats heavy armor as if it were one category lighter for the purpose of determining how fast he can move while running in armor. "
+   },
+   "quick donning (ex)": {
+    "description": "the fighter can don armor in a hurry without reducing its effectiveness, and remove it quickly when it becomes a hindrance. When the fighter dons or removes his armor or dons it hastily, the amount of time needed to do so is reduced. The fighter can also remove sections of armor to escape grapples and similar hindrances. Whenever the fighter attempts a combat maneuver check, an escape artist check, or a strength check to escape from an effect that reduces or restricts his ability to move or act, he can reduce the armor bonus of any armor that he is wearing by up to half his armors base armor bonus. If he does so, he gains a bonus on his check equal to the amount by which he reduced his armors armor bonus. Multiple uses of this ability cannot reduce the armors armor bonus below half its base armor bonus, and the reduction to the armors armor bonus lasts until the fighter recovers and dons the removed pieces of armor. "
+   }
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": {
+    "description": "the fighter gains the benefits of the weapon finesse feat with all melee weapons that belong to the associated fighter weapon group (even if they cannot normally be used with weapon finesse). The fighter must have the weapon finesse feat before choosing this option. "
+   },
+   "item mastery": {
+    "description": "the fighter gains an item mastery feat as a bonus feat, which functions with any magic weapon he wields, even if the magic weapon does not meet the feats normal requirements. "
+   }
+  }
+ },
+ "class_ability": [
+  "bonus feats_fighter",
+  "bravery_fighter",
+  "armor training_fighter",
+  "weapon training_fighter",
+  "armor mastery_fighter",
+  "weapon mastery_fighter"
+ ],
+ "class_ability_desc": {
+  "armor mastery": "At 19th level, a fighter gains DR 5/- whenever he is wearing armor or using a shield.",
+  "armor training": "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th, and 15th), these bonuses increase by +1 each time, to a maximum -4 reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus allowed. In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at his normal speed while wearing heavy armor.",
+  "bonus feats": "At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called \"fighter bonus feats.\"Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.",
+  "bravery": "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four levels beyond 2nd.",
+  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (×2 becomes ×3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
+  "weapon training": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls. Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. Weapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups): Note from Nethys : A consolidated list of fighter weapon groups is provided here"
+ },
+ "class_feat_labels": [
+  "Fighter 1",
+  "Fighter 2",
+  "Fighter 4",
+  "Fighter 6",
+  "Fighter 8",
+  "Fighter 10",
+  "Fighter 12",
+  "Fighter 14",
+  "Fighter 16"
+ ],
+ "class_feat_tax_dict": {
+  "Endurance": [
+   "altitude affinity",
+   "cold celerity",
+   "diehard",
+   "drunken brawler"
+  ],
+  "Lightning Reflexes": [
+   "improved lightning reflexes"
+  ],
+  "Martial Training I (Primal Fury)": [
+   "Martial Training II (Primal Fury)"
+  ],
+  "Martial Training III (Primal Fury)": [
+   "Martial Training IV (Primal Fury)"
+  ],
+  "Martial Training V (Primal Fury)": [
+   "Martial Training VI (Primal Fury)"
+  ],
+  "Vital Strike": [
+   "improved vital strike",
+   "greater vital strike"
+  ]
+ },
+ "class_feats": [
+  "Endurance",
+  "Nemesis",
+  "Dark Allure",
+  "Martial Training I (Primal Fury)",
+  "Martial Training III (Primal Fury)",
+  "Martial Training V (Primal Fury)",
+  "Toughness",
+  "Lightning Reflexes",
+  "Vital Strike"
+ ],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "armor_training": {
+   "armored master": 15,
+   "armored sprint (ex)": 7,
+   "quick donning (ex)": 11
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": 9,
+   "item mastery": 13
+  }
+ },
+ "class_feature_owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class_features": {
+  "E-Kat Exchange": {
+   "Actions": {
+    "10 E-Kats: hero point": "Use as a Hero Point (you can store it if you have room).",
+    "2 E-Kats: bonus": "Gain a +1 on ANY roll; +2 if declared before the roll.",
+    "2 E-Kats: penalty": "Inflict a -1 on ANY roll; -2 if declared before the roll.",
+    "20 E-Kats: borrow a feat or spell": "Gain the ability to use a feat or mythic spell you qualify for, excluding the mythic requirement. Feats last one minute; spells last for the duration of the spell.",
+    "25 E-Kats: Luck Trait": "25 permanent E-Kats can be used to purchase a Luck Trait.",
+    "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
+    "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
+    "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
+    "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
+   },
+   "Actions (Purchased)": {
+    "Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
+   },
+   "Feats Not Taken (reference)": {
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
+    "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
+    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
+    "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)"
+   },
+   "Feats Taken": {
+    "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
+    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
+   },
+   "Reserve": {
+    "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
+   }
+  },
+  "Skill Unlock: Linguistics": {
+   "10 Ranks": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15 Ranks": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20 Ranks": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5 Ranks": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
+  },
+  "armor_training": {
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sprint (ex)": {
+    "description": "the fighter gains run as a bonus feat. If the fighter is proficient with heavy armor, he treats heavy armor as if it were one category lighter for the purpose of determining how fast he can move while running in armor. "
+   },
+   "quick donning (ex)": {
+    "description": "the fighter can don armor in a hurry without reducing its effectiveness, and remove it quickly when it becomes a hindrance. When the fighter dons or removes his armor or dons it hastily, the amount of time needed to do so is reduced. The fighter can also remove sections of armor to escape grapples and similar hindrances. Whenever the fighter attempts a combat maneuver check, an escape artist check, or a strength check to escape from an effect that reduces or restricts his ability to move or act, he can reduce the armor bonus of any armor that he is wearing by up to half his armors base armor bonus. If he does so, he gains a bonus on his check equal to the amount by which he reduced his armors armor bonus. Multiple uses of this ability cannot reduce the armors armor bonus below half its base armor bonus, and the reduction to the armors armor bonus lasts until the fighter recovers and dons the removed pieces of armor. "
+   }
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": {
+    "description": "the fighter gains the benefits of the weapon finesse feat with all melee weapons that belong to the associated fighter weapon group (even if they cannot normally be used with weapon finesse). The fighter must have the weapon finesse feat before choosing this option. "
+   },
+   "item mastery": {
+    "description": "the fighter gains an item mastery feat as a bonus feat, which functions with any magic weapon he wields, even if the magic weapon does not meet the feats normal requirements. "
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Qadira  Dawnflower Dervish": {
+     "burst of speed (ex)": " At 3rd level, a Dawnflower dervish takes only a -1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1.",
+     "desert stride (ex)": " At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2.",
+     "lightning strike (ex)": " At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish's highest base attack bonus, but each attack in the round (including the extra one) takes a -2 penalty. This ability replaces armor training 4.",
+     "rapid attack (ex)": " At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.",
+     "source": "Inner Sea Primer pg. 25 In Qadira, home of the whirlwind, the scorpion, and the djinni, no enemy is as feared as the dervishes of Sarenrae. While dervishes can be clerics, paladins, or rangers, zealous fighters join their ranks as well. These spinning warriors prefer light or no armor and wield scimitars with devastating consequences, moving swiftly over the treacherous desert sands to attack with lightning-fast strikes. They maneuver quickly among their enemies, relying on their speed and their skill to see them through the battle.",
+     "suggested feats": " Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack."
+    }
+   },
+   "display": "Fighter",
+   "level": 16,
+   "name": "fighter"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 16,
+ "counter_schools": [
+  "abjuration",
+  "evocation"
+ ],
+ "counter_spell_descriptor": [
+  "good"
+ ],
+ "craft_type": "Cooking",
+ "day_list": [],
+ "deity_name": "Torag",
+ "dex": 15,
+ "enhancement_effects_dict": {
+  "weapon": {
+   "Fate-Stealing": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Fate-Stealing: on striking a creature with grit or panache, steal [[1]] point as a swift action and regain [[1]] grit or panache point (foe's grit can restore your panache and vice versa)"
+     }
+    ],
+    "description": "This special ability can be placed only on melee weapons. When a fate-stealing weapon strikes a creature that possesses either grit or panache, the wielder can steal 1 grit point or panache point as a swift action. When the wielder steals a grit or panache point, she can regain 1 grit point or 1 panache point (if the wielder has any). The wielder can use a foe's grit to restore her own panache, or use a foe's panache to restore her own grit. If the wielder attempts to use this ability against a foe that isn't a grit or panache user, or that currently has no points of grit or panache remaining, the wielder doesn't expend an action, and the attempt fails."
+   },
+   "Jurist": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Jurist: (inquisitor) while judgment is active, enhancement bonus on Perception and to CMD: +[[1]] on the first round, +[[2]] on the second, +[[3]] on the third and after"
+     }
+    ],
+    "description": "When an inquisitor wielder uses her judgment class ability while wielding a jurist weapon, it grants her an enhancement bonus on her Perception checks and to CMD. The bonus is +1 on the first round of her judgment, and increases by +1 each round, to a maximum of +3 on the third and following rounds."
+   }
+  }
+ },
+ "equip_descrip": {
+  "belts": {
+   "description": " this belt is a thick leather affair, \r often decorated with huge metal\r buckles. The belt grants the wearer\r an enhancement bonus to strength of\r +2, +4, or +6. Treat this as a temporary\r ability bonus for the first 24 hours the belt is worn. ",
+   "item_name": "Belt of Giant Strength +6"
+  },
+  "body": {
+   "description": " this dapper robe enables a sorcerer to add the effects of her\r 1st-level bloodline power to spells she casts. As a swift action\r before casting a spell, the wearer expends one use of her\r 1st-level bloodline power and selects one target of the spell\r to be affected by that bloodline power. If the spell allows a\r saving throw, a successful save against the spell means the\r bloodline power deals half damage (if it normally deals hit\r point damage) or is negated (if it does not). The robe can be\r used up to three times per day. ",
+   "item_name": "Sorcerer's Robe"
+  },
+  "chest": {
+   "description": " this black linen tunic has simple brass buttons. Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. This damage cannot be reduced or redirected, and if the wielder is incapable of sacrificing hit points, the damage to the ally cannot be prevented. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement. ",
+   "item_name": "Shadowbond Tunic"
+  },
+  "eyes": {
+   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. These large goggles feature adjustable lenses. When calibrated correctly, they sense the thoughts of a particular creature and send them into the wearer's mind. If the wearer spends 3 rounds studying a creature, spending a standard action each round to calibrate the lenses, she may scan a target's surface thoughts as if she had spent 3 rounds studying the target with detect thoughts . The target can attempt a dc 13 will save to negate the effect. The wearer must spend three consecutive standard actions each time she wishes to read the mind of a new creature. If the wearer is an android, he can spend a nanite surge to immediately detect surface thoughts instead of concentrating for 3 rounds. ",
+   "item_name": "Eyes of Mind Reading"
+  },
+  "feet": {
+   "description": " as a free action, the wearer of boots\r of speed can click her heels together, \r letting her act as though affected by\r a haste spell for up to 10 rounds each\r day. The haste effect's duration need\r not be consecutive rounds. ",
+   "item_name": "Boots of Speed"
+  },
+  "hands": {
+   "description": " these gloves of thick leather do not impair delicate work and grant a +4 competence bonus on disable device checks to disable magic traps. Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day. ",
+   "item_name": "Saboteur's Gloves"
+  },
+  "head": {
+   "description": " a wearer can remove this mask as a move action to change his appearance as if using disguise self . The effect persists for 10 minutes. A vigilante can instead remove a quick-change mask to switch his identity as a move action. If the mask is used in this way, the effect functions just like changing identities normally (except faster), and doesn't have a limited duration. Regardless of which way he is using a quick-change mask , the user can attempt a bluff check to create a diversion so he can use stealth as part of the same move action he uses to activate the mask. The mask dissolves when used. ",
+   "item_name": "Quick-Change Mask"
+  },
+  "neck": {
+   "description": " this amulet, usually containing some\r type of magically preserved monster\r hide or other natural armorsuch as\r bone, horn, carapace, or beast scales\r toughens the wearer's body and flesh, \r giving him an enhancement bonus\r to his natural armor from +1 to +5, \r depending on the kind of amulet. ",
+   "item_name": "Amulet of Natural Armor +3"
+  },
+  "rings": {
+   "description": "This ring offers continual magical protection in the form of a deflection bonus of +1 to +5 to AC.",
+   "item_name": "Ring of Protection +4"
+  },
+  "shoulders": {
+   "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). ",
+   "item_name": "Cloak of Resistance +5"
+  }
+ },
+ "equipment_list": [
+  "Cloak of Resistance +5",
+  "Belt of Giant Strength +6",
+  "Boots of Speed",
+  "Ring of Protection +4",
+  "Amulet of Natural Armor +3",
+  "Sorcerer's Robe",
+  "Shadowbond Tunic",
+  "Eyes of Mind Reading",
+  "Saboteur's Gloves",
+  "Quick-Change Mask"
+ ],
+ "eye_color": [
+  "Amber"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 9,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 5,
+  "profession": 1,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 8
+ },
+ "feat_changes_dict": {
+  "Improved Drag": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "+2 on combat maneuver checks made to drag a foe."
+    },
+    {
+     "target": "cmd",
+     "text": "+2 to CMD when an opponent tries to drag you."
+    }
+   ]
+  },
+  "Mobility": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "+4 dodge bonus to AC against attacks of opportunity provoked by moving out of or within a threatened area; lost when you lose your Dex bonus to AC."
+    }
+   ]
+  },
+  "Necromantic Affinity": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties."
+    }
+   ]
+  },
+  "Weapon Focus": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "wdamage",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "feat_conditionals_dict": {
+  "Disorienting Maneuver": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "circumstance"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "circumstance"
+    }
+   ],
+   "name": "Disorienting Maneuver: After tumbling through an opponent's space with Acrobatics, +2 circumstance on attack rolls vs that opponent (and +4 circumstance on a trip CMB) until your next turn."
+  },
+  "Furious Focus": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1+floor(@attributes.bab.total/4)",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Furious Focus: Effect: negate the Power Attack penalty on your first attack this turn (requires a two-handed weapon or two hands on a one-handed weapon)",
+   "tier": "A"
+  }
+ },
+ "feats": [
+  "Combat Reflexes",
+  "Ass Pull",
+  "Lucky Boy",
+  "Middle Finger",
+  "It Just Works",
+  "Very Lucky Boy",
+  "Noble Scion",
+  "Iron Will",
+  "Vicious Stomp",
+  "Multi Talented"
+ ],
+ "feats_feat_tax_dict": {
+  "Combat Reflexes": [
+   "bodyguard",
+   "in harm's way",
+   "panther style",
+   "pin down",
+   "porcupine defense",
+   "stand still",
+   "steady engagement"
+  ],
+  "Iron Will": [
+   "courage in numbers",
+   "improved iron will",
+   "stoic",
+   "witchbreaker"
+  ]
+ },
+ "flavor_feat_tax_dict": {
+  "Step Up": [
+   "following step",
+   "step up and strike"
+  ]
+ },
+ "flavor_feats": [
+  "Step Up"
+ ],
+ "flaw": [
+  "Motion Sickness",
+  "Powerless Prophecy"
+ ],
+ "flaw_effects_dict": {
+  "Motion Sickness": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "fort",
+     "text": "Motion Sickness: after [[10]] minutes riding/sailing, Fortitude save DC [[5]] or sickened while it continues."
+    }
+   ],
+   "description": "Travel turns your stomach. After 10 minutes riding a mount, vehicle, or ship, you must pass a Fortitude save (DC 5) or be sickened for as long as the ride continues.",
+   "tier": "minor"
+  },
+  "Powerless Prophecy": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "init",
+     "text": "Powerless Prophecy: no actions in surprise rounds; without a surprise round, staggered for round [[1]]."
+    }
+   ],
+   "description": "You are forewarned of danger but cannot act to prevent it. You can take no actions during a surprise round (not even free actions), and if there is no surprise round you are staggered for the entire first round of combat.",
+   "tier": "major"
+  }
+ },
+ "flaw_feat_tax_dict": {
+  "Mobility": [
+   "circling offense",
+   "combat patrol",
+   "landing roll",
+   "sidestep",
+   "spring attack",
+   "wand dancer",
+   "whirlwind attack"
+  ]
+ },
+ "flaw_feats": [
+  "Run",
+  "Mobility"
+ ],
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Master Enchanter (rank 10)\n- Profession: Lamp Lighter (rank 10)\n- Profession: Grand Lorekeeper (rank 3)\n- Profession: Watch Underling (rank 8)\n- Known for: Cooking\n- Training: An average trainer who taught them Disorienting Maneuver, Urban Tracking\n- Training: An average trainer who taught them Shadow Strike, Catch Off-Guard\n- Training: An average trainer who taught them Improved Drag, Necromantic Affinity\n- Training: An average trainer who taught them Lastwall Phalanx, Cooperative Crafting\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 1 Older Brother\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Spiky Blond\n- Eyes: Amber\n- Build: Sassy",
+ "full_domain": [],
+ "gender": "Male",
+ "generation_seed": 3002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 110,
+ "hair_color": [
+  "Blond"
+ ],
+ "hair_type": [
+  "Spiky"
+ ],
+ "height_number": "5'10\"",
+ "hero_points": 2,
+ "homebrew_feat_desc_dict": {
+  "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
+  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
+  "Dark Allure": "Those you have Claimed by become distracted by your presence. Special Characters with the Dark Authority feat cannot take this feat. creatures claimed by you take a penalty on attack rolls against creatures other than you equal to the number of creatures you currently have claimed.",
+  "Disorienting Maneuver": "Your erratic movements disorient your opponent",
+  "Endurance": "Harsh conditions or long exertions do not easily tire you",
+  "Furious Focus": "Even in the midst of fierce and furious blows, you can find focus in the carnage and your seemingly wild blows strike home",
+  "Great Fortitude": "You are resistant to poisons, diseases, and other maladies",
+  "Improved Drag": "You are skilled at dragging foes around the battlefield",
+  "Iron Will": "You are more resistant to mental effects",
+  "It Just Works": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
+  "Lastwall Phalanx": "When battling the terrifying hordes of Belkzen, you find strength in your shield brothers and sisters",
+  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
+  "Lunge": "You can strike foes that would normally be out of reach",
+  "Martial Training I (Primal Fury)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Primal Fury)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Primal Fury)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Primal Fury)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Primal Fury)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Primal Fury)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Middle Finger": "Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+  "Mobility": "You can easily move through a dangerous melee",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Necromantic Affinity": "Long exposure to necromantic energies has granted you a small measure of resistance against them",
+  "Nemesis": "A past enemy seeks your ruin",
+  "Noble Scion": "You are a member of a proud noble family, whether or not you remain in good standing with your family",
+  "Run": "You are swift of foot",
+  "Shadow Strike": "You accurately strike even those you cannot clearly see",
+  "Step Up": "You can close the distance when a foe tries to move away",
+  "Toughness": "You have enhanced physical stamina",
+  "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
+  "Very Lucky Boy": "E-Kat (roll based) bonuses are increased to triple.",
+  "Vicious Stomp": "You take advantage of the moment to brutally kick an enemy when he is down",
+  "Vital Strike": "You make a single attack that deals significantly more damage than normal",
+  "Weapon Focus": "Choose one type of weapon You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat"
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 4,
+  "dex": 0,
+  "int": 0,
+  "str": 10,
+  "wis": 0
+ },
+ "initiation_stat": "wis",
+ "initiator_level": 8,
+ "int": 11,
+ "item_changes_dict": {
+  "Amulet of Natural Armor +3": {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "nac",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Belt of Giant Strength +6": {
+   "changes": [
+    {
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "str",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "strChecks",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
+    }
+   ]
+  },
+  "Boots of Speed": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "As a free action, the wearer of boots of speed can click her heels together, letting her act as though affected by a haste spell for up to 10 rounds each day."
+   ]
+  },
+  "Cloak of Resistance +5": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Quick-Change Mask": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "A wearer can remove this mask as a move action to change his appearance as if using disguise self . The effect persists for 10 minutes. A vigilante can instead remove a quick-change mask to switch his identity as a move action. Regardless of which way he is using a quick-change mask , the user can attempt a bluff check to create a diversion so he can use stealth as part of the same move action he uses to activate the mask."
+   ]
+  },
+  "Ring of Protection +4": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "ac",
+     "type": "deflection"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Saboteur's Gloves": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dev",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.dev",
+     "text": "Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day."
+    }
+   ]
+  },
+  "Shadowbond Tunic": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement."
+   ]
+  },
+  "Sorcerer's Robe": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "This dapper robe enables a sorcerer to add the effects of her 1st-level bloodline power to spells she casts. As a swift action before casting a spell, the wearer expends one use of her 1st-level bloodline power and selects one target of the spell to be affected by that bloodline power. If the spell allows a saving throw, a successful save against the spell means the bloodline power deals half damage (if it normally deals hit point damage) or is negated (if it does not)."
+    }
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Sylvan",
+  "Gnoll",
+  "Sphinx",
+  "Draconic",
+  "Drow Sign Language",
+  "Grippli",
+  "Undercommon",
+  "Dwarven",
+  "Kelish",
+  "Orc",
+  "Ignan",
+  "Giant",
+  "Gnome",
+  "Infernal",
+  "Elven",
+  "Abyssal",
+  "Aquan",
+  "Auran",
+  "Celestial",
+  "Tengu",
+  "Protean",
+  "Wayang"
+ ],
+ "level": 16,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 4,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "luck": {
+  "attribute_bumps": {},
+  "audit": {
+   "attribute_points": {
+    "after": 4,
+    "before": 4,
+    "final": 4,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "feats": {
+    "after": 0,
+    "before": 0,
+    "final": 0,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "hp": {
+    "after": 225,
+    "before": 240,
+    "final": 241,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 15
+   },
+   "skill_ranks": {
+    "after": 81,
+    "before": 96,
+    "final": 113,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 15
+   }
+  },
+  "cap": 25,
+  "derivation": [
+   "Bought +6 (15 skill ranks, 15 HP)",
+   "+11 from 5 E-Kat feat(s)",
+   "= 17"
+  ],
+  "dr_pool": 17,
+  "e_kat_earned": 25,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "feats": [
+   "Ass Pull",
+   "Lucky Boy",
+   "Middle Finger",
+   "It Just Works",
+   "Very Lucky Boy"
+  ],
+  "floor": -50,
+  "luck_feats": [],
+  "mod": 3,
+  "negative_feats": [],
+  "payout_changes": [],
+  "score": 17,
+  "stake": {
+   "bonus_feat_slots": 0,
+   "direction": "buy",
+   "luck_points": {
+    "hp": 3,
+    "level_up_points": 0,
+    "skill_ranks": 3
+   },
+   "luck_type": "Default",
+   "paid": {
+    "hp": 15,
+    "level_up_points": 0,
+    "skill_ranks": 15
+   },
+   "payout": {},
+   "requested": {
+    "hp": 15,
+    "level_up_points": 0,
+    "skill_ranks": 15
+   },
+   "target": 6
+  },
+  "trait_benefits": {
+   "E-Kat Exchange: Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
+  },
+  "trait_changes": {},
+  "traits": [
+   "E-Kat Exchange: Auto-Dodge"
+  ],
+  "twist_fate_per_day": 0,
+  "type": "Default",
+  "values": {
+   "default": 17,
+   "negative": 0,
+   "proximity": 0
+  },
+  "vault": 0,
+  "vault_cap": 77
+ },
+ "magic_talent_items": [],
+ "main_stat": "str",
+ "maneuvers_choose_from": [
+  [
+   "Crushing Blow",
+   "Panthera on the Hunt"
+  ],
+  [
+   "Bloody Riposte",
+   "Crippling Strike"
+  ],
+  [
+   "Disparity Blow",
+   "Frenzy Strike"
+  ],
+  [
+   "Impaling Strike"
+  ],
+  [
+   "Dizzying Blow"
+  ],
+  [
+   "Charge of the Battle Panthera"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Bloody Riposte": {
+   "action": "1 immediate action",
+   "description": "Stoking the furnace of rage within him upon receiving injury, the disciple uses the momentary lapse in his attackers defenses when struck in combat to make a vicious riposte. Upon being struck in combat by an enemy, the initiator may make an immediate counter attack at his full base attack bonus that inflicts an additional 2d6 points of damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Charge of the Battle Panthera": {
+   "action": "1 full round action",
+   "description": "With a running start that ends in a blood-drenched finish, the disciple mimics the final moments of the hunting great cat as he delivers the death blow to his prey. The initiator makes a charge attack against a target, and if successful he inflicts an additional 12d6 points of damage and the target must make a Reflex save DC 16 + initiation modifier or be knocked prone.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 6,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Crippling Strike": {
+   "action": "1 standard action",
+   "description": "By specifically targeting a victims most vulnerable areas, the disciple is capable of rending arterial injuries into his foe. The initiator initiating this maneuver inflicts an additional 2d6 points of damage upon a successful melee attack, and his victim gains the bleeding condition suffering 1d3 points of damage per round until the application of any spell or effect that cures hit point damage or someone staunches the blood with a DC 15 Heal check.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Crushing Blow": {
+   "action": "1 standard action",
+   "description": "By bringing his weapon high and bringing it down with ferocious finality, the disciples forceful blow is enough to weaken the defenses of his foe momentarily. The initiator makes an attack and if successful, the strike inflicts an additional 1d6 points of damage and may potentially render his foe flat-footed until its next turn on a failed Fortitude save DC 11 + initiation modifier.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Disparity Blow": {
+   "action": "1 standard action",
+   "description": "With a powerful upswing, the Primal Fury disciple brings his weapon in low and with his attack drives his opponent to the ground as he raises it high to show his superiority. The initiator makes a melee attack and if successful, inflicts an additional 2d6 points of damage and may make an immediate trip attack against the target with a +4 circumstance bonus. This trip attempt does not provoke attacks of opportunity.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Dizzying Blow": {
+   "action": "1 full around action",
+   "description": "The disciple of the Primal Fury rockets across the battlefield to unleash a powerful strike to the vitals of his foe, leaving him agonized and sick with pain. The initiator makes a charge attack against a target creature, if successful the attack inflicts an additional 10d6 points of damage and the target must make a Fortitude save DC 15 + initiation modifier or be nauseated for 1d4 rounds.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 5,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Frenzy Strike": {
+   "action": "1 standard action",
+   "description": "By emulating the ferocious assault of a raging great cat, the disciples knowledge of the natural world and the way its predators operate assists him in combat with a furious set of attacks. The initiator makes one attack with each weapon he has wielded or with both heads of a double weapon; this includes natural attacks and armor or shield spikes at his full base attack bonus. Upon a each successful attack, the initiator inflicts an additional 2d6 points of damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Impaling Strike": {
+   "action": "1 standard action",
+   "description": "The disciple who has reached this level of mastery in the art of Primal Fury has learned that by striking to a foes heart and center with a singular but powerful blow, it causes the foes ability to withstand punishment to falter. The initiator makes an attack against his target and if successful, inflicts an additional 4d6 points of damage to this attack which ignores damage reduction. The target must make a Fortitude save DC 14 + primary initiation modifier or suffer an additional 1d4 points of Constitution damage from being hit in a vital area. Targets immune to critical hits are not subject to this Constitution damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Panthera on the Hunt": {
+   "action": "1 full round action",
+   "description": "With a deep breath and the tightening of honed muscles, the Primal Fury disciple may launch off into a lightning-fast charge. The initiator initiating this maneuver gains +2 circumstance bonus to attack and damage rolls on his charge attack, and ignores attacks of opportunity from moving through threatened squares.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Primal Warrior Stance": {
+   "action": "1 swift action",
+   "description": "By taking a wide stance that invites the death of any before him, the mighty disciple of Primal Fury wields the power of overwhelming force to its greatest effects. The initiator ignores difficult terrain when charging while in this stance, and whenever he is subject to a size modifier for CMB checks or to his CMD, the disciple is treated as one size category larger if doing so would be advantageous to him. He is also considered to be one size larger when determining whether a creatures special attacks based on size such as grab or swallow whole can affect him. Additionally, any melee weapon, unarmed strike, or natural weapon is treated as if it were two sizes larger. The benefits of this stance stack with abilities or effects that increase the initiators size such asenlarge person.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Running Hunters Stance": {
+   "action": "1 swift action",
+   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Skirmishers Stance": {
+   "action": "1 swift action",
+   "description": "By adopting a hit-and-run attitude, the disciple of Primal Fury disciple moves swiftly and strikes with deadly force. While in this stance, if the initiator moves 10-ft. or more on his turn, attacks made by him inflict an additional 2d6 points of damage and he gains a +2 dodge bonus to his Armor Class.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Stance of Aggression": {
+   "action": "1 swift action",
+   "description": "By focusing his fury on the ending of his foes, the disciple forgoes finesse for devastating power. While in this stance, the initiator suffers a -2 penalty on his AC but any successful attack inflicts an additional 1d6 points of damage. This damage bonus increases by 1d6 every eight initiator levels.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Bloody Riposte"
+  ],
+  [
+   "Disparity Blow",
+   "Frenzy Strike"
+  ],
+  [
+   "Impaling Strike"
+  ],
+  [
+   "Dizzying Blow"
+  ],
+  [
+   "Charge of the Battle Panthera"
+  ]
+ ],
+ "manifesters": [],
+ "mannerisms": [
+  "Drums fingers",
+  "Yawns",
+  "Clenches fists"
+ ],
+ "martial_disciplines": [
+  "Primal Fury"
+ ],
+ "mini_alignment": "lg",
+ "mod_char_sheet_var": false,
+ "mt_feats": [
+  "Martial Training I (Primal Fury)",
+  "Martial Training III (Primal Fury)",
+  "Martial Training V (Primal Fury)"
+ ],
+ "normal_feat_amount": 9,
+ "older_brothers": " you have 1 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "parents": "loving mother, dead father, raised in a poor household",
+ "personality_traits": [
+  "Fervent",
+  "Rebellious",
+  "Selfish",
+  "Fearsome"
+ ],
+ "platnium": 11.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Master Enchanter) - rank 10/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Perception, Craft, Appraise.</em></p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Fighter can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Fighter's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
+   "name": "Profession Rank 5: (Master Enchanter)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Lamp Lighter) - rank 10/10. Associate skills (ranks 1/4/7/10): Sense Motive, Knowledge (local), Profession, Craft.</em></p><hr><p><strong>Tireless Drudge (Ex)</strong></p><p>Endless labor has hardened you. You ignore fatigue caused by physical work, gain a +4 bonus on saves and checks to resist exhaustion, and can carry 25% more weight before becoming encumbered.</p><hr><p><strong>Beast of Burden (Ex)</strong></p><p>You haul loads that would break a lesser back. You treat your Strength as <strong>+4</strong> higher for determining carrying capacity, and you take no penalty to speed while carrying a medium load.</p>",
+   "name": "Profession Rank 5: (Lamp Lighter)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "ac",
+     "type": "dodge"
+    },
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "cmd",
+     "type": "dodge"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Watch Underling) - rank 8/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Sleight of Hand, Profession.</em></p><hr><p><strong>Drilled Footwork (Ex)</strong></p><p>Endless drilling keeps you balanced and ready. You gain a +1 dodge bonus to AC and to CMD whenever you are not flat-footed.</p><hr><p><strong>Parade Bearing (Ex)</strong></p><p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+   "name": "Profession Rank 5: (Watch Underling)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10."
+ },
+ "profession_feats": [
+  "Multi Talented"
+ ],
+ "profession_pool": 31,
+ "profession_ranks": [
+  {
+   "ability_theme": "arcane",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Sleight of Hand",
+    "Perception",
+    "Craft",
+    "Appraise"
+   ],
+   "cap": 10,
+   "name": "Master Enchanter",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day the Fighter can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
+     "name": "Mage Armor (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years bent over grimoires sharpen the Fighter's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+     "name": "Scholar's Insight (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
+     "name": "Apprentice Spellcasting (Sp)",
+     "uses": {
+      "maxFormula": "4",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Master Enchanter)"
+  },
+  {
+   "ability_theme": "menial",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Sense Motive",
+    "Knowledge (local)",
+    "Profession",
+    "Craft"
+   ],
+   "cap": 10,
+   "name": "Lamp Lighter",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Endless labor has hardened you. You ignore fatigue caused by physical work, gain a +4 bonus on saves and checks to resist exhaustion, and can carry 25% more weight before becoming encumbered.</p>",
+     "name": "Tireless Drudge (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You haul loads that would break a lesser back. You treat your Strength as <strong>+4</strong> higher for determining carrying capacity, and you take no penalty to speed while carrying a medium load.</p>",
+     "name": "Beast of Burden (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 10,
+   "skill_label": "Profession (Lamp Lighter)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "high",
+   "associate_skills": [
+    "Handle Animal"
+   ],
+   "cap": 10,
+   "name": "Grand Lorekeeper",
+   "rank15_abilities": [],
+   "rank5_abilities": [],
+   "ranks": 3,
+   "skill_label": "Profession (Grand Lorekeeper)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Knowledge (local)",
+    "Sleight of Hand",
+    "Profession"
+   ],
+   "cap": 10,
+   "name": "Watch Underling",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "ac",
+       "type": "dodge"
+      },
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "cmd",
+       "type": "dodge"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Endless drilling keeps you balanced and ready. You gain a +1 dodge bonus to AC and to CMD whenever you are not flat-footed.</p>",
+     "name": "Drilled Footwork (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.int",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years on the muster ground taught you to stand tall and look the part. You gain a +2 competence bonus on Intimidate checks made to demoralize foes.</p>",
+     "name": "Parade Bearing (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 8,
+   "skill_label": "Profession (Watch Underling)"
+  }
+ ],
+ "professions": [
+  "Master Enchanter",
+  "Lamp Lighter",
+  "Grand Lorekeeper",
+  "Watch Underling"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 2,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 10,
+  "ref": 5,
+  "will": 5
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Talented",
+  "Seasoned Climber",
+  "Younger Sibling",
+  "Rescued",
+  "Viking Blood",
+  "Adopted",
+  "Uskwood Hunter",
+  "Isger Fixer"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.",
+   "name": "Talented"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.",
+   "name": "Seasoned Climber"
+  },
+  {
+   "description": "You gain a +1 trait bonus on all attack rolls against foes that threaten your older sibling as well as one of the following: You gain a +1 trait bonus on Will saving throws or you gain a +1 trait bonus on all Fortitude saving throws. If you’re the younger sibling of a specific NPC (consult your GM), your quick reflexes give you a +1 trait bonus on all Reflex saving throws.",
+   "name": "Younger Sibling"
+  },
+  {
+   "description": "You gain a +1 trait bonus on all attack rolls against foes that threaten your savior as well as one of the following: You gain a +2 trait bonus whenever you use cure spells to heal damage or you gain a +1 trait bonus on Acrobatics checks and Acrobatics is always a class skill for you.",
+   "name": "Rescued"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill for you.",
+   "name": "Viking Blood"
+  },
+  {
+   "description": "You may select a race trait from your adoptive parents’ race.",
+   "name": "Adopted"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Stealth checks, and Stealth is always a class skill for you.",
+   "name": "Uskwood Hunter"
+  },
+  {
+   "description": "Once per day, you can tinker with a broken object to allow anyone who uses it to ignore the penalties for its broken condition for 24 hours (this does not affect the object’s hit points). At the end of this time, it regains the broken condition (but you can use this trait on it over and over again).",
+   "name": "Isger Fixer"
+  }
+ ],
+ "sheet_health": 160,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 113,
+ "skill_ranks": {
+  "acrobatics": 0,
+  "appraise": 21,
+  "bluff": 0,
+  "climb": 0,
+  "craft": 3,
+  "diplomacy": 10,
+  "disable device": 0,
+  "disguise": 0,
+  "escape artist": 0,
+  "fly": 10,
+  "handle animal": 3,
+  "heal": 0,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 10,
+  "knowledge geography": 0,
+  "knowledge history": 1,
+  "knowledge local": 0,
+  "knowledge nature": 2,
+  "knowledge nobility": 4,
+  "knowledge planes": 0,
+  "knowledge religion": 0,
+  "linguistics": 22,
+  "perception": 0,
+  "perform": 0,
+  "profession": 0,
+  "ride": 3,
+  "sense motive": 0,
+  "sleight of hand": 3,
+  "spellcraft": 3,
+  "stealth": 18,
+  "survival": 0,
+  "swim": 0,
+  "use magic device": 0
+ },
+ "skill_unlock": {
+  "base_skill": "linguistics",
+  "ranks": 22,
+  "skill": "Linguistics",
+  "unlock": {
+   "10": "Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.",
+   "15": "You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.",
+   "20": "You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.",
+   "5": "You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps."
+  },
+  "unlock_html": "<h2>Linguistics</h2><p><strong>5 Ranks</strong>: You can use Linguistics in place of Sense Motive to intercept secret messages, and gain a scaling insight bonus on Perception/Disable Device checks for written magical traps.</p><p><strong>10 Ranks</strong>: Exceed a writing-examination check by 10 to learn its precise meaning, never draw false conclusions on a failure, and decipher spoken meaning at high DCs.</p><p><strong>15 Ranks</strong>: You can decipher magical writings (DC 25 + caster level) as if using read magic, and gain a +2 bonus on Disable Device for identified magical traps.</p><p><strong>20 Ranks</strong>: You decipher text at one page per round, and spending 1 minute per page lets you roll twice and take the better result.</p>"
+ },
+ "specialty_schools": [
+  "enchantment",
+  "illusion"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [],
+ "spell_list_choose_from_dict": [],
+ "spell_riders_dict": {},
+ "spellbooks": [],
+ "spells_prepared_per_level": [],
+ "sphere_boons": [
+  "Overcharge",
+  "Empowered Abilities",
+  "Easy Focus",
+  "Fortified Casting"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Prepared Caster",
+  "Material Casting",
+  "Magical Signs",
+  "Somatic Casting",
+  "Extended Casting",
+  "Addictive Casting"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Prepared Caster",
+  "Material Casting",
+  "Magical Signs",
+  "Somatic Casting",
+  "Extended Casting",
+  "Addictive Casting",
+  "Overcharge",
+  "Empowered Abilities",
+  "Easy Focus",
+  "Fortified Casting"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [
+  "Stance of Aggression",
+  "Primal Warrior Stance",
+  "Skirmishers Stance",
+  "Running Hunters Stance"
+ ],
+ "story_feat_tax_dict": {
+  "Furious Focus": [
+   "dreadful carnage"
+  ],
+  "Great Fortitude": [
+   "improved great fortitude"
+  ],
+  "Weapon Focus": [
+   "greater weapon focus",
+   "weapon specialization",
+   "greater weapon specialization"
+  ]
+ },
+ "story_feats": [
+  "Weapon Focus",
+  "Furious Focus",
+  "Great Fortitude",
+  "Lunge"
+ ],
+ "str": 19,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 16,
+ "total_rolled_hp": 150,
+ "trainer_calibers": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Improved Drag": [
+   "greater drag",
+   "quick drag"
+  ]
+ },
+ "trainer_feats": [
+  "Disorienting Maneuver",
+  "Urban Tracking",
+  "Shadow Strike",
+  "Catch Off-Guard",
+  "Improved Drag",
+  "Necromantic Affinity",
+  "Lastwall Phalanx",
+  "Cooperative Crafting"
+ ],
+ "weapon_enhancement_bonus": 5,
+ "weapon_enhancement_chosen_list": [
+  "Fate-Stealing",
+  "Jurist"
+ ],
+ "weapon_name": "Greatsword",
+ "weight_number": 221,
+ "wis": 12,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}
