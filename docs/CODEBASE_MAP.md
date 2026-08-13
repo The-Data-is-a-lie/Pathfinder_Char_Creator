@@ -268,6 +268,13 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   class-choices ticket 02 logged it as a gap), items.json/items_best.json, weapons_data.json,
   armor/weapon_qualities.json, feat_tax.json, profession_*.json, campaign_lore.json,
   foundry_item_names.json, spells_known/per_day.json.
+- **Item names must resolve to `foundry_item_names.json`'s own spelling** —
+  `item_and_price.ItemNameResolver` (exact case-insensitive → parenthesised variant, both
+  directions → Title-Case as a deliberate miss). Title-Casing alone stranded every `" of "` name —
+  a third of the catalogue, the whole big six — and the retry loop hid it for years.
+  `gates/validate_item_names.py` holds the floor (~17% of the pool is genuinely absent from the
+  Foundry list, warned with names, ticketed); `Character._load_jsons` shuffles list-shaped JSONs
+  per character, which is why the resolver sorts before dedup.
 
 `data/` — CSVs: feats.csv / feats_new.csv (main feat data; **`feats_new.csv` has NO runtime reader** — only `compile_feats_new.py` writes it, which is why its `type="E-Kat"` rows were unreachable and now live curated in `Backend/json/feats/e_kat_feats.json`), Metzofitz_Feats.csv (homebrew),
 spells.csv, traits.csv, class_ability.csv.
@@ -299,6 +306,9 @@ feats_to_chooseable.py / flag_assign.py ·
 **luck.py** (the inherent-luck subsystem — caps, the mod and its rounding, all six exchange rates,
 propensity/type/currency weights, per-pool ceilings, the Vault, the E-Kat reserve formula; it owns
 EVERY luck number, nothing else in the tree holds one) ·
+**power_role.py** (the optimizer's plan object: `phase_power_role` picks the role after the
+classes; owns the role-table vocabularies and `stat_order`; `character.role` None = random mode
+untouched) ·
 luck_and_mythic.py (`randomize_mythic` only — `randomize_luck` was deleted, it implemented a
 different rule) · hero_point_generator.py ·
 class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_discovery.py
@@ -312,10 +322,11 @@ shape drifts. Layout:
 Backend/scripts/
   _harness.py                      shared scaffolding: Report, read_json, path constants
   damage_types.py  conditional_clauses.py  talent_conditional_match.py    imported, never run
+  power_metric.py                  imported, never run -- the CR-benchmark scorer (spec 15)
   validate_all.py  test_all.py     the two things you RUN
-  gates/     validate_*.py   (21)  <- run by validate_all.py, and CI
-  tests/     test_*.py       (11)  <- run by test_all.py, and CI
-  build/     34  <- anything you run to PRODUCE or MAINTAIN generated/curated data,
+  gates/     validate_*.py   (28)  <- run by validate_all.py, and CI
+  tests/     test_*.py       (12)  <- run by test_all.py, and CI
+  build/     38  <- anything you run to PRODUCE or MAINTAIN generated/curated data,
                    plus the _pow_generator/ and _spheres_generator/ sub-toolkits
   attic/      9  <- one-off fixits and migrations. Kept for the record, NOT maintained.
   golden/    7 payload fixtures    <- did not move; _harness.GOLDEN_DIR owns the path
@@ -328,7 +339,38 @@ Backend/scripts/
 | `build/` | **produces or maintains data** — `build_*` `scrape_*` `compile_*` `extract_*` `dump_*` write an artefact; the `promote_*` / `prune_*` / `enrich_*` / `merge_spell_riders` chain curates the conditional data; `audit_*` / `report_*` / `sweep_*` measure it. Never hand-edit generated output; edit the `*_overrides.json` and rerun. | by hand, plus one CI staleness check | 34 |
 | `attic/` | **one-off fixit or migration** — `fix_*`, `repair_*`, `normalize_*`, the smoke harnesses. Several say "one-time" or "THROWAWAY" in their own docstring, and **nobody has verified which still run**. | by hand, rarely | 9 |
 | `_harness.py`, `validate_all.py`, `test_all.py` | **infrastructure** | — | 3 |
-| `damage_types.py`, `conditional_clauses.py`, `talent_conditional_match.py` | **shared library, not a script** — no `main()`, never run, imported by 6–7 scripts each | — | 3 |
+| `damage_types.py`, `conditional_clauses.py`, `talent_conditional_match.py`, `power_metric.py` | **shared library, not a script** — no `main()`, never run, imported by other scripts. `power_metric` scores a payload against the CR benchmarks; it is imported by `gates/validate_power_metric.py`, `tests/test_house_invariants.py` and three `build/report_*` scripts. | — | 4 |
+
+### Where do I find the power metric? (spec §15)
+
+| what | where |
+| --- | --- |
+| the scorer (AC/save fold, DPR model, per-axis profile) | `Backend/scripts/power_metric.py` |
+| CR benchmark rows (1/2–30 published, 31–39 extrapolated + flagged) | `Backend/json/cr_benchmarks.json` |
+| the bar-raising lever (per-axis benchmark multipliers, all 1.0 until ruled otherwise) | `cr_benchmarks.json::_target_multipliers`, applied in `power_metric.profile_for`, gated by `validate_power_metric.check_target_multipliers` |
+| the two round-shapes (`dpr_raw`/`dpr_expected` = sustained round with persistent buffs, stance dice and talent changes; `burst_raw`/`burst_expected` = the fully-juiced nova — the better of the full attack and the vital-strike alpha, with combat buffs, haste/ki extra attacks, size steps, strike dice once) | `power_metric.offence`, tables in `power_adders.json::nova` / `::spell_buffs` |
+| PoW bonus-dice parsing (`additional NdM` from held prose; KEEP the two regexes in sync) | `power_metric._BONUS_DICE` (scoring) ↔ `path_of_war._BONUS_DICE_RE` (choosing) |
+| the curated buff list the spell chooser weights and the metric scores | `power_adders.json::spell_buffs`; reader on the generator side: `power_role.buff_spell_names` |
+| buffed defense (never in the parity-locked base axes) | `profile_for` diagnostics `ac_buffed` / `saves_buffed_bonus` |
+| **the `ac_combat` axis** (fight-state AC: posture + stance + class AC + styles + wild shape + buffs; benchmarked vs the same CR `ac` column) and the raw `cmd` axis | `power_metric._combat_defense`; tables in `power_adders.json::posture` / `::stance_ac` / `::ac_class` / `::wild_shape` |
+| the or-clause prereq relaxation and the half-purse ladder cap (both OPTIMIZED-ONLY) | `generic_func.no_prereq_loop` (role-gated branch) · `item_and_price.ladder_purchases` |
+| the `dr` axis (raw-only, no CR column; curated class DR + held-text harvest — never `class_ability_desc`, which is not level-gated) | `power_metric.damage_reduction`, table in `power_adders.json::dr` |
+| feat allowlist, structural rules, nova/dr tables, assumptions, blind list | `Backend/json/power_adders.json` |
+| config gate (names/vocabularies/table resolve) | `Backend/scripts/gates/validate_power_metric.py` |
+| behaviour gate (no axis silently zero for a class) | `check_power_metric` in `tests/test_house_invariants.py` |
+| collecting profiles | `tests/test_house_invariants.py --score` (off by default; writes `_power_baseline.json`) |
+| sweep gold per level (= production's blank-gold table) | `data.wealth_by_level` in `Backend/utils/data.py` — L2–20 published, L1 = 150, L21–40 linear +195k/level, extrapolated by ruling |
+| the baseline report | `build/report_power_baseline.py` |
+| multiclass vs single-class (ticket 07's number) | `build/report_multiclass_delta.py` |
+| the A/B report (side B = the optimizer; `--mode chassis` keeps the substream demo) | `build/report_ab_delta.py` |
+| **the optimizer's role table** (7 roles, class→roles map, floors, measured margins, gear ladders, feat spines, dips) | `Backend/json/power_roles.json`; vocabularies owned by `utils/class_func/power_role.py` (`GEAR_LADDER_TOKENS`/`STAT_TOKENS`/`WEAPON_POLICIES`), gated by `gates/validate_power_roles.py` |
+| the `optimize` input (named key, like `seed`) → the role phase | `app.py` pop → `main_test.generate_random_char(optimize=…)` → `phase_power_role` right after `phase_bootstrap_identity` |
+| the optimized-path choosers (ladder, stats, weapon/armor, feat spine, dip split) | `item_and_price.ladder_purchases` · `stats.py` (placement/bumps/inherents) · `armor_and_weapon_chooser.optimized_*_pick` · `feats._spine_pick` (+ spine injection in `build_selector`) · `util.select_classes` + `level_and_bab.randomize_level` — every branch gated on `character.role`, so random mode makes zero extra RNG draws |
+| the optimizer's behaviour gate (floors, beat-the-twin, margins; sabotage-proven) | `tests/test_optimized_builds.py` |
+| **QC cards** — one glanceable block per optimized character, machine-verdicted PASS/FLAG, exit 1 on flags | `build/qc_optimized.py` (`--flags-only` for triage; a card's printed seed replays it via `--seed`) |
+| ambient house-waived feats the metric folds (Power Attack et al.) | `power_metric.ambient_feats`, reading `feat_tax.json::tax_primary_blocklist` — ambient Dodge deliberately NOT folded (derive.js parity) |
+| parity vs the web sheet's `derive.js` (**local only**, needs Node + the sheet repo) | `build/check_derive_parity.mjs --sheet-root <path>` |
+| per-phase RNG substreams (off by default) | `pipeline.enable_phase_streams()` in `utils/class_func/pipeline.py` |
 
 **Where the `build/` ÷ `attic/` line actually falls.** Ticket 03 named the buckets by prefix, which
 left ten scripts in neither: the conditional-curation chain and the audits are run repeatedly and

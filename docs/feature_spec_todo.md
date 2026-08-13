@@ -1079,11 +1079,29 @@ adept, omdura and vampire hunter had to be walked through those four by hand.
 **Stalker and zealot are unchanged** — still `pow_classes_pending_foundry`, still blocked on
 `pf1-pow` shipping a class Item (§10).
 
+### GAP: the Spheres base classes are not in the pool (named 2026-08-10)
+
+The generator bolts Spheres **talents** onto existing classes behind the `spheres_of_power` flag,
+and that is all it does. The **Spheres of Power** casting classes, the **Spheres of Might**
+practitioner classes and the **Champions of the Spheres** hybrids are not rollable at all — so a
+subsystem the stack otherwise supports end to end has no native chassis. The sweep already found
+**26 of them** in `pf1spheres.classes`; `data.spheres_classes` is still empty and nothing consumes
+the list.
+
+This section owns *who is in the pool*, so the gap is named here rather than left implied by a
+clause in the deferred list. What it would take, roughly in dependency order: a data source for the
+class chassis (progressions, proficiencies, the per-class talent economy — `pf1spheres` is the
+obvious candidate and would need the same census treatment §10 gave `pf-content`); rows in
+`class_data.json` and `class_choice_schedule.json`; a verdict per class for §11's audit; and class
+Items both renderers can resolve, the same blocker that still holds `stalker` and `zealot`.
+
+**Deliberately not charted as a wayfinder map yet** — a map is for work about to be worked, and
+there are already two open (mythic, optimal-builder). Chart it when it is taken up.
+
 **Deferred (not built):** **prestige classes**, ruled out deliberately — 100+ classes needing an
 entry-prerequisite engine and base-class-level gating the generator has no model for · archetypes
-for the seven new classes · the 26 **Spheres** classes
-in `pf1spheres.classes`, which the sweep found and nothing consumes (`data.spheres_classes` is still
-empty) · a live Foundry import check of the seven.
+for the seven new classes · the Spheres base classes above · a live Foundry import check of the
+seven.
 
 ---
 
@@ -1222,3 +1240,210 @@ Tough Skin's natural AC, the three Hardened saves, Seen it all) — marked `pf1_
 the curated table but not wired into `feat_changes.json`, because nothing can currently buy them ·
 the **`E-Kat Exchange: Rotten Luck`** cost formula, which did not survive extraction · **spending the
 carried remainder** in play (the sub-25 leftover is exported, never used).
+
+## 14. Mythic — RESERVED
+
+> Reserved for *Mythic*, deliberately, the way §11 was held for *Class choices*.
+> [That map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
+> names §14 as its destination. Numbering the section below 15 keeps that promise rather than
+> quietly taking the slot.
+
+## 15. Optimal builds — ✅ OPTIMIZER V1 BUILT (2026-08-11), L1–20
+
+**Status: the metric, the design rulings AND the v1 optimizer all exist.** The destination
+(`tickets: feature/optimal-builder`) is an opt-in mode where every choice the user did not
+explicitly make is made well. The measurement phase (2026-08-10) built the metric and baselined
+random output; the design was then grilled decision-by-decision against those numbers (the rulings
+below), and v1 shipped the same day: the `optimize` named input, the **power-role table**
+(`Backend/json/power_roles.json` — seven roles, a 68-class candidate map, floors, **measured
+margins**, gear ladders, feat spines, dips; vocabularies owned by
+`utils/class_func/power_role.py`), the role phase (`phase_power_role`, right after the classes),
+and the spine choosers (gear ladder, six-slot stat placement + bumps/inherents, policy weapon and
+armor picks, the feat spine through the legality machinery, dip-shaped multiclass). Random mode is
+byte-identical — seven random goldens unmoved, two optimized fixtures added
+(`optimized_striker`/`optimized_controller`, forced roles, coverage predicates).
+
+**Witnesses, all three:** `gates/validate_power_roles.py` (config),
+`tests/test_optimized_builds.py` (behaviour: floors + beat-the-same-seed-twin + margins —
+sabotage-proven: a do-nothing optimizer trips 50 checks), and the A/B report
+(`build/report_ab_delta.py --mode optimized`) for the eyeball. **The role table was tuned by its
+own gates**: the first runs added the sniper role (alpha's finesse policy was forcing gunslingers
+onto melee), cut the blaster role (kineticist's blast is metric-blind, so the role lost to its
+random twin), narrowed alpha to the sneak-attack classes, put the attack stat above the casting
+stat in every martial role's priority, and surfaced the ambient-feat defect below.
+
+**The score is a profile, never a scalar.** Collapsing the axes needs weights, weights are ticket
+01's to set, and a scalar hard-wires the tautology ticket 09 names: an optimizer that maximises X,
+gated by a check that X went up, tests only that a maximiser maximises. Each axis is a ratio against
+the *Monster Statistics by CR* row for the character's CR — **CR = level − 1**, PF1e's own published
+offset for PC-classed NPCs, so a 1st-level NPC lands on CR 1/2 exactly where the table starts. No
+tuned correction sits on top; calibrating one would make us the benchmark.
+
+**The payload holds components, not totals**, which is the fact that sized this phase. There is no
+AC, save, attack or damage total anywhere in it, and deflection and natural armour sit unfolded
+inside `item_changes_dict` — so the metric *computes* PF1e math and is the third implementation of
+it in the stack. `build/check_derive_parity.mjs` is the insurance and it passes: seven goldens × six
+axes agree with the web sheet's `derive.js`, AC differing by exactly the enhancement bonus below.
+
+**The symbols that own the numbers** (per the docs doctrine, named not restated):
+`Backend/scripts/power_metric.py` (the scorer), `Backend/json/cr_benchmarks.json` (the CR table,
+CR 1/2–30 published plus CR 31–39 extrapolated and flagged), `Backend/json/power_adders.json` (the
+feat allowlist, the structural rules, the assumption set and the blind list),
+`Backend/scripts/gates/validate_power_metric.py` and `check_power_metric` in
+`test_house_invariants.py` (the two layers, sharing no code).
+
+**Path of War and Spheres are modelled as rules, not name lists.** PoW ships 1,033 maneuvers across
+59 disciplines (473 Strikes) and neither subsystem carries a structured damage field — only prose.
+Authoring one entry per maneuver is not a measurement job. A readied strike adds the initiation
+modifier; a destructive blast is 1d6 per 2 caster levels; everything else is declared blind and
+printed on every profile.
+
+### What the baseline found (1,637 characters, 64 classes, levels 1–40)
+
+- **WITHDRAWN (2026-08-11): the original headline measured a bug, not the generator.** "Characters
+  fall progressively behind the CR curve — AC 1.73 → 0.37, DPR 1.03 → 0.05" was the product of
+  three defects found when Daniel asked whether the numbers could be real: the item chooser
+  Title-Cased names against a lowercase-`of` list so a third of the catalogue (the entire big six)
+  was silently unbuyable; the sweep funded every level 1–40 with the same 10,000 gp (~7× wealth at
+  L1, ~1% at L40); and the dpr axis divided hit-weighted damage by the table's all-hits column,
+  double-counting misses. All three are fixed (see the changelog's repair entry) and the baseline
+  re-measured on the same seeds.
+- **Re-measured (2026-08-11, same 1,637-character band, wealth-by-level gold, after the pricing
+  fix below):** overall medians `to_hit` 0.91, `dpr_raw` 0.55, `ac` 0.76, `hp` 0.77, saves
+  0.67–0.77. Martial classes sit **at or above benchmark on accuracy** (barbarian/cavalier/samurai
+  to_hit 1.08–1.12) with `dpr_raw` 0.65–0.82 against a benchmark that assumes a monster's
+  multi-attack routine. **The real remaining gap is high-level and structural:** AC 1.64 at L1 →
+  0.44 at L40 and HP → 0.57, because the CR rows grow linearly forever while a PC chassis caps
+  out — 12 wondrous slots, +5 enhancement ceilings — which the new median-unspent-gold column
+  makes visible (L5–15: the purse is spent to within ~1k; L20: 281k unspent; L40: **4.1M of
+  4.78M**, nothing left to buy under uniform draws). Closing THAT gap is what optimized mode, the
+  `_target_multipliers` bar, and the luck/mythic fog exist for; the generator itself is no longer
+  artificially crippled.
+- **The re-measurement's own review caught a fourth defect the first three had masked:** with "+N"
+  items finally rollable, they were being sold for **0 gp** (and multi-variant blobs for pennies) —
+  both variant-price extractors in `convert_price` were broken, and unparseable fell back to free.
+  A golden bought a 50,000 gp ring for nothing. Fixed the same day (prices parse by the
+  parenthetical tag the item's own name carries; unpriceable items are refused, never free) and
+  the sweep re-run; `gates/validate_item_names.py` now prices the entire pool and fails on any
+  windfall shape. The lesson is §15's method in miniature: every number was challenged, and every
+  challenge found something.
+- **`build_archetype` predicts profile shape only partially** — median η² 0.123, a medium effect,
+  with 3 of 8 axes clearing the large threshold. Ticket 01 may use per-archetype weights but must
+  not assume the archetype alone defines what good looks like; level and class need controlling for
+  first. The coarser **family** grouping is consistently weaker (median η² 0.058), so weight on the
+  archetype, not the family.
+- **Ticket 07's premise is not supported.** It calls random multiclassing "the single largest source
+  of bad builds"; measured over 100 seed-paired pairs it is neutral-to-better — will +0.163, fort
+  +0.095 (PF1e stacks a +2 good-save base per class and the generator reproduces it), to_hit/AC/DPR
+  flat. The one real cost is caster-level fragmentation, visible as `dc` going negative at L15
+  (−0.091) and L20 (−0.116). The ticket said "if the gap is small, this ticket is smaller than it
+  looks."
+
+### Bugs this phase found, owned elsewhere
+
+- **The web sheet renders every enhanced character's AC low.** `armor_enhancement_bonus` and
+  `shield_enhancement_bonus` are separate payload keys that produce no `ac` change, and
+  `derive.js` reads only `data.armor_ac` — so **1,637 of 1,637** scored characters would display 1–5
+  AC short. Foundry is unaffected (the module builds real armour Items and pf1 does the maths). The
+  metric counts them and the parity harness asserts the delta equals exactly that sum, which makes
+  it a regression test for the sheet.
+- **Small races never get their size bonus on the web sheet.** `derive.js`'s `sizeInfo` reads
+  `data.race` / `data.c_race`; the payload key is `chosen_race`. Neither exists, so every generated
+  character renders as Medium. The metric matches, so parity holds and both are wrong the same way.
+- **`derive.js` applies no pf1 typed-bonus non-stacking** — `sumParts` is a plain sum, so two
+  same-typed bonuses to one target both count. The metric matches deliberately, so the harness
+  compares like with like.
+- **16 weapon names do not resolve in `weapons_data.json`** — every `Mind Blade` variant — so
+  soulknife and psion mind blades score zero weapon damage.
+- **The invariant sweep fails at levels 25/30/40**, which it had never run before (the default band
+  stops at 20). 263 failures: 254 of them are L30 seed 2202 across all 68 classes, every one off by
+  exactly one feat with matching skill-budget and HP mismatches and a violated
+  "a seller must gain no luck from feats" invariant — one luck-subsystem bug at high level, not 254
+  problems. **Owned by §13, not by this section.**
+
+### The design rulings (2026-08-11 — grilled against the re-measured baseline; detail in the tickets)
+
+Tickets 01/02/07/08 are resolved and 06/09 partially (`tickets: feature/optimal-builder` holds the
+argument; this list is what the code will be built to):
+
+- **Scope: the optimizer targets levels 1–20.** L21–40 stays measured-but-unoptimized until the
+  mythic map rules — its measured gap is unspendable gold against unbounded CR rows, not chooser
+  quality. Mythic, when it comes, is granted *build-aware*, keyed off the role vocabulary below.
+- **Objective (01): a small power-role vocabulary.** `Backend/json/power_roles.json` (to be built):
+  ~6–9 roles, each naming 2–3 **primary axes plus floors** for the rest, with a
+  class→candidate-roles map. **Floors + unbounded primaries**, lexicographic — never a scalar, no
+  AC-vs-DPR exchange rate; subject to floors, primaries are pushed as hard as the rules allow.
+  Target numbers live only in the gate. Roles dissolve the face-vs-combat collision; survival folds
+  into the defensive floors; a role may only name a primary **the metric measures**.
+- **The metric grows first:** DR/energy-resist folded from the always-on ledger as a raw axis, and
+  a **nova round-shape** (charge, pre-cast self-buffs, alpha strike) beside the round-2 model —
+  both ruled into v1 so tank and burst roles are expressible from the start.
+- **Arrow (02): plan the spine, score the leaves.** The role is the plan object — a `@phase`
+  `provides` chosen after `select_classes`, read by stat placement, weapon, the feat spine, the
+  gear ladder and multiclass composition. Leaves (talents/skills/traits/spells) extend
+  `build_selector`'s local-scoring shape. `choose_build_archetype` keeps its post-hoc arrow in both
+  modes; under optimization its label is a report-side consistency signal. Build order runs in
+  lever order, gear first (the biggest measured lever).
+- **Gear (08): role-variation only.** Each role carries 2–3 alternative ladders (big six and the
+  typed AC stack first); no flavour reserve — variety comes from build divergence. **Typed-bonus
+  non-stacking is enforced in the chooser**, never the metric (which keeps its deliberate
+  derive.js-parity plain sum). The .5/.35/.15 enhancement split becomes per-role data on the
+  optimized path; unspent gold becomes a gate bound.
+- **Stats (08): honour the dice, place optimally** — full six-slot priority per role, dump logic
+  with a Con floor, level-up bumps and inherents pointed at primaries. No reroll, no elite array.
+  **Race stays random even optimized** (the gate's margins absorb the variance).
+- **Multiclass (07): role-aware.** Single-class by default; combination knowledge is curated
+  **dip lists in the role table**; casting/manifesting roles carry none (the one measured cost is
+  CL fragmentation); explicit `multi_class='Y'` is honoured as least-hurt.
+- **Contract (06, partial):** a named `optimize: true|"<role>"` key (the `seed` precedent; unknown
+  role = error); a nested payload `optimize` block **only when the mode is on** (the `luck` block
+  precedent); optimized mode gets its own golden fixtures — the seven random ones never move.
+- **Gate (09, policy): measure first, then fix.** Until the optimized A/B distribution exists the
+  gate asserts floors plus primaries-beat-the-same-seed-twin; per-role margins are then fixed from
+  that distribution, in the role table, under its validator.
+- **Luck stays random in v1** — optimal play would converge on always-sell-for-stats and flatten a
+  variance subsystem; revisit with a measurement once the optimizer baseline exists.
+
+**v2 — the sweaty pass (2026-08-11, grilled same-day):** the 3pp offense layer is no longer
+blind. The metric parses PoW bonus dice from held prose (stances into both rounds, the best
+readied strike once), folds haste/ki extra attacks, a vital-strike standard-action alpha, spheres
+talent `changes`, and the curated `power_adders.json::spell_buffs` table in two duration tiers
+(persistent in both rounds, combat in the nova, no action-economy cap — a declared upper bound;
+size buffs step the weapon dice). Defensive buff values live in `ac_buffed`/`saves_buffed`
+diagnostics — the base axes stay derive.js-parity-locked. The optimizer exploits the same tables:
+dice-greedy PoW picks, ×1000 buff weighting in spell selection for martial-role casters, Boots of
+Speed in martial ladders, and striker candidacy for the buff-capable divine chassis (the Gorum
+war-priest). Stated upper-bound edges: castability is list-membership (no casting-stat minimum),
+talent prose is unparsed, ~12/1,033 maneuvers fail the dice parse.
+
+**v3 — the wall pass (2026-08-12):** fight-state defense joins the metric as the benchmarked
+`ac_combat` axis (posture at RAW numbers by ruling — FD +2/+3-with-Acrobatics, ambient CE
+1+BAB/4, Crane +1 — plus stance AC parsed-or-curated, monk Wis-to-AC unarmored, style feats,
+ambient Dodge, wild-shape natural armor, defensive buffs, held-text AC) and the raw `cmd` axis;
+base `ac` stays sheet-state and parity-locked. Stoneskin lands as buff DR. The optimizer builds
+walls: AC-greedy stance picks, the Crane/Snapping Turtle spine (unlocked by the optimize-gated
+or-clause prereq relaxation and the ambient-prereq seed), 3 banked Acrobatics ranks, the jingasa,
+druid wall candidacy, and the half-purse ladder cap (spread before upgrading). Measured wall at
+L11: ac_combat 1.71×. Stated edges: Snapping Turtle's free hand unchecked, wild shape is
+defense-only (natural-attack routines stay blind), armor materials remain unbuilt.
+
+**The QC workflow (fastest human path, in escalation order):** (1) CI runs both gate layers free
+— a red `test_optimized_builds.py` names the exact role/class/seed/axis. (2)
+`build/qc_optimized.py --flags-only` renders machine-verdicted cards and prints only the ones
+worth a human's time; a card's seed replays it exactly. (3)
+`build/report_ab_delta.py --mode optimized` sorts same-seed pairs regressions-first — read from
+the top, stop at the first few net-positive pairs. (4) Only characters that survive to a real
+table get the Foundry two-step (inject + applier) and one played round. The Foundry module cannot
+send `optimize` yet — until that one-field MR lands, table-QC characters come from the CLI or a
+direct POST.
+
+**Deferred (not built), post-v1:** the payload `optimize` block — the payload-shape manifest makes
+a mode-dependent key a breaking change, so it waits on the web sheet's positional key-order
+coordination the ruling itself required · leaf scoring (talents/skills/spell picks — the specialist
+role's `skill_breadth` primary currently moves only via stats and breadth staying intact) · a DR
+purchase lever (adamantine armor, a Stalwart spine; then `dr` returns as a wall primary) · a
+burst-caster role (needs a kineticist blast rule or destruction-sphere leaf scoring) · 06's
+remaining explicit/unset/unmatched truth table (`truly_random_feats` is ruled by construction:
+`optimize` forces the build-aware path) · the Foundry batch (10) · **whether the score ships in
+the payload for every character** — still left out so no golden moves for a number not yet fully
+trusted.
