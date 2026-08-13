@@ -97,7 +97,57 @@ to positionality, not to returning.
 out, so an over-declared field fails on the first run rather than drifting.
 """
 import functools
+import hashlib
+import random
 import types
+
+import numpy as np
+
+# ------------------------------------------------------------------------------------------------
+# PER-PHASE RNG SUBSTREAMS -- OFF BY DEFAULT (map: optimal-builder, ticket 04)
+#
+# The generator draws every decision from one global RNG stream, so ONE changed draw re-rolls
+# everything after it. That is why a same-seed A/B report is mostly incidental churn, and it is the
+# same coupling that has forced three golden re-seeds already: the 7275 companion stack, the
+# companion feat roll, and the occult pool.
+#
+# Reseeding from (seed, phase name) at each phase boundary contains divergence to the phase that
+# actually changed plus its consumers. This decorator is the single place every phase passes
+# through, so it is one hook rather than plumbing through ~20 choosers.
+#
+# IT IS OFF UNLESS EXPLICITLY ENABLED. The default path executes an `if _SUBSTREAM_SEED is None`
+# and nothing else, so the seven golden fixtures stay byte-identical -- the hard constraint the
+# whole optimal-builder map was built to respect. Only the A/B report turns it on, for BOTH sides
+# of a pair, and a character generated that way is a legitimate random character but NOT the same
+# one the default path produces from that seed.
+# ------------------------------------------------------------------------------------------------
+_SUBSTREAM_SEED = None
+
+
+def enable_phase_streams(seed):
+    """Reseed each phase from (seed, phase name). A/B mode only -- see the note above."""
+    global _SUBSTREAM_SEED
+    _SUBSTREAM_SEED = int(seed)
+
+
+def disable_phase_streams():
+    global _SUBSTREAM_SEED
+    _SUBSTREAM_SEED = None
+
+
+def phase_streams_enabled():
+    return _SUBSTREAM_SEED is not None
+
+
+def _substream_seed(phase_name):
+    """A stable 32-bit seed for one phase.
+
+    sha256 rather than `hash()`: Python randomises string hashing per process, which would make
+    every run of the report differ -- exactly the nondeterminism `choosing_feats`' `sorted()` call
+    exists to avoid.
+    """
+    digest = hashlib.sha256(f'{_SUBSTREAM_SEED}:{phase_name}'.encode('utf-8')).digest()
+    return int.from_bytes(digest[:4], 'big')
 
 # Attributes whose value is legitimately falsy when set (0, '', {}), so presence must be tested with
 # hasattr rather than truthiness. Everything else also accepts "set but empty" -- the check is about
@@ -133,6 +183,10 @@ def phase(requires=(), provides=(), returns=()):
     def decorate(func):
         @functools.wraps(func)
         def wrapper(character, *args, **kwargs):
+            if _SUBSTREAM_SEED is not None:
+                seed = _substream_seed(func.__name__)
+                random.seed(seed)
+                np.random.seed(seed)          # pandas .sample() draws from numpy's global RNG
             missing = [name for name in requires if not hasattr(character, name)]
             if missing:
                 plural = len(missing) > 1

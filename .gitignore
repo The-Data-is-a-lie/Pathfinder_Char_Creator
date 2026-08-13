@@ -45,6 +45,11 @@ Backend/scripts/build/_spheres_generator/
 # class_feature_effects_overrides.json / feats/feat_conditionals.json.
 Backend/scripts/_conditional_candidates/
 
+# Power-metric sweep output (written by test_house_invariants.py --score, read by
+# report_power_baseline.py / report_ab_delta.py). 5+ MB of regenerable measurement, not source;
+# the durable numbers live in power_roles.json margins and the changelog.
+Backend/scripts/_power_baseline.json
+
 # runtime artifacts: filesystem session fallback + backstory-API usage tally
 flask_session/
 Backend/usage_stats.json
