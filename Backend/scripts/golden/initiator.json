@@ -4,7 +4,7 @@
  "alignment": "Lawful Neutral",
  "animal_companion": null,
  "appearance": [
-  "Plain"
+  "Old-fashioned"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Bannerman\": {\n        \"parent class:\": \"Warlord\",\n        \"courageous defense \": \"The bannerman is a combatant of grace and skill, and his faith in both himself as a symbol as well as in his allies assists his defense. When fighting with a ranged weapon (such as with a bow or a crossbow), or with a one-handed or light weapon in one hand and nothing in the other (or with a buckler and/or an inspiring banner, see below) and wearing medium or lighter armor, the bannerman gains a +1 dodge bonus to his Armor Class per four warlord levels. This replaces the bonus feat gained at 1st level.\",\n        \"tactical presence \": \"This class feature functions as normal, but the bannerman gains additional presence choices. Diplomat's Presence:  At 2nd level, the bannerman adds a +4 competence bonus to Bluff, Diplomacy, Intimidate and Sense Motive rolls while in this presence.      Fearsome Presence:  At 13th level, the bannerman's reputation in battle precedes him and an aura of his many victories inspires dread in his foes. Enemies of the bannerman within 30-ft. of his position are filled with dread as if under a  fear  spell (use the bannerman's Charisma modifier for the Will save DC and his initiator level as his caster level). Foes that succeed the saving throw are unaffected by the bannerman's fearsome presence for 24 hours.      Commander's Presence:  At 17th level, the bannerman is a true commander amongst warlords, allowing him to lend a readied maneuver to an ally within 30-ft. as a swift action. When he lends this maneuver, the maneuver is expended until the recipient initiates this maneuver (using the recipient's initiator level and Charisma modifier to determine the saving throw DC; if the recipient's initiator level is too low to initiate the maneuver, then the bannerman cannot lend the maneuver). He can only lend one maneuver at a time when using this presence, and if the bannerman stops using this presence, then the effect ends immediately (but the maneuver remains expended until recovered).      Inspiring Banner (Ex) [ ]   At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler.  This replaces the warlord's battle prowess class feature.        The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.      Share Boost (Ex) [ ]   At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level.  This replaces the dual boost class feature.\",\n        \"inspiring banner \": \"At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler. This replaces the warlord's battle prowess class feature. The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.\",\n        \"share boost \": \"At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level. This replaces the dual boost class feature.\"\n    }\n}",
@@ -36,13 +36,18 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Fortified Casting",
+   "Overcharge",
+   "Empowered Abilities",
    "Easy Focus"
   ],
   "boons_detail": [
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
    },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
@@ -51,31 +56,43 @@
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Magical Signs",
-   "Prepared Caster",
    "Focus Casting",
-   "Addictive Casting"
+   "Skilled Casting",
+   "Magical Signs",
+   "Addictive Casting",
+   "Painful Magic",
+   "Draining Casting"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
-    "name": "Magical Signs"
-   },
-   {
-    "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
-   },
    {
     "counts_as": 1,
     "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
     "name": "Focus Casting"
    },
    {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
     "counts_as": 2,
     "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
     "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
    }
   ]
  },
@@ -98,21 +115,24 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
-    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
+   },
+   "Actions (Purchased)": {
+    "Pull": "Reroll a percentile, choose between the 2 results for 10 E-Kats."
    },
    "Feats Not Taken (reference)": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
     "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)"
    },
    "Feats Taken": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Reserve": {
@@ -163,16 +183,11 @@
   "Warlord 6",
   "Warlord 10"
  ],
- "class_feat_tax_dict": {
-  "Primal Fury Style": [
-   "Primal Fury Slash",
-   "Primal Fury Leap"
-  ]
- },
+ "class_feat_tax_dict": {},
  "class_feats": [
-  "Firebrand",
-  "Primal Fury Style",
-  "Shield Focus"
+  "Extend the Bulwark",
+  "Exploit Schema",
+  "Swap Places"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
@@ -189,21 +204,24 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
-    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
+   },
+   "Actions (Purchased)": {
+    "Pull": "Reroll a percentile, choose between the 2 results for 10 E-Kats."
    },
    "Feats Not Taken (reference)": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
     "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)"
    },
    "Feats Taken": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Reserve": {
@@ -252,21 +270,31 @@
    "item_name": "Pauper's Robes"
   },
   "chest": {
-   "description": " this well-made leather vest bears\r numerous shiny metal buttons, which\r stud a number of bulging pockets. \r once per day, as a standard action, the\r wearer can speak the vest's command\r word and order it to bring forth all\r the standard tools required to make\r checks for any one craft skill. These\r tools appear in the countless pockets\r of the vest or, if too heavy, on the floor, on a nearby shelf, on\r a workbench, or in a toolbox or cupboard that appears nearby. \r once summoned, they remain for 24 hours or until another\r creature touches them, whichever comes first. ",
-   "item_name": "All Tools Vest"
+   "description": " a vest of the deep creates a constant shell of magical energy that protects the wearer from extreme environmental pressure, such as that inflicted by water at a depth of over 100 feet. It does not provide any protection from constriction or other forms of direct crushing damage, nor does it grant water breathing. ",
+   "item_name": "Vest of the Deep"
   },
-  "eyes": {
-   "description": " this lens, mounted in a round silver frame, fits snugly in the eye orbit of any medium or small user. Three times per day on command, the monocle allows the user to read magical inscriptions (including scrolls) as if affected by read magic once per day, by speaking a second command word, the user can activate a 1stlevel spell from a scroll even if she doesn't have the spell on her class list or meet the other requirements. Activating a scroll with the monocle is a full-round action (or the spell's casting time, whichever is longer). ",
-   "item_name": "Antiquarian's Monocle"
+  "hands": {
+   "description": " the wearer of these simple gloves can\r speak a command word create a glowing\r disembodied hand. As a swift action, the\r wearer can have the hand assist him with\r a task as if using the aid another action. \r the hand uses the wearer's base attack\r bonus or skill ranks when making the check to see if aid another is\r successful (it does not gain the benefit of the wearer's ability scores\r or other bonuses). The hand remains until it has attempted one\r action or until 1 minute passes, whichever comes first, at which\r time the gloves become nonmagical. ",
+   "item_name": "Assisting Gloves"
+  },
+  "shoulders": {
+   "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). ",
+   "item_name": "Cloak of Resistance +1"
+  },
+  "wrist": {
+   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
+   "item_name": "Sleeves of Many Garments"
   }
  },
  "equipment_list": [
   "Pauper's Robes",
-  "All Tools Vest",
-  "Antiquarian's Monocle"
+  "Vest of the Deep",
+  "Cloak of Resistance +1",
+  "Sleeves of Many Garments",
+  "Assisting Gloves"
  ],
  "eye_color": [
-  "Green"
+  "Grey"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -277,33 +305,23 @@
   "profession": 2,
   "story": 3,
   "teamwork": 0,
-  "trainer": 10
+  "trainer": 9
  },
- "feat_changes_dict": {
-  "Coordinated Maneuvers": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "cmb",
-     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
-    }
-   ]
-  }
- },
+ "feat_changes_dict": {},
  "feat_conditionals_dict": {},
  "feats": [
-  "Medium Armor Proficiency",
-  "Double Down",
+  "Strong Comeback",
+  "Right of Deferment",
   "Lucky Boy",
   "Very Lucky Boy",
-  "Celestial Obedience",
+  "Natural Telekinetic",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Stealthy"
+  "Nemesis"
  ],
  "flaw": [
   "Beady Eyes"
@@ -326,49 +344,50 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Lesser Spirits (invoker)"
+  "Athletic"
  ],
- "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Cha\n- Disciplines: Primal Fury, Solar Wind, Scarlet Throne\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An average trainer who taught them Integrated Combat, Exotic Weapon Proficiency\n- Training: An excellent trainer who taught them Coordinated Maneuvers, Shapeshifter Foil, Unseen Terror\n- Training: An excellent trainer who taught them Great Fortitude, Natural Telekinetic, Nimble Moves\n- Training: An average trainer who taught them Lightning Reflexes, Toughness\n\nFamily\n- Dead Mother\n- Dead Father\n- Adopted Into A Middle Income Family\n- No Siblings\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Plain",
+ "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Cha\n- Disciplines: Thrashing Dragon, Primal Fury, Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Distance Thrower, Malevolence, Tandem Trip\n- Training: An average trainer who taught them Skilled Driver, Opening Volley\n- Training: An average trainer who taught them Bloodletting, Defensive Combat Training\n- Training: An average (Path of War) trainer who taught them Primal Fury Style, Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Bald Red\n- Eyes: Grey\n- Build: Old-fashioned",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 450,
+ "gold": 220,
  "hair_color": [
-  "Blond"
+  "Red"
  ],
  "hair_type": [
-  "Frizzy"
+  "Bald"
  ],
  "height_number": "6'10\"",
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
-  "Bull Charge (combat)": "You rush into battle with a devastating attack. Normal Charging causes you to take a -2 penalty to your AC until the start of your next turn. you take no penalty to your ac when you make a charge attack. if you have the vital strike feat, you can use vital strike (or improved vital strike or greater vital strike, if you have them) in place of the attack at the end of a charge. the damage dice added by vital strike, improved vital strike, or greater vital strike are not doubled when charging with a lance while mounted.",
-  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
-  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
-  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
-  "Double Down": "Double permanent E-Kat acquisition.",
-  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
-  "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
-  "Great Fortitude": "You are resistant to poisons, diseases, and other maladies",
-  "Integrated Combat": "Few opponents know how to fight a foe whose weapons run through their very flesh you gain a +1 bonus on attack rolls with implanted weapons. in addition, you gain a +2 bonus to all skill checks made as part of a martial maneuver made with an implanted weapon.",
-  "Lesser Spirits (invoker)": "The following eighteen lesser spirits are those most commonly contacted by invokers, though others may exist. While an invoker can bond with any lesser spirit, he may only invoke one whose listed type matches the dominion or oath of his spirit companion (or both). Lesser spirits are not listed alphabetically; instead, they are organized below in a table showing their dominion and oath, below. The DC to save against primal powers or invocations is equal to 10 + 1/2 the invokers level + his Charisma modifier, unless otherwise noted.",
-  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Athletic": "You possess inherent physical prowess",
+  "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
+  "Cloak Dance": "You are skilled at using optical tricks to make yourself seem to be where you are not. you can take a move action to obscure your exact position. until your next turn, you have concealment. alternatively, you can take a full-round action to entirely obscure your exact position. until your next action, you have total concealment.",
+  "Collective Recollection": "You and your allies can quickly jog each other's memories to remember essential facts",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Defensive Combat Training": "You excel at defending yourself from all manner of combat maneuvers",
+  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
+  "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
+  "Extend the Bulwark": "You can bolster a trained ally's defenses by interposing your own armored body",
   "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
-  "Medium Armor Proficiency": "You are skilled at wearing medium armor",
+  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
-  "Nimble Moves": "You can move across a single obstacle with ease",
+  "Nemesis": "A past enemy seeks your ruin",
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
   "Primal Fury Leap": "Not even the sky is safe from your wrath. you can make charge attacks against opponents in the air. if you do, you are treated as having a fly speed equal to your land speed during the charge, with good maneuverability. if you do not normally have a fly speed, you fall after this charge. you reduce the effective distance of this fall by 10 feet per initiator level.",
   "Primal Fury Slash": "Your swift movements and skill allow you to strike enemies as you close with your target. when you charge a creature, you can make a single melee attack against another creature that is adjacent to you at any point during your movement.",
   "Primal Fury Style": "Your fury drives you to close with your foes so that you can tear into them more easily. you can make survival checks in place of acrobatics checks to move through threatened squares. in addition, you can charge through difficult terrain and spaces containing opponents. you do not provoke attacks of opportunity for entering an opponents space when charging, although you provoke attacks of opportunity as normal for moving through an opponents threatened area.",
-  "Quillbreaker Defense": "You know how to put armor spikes to defensive use by thrusting them into the path of an oncoming attack just in time",
-  "Shapeshifter Foil": "Your command of shapeshifting magic can disrupt similar effects in others",
-  "Shield Focus": "You are skilled at def lecting blows with your shield",
-  "Stealthy": "You are good at avoiding unwanted attention and slipping out of bonds",
-  "Toughness": "You have enhanced physical stamina",
+  "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Strong Comeback": "You learn quickly from past mistakes",
+  "Swap Places": "You are skilled at changing places with your ally during a chaotic melee",
+  "Tandem Trip": "You know how to work together to trip your foes",
+  "Thrashing Dragon Pounce": "Your swift movements allow you to close the gap and strike quickly against your foe. whenever you initiate a strike that requires you to make only a single melee attack, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal. this attack does not gain any of the of the strike you initiated.",
+  "Thrashing Dragon Style": "Your skill with two weapons makes you as dangerous as foes who wield one larger weapon. once per round, when you make an attack as a standard action or attack action, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal.",
+  "Thrashing Dragon Whirlwind": "Your fury strikes out at all enemies around you. as a full-round action, you can make one melee attack with a weapon in your main hand and a weapon in your off hand against each opponent within reach. this attack is made at your highest base attack bonus, and you do not take the penalties for fighting with two weapons on these attacks.",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Unseen Terror": "Creatures are naturally afraid of what they cannot see. Normal You can only make an Intimidate check to demoralize an opponent if it is within 30 feet and can clearly see and hear you. you can make intimidate checks to demoralize a creature even if it cannot see you. you must still influence it in some other way, such as by taunting, making sounds, or using visual effects such as silent image or light from a torch. you gain a +2 bonus on intimidate checks made while in dim light or darkness.",
   "Very Lucky Boy": "E-Kat (roll based) bonuses are increased to triple."
  },
  "inherents": {
@@ -383,21 +402,24 @@
  "initiator_level": 10,
  "int": 10,
  "item_changes_dict": {
-  "All Tools Vest": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "Once per day, as a standard action, the wearer can speak the vest's command word and order it to bring forth all the standard tools required to make checks for any one craft skill. Once summoned, they remain for [[24]] hours or until another creature touches them, whichever comes first."
-    }
-   ]
-  },
-  "Antiquarian's Monocle": {
+  "Assisting Gloves": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Three times per day on command, the monocle allows the user to read magical inscriptions (including scrolls) as if affected by read magic once per day, by speaking a second command word, the user can activate a 1stlevel spell from a scroll even if she doesn't have the spell on her class list or meet the other requirements."
+    "The wearer of these simple gloves can speak a command word create a glowing disembodied hand. As a swift action, the wearer can have the hand assist him with a task as if using the aid another action. The hand remains until it has attempted one action or until 1 minute passes, whichever comes first, at which time the gloves become nonmagical."
    ]
+  },
+  "Cloak of Resistance +1": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": []
   },
   "Pauper's Robes": {
    "changes": [],
@@ -407,6 +429,13 @@
      "text": "Creatures that attempt to remember details of their interactions with the wearer of a set of pauper's robes must make a successful will save to do so: recalling general details about the wearer (such as gender or race) requires a successful dc [[13]] will save, and recalling more specific information (such as name, distinguishing features, or mannerisms) requires a successful dc [[16]] will save."
     }
    ]
+  },
+  "Vest of the Deep": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "A vest of the deep creates a constant shell of magical energy that protects the wearer from extreme environmental pressure, such as that inflicted by water at a depth of over 100 feet."
+   ]
   }
  },
  "known_list": [],
@@ -414,7 +443,7 @@
  "language_text": [
   "Common",
   "Orc",
-  "Gnoll",
+  "Giant",
   "Goblin",
   "Draconic",
   "Abyssal"
@@ -476,7 +505,7 @@
   "e_kat_reserve": 5,
   "e_kat_store_cap": 99,
   "feats": [
-   "Double Down",
+   "Right of Deferment",
    "Lucky Boy",
    "Very Lucky Boy"
   ],
@@ -518,11 +547,11 @@
    "target": -8
   },
   "trait_benefits": {
-   "Lucky Survival": "Add your luck score to your AC/Saves against a single attack once per day."
+   "E-Kat Exchange: Pull": "Reroll a percentile, choose between the 2 results for 10 E-Kats."
   },
   "trait_changes": {},
   "traits": [
-   "Lucky Survival"
+   "E-Kat Exchange: Pull"
   ],
   "twist_fate_per_day": 0,
   "type": "Dimorphic",
@@ -538,193 +567,193 @@
  "main_stat": "cha",
  "maneuvers_choose_from": [
   [
-   "Princes Attitude",
-   "Shoulder Rush"
+   "Offensive Roll",
+   "Crushing Blow"
   ],
   [
-   "Crippling Strike",
-   "Momentum Crash"
+   "Distracting Strike",
+   "Bloody Riposte"
   ],
   [
-   "Strike of Defeat",
-   "Blade-Breaking Counter"
+   "Frenzy Strike",
+   "Pack Pounce"
   ],
   [
-   "Furious Primal Wrath",
-   "Sanguine Perseverance",
-   "Noble Blade"
+   "Impaling Strike",
+   "Dragon Rush"
   ],
   [
-   "Ruby Zenith Strike",
-   "Sanguine Perfection"
+   "Dizzying Blow",
+   "Reversing Thrust",
+   "Hurricane of Fangs"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Blade-Breaking Counter": {
+  "Bend with the Wind": {
+   "action": "1 swift action",
+   "description": "The graceful, flowing movements of the Thrashing Dragons dance helps defend the disciple in combat while providing him the ability to move through danger unscathed. While in this stance, for each attack that misses the disciple, he may either gain a +2 dodge bonus until his next turn, or he may make a free 5-ft. step to any square his attacker threatens which does not provoke attacks of opportunity. The initiator can mix which benefit he wishes to gain from this stance from multiple missed attacks. If the initiator is unable to take a 5 ft. step, he is not permitted to select a dodge bonus due to being constrained and having no room to move around in.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Bloody Riposte": {
    "action": "1 immediate action",
-   "description": "An opponent cannot hurt you with his weapon if a weapon does not exist to do it. The Primal Fury disciple takes this to heart with a powerful parrying blow designed to shatter the weapon that his opponent uses before it can strike him. When being attacked, this counter is initiated after a successful hit but before damage is inflicted. The initiator then makes an immediate sunder attempt with a +2 circumstance bonus on his foes weapon which does not provoke attacks of opportunity, and if the weapon is reduced to half of its hit points, then it gains the broken condition and the disciple takes half damage from the attack. If this sunder attempt reduces the opponents weapon to 0 hit points, then the weapon shatters and the disciple takes no damage. If the initiator possesses the Greater Sunder feat, excess damage is applied to the target as per normal.",
+   "description": "Stoking the furnace of rage within him upon receiving injury, the disciple uses the momentary lapse in his attackers defenses when struck in combat to make a vicious riposte. Upon being struck in combat by an enemy, the initiator may make an immediate counter attack at his full base attack bonus that inflicts an additional 2d6 points of damage.",
    "discipline": "Primal Fury",
    "duration": "Instantaneous",
-   "level": 3,
+   "level": 2,
    "range": "Personal",
    "type": "counter"
   },
-  "Crippling Strike": {
+  "Crushing Blow": {
    "action": "1 standard action",
-   "description": "By specifically targeting a victims most vulnerable areas, the disciple is capable of rending arterial injuries into his foe. The initiator initiating this maneuver inflicts an additional 2d6 points of damage upon a successful melee attack, and his victim gains the bleeding condition suffering 1d3 points of damage per round until the application of any spell or effect that cures hit point damage or someone staunches the blood with a DC 15 Heal check.",
+   "description": "By bringing his weapon high and bringing it down with ferocious finality, the disciples forceful blow is enough to weaken the defenses of his foe momentarily. The initiator makes an attack and if successful, the strike inflicts an additional 1d6 points of damage and may potentially render his foe flat-footed until its next turn on a failed Fortitude save DC 11 + initiation modifier.",
    "discipline": "Primal Fury",
    "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Furious Primal Wrath": {
-   "action": "1 standard action",
-   "description": "The disciples attacks grow strong with practiced fury and primal power, forgoing accuracy for pure deadly force. The initiator suffers a -4 penalty to his attack roll, and makes an attack against a target creature. If successful, this attack inflicts an additional 20 points of damage, or 35 if the weapon is wielded in two hands.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Momentum Crash": {
-   "action": "1 swift action",
-   "description": "By putting his fury into a charging attack, the disciple is capable of using the momentum of his charge to increase his killing power with a twist of his body upon connecting. Upon a successful charge attack, the initiators charge attack inflicts an additional 10 points of damage in addition to the normal +2 to hit.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Noble Blade": {
-   "action": "1 swift action",
-   "description": "Scarlet Throne practitioners who know the Noble Blade may use their battle focus to add additional force to their strikes. The disciple may add a +5 insight bonus to his attack roll and +2d8 insight bonus to his damage roll on a single melee attack made during this turn.",
-   "discipline": "Scarlet Throne",
-   "duration": "One round",
-   "level": 4,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Princes Attitude": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple knows that he is nobility in the savagery of war, and conducts himself as such when moving through melee. The initiator gains a +4 dodge bonus to his Armor Class when he moves through threatened areas and provokes attacks of opportunity and a +2 competence bonus to Reflex and Will saves until his next turn.",
-   "discipline": "Scarlet Throne",
-   "duration": "One round",
    "level": 1,
-   "range": "Personal",
-   "type": "boost"
+   "range": "Melee attack",
+   "type": "strike"
   },
-  "Ruby Zenith Strike": {
+  "Distracting Strike": {
    "action": "1 standard action",
-   "description": "The focus of battle teaches that in a single hairs breadth of time, a warrior may strike down a foe in a single blow. The disciple makes a Sense Motive check in place of his normal attack roll he may add any enhancement bonus from his weapon or feats that apply from the use of his weapon to this Sense Motive check as well, and if this Sense Motive check equals or exceeds the targets armor class, the attack deals triple damage. If this check does not meet or exceed the targets armor class, then the attack fails and the disciple misses.",
-   "discipline": "Scarlet Throne",
+   "description": "By attracting the attentions of a foe with a well-placed and vicious blow, the disciple of the Golden Lion may distract and weaken his foe to the predations of his allies. Upon a successful attack when using this strike, the initiator inflicts an additional 2d6 points of damage and the target creature is left flat-footed until its next turn. Creatures immune to critical hits are not left flat-footed.",
+   "discipline": "Golden Lion",
+   "duration": "Until targets next turn",
+   "level": 2,
+   "range": "Any attack",
+   "type": "strike"
+  },
+  "Dizzying Blow": {
+   "action": "1 full around action",
+   "description": "The disciple of the Primal Fury rockets across the battlefield to unleash a powerful strike to the vitals of his foe, leaving him agonized and sick with pain. The initiator makes a charge attack against a target creature, if successful the attack inflicts an additional 10d6 points of damage and the target must make a Fortitude save DC 15 + initiation modifier or be nauseated for 1d4 rounds.",
+   "discipline": "Primal Fury",
    "duration": "Instantaneous",
    "level": 5,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Running Hunters Stance": {
+  "Dragon Rush": {
    "action": "1 swift action",
-   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
+   "description": "With the ferocity of a dragon, the disciple follows through a successful attack with a vicious kick to his foe to keep punishing the fool who would stand before the might of a Thrashing Dragon. Upon successfully striking a foe as part of an attack, martial strike, or a full attack, he may as a swift action use this maneuver to deliver a vicious kick at his full attack bonus with his unarmed strike. This attack inflicts an additional 3d6 points of damage.",
+   "discipline": "Thrashing Dragon",
+   "duration": "One round",
+   "level": 4,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Frenzy Strike": {
+   "action": "1 standard action",
+   "description": "By emulating the ferocious assault of a raging great cat, the disciples knowledge of the natural world and the way its predators operate assists him in combat with a furious set of attacks. The initiator makes one attack with each weapon he has wielded or with both heads of a double weapon; this includes natural attacks and armor or shield spikes at his full base attack bonus. Upon a each successful attack, the initiator inflicts an additional 2d6 points of damage.",
    "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Golden Commander Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 30\nonlyOthers;\n\nThrough the use of the Golden Lion disciples superior tactical ability, he is able to direct his allies in combat for maximum effectiveness. As long as his allies within 30-ft. of him can clearly hear his shouts and understand his language, he grants his allies the ability to gain flanking with all adjacent allies that are fighting in melee against the same opponent i.e. if two allies of the initiator are 20-ft. away fighting a target together, and the initiator has another ally assisting him in combat against a different target, both pairs gain flanking bonuses against their foes even if they are not normally in flanking position.",
+   "discipline": "Golden Lion",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Hurricane of Fangs": {
+   "action": "1 swift action",
+   "description": "Utilizing this technique, a Thrashing Dragon disciple is capable of hurling multiple blades at a target in rapid succession with brutal power and incredible accuracy and range. For one round, the range of thrown weapons with range increments such as daggers or thrown weapons from an associated Thrashing Dragon weapon group improvised weapon penalties apply as applicable is increased by +30-ft.. Additionally, these thrown weapons strike with deadly force, inflicting an additional amount of damage equal to the initiators initiator level.",
+   "discipline": "Thrashing Dragon",
+   "duration": "One round",
+   "level": 5,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Impaling Strike": {
+   "action": "1 standard action",
+   "description": "The disciple who has reached this level of mastery in the art of Primal Fury has learned that by striking to a foes heart and center with a singular but powerful blow, it causes the foes ability to withstand punishment to falter. The initiator makes an attack against his target and if successful, inflicts an additional 4d6 points of damage to this attack which ignores damage reduction. The target must make a Fortitude save DC 14 + primary initiation modifier or suffer an additional 1d4 points of Constitution damage from being hit in a vital area. Targets immune to critical hits are not subject to this Constitution damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Offensive Roll": {
+   "action": "1 full round action",
+   "description": "As the disciple moves by his opponent, he may drop into a tumbling roll and strike at it from a surprising angle. The initiator must move at least 10 ft. alongside an enemy which provokes attacks of opportunity unless the initiator is using Acrobatics to tumble and make a Acrobatics check with a DC equal to the targets Armor Class. If successful, the target is considered flat-footed and the strike inflicts an additional 1d6 points of damage. The character initiating this maneuver may move up to his full base speed, making the attack along any point of the moment.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Pack Pounce": {
+   "action": "1 standard action",
+   "description": "By capitalizing on the opportunities granted by the presence of his allies who are attacking his foe, the lethality of the Golden Lion disciple increases dramatically due to his knowledge of pack tactics. The initiator must be attacking a target that one or more of his allies are also adjacent to, and upon successfully attacking a qualifying target, the initiator receives a +5 circumstance bonus to damage rolls against that target per ally to a maximum of an additional 15 points of damage for three allies.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Pride Leaders Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 20 + 10*floor((@attributes.hd.total - 1) / 5)\n\nBy adopting the mannerisms of commanding lions of the great savannahs, the disciple inspires heroics by his presence. By adopting this stance, the initiator and all allies within 20-ft. of his position gain a +4 morale bonus to saves vs fear effects and demoralization effects. The radius of this effect increases by 10-ft. per five initiator levels starting at initiator level 6.",
+   "discipline": "Golden Lion",
    "duration": "Stance",
    "level": 1,
    "range": "Personal",
    "type": "stance"
   },
-  "Sanguine Perfection": {
+  "Primal Warrior Stance": {
+   "action": "1 swift action",
+   "description": "By taking a wide stance that invites the death of any before him, the mighty disciple of Primal Fury wields the power of overwhelming force to its greatest effects. The initiator ignores difficult terrain when charging while in this stance, and whenever he is subject to a size modifier for CMB checks or to his CMD, the disciple is treated as one size category larger if doing so would be advantageous to him. He is also considered to be one size larger when determining whether a creatures special attacks based on size such as grab or swallow whole can affect him. Additionally, any melee weapon, unarmed strike, or natural weapon is treated as if it were two sizes larger. The benefits of this stance stack with abilities or effects that increase the initiators size such asenlarge person.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Reversing Thrust": {
    "action": "1 immediate action",
-   "description": "The supreme clarity of mind and focus of form allows a disciple of Scarlet Throne to simply overcome any obstacle placed before him, albeit for the short term. The disciple calls upon his supreme will and focus and may delay or stop a number of negative conditions placed upon him through the use of this maneuver for a number of rounds equal to the disciples initiation modifier. Conditions that are subjected to this maneuver are: blinded, confused, cowering, dazed, dazzled, deafened, disabled, dying though he still suffers hit point damage each round, energy drained, exhausted, fascinated, fatigued, frightened, helpless, nauseated, panicked, paralyzed, petrified, shaken, sickened, staggered, stunned, or unconscious. If the condition has a duration that would expire before the use of this maneuver, then the effect is negated. If the effect would have continue to have effect after the duration of this maneuver expires, then the subject suffers the remaining duration of that effect as normal after the maneuver ends.",
-   "discipline": "Scarlet Throne",
-   "duration": "A number of rounds equal to initiation modifier",
+   "description": "By watching the form of the enemy attacking him, the disciple may expertly twist and dodge way from the attack while making an attack on his foe in return. The initiator makes an opposed Acrobatics check against the targets attack roll. If successful, the disciple evades and negates his foes attack and may make an immediate counter attack at his full attack bonus.",
+   "discipline": "Thrashing Dragon",
+   "duration": "Instantaneous",
    "level": 5,
    "range": "Personal",
    "type": "counter"
-  },
-  "Sanguine Perseverance": {
-   "action": "1 immediate action",
-   "description": "The focus of battle that a disciple of Scarlet Throne has allows him to react to danger before he actively knows it is present, his senses acknowledging peril before his mind would know of it. A disciple may initiate this counter when required to make a saving throw. The disciple makes a Sense Motive check and uses the result of this check in place of his normal saving throw.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 4,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Scarlet Einhander": {
-   "action": "1 swift action",
-   "description": "By adopting this stance, the disciple presents a slim profile to his foes, holding his weapon low and one-handed, and leads with his blade in an elegant and graceful manner, his strikes strong and his profile aiding him in defense. When wielding a melee weapon in one hand, the initiator presents a slim profile with strong offensive and defensive ability. The initiator gains a +2 shield bonus to his Armor Class and inflicts an additional 1d6 points of damage while in this stance. The shield bonus granted by this stance increases by +1 when the characters initiator level reaches 6th, and increases again by +1 at 12th and 18th initiator level. Upon reaching 10th initiator level, the bonus damage increases to 2d6.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Shoulder Rush": {
-   "action": "1 standard action",
-   "description": "The disciple of Primal Fury uses his aggression to take opportunities whenever possible, and a solid shoulder into a foe at an opportune moment can tip the scales of war in the disciples favor. As a standard action, the initiator may make a bull rush or overrun attempt with a +4 circumstance bonus, and this attempt does not provoke attacks of opportunity.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Stance of Piercing Rays": {
-   "action": "1 swift action",
-   "description": "A Solar Wind disciple learns to cause his ammunition to pierce like the burning rays of the sun itself. While in this stance, the initiators ranged attacks inflict an additional 1d6 points of fire damage. This bonus damage increases by an additional 1d6 points of fire damage every eight initiator levels. This is a supernatural ability.",
-   "discipline": "Solar Wind",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Strike of Defeat": {
-   "action": "1 standard action",
-   "description": "A dead foe is a foe that can trouble you no more, is an old adage of the Scarlet Throne disciple. An injured foe is easy prey, but is still a foe nonetheless. By utilizing this swift executioners strike, the Scarlet Throne disciple removes a potential threat and obstacle from his path. The disciple makes an attack against a foe which if successful deals additional damage determined by the state of the enemys hit points. If the enemy has more than 75% of his total hit points, this strike does no additional damage. If the foe has less than 75% hit points, this strike inflicts an additional 4d6 points of damage. If the foe has less than 25% of his total hit points, this strike inflicts an additional 8d6 points of damage.",
-   "discipline": "Scarlet Throne",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Unfettered Movement": {
-   "action": "1 swift action",
-   "description": "The Scarlet Throne disciple is swift in battle and in his ability to go from one skirmish to the next to choose his next foe. By assuming this stance, the disciple gains a +10-ft. bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity.",
-   "discipline": "Scarlet Throne",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
   }
  },
  "maneuvers_known_list": [
   2,
   2,
   2,
-  3,
-  2
+  2,
+  3
  ],
  "maneuvers_readied_list": [
   0,
   0,
   2,
-  3,
-  2
+  2,
+  3
  ],
  "maneuvers_readied_names": [
   [],
   [],
   [
-   "Strike of Defeat",
-   "Blade-Breaking Counter"
+   "Pack Pounce",
+   "Frenzy Strike"
   ],
   [
-   "Noble Blade",
-   "Sanguine Perseverance",
-   "Furious Primal Wrath"
+   "Dragon Rush",
+   "Impaling Strike"
   ],
   [
-   "Ruby Zenith Strike",
-   "Sanguine Perfection"
+   "Dizzying Blow",
+   "Hurricane of Fangs",
+   "Reversing Thrust"
   ]
  ],
  "manifesters": [],
@@ -733,18 +762,18 @@
   "Leans back"
  ],
  "martial_disciplines": [
+  "Thrashing Dragon",
   "Primal Fury",
-  "Solar Wind",
-  "Scarlet Throne"
+  "Golden Lion"
  ],
  "mini_alignment": "ln",
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 5,
  "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 0 older sisters",
+ "older_sisters": " you have 2 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, dead father, adopted into a middle income family",
+ "parents": "loving mother, loving father, raised in a poor household",
  "personality_traits": [
   "Wise",
   "Egotistic",
@@ -753,7 +782,7 @@
   "Disruptive",
   "Self-sufficient"
  ],
- "platnium": 45.0,
+ "platnium": 22.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1116,39 +1145,45 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting",
+  "Overcharge",
+  "Empowered Abilities",
   "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Magical Signs",
-  "Prepared Caster",
   "Focus Casting",
-  "Addictive Casting"
+  "Skilled Casting",
+  "Magical Signs",
+  "Addictive Casting",
+  "Painful Magic",
+  "Draining Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Magical Signs",
-  "Prepared Caster",
   "Focus Casting",
+  "Skilled Casting",
+  "Magical Signs",
   "Addictive Casting",
-  "Fortified Casting",
+  "Painful Magic",
+  "Draining Casting",
+  "Overcharge",
+  "Empowered Abilities",
   "Easy Focus"
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Unfettered Movement",
-  "Scarlet Einhander",
-  "Running Hunters Stance",
-  "Stance of Piercing Rays"
+  "Primal Warrior Stance",
+  "Bend with the Wind",
+  "Golden Commander Stance",
+  "Pride Leaders Stance"
  ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Quillbreaker Defense",
-  "Bull Charge (combat)",
-  "Dirgesinger"
+  "Collective Recollection",
+  "Cloak Dance",
+  "Cosmopolitan"
  ],
  "str": 14,
  "teamwork_feat_labels": [],
@@ -1156,45 +1191,41 @@
  "total_level": 10,
  "total_rolled_hp": 90,
  "trainer_calibers": [
+  3,
   2,
-  3,
-  3,
   2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 2)",
+  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 3)",
   "(Trainer 3)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)"
+  "(Trainer 4 - Path of War)",
+  "(Trainer 4 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
-  "Great Fortitude": [
-   "improved great fortitude"
+  "Primal Fury Style": [
+   "Primal Fury Slash",
+   "Primal Fury Leap"
   ],
-  "Lightning Reflexes": [
-   "improved lightning reflexes"
-  ],
-  "Nimble Moves": [
-   "acrobatic steps"
+  "Thrashing Dragon Style": [
+   "Thrashing Dragon Pounce",
+   "Thrashing Dragon Whirlwind"
   ]
  },
  "trainer_feats": [
-  "Integrated Combat",
-  "Exotic Weapon Proficiency",
-  "Coordinated Maneuvers",
-  "Shapeshifter Foil",
-  "Unseen Terror",
-  "Great Fortitude",
-  "Natural Telekinetic",
-  "Nimble Moves",
-  "Lightning Reflexes",
-  "Toughness"
+  "Distance Thrower",
+  "Malevolence",
+  "Tandem Trip",
+  "Skilled Driver",
+  "Opening Volley",
+  "Bloodletting",
+  "Defensive Combat Training",
+  "Primal Fury Style",
+  "Thrashing Dragon Style"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],

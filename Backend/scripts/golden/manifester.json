@@ -4,7 +4,7 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Butterfly tattoo"
+  "Rough hands"
  ],
  "archetype1": null,
  "archetype_info": "{}",
@@ -36,29 +36,29 @@
  "casting_tradition": {
   "bonus_spell_points": 0,
   "boons": [
-   "Easy Focus"
+   "Overcharge"
   ],
   "boons_detail": [
    {
-    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
-    "name": "Easy Focus"
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Wild Magic",
-   "Verbal Casting"
+   "Focus Casting",
+   "Painful Magic"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
    },
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
    }
   ]
  },
@@ -273,16 +273,16 @@
  "dex": 15,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "wrist": {
-   "description": " once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. The user can cover a two-handed melee weapon or up to two one-handed or light melee weapons. For the next 10 rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls. Improvised weapons, however, are already unwieldy, and the metal coating doesn't significantly affect their balance. If the wielder lets go of a weapon affected by the bracers, the liquid metal immediately turns back into a solid metal bracer or bracers, in the case of a two-handed weaponreappearing on the user's wrists. The bracers cannot therefore affect thrown weapons or ranged weapon ammunition. ",
-   "item_name": "Quickmetal Bracers, Adamantine"
+  "body": {
+   "description": " a crusader's tabard is a sturdy cloth vestment worn over armor and other clothing. It is normally decorated with the symbol or heraldic device of the owner, and may be trimmed with expensive and delicate materials (such as silk, fur, or cloth of gold). Once per day, the wearer of the tabard may say its command word (often a family motto); thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for 1 minute, whichever duration is shorter. ",
+   "item_name": "Crusader's Tabard"
   }
  },
  "equipment_list": [
-  "Quickmetal Bracers, Adamantine"
+  "Crusader's Tabard"
  ],
  "eye_color": [
-  "Brown"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -293,27 +293,47 @@
   "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 5
  },
  "feat_changes_dict": {
-  "Demon Hunter": {
+  "Focused Discipline": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.kpl",
-     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
+     "target": "allSavingThrows",
+     "text": "+2 on all saving throws against fear effects."
     }
    ]
+  },
+  "Sea Legs": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
   }
  },
  "feat_conditionals_dict": {
-  "Death Or Glory": {
-   "default": false,
-   "modifiers": [],
-   "name": "Death or Glory: Effect: against a Large or larger creature, make a single attack as a full-round action with a +[[4]] bonus (+[[5]] at base attack bonus +[[11]], +[[6]] at +[[16]], +[[7]] at +[[20]]) on the attack roll, damage roll, and critical confirmation roll; the target may make a single melee attack against you with the same bonuses as an immediate action",
-   "tier": "A"
-  },
-  "Demon Hunter": {
+  "Focused Discipline": {
    "default": false,
    "modifiers": [
     {
@@ -333,29 +353,47 @@
      "type": "morale"
     }
    ],
-   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
+   "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round)."
+  },
+  "Point-Blank Shot": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "tier": "A"
   }
  },
  "feats": [
-  "Demon Hunter",
-  "Cornugon Smash",
-  "Swap Places",
-  "Giant Slayer",
   "Performance Weapon Mastery",
-  "First Aid Training",
-  "Combat Medic",
-  "Armor Ripper",
+  "Lesser Hurling",
+  "Dark Allure",
+  "Liquid Courage",
+  "Lesser Spirit Totem",
+  "Improved Unarmed Strike",
+  "Natural Ruler",
+  "Focused Discipline",
   "Multi Talented"
  ],
- "feats_feat_tax_dict": {
-  "Improved Drag": [
-   "greater drag",
-   "quick drag"
-  ]
- },
+ "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Strike Back"
+  "Rapid Emplacement"
  ],
  "flaw": [
   "Motion Sickness",
@@ -405,49 +443,46 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Improved Dirty Trick": [
-   "greater dirty trick",
-   "dirty trick master",
-   "quick dirty trick",
-   "underhanded teamwork",
-   "improved underhanded teamwork"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Quick Reflexes",
-  "Improved Dirty Trick"
+  "Lesser Fiend Totem",
+  "Diving Strike"
  ],
- "formatted_bio": "Émilie Daviau\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 5 Psion / Aegis And Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Coin-Picker (rank 10)\n- Profession: Squire-at-Arms (rank 10)\n- Profession: Trader (rank 9)\n- Known for: Bricklaying\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Middle Income Household\n- 1 Younger Brother\n- 2 Younger Sisters\n\nPersonality\n- Personality: Lazy, Realistic, Guarded, Polite, Relaxed, Controlling\n- Mannerisms: Laughs at own jokes, Furrows brow, Plays with sleeves, Drops head\n- Flaws: Motion Sickness, Shattered Psyche, Illiterate\n\nAppearance\n- Hair: Wavy Grey\n- Eyes: Brown\n- Build: Butterfly Tattoo",
+ "formatted_bio": "Émilie Daviau\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 5 Psion / Aegis And Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Coin-Picker (rank 10)\n- Profession: Squire-at-Arms (rank 10)\n- Profession: Trader (rank 9)\n- Known for: Bricklaying\n- Training: An excellent trainer who taught them Sea Legs, Collective Recollection, Dark Embrace\n- Training: An average trainer who taught them Improved Steal, Black Market Dealings\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 1 Younger Brother\n\nPersonality\n- Personality: Lazy, Realistic, Guarded, Polite, Relaxed, Controlling\n- Mannerisms: Laughs at own jokes, Furrows brow, Plays with sleeves, Drops head\n- Flaws: Motion Sickness, Shattered Psyche, Illiterate\n\nAppearance\n- Hair: Spiky White\n- Eyes: Hazel\n- Build: Rough Hands",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 8194,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 5000,
+ "gold": 0,
  "hair_color": [
-  "Grey"
+  "White"
  ],
  "hair_type": [
-  "Wavy"
+  "Spiky"
  ],
  "height_number": "5'0\"",
- "hero_points": 1,
+ "hero_points": 2,
  "homebrew_feat_desc_dict": {
-  "Armor Ripper": "",
-  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
-  "Cornugon Smash": "Your terrible attacks strike fear into your enemies",
-  "Death Or Glory": "Even when facing a larger foe, you aren't afraid to take great risks in order to finish the fight",
-  "Demon Hunter": "You are well-versed in demonic lore",
-  "First Aid Training": "You have been trained to identify and patch up wounds in preparation for more serious treatment. Special If you use an ability score other than Wisdom to determine your bonus on Heal checks, you use that ability score in place of Wisdom for determining the number of temporary hit points the target gains. when you make a heal check to perform first aid on a creature, that creature gains temporary hit points equal to your wisdom modifier plus your ranks in the heal skill. these temporary hit points last for 1 minute or until lost.",
-  "Giant Slayer": "You know how to turn a foes size and reach against them. when you make a charge attack, you do not provoke attacks of opportunity from the target of your charge. in addition, you gain a +1 bonus on attack rolls made during charges for each size category larger than you the target of the attack is.",
-  "Improved Dirty Trick": "You are skilled at pulling dirty tricks on your foes",
-  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
+  "Black Market Dealings": "You walk dark alleys and trade in secrets. in addition, you can use the diplomacy skill to locate merchants who have deeper pockets in a black market or settlement. if you are looking inside a black market, the dc is equal to the black markets access dc. if you are looking more widely in a settlement, use the black markets access dc + 5 (if a settlement has no black market, the dc is 30; pcs can apply the settlements crime modifier to their checks). if successful, you can treat the black market or settlement as one step larger for the purposes of base value, items available, and purchase limit. if the settlement was already a metropolis, nearly all minor and medium magic items are for sale, as well as 3d8 major magic items; the base value is 32,000 gp; and the purchase limit is 200,000 gp. if the black market was already an underworld, nearly all minor and medium magic items are for sale, as well as 4d8 major magic items; the base value is 64,000 gp; and the purchase limit is 300,000 gp. this does not stack with other ways to increase the effective size of a black market or settlement (such as the black market connections rogue talent). you can attempt this check only once per week.",
+  "Collective Recollection": "You and your allies can quickly jog each other's memories to remember essential facts",
+  "Dark Allure": "Those you have Claimed by become distracted by your presence. Special Characters with the Dark Authority feat cannot take this feat. creatures claimed by you take a penalty on attack rolls against creatures other than you equal to the number of creatures you currently have claimed.",
+  "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
+  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
+  "Diving Strike": "With a tremendous dive, you can both move and attack your foe. when you charge, you may make both a bull rush and a basic melee attack, in that order.",
+  "Focused Discipline": "Familiarity with the military traditions of your homeland inspires uncommon valor in you",
+  "Improved Steal": "You have a knack for snatching items from your opponents",
+  "Improved Unarmed Strike": "You are skilled at fighting while unarmed",
+  "Lesser Fiend Totem": "",
+  "Lesser Hurling": "",
+  "Lesser Spirit Totem": "",
+  "Liquid Courage": "",
   "Multi Talented": "Your profession rank cap increases by 10.",
+  "Natural Ruler": "You have a special talent for ruling a nation, and take to the task with ease",
+  "Overwhelm": "You can overwhelm large foes with sheer numbers",
   "Performance Weapon Mastery": "You wield all your weapons with the flair of a performer",
-  "Quick Reflexes": "",
-  "Shield Wall": "You form a unified defense with those around you",
-  "Strike Back": "You can strike at foes that attack you using their superior reach, by targeting their limbs or weapons as they come at you",
-  "Swap Places": "You are skilled at changing places with your ally during a chaotic melee"
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Rapid Emplacement": "Constant use, training, and reflexes has allowed you to more rapidly apply cover with your shield. you may use your tower shield to provide cover as a move action rather than a standard action. you still suffer the penalty to attack rolls imposed by a tower shield while using it for cover.",
+  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels"
  },
  "inherents": {
   "cha": 4,
@@ -461,12 +496,12 @@
  "initiator_level": 0,
  "int": 24,
  "item_changes_dict": {
-  "Quickmetal Bracers, Adamantine": {
+  "Crusader's Tabard": {
    "changes": [],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "Once per day when a user wearing both these bracers speaks a command word, the metal turns entirely liquid and swims over the wearer's hands to cover her weapons. For the next [[10]] rounds, the affected weapons can overcome damage reduction as though the weapons were made of adamantine, cold iron, or silver (as determined by the quickmetal bracers, ' type). The heavy, shifting metal coating affects the balance of manufactured weapons, imposing a 2 penalty on attack rolls."
+     "text": "Once per day, the wearer of the tabard may say its command word (often a family motto); Thereafter, the wearer can spend a standard action (instead of a full-round action) to move up to his speed and make a single charge attack. This ability lasts until used or for [[1]] minute, whichever duration is shorter."
     }
    ]
   }
@@ -475,19 +510,19 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Aklo",
-  "Grippli",
-  "Halfling",
   "Giant",
-  "Celestial",
-  "Gnoll",
-  "Wayang",
+  "Aquan",
   "Goblin",
-  "Drow Sign Language",
+  "Draconic",
+  "Gnome",
+  "Celestial",
   "Sphinx",
-  "Elven",
-  "Abyssal",
-  "Infernal"
+  "Infernal",
+  "Wayang",
+  "Undercommon",
+  "Kelish",
+  "Auran",
+  "Orc"
  ],
  "level": 5,
  "level_up_stats": {
@@ -574,7 +609,7 @@
  "manifesters": [
   {
    "caster_type": "high",
-   "discipline": "Seer (Clairsentience)",
+   "discipline": "Egoist (Psychometabolism)",
    "display": "Psion",
    "level": 5,
    "manifester_level": 5,
@@ -586,46 +621,47 @@
     [
      "Detect Psionics",
      "Blinding Flash",
-     "Energy Splash"
-    ],
-    [],
-    [
-     "Breach",
-     "Cloud Mind",
-     "Mental Regression",
-     "Suppress Veil",
-     "Tormenting the Living",
-     "True Terror"
+     "Telekinetic Punch"
     ],
     [
-     "Caustic Retribution",
-     "Disruption",
-     "Living Haunter",
-     "Malefic Metamorphosis",
-     "Release Death's Hold"
+     "Crystal Shard"
+    ],
+    [
+     "Accelerate Body",
+     "Energy Adaptation",
+     "Memory Revelation",
+     "Recall Agony"
+    ],
+    [
+     "Biokinetic Endurance",
+     "Heightened Vision",
+     "Release Death's Hold",
+     "Sanguine Displacement",
+     "Spiritual Resting Place",
+     "Touchsight"
     ]
    ],
    "powers_chosen": [
     "Detect Psionics",
     "Blinding Flash",
-    "Energy Splash",
-    "Breach",
-    "Cloud Mind",
-    "Mental Regression",
-    "Suppress Veil",
-    "Tormenting the Living",
-    "True Terror",
-    "Caustic Retribution",
-    "Disruption",
-    "Living Haunter",
-    "Malefic Metamorphosis",
-    "Release Death's Hold"
+    "Telekinetic Punch",
+    "Crystal Shard",
+    "Accelerate Body",
+    "Energy Adaptation",
+    "Memory Revelation",
+    "Recall Agony",
+    "Biokinetic Endurance",
+    "Heightened Vision",
+    "Release Death's Hold",
+    "Sanguine Displacement",
+    "Spiritual Resting Place",
+    "Touchsight"
    ],
    "powers_known_list": [
     3,
-    0,
-    6,
-    5
+    1,
+    4,
+    6
    ],
    "pp_per_day": 42,
    "subsystem_bucket": "",
@@ -660,10 +696,10 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "normal_feat_amount": 8,
- "older_brothers": " you have 0 older brothers",
+ "older_brothers": " you have 2 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, absent father, raised in a middle income household",
+ "parents": "loving mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Lazy",
   "Realistic",
@@ -672,8 +708,36 @@
   "Relaxed",
   "Controlling"
  ],
- "platnium": 500.0,
+ "platnium": 0.0,
  "powers_desc_dict": {
+  "Accelerate Body": {
+   "augment": "This power may be augmented in one or more of the following ways.\n* If you spend 2 additional power points, the range changes from Touch to Close (25 ft. + 5 ft./2 levels).\n* For every 2 additional power points you spend, the effects trigger as if another day had passed.\n* For every 2 additional power points you spend, you can affect another target with this power.",
+   "discipline": "Psychometabolism",
+   "display": "Visual",
+   "duration": "Instantaneous",
+   "level": "Cryptic 2, psion/wilder 2, vitalist 2",
+   "manifesting time": "1 standard action",
+   "name": "Accelerate Body",
+   "power points": "3",
+   "power resistance": "No",
+   "range": "Touch",
+   "saving throw": "Fortitude (see text)",
+   "text": "You accelerate the body of the touched target and you can choose to affect only detrimental effects, only positive effects or all effects.\n\nDetrimental: Every poison, disease, ongoing spell effect with a negative effect over time triggers once more as if at least one day had passed (reducing onset time, triggering more saves against diseases or poisons, but only one and so on). A successful saving throw does not count toward ending the affliction, and this extra save does not change the timing of the next save against the affliction. The target can make a Fortitude save to negate this effect.\n\nPositive: The target heals physical ability damage as if they had rested for a day, gain a new save against any ongoing effects or spells that give new saves after a day and heal their hit dice in hit point damage. No save.\n\nAll: Both of the above effects trigger at the same time. The target gains no save."
+  },
+  "Biokinetic Endurance": {
+   "augment": "For every 2 additional power points you spend, the ability damage reduced by this power, as well as the maximum amount of damage that can be prevented, increases by 1 point.\n\nSurge Augmentation: If you invoke your wild surge while manifesting this power, choose one of the following augmentations:\n* The power’s range changes to close (25 ft. plus 5 ft. per 2 levels) and its target changes to ‘one creature.’\n* You gain DR X/—, where X is equal to your wild surge’s intensity.",
+   "discipline": "Psychometabolism",
+   "display": "Visual",
+   "duration": "1 minute/level (D)",
+   "level": "Highlord 3, psion/wilder 3, psychic warrior 3",
+   "manifesting time": "1 standard action",
+   "name": "Biokinetic Endurance",
+   "power points": "5",
+   "power resistance": "",
+   "range": "Personal",
+   "saving throw": "",
+   "text": "You alter your body’s rhythms, defending yourself against crippling attacks and turning your skin (as well as fur, feathers, or scales) a pale gray color. Whenever damage would be dealt to one of your physical ability scores by a source other than you, reduce that damage by 2 points, to a minimum of 0. Once this power has prevented an amount of ability damage equal to your manifester level, it ends immediately."
+  },
   "Blinding Flash": {
    "augment": "You may augment this power in one or both of the following ways:\n*For every additional power point you spend, the power’s duration increases by one round.\n*If you spend 4 additional power points, the target is blinded instead of dazzled.\nIn addition, for every 2 power points spent to achieve either of these effects, increase the save DC by 1.",
    "discipline": "Psychokinesis [Light]",
@@ -688,47 +752,19 @@
    "saving throw": "Fortitude Negates",
    "text": "You create a blinding flash of light to momentarily distract an opponent. The target of this power must make a Fortitude save or be dazzled for one round."
   },
-  "Breach": {
-   "augment": "ed (3rd): You can expend two uses of mythic power to target one locked item per tier, unlocking up to four means of closure on each, allowing a free dispel against a psionic lock on each, and automatically opening locks of up to good quality (no manifester level check needed).\n\nIf the door has a trap that triggers when opened, you become aware of the trap and its general nature, and the door is unlocked but doesn’t automatically open.\n\nThe power can raise a barred gate, portcullis, or similar impediment, but each one counts as two locked doors.",
-   "discipline": "Psychoportation",
-   "display": "Material",
-   "duration": "Instantaneous; see text",
-   "level": "Cryptic 2, gambler 2, psion/wilder 2, voyager 2",
+  "Crystal Shard": {
+   "augment": "You can augment this power in one of the\nfollowing ways.\n* For every additional power point you spend, this power’s damage increases by 1d6 points.\n* If you expend your psionic focus when manifesting this power, the cost of the power is reduced by 1 (to a minimum of 0), but the damage is reduced to 1d3 points of piercing damage and cannot be further augmented.\n\n== Mythic Crystal Shard ==\nThe damage dice increases to d10. If the target struck is adjacent to a wall, it becomes pinned to that wall. If adjacent to more than one wall, it is your choice to which wall it becomes pinned. The CMB of the crystal shard is equal to your manifester level plus your key ability modifier plus your tier.\n\nAugmented (3rd): If you expend two uses of mythic power, you may target a number of creatures equal to your tier.",
+   "discipline": "Metacreativity (Creation)",
+   "display": "Auditory and material",
+   "duration": "Instantaneous",
+   "level": "Gambler 1, psion/wilder 1",
    "manifesting time": "1 standard action",
-   "name": "Breach",
-   "power points": "3",
+   "name": "Crystal Shard",
+   "power points": "1",
    "power resistance": "No",
-   "range": "Medium (100 ft. + 10 ft./level)",
+   "range": "Close (25 ft. + 5 ft./2 levels)",
    "saving throw": "None",
-   "text": "You psionically open stuck, barred, or locked doors, as well as those subject to hold portal or arcane lock. When you complete the manifestation of this power, make a manifester level check against the DC of the lock with a +10 bonus. If successful, you open up to two means of closure. This power opens secret doors, as well as locked or trick-opening boxes or chests. This also loosens welds, shackles, or chains (provided they serve to hold something shut). If used to open an arcane locked door, the power does not remove the arcane lock but simply suspends its functioning for 10 minutes. In all other cases, the door does not relock itself or become stuck again on its own. This does not raise barred gates or similar impediments (such as a portcullis), nor does it affect ropes, vines, and the like. The effect is limited by the area. Each manifestation can undo as many as two means of preventing access.\n\n== Mythic Breach ==\nThe power unlocks up to three means of closure instead of two. The power automatically opens locks of simple or average quality, without requiring a manifester level check to do so. If used on a door locked with psionic lock, you can attempt a free dispel check against it as if using a targeted dispel psionics, adding your tier to the check."
-  },
-  "Caustic Retribution": {
-   "augment": "You may augment this power in the following ways:\n* For every 2 power points you spend, its damage increases by one die (d6).\n* If you spend an additional 4 power points, creatures damaged by this power who fail their saves are also blinded until the beginning of their next turn.",
-   "discipline": "Psychometabolism [Acid]",
-   "display": "Olfactory",
-   "duration": "1 round/level",
-   "level": "dread 3, highlord 3, psion/wilder 3, psychic warrior 3, vitalist 3",
-   "manifesting time": "1 standard action",
-   "name": "Caustic Retribution",
-   "power points": "5",
-   "power resistance": "Yes",
-   "range": "Touch",
-   "saving throw": "Will negates (harmless)",
-   "text": "You alter a creature’s blood into a caustic fluid and adjust their veins and arteries to accommodate it. The target gains acid resistance 10. Additionally, when the target is damaged by a melee attack, its attacker must succeed at a Reflex save or take 3d6 points of acid damage. Attackers using a natural weapon suffer a –4 penalty to their save.\n\nWhenever the target takes damage from a bleed effect, creatures adjacent to the target must succeed at a Reflex save or suffer 3d6 points of acid damage."
-  },
-  "Cloud Mind": {
-   "augment": "This power may be augmented in one or both of the following ways.\n*If you spend 6 additional power points, you may manifest this power as an immediate action.\n*For every 2 additional power points you spend, this power can affect one additional creature.\n*If you spend 8 additional power points, this power effects one creature per manifester level.\nIn addition, for every 2 power points spent on any of the above options, the power’s save DC increases by 1.\n\n== Mythic Cloud Mind ==\nMythic cloud mind affects a number of creatures equal to your tier. Targets that succeed on the save instead suffer a 20% miss chance against you for the duration of the effect.\n\nAugmented: If you expend one use of mythic power, the effect does not break when you attack a creature.",
-   "discipline": "Telepathy [Mind-Affecting]",
-   "display": "None",
-   "duration": "1 min./level",
-   "level": "Cryptic 2, gambler 2, gifted blade 2, marksman 2, psion/wilder 2, voyager 2",
-   "manifesting time": "1 standard action",
-   "name": "Cloud Mind",
-   "power points": "3",
-   "power resistance": "Yes",
-   "range": "Close (25 ft. +5 ft./2 levels)",
-   "saving throw": "Will negates",
-   "text": "You make yourself completely undetectable to the subject by erasing all awareness of your presence from its mind. This power has the following effects.\n\nFirst, you are invisible and inaudible to the creature. It cannot even detect your presence by means of blindsense, blindsight, scent, or tremorsense. It cannot pinpoint your location by any means.\n\nSecond, the subject remains unaware of your actions, provided you do not make any attacks or cause any obvious or directly threatening changes in the subject’s environment. If you attack the subject creature, the effect ends.\n\nIf you take an action that creates a sustained and obvious change in the subject’s environment—for example, attacking a creature aside from the subject or moving a large or attended object the subject can see—the subject immediately gains a new saving throw against the power. An ally of the subject creature that is able to see or perceive you can use a move action to warn the subject and thereby grant it a new saving throw."
+   "text": "Upon manifesting this power, you propel a razor-sharp\ncrystal shard at your target. You must succeed on a ranged\ntouch attack with the ray to deal damage to a target. The ray\ndeals 1d6 points of piercing damage."
   },
   "Detect Psionics": {
    "augment": "If you spend 2 additional power points, the duration changes to 3 rounds/level (D) (no concentration required) and it also gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This power does not allow you to identify artifacts.\n\nLibrarian Note: In Psionics Unleashed, this power is instead a 1st-level power for psions, wilders, and psychic warriors. In addition, it also does not have the duration change augment effect (but keeps the +10 Spellcraft effect). Otherwise, it is functionally the same power.",
@@ -744,75 +780,61 @@
    "saving throw": "None",
    "text": "You detect psionic auras. A psionic aura is given off by any active or permanent power, or during the use of any psionic feat. Characters who have levels in a psionic class, creatures with the psionic subtype, and creatures with the Wild Talent feat possess psionic auras. The amount of information revealed by the manifestation of this power depends on how long you study a particular area or subject.\n\n1st Round: Presence or absence of psionic auras.\n\n2nd Round: Number of different psionic auras and the strength of the most potent aura.\n\n3rd Round: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Knowledge (psionics) checks to determine the discipline involved in each aura. (Make one check per aura; DC 15 + power level, or 15 + one-half manifester level for an effect that is not created by a power, such as that of a psionic item.) If the aura emanates from a psionic item, you can attempt to identify its properties (see Spellcraft).\n\nPsionically charged locations, multiple disciplines, or strong local psionic emanations may confuse or conceal weaker auras.\n\nAura Strength: A psionic aura’s strength depends on a functioning power’s level or an item’s manifester level. If an aura falls into more than one category, detect psionics indicates the stronger of the two. Detection of an overwhelming aura (see the accompanying table) dazes you for 1 round and the power ends.\n\n{| class=\"wikitable\"\n! rowspan=\"2\" style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Power or Item\n! colspan=\"4\" style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Aura Strength\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Faint\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Moderate\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Strong\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Overwhelming\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Functioning power (power level)\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 3rd or lower\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 4th-6th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 7th-9th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 10th+ (deity-level)\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Psionic item or creature (manifester level)*\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 5th or lower\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 6th-11th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 12th-20th\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 21st+ (artifact)\n|}\n<nowiki>*</nowiki> For creatures without a manifester level, use the creature’s CR or hit die, whichever is lower.\n\nLingering Aura: A psionic aura lingers after its original source dissipates (in the case of a power) or is destroyed (in the case of a psionic item). If detect psionics is manifested and directed at such a location, the power indicates an aura of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original strength:\n{| class=\"wikitable\"\n! style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Original Strength\n! style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Duration\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Faint\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 minutes\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Moderate\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 x 10 minutes\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Strong\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 hours\n|-\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | Overwhelming\n| style=\"text-align: center; background-color:#000000; color:#ffffff;\" | 1d6 days\n|}\nEach round, you can turn to detect psionics in a new area. You can tell the difference between magical and psionic auras. The power can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it."
   },
-  "Disruption": {
-   "augment": "This power can be augmented in one or more of the following ways.\n* For every 2 additional power points you spend, you can choose another target.\n* If you spend 2 additional power points, the range increases to Medium instead of Close.\n* If you spend 3 additional power points, the target takes a penalty to all concentration checks equal to your manifesting ability stat, in addition to any other penalties it might suffer.",
-   "discipline": "Telepathy [mind-affecting]",
-   "display": "Auditory",
-   "duration": "1 round/level",
-   "level": "Cryptic 3, dread 3, highlord 3, psion/wilder 3, tactician 3",
-   "manifesting time": "1 standard action",
-   "name": "Disruption",
-   "power points": "5",
-   "power resistance": "",
-   "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "",
-   "text": "The power overwhelms the target’s mind and ability to concentrate, making manifesting powers or casting spells extremely hard. The subject must succeed at a concentration check (DC equal to the save DC of this power) in order to cast a spell, manifest a power, use any spell-like ability, use any psi-like ability, or use any spell completion, power completion, power trigger or spell trigger magic items.\n\nWhile under the effect of this power, if the subject must attempt a concentration check to cast a spell, manifest a power, use a psi-like ability or a spell-like ability for any reason other than the effect of this spell (such as manifesting defensively, being injured while manifesting, and so on), it takes a penalty on that check equal to 1/2 its caster or manifester level."
-  },
-  "Energy Splash": {
-   "augment": "",
-   "discipline": "Psychokinesis [see text];",
-   "display": "Auditory",
-   "duration": "Instantaneous",
-   "level": "Gambler 0, psion/wilder 0",
-   "manifesting time": "1 standard action",
-   "name": "Energy Splash",
-   "power points": "Psionic focus or 1",
-   "power resistance": "Yes",
-   "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "None",
-   "text": "You create a ray of your active energy type (cold, electricity,\nfire, or sonic) that shoots forth from your fingertip and\nstrikes a target within range, dealing damage if you succeed\non a ranged touch attack with the ray.\n* Cold: A ray of this energy type deals 2 points of damage. Alternately, the manifester can choose to deal no damage but instead chill up to 1 pound of non-living material (such as cooling a drink).\n* Electricity: A ray of this energy type deals 1 point of damage. Manifesting a ray of this energy type provides a +3 bonus on your attack roll if the target is wearing metal armor and a +2 bonus on manifester level checks for the purpose of overcoming power resistance. Alternately, the manifester can choose to deal no damage but instead cause a relatively harmless static shock. This shock is painful enough to wake someone sleeping, but is not painful to interrupt concentration or spellcasting.\n* Fire: A ray of this energy type deals 2 points of damage. Alternately, the manifester can choose to deal no damage but instead light a readily flammable object such as a lantern or torch, or warm up to 1 pound of nonliving material (such as heating food).\n* Sonic: A ray of this energy type deals 1 point of damage and ignores an object’s hardness. Alternately, the manifester can choose to deal no damage but instead cause a loud bang at the target location (DC 10 Perception check to hear it).\nThis power’s subtype is the same as the type of energy\nyou manifest."
-  },
-  "Living Haunter": {
-   "augment": "You may augment this power in one of the following ways.\n* For every additional power point you spend, you may target one additional creature with the movement ability of this power.\n* By spending an additional 4 power points, you may include full sound, smell, and thermal elements with the hallucinations ability of this power.\n* For every 2 additional power points you spend, you can animate one additional Small object with the animate ability of this power. You may instead animate fewer, larger objects, as per control object.\n* By spending an additional 6 power points, increase the duration of this power to 1 min./level.\nIf you spend at least 6 power points augmenting this power, you may sustain any of its effects as a move action, instead of a standard. This allows you to maintain more than one effect each turn.",
-   "discipline": "Athanatism [spirit]",
-   "display": "Mental",
-   "duration": "1 round/level (D)",
-   "level": "Dread 3, psion/wilder 3",
-   "manifesting time": "1 standard action",
-   "name": "Living Haunter",
-   "power points": "5",
-   "power resistance": "No and yes; see text",
-   "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "None and Will negates; see text",
-   "text": "You haunt an area by binding your soul to it. When you manifest this power, your soul leaves your body – you count as both unconscious and helpless, but you are also immune to mind-affecting effects. While this power is active, you may spend a standard action each turn to do one of the following.\n\nAnimate: You may animate a Small or smaller object within the area as the control object power. If you do not maintain this effect as a standard action, this animation ends.\n\nHallucinations: You create vivid hallucinations, creating the visual illusion of an object, creature, or force, as visualized by you. You may also create sounds, but not coherent speech. You can move the image within the limits of the size of the effect whenever you maintain this effect as a standard action. If you do not maintain this effect as a standard action, this effect ends.\n\nMovement: You may alter the speed of any single creature in the area of this power. If you choose to accelerate them, they gain a +1 bonus on attack rolls, a +1 dodge bonus to AC, an increase in all modes of movement of 30 feet (to a maximum of twice the subject’s normal speed using that mode), and an additional attack with a natural or manufactured weapon whenever the subject makes a full attack action, using the subject’s full base attack bonus and other applicable modifiers. This effect is not cumulative with similar effects, such as haste or a speed weapon. If you choose to decelerate them, they are staggered, may take only a single move action or standard action each turn, take a -1 penalty on attack rolls, AC, and Reflex saves, and move at half their normal speed. If you do not maintain this effect as a standard action, this effect ends. A creature targeted by this use may attempt a Will save to resist it (power resistance applies)."
-  },
-  "Malefic Metamorphosis": {
-   "augment": "==\n*For every 4 additional power points you spend, you may select another effect to apply to a creature. The same effect can be applied any number of times unless stated otherwise.\n*If you spend 2 additional power points, the range increases from touch to close (25 feet + 5 feet/level). For every 2 points you spend on top of this, you may select an additional target within range.\n*If you spend 4 additional power points, you gain the ability to affect a creature with multiple manifestations of this power.\n*For every 2 power points you spend augmenting this power (including as part of other augments), the save DC increases by 1.",
+  "Energy Adaptation": {
+   "augment": "If you spend 4 additional power points, you can manifest this power as an immediate action.\n==Energy Adaptation, Specified==\nDiscipline: Psychometabolism [see text]; Level: Cryptic 2, gambler 2, gifted blade 2, highlord 2, marksman 3, psion/wilder 2, psychic warrior 2, vitalist 2\n\nPower Points: 3\n\nAs energy adaptation, except the type of energy to which you gain resistance when this power is manifested is your active energy type.\n\nThis power’s subtype is the same as the type of damage it protects against.\n\nAugment: If you spend 4 additional power points, you can manifest this power as an immediate action.\n\nSpecial: A kineticist does not need to select an energy type for this power when he gains psionic focus. He may choose the type of damage at the time the power is manifested.\n\n== Energy Conversion ==\nDiscipline: Psychometabolism [see text]; Level: Psion/wilder 7, vitalist 7\n\nDisplay: Mental\n\nManifesting Time: 1 standard action\n\nRange: Personal and close (25 ft. + 5 ft./2 levels); see text\n\nEffect: Ray; see text\n\nDuration: 10 min./level\n\nSaving Throw: None; Power Resistance: Yes\n\nPower Points: 13\n\nAs energy adaptation, except that instead of radiating away energy as light, you store up the energy and can later discharge it as a ray. To discharge a ray requires a standard action. You can choose to fire any number of rays during the power’s duration. The ray you fire must be of one of the energy types you have stored (if you have stored more than one type, you can choose what kind of energy to use for each ray). If a ray successfully strikes its target (requiring a ranged touch attack), the target takes damage equal to the amount of energy damage of that type you have stored, up to a maximum of three times your manifester level. As long as this power remains in effect, you can continue to absorb energy damage and fire additional rays using the stored damage. Damage you fire in rays is subtracted from the damage you have absorbed, so you may not fire off rays if you have depleted the energy you have absorbed.\n\nThis power’s subtype is the same as the type of energy you discharge in a ray; thus, its subtype can change during the course of the power’s duration.\n\n== Mythic Energy Adaptation ==\nYou gain a +6 bonus to saves against effects that deal acid, cold, electricity, fire, or sonic damage.\n\nAugmented (5th): If you expend two uses of mythic power, you gain immunity against effects that deal acid, cold, electricity, fire, or sonic damage.\n\n== Mythic Specified Energy Adaptation ==\nYou gain a +4 bonus on saves against effects that deal damage of the selected energy type. Once each round as a free action, you can choose one adjacent ally to gain energy resistance 5 against the chosen energy type for 1 round. This increases to energy resistance 10 at manifester level 7 and energy resistance 15 at manifester level 11.\n\n== Mythic Energy Conversion ==\nYou may fire rays as if making an attack with a ranged weapon, allowing the use of iterative attacks for a high base attack bonus. If firing multiple rays in a single round, the rays can target the same creature or different creatures, as long as both all targets are in range.\n\nAugmented (5th): If you expend two uses of mythic power, the amount of damage you can retain increases to 10 times your manifester level, and you can fire rays of two different energy types. Such rays deal damage based upon the amount and type of energy chosen when firing the ray.",
    "discipline": "Psychometabolism",
-   "display": "Material",
-   "duration": "permanent",
-   "level": "Psion/Wilder 3, Vitalist 3",
+   "display": "Visual; see text",
+   "duration": "10 min./level",
+   "level": "Cryptic 4, gambler 4, gifted blade 4, highlord 4, psion/wilder 4, psychic warrior 4, vitalist 4, voyager 4",
    "manifesting time": "1 standard action",
-   "name": "Malefic Metamorphosis",
-   "power points": "5",
-   "power resistance": "yes",
-   "range": "Touch",
-   "saving throw": "Fortitude Negates",
-   "text": "While enhancing one’s abilities with psychometabolic power is difficult, inhibiting those of an opponent are a technique that many find easier to gain a grasp upon. On a failed Fortitude save, the target creature is affected by one of the following penalties\n*A -6 penalty to one ability score\n*Size is decreased by up to 2 size categories\n*Target loses use of a limb. If this limb is a leg, fin, wing or other method of mobility, the target’s speed that uses that limb is halved. If it loses all such limbs, it cannot use that method of movement. If this limb is an arm, the target loses the ability to manipulate anything (including weapons) with that arm. If all arms are disabled in this way, the target cannot apply somatic components to spells.\n*The target becomes blind or deaf, as chosen by the manifester.\n*The target’s natural armor decreases by 3 (minimum 0)\n*The target’s damage reduction is reduced by 5 (minimum 0)\n*Any regeneration or fast healing the target possesses is reduced by 5 (minimum 0). If the target’s regeneration cannot be bypassed, it cannot be reduced below 1.\n*The target’s fly maneuverability is reduced by 2 steps. If it would go below poor, the target loses the ability to fly.\n*The target takes a -4 penalty on all attack rolls, skill checks, ability checks, and saving throws\n*Each turn, the target has a 50% chance to act normally; otherwise, it takes no action. This ability can only be selected up to twice. The second time, it causes the target to only have a 25% chance of acting normally\nThis power cannot be dispelled normally, but any effect that would remove ability damage is capable of removing the effects of this power.\n\n=="
+   "name": "Energy Adaptation",
+   "power points": "7",
+   "power resistance": "",
+   "range": "Personal",
+   "saving throw": "",
+   "text": "Your body assimilates some of the effect of an energy attack and converts it to harmless light. You gain resistance 10 against any attack that deals acid, cold, electricity, fire, or sonic damage.\n\nWhen you absorb damage, you can choose to radiate visible light that illuminates a 60-foot radius for a number of rounds equal to the points of damage you successfully resisted, or merely dissipate the energy without giving off a visual display.\n\nThe energy resistance provided by this power increases to 20 points at 7th manifester level and to a maximum of 30 points at 11th level.\n\nThe power protects your equipment as well.\n\nThe resistance provided by this power does not stack with other forms of energy resistance."
   },
-  "Mental Regression": {
-   "augment": "This power may be augmented in one or more of the following ways.\n* If you spend 2 additional power points, the range increases to Medium (100 ft. + 10 ft. / level).\n* For every 2 additional power points you spent, the penalty increases by 1d6.\n\n* If you spend 2 additional power points, the duration changes to Instantaneous and the penalty can only be removed through the use of psychic surgery, heal, wish, reality revision or a similar power or spell.",
-   "discipline": "Psychometabolism OR telepathy (mind-affecting)",
+  "Heightened Vision": {
+   "augment": "ed (3rd): If you expend two uses of mythic power, the range of the target’s mythic heightened vision becomes equal to the target’s line of sight.",
+   "discipline": "Clairsentience",
    "display": "Visual",
-   "duration": "10 min/level",
-   "level": "Cryptic 2, dread 2, psion/wilder 2",
+   "duration": "1 hour/level",
+   "level": "Cryptic 2, gifted blade 2, highlord 2, marksman 3, psion/wilder 3, psychic warrior 2, sighted seeker 2",
    "manifesting time": "1 standard action",
-   "name": "Mental Regression",
+   "name": "Heightened Vision",
+   "power points": "Cryptic 3, gifted blade 3, highlord 3, marksman 5, psion/wilder 5, psychic warrior 3, sighted seeker 3",
+   "power resistance": "",
+   "range": "Personal",
+   "saving throw": "",
+   "text": "You increase your visual acuity, gaining the ability to see 60 feet even in total darkness. Your increased vision is black and white only but otherwise like normal sight.\n\n== Mythic Heightened Vision ==\nThe range of the darkvision is increased to 120 feet, and this range stacks with any existing darkvision you possess. In addition, you can see through up to 10 feet plus 5 feet per mythic tier of magical darkness."
+  },
+  "Memory Revelation": {
+   "augment": "==\n*For every additional power point you spend, you may share 1 additional minute of memories with the target.\n*If you spend 4 additional power points, you may display false memories with this power.\n*If you spend 4 additional power points, you can share a memory that emboldens or demoralizes a creature. You may embolden the target (granting a +2 morale bonus on attack rolls, saving throws, and skill checks) or demoralize them (causing them to become shaken). This effect lasts for 1 minute/level. If you spend 4 additional power points, the bonus or penalty from this effect is doubled.\n*For every 2 power points you spend augmenting this power (including as part of other augments), you may select and additional target within 15 feet of the original and the save DC increases by 1)",
+   "discipline": "Clairsentience (network)",
+   "display": "Mental",
+   "duration": "Instantaneous",
+   "level": "Cryptic 2, Dread 2, Highlord 2, Psion/Wilder 2, Tactician 2, Vitalist 2",
+   "manifesting time": "1 standard action",
+   "name": "Memory Revelation",
    "power points": "3",
-   "power resistance": "No",
-   "range": "Close (25 ft. + 5 ft./2 levels)",
-   "saving throw": "Will or Fortitude negates (see text)",
-   "text": "You regress the targets mental faculties, making them dim-witted and coarse, perhaps even reducing them to an animal state. If the target fails its saving throw (Will for telepathy, Fortitude for psychometabolism), it takes a 1d6 penalty to Intelligence, Wisdom and Charisma (this cannot reduce a score below 1). If the target’s ability score is reduced to 1, they cannot use any skills related to that ability score, cannot communicate clearly (or at all), cannot understand language, but can still identify friend and foe."
+   "power resistance": "Yes",
+   "range": "Touch",
+   "saving throw": "Will negates",
+   "text": "You make contact with the memory of your target and share a single memory of no longer than 1 minute. You can show the target one of your memories, show the target one of its own memories, or view one of the target’s memories.\n\n=="
+  },
+  "Recall Agony": {
+   "augment": "For every additional power point you spend, this power’s damage increases by 1d6 points. For each extra 2d6 points of damage, this power’s save DC increases by 1.\n\n== Recall Death ==\nDiscipline: Clairsentience [Death, Mind-Affecting]; Level: Psion/wilder 8\n\nSaving Throw: Will partial; see text\n\nPower Points: 15\n\nAs recall agony, except the wounds revealed by folding the fourth dimension are potentially fatal. If the target fails its Will save, it dies. If the save succeeds, the target instead takes 5d6 points of damage.",
+   "discipline": "Clairsentience [Mind-Affecting]",
+   "display": "Material",
+   "duration": "Instantaneous",
+   "level": "Gambler 2, psion/wilder 2, sighted seeker 2, voyager 2",
+   "manifesting time": "1 standard action",
+   "name": "Recall Agony",
+   "power points": "3",
+   "power resistance": "Yes",
+   "range": "Medium (100 ft. + 10 ft./level)",
+   "saving throw": "Will half",
+   "text": "The fabric of time parts to your will, revealing wounds your foe has received in the past (or has yet to receive). That foe takes 2d6 points of damage as the past (or future) impinges briefly on the present."
   },
   "Release Death's Hold": {
    "augment": "By spending an additional 6 power points\nand expending your psionic focus, you may allow\nthis power to become contagious. The next undead\ncreature that the target touches is subjected to a second\nmanifestation of this power, including all augments and\nother enhancements. This second manifestation costs\nyou no additional power points and does not require you\nto expend your psionic focus.\n\nSpecial: If this power is manifested on a willing target, the duration becomes 10 min./level and they do not\nsuffer the sensitivity to pain.",
@@ -828,47 +850,61 @@
    "saving throw": "Will negates",
    "text": "You temporarily infuse an undead creature with life\nenergy. The undead creature touched must succeed at\na Will save or it becomes infused with life, no longer\nundead. The target loses the undead type (do not\nchange its HD, skills, or saves), regaining whatever\nits type was in life (if its original type is uncertain, it\ninstead becomes a magical beast). Its Constitution\nscore becomes 10 temporarily, but it continues to use\nCharisma to determine hit points and bonus added to\nFortitude saves. If it was mindless, it remains mindless.\nIt also loses all undead immunities, channel resistance,\nand any energy drain abilities it may have possessed. If\nit was incorporeal, it loses the incorporeal subtype and\ngrows a temporary body similar to the one it had in life,\nexcept that it has a Strength score of 10. It also becomes\nsensitive to pain. Whenever is suffers an amount of\ndamage equal to or greater than its HD, it must succeed\nat a Will save or become sickened for one round."
   },
-  "Suppress Veil": {
-   "augment": "For every 3 additional power points you spend, you may choose an additional veil to suppress with this power. You make a single dispel check and apply its results to all selected veils.",
-   "discipline": "Psychokinesis",
-   "display": "Auditory, Visual",
-   "duration": "1 min/level",
-   "level": "All 2",
+  "Sanguine Displacement": {
+   "augment": "For every 4 power points you spend, the damage of this power increases by one die (d4) and its save DC is increased by 2.",
+   "discipline": "Psychoportation",
+   "display": "Visual",
+   "duration": "Instantaneous",
+   "level": "Dread 3, psion/wilder 3, vitalist 3",
    "manifesting time": "1 standard action",
-   "name": "Suppress Veil",
-   "power points": "3",
+   "name": "Sanguine Displacement",
+   "power points": "5",
    "power resistance": "Yes",
-   "range": "Close (25 ft. + 5 ft. per 2 levels)",
-   "saving throw": "None",
-   "text": "===== Description =====\nYou project a pulse of concentrated essence at a creature in an attempt to suppress one of their veils. Select one veil the target creature has shaped and make a dispel check (1d20 + your manifester level) and compare it against a DC equal to 11 + the veil’s veilweaver level. If your check meets or beats this DC, that veil is suppressed it for the duration of this power."
+   "range": "Close (25 ft. plus 5 ft./2 levels)",
+   "saving throw": "Fortitude partial",
+   "text": "You teleport blood and vital fluids from your target’s body. The target suffers 1d4 points of Constitution damage (save for half). If you feed on blood or life force (such as if you are a vampire or a wight), you may teleport the removed fluids into your own body, gaining 3 temporary hit points per point of Constitution damage dealt by this power; these do not stack with other uses of this power, and last for up to 1 hour. These temporary hit points may be used to satisfy feeding requirements, if applicable."
   },
-  "Tormenting the Living": {
-   "augment": "You may augment this power in one of the\nfollowing ways.\n* By spending an additional 4 power points, any incorporeal creature that attacks the target gains a +2 bonus on attack rolls, damage rolls, and save DCs of powers it manifests or effects it creates.\n* By spending an additional 2 power points, increase the duration of this power to 1 day/level.\n* By spending an additional 4 power points, increase the duration of this power to 1 week/level.",
-   "discipline": "Athanatism [mind-affecting, fear]",
-   "display": "Auditory and material",
-   "duration": "1 hour/level",
-   "level": "Psion/wilder 2, vitalist 2",
+  "Spiritual Resting Place": {
+   "augment": "You may augment this power in one of the\nfollowing ways.\n* By spending an additional 4 power points, you may instead target yourself and two willing creatures touched/level.\n* By spending an additional 2 power points, you may send only the willing creatures touched, excluding yourself.\n* By spending an additional 10 power points, you may instead send one unwilling creature touched. This creature receives no save, but may resist with power resistance as normal. When augmented this way, this power has a duration of 10 minutes. A creature targeted by this power may take a full-round action to end this power by succeeding at a DC 20 Charisma check.",
+   "discipline": "Athanatism",
+   "display": "Mental and visual",
+   "duration": "2 hours/level (D)",
+   "level": "Highlord 3, psion/wilder 3, tactician 3",
    "manifesting time": "1 standard action",
-   "name": "Tormenting the Living",
-   "power points": "3",
-   "power resistance": "Yes",
+   "name": "Spiritual Resting Place",
+   "power points": "5",
+   "power resistance": "No",
    "range": "Touch",
-   "saving throw": "Will negates",
-   "text": "You bind a spirit to a living creature, goading it into\ntormenting and torturing them. They are constantly\nharassed by ghostly hallucinations, suffering a -2 penalty\non Reflex saves and AC against attacks of opportunity.\nDuring your turn, as a swift action, you may expend\nyour psionic focus to empower the spirit, haunting the\ncreature more intensely. It is shaken for a number of\nrounds equal to your Charisma modifier."
+   "saving throw": "None",
+   "text": "You and the willing creatures you touch are transported\nto the Ethereal Plane, where you are contained within\na impenetrable, transparent, 20 ft. radius dome. This\ndome is a force effect, and no effects or attacks can travel\nthrough it in either direction (though it can be seen\nthrough in either direction, and does not hinder sound).\nYou do not have to remain touching the targets while\nthe power is active. When this power ends, you and the\ncreatures you brought with you are returned to the area\nyou were in when this power was manifested."
   },
-  "True Terror": {
-   "augment": "You can augment this power in any of the following ways.\n* If you expend your psionic focus, the range increases to Long (400 ft. + 40 ft./level).\n* For every additional power point you spend, you can target another creature.\n* For every 2 additional power points you spend, the target becomes stunned for an additional round.\n* If you spend 2 additional power points, you can target creatures with an Intelligence of 1 or more, as well as non-living creatures. You still cannot affect creature’s that are immune to fear or mind-affecting effects.\n* If you spend 5 additional power points, this becomes an Area-effect (20 feet radius) centered on you, affecting all targets within range.\nIn addition, for every 2 power points spent on the above augment options, the save DC increases by 1.",
-   "discipline": "Clairsentience [Fear, Mind-affecting]",
-   "display": "Mental",
-   "duration": "1 round",
-   "level": "Dread 2, Seer 2, Thug 2",
+  "Telekinetic Punch": {
+   "augment": "",
+   "discipline": "Psychokinesis [Force]",
+   "display": "Visual",
+   "duration": "Instantaneous",
+   "level": "Cryptic 0, dread 0, gambler 0, marksman 0, psion/wilder 0, psychic warrior 0",
    "manifesting time": "1 standard action",
-   "name": "True Terror",
-   "power points": "3",
-   "power resistance": "Yes",
-   "range": "Medium (100 ft. + 10 ft./level)",
-   "saving throw": "Will negates",
-   "text": "You cause the target to see horrible visions of future possibilities, stunning the target unless it makes a successful Will save."
+   "name": "Telekinetic Punch",
+   "power points": "Psionic focus or 1",
+   "power resistance": "Yes (object)",
+   "range": "Close (25 ft. + 5 ft./2 levels)",
+   "saving throw": "Will negates (object)",
+   "text": "You can mentally punch a creature or object from a distance. This power deals 1 point of force damage; creatures and objects in their possession are allowed a Will save to negate the effect. You cannot push anything into another square using this power."
+  },
+  "Touchsight": {
+   "augment": "For every 2 additional power points you spend, the radius of your touchsight field increases by 10 feet.",
+   "discipline": "Psychometabolism",
+   "display": "Visual",
+   "duration": "1 min./level (D)",
+   "level": "Gambler 3, marksman 3, psion/wilder 3, voyager 3",
+   "manifesting time": "1 standard action",
+   "name": "Touchsight (power)",
+   "power points": "5",
+   "power resistance": "",
+   "range": "Personal; see text",
+   "saving throw": "",
+   "text": "You generate a subtle telekinetic field of mental contact, allowing you to “feel” your surroundings even in total darkness or when your sight would otherwise be obscured by your physical environment. Your touchsight field emanates from you out to 60 feet. You ignore invisibility, darkness, and concealment, though you must have line of effect to a creature or an object to discern it. You do not need to make Perception checks to notice creatures; you can detect and pinpoint all creatures within 60 feet. In many circumstances, comparing your regular senses to what you learn with touchsight is enough to tell you the difference between visible, invisible, hiding, and concealed creatures."
   }
  },
  "profession_ability_items": [
@@ -1216,43 +1252,72 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Easy Focus"
+  "Overcharge"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Wild Magic",
-  "Verbal Casting"
+  "Focus Casting",
+  "Painful Magic"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Wild Magic",
-  "Verbal Casting",
-  "Easy Focus"
+  "Focus Casting",
+  "Painful Magic",
+  "Overcharge"
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
- "story_feat_tax_dict": {},
+ "story_feat_tax_dict": {
+  "Point-Blank Shot": [
+   "charging hurler",
+   "disrupting shot",
+   "far shot",
+   "improved charging hurler",
+   "precise shot",
+   "rapid shot"
+  ]
+ },
  "story_feats": [
-  "Mind Trick",
-  "Death Or Glory",
-  "Shield Wall"
+  "Point-Blank Shot",
+  "Dirgesinger",
+  "Overwhelm"
  ],
  "str": 16,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 14,
  "total_rolled_hp": 122,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_calibers": [
+  3,
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Improved Steal": [
+   "greater steal",
+   "quick steal"
+  ]
+ },
+ "trainer_feats": [
+  "Sea Legs",
+  "Collective Recollection",
+  "Dark Embrace",
+  "Improved Steal",
+  "Black Market Dealings"
+ ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
  "weapon_name": "Dart",
  "weight_number": 167,
  "wis": 19,
  "younger_brothers": " you have 1 younger brothers",
- "younger_sisters": " you have 2 younger sisters"
+ "younger_sisters": " you have 0 younger sisters"
 }

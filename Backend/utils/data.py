@@ -586,6 +586,26 @@ appearance = [  "Athletic",
 
 gold = [1000,3000,6000,10500,16000,23500,33000,46000,62000,82000,108000,140000,185000,240000,315000,410000,530000,685000,880000]
 
+
+def wealth_by_level(level):
+    """Paizo PC wealth-by-level in gp -- the ONE owner of the whole curve.
+
+    Levels 2-20 are the published table (`gold` above, index level-2). Level 1 has no table row
+    (Paizo uses class starting wealth; 150 gp is the cross-class average this generator has always
+    used). Levels 21-40 are EXTRAPOLATED, never published: the last published delta (L19->L20 =
+    +195,000) continued linearly, by ruling (Daniel, 2026-08-11) -- the table's own tail actually
+    ACCELERATES ~x1.26/level, but unspent gold ships in the payload as sheet cash and the flat tail
+    keeps an L40 sheet at ~4.8M instead of ~96M. Consumed by `Character.assign_gold` (blank/random
+    gold input) and by the power-baseline sweep, so the sweep measures exactly the purse production
+    would grant.
+    """
+    level = int(level)
+    if level <= 1:
+        return 150
+    if level > 20:
+        return gold[-1] + 195_000 * (level - 20)
+    return gold[level - 2]
+
 mannerisms = ['Adjusts glasses', 'Bites fingernails', 'Bites lip', 'Blows bubbles', 'Brushes hair out of face', 'Bursts into laughter', 'Chews gum', 'Chuckles', 'Clicks pen', 'Clutches purse tightly', 'Combs hair with fingers', 'Covers mouth when speaking', 'Cracks knuckles', 'Crosses arms', 'Crosses legs', 'Curls up in a ball', 'Doodles', 'Drums fingers', 'Eyes dart around room', 'Fiddles with hair', 'Fidgets', 'Flexes muscles', 'Folds arms', 'Furrows brow', 'Gestures while talking', 'Glances at watch', 'Grins', 'Hides hands in pockets', 'Hugs oneself', 'Hums to oneself', 'Jingles keys', 'Jumps up and down', 'Laughs at own jokes', 'Leans back', 'Leans forward', 'Licks lips', 'Lifts eyebrows', 'Lifts chin', 'Licks teeth', 'Looks around nervously', 'Looks over glasses', 'Mumbles', 'Nervously clears throat', 'Nods often', 'Opens and closes mouth', 'Paces', 'Pats pockets', 'Peers over glasses', 'Plays with jewelry', 'Plays with sleeves', 'Pops knuckles', 'Puts hands in pockets', 'Raises eyebrows', 'Readjusts clothing', 'Rests chin in hand', 'Rests hand on hip', 'Rests head on hand', 'Rolls eyes', 'Rub hands together', 'Runs fingers through hair', 'Scratches head', 'Shakes head', 'Shifts weight from one foot to the other', 'Shrugs', 'Sighs', 'Smacks lips', 'Smiles', 'Smirks', 'Snaps fingers', 'Squints', 'Stares into space', 'Stares intensely', 'Stifles a yawn', 'Strokes chin', 'Sways back and forth', 'Sweats', 'Swings arms', 'Taps foot', 'Taps pencil', 'Thumbs through a book', 'Throws head back when laughing', 'Tilts head', 'Tucks hair behind ears', 'Twiddles thumbs', 'Twirls hair', 'Twists hair', 'Twitches', 'Winks', 'Wipes hands on pants', 'Wipes nose', 'Wipes sweat from forehead', 'Withdraws into oneself', 'Wring hands', 'Yawns', 'Yells when excited', 'Zones out', 'Bites lower lip', 'Bites upper lip', 'Blows nose', 'Brushes off clothes', 'Clenches fists', 'Clenches jaw', 'Combs mustache', 'Covers ears', 'Covers eyes', 'Crosses fingers', 'Crouches', 'Cups chin with hand', 'Dabs at eyes', 'Dons sunglasses', 'Drops head', 'Elevates eyebrows', 'Exhales audibly', 'Fans oneself', 'Fiddles with jewelry', 'Fingers lapel', 'Flips hair', 'Folds hands', 'Gathers hair into a ponytail', 'Glances away', 'Glances over shoulder', 'Gnaws on pencil', 'Grits teeth', 'Holds breath', 'Huffs', 'Jumps at sudden sounds', 'Kicks at the ground', 'Kneads fingers', 'Kneels', 'Lays head on desk', 'Leans on desk', 'Lift']
 
 #class specific choices

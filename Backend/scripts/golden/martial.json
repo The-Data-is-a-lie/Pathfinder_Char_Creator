@@ -4,15 +4,15 @@
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
-  "Smooth skin"
+  "Spectacled"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Tactician\": {\n        \"source\": \"Ultimate Combat pg. 47 While many fighters focus on the fundamentals of melee and ranged combat, there are those who are trained to view the bigger picture on the battlefield. These fighters use their training and tactical acumen to overcome challenges that would overwhelm mere brute strength and skill at arms.\",\n        \"weapon and armor proficiency\": \"  A tactician is not proficient with heavy armor or tower shields.\",\n        \"strategic training (ex)\": \"  A tactician gains 4 skill points + a number of skill points equal to his Intelligence modifier at each level, instead of the normal 2 skill points + Intelligence modifier at each level. Furthermore, Diplomacy (Cha), Knowledge (geography) (Int), Knowledge (nobility) (Int), Linguistics (Int), and Sense Motive (Wis) are all class skills for the tactician. This ability replaces the bonus fighter combat feat gained at 1st level.\",\n        \"bonus feats\": \"  A tactician may choose Skill Focus or any teamwork feat, in addition to combat feats, as bonus feats.\",\n        \"tactical awareness (ex)\": \"  At 2nd level, a tactician gains a +1 bonus on initiative checks. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery.\",\n        \"tactician (ex)\": \"  At 5th level, a tactician gains this ability as the cavalier class feature. He may use this ability once per day at 5th level, plus one additional time for every five levels after 5th (to a maximum of four times at 20th level). If the tactician also has cavalier levels, these levels stack for determining the number of uses per day, and he can take the better progression. This ability replaces weapon training 1.\",\n        \"cooperative combatant (ex)\": \"  At 11th level, when a tactician uses the aid another special attack, he may affect one additional ally per point of Intelligence bonus. For each ally that a tactician aids, he can pick whether to grant that ally the +2 bonus on its next attack against the opponent or the +2 bonus to AC against the opponent's next attack on that ally, and can grant different allies different bonuses. This ability replaces armor training 3.\",\n        \"battle insight (ex)\": \"  At 15th level, as a swift action, a tactician can grant his Intelligence modifier as an insight bonus on the attack rolls made by a single ally within line of sight that can both see and hear the tactician. That ally gains the bonus until the end of the tactician's next turn. The tactician can use this ability a number of times per day equal to 3 + his Intelligence modifier. This ability replaces armor training 4.\"\n    }\n}",
  "armor_ac": "8",
  "armor_armor_check_penalty": "-7",
- "armor_enhancement_bonus": 4,
+ "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [
-  "Spell Resistance (13)"
+  "Shadow"
  ],
  "armor_max_dex_bonus": "0",
  "armor_name": "Half-plate",
@@ -31,38 +31,55 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "Team Buffer",
- "build_tactics": "Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.",
+ "build_archetype": "Man-at-Arms",
+ "build_tactics": "Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.",
  "c_class": "fighter",
  "c_class_2": "",
  "c_class_display": "Fighter",
  "casting_level_str_foundry": "None",
  "casting_tradition": {
-  "bonus_spell_points": 0,
+  "bonus_spell_points": 1,
   "boons": [
-   "Fortified Casting"
+   "Empowered Abilities",
+   "Easy Focus"
   ],
   "boons_detail": [
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
    }
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Verbal Casting",
-   "Somatic Casting"
+   "Magical Signs",
+   "Painful Magic",
+   "Addictive Casting",
+   "Draining Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
    },
    {
     "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
    }
   ]
  },
@@ -99,27 +116,28 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 2 (Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
    "Actions (Purchased)": {
-    "Lucky Navigator": "Succeed on a navigation check for 5 E-Kats."
+    "Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
    },
    "Feats Not Taken (reference)": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
-    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Feats Taken": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
-    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
-    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down."
+    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
    },
    "Reserve": {
-    "Your reserve": "16 E-Kat(s) carried into play, of 41 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
+    "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
    }
   },
   "Skill Unlock: Sense Motive": {
@@ -175,32 +193,17 @@
   "Fighter 14",
   "Fighter 16"
  ],
- "class_feat_tax_dict": {
-  "Improved Bull Rush": [
-   "greater bull rush",
-   "bull rush strike",
-   "merciless rush",
-   "quick bull rush",
-   "rhino charge",
-   "squash flat"
-  ],
-  "Lightning Reflexes": [
-   "improved lightning reflexes"
-  ],
-  "Martial Training I (Silver Crane)": [
-   "Martial Training II (Silver Crane)"
-  ]
- },
+ "class_feat_tax_dict": {},
  "class_feats": [
-  "Siege Commander",
-  "Martial Training I (Silver Crane)",
-  "Improved Bull Rush",
-  "Heavy Gunner",
-  "Weapon Finesse",
-  "Lightning Reflexes",
-  "Shadow Strike",
-  "Coordinated Distraction",
-  "Jaguar Pounce"
+  "Death Frombelow",
+  "Ensemble",
+  "Bull Charge (combat)",
+  "Ostentatious Display",
+  "Miniature Reach",
+  "Enduring Mind",
+  "Toughness",
+  "Powerful Throwing (combat)",
+  "Siege Commander"
  ],
  "class_feature_changes_dict": {
   "adaptable training (ex)": {
@@ -240,27 +243,28 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 2 (Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
    "Actions (Purchased)": {
-    "Lucky Navigator": "Succeed on a navigation check for 5 E-Kats."
+    "Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
    },
    "Feats Not Taken (reference)": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
-    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Feats Taken": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
-    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
-    "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down."
+    "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
    },
    "Reserve": {
-    "Your reserve": "16 E-Kat(s) carried into play, of 41 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
+    "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
    }
   },
   "Skill Unlock: Sense Motive": {
@@ -323,30 +327,40 @@
  "dex": 16,
  "enhancement_effects_dict": {
   "armor": {
-   "Spell Resistance (13)": {
+   "Shadow": {
     "changes": [
      {
-      "formula": "13",
-      "operator": "set",
+      "formula": "5",
+      "operator": "add",
       "priority": 0,
-      "target": "spellResist",
-      "type": "untyped"
+      "target": "skill.ste",
+      "type": "competence"
      }
     ],
     "contextNotes": [],
-    "description": "This special ability grants the armor or shield's wearer spell resistance while the armor or shield is worn."
+    "description": "This armor blurs the wearer whenever she tries to hide, while also dampening the sound around her, granting a +5 competence bonus on Stealth checks. The armor's armor check penalty still applies normally."
    }
   },
   "weapon": {
-   "Gory": {
+   "Ghost Touch": {
     "conditionals": [
      {
       "default": true,
       "modifiers": [],
-      "name": "Gory: on hit, [[1d2]] bleed damage (as wounding — stacks with itself; stopped by a DC [[15]] Heal check or magical healing); on a confirmed crit, Intimidate to demoralize as an immediate action with a circumstance bonus equal to character level"
+      "name": "Ghost Touch: deals full damage to incorporeal creatures; can be wielded by them"
      }
     ],
-    "description": "A gory weapon functions as a wounding ( Pathfinder RPG Ultimate Equipment 149) weapon, except it deals 1d2 points of bleed damage when it strikes. Additionally, when the wielder confirms a critical hit with this weapon, he can attempt an Intimidate check to demoralize the target as an immediate action with a circumstance bonus equal to his character level."
+    "description": "A ghost touch weapon deals damage normally against incorporeal creatures, regardless of its bonus. An incorporeal creature's 50% reduction in damage from corporeal sources does not apply to attacks made against it with ghost touch weapons. The weapon can be picked up and moved by an incorporeal creature at any time. A manifesting ghost can wield the weapon against corporeal foes. Essentially, a ghost touch weapon counts as both corporeal or incorporeal. This special ability can only be placed on melee weapons and ammunition."
+   },
+   "Skewering": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Skewering: (light/one-handed piercing) on a critical threat, spend [[1]] panache as an immediate action to auto-confirm the crit (no panache regained for confirming)"
+     }
+    ],
+    "description": "This special ability can be placed only on light or one-handed piercing melee weapons. Weapons with this enhancement are particularly devastating in the hands of a swashbuckler. Anytime the weapon threatens a critical hit, the wielder can spend 1 panache point as an immediate action to automatically confirm the critical hit. When the swashbuckler confirms a critical hit in this fashion, she doesn't regain panache for confirming the critical hit, though she can regain panache normally if the attack is a killing blow."
    }
   }
  },
@@ -356,67 +370,66 @@
    "item_name": "Plague Rat Belt, Greater"
   },
   "body": {
-   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
-   "item_name": "Glorious Tabard, Greater"
+   "description": " this black corset fits neatly beneath armor. As a free action, \r the wearer can compress herself to fit through tight spaces\r as though affected by a squeeze spell (advanced race\r guide) for up to 10 rounds per day. While using the corset's\r magic, she gains a +5 bonus on escape artist checks. ",
+   "item_name": "Corset of the Vishkanya"
   },
   "chest": {
-   "description": " small loops sewn into this bandolier look like they can hold\r twenty alchemical cartridges (ammunition for a firearm, \r see ultimate combat), but due to a subtle bending of space\r can actually hold up to 60 cartridges. Additionally, the six\r thin pockets on the bandolier are extradimensional spaces\r meant to hold extra guns and gear. The four small pockets\r can each hold a one-handed firearm, 1 pound of ammunition, \r a powder horn, or a similarly sized object. The two large\r pockets are large enough to hold a two-handed firearm or\r a similarly sized object. The wearer can draw an item stored\r in the bandolier as easily as if from an ordinary ammunition\r pouch or holster. The bandolier weighs the same no matter\r what is placed inside it. ",
-   "item_name": "Endless Bandolier"
+   "description": " this black linen tunic has simple brass buttons. Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. This damage cannot be reduced or redirected, and if the wielder is incapable of sacrificing hit points, the damage to the ally cannot be prevented. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement. ",
+   "item_name": "Shadowbond Tunic"
   },
   "eyes": {
-   "description": " this eye patch is woven entirely from gold cloth and features a skull and crossbones embroidered in black stitching. A pair of small sapphires is sewn into the cloth within the skull's eye sockets, making them appear as gleaming pinpricks of blue light. The wearer can see as if the eye patch were not there. The wearer gains a +2 competence bonus on appraise and intimidate checks. Once per day, the wearer can activate the patch in order to gain the benefits of see invisibility for 5 minutes. Additionally, once per day, he can activate the patch in order to see through solid objects for 1 minute, as though with a ring of x-ray vision ",
-   "item_name": "Pirate Lord's Patch"
+   "description": " these nondescript, brass-rimmed spectacles have green-tinted lenses and are favored by practicing doctors and adventurers alike. When worn, they grant the wearer a constant awareness of poisons and diseases as the detect poison and diagnose disease spells. Also, once per day on command the wearer can touch a single creature to use delay poison on that creature. ",
+   "item_name": "Physician's Spectacles"
   },
   "feet": {
-   "description": " these knee-high black leather boots have prominent and\r irregularly shaped heels which seem to bulge from the rest of\r the shoe. As a swift action, the boots' wearer can cause the\r boots to let loose a spray of caltrops through the back of the\r heels as he moves during the remainder of his round. These\r caltrops fill each square the wearer moves into during that round. \r any creature, including the wearer, occupying or who steps into\r one of these squares suffers the normal effects of coming into\r contact with caltrops (core rulebook 155). Once produced, these\r caltrops remain in existence until removed from their square, at\r which point they immediately disappear. The shoes can be used\r for 10 rounds per day. These rounds need not be consecutive. ",
-   "item_name": "Caltrop Boots"
+   "description": " this pair of magical softpaw boots (see above) allows the catfolk wearing them to gain extra maneuverability while moving through hazardous areas. As a free action, the wearer can click her heels together to grant herself a +5 competence bonus on acrobatics checks made to move through threatened squares or to move through an enemy's space without provoking attacks of opportunity for up to 10 rounds per day. The rounds need not be consecutive. Furthermore, anytime the wearer of the boots successfully moves though the space of an enemy without provoking an attack of opportunity, she gains a +2 bonus on attack rolls against that enemy until the end of her turn. ",
+   "item_name": "Daredevil Softpaws"
   },
   "hands": {
-   "description": " wearing these form-fitting fingerless black gloves makes\r the wearer's arms and body more flexible. As a swift action, \r the wearer can lengthen his arms for up to 10 rounds per\r day, gaining an additional 5 feet of reach. These rounds\r need not be consecutive. Attacking with these extended\r arms is unwieldy, and the wearer takes a 2 penalty on\r attack rolls, increasing to 4 if he is using two-handed\r weapons. Even when his limbs aren't extended, the wearer\r gains a +5 enhancement bonus on escape artist checks and\r acrobatics checks to avoid falling damage. The wearer is still\r able to use hand-based natural attacks such as claws while\r wearing the gloves. ",
-   "item_name": "Pliant Gloves"
+   "description": " these fine silk wrappings-covered in mystic symbols and diagrams of the wearer's pressure points-wind around the wearer's hands and wrists. When the wearer spends ki to make an additional attack, he can spend 1 additional point of ki to use the stunning fist feat with the attack, even if he has already used the feat that round. If the wearer is a monk using an archetype that replaces stunning fist with a different feat that's usable a number times per day equal to his monk level, hand wraps of blinding ki allow that feat to be used a second time instead of allowing him to use stunning fist. ",
+   "item_name": "Hand Wraps of Blinding Ki"
   },
   "head": {
-   "description": " preserved sections harvested from several different human\r faces cover this mask. When worn, the mask desaturates the\r wearer's color, making him appear shadowy and granting a\r +5 competence bonus on stealth checks. Once per day as a\r full-round action, the wearer can cause the mask's features to\r take on the appearance of any creature of the wearer's basic\r size and shape within 60 feet that he observes, allowing the\r wearer to adopt that creature's appearance for 1 hour. This\r grants him a +10 bonus on disguise checks made to appear\r as the creature. The mask also grants the wearer a +1 bonus\r on attack rolls and weapon damage rolls made against the\r creature he is disguised as, as the mask builds upon the\r wearer's rage and jealousy of the target's appearance. ",
-   "item_name": "Stalker's Mask"
+   "description": " the helm of electric radiance is similar to a helm of brilliance , \r except its spells focus on electricity rather than fire. Other\r aspects of the helm, such as detecting and damaging\r undead, remain unchanged. The helm has 10 sapphires that\r can be used for chain lightning , 20 pieces of amber that\r can be used for lightning bolt , 30 pieces of petrified wood\r that can be used for shocking sphere (as flaming sphere but dealing electricity damage), and 40 opals that can be\r used for daylight . In addition, the wearer gains resistance to\r electricity 30 and his weapons become shocking weapons\r instead of flaming weapons. ",
+   "item_name": "Helm of Electric Radiance"
   },
   "headband": {
-   "description": " this fine silver circlet typically has a carved moonstone inset on the front or a crescent moon design. The wearer of a moon circlet gains darkvision out to 60 feet (if she does not already possess it). Its other effects only benefit a wearer capable of casting arcane spells. During the waxing moon, the wearer's caster level is considered one higher for purposes of caster level checks and spell effects; during the three nights of the full moon, this benefit increases to two levels higher than normal. However, this additional power comes with a price. During the waning moon, the wearer's caster level is considered one lower for purposes of caster level checks and spell effects, and during the three nights of the new moon, this penalty increases to two levels lower. Removing a moon circlet imposes 2 negative levels on the wearer until the next full moon (or until the circlet is worn again, whichever comes first). These negative levels cannot be restored by any means short of a limited wish , wish , or miracle ",
-   "item_name": "Moon Circlet"
+   "description": " this plain white band makes the wearer seem more\r attractive. The wearer gains a +2 competence bonus on\r charisma-based checks with other members of his creature\r type. If the wearer is of the humanoid type, he gains a +5\r competence bonus on creatures of his subtype instead. Once\r per day, the wearer can attempt to affect a creature as the\r spell unnatural lust (ultimate magic) but with a duration of\r 10 minutes. ",
+   "item_name": "Headband of Seduction"
   },
   "neck": {
-   "description": " the surface of this silver medallion is covered in angular\r geometric shapes that refract light randomly. The\r medallion grants a continuous +2 resistance bonus on\r saves versus mind-affecting spells, spell-like abilities, and\r supernatural abilities. If the wearer fails a save to avoid\r becoming dominated or confused, the amulet immediately\r grants the wearer a second saving throw to resist the\r effect. If this second save is successful, the medallion's\r power fades away entirely and it becomes a simple piece\r of silver jewelry. ",
-   "item_name": "Mind Sentinel Medallion"
+   "description": " a stormlure is usually fashioned from pieces of creatures\r known for their affinity to airthe feathers of birds, the\r shells of flying insects, and the scales of a dragon. When\r activated, stormlures call to the wind, causing a tempestuous\r gale. Once per day on command, the wearer of a stormlure is\r surrounding by swirling winds for 1 minute, granting a 50%\r miss chance against all ranged attacks, including rays and\r other ranged spells that require a roll to hit. This wind does\r not hinder the wearer of the stormlure in any way. At any\r one time during this duration, as a swift action, the wearer\r can cause the air around her to fill with crackling lightning, \r dealing 4d6 points of electricity damage to all creatures\r adjacent to her. A dc 14 reflex save halves this damage. ",
+   "item_name": "Stormlure"
   },
   "rings": {
-   "description": "When the wearer of this delicate platinum ring dies, his soul remains adrift in the River of Souls and does not proceed to its final judgment in the Boneyard. Until the soultether ring is removed from the corpse, the time limit for restoring the creature to life via spells such as raise dead or resurrection is suspended. This ring has no effect if it is placed upon a corpse; it must be worn at the time the creature dies to tether its soul. Psychopomps and other followers of Pharasma consider soultether rings to be sacrilegious, and the creatures destroy the rings whenever possible.",
-   "item_name": "Soultether Ring"
+   "description": "This gold ring resembles tiny angel wings folded around a clear crystal. Once per day, the wearer can target herself with a protection from chaos or protection from law effect that lasts for 10 minutes. However, if the wearer uses the ring of entropy and order to gain protection from chaos while on a plane with the mildly chaos-aligned or strongly chaos-aligned trait, or to gain protection from law while on a plane with the mildly law-aligned or strongly law-aligned trait, the effect instead lasts for 1 hour. If the wearer fails a saving throw against a charm or compulsion effect while on a plane with the mildly chaos-aligned, mildly law-aligned, strongly chaos-aligned, or strongly law-aligned traits, she can activate the effect as an immediate action.",
+   "item_name": "Ring of Entropy and Order"
   },
   "shoulders": {
-   "description": " the abjurations woven into this woolen poncho not only defend\r against gunfire, but also insulate the wearer from dangerous\r magic. The wearer gains a +2 luck bonus to touch ac. Once per\r day as an immediate action, the wearer can negate a single\r ranged touched attack targeted at him, but cannot use this\r ability if the attack is a confirmed critical hit. When the wearer\r uses this ability, he must fall prone. ",
-   "item_name": "Gunfighter's Poncho"
+   "description": " this silvery cape furls and ripples\r like a flag with every step its\r owner takes. As a swift action, \r the wearer can order the cape to\r transform into a faint sphere of\r force that surrounds him on all\r sides. The field grants the wearer\r concealment (20% miss chance)\r against ranged attacks and lasts for 1 minute or until the\r wearer is missed by a ranged attack due to the power of the\r cloak, whichever comes first. When the field is used, all magic\r is lost from the cloak, leaving only a mundane silvery garment. ",
+   "item_name": "Catching Cape"
   },
   "wrist": {
-   "description": " these bracers are made of heavy iron and have a pattern of howling wolves engraved upon them. Once per day on command, the wearer can clash the bracers together rhythmically. This causes the wolves etched into the bracers to come to life and let out a chorus of howls, with the effect of crushing despair (dc 16). Additionally, for every two creatures under the effect of the wearer's raging song when this ability is used, the dc increases by 1, up to a maximum increase of 5. ",
-   "item_name": "Howling Bracers"
+   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
+   "item_name": "Sleeves of Many Garments"
   }
  },
  "equipment_list": [
   "Plague Rat Belt, Greater",
-  "Glorious Tabard, Greater",
-  "Endless Bandolier",
-  "Pirate Lord's Patch",
-  "Caltrop Boots",
-  "Pliant Gloves",
-  "Stalker's Mask",
-  "Moon Circlet",
-  "Mind Sentinel Medallion",
-  "Gunfighter's Poncho",
-  "Howling Bracers",
-  "Deadeye's Spotter Ring",
-  "Soultether Ring"
+  "Corset of the Vishkanya",
+  "Shadowbond Tunic",
+  "Physician's Spectacles",
+  "Daredevil Softpaws",
+  "Hand Wraps of Blinding Ki",
+  "Helm of Electric Radiance",
+  "Headband of Seduction",
+  "Stormlure",
+  "Ring of Entropy and Order",
+  "Catching Cape",
+  "Sleeves of Many Garments"
  ],
  "eye_color": [
-  "Amber"
+  "Green"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -427,43 +440,11 @@
   "profession": 4,
   "story": 4,
   "teamwork": 0,
-  "trainer": 6
+  "trainer": 0
  },
- "feat_changes_dict": {
-  "Coordinated Defense": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "cmd",
-     "text": "While adjacent to an ally who also has this feat: +2 competence bonus to CMD (+4 if the creature attempting the maneuver is larger than both you and your ally)."
-    }
-   ]
-  },
-  "Improved Bull Rush": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "cmb",
-     "text": "+2 on combat maneuver checks made to bull rush a foe."
-    },
-    {
-     "target": "cmd",
-     "text": "+2 to CMD when an opponent tries to bull rush you."
-    }
-   ]
-  },
-  "Reach Defense": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "ac",
-     "text": "+2 dodge bonus to AC against attacks of opportunity from opponents that are not adjacent to you."
-    }
-   ]
-  }
- },
+ "feat_changes_dict": {},
  "feat_conditionals_dict": {
-  "Stunning Assault": {
+  "Bloody Assault": {
    "default": false,
    "modifiers": [
     {
@@ -475,17 +456,39 @@
      "type": "untyped"
     }
    ],
-   "name": "Stunning Assault: Cost: a penalty on all melee attack rolls and combat maneuver checks until your next turn; Activation: declare before making the attack roll; Save: Fortitude DC [[10 + @attributes.bab.total]] negates; Effect: a target you hit is stunned for [[1]] round",
+   "name": "Bloody Assault: Effect: melee attacks and combat maneuver checks also deal [[1d4]] bleed damage",
    "tier": "A"
+  },
+  "Desperate Battler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
   }
  },
  "feats": [
-  "Coordinated Defense",
-  "Right of Deferment",
-  "Middle Finger",
+  "Arcane Vendetta",
   "Ass Pull",
+  "Right of Deferment",
   "It Just Works",
-  "Stream of Luck",
+  "Double Down",
+  "Lucky Boy",
   "Multi Talented",
   "True Calling",
   "Always Improving",
@@ -494,7 +497,7 @@
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Swap Places"
+  "Self-Sufficient"
  ],
  "flaw": [
   "Motion Sickness",
@@ -524,65 +527,52 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Siege Engineer": [
-   "siege gunner"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Siege Engineer",
-  "Uncanny Activation"
+  "Simple Weapon Proficiency",
+  "Desperate Battler"
  ],
- "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Team Buffer\n- Tactics: Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.\n- Stat Focus: Str\n- Disciplines: Silver Crane\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n- Training: An average trainer who taught them Escape Route, Blind Warrior\n- Training: An average trainer who taught them Expert Driver, Reach Defense\n- Training: An average (Path of War) trainer who taught them Martial Training III (Silver Crane), Martial Training V (Silver Crane)\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 1 Younger Brother\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Wavy Black\n- Eyes: Amber\n- Build: Smooth Skin",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Spectacled",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 75400,
+ "gold": 500,
  "hair_color": [
-  "Black"
+  "Blond"
  ],
  "hair_type": [
-  "Wavy"
+  "Frizzy"
  ],
  "height_number": "5'3\"",
- "hero_points": 2,
+ "hero_points": 3,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Animal Affinity": "You are skilled at working with animals and mounts",
+  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
-  "Blind Warrior": "Without sight, youve learned to perceive the environment through heightened senses and dedicated training. Special Upon selecting this feat, you are permanently blinded (if you werent previously blind). If you would somehow regain your sight, you immediately lose this feat, and must retrain it instantly. If a player has chosen to play a blind character via either backstory or taking the Blind Warrior feat, the GM should allow players to stop playing a blind character during the campaign if a player already is or becomes uncomfortable with the concept. Flavour it as magic, a miracle, a result of training, or any other suitable excuse that seems fitting. On the other hand, dont force a cure on the players if they dont want one, whether through in-game actions or out-of-game decrees. If a player is uncomfortable with another persons depiction of a blind character, err on the side of deferring to them and asking the player of the blind character to stop. Blind people are the authorities on how to respect blindness. As a team with disabled members, we encourage you to play blind characters with maturity and to explore the realities of living with blindness. When treated with respect towards blind people, exploring blind characters can be a rewarding learning experience and add gravity to your roleplaying. If you yourself are blind, we hope that we made representing disability positively at the table easier for you. you gain blindsense 30 feet and blindsight 5 feet as long as you are unable to see. for every three hit dice you possess, your blindsense increases by 5 feet. for every six hit dice you possess, your blindsight increases by 5 feet.",
-  "Combat Reflexes": "You can make additional attacks of opportunity",
-  "Coordinated Defense": "You are adept at working with allies to avoid being tripped, grappled, and subjected to other maneuvers",
-  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
-  "Discipline Expertise": "You are quite adept at the use of your available disciplines associated skills. choose a class you have at least one level in. you gain a +2 competence bonus on checks with the associated skills of your available disciplines in that class.",
+  "Bloody Assault": "Sacrificing accuracy, you can inflict bloody wounds that are slow to heal",
+  "Bull Charge (combat)": "You rush into battle with a devastating attack. Normal Charging causes you to take a -2 penalty to your AC until the start of your next turn. you take no penalty to your ac when you make a charge attack. if you have the vital strike feat, you can use vital strike (or improved vital strike or greater vital strike, if you have them) in place of the attack at the end of a charge. the damage dice added by vital strike, improved vital strike, or greater vital strike are not doubled when charging with a lance while mounted.",
+  "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
+  "Death Frombelow": "You have been trained to fight flying creatures",
+  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Double Down": "Double permanent E-Kat acquisition.",
+  "Enduring Mind": "You are trained to resist mental damage. whenever you would suffer ability damage to a mental ability score, reduce that damage by 2 (to a minimum of 0). ability damage you deal to yourself (such as from one of your feats or powers) is not reduced in this fashion.",
   "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
-  "Escape Route": "You have trained to watch your allies' backs, covering them as they make tactical withdraws",
-  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
-  "Heavy Gunner": "You utilize raw strength rather than finesse when wielding heavy firearms. Additionally, you do not require support when wielding firearms that would normally require it to fire them without penalty, such as the culverin or double hackbut. while using a two-handed firearm, whenever you make a scatter attack or a ranged attack against a creature within the weapons first range increment, you may use your strength in place of your dexterity for your attack rolls.",
-  "Improved Bull Rush": "You are skilled at pushing your foes around",
   "It Just Works": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
-  "Jaguar Pounce": "Your ambushes are especially lethal",
-  "Lightning Reflexes": "You have faster ref lexes than normal",
-  "Martial Training I (Silver Crane)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Silver Crane)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Silver Crane)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Silver Crane)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Silver Crane)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Silver Crane)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Middle Finger": "Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+  "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
+  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Reach Defense": "You are prof icient at avoiding polearms and long-limbed creatures",
+  "Ostentatious Display": "Your extravagant jewelry and accessories give you an air of importance you can use to your advantage in many social situations",
+  "Powerful Throwing (combat)": "Your thrown weapons are as strong as they are accurate. Special Starting at 2nd level, a ranger with the thrown weaponACG combat style may select Powerful Throwing as a combat style feat. you can use your strength modifier for both your attack and damage rolls with thrown weapons.",
   "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
-  "Shadow Strike": "You accurately strike even those you cannot clearly see",
+  "Self-Sufficient": "You know how to get along in the wild and how to effectively treat wounds",
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
   "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
-  "Siege Engineer": "You are proficient with all siege weaponry",
-  "Stream of Luck": "Gain one E-Kat per session (character played), two if you have Double Down.",
-  "Stunning Assault": "You powerful but imprecise attacks can stun your enemies",
-  "Swap Places": "You are skilled at changing places with your ally during a chaotic melee",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Uncanny Activation": "You can coax greater power out of magical devices",
-  "Weapon Finesse": "You are trained in using your agility in melee combat, as opposed to brute strength"
+  "Simple Weapon Proficiency": "You are trained in the use of basic weapons",
+  "Toughness": "You have enhanced physical stamina",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
   "cha": 7,
@@ -593,124 +583,78 @@
   "wis": 0
  },
  "initiation_stat": "cha",
- "initiator_level": 8,
+ "initiator_level": 0,
  "int": 10,
  "item_changes_dict": {
-  "Caltrop Boots": {
+  "Catching Cape": {
    "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "As a swift action, the boots' wearer can cause the boots to let loose a spray of caltrops through the back of the heels as he moves during the remainder of his round. Any creature, including the wearer, occupying or who steps into one of these squares suffers the normal effects of coming into contact with caltrops (core rulebook 155). The shoes can be used for 10 rounds per day."
-   ]
-  },
-  "Deadeye's Spotter Ring": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.per",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sur",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.per",
-     "text": "Once per day, the wearer can use animal messenger"
-    }
-   ]
-  },
-  "Endless Bandolier": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Small loops sewn into this bandolier look like they can hold twenty alchemical cartridges (ammunition for a firearm, see ultimate combat), but due to a subtle bending of space can actually hold up to 60 cartridges. The four small pockets can each hold a one-handed firearm, 1 pound of ammunition, a powder horn, or a similarly sized object."
-   ]
-  },
-  "Glorious Tabard, Greater": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "ac",
-     "text": "Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +[[2]] sacred bonus to her ac and on saving throws for [[10]] minutes. In addition, whenever a greater glorious tabard is activated, all longswords within [[20]] feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for [[3]] rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5."
-    }
-   ]
-  },
-  "Gunfighter's Poncho": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "ac",
-     "type": "luck"
-    }
-   ],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "Once per day as an immediate action, the wearer can negate a single ranged touched attack targeted at him, but cannot use this ability if the attack is a confirmed critical hit."
+     "text": "As a swift action, the wearer can order the cape to transform into a faint sphere of force that surrounds him on all sides. The field grants the wearer concealment (20% miss chance) against ranged attacks and lasts for [[1]] minute or until the wearer is missed by a ranged attack due to the power of the cloak, whichever comes first."
     }
    ]
   },
-  "Howling Bracers": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day on command, the wearer can clash the bracers together rhythmically. This causes the wolves etched into the bracers to come to life and let out a chorus of howls, with the effect of crushing despair (dc 16). Additionally, for every two creatures under the effect of the wearer's raging song when this ability is used, the dc increases by 1, up to a maximum increase of 5."
-   ]
-  },
-  "Mind Sentinel Medallion": {
+  "Corset of the Vishkanya": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "The medallion grants a continuous +[[2]] resistance bonus on saves versus mind-affecting spells, spell-like abilities, and supernatural abilities."
+     "target": "skill.esc",
+     "text": "As a free action, the wearer can compress herself to fit through tight spaces as though affected by a squeeze spell (advanced race guide) for up to [[10]] rounds per day. While using the corset's magic, she gains a +[[5]] bonus on escape artist checks."
+    }
+   ]
+  },
+  "Daredevil Softpaws": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "As a free action, the wearer can click her heels together to grant herself a +[[5]] competence bonus on acrobatics checks made to move through threatened squares or to move through an enemy's space without provoking attacks of opportunity for up to [[10]] rounds per day."
     },
     {
-     "target": "allSavingThrows",
-     "text": "If the wearer fails a save to avoid becoming dominated or confused, the amulet immediately grants the wearer a second saving throw to resist the effect. If this second save is successful, the medallion's power fades away entirely and it becomes a simple piece of silver jewelry."
+     "target": "attack",
+     "text": "Furthermore, anytime the wearer of the boots successfully moves though the space of an enemy without provoking an attack of opportunity, she gains a +[[2]] bonus on attack rolls against that enemy until the end of her turn."
     }
    ]
   },
-  "Moon Circlet": {
+  "Hand Wraps of Blinding Ki": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skills",
-     "text": "The wearer of a moon circlet gains darkvision out to [[60]] feet (if she does not already possess it). During the waxing moon, the wearer's caster level is considered one higher for purposes of caster level checks and spell effects; During the waning moon, the wearer's caster level is considered one lower for purposes of caster level checks and spell effects, and during the three nights of the new moon, this penalty increases to two levels lower. Removing a moon circlet imposes 2 negative levels on the wearer until the next full moon (or until the circlet is worn again, whichever comes first)."
+     "target": "attack",
+     "text": "When the wearer spends ki to make an additional attack, he can spend 1 additional point of ki to use the stunning fist feat with the attack, even if he has already used the feat that round."
     }
    ]
   },
-  "Pirate Lord's Patch": {
+  "Headband of Seduction": {
    "changes": [
     {
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.apr",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.int",
+     "target": "chaChecks",
      "type": "competence"
     }
    ],
    "contextNotes": [
     {
-     "target": "skill.apr",
-     "text": "Once per day, the wearer can activate the patch in order to gain the benefits of see invisibility for [[5]] minutes. Additionally, once per day, he can activate the patch in order to see through solid objects for [[1]] minute, as though with a ring of x-ray vision"
+     "target": "chaChecks",
+     "text": "If the wearer is of the humanoid type, he gains a +[[5]] competence bonus on creatures of his subtype instead. Once per day, the wearer can attempt to affect a creature as the spell unnatural lust (ultimate magic) but with a duration of [[10]] minutes."
     }
+   ]
+  },
+  "Helm of Electric Radiance": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The helm has 10 sapphires that can be used for chain lightning , 20 pieces of amber that can be used for lightning bolt , 30 pieces of petrified wood that can be used for shocking sphere (as flaming sphere but dealing electricity damage), and 40 opals that can be used for daylight . In addition, the wearer gains resistance to electricity 30 and his weapons become shocking weapons instead of flaming weapons."
+   ]
+  },
+  "Physician's Spectacles": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Also, once per day on command the wearer can touch a single creature to use delay poison on that creature."
    ]
   },
   "Plague Rat Belt, Greater": {
@@ -722,37 +666,26 @@
     }
    ]
   },
-  "Pliant Gloves": {
+  "Ring of Entropy and Order": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day, the wearer can target herself with a protection from chaos or protection from law effect that lasts for 10 minutes. However, if the wearer uses the ring of entropy and order to gain protection from chaos while on a plane with the mildly chaos-aligned or strongly chaos-aligned trait, or to gain protection from law while on a plane with the mildly law-aligned or strongly law-aligned trait, the effect instead lasts for 1 hour."
+   ]
+  },
+  "Shadowbond Tunic": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement."
+   ]
+  },
+  "Stormlure": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.acr",
-     "text": "Even when his limbs aren't extended, the wearer gains a +[[5]] enhancement bonus on escape artist checks and acrobatics checks to avoid falling damage."
-    },
-    {
-     "target": "attack",
-     "text": "As a swift action, the wearer can lengthen his arms for up to [[10]] rounds per day, gaining an additional [[5]] feet of reach. Attacking with these extended arms is unwieldy, and the wearer takes a 2 penalty on attack rolls, increasing to 4 if he is using two-handed weapons."
-    }
-   ]
-  },
-  "Stalker's Mask": {
-   "changes": [
-    {
-     "formula": "5",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.ste",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.dis",
-     "text": "Once per day as a full-round action, the wearer can cause the mask's features to take on the appearance of any creature of the wearer's basic size and shape within [[60]] feet that he observes, allowing the wearer to adopt that creature's appearance for [[1]] hour. This grants him a +[[10]] bonus on disguise checks made to appear as the creature."
-    },
-    {
-     "target": "attack",
-     "text": "The mask also grants the wearer a +[[1]] bonus on attack rolls and weapon damage rolls made against the creature he is disguised as, as the mask builds upon the wearer's rage and jealousy of the target's appearance."
+     "target": "allSavingThrows",
+     "text": "Once per day on command, the wearer of a stormlure is surrounding by swirling winds for [[1]] minute, granting a 50% miss chance against all ranged attacks, including rays and other ranged spells that require a roll to hit. At any one time during this duration, as a swift action, the wearer can cause the air around her to fill with crackling lightning, dealing [[4d6]] points of electricity damage to all creatures adjacent to her. A dc [[14]] reflex save halves this damage."
     }
    ]
   }
@@ -761,7 +694,7 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Auran"
+  "Drow Sign Language"
  ],
  "level": 16,
  "level_up_stats": {
@@ -816,15 +749,15 @@
    "= 17"
   ],
   "dr_pool": 17,
-  "e_kat_earned": 41,
-  "e_kat_reserve": 16,
+  "e_kat_earned": 25,
+  "e_kat_reserve": 0,
   "e_kat_store_cap": 99,
   "feats": [
-   "Right of Deferment",
-   "Middle Finger",
    "Ass Pull",
+   "Right of Deferment",
    "It Just Works",
-   "Stream of Luck"
+   "Double Down",
+   "Lucky Boy"
   ],
   "floor": -50,
   "luck_feats": [],
@@ -855,11 +788,11 @@
    "target": 6
   },
   "trait_benefits": {
-   "E-Kat Exchange: Lucky Navigator": "Succeed on a navigation check for 5 E-Kats."
+   "E-Kat Exchange: Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
   },
   "trait_changes": {},
   "traits": [
-   "E-Kat Exchange: Lucky Navigator"
+   "E-Kat Exchange: Loot Box"
   ],
   "twist_fate_per_day": 0,
   "type": "Default",
@@ -873,211 +806,33 @@
  },
  "magic_talent_items": [],
  "main_stat": "str",
- "maneuvers_choose_from": [
-  [
-   "Crane Step",
-   "Flashing Wings"
-  ],
-  [
-   "Defensive Step",
-   "Blessed Pinions"
-  ],
-  [
-   "Silver Knights Blade",
-   "Silver Cranes Blessing"
-  ],
-  [
-   "Silver Crane Resurgence"
-  ],
-  [
-   "Silver Cranes Spiral"
-  ],
-  [
-   "Silver Cranes Mercy"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Blessed Pinions": {
-   "action": "1 standard action",
-   "description": "The pinion feathers of the Silver Cranes wings gain an ethereal glimmer as if they were blessed steel. Heavenly agents guide their disciples attack so it may strike true as if it were blessed, even allowing it to strike the unseen. Make an attack against a foe that inflicts an additional 2d6 points of sacred damage and the attack is considered good aligned for the purposes of overcoming damage reduction. The disciple may also choose to strike incorporeal foes with this strike as if they were made manifest, including fiends who currently possess a creature. To strike a possessing fiend, the body they inhabit must be also struck, but all damage from the attack is inflicted upon the possessing fiend without harming the host.",
-   "discipline": "Silver Crane",
-   "duration": "",
-   "level": 2,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Crane Step": {
-   "action": "1 swift action",
-   "description": "The grace of the Silver Crane blesses the initiator with the ability to step through battle unhindered and unharmed. The initiator makes a free 5-ft step, even if he has already made one.",
-   "discipline": "Silver Crane",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Defensive Step": {
-   "action": "1 immediate action",
-   "description": "Inspired by the awareness of the celestial realm, the discipline trusts in his heavenly sense of the battle around him to see where the next attack is coming and move away from danger. He makes a Perception check opposing the opponents attack roll; if successful, the initiator may make a free 5-ft step in order to evade the attack. If he is unable to move to an adjacent square, he may not use this counter.",
-   "discipline": "Silver Crane",
-   "duration": "",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Flashing Wings": {
-   "action": "1 standard action",
-   "description": "The flashing wings of the Silver Crane daze the foes of the martial disciple, burning their eyes with the light of Heaven. Make a melee attack and if successful, this attack inflicts an additional 1d4 points of damage and the target is dazzled for one round.",
-   "discipline": "Silver Crane",
-   "duration": "1 round",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Silver Crane Endurance": {
-   "action": "1 swift action",
-   "description": "By reciting a litany of praises and prayers to the glory of the angels and to the heavens above, the Silver Crane disciple is filled with restorative power from his patrons. Some disciples shimmer with a holy glow, and others bear a halo or nimbus around their head when in this stance. While in this stance, the initiator gain fast healing 5.",
-   "discipline": "Silver Crane",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Silver Crane Resurgence": {
-   "action": "1 immediate action",
-   "description": "By invoking the power of his celestial patron, the Silver Crane disciple may overcome the fell powers and curses of his enemies and return to full fighting ability. As an immediate action, the initiator may grant himself or an ally within 30-ft of his position the ability to re-roll a failed saving throw with a +4 sacred bonus.",
-   "discipline": "Silver Crane",
-   "duration": "Instantaneous",
-   "level": 4,
-   "range": "Personal or 30-ft",
-   "type": "counter"
-  },
-  "Silver Crane Waltz": {
-   "action": "1 swift action",
-   "description": "The divine vantage point of the celestial realms infuses the mind of the disciple, granting him momentary flickers of foresight. A faint, ghostly image of wings is visible around the disciple but vanishes when he is looked upon directly. The initiator gains a +4 insight bonus to initiative checks if he is in this stance before combat begins, and a +2 insight bonus to Reflex saves and to AC. These bonuses increase by an additional +1 every eight levels after 1st level.",
-   "discipline": "Silver Crane",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Silver Cranes Blessing": {
-   "action": "1 swift action",
-   "description": "By invoking the powers of his celestial patrons upon successfully smiting an enemy of the heavens, the holy power of the Silver Crane disciples patron flows through him to restore the health of the vessel or the ally of the vessel. Upon a successful attack, the character may initiate this boost to heal himself or an ally within 30-ft of 2d6 points of damage plus his initiation modifier.",
-   "discipline": "Silver Crane",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Personal or 30-ft",
-   "type": "boost"
-  },
-  "Silver Cranes Mercy": {
-   "action": "1 swift action",
-   "description": "With a recitation of power and a prayer for mercy upon those who are servants of heaven, the Silver Crane disciple strikes out at the evil he battles. Upon making a successful attack, you or an ally within 30-ft of you is healed of 9d6 points of damage.",
-   "discipline": "Silver Crane",
-   "duration": "Instantaneous",
-   "level": 6,
-   "range": "Personal or 30-ft",
-   "type": "boost"
-  },
-  "Silver Cranes Spiral": {
-   "action": "1 standard action",
-   "description": "Filling himself with the wrath of the heavens, the Silver Crane disciple takes on a nimbus of glowing wings and lashes out at all of his nearby enemies with smiting strikes. The character makes a single attack at his full attack bonus with a +2 insight bonus at each adjacent enemy or enemy that is within the area he threatens. Ranged attacks used with this maneuver may only be used against opponents within the weapons first range increment.",
-   "discipline": "Silver Crane",
-   "duration": "Instantaneous",
-   "level": 5,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Silver Knights Blade": {
-   "action": "1 standard action",
-   "description": "Those graced with the blessings of the Silver Crane are both terrors to their foes and heroes to their fellows. This strike inflicts an additional 4d6 points of sacred damage and heals a like amount of damage to either the initiator or to a single ally within 30-ft of the martial disciple.",
-   "discipline": "Silver Crane",
-   "duration": "",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Stance of the Crane Knight": {
-   "action": "1 swift action",
-   "description": "As a disciple of the Silver Crane, the martial disciple may manifest the essence of his celestial patrons along his body, its light radiating from his soul to form silver-feathered ethereal wings from his back and a blazing halo of argent radiance around his head. While in this stance, you gain a fly speed equal to twice your base land speed with average maneuverability and you gain DR 10/evil. You also radiate light as a light spell from the halo-like effect of this stance while it is in effect.",
-   "discipline": "Silver Crane",
-   "duration": "Stance",
-   "level": 5,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Stance of the Silver Crane": {
-   "action": "1 swift action",
-   "description": "The martial disciple with knowledge of this stance learns to channel the potency of their celestial patrons to combat evil with great efficiency. In the midst of battle ghostly images of wings or blazing wrathful haloes can often be seen near Silver Crane disciples. While in this stance, any weapon that the martial disciple wields is treated as if it had theholyspecial weapon property. Additionally, the character is considered under the influence of aprotection fromevilspell with a caster level equal to his initiator level.",
-   "discipline": "Silver Crane",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1,
-  1,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Defensive Step"
-  ],
-  [
-   "Silver Knights Blade",
-   "Silver Cranes Blessing"
-  ],
-  [
-   "Silver Crane Resurgence"
-  ],
-  [
-   "Silver Cranes Spiral"
-  ],
-  [
-   "Silver Cranes Mercy"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
   "Drums fingers",
   "Yawns",
   "Clenches fists"
  ],
- "martial_disciplines": [
-  "Silver Crane"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "lg",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Silver Crane)",
-  "Martial Training III (Silver Crane)",
-  "Martial Training V (Silver Crane)"
- ],
+ "mt_feats": [],
  "normal_feat_amount": 6,
- "older_brothers": " you have 0 older brothers",
+ "older_brothers": " you have 2 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, dead father, raised in a middle income household",
+ "parents": "absent mother, loving father, raised in a poor household",
  "personality_traits": [
   "Fervent",
   "Rebellious",
   "Selfish",
   "Fearsome"
  ],
- "platnium": 7540.0,
+ "platnium": 50.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1536,81 +1291,53 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting"
+  "Empowered Abilities",
+  "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Verbal Casting",
-  "Somatic Casting"
+  "Magical Signs",
+  "Painful Magic",
+  "Addictive Casting",
+  "Draining Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Verbal Casting",
-  "Somatic Casting",
-  "Fortified Casting"
+  "Magical Signs",
+  "Painful Magic",
+  "Addictive Casting",
+  "Draining Casting",
+  "Empowered Abilities",
+  "Easy Focus"
  ],
  "spheres_chosen": [],
- "stances_chosen": [
-  "Silver Crane Waltz",
-  "Stance of the Silver Crane",
-  "Stance of the Crane Knight",
-  "Silver Crane Endurance"
- ],
- "story_feat_tax_dict": {
-  "Combat Reflexes": [
-   "bodyguard",
-   "in harm's way",
-   "pin down"
-  ]
- },
+ "stances_chosen": [],
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Discipline Expertise",
-  "Ensemble",
-  "Combat Reflexes",
-  "Stunning Assault"
+  "Shadow Dodge",
+  "Dark Embrace",
+  "Bloody Assault",
+  "Animal Affinity"
  ],
  "str": 19,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 16,
  "total_rolled_hp": 150,
- "trainer_calibers": [
-  2,
-  2
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 3 - Path of War)",
-  "(Trainer 3 - Path of War)"
- ],
- "trainer_feat_tax_dict": {
-  "Martial Training III (Silver Crane)": [
-   "Martial Training IV (Silver Crane)"
-  ],
-  "Martial Training V (Silver Crane)": [
-   "Martial Training VI (Silver Crane)"
-  ]
- },
- "trainer_feats": [
-  "Escape Route",
-  "Blind Warrior",
-  "Expert Driver",
-  "Reach Defense",
-  "Martial Training III (Silver Crane)",
-  "Martial Training V (Silver Crane)"
- ],
- "weapon_enhancement_bonus": 4,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Gory"
+  "Ghost Touch",
+  "Skewering"
  ],
  "weapon_name": "Rapier",
  "weight_number": 210,
  "wis": 15,
- "younger_brothers": " you have 1 younger brothers",
+ "younger_brothers": " you have 0 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

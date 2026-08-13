@@ -4,7 +4,7 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Pouty lips"
+  "Hazel-eyed"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Storm Caller\": {\n        \"source\": \"Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.\",\n        \"stormy eidolon\": \" A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.\",\n        \"summon storm's fury (sp)\": \" A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities.\",\n        \"electrical polarity (su)\": \" At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.\",\n        \"storm's wings (su)\": \" At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.\"\n    }\n}",
@@ -35,25 +35,18 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Easy Focus",
-   "Fortified Casting"
+   "Overcharge"
   ],
   "boons_detail": [
    {
-    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
-    "name": "Easy Focus"
-   },
-   {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
    "Draining Casting",
-   "Extended Casting",
-   "Somatic Casting",
-   "Prepared Caster"
+   "Extended Casting"
   ],
   "drawbacks_detail": [
    {
@@ -65,16 +58,6 @@
     "counts_as": 2,
     "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
     "name": "Extended Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
    }
   ]
  },
@@ -319,24 +302,29 @@
    "description": " this wide leather is held together with\r two strands of oxen skin threaded\r through holes on each end. The belt's\r wearer is affected as though subject to a\r permanent ant haul spell (advanced player's guide). ",
    "item_name": "Heavyload Belt"
   },
-  "chest": {
-   "description": " absorbent fibers line this heavy\r canvas coat. Once per day as a\r standard action, the wearer can pour\r a potion onto this lining, suffusing\r it into the coat. If the potion has an\r instantaneous duration, the wearer\r can activate the coat as a swift action\r to consume the potion. If the potion's\r duration is measured in rounds, the wearer can activate the\r coat as a swift action to gain the potion's benefits for 1 round, \r repeating as desired each round until the potion's entire duration\r has been used. These rounds do not need to be consecutive. The\r coat absorbs only potions with instantaneous or round-based\r durations, and only those which affect creatures (for example, it\r does not work on oils). Once the coat absorbs a potion, the potion\r cannot be retrieved from it, only used as described above. The\r absorbed potion loses its powers after 24 hours, even if unused. ",
-   "item_name": "Sipping Jacket"
+  "body": {
+   "description": " the surface of this delicate-looking blue silk robe is adorned\r with tiny embossed runes across its entire surface. If the\r wearer is a spontaneous caster, once per day she may use a\r spell slot to cast a spell from a written source (such as a scroll\r or spellbook) as if she knew that spell. The spell must be on her\r spell list, the same spell level or lower than the expended spell\r slot, and the same type of spell (arcane or divine) as the spell\r slot expended. The caster must also understand the written\r source (such as using decipher script or read magic) and be\r carrying it. Activating the robe is not an action, but casting\r the spell otherwise works as normal, including casting time, \r providing components or foci, and so on. Using a mnemonic\r vestment's properties does not consume the written source. A mnemonic vestment must be worn for 24 consecutive hours before using its effects. ",
+   "item_name": "Mnemonic Vestment"
   },
   "feet": {
-   "description": " two times per day, the wearer of these shoes can call forth\r 1d4 spirit servants to aid her. The spirit servants are invisible, \r mindless, shapeless beings that act as servants summoned\r by the unseen servant spell. The spirits return to the shoes\r after 3 hours have passed. The wearer can choose to dismiss\r one or more of the spirit servants early. Once per day, the wearer can command the ghostly\r spirits inside her haunted shoes to emerge and swirl around\r her, making her difficult to target in combat. The wearer\r gains concealment (20% miss chance) for 3 minutes. The\r spirits cannot be harmed, but a true seeing spell ignores\r the concealment effect. The concealment effect cannot be\r activated while any of the spirits are currently being used as unseen servants ",
-   "item_name": "Haunted Shoes"
+   "description": " boots of friendly terrain turn inhospitable\r territory into a perfect hunting grounds for\r any ranger who wears them, so much so\r that his footprints vanish behind him with\r each step he takes. Each pair of these supple\r leather boots corresponds to a specific sort\r of environment as defined by the ranger's favored terrain class\r feature (jungles, plains, and so on). A ranger wearing the boots\r can treat the corresponding environment of the boots as one of\r his favored terrains, granting him a +2 bonus. If he already has\r that particular environment as one of his favored terrains, that\r terrain's bonus increases by 2. ",
+   "item_name": "Boots of Friendly Terrain"
   },
   "head": {
-   "description": " this leather mask is vaguely animalistic, and is inlaid with various primitive designs. Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature. Each mask is attuned to one type of animal from the animal focus list, chosen when the mask is created. ",
-   "item_name": "Aspect Mask"
+   "description": " this large, furry hat is sewn from the thick pelt of an animal native to the frozen north, and has earflaps that can be pulled down or folded up over the crown of the hat. When worn, an ushanka of the northlands grants its wearer a +2 resistance bonus on saving throws against cold effects and a +5 competence bonus on survival checks. When the earflaps are pulled down, the wearer gains a +2 bonus on saving throws against sonic effects, but also takes a 2 penalty on perception checks made to hear. Pulling the earflaps down is a move action. ",
+   "item_name": "Ushanka of the Northlands"
+  },
+  "neck": {
+   "description": " these runes may be carved from wood or cast in silver and are\r worn on a leather cord. When a witch prepares her spells, she\r may also choose to use the hexing runes to augment one hex\r she can use. The save dc of this hex increases by 1 for 24 hours. \r additionally, once per day when she speaks the command\r word, the wearer gains the benefits of the ward hex as if cast\r by an 8th level witch. ",
+   "item_name": "Hexing Runes"
   }
  },
  "equipment_list": [
   "Heavyload Belt",
-  "Sipping Jacket",
-  "Haunted Shoes",
-  "Aspect Mask"
+  "Boots of Friendly Terrain",
+  "Ushanka of the Northlands",
+  "Hexing Runes",
+  "Mnemonic Vestment"
  ],
  "eye_color": [
   "Blue"
@@ -346,67 +334,54 @@
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 9,
+  "normal": 7,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 3
+  "trainer": 5
  },
- "feat_changes_dict": {
-  "Weapon Focus": {
-   "changes": [
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {
+  "Arcane Strike": {
+   "default": false,
+   "modifiers": [
     {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "attack",
-     "type": "untyped"
-    },
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "wdamage",
+     "critical": "normal",
+     "damageType": [],
+     "formula": "max(1, floor(@spells.primary.cl.total / 5))",
+     "subTarget": "allDamage",
+     "target": "damage",
      "type": "untyped"
     }
    ],
-   "contextNotes": []
+   "name": "Arcane Strike: Activation: swift action; Effect: +[[max(1, floor(@spells.primary.cl.total / 5))]] damage and weapons count as magic for 1 round",
+   "tier": "A"
   }
  },
- "feat_conditionals_dict": {},
  "feats": [
-  "Throw Anything",
-  "Spell Twists (elementer)",
-  "Celestial Obedience",
-  "Point-Blank Shot",
-  "Martial Charge",
-  "Quick Preparation",
-  "Prone Slinger",
-  "Martial Training I (Roaring Mouse)",
+  "Arcane Vendetta",
+  "Scholar",
+  "Healer's Mercy",
+  "Lunar Strike (combat)",
+  "Dampen Presence",
+  "Focused Eidolon",
+  "Arcane Shield",
+  "Basic Magic Training",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Martial Training I (Roaring Mouse)": [
-   "Martial Training II (Roaring Mouse)"
-  ],
-  "Martial Training III (Roaring Mouse)": [
-   "Martial Training IV (Roaring Mouse)"
-  ],
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot"
-  ],
+  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": [
+   "Extra Magic Talent"
+  ]
+ },
+ "flavor_feat_tax_dict": {
   "Throw Anything": [
    "ricochet splash weapon"
   ]
  },
- "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Outflank"
+  "Throw Anything"
  ],
  "flaw": [
   "Animal Phobia",
@@ -436,12 +411,16 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Siege Engineer": [
+   "siege gunner"
+  ]
+ },
  "flaw_feats": [
-  "Allied Spellcaster",
-  "Improved Shield Bash"
+  "Siege Engineer",
+  "Unknowable Fear"
  ],
- "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Roaring Mouse\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Nemesis, Weapon Focus, Expert Trainer\n\nFamily\n- Dead Mother\n- Absent Father\n- Raised In An Orphanage\n- No Siblings\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Touseled White\n- Eyes: Blue\n- Build: Pouty Lips",
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Arcane Strike, Improved Initiative, Cloud Gazer\n- Training: An average trainer who taught them Planned Spontaneity, Siphon Poison\n\nFamily\n- Dead Mother\n- Dead Father\n- Adopted Into A Middle Income Family\n- 3 Younger Brothers\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
  "full_domain": [
   "Luck",
   "Strength"
@@ -449,39 +428,40 @@
  "gender": "Female",
  "generation_seed": 5002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 4020,
+ "gold": 100,
  "hair_color": [
-  "White"
+  "Red"
  ],
  "hair_type": [
-  "Touseled"
+  "Frizzy"
  ],
  "height_number": "5'8\"",
  "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Allied Spellcaster": "With the aid of an ally, you are skilled at piercing the protections of other creatures with your spells",
-  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
-  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
-  "Expert Trainer": "You have a special knack for a certain profession and take to it with ease",
-  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
-  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
-  "Martial Training I (Roaring Mouse)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Roaring Mouse)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Roaring Mouse)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Roaring Mouse)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Arcane Shield": "You can convert any spell into a defense",
+  "Arcane Strike": "You draw upon your arcane power to enhance your weapons with magical energy",
+  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
+  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Water Creature (Fallen Fey)",
+  "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
+  "Cloud Gazer": "Your insight into your elemental heritage gives you a clarity of sight few humans possess",
+  "Dampen Presence": "Your habitual stillness makes you difficult to perceive for creatures that use blindsight or blindsense",
+  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
+  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Greater Fey-link (Fallen Fey): Your fey-link endures for 10 minutes per caster level rather than 1 minute per caster level. You may spend a spell point to increase this duration to 1 hour per caster level instead.\n- Fairy Ring Traveler (Fallen Fey): You know the secrets of traveling via the fey realms. You may spend a 1-round action to determine the direction to the nearest fairy ring. You may open a fairy ring with a 10 minute ritual or by spending a spell point as a standard action. Once opened, creatures may pass through the fairy ring into ",
+  "Focused Eidolon": "Your bond with your eidolon helps to focus your concentration",
+  "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Light Armor Proficiency": "You are skilled at wearing light armor",
+  "Lunar Strike (combat)": "A surge of pale moonlight disorients foes you strike. you can use this a number of times per day equal to your wisdom modifier (minimum 1). you can choose to use this ability as a free action after you hit the enemy with the attack. this is a supernatural ability.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
-  "Nemesis": "A past enemy seeks your ruin",
-  "Outflank": "You look for every edge when flanking an enemy",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
-  "Quick Preparation": "Early on in your adventuring career, you learned (perhaps the hard way) how to prepare your spells even when put under extreme time constraints",
-  "Spell Twists (elementer)": "The following lists all available spell twists to an elementer. Elementers can select any spell twist from this list at 2nd level and every three levels thereafter. Element The spell twists element, which can be air, earth, fire, or water, or any. The elementer must sacrifice a prepared elemental spell of the matching element to use the spell twist. In the case of an any spell twist, she can use any elemental spell, and the spell twists effect changes depending on the element used. Effect The resulting effect of the spell twist. The effects listed here are for sacrificing a 1st level spell. Boost If the elementer sacrifices an elemental spell of a higher level than 1st, the spell twist gains more power as described in this section. Element Fire Effect You conjure scorching ash to blind your foes. A single creature within 30 feet of you must make a Reflex save or be blinded for 1d4 rounds. Boost For every spell level above 1st, you can target an additional creature. All targets must be within range. Element Earth Effect The earth rises at your command. This functions similar to a wall of stone, except it has a range of 30 feet, and the stone is only 1 inch thick and occupies a single 5-foot square. You cannot double the walls area by halving its thickness, as you normally could with wall of stone. The wall must be on solid ground or near a similar earthen surface (like a cavern wall). Boost For every spell above 1st, you can create an additional two 5-foot squares of stone and the thickness of the stone increases by 1 inch (to a maximum depth of six inches). The wall must be contiguous. Element Any Effect You create a destructive ray of planar force. Make a ranged touch attack against a target within 30 feet. On a hit, you deal 1d8 damage per caster level (max 3d8) of a type based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). Boost For every spell level above 1st, the max damage increases by 3d8 and the range increases by 10 feet. Element Fire Effect You set the world ablaze. You create a single 10-foot cube of fire, which must be created adjacent to your space. Creatures in the blaze take 1d6 points of fire damage each round they are in the flames; a Reflex save halves the damage. The flames last a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the damage increases by 1d6 and you can create an additional 10-foot cube of flames. The cubes must all be adjacent to one another (with one needing to be adjacent to you). Element Water Effect A powerful current backs your movement. As a swift action, you gain a swim speed of 40 feet, a +8 bonus on Swim checks, and can breath underwater. If you already have a swim speed, you increase it by 20 feet, instead. This swim speed lasts for a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the swim speed (or bonus to a swim speed) increases by 10 feet, the Swim bonus by +1, and the duration by 1 round. If the slot used is at least 3rd level, you suffer no penalties for attacking while underwater. If the slot used is at least 6th, you are unaffected by hazards from being deep underwater, such as pressure damage. Element Water Effect A surge of ocean water fills a creatures lungs. A single creature within 30 feet of you takes 2d6 nonlethal damage and is staggered for 1 round. A Fortitude save halves the damage and negates the staggering effect. A creature that can breathe underwater or doesnt need to breathe at all is unaffected by this spell twist, as are creatures with no discernible anatomy to affect (such as oozes or an air elemental). Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature. All targets must be within 30 feet of you. Element Any Boost For every spell level above 1st, you can target an additional willing creature and the effect lasts an additional round. For every three spell levels above 1st, the damage bonus increases by 1d6. Element Fire Effect You quickly vanish and reappear a short distance away, your image flickering like fire. You teleport up to 20 feet away. Creatures and combustible objects within 5 feet of your destination take 2d6 fire damage. A Reflex save halves the damage taken. Boost For every spell level above 1st, the maximum distance you can teleport increases by 20 feet, and the damage increases by 2d6. Element Water Effect A sudden wave crashes in front of you. The water fills a 15-foot cone directly in front of you with torrential water. Non-magical fires in the area are extinguished immediately. Medium-sized (or smaller) creatures and objects in the area are pushed back make a separate bull-rush attempt against each. You may substitute your elementer level in place of your base attack bonus and your Intelligence in place of your Strength bonus for these bull rush attempts, and the attempts do not provoke attacks of opportunity. Both the bull rush and the pushing of the objects cant exceed 5 feet beyond the cones end. Boost For every spell level above 1st, the amount of water increases significantly. The range of the cone increases by 5 feet, and you gain an additional +1 bonus to your bull rush attempts. For every two spell levels above 1st, the maximum size of creatures and objects you can push increases by one size category. Element Water Effect You conjure a powerful chill to encase a target. A single creature or object within 30 feet of you takes 2d6 cold damage; an affected creature is entangled for 1d4 rounds. A Fortitude save halves the damage and negates the entangling effect. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature or object. All targets must be within 30 feet of you. Element Earth Effect A gout of acidic earth sprays upon a target within 30 feet. The target takes 2d6 acid damage; a creature struck is also sickened for 1 round. A Fortitude save halves the damage and negates the sickening effect. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature or object. All targets must be within 30 feet of you. Element Air Effect Bellowing winds rush forth from you. The winds fill a 10-foot radius burst around you, acting as a strong wind (about 25 mph) directly away from you for 1 round. This follows all of the normal rules for strong winds, including dispersing harmful gases, mists, and vapors, penalizing ranged attacks, pushing creatures, and so on. Boost For every spell level above 1st, you can increase the radius of the burst by 10 feet. For every two spell levels above 1st, the strength of the winds increases by one category. If you use a 9th level spell to create tornado-strength winds, creatures are still pushed away rather than pulled inwards toward you. Element Fire Effect A burst of sweltering heat emits from your hand in a 20-foot cone. Creatures in this area take 2d6 nonlethal fire damage and are fatigued. A Fortitude save halves the damage and negates the fatigue effect. This cannot cause a fatigued creature to become exhausted. Boost For every spell level above 1st, the nonlethal damage increases by 2d6. For every two slots above 1st, the range of the cone increases by 5 feet. Element Any Effect Elemental energies disrupt your opponents casting. As an immediate action, you counter a spell that appears in the same elemental category as the spell you used, or has one of the following descriptors based on the element of spell used air (air, electricity, or sonic), earth (acid, earth), fire (fire, light), or water (cold, water). The countered spell must be 1st level or lower. Boost For every spell level above 1st, the level of spell you can counter increases by 1. Element Fire Effect You set the target alight. A target creature or object within 30 feet of you takes 2d6 fire damage and is set on fire, taking 1d6 fire damage each round thereafter. A Reflex save halves the initial damage and negates the burning effect. A creature or object set on fire can make a Reflex save at the start of each turn, extinguishing the flames on a successful save. Submersing or dousing the target with water will not stop the burning, but does immediately grant a new save with a +4 bonus. The object or creature keeps this bonus on subsequent saves so long as it remains sufficiently doused or submersed. If not extinguished, the flames die out after a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the initial damage increases by 2d6 and the burning damage increases by 1d6. Element Water Effect Your body disperses into vapor as an immediate action, granting you total concealment (50% miss chance). This does not prevent creatures from targeting you. The effect ends after you are targeted by a single attack or effect (whether it hits or not) or at the start of your turn, whichever comes first. Boost For every spell level above 1st, the concealment lasts against an additional attack or effect. Element Earth Effect The ground beneath your foe violently shakes. A single creature within 30 feet takes 2d6 bludgeoning damage and falls prone; this damage is considered magical for the purpose of overcoming damage reduction. A Reflex save halves the damage and negates the prone effect. Only creatures of Medium size or smaller are knocked prone on a failed save. Boost For every spell level above 1st, the damage increases by 2d6. For every two spell levels above 1st, you can target an additional creature and the maximum size of creature you can knock prone increases by one size category. Element Air Effect A lightning bolt strikes your target. A creature or object within 30 feet takes 2d6 electricity damage; a creature struck is dazed and takes a -2 penalty to AC for 1 round. A Reflex save halves the damage and AC penalty and negates the daze effect. Boost For every spell level above 1st, the damage increases by 2d6 and the AC penalty increases by 1. Element Air Effect The wind surges around you. As a swift action, you gain a fly speed of 40 feet with good maneuverability for a number of rounds equal to your Intelligence modifier (minimum 1). If you already have a fly speed, you increase it by 20 feet, instead. When the effect ends, if you do not have a fly speed from another source, you fall slowly to the ground (as a fly spell). Boost For every spell level above 1st, the fly speed (or bonus to a fly speed) increases by 10 feet and the duration increases by 1 round. For every three spell levels above 1st, your maneuverability increases by one step (from average to good, then from good to perfect). Element Earth Effect You conjure a piercing stone shard to impale your foes. Make a ranged attack against a target within 30 feet. The stone deals 1d6 piercing damage on a hit per caster level (max 3d6); this counts as magical for the purpose of overcoming damage reduction. If you hit a creature, it begins bleeding for 1d6 damage each round. Boost For every spell level above 1st, the maximum initial damage increases by 3d6. For every two levels above 1st, the bleed damage increases by 1d6. Element Air Effect You surround a single willing creature within 30 feet of you with a crackling aura of electricity. Any creature striking the target with a non-reach melee weapon, unarmed strike, or natural attack takes 1d6 electricity damage. The effect lasts for a number of rounds equal to your Intelligence modifier (minimum 1). Boost For every spell level above 1st, the duration increases by 1 round. For every two levels above 1st, the damage increases by 1d6. Element Earth Effect Your body turns to stone. As a swift action, you solidify into solid rock. While stone, you add your Intelligence modifier to your Armor Class and CMD (minimum +1) and gain DR 2/adamantine. You cannot take any actions, move, or speak while turned to stone, though you are not considered helpless. The effect lasts until the start of your next turn. Boost For every spell level above 1st, increase the bonus to your CMD by 2 and the DR you gain by 1. For every two spell levels above 1st, increase your bonus to AC by 1, and you gain a stacking 25% chance to negate critical hits and sneak attacks while you are stone. Element Air Effect A deafening burst of thunder erupts from you. Creatures within 10 feet of you take 2d6 sonic damage and are deafened for 1 minute. A Fortitude save halves the damage and negates the deafening effect. Boost For every spell level above 1st, increase the damage by 2d6. For every two levels above 1st, you can increase the radius of the burst by 10 feet. Element Any Effect You protect an ally from the elements. A willing creature within 30 feet takes half damage from a single energy type for a number of rounds equal to your Intelligence modifier (minimum 1). This reduction is applied after energy resistance, protection from energy, and other similar effects. The type of damage is based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). Boost For every spell level above 1st, you can target an additional ally. All targets must be in range and are protected against the same damage type. Element Any Effect You infuse yourself with power as a swift action. The next damaging spell or spell twist you use this turn deals +1 damage per die rolled. Additionally, you can change the damage of that spell or spell twist to a type based on the element of the spell you sacrificed acid (earth), cold (water), electricity (air), or fire (fire). You can only warp a spell of 1st level or lower or a spell twist created from sacrificing a 1st level elemental spell. Boost For every spell level above 1st, you can warp a spell or spell twist one level higher. effect you infuse an ally with elemental energy. their weapon attacks deal an additional 1d6 damage, with the damage type based on the element of spell used acid (earth), cold (water), electricity (air), or fire (fire). this damage is not multiplied on a critical hit and does not stack with other energy damage of the same type the creature deals with its weapons attacks. you must grant it to a single willing creature within 30 feet, and the lasts for a number of rounds equal to your intelligence modifier (minimum 1).",
+  "Net Adept": "You have trained to use the net as a melee weapon",
+  "Planned Spontaneity": "You have a measure of flexibility when preparing spells",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Siege Engineer": "You are proficient with all siege weaponry",
+  "Siphon Poison": "You can remove poison from afflicted creatures",
   "Throw Anything": "You are used to throwing things you have on hand",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
-  "Weapon Focus": "Choose one type of weapon You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat"
+  "Unknowable Fear": "Your terrifying presence precedes you. other creatures take a 2 penalty on intimidate checks against you, and you can perform the project hostility occult skill unlock even if you can't cast psychic spells. if you can cast psychic spells or have the psychic sensitivity feat, then creatures do not become immune to your project hostility for 24 hours after being targeted with it.",
+  "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch."
  },
  "inherents": {
   "cha": 4,
@@ -492,28 +472,43 @@
   "wis": 0
  },
  "initiation_stat": "cha",
- "initiator_level": 7,
+ "initiator_level": 0,
  "int": 17,
  "item_changes_dict": {
-  "Aspect Mask": {
+  "Boots of Friendly Terrain": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Three times per day on command, the wearer gains the benefit of a single aspect of an animal attuned to the mask, as if by the hunter's animal focus class feature."
+    "A ranger wearing the boots can treat the corresponding environment of the boots as one of his favored terrains, granting him a +2 bonus. If he already has that particular environment as one of his favored terrains, that terrain's bonus increases by 2."
    ]
   },
-  "Haunted Shoes": {
+  "Hexing Runes": {
    "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Two times per day, the wearer of these shoes can call forth 1d4 spirit servants to aid her. The spirits return to the shoes after 3 hours have passed. Once per day, the wearer can command the ghostly spirits inside her haunted shoes to emerge and swirl around her, making her difficult to target in combat. The wearer gains concealment (20% miss chance) for 3 minutes. The spirits cannot be harmed, but a true seeing spell ignores the concealment effect. The concealment effect cannot be activated while any of the spirits are currently being used as unseen servants"
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "When a witch prepares her spells, she may also choose to use the hexing runes to augment one hex she can use. The save dc of this hex increases by 1 for [[24]] hours. Additionally, once per day when she speaks the command word, the wearer gains the benefits of the ward hex as if cast by an 8th level witch."
+    }
    ]
   },
-  "Sipping Jacket": {
+  "Mnemonic Vestment": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Once per day as a standard action, the wearer can pour a potion onto this lining, suffusing it into the coat. If the potion has an instantaneous duration, the wearer can activate the coat as a swift action to consume the potion. If the potion's duration is measured in rounds, the wearer can activate the coat as a swift action to gain the potion's benefits for 1 round, repeating as desired each round until the potion's entire duration has been used. The absorbed potion loses its powers after 24 hours, even if unused."
+    "If the wearer is a spontaneous caster, once per day she may use a spell slot to cast a spell from a written source (such as a scroll or spellbook) as if she knew that spell. A mnemonic vestment must be worn for 24 consecutive hours before using its effects."
+   ]
+  },
+  "Ushanka of the Northlands": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "An ushanka of the northlands grants its wearer a +[[2]] resistance bonus on saving throws against cold effects and a +[[5]] competence bonus on survival checks."
+    },
+    {
+     "target": "skill.per",
+     "text": "When the earflaps are pulled down, the wearer gains a +[[2]] bonus on saving throws against sonic effects, but also takes a 2 penalty on perception checks made to hear."
+    }
    ]
   }
  },
@@ -526,22 +521,22 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Sphinx",
-  "Tengu",
-  "Auran",
-  "Undercommon",
-  "Aquan",
   "Terran",
-  "Draconic",
-  "Ignan",
-  "Giant",
-  "Grippli",
-  "Kelish",
+  "Sphinx",
   "Gnoll",
-  "Celestial",
+  "Giant",
+  "Aquan",
+  "Halfling",
+  "Draconic",
+  "Aklo",
+  "Protean",
+  "Auran",
+  "Kelish",
   "Elven",
-  "Orc",
-  "Abyssal"
+  "Drow Sign Language",
+  "Gnome",
+  "Dwarven",
+  "Undercommon"
  ],
  "level": 9,
  "level_up_stats": {
@@ -618,133 +613,47 @@
   "vault": 0,
   "vault_cap": 77
  },
- "magic_talent_items": [],
- "main_stat": "int",
- "maneuvers_choose_from": [
-  [
-   "Give Me a Hand",
-   "Squeak By"
-  ],
-  [
-   "Rat Takes the Cheese",
-   "Rat Trap"
-  ],
-  [
-   "Cat Takes the Rat",
-   "Underhanded Strike"
-  ],
-  [
-   "Rat Race"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Cat Takes the Rat": {
-   "action": "1 swift action",
-   "description": "Its not nice to play with your food, but that never stopped you. Upon initiating this boost, select one opponent with the tricked condition within range. The next successful attack within 1 round against them deals an extra 3 damage per round of the tricked condition they have remaining at the time you initiated this boost, to a maximum of 3 times your initiator level. Exploit: The maximum limit of extra damage is doubled, to 6 times your initiator level. Upon using this exploit, the target is immune to this exploit for two rounds.",
-   "discipline": "Roaring Mouse",
-   "duration": "1 round",
-   "level": 3,
-   "range": "Close 25 ft. + 5ft./2 levels",
-   "type": "boost"
+ "magic_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "This fey-blessing grants you the ability to communicate and control water. When granted, you gain the following abilities:\n\nHydrokinesis: When touching a body of water, you may attempt the bullrush, drag, grapple, reposition, or trip combat maneuver against another creature touching that body of water within medium range as a standard action. Use your caster level in place of your base attack bonus and your casting attribute modifier in place of your Strength modifier for determining your combat maneuver bonus for this check. Failure on a trip attempt does not allow the target to trip you in return. You have no bonuses or penalties from size on this maneuver and are not limited by the size of your target.\n\nWaterspout: When touching a body of water, you may attempt to damage a creature touching that body of water within close range as a standard action. The targeted creature must succeed on a Reflex save or take 1d6 bludgeoning damage. This damage increases by 1d6 at 3rd caster level and every 2 caster levels thereafter.\n\nWaveglide: As a standard action, you can create waves and currents to double or halve the speed of creatures or objects traveling on the surface of the water, affecting up to 10 contiguous 5-foot squares per caster level within long range. This requires line of effect to some part of the area, and lasts as long as you concentrate. An unwilling target can ignore the effect for 1 round by succeeding on a Will saving throw.",
+   "name": "Water Creature",
+   "sphere": "Fallen Fey",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
   },
-  "Crouching Lion": {
-   "action": "1 swift action",
-   "description": "You move with a strange grace, befuddling your enemies. While maintaining this stance, any Roaring Mouse maneuvers with durations greater than instantaneous last for 1 round longer than normal including the duration of effects or conditions imparted by these maneuvers. This increases by 1 additional round for every 6 initiator levels you have. The maneuver must be performed while you are in this stance, and if you leave it, this effect immediately ends. In addition, any creature you hit with a melee weapon including natural weapons becomes tricked for a number of rounds equal to your initiation modifier. This stances effect resolves after other effects relating to the attack such as strikes or weapon properties.",
-   "discipline": "Roaring Mouse",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Your fey-link endures for 10 minutes per caster level rather than 1 minute per caster level. You may spend a spell point to increase this duration to 1 hour per caster level instead.",
+   "name": "Greater Fey-link",
+   "sphere": "Fallen Fey",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
   },
-  "Give Me a Hand": {
-   "action": "1 swift action",
-   "description": "You know how to gang up on your enemies, using your allies to your advantage. Upon initiating this boost, you and your allies are considered to be flanking any foe so long as you are adjacent to them, regardless of your actual position. Additionally, if your ally is maintaining a Roaring Mouse stance, you both gain a +2 bonus on attacks against the foe that you are flanking.",
-   "discipline": "Roaring Mouse",
-   "duration": "One round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Pussyfoot Stance": {
-   "action": "1 swift action",
-   "description": "You are always just out of sight, striking where your foes least expect it. While maintaining this stance you can share the space of allies. Doing so does not incur the normal penalties for sharing space on either you or your ally. While doing so, you gain concealment 20% miss chance against opponents and count as flanking with that ally. This concealment allows you to use Stealth and other abilities that depend on concealment, so long as that ally is visible and not using Stealth themself. If your ally is also maintaining a Roaring Mouse stance, your concealment cannot be pierced by effects that allow foes to ignore concealment. Finally, regardless of whether you are sharing space with an ally, any foes hit by your attacks are tricked for a number of rounds equal to your initiation modifier.",
-   "discipline": "Roaring Mouse",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Rat Race": {
-   "action": "1 standard action",
-   "description": "Sometimes you just need to know when to bail. Make a melee attack. If successful, you deal damage as normal and the target is tricked for a number of rounds equal to your initiation modifier. Additionally, make an Escape Artist check with a DC equal to the targets CMD. If successful, you may move up to your speed even if youve already moved this round and the target is dazed for one round. Your movement does not provoke attacks of opportunity. Exploit: The target is stunned instead of dazed. Upon using this exploit, the target is immune to this exploit for three rounds.",
-   "discipline": "Roaring Mouse",
-   "duration": "Instantaneous see text",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Rat Takes the Cheese": {
-   "action": "1 swift action",
-   "description": "Your opponent wasnt using that anyways. Upon initiating this boost, make a steal or disarm attempt, using an Escape Artist check in place of the normal CMB roll against the target's CMD. Exploit: You may stow the item you took from the target as a free action that does not provoke attacks of opportunity.",
-   "discipline": "Roaring Mouse",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "boost"
-  },
-  "Rat Trap": {
-   "action": "1 immediate action",
-   "description": "You got your tail caught, but you make the most of it. Make an Escape Artist attempt against your foes attack roll. If you succeed, you halve the damage, trick your target for a number of rounds equal to your initiation modifier, and may gain an extra effect of your choice. Neither you nor your foes movement provokes an attack of opportunity. Exploit: You negate the attack instead of halving its damage.",
-   "discipline": "Roaring Mouse",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Squeak By": {
-   "action": "1 immediate action",
-   "description": "Your agility offers you unique opportunities when countering attacks. Make an Escape Artist attempt against your foes attack roll. If you succeed, you negate the attack and may gain an extra effect of your choice. Neither you nor your foes movement provokes an attack of opportunity. Exploit: Make an Escape Artist check with a DC equal to the targets CMD. If successful, you may knock your foe prone.",
-   "discipline": "Roaring Mouse",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Underhanded Strike": {
-   "action": "1 standard action",
-   "description": "Fair fights are for suckers. Make a melee attack. If successful, you deal damage as normal and the target is tricked for a number of rounds equal to your initiation modifier. Additionally, make an Escape Artist check with a DC equal to the targets CMD. If successful, this strike gains an extra effect of your choice. Exploit: Gain may use both of the extra effects.",
-   "discipline": "Roaring Mouse",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You know the secrets of traveling via the fey realms. You may spend a 1-round action to determine the direction to the nearest fairy ring. You may open a fairy ring with a 10 minute ritual or by spending a spell point as a standard action. Once opened, creatures may pass through the fairy ring into the realm of Faerie. The ring remains open for 3d6 rounds. While in Faerie, you may spend a 1-round action to determine the direction to the fairy ring connected to the spot nearest your desired destination.\n\nWhen rolling on Table: Time Difference, you may spend two spell points to shift the result by one step in the direction of your choice. These points must be spent before the result of the roll is known. (See Traveling Through Faerie, below, for more information.)",
+   "name": "Fairy Ring Traveler",
+   "sphere": "Fallen Fey",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
   }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1
  ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Rat Takes the Cheese"
-  ],
-  [
-   "Underhanded Strike",
-   "Cat Takes the Rat"
-  ],
-  [
-   "Rat Race"
-  ]
- ],
+ "main_stat": "int",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
   "Taps pencil",
@@ -752,20 +661,15 @@
   "Bursts into laughter",
   "Crouches"
  ],
- "martial_disciplines": [
-  "Roaring Mouse"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Roaring Mouse)",
-  "Martial Training III (Roaring Mouse)"
- ],
+ "mt_feats": [],
  "normal_feat_amount": 8,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, absent father, raised in an orphanage",
+ "parents": "dead mother, dead father, adopted into a middle income family",
  "personality_traits": [
   "Enthusiastic",
   "Agreeable",
@@ -773,7 +677,7 @@
   "Judicious",
   "Gregarious"
  ],
- "platnium": 402.0,
+ "platnium": 10.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1450,38 +1354,56 @@
   3
  ],
  "sphere_boons": [
-  "Easy Focus",
-  "Fortified Casting"
+  "Overcharge"
  ],
- "sphere_counts": {},
+ "sphere_counts": {
+  "Fallen Fey": {
+   "advanced": 1,
+   "feats": 0,
+   "normal": 2
+  }
+ },
  "sphere_drawbacks": [
   "Draining Casting",
-  "Extended Casting",
-  "Somatic Casting",
-  "Prepared Caster"
+  "Extended Casting"
  ],
- "sphere_feat_tax": {},
- "sphere_feats": [],
- "sphere_mana_pool": 0,
+ "sphere_feat_tax": {
+  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": [
+   "Extra Magic Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Basic Magic Training",
+  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)"
+ ],
+ "sphere_mana_pool": 6,
  "sphere_traits": [
   "Draining Casting",
   "Extended Casting",
-  "Somatic Casting",
-  "Prepared Caster",
-  "Easy Focus",
-  "Fortified Casting"
+  "Overcharge"
  ],
- "spheres_chosen": [],
- "stances_chosen": [
-  "Crouching Lion",
-  "Pussyfoot Stance"
+ "spheres_chosen": [
+  {
+   "sphere": "Fallen Fey",
+   "system": "power"
+  }
  ],
- "story_feat_tax_dict": {},
+ "stances_chosen": [],
+ "story_feat_tax_dict": {
+  "Light Armor Proficiency": [
+   "arcane armor training",
+   "medium armor proficiency"
+  ],
+  "Net Adept": [
+   "net maneuvering",
+   "net trickery"
+  ]
+ },
  "story_feats": [
-  "Urban Tracking",
-  "Gunsmithing",
-  "Natural Telekinetic",
-  "Exotic Weapon Proficiency"
+  "Bloodletting",
+  "Net Adept",
+  "Light Armor Proficiency",
+  "Wand Desperado"
  ],
  "str": 10,
  "teamwork_feat_labels": [],
@@ -1489,30 +1411,37 @@
  "total_level": 15,
  "total_rolled_hp": 112,
  "trainer_calibers": [
-  3
+  3,
+  2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)"
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)"
  ],
  "trainer_feat_tax_dict": {
-  "Weapon Focus": [
-   "greater weapon focus",
-   "weapon specialization",
-   "greater weapon specialization"
+  "Arcane Strike": [
+   "deadly dealer",
+   "sunlit strike"
+  ],
+  "Improved Initiative": [
+   "surprising combatant"
   ]
  },
  "trainer_feats": [
-  "Nemesis",
-  "Weapon Focus",
-  "Expert Trainer"
+  "Arcane Strike",
+  "Improved Initiative",
+  "Cloud Gazer",
+  "Planned Spontaneity",
+  "Siphon Poison"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
  "weapon_name": "Mere club",
  "weight_number": 217,
  "wis": 12,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 3 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

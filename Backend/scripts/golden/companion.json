@@ -52,7 +52,7 @@
   }
  },
  "appearance": [
-  "Raspy voice"
+  "Flat nose"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
@@ -403,8 +403,7 @@
   "bonus_spell_points": 1,
   "boons": [
    "Fortified Casting",
-   "Easy Focus",
-   "Overcharge"
+   "Easy Focus"
   ],
   "boons_detail": [
    {
@@ -414,20 +413,15 @@
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
-   },
-   {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
    "Somatic Casting",
-   "Wild Magic",
-   "Addictive Casting",
    "Focus Casting",
+   "Skilled Casting",
    "Verbal Casting",
-   "Prepared Caster"
+   "Draining Casting"
   ],
   "drawbacks_detail": [
    {
@@ -437,18 +431,13 @@
    },
    {
     "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
-   },
-   {
-    "counts_as": 2,
-    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
-    "name": "Addictive Casting"
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
    },
    {
     "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
    },
    {
     "counts_as": 1,
@@ -457,8 +446,8 @@
    },
    {
     "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
    }
   ]
  },
@@ -775,21 +764,21 @@
  "dex": 16,
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "chest": {
-   "description": " this shirt is made of light, gossamer-thin fabric embroidered\r with arrangements of winged feet. Once per day as a swift\r action, the wearer can take an additional move action to move\r and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability. ",
-   "item_name": "Quick Runner's Shirt"
+  "belts": {
+   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
+   "item_name": "Belt of Tumbling"
   },
-  "rings": {
-   "description": "When this ring is worn, the wielder's skin attains a barely perceptible sheen. In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Additionally, the ring's wearer can focus all of the ring's power, possibly repelling a devastating blow. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally. Using this ability is an immediate action, and the wearer must decide to use it before the critical hit or sneak attack damage is rolled.",
-   "item_name": "Steelhand Circle"
+  "chest": {
+   "description": " this simple silk vest looks nondescript, \r but is actually studded with numerous\r secret pockets sewn into its lining. \r hidden inside these are magic lockpicks\r that provide a +4 competence bonus\r on disable device checks. The vest also\r grants its wearer a +6 competence bonus\r on escape artist checks. ",
+   "item_name": "Vest of Escape"
   }
  },
  "equipment_list": [
-  "Quick Runner's Shirt",
-  "Steelhand Circle"
+  "Vest of Escape",
+  "Belt of Tumbling"
  ],
  "eye_color": [
-  "Amber"
+  "Green"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -800,18 +789,9 @@
   "profession": 2,
   "story": 3,
   "teamwork": 1,
-  "trainer": 5
+  "trainer": 6
  },
  "feat_changes_dict": {
-  "Divine Deception": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.umd",
-     "text": "+5 on Use Magic Device checks to use divine spell-trigger/spell-completion items or to emulate a divine class feature."
-    }
-   ]
-  },
   "Eye of the Arclord": {
    "changes": [],
    "contextNotes": [
@@ -820,31 +800,85 @@
      "text": "While the third eye is open (1/day standard action, 1 minute), +8 on Perception checks to notice invisible creatures."
     }
    ]
+  },
+  "Nature Soul": {
+   "changes": [
+    {
+     "formula": "ifelse(gte(@skills.kna.rank,10),4,2)",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kna",
+     "type": "untyped"
+    },
+    {
+     "formula": "ifelse(gte(@skills.sur.rank,10),4,2)",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.sur",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Storm-Lashed": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 on all saving throws against electrical effects."
+    }
+   ]
   }
  },
  "feat_conditionals_dict": {
-  "Bludgeoner": {
+  "Ferocious Loyalty": {
    "default": false,
-   "modifiers": [],
-   "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
-   "tier": "A"
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
   }
  },
  "feats": [
-  "Divinatory Strike",
-  "Tribe Mentality",
-  "Catch Off-Guard",
-  "Master of the Staff",
-  "Outer Planes Traveler",
-  "Divine Deception",
-  "Enforcer",
+  "Greater Enrune Shield",
+  "Diehard",
+  "Storm-Lashed",
+  "Augment Physical Prowess",
+  "Ferocious Loyalty",
+  "Martial Training I (Shattered Mirror)",
+  "Martial Training III (Shattered Mirror)",
   "Multi Talented",
   "True Calling"
  ],
- "feats_feat_tax_dict": {},
+ "feats_feat_tax_dict": {
+  "Martial Training I (Shattered Mirror)": [
+   "Martial Training II (Shattered Mirror)"
+  ],
+  "Martial Training III (Shattered Mirror)": [
+   "Martial Training IV (Shattered Mirror)"
+  ],
+  "Martial Training V (Shattered Mirror)": [
+   "Martial Training VI (Shattered Mirror)"
+  ]
+ },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Eye of the Arclord"
+  "Echoing Spell"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -876,45 +910,50 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Skilled Tracker",
-  "Bludgeoner"
+  "Maximize Spell",
+  "Force Magic Device"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An average trainer who taught them Counter Maneuver (combat), Nemesis\n- Training: An excellent trainer who taught them Swift Aid, Undermine, Astrology\n\nFamily\n- Absent Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Amber\n- Build: Raspy Voice",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Shattered Mirror\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An excellent trainer who taught them Unseelie Hunter, Nature Soul, Eye of the Arclord\n- Training: An excellent trainer who taught them Rime Spell, Persistent Spell, Rod Wielder\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 1 Younger Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Flowing Blond\n- Eyes: Green\n- Build: Flat Nose",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 4988,
+ "gold": 0,
  "hair_color": [
   "Blond"
  ],
  "hair_type": [
-  "Touseled"
+  "Flowing"
  ],
  "height_number": "5'1\"",
- "hero_points": 0,
+ "hero_points": 2,
  "homebrew_feat_desc_dict": {
-  "Allied Spellcaster": "With the aid of an ally, you are skilled at piercing the protections of other creatures with your spells",
-  "Astrology": "You have come to understand that the workings of the universe and even the capricious machinations of the gods can all be divined from the motions of the heavens. If you can cast psychic spells or have the Psychic Sensitivity feat, you can use prognostication one additional time per day. Spending 1 minute consulting a star chart or cosmogram that is accurate for the world or plane you are currently on, prior to attempting a Sense Motive check, grants you a +2 insight bonus on the check. Special A zodiac, or a path of the mage vizier, can expend uses of their stargazing or personal astrarium ability to use prognostication an additional time per day. you can perform the prognostication occult skill unlock even if you cant use psychic magic, though you must employ this occult skill unlock via horoscopy. with a dc 10 + creature's hit die prognostication task you can determine the astrological conditions at the time of a creature's birth. this can allow you to ascertain information about a creature that is based on those astrological conditions such as a creature's date of birth or the they would receive from the auspicious birth feat. this task follows the normal rules for the prognostication occult skill unlock.",
-  "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
-  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
-  "Charlatan": "You can fake out practitioners of magic when using your own superhuman abilities. Special If your campaign uses Path of War, you may use this feat to obfuscate a supernatural martial maneuver, or to disguise one of the listed effects as a martial maneuver. If you do, you may make a Knowledge (martial) check in place of your Bluff or Spellcraft check, and viewers may attempt a Knowledge (martial) check in place of their Sense Motive or Spellcraft check. A maneuver does not have obvious components for the purposes of this feat. whenever you use a power, psi-like ability, spell, spell-like ability, or supernatural ability, you may make a bluff or spellcraft check to obfuscate the nature of your ability. a creature watching you while you use this ability must succeed at a sense motive or spellcraft check with a dc equal to your bluff check result or they believe that you used a type of effect of your choice from the above list. they do not gain insight into the exact nature of your ability; for example, you could fool a creature into thinking that youve cast a spell, but they will not be sure of what exact spell youve cast. if your ability has obvious components (such as verbal, somatic, or material components, a psionic powers display, or a dragons breath weapon erupting from its mouth), then you take a 5 penalty on your bluff check. a creature that succeeds on its check may still make a spellcraft check to identify a spell or power being used, as normal.",
-  "Counter Maneuver (combat)": "You use your opponents failed maneuvers as a window of opportunity to make your own. whenever an opponent makes a failed combat maneuver check against you, you can use an attack of opportunity to attempt the same kind of maneuver upon that opponent. you must be able to reach your opponent with the maneuver to do so.",
-  "Divinatory Strike": "",
-  "Divine Deception": "You are skilled at manipulating divine magical items",
-  "Enforcer": "You are skilled at causing fear in those you brutalize",
-  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
+  "Athame Knowledge": "",
+  "Augment Physical Prowess": "",
+  "Diehard": "You are especially hard to kill Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door",
+  "Echoing Spell": "You have learned how to release most, but not all, of a spell's potential when you cast it",
   "Eye of the Arclord": "Your understanding of the esoteric teachings of the Arclords of Nex allows you to open an eldritch eye that grants you superior perception of the magical world",
-  "Master of the Staff": "You have whipped your servants into shape - they are the best in the business. Note This is not a metamagic feat and does not modify the level of the spell. unseen servants, whether conjured by the spell or the battle butler class feature, have improved statistics. they have a strength score of 6 (about 60 pounds of lift, 300 lbs dragging), its base speed is 30 feet, and they can take 20 points of damage before they disappear.",
+  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
+  "Force Magic Device": "",
+  "Greater Enrune Shield": "",
+  "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
+  "Martial Training I (Shattered Mirror)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Shattered Mirror)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Shattered Mirror)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Shattered Mirror)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Shattered Mirror)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Shattered Mirror)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Maximize Spell": "Your spells have the maximum possible effect",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Nemesis": "A past enemy seeks your ruin",
-  "Outer Planes Traveler": "You have seen the outer reaches of the multiverse, and have gleaned knowledge from these alien realms You have a special affinity for one of these realms in particular, and carry some of that plane's power within you",
-  "Skilled Tracker": "You can track down impossible prey. Normal You cannot track a creature without a trail. you can track creatures that leave no tracks at all, such as flying creatures and those under the effects of pass without trace, though you take a -5 penalty to your survival checks to do so.",
-  "Step Up": "You can close the distance when a foe tries to move away",
-  "Swift Aid": "With a quick but harmless swipe, you can aid an ally's assault",
-  "Tribe Mentality": "You and your tribemates grant each other mental strength",
+  "Nature Soul": "You are innately in tune with nature and venerate the power and mystery of the natural world",
+  "Persistent Spell": "You can modify a spell to become more tenacious when its targets resist its effect",
+  "Rime Spell": "Creatures damaged by your spells with the cold descriptor become entangled",
+  "Rod Wielder": "",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Undermine": "You and your allies take advantage of shifting terrain to unbalance enemies"
+  "Unseelie Hunter": ""
  },
  "inherents": {
   "cha": 0,
@@ -925,24 +964,36 @@
   "wis": 4
  },
  "initiation_stat": "wis",
- "initiator_level": 0,
+ "initiator_level": 7,
  "int": 13,
  "item_changes_dict": {
-  "Quick Runner's Shirt": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day as a swift action, the wearer can take an additional move action to move and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability."
-   ]
-  },
-  "Steelhand Circle": {
+  "Belt of Tumbling": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "attack",
-     "text": "In practical terms, the wearer ignores the first 5 points of an object's hardness when performing a sunder combat maneuver or when smashing an object. She also does not take the standard 4 penalty for making a combat maneuver check to disarm while unarmed. Once per day, when a critical hit or sneak attack is scored on the wearer, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally."
+     "target": "skill.acr",
+     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
     }
    ]
+  },
+  "Vest of Escape": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dev",
+     "type": "competence"
+    },
+    {
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.esc",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
   }
  },
  "known_list": [],
@@ -950,15 +1001,15 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Kelish",
-  "Aquan",
-  "Wayang",
-  "Grippli",
+  "Giant",
   "Infernal",
-  "Abyssal",
-  "Orc",
-  "Celestial",
-  "Goblin"
+  "Auran",
+  "Undercommon",
+  "Draconic",
+  "Elven",
+  "Kelish",
+  "Wayang",
+  "Ignan"
  ],
  "level": 4,
  "level_up_stats": {
@@ -1037,11 +1088,183 @@
  },
  "magic_talent_items": [],
  "main_stat": "wis",
- "maneuvers_choose_from": [],
- "maneuvers_desc_dict": {},
- "maneuvers_known_list": [],
- "maneuvers_readied_list": [],
- "maneuvers_readied_names": [],
+ "maneuvers_choose_from": [
+  [
+   "Breaking Glass Strike",
+   "Left-Hand Strike"
+  ],
+  [
+   "Obsidian Razor Style",
+   "Broken Mirror Strike"
+  ],
+  [
+   "Curse of the Twisted Reflection",
+   "Shattered Glass Smite"
+  ],
+  [
+   "Carnival Swap"
+  ],
+  [
+   "Curse of the Smoking Mirror"
+  ],
+  [
+   "Copycats Cunning"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Breaking Glass Strike": {
+   "action": "1 standard action",
+   "description": "Your vicious strike flares with shards of mirror-bright color that dazzle and dizzy your victim. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 11 + your initiation modifier or become dazed for one round. Regardless of whether or not they succeed at their save, a struck target also becomes dazzled for a number of rounds equal to your initiation modifier.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Broken Mirror Strike": {
+   "action": "1 standard action",
+   "description": "With a mirror-bright slash, you put jagged cracks in your opponents defenses. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Reflex save DC 12 + your initiation modifier or its armor or shield your choice gains the broken condition for a number of rounds equal to your initiator level.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Carnival Swap": {
+   "action": "1 swift action",
+   "description": "You catch your enemy in the reflection of your blade and twist reality like a funhouse mirror, leaving an unfair trade. The next time this round that you make an attack that hits, you may select one power, psi-like ability, spell, or spell-like ability affecting the struck creature. That creature loses the benefits of the chosen effect and you gain them for a number of rounds equal to your initiation modifier. Select a power, psi-like ability, spell, or spell-like ability affecting you. You lose the chosen effect and the struck creature gains it for a number of rounds equal to your initiation modifier.",
+   "discipline": "Shattered Mirror",
+   "duration": "Special see text",
+   "level": 4,
+   "range": "Close 25-ft + 5-ft/2 levels",
+   "type": "boost"
+  },
+  "Copycats Cunning": {
+   "action": "1 swift action",
+   "description": "opponent within range Your supernatural mimicry permits you to ape the tools used by your friends and foes. When you initiate this boost, choose another creatures armor, shield, or weapon within close range 25 feet + 5 feet per 2 initiator levels. A single piece of equipment wielded or worn by you of the same type as the targeted item may use the enhancement bonus of that item for a number of rounds equal to your initiation modifier. In addition, for the same duration, that piece of equipment gains the properties and special abilities on the chosen item in addition to its own, unless those properties or special abilities could not be applied to your equipment for example, if you targeted a +2 distant longbow with this boost while wielding a +1 greatsword, your greatswords enhancement bonus would increase to +2, but it would not gain the distant weapon special ability.",
+   "discipline": "Shattered Mirror",
+   "duration": "See text",
+   "level": 6,
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "boost"
+  },
+  "Curse of the Smoking Mirror": {
+   "action": "1 standard action",
+   "description": "With an obsidian-edged blow, you reflect an enemys malice back onto itself, tainting them from within. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 15 + your initiation modifier or fall prey to a reflected curse for a number of rounds equal to your initiation modifier. While affected, the target becomes cursed, and whenever it deals damage by any means during this time it takes an equal amount of damage of the same types. Damage reduction, resistances, and immunities are applied to this damage as normal.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 5,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Curse of the Twisted Reflection": {
+   "action": "1 standard action",
+   "description": "With a hideous strike, you distort the perceptions of your enemies. Make an attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 13 + your initiation modifier or become confused for a number of rounds equal to your initiation modifier. In addition, a struck target becomes cursed for a number of rounds equal to your initiation modifier, regardless of whether or not it succeeded on its save.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Cursed Mirror Stance": {
+   "action": "1 swift action",
+   "description": "You mimic your opponents movements, visiting retribution upon them. While you maintain this stance, you can make a number of additional attacks of opportunity each round equal to your initiation modifier. This stacks with the Combat Reflexes feat and other effects that increase the number of attacks of opportunity you can make in a round. In addition, any creature that hits you with a melee attack or melee touch attack provokes an attack of opportunity from you.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Infinity Mirror Stance": {
+   "action": "1 swift action",
+   "description": "By bending the light near yourself, you create a deceptive defense against assault. When you enter this stance, you gain the benefits of amirror imagespell with a caster level equal to your initiator level. Instead of the normal amount of mirror images generated, you create one image for every four initiator levels you possess minimum 1, and the effect lasts until you enter another stance, at which point any remaining images fade.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Left-Hand Strike": {
+   "action": "1 standard action",
+   "description": "A minor twist of reality makes it seem like your strike is two places at once. When you initiate this strike, make a Craft check, using the targets AC as the DC. Then make a melee attack against the target. If it hits, it deals weapon damage as normal. If your Craft check succeeded, your target loses its shield bonus to AC against this and other attacks this round, and your attack deals an additional 1d6 points of damage.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Obsidian Razor Style": {
+   "action": "1 swift action",
+   "description": "Like obsidian, you create a reflection that is beautiful, dark, and deadly at the edge of your weapon. After initiating this boost, you gain an insight bonus equal to your ranks in one Craft skill chosen when you initiate this boost on melee damage rolls for one round.",
+   "discipline": "Shattered Mirror",
+   "duration": "1 round",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Obsidian Reflection Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 20\n\nYou emanate an aura that either enhances the perceptions of those within it or makes them warped and twisted. While you maintain this stance, all creatures including you within 20 feet of you gain either a +1 bonus on attack and damage rolls or a 1 penalty on attack and damage rolls. Once per round as a free action, you can change which of these effects is applied. These bonuses increase by +1 for every four initiator levels you possess +/ 2 at 4th level, +/ 3 at 8th level, and so on.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal see text",
+   "type": "stance"
+  },
+  "Shattered Glass Smite": {
+   "action": "1 standard action",
+   "description": "With your will and your weapon, you shatter reality as you would shatter a mirror, shredding your enemies with false glass. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of magical slashing damage, and you create a 30-foot cone of shattered glass originating in the targets space and aimed in a direction of your choice. This cone deals 3d6 points of magical slashing damage to each creature caught within it. You and the initial target of this strike do not take damage from this cone.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Silvered Mirror Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 30\nonlyOthers;\n\nLike a prism or a silver mirror, you splash joy and light onto those whom you love. When you enter this stance, choose a single power, psi-like ability, spell, or spell-like ability with a range greater than personal affecting you. While you maintain this stance, allies within 30 feet of you also gain the benefits of the chosen effect for as long as it is affecting you.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal see text",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Obsidian Razor Style"
+  ],
+  [
+   "Shattered Glass Smite",
+   "Curse of the Twisted Reflection"
+  ],
+  [
+   "Carnival Swap"
+  ],
+  [
+   "Curse of the Smoking Mirror"
+  ],
+  [
+   "Copycats Cunning"
+  ]
+ ],
  "manifesters": [],
  "mannerisms": [
   "Flexes muscles",
@@ -1049,21 +1272,27 @@
   "Covers eyes",
   "Cracks knuckles"
  ],
- "martial_disciplines": [],
+ "martial_disciplines": [
+  "Shattered Mirror"
+ ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [],
+ "mt_feats": [
+  "Martial Training I (Shattered Mirror)",
+  "Martial Training III (Shattered Mirror)",
+  "Martial Training V (Shattered Mirror)"
+ ],
  "normal_feat_amount": 7,
- "older_brothers": " you have 1 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, absent father, adopted into a poor family",
+ "parents": "loving mother, dead father, raised in a middle income household",
  "personality_traits": [
   "Astute",
   "Energetic",
   "Chill"
  ],
- "platnium": 498.8,
+ "platnium": 0.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1773,67 +2002,75 @@
  ],
  "sphere_boons": [
   "Fortified Casting",
-  "Easy Focus",
-  "Overcharge"
+  "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
   "Somatic Casting",
-  "Wild Magic",
-  "Addictive Casting",
   "Focus Casting",
+  "Skilled Casting",
   "Verbal Casting",
-  "Prepared Caster"
+  "Draining Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
   "Somatic Casting",
-  "Wild Magic",
-  "Addictive Casting",
   "Focus Casting",
+  "Skilled Casting",
   "Verbal Casting",
-  "Prepared Caster",
+  "Draining Casting",
   "Fortified Casting",
-  "Easy Focus",
-  "Overcharge"
+  "Easy Focus"
  ],
  "spheres_chosen": [],
- "stances_chosen": [],
+ "stances_chosen": [
+  "Infinity Mirror Stance",
+  "Obsidian Reflection Stance",
+  "Silvered Mirror Stance",
+  "Cursed Mirror Stance"
+ ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Expert Driver",
-  "Allied Spellcaster",
-  "Charlatan"
+  "Lingering Shadows",
+  "Scholar",
+  "Skilled Driver"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Step Up"
+  "Athame Knowledge"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
  "trainer_calibers": [
-  2,
+  3,
   3
  ],
  "trainer_feat_labels": [
+  "(Trainer 1)",
   "(Trainer 1)",
   "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 2)"
  ],
- "trainer_feat_tax_dict": {},
+ "trainer_feat_tax_dict": {
+  "Nature Soul": [
+   "friend to animals",
+   "boon companion"
+  ]
+ },
  "trainer_feats": [
-  "Counter Maneuver (combat)",
-  "Nemesis",
-  "Swift Aid",
-  "Undermine",
-  "Astrology"
+  "Unseelie Hunter",
+  "Nature Soul",
+  "Eye of the Arclord",
+  "Rime Spell",
+  "Persistent Spell",
+  "Rod Wielder"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
@@ -1841,5 +2078,5 @@
  "weight_number": 149,
  "wis": 18,
  "younger_brothers": " you have 0 younger brothers",
- "younger_sisters": " you have 0 younger sisters"
+ "younger_sisters": " you have 1 younger sisters"
 }

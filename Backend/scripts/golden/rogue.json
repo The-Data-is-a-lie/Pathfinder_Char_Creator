@@ -4,7 +4,7 @@
  "alignment": "Chaotic Neutral",
  "animal_companion": null,
  "appearance": [
-  "Sneering"
+  "Ponytail"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Shadow Scion\": {\n        \"source\": \"Legacy of the First World pg. 15 Count Ranalc's worshipers congregate in the places between dark and light, searching for secrets that might one day free their patron from his mysterious exile. Shadow scions have learned some of these secrets and draw power from the shadows themselves. Many shadow scions are dedicated fetchling ( Pathfinder RPG Bestiary 2 123) or wayang ( Pathfinder RPG Bestiary 4 274) devotees of Count Ranalc.\",\n        \"shadow dweller (ex)\": \" A shadow scion gains darkvision with a range of 30 feet and a +1 competence bonus on Stealth checks in dim light and darkness. If she already has darkvision, the range of her darkvision increases by 10 feet. At 3rd level, and every 2 levels thereafter, the range of her darkvision increases by 10 feet and her bonus on Stealth checks increases by 1. This ability replaces trapfinding.\",\n        \"shadow strike\": \" At 2nd level, a shadow scion gains Shadow Strike APG as a bonus feat. A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains Blind-Fight as a bonus feat. This ability replaces the rogue talent gained at 2nd level.\",\n        \"shadow step (sp)\": \" At 8th level, a shadow scion can walk through the Shadow Plane and reappear elsewhere on the Material Plane as a standard action. The shadow scion can travel up to 30 feet per rogue level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in increments of at least 5 feet and does not provoke attacks of opportunity. Travel through the Shadow Plane is imprecise; when the shadow scion arrives back on the Material Plane, she reenters 1 square off target, as per the rules for thrown splash weapons. If this would place her in an occupied square, she instead arrives in the nearest safe location. When the shadow scion arrives on the Material Plane, she is cloaked in shadow and gains concealment as per the blur spell for 1 round. This ability replaces the rogue talent gained at 8th level.\",\n        \"shadow speaker (sp)\": \" At 14th level, a shadow scion can spend 1 minute meditating within a patch of dim light or darkness; at the end of the time, she can draw information from the shadows. This functions as commune with nature , except that it functions in any terrain to a radius of 100 feet per rogue level, and it cannot reveal information about any object or subject that is not currently in dim light or darkness. The shadow scion can use this ability once per day at 14th level and twice per day at 19th level. This ability replaces the rogue talent gained at 14th level.\",\n        \"shadow master (su)\": \" At 20th level, whenever a shadow scion is in an area of dim light, she gains DR 10/cold iron and a +2 luck bonus on all saving throws. In addition, whenever she confirms a critical hit against a foe that is in an area of dim light, that foe is blinded for 1d6 rounds. This ability replaces master strike.\",\n        \"rogue talents\": \" The following rogue talents complement the shadow scion archetype: false friend ARG , fast stealth, slow reactions, surprise attack, and underhanded UC\",\n        \"advanced talents\": \" The following advanced rogue talents complement the shadow walker archetype: hide in plain sight UC , improved evasion, slippery mind, and unwitting ally UC\"\n    }\n}",
@@ -12,10 +12,7 @@
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [
-  "Mirrored",
-  "Hosteling",
-  "Crusading",
-  "Champion"
+  "Vigilant"
  ],
  "armor_max_dex_bonus": "0",
  "armor_name": "Hellknight half-plate",
@@ -40,14 +37,9 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Fortified Casting",
    "Easy Focus"
   ],
   "boons_detail": [
-   {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
-   },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
@@ -55,31 +47,19 @@
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Skilled Casting",
-   "Material Casting",
-   "Magical Signs",
-   "Extended Casting"
+   "Extended Casting",
+   "Skilled Casting"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
-    "name": "Magical Signs"
-   },
    {
     "counts_as": 2,
     "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
     "name": "Extended Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
    }
   ]
  },
@@ -298,100 +278,12 @@
  ],
  "combat_talent_items": [
   {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When you place the tripwire snare, you may choose to have it deal 1d6 slashing damage + 1d6 at 3 ranks in Craft (traps) and every 2 ranks thereafter to the triggering creature. Alchemical items cannot be added to this snare. A razor wire snare otherwise functions as a tripwire snare.",
-   "name": "Razor Wire",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Creatures that are struck by your dart trap or that fail a save against your snare trap provoke an attack of opportunity from you. You may make this attack of opportunity with a ranged weapon provided the target is within your first range increment.",
-   "name": "Opportunist",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "A dart trap is constructed of spring, twine, and usually a needle or other blade. A dart targets a line originating from one corner of one of the squares it occupies determined when it is set. This line extends out to Close range (25 ft. + 5 ft. per 2 ranks of Craft (traps) you possess) and stops after one creature is hit. When triggered, make a ranged attack roll against each creature in the line until one is hit. You may substitute your ranks in Craft (traps) + your Intelligence modifier for your base attack bonus + Dexterity modifier on this roll. The dart deals 1d6 piercing damage, increasing by 1d6 when your Craft (traps) ranks reach 3 and every 2 ranks thereafter, and has a critical threat range of 20 with a x3 multiplier. Some talents allow you to modify your darts. Each trap may only benefit from one (dart) talent. Some trap talents allow you to forgo dealing damage for benefits as defined in that talent.\n\nYou may forgo dart damage to expend an alchemical item (such as a tanglefoot bag), a thrown splash weapon (such as alchemist's fire or acid flasks), or a dust (a potion containing a spell that affects an area) when making a dart trap to add the effects of that splash weapon to the dart. Resolve the attack versus touch AC. Items with an area of effect count their origin from the nearest corner of the struck creature's space to the line of the dart's effect.\n\nYou may apply injury poison to a dart as if it were a weapon after it has been set. While setting the trap, you may choose to forgo dart damage, instead expending a dose of a contact or inhaled poison as part of setting the trap. The dart then resolves its attack vs. touch AC. An inhaled poison fills its area as normal, centered on the struck creature's square (or the first square targeted by the line, if the creature occupies more than one space).\n\nSnares\n\nA snare trap is constructed from rope, wire, and similar materials. A snare targets the first creature to enter one of the squares it occupies. A creature may avoid triggering a snare with a successful Reflex save; doing so leaves the trap untriggered and makes the creature aware of the trap and able to pass through that trap's space(s) without further risk of triggering it. Some talents grant additional types of snares. Each trap may only benefit from one (snare) talent.\n\nAn alchemical item may be rigged to a snare trap. If a creature triggers the trap, the alchemical item is activated, targeting a grid intersection adjacent to the trap chosen when it is set. If the alchemical item is a thrown splash weapon, the triggering creature is affected by the item as if it were struck directly by it. Other small items such as dyes, dusts, vials of perfume, and other items with GM permission may also be attached to a snare trap as well.\n\nAn inhaled poison may be rigged to a snare trap. If a creature triggers the trap, the first square entered (the creature's choice if there is more than one entered simultaneously) becomes the centerpoint for the inhaled poison.\n\nWhen you first gain the Trap sphere, you gain the following snare:",
-   "name": "Darts",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "A creature that fails its save against a tripwire snare falls prone. Once knocked prone, a creature is no longer at risk of triggering the trap in that square. This trap is not destroyed when triggered; instead the duration is reduced by 5 rounds per creature that fails its save. Running and charging creatures take a -2 penalty on their Reflex saves against this trap.",
-   "name": "Tripwire",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You know how to place traps in a discreet manner. When a creature has line of sight to and is within 30 feet of a trap you are placing, you may perform a Sleight of Hand check with a DC equal to 11 + the observer's Perception modifier in order to place it without automatically making the observer's aware of the trap's existence, or granting them bonuses to locate or avoid the trap. If there are multiple observers within 30 feet, use the highest DC among them. If there are no creatures within 30 feet of the trap, you automatically succeed on this check.",
-   "name": "Sneaky Trapper",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Sometimes the heat of battle does not allow one to properly set and camouflage a trap. Instead of placing a trap, you may attempt to immediately apply it to a creature. Doing so requires the normal action for placing the trap. As the trap is never set, creatures do not gain any bonus to AC or saves for seeing you set the trap. You may poison a trap used in this way by spending the required action to poison a weapon no more than 1 round prior to using this talent.\n\nA dart trap may be immediately triggered, originating its line from any corner of your square. This provokes attacks of opportunity as a ranged attack.\n\nA snare trap may be employed against any creature within your natural reach and does not provoke an attack of opportunity.",
-   "name": "Trap Wielder",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "When used as a dart, the target must make a Reflex save or suffer a 20% miss chance on all attack rolls for 1 round and dazzled for a number of rounds equal to your ranks in Craft (traps). At 10 ranks in Craft (traps), it may inflict the blinded condition rather than a miss chance.\n\nWhen used as a snare, all creatures within 5 ft. of a corner of the triggering square of your choice must make a Reflex save or be blinded for 1 round and dazzled for a number of rounds equal to your ranks in Craft (traps). For every 5 ranks in Craft (traps) you possess, the area of this snare increases by 5 ft. If you possess 10 or more ranks in Craft (traps), the duration of the blinded condition also increases by 1 round.",
-   "name": "Flash Trap",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You can give your traps a trigger that extends to the air to affect flying creatures. Creatures up to 10 feet per rank in Craft (traps) over the area occupied by your traps can trigger them as normal.\n\nIf your trap would knock the flying creature prone, it is instead battered until the end of its next turn. If your trap entangles the flying creature and prevents it from moving from the triggering square, it is pulled harmlessly to the triggering square.",
-   "name": "Aerial Trigger",
-   "sphere": "Trap",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "A creature that fails its Reflex save to avoid this snare suffers the effects of a called shot on a limb chosen when you create the snare (this excludes any body parts which would normally have a \"challenging\" penalty). If the creature failed their Reflex saving throw, that creature must also succeed at a Fortitude saving throw or suffer the critical called shot penalties on the determined limb in place of the normal penalties.\n\nNote: This talent requires the called shot optional rule from Ultimate Combat.",
-   "name": "Guillotine",
-   "sphere": "Trap",
+   "description": "You may create a special elixir that restores a creature to its starting age as a young adult. All penalties to Strength, Dexterity, and Constitution the drinker may have suffered as a result of advanced age are removed, but all bonuses to Intelligence, Wisdom, and Charisma that result from advanced age remain (although as the character ages again into middle age and beyond, he does not gain any of these bonuses a second time). Unlike a standard formulae, it takes 1 month to brew an elixir of immortality, and it costs an additional 50,000 gp in materials to create.",
+   "name": "Elixir Of Immortality",
+   "sphere": "Alchemy",
    "system": "Spheres of Might",
    "type": "base",
    "uses": null
@@ -411,244 +303,209 @@
  "dex": 19,
  "enhancement_effects_dict": {
   "armor": {
-   "Champion": {
+   "Vigilant": {
     "changes": [],
     "contextNotes": [
      {
       "target": "ac",
-      "text": "Champion: (good wearer with challenge or smite evil) +[[2]] sacred to AC vs attacks from the chosen opponent."
+      "text": "Vigilant: [[1]]/day on command, righteous might with DR 5/chaotic for [[10]] rounds; a chaotic creature wearing it gains [[1]] permanent negative level while worn."
      }
     ],
-    "description": "This armor special ability works only for good creatures with the challenge ability (such as cavaliers) or the smite evil ability (such as paladins, half-celestials, and creatures with the celestial creature template). A wearer with one of these abilities gains a +2 sacred bonus to AC against attacks from the chosen opponent."
-   },
-   "Crusading": {
-    "changes": [],
-    "contextNotes": [
-     {
-      "target": "ac",
-      "text": "Crusading: (paladin/good warpriest) swift action, expend a lay on hands or fervor use — +[[2]] sacred to AC for [[1]] minute ( +[[3]] vs evil dragons, evil outsiders, and undead)."
-     }
-    ],
-    "description": "Armor with this enhancement is specially designed for the holy warriors of Iomedae. As a swift action, a paladin or good warpriest wearing this armor can expend one use of the lay on hands or fervor ability to activate the armor's protective aura for 1 minute. This protective aura grants the wearer a +2 sacred bonus to AC. This bonus increases to +3 against evil dragons, evil outsiders, and undead."
-   },
-   "Hosteling": {
-    "changes": [],
-    "contextNotes": [
-     {
-      "target": "ac",
-      "text": "Hosteling: on command, store a bonded animal (companion/familiar/mount) as an emblem on the armor — asleep, no benefits, auto-released after [[24]] hours; a second command releases it adjacent, awake and able to act."
-     }
-    ],
-    "description": "A suit of armor or shield with this special ability hides living animals within its iconography to keep it safe. The wearer can speak a command word to magically store an animal to which he is bonded, such as an animal companion, a familiar, or mount. The stored animal appears as a symbol emblazoned upon the armor or shield, either one that mimics the appearance of the animal or that is more symbolic and abstract. While stored, the animal is sleeping and provides the wearer no benefit (such as a familiar's skill bonus). The size of animal that can be stored depends on the type of armor or shield. A suit of light armor, medium armor, or a light shield or heavy shield can store one animal up to the wearer's size. A suit of heavy armor or a tower shield can store one animal up to one size category larger than the wearer. A second command word releases the stored animal from the hosteling armor or shield. A released animal immediately awakens, appears in a space adjacent to the wearer, and can take actions on the round it appears. Because the stored animal is sleeping rather than in suspended animation (or even hibernating), it ages and gets hungry at the normal rate while stored. A hosteling armor or shield automatically releases a stored animal 24 hours after it was stored inside. This armor special ability still works on bonded magical beasts that were once animals, but not outsiders, oozes, or other exotic companion creatures."
-   },
-   "Mirrored": {
-    "changes": [],
-    "contextNotes": [
-     {
-      "target": "allSavingThrows",
-      "text": "Mirrored: +4 circumstance bonus on saving throws against gaze attacks."
-     }
-    ],
-    "description": "The polished surface of a mirrored shield or armor gleams and shines, and can be used as an ordinary mirror. Furthermore, it aids in battling creatures with gaze attacks. If the wearer averts his eyes, he can roll the miss chance twice, selecting the better result. The wearer can deal sneak attack or other precision-based damage to the target even though it has concealment against him. This provides no benefit if the wearer closes his eyes, wears a blindfold, or otherwise can't see the target at all. The mirrored armor or shield also adds its enhancement bonus to the wearer's touch AC against rays. it. This special ability may only be added to metallic armor or shields."
+    "description": "Armor with this special ability is often engraved or enameled with lawful religious symbols. Once per day on command, the wearer can invoke an effect, as per the spell righteous might , except the wearer gains DR 5/chaotic instead of DR/evil or DR/good. This lasts for 10 rounds. Vigilant armor bestows one permanent negative level on any chaotic creature attempting to wear it. The negative level remains as long as the armor is worn and disappears when it is removed. This negative level cannot be overcome in any way (including by restoration spells) while the armor is worn."
    }
   },
   "weapon": {
-   "Adaptive": {
+   "Corrosive Burst": {
     "conditionals": [
      {
       "default": true,
-      "modifiers": [],
-      "name": "Adaptive: (composite bow) the bow's strength rating matches the wielder's Strength bonus (may fire at a lesser rating)"
-     }
-    ],
-    "description": "This ability can only be placed on composite bows. An adaptive bow responds to the strength of its wielder, acting as a bow with a strength rating equal to its wielder's Strength bonus. The wielder can fire it with a lesser Strength bonus (and cause less damage) if desired."
-   },
-   "Ambushing": {
-    "conditionals": [
-     {
-      "default": false,
       "modifiers": [
        {
         "critical": "nonCrit",
-        "damageType": [],
+        "damageType": [
+         "acid"
+        ],
         "formula": "1d6",
         "subTarget": "allDamage",
         "target": "damage",
         "type": "untyped"
-       }
-      ],
-      "name": "Ambushing: only during a surprise round or vs a creature unaware of the wielder — precision damage (not multiplied on a crit); after [[1]] minute preparing a hiding place or while sniping, add the enhancement bonus as competence on Stealth"
-     }
-    ],
-    "description": "This special ability can be placed only on ranged weapons. If the wielder spends at least 1 minute preparing a hiding place or when she uses the sniping rules ( Core Rulebook 106 ), she adds the weapon's enhancement bonus as a competence bonus on Stealth checks. An ambushing weapon deals an additional 1d6 points of damage on a successful hit during a surprise round or against a creature that is unaware of the wielder's presence. This extra damage is precision damage; it is not multiplied on a critical hit but does stack with other forms of precision damage."
-   },
-   "Beaming": {
-    "conditionals": [
-     {
-      "default": false,
-      "modifiers": [],
-      "name": "Beaming: [[1]]/day swift action, create glowing orbs equal to the enhancement bonus; [[1]]/round when attacking with this weapon, expend an orb as a free action to fire a searing light ray at any target in range; orbs last until spent or the wielder sleeps"
-     }
-    ],
-    "description": "Only ranged weapons can have the beaming ability. Once per day, as a swift action, a beaming weapon creates a number of glowing orbs equal to the weapon's enhancement bonus. The orbs float around the wielder's head like a halo and fire rays of light at the wielder's foes. Once per round when the wielder makes an attack or full-attack with the beaming weapon, the wielder can expend one orb as a free action to fire a beam of searing light at any target within range. The orbs remain until expended or until the wielder sleeps."
-   },
-   "Second Chance": {
-    "conditionals": [
-     {
-      "default": true,
-      "modifiers": [],
-      "name": "Second Chance: (bow) [[1]]/round when a shot misses, as a free action the arrow swerves and re-attacks at the same attack bonus"
-     }
-    ],
-    "description": "This special ability can only be placed on bows. Once per round, when a shot made with this weapon misses its target, as a free action the weapon's wielder can cause that shot to swerve and try to hit the target again. The arrow fired gets a second attack at the same attack bonus as the first attack it made."
-   },
-   "Thundering": {
-    "conditionals": [
-     {
-      "default": true,
-      "modifiers": [
+       },
        {
         "critical": "crit",
         "damageType": [
-         "sonic"
+         "acid"
         ],
-        "formula": "1d8",
+        "formula": "1d10",
         "subTarget": "allDamage",
         "target": "damage",
         "type": "untyped"
        }
       ],
-      "name": "Thundering: on a confirmed crit the extra sonic is on the roll (x2 shown; [[2d8]] on a x3 crit, [[3d8]] on x4) and the target must pass a Fortitude Save [[14]] or be permanently deafened"
+      "name": "Corrosive Burst: crit rider assumes a x2 weapon — on a x3 crit the extra acid is [[2d10]], on a x4 crit [[3d10]]"
      }
     ],
-    "description": "A thundering weapon creates a cacophonous roar like abilities thunder whenever it strikes a target with a successful critical hit. The sonic energy does not harm the wielder. A thundering weapon deals an extra 1d8 points of sonic damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d8 points of sonic damage instead, and if the multiplier is ×4, add an extra 3d8 points of sonic damage. Subjects dealt critical hits by a thundering weapon must make a successful DC 14 Fortitude save or be deafened permanently."
+    "description": "A corrosive burst weapon functions as a corrosive weapon that explodes with searing acid upon striking a successful critical hit. The acid does not harm the wielder. In addition to the extra acid damage from the corrosive special ability, a corrosive burst weapon deals an extra 1d10 points of acid damage on a successful critical hit. If the weapon's critical modifier is 3, add an extra 2d10 points of acid damage instead, and if the modifier is 4, add an extra 3d10 points. Even if the corrosive ability is not active, the weapon still deals its extra acid damage on a successful critical hit."
+   },
+   "Designating (lesser)": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Designating (lesser): (ranged) on hit, allies gain +[[2]] morale on melee attack and damage rolls vs the target for [[1]] round (multiple hits don't stack)"
+     }
+    ],
+    "description": "This special ability can only be placed on ranged weapons or ammunition. Each time a ranged weapon or ammunition with this ability hits a creature, its magic designates the target. Allies gain a +2 morale bonus on melee attack and melee damage rolls against the designated target for 1 round. Multiple successful shots fired at the same target do not increase the bonuses or their duration."
+   },
+   "Lucky": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Lucky: (firearm) holds [[1]] grit point (refreshes daily); spend it to reroll an attack that would misfire (keep the second result)"
+     }
+    ],
+    "description": "This special ability can only be placed on one-handed or two-handed firearms. A lucky firearm has its own magical reservoir of grit (see Ultimate Combat ). Usually this grit is stored within the marks of an engraving or in a trinket that hangs from the firearm. Often these marks take the form of holy symbols or fetishes, but such a reservoir can take just about any form. This reservoir holds 1 grit point, which is refreshed at the start of each day. Whether or not the wielder of a lucky firearm has any deeds (see Ultimate Combat ), she can always spend 1 grit point from the lucky firearm to reroll an attack from it that would result in a misfire. When the wielder does so, she must take the second result, even if that attack roll also results in a misfire."
    }
   }
  },
  "equip_descrip": {
   "belts": {
-   "description": " this thick leather belt is adorned with several oversized iron plates and disks depicting images of orc gladiators in battle. The wearer of a victor's belt gains a +2 morale bonus on all combat maneuver checks and to combat maneuver defense. In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for 5 rounds. ",
-   "item_name": "Victor's Belt"
+   "description": " an engraving of a charging rhinoceros\r decorates this thick leather belt. The\r belt grants its wearer a +2 enhancement\r bonus to strength. Treat this as a\r temporary ability bonus for the first 24 hours the belt is worn. The belt magnifies the wearer's momentum whenever she\r charges, granting her a +2 bonus on bull rush and overrun\r maneuvers. Furthermore, when the wearer makes a charge\r attack, her melee weapons and natural weapons deal\r damage as if they were one size category larger than they\r actually are. ",
+   "item_name": "Belt of Thunderous Charging"
   },
   "body": {
-   "description": " when carefully wrapped around the body of a medium-sized creature (a process that takes 10 minutes), these magical linen wrappings protect the wearer from fire and provide defense against physical attacks. As an immediate action, the wearer can immolate herself in wispy blue flames that protect the wearer as the chill shield version of fire shield and deal 1d6+10 points of cold damage to attackers. This protection lasts for 10 rounds before the wrappings crumble away into fine ash. ",
-   "item_name": "Coldfire Wrappings"
+   "description": " the pockets of this simple blue robe\r always seem to carry just what the\r wearer needs whenever she casts a spell. \r the robe functions as a spell component\r pouch, providing any spell components or\r focuses that are necessary for the wearer's\r spellcasting. The robe can even produce\r spell components or focuses with a specific\r cost, though it provides no more than 50worth of such\r materials in any single day. The materials supplied by the robe\r are suitable only for spellcasting, and disappear if they leave\r the wearer's person or when the spell requiring them is cast. ",
+   "item_name": "Robe of Components"
   },
   "chest": {
-   "description": " this sturdy vest stays dry and spotless in the worst of conditions. You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. When closed, the pockets are proof against water and the elements. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days. ",
-   "item_name": "Versatile Vest"
+   "description": " this bright red strip of cloth, stitched with images of a cheering\r crowd throwing garlands toward a chariot, fits across the\r wearer's shoulders and then diagonally down his chest to reach\r his opposite hip. The wearer treats his fighter level as 4 higher\r than normal for the purpose of the armor training and bravery\r class features. ",
+   "item_name": "Sash of the War Champion"
   },
   "eyes": {
-   "description": " these nondescript, brass-rimmed spectacles have green-tinted lenses and are favored by practicing doctors and adventurers alike. When worn, they grant the wearer a constant awareness of poisons and diseases as the detect poison and diagnose disease spells. Also, once per day on command the wearer can touch a single creature to use delay poison on that creature. ",
-   "item_name": "Physician's Spectacles"
+   "description": " a solid gold band encircles this intricate convex glass lens. Three times per day as a standard action, the wearer can attempt an appraise check against a creature within 60 feet (dc = 10 + target's hit dice + target's wisdom bonus). With a successful check, the wearer knows the amount of currency the creature is carrying, as well as the number of valuable objects (with a price greater than 20) the target carries (though the wearer doesn't know which items qualify, or the exact value of the objects). In addition, once per day, the wearer of a marker's monocle can mark one creature with a melee touch attack, allowing up to 3 allies within 30 feet to track the marked creature for 30 minutes, as if the wearer's allies had the scent ability. ",
+   "item_name": "Marker's Monocle"
   },
   "feet": {
-   "description": " if a creature wearing these dull gray horseshoes remains stationary for 1 round, the creature and its rider, if any, gain a +10 bonus on stealth checks for 1 round. In addition, once per day, the rider of a mount wearing clandestine horseshoes can turn both herself and her mount invisible, as invisibility . All four shoes must be worn by the same creature for the magic to be effective. ",
-   "item_name": "Clandestine Horseshoes"
+   "description": " these boots look and act as the minor burglar boots , but grant\r a +10 competence bonus on perception checks and to ac and on\r reflex saves. Also, once per day on command, these boots grant\r the wearer the ability to use find traps as the spell. ",
+   "item_name": "Burglar Boots, Major"
   },
   "hands": {
-   "description": " these black leather fingerless gloves are shot through with strands of giant spider webbing. They allow their wearer to steal the special abilities of an opponent's weapon and augment the wearer's unarmed strikes with the abilities instead. Once per day, the wearer can activate the gloves by succeeding at an unarmed disarm combat maneuver against an opponent's magic weapon. Instead of disarming the weapon, the wearer can negate the weapon's special abilities (bane , flaming , and so on) for 1d4 rounds and apply these abilities to her own unarmed strikes (the weapon's enhancement bonus is unaffected). Any weapon special abilities that couldn't be applied to unarmed strikes (such as returning or vorpal) are still suspended on the weapon but are not applied to the wearer's unarmed attacks. If the wearer's unarmed strikes already have magical weapon special abilities (such as from an amulet of mighty fists), the enhancement bonus and special ability bonus equivalents on the wearer's unarmed strikes can't total more than +10; stolen special abilities are discarded at random until the total is +10 or less (discarded abilities are still suspended in the opponent's weapon for the normal duration). ",
-   "item_name": "Extractor's Gloves"
+   "description": " these nondescript white gloves are a boon to minor\r spellcasters and fakes who are limited or lacking in magical\r ability or versatility. The wearer of these gloves can employ mage hand and prestidigitation at will. ",
+   "item_name": "Apprentice's Cheating Gloves"
   },
   "head": {
-   "description": " this plain steel helm completely covers the face, lacking even eyeholes or a slit to peer out of. Its wearer is blinded by the helm, but gains blindsense with a range of 60 feet. As a swift action, the wearer can expend one use of mythic power to gain blindsight with a range of 60 feet for 1 minute, or instead expend two uses of mythic power to gain blindsight with a range of 120 feet for 1 minute. The wearer can expend three uses of mythic power to gain the effects of truesight for 1 minute. ",
-   "item_name": "Blind Helm"
+   "description": " this finely constructed mask of colored cloth and carved bone incorporates parts of the animal it represents, such as its hair, hide, horn, fur, and teeth. Depicting the head of an ape, bear, boar, cat, fox, horse, pig, rat, or wolf, the mask completely covers the wearer's face, but the wearer can see through the mask's eyes as though they were her own. As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to 5 minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. While so transformed, the wearer retains the ability to speak normally and can complete verbal spell components, utter command words, and activate spell-completion and spell-trigger items. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals 1d4 points of damage for a medium wearer (1d3 if small). This duration does not need to be consecutive, but it must be used in 1-minute increments. ",
+   "item_name": "Animal Mask"
   },
   "headband": {
-   "description": " this taut black band, clipped with a black metal skull, can be\r attached on the outside of a hat or other head slot item or can be\r worn as a normal headband. The wearer gains a +2 competence\r bonus on intimidate checks and increases the dc of any fear\r effect he creates by +1. In addition, if this headband is attached\r to the outside of a hat, the wearer's hat or headgear cannot\r be blown off or removed by wind, water, or environmental\r effects, and the wearer gains a +5 circumstance bonus to his\r cmd against steal and sunder attempts targeting his headgear. ",
-   "item_name": "Dead Man's Headband"
+   "description": " this ornate headband is decorated\r with numerous clusters of small\r gemstones. The headband grants\r the wearer an enhancement bonus\r to all mental ability scores (intelligence, wisdom, and charisma)\r of +2, +4, or +6. Treat this as a temporary ability bonus for the\r first 24 hours the headband is worn. The headband also grants\r skill ranks as a headband of vast intelligence ",
+   "item_name": "Headband of Mental Superiority +6"
   },
   "neck": {
-   "description": " no matter how vigorous the attempt to clean it, this amulet is perpetually bloodied. Once per day, if the wearer eats a pound of flesh from a creature of its own race, the amulet grants the wearer a +2 enhancement bonus to strength for 24 hours. If the wearer goes 24 hours without consuming such flesh, however, this bonus to strength ends and the wearer takes 2 points of strength damage. Every day the wearer doesn't eat such flesh, he takes 2 additional points of strength damage. This damage can be healed normally. Eating such flesh again temporarily negates the strength damage from this effect and restores the bonus to strength, but all damage that hasn't been healed returns if the amulet is removed or a cannibalistic meal is missed. Removing the ghoul stone prevents further strength damage, but does not negate any previous damage. A creature reduced to 0 strength by the amulet dies and rises 24 hours later as a ghoul, or possibly a ghast (10% chance). ",
-   "item_name": "Ghoul Stone"
+   "description": " this small iron locket contains some tokena scale, a shaving of a horn or claw, or lock of burning hairfrom a fiend. When worn by a tiefling, if he has cold, electricity, or fire resistance, this amulet increases that resistance by 5. Furthermore, it provides a +4 insight bonus on diplomacy skill checks made to influence evil outsiders. ",
+   "item_name": "Darksire Amulet"
   },
   "rings": {
-   "description": "Created in pairs, these simple golden rings allow for short-range communication between the wearers. The listed price and cost are for both rings. As long as the wearers are within 1 mile of one another, they can communicate by whispering, causing the other ring to whisper the words to the recipient. Words spoken into or recited by a communique ring can be heard by nearby creatures if the wearer speaks too loudly. A communique ring transmits sound only while worn, and a wearer can remove the ring if she needs to be silent. Only magical silence or distance will block this communication, and wearers can speak through walls and other obstructions normally. The rings pick up only sound directly spoken into them by the wearer with the intent to transmit, not ambient sounds or the voices of other creatures.",
-   "item_name": "Communique Rings"
+   "description": "This bone ring is the shape of an elongated rat biting its own tail. The wearer gains a bite attack as a primary natural attack. This attack deals 1d4 points of piercing damage for a Medium wearer or 1d3 points of damage for a Small wearer. After about a week of wearing the ring, the wearer's appearance becomes more ratlike, though she still looks like a member of her original race (for example, a human might gain prominent teeth).",
+   "item_name": "Ring of Rat Fangs"
   },
   "shoulders": {
-   "description": " an immolation cloak grants its wearer resist fire 20. As a swift action, the wearer can command the cloak to burst into flame, providing the benefits of a fire shield (warm flames only). The wearer can dismiss the flames as a free action. The cloak can be used for a maximum of 10 rounds per day, which don't have to be consecutive. By expending one use of mythic power, the cloak's wearer can recharge its immolation abilities. In addition, the wearer can expend one use of mythic power to detonate in a fiery explosion, dealing 1d8 points of fire damage per character level in a 30-foot-radius spread. A successful reflex save (dc 10 + the wearer's mythic tier + the wearer's charisma modifier) halves this damage. Though apparently destroyed in the explosion, the wearer reforms just prior to the start of his next turn in the space he exploded in (or the nearest open space if that space is unavailable). ",
-   "item_name": "Immolation Cloak"
+   "description": " this garish cloak of red velvet is embroidered with gold-threaded\r patterns, typically in shapes of sinisterly masked\r harlequins or other imagery of sinister revelry. The cloak\r acts like a cloak of the mountebank , but its dimension door power can be used three times per day. Furthermore, once\r per day the wearer of the cloak can use ethereal jaunt , as\r per the spell. ",
+   "item_name": "Charlatan's Cape"
   },
   "wrist": {
-   "description": " this bronze, serpentine bracelet has five dangling charms, each depicting an open and staring eye. Once per day as a standard action, the wearer can touch the bracelet to a creature with a gaze attack (requiring a successful touch attack for unwilling creatures) and become immune to natural gaze attacks from all creatures of that kind for the following 24 hours. The wearer could, for example, touch the bracelet to a basilisk to gain immunity to the gaze attacks of all basilisks, but would not be immune to the gaze of a medusa. This ability does not grant immunity to gaze attacks from spells or magic items such as eyes of doom . For the duration of this immunity, the charms on the bracelet each appear to be closed eyes. When the wearer fails a save against a gaze attack, she can expend a charm from the bracelet as an immediate action to reroll that saving throw, but must take the second result even if it is worse. An expended charm crumbles to dust. When the last charm is expended, the lidless charm bracelet loses all magical properties. ",
-   "item_name": "Lidless Charm Bracelet"
+   "description": " these tortoise-shell bracers fit so snuggly against their wearer's\r skin that they almost seem part of him. The wearer of these\r bracers becomes exceptionally calm and composed if she takes\r her time to accomplish particular tasks. Whenever she takes 20\r on a skill check for a skill that primarily depends on her arms and\r hands, she gains a +5 competence bonus on the check. ",
+   "item_name": "Bracers of Steadiness"
   }
  },
  "equipment_list": [
-  "Victor's Belt",
-  "Coldfire Wrappings",
-  "Versatile Vest",
-  "Physician's Spectacles",
-  "Clandestine Horseshoes",
-  "Extractor's Gloves",
-  "Blind Helm",
-  "Dead Man's Headband",
-  "Ghoul Stone",
-  "Immolation Cloak",
-  "Lidless Charm Bracelet",
-  "Bloodletting Thimble",
-  "Communique Rings"
+  "Belt of Thunderous Charging",
+  "Robe of Components",
+  "Sash of the War Champion",
+  "Marker's Monocle",
+  "Burglar Boots, Major",
+  "Apprentice's Cheating Gloves",
+  "Animal Mask",
+  "Headband of Mental Superiority +6",
+  "Darksire Amulet",
+  "Charlatan's Cape",
+  "Bracers of Steadiness",
+  "Rings of Alien Geometries",
+  "Ring of Rat Fangs"
  ],
  "eye_color": [
-  "Blue"
+  "Grey"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 5,
+  "normal": 8,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 16
+  "trainer": 9
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Sea Legs": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
  "feat_conditionals_dict": {},
  "feats": [
-  "Expanded Fiendish Resistance",
-  "Saving Shield",
-  "Martial Training I (Leaden Hyena)",
-  "Martial Training III (Leaden Hyena)",
-  "Martial Training V (Leaden Hyena)",
-  "Extra Combat Talent (Razor Wire / Opportunist)",
-  "Extra Combat Talent (Darts / Tripwire)",
-  "Extra Combat Talent (Sneaky Trapper / Trap Wielder)",
-  "Extra Combat Talent (Flash Trap)",
+  "Dreadforger",
+  "Prone Slinger",
+  "Improved Initiative",
+  "Additional Traits",
+  "Coordinated Distraction",
+  "Life's Blood",
+  "Arcane Weaponry (combat)",
+  "Cleave",
+  "Extra Combat Talent (Elixir Of Immortality)",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Extra Combat Talent (Darts / Tripwire)": [
+  "Cleave": [
+   "cleaving finish",
+   "great cleave",
+   "improved cleaving finish",
+   "surprise follow-through"
+  ],
+  "Extra Combat Talent (Elixir Of Immortality)": [
    "Extra Combat Talent"
   ],
-  "Extra Combat Talent (Flash Trap)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Razor Wire / Opportunist)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Sneaky Trapper / Trap Wielder)": [
-   "Extra Combat Talent"
-  ],
-  "Martial Training I (Leaden Hyena)": [
-   "Martial Training II (Leaden Hyena)"
-  ],
-  "Martial Training III (Leaden Hyena)": [
-   "Martial Training IV (Leaden Hyena)"
-  ],
-  "Martial Training V (Leaden Hyena)": [
-   "Martial Training VI (Leaden Hyena)"
+  "Improved Initiative": [
+   "surprising combatant"
   ]
  },
- "flavor_feat_tax_dict": {
-  "Throw Anything": [
-   "ricochet splash weapon"
-  ]
- },
+ "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Throw Anything"
+  "Siphon Poison"
  ],
  "flaw": [
   "Fussy Eater",
@@ -688,64 +545,51 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Death Frombelow",
-  "Life's Blood"
+  "Mechanical Magician",
+  "Cosmopolitan"
  ],
- "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Disciplines: Leaden Hyena, Black Seraph\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An excellent trainer who taught them Racial Heritage, Powerful Throwing (combat), Cooperative Crafting\n- Training: An excellent trainer who taught them Celestial Obedience, Additional Traits, Equipment Trick\n- Training: An average trainer who taught them Flagbearer, Mother's Gift\n- Training: An average trainer who taught them Improved Initiative, Killing Madness\n- Training: An average trainer who taught them Shadow Strike, Strong Comeback\n- Training: An excellent (Path of War) trainer who taught them Martial Training I (Black Seraph), Martial Training III (Black Seraph), Martial Training V (Black Seraph)\n- Training: A terrible (Spheres) trainer who taught them Aerial Trigger, Guillotine\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Blue\n- Build: Sneering",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An excellent trainer who taught them Focused Worker, Dragonslayer, Killing Madness\n- Training: An excellent trainer who taught them Jaguar Pounce, Flash of Insight, Precise Strike\n- Training: An excellent trainer who taught them Shapeshifter Foil, Demonologist, Blind Warrior\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Bald Grey\n- Eyes: Grey\n- Build: Ponytail",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 2366100,
+ "gold": 2289500,
  "hair_color": [
-  "Red"
+  "Grey"
  ],
  "hair_type": [
-  "Unkempt"
+  "Bald"
  ],
  "height_number": "3'4\"",
- "hero_points": 0,
+ "hero_points": 1,
  "homebrew_feat_desc_dict": {
   "Additional Traits": "You have more traits than normal",
-  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
-  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
-  "Death Frombelow": "You have been trained to fight flying creatures",
-  "Deft Hands": "You have exceptional manual dexterity",
-  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
-  "Equipment Trick": "Choose one piece of equipment, such as boots, a cloak, rope, a shield, or a heavy blade scabbard You understand how to use that item in combat",
-  "Expanded Fiendish Resistance": "You gain extra fiendish resistances",
+  "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",
+  "Blind Warrior": "Without sight, youve learned to perceive the environment through heightened senses and dedicated training. Special Upon selecting this feat, you are permanently blinded (if you werent previously blind). If you would somehow regain your sight, you immediately lose this feat, and must retrain it instantly. If a player has chosen to play a blind character via either backstory or taking the Blind Warrior feat, the GM should allow players to stop playing a blind character during the campaign if a player already is or becomes uncomfortable with the concept. Flavour it as magic, a miracle, a result of training, or any other suitable excuse that seems fitting. On the other hand, dont force a cure on the players if they dont want one, whether through in-game actions or out-of-game decrees. If a player is uncomfortable with another persons depiction of a blind character, err on the side of deferring to them and asking the player of the blind character to stop. Blind people are the authorities on how to respect blindness. As a team with disabled members, we encourage you to play blind characters with maturity and to explore the realities of living with blindness. When treated with respect towards blind people, exploring blind characters can be a rewarding learning experience and add gravity to your roleplaying. If you yourself are blind, we hope that we made representing disability positively at the table easier for you. you gain blindsense 30 feet and blindsight 5 feet as long as you are unable to see. for every three hit dice you possess, your blindsense increases by 5 feet. for every six hit dice you possess, your blindsight increases by 5 feet.",
+  "Cleave": "You can strike two adjacent foes with a single swing",
+  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
+  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
+  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
+  "Dragonslayer": "You have been trained to fight dragons",
+  "Dreadforger": "With a little extra effort, you can make your concoctions a lot more deadly when creating a non-magical trap, item, or other device, you may increase the craft dc to up to twice your character level. for every two points by which you increase the craft dc, the save dc of your creation increases by 1. using this ability does not increase the cost of your creation.",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Darts / Tripwire)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Darts (Trap): A dart trap is constructed of spring, twine, and usually a needle or other blade. A dart targets a line originating from one corner of one of the squares it occupies determined when it is set. This line extends out to Close range (25 ft. + 5 ft. per 2 ranks of Craft (traps) you possess) and stops af\n- Tripwire (Trap): A creature that fails its save against a tripwire snare falls prone. Once knocked prone, a creature is no longer at risk of triggering the trap in that square. This trap is not destroyed when triggered; instead the duration is reduced by 5 rounds per creature that fails its save. Running and chargin",
-  "Extra Combat Talent (Flash Trap)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Flash Trap (Trap): When used as a dart, the target must make a Reflex save or suffer a 20% miss chance on all attack rolls for 1 round and dazzled for a number of rounds equal to your ranks in Craft (traps). At 10 ranks in Craft (traps), it may inflict the blinded condition rather than a miss chance.  When used as a s",
-  "Extra Combat Talent (Razor Wire / Opportunist)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Razor Wire (Trap): When you place the tripwire snare, you may choose to have it deal 1d6 slashing damage + 1d6 at 3 ranks in Craft (traps) and every 2 ranks thereafter to the triggering creature. Alchemical items cannot be added to this snare. A razor wire snare otherwise functions as a tripwire snare.\n- Opportunist (Trap): Creatures that are struck by your dart trap or that fail a save against your snare trap provoke an attack of opportunity from you. You may make this attack of opportunity with a ranged weapon provided the target is within your first range increment.",
-  "Extra Combat Talent (Sneaky Trapper / Trap Wielder)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Sneaky Trapper (Trap): You know how to place traps in a discreet manner. When a creature has line of sight to and is within 30 feet of a trap you are placing, you may perform a Sleight of Hand check with a DC equal to 11 + the observer's Perception modifier in order to place it without automatically making the observer's \n- Trap Wielder (Trap): Sometimes the heat of battle does not allow one to properly set and camouflage a trap. Instead of placing a trap, you may attempt to immediately apply it to a creature. Doing so requires the normal action for placing the trap. As the trap is never set, creatures do not gain any bonus to AC or saves ",
-  "Flagbearer": "When brandishing a flag adorned with the standard of an organization you owe allegiance to, you inspire nearby members of the same allegiance",
+  "Extra Combat Talent (Elixir Of Immortality)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Elixir Of Immortality (Alchemy): You may create a special elixir that restores a creature to its starting age as a young adult. All penalties to Strength, Dexterity, and Constitution the drinker may have suffered as a result of advanced age are removed, but all bonuses to Intelligence, Wisdom, and Charisma that result from advanced",
+  "Fast Crawl": "You are skilled at moving while prone",
+  "Flash of Insight": "Discipline Sleeping Goddess (Boost); Level 1 Initiation Action 1 swift action Range 30 ft. Target One or two allies (see text) Duration Instantaneous You turn a sudden burst of inspiration into strength for your allies, sharing your power to give them an edge in battle and help them shrug of their wounds. You can activate this boost after making a successful attack or combat maneuver check. One ally within 30 feet gains another saving throw against a non-instantaneous effect that allows a saving throw affecting them. This saving throw has the same DC as the original save. If your ally succeeds, the effect ends. The ally does not suffer any additional effects for failing the save (such as a poisons damage). You cannot grant an ally more than one additional save against a given effect. Augment You can augment this maneuver in one or more of the following ways",
+  "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
   "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Jaguar Pounce": "Your ambushes are especially lethal",
   "Killing Madness": "Creatures cannot live with the effects your powers place upon their mind whenever you reduce a creature to 0 sanity or deal enough damage to a mental ability score that the damage exceeds that ability score, the creature dies rather than suffering from the normal effects. creatures killed in this way cannot be raised by any effect save for reality revision or similarly powerful magic.",
   "Life's Blood": "Your blood flows with eternal life, and its healing powers allow you use your blood to heal others",
-  "Martial Training I (Black Seraph)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training I (Leaden Hyena)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Black Seraph)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training II (Leaden Hyena)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Black Seraph)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Leaden Hyena)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Black Seraph)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Leaden Hyena)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Black Seraph)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Leaden Hyena)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Black Seraph)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Leaden Hyena)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Masked Identity": "Special You cannot select this feat if you have the dual identity class feature or a feature that grants you a second identity. you gain the dual identity class feature of a vigilante of your character level.",
-  "Mother's Gift": "You inherit a special boon from your hag parent",
+  "Master Alchemist": "Your mastery of alchemy is nearly supernatural",
+  "Mechanical Magician": "You understand magic much as you would science. you may make knowledge (engineering) checks in place of use magic device checks.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Powerful Throwing (combat)": "Your thrown weapons are as strong as they are accurate. Special Starting at 2nd level, a ranger with the thrown weaponACG combat style may select Powerful Throwing as a combat style feat. you can use your strength modifier for both your attack and damage rolls with thrown weapons.",
-  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
-  "Saving Shield": "You deflect attacks that could mean your ally's death",
-  "Serene Stride": "Your ki allows for the lightest touch upon almost any surface. as long as you have at least one point in your ki pool you may ignore movement and acrobatics penalties from difficult terrain and move across liquid surfaces just as if they were solid. you may still choose to swim if you wish to.",
-  "Shadow Strike": "You accurately strike even those you cannot clearly see",
-  "Spheres Mentor": "<strong>Spheres funded:</strong> Trap (Might)<br><br>Extra Combat Talent > Extra Combat Talent<br><br>Aerial Trigger (Trap)<br>Guillotine (Trap)",
-  "Strong Comeback": "You learn quickly from past mistakes",
-  "Throw Anything": "You are used to throwing things you have on hand",
+  "Precise Strike": "You are skilled at striking where it counts, as long as an ally distracts your foe",
+  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
+  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
+  "Shapeshifter Foil": "Your command of shapeshifting magic can disrupt similar effects in others",
+  "Siege Engineer": "You are proficient with all siege weaponry",
+  "Siphon Poison": "You can remove poison from afflicted creatures",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -757,130 +601,143 @@
   "wis": 7
  },
  "initiation_stat": "wis",
- "initiator_level": 9,
+ "initiator_level": 0,
  "int": 11,
  "item_changes_dict": {
-  "Blind Helm": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Its wearer is blinded by the helm, but gains blindsense with a range of 60 feet. As a swift action, the wearer can expend one use of mythic power to gain blindsight with a range of 60 feet for 1 minute, or instead expend two uses of mythic power to gain blindsight with a range of 120 feet for 1 minute. The wearer can expend three uses of mythic power to gain the effects of truesight for 1 minute."
-   ]
-  },
-  "Bloodletting Thimble": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "A vampire wearer can use the thimble to inflict a tiny wound as part of the use of a blood drain, energy drain, or drain chi ability; The target must succeed at a dc [[14]] will save or become fascinated by the wearer and make no attempt to resist the draining on that round and the following [[2]] rounds."
-    }
-   ]
-  },
-  "Clandestine Horseshoes": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.ste",
-     "text": "If a creature wearing these dull gray horseshoes remains stationary for [[1]] round, the creature and its rider, if any, gain a +[[10]] bonus on stealth checks for [[1]] round. In addition, once per day, the rider of a mount wearing clandestine horseshoes can turn both herself and her mount invisible, as invisibility ."
-    }
-   ]
-  },
-  "Coldfire Wrappings": {
+  "Animal Mask": {
    "changes": [],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "When carefully wrapped around the body of a medium-sized creature (a process that takes [[10]] minutes), these magical linen wrappings protect the wearer from fire and provide defense against physical attacks. As an immediate action, the wearer can immolate herself in wispy blue flames that protect the wearer as the chill shield version of fire shield and deal [[1d6+10]] points of cold damage to attackers. This protection lasts for [[10]] rounds before the wrappings crumble away into fine ash."
+     "text": "As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to [[5]] minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals [[1d4]] points of damage for a medium wearer ([[1d3]] if small). This duration does not need to be consecutive, but it must be used in 1-minute increments."
     }
    ]
   },
-  "Communique Rings": {
+  "Apprentice's Cheating Gloves": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "As long as the wearers are within 1 mile of one another, they can communicate by whispering, causing the other ring to whisper the words to the recipient."
+    "The wearer of these gloves can employ mage hand and prestidigitation at will."
    ]
   },
-  "Dead Man's Headband": {
+  "Belt of Thunderous Charging": {
    "changes": [
     {
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.int",
+     "target": "str",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn. Furthermore, when the wearer makes a charge attack, her melee weapons and natural weapons deal damage as if they were one size category larger than they actually are. The belt magnifies the wearer's momentum whenever she charges, granting her a +[[2]] bonus on bull rush and overrun maneuvers."
+    }
+   ]
+  },
+  "Bracers of Steadiness": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "Whenever she takes 20 on a skill check for a skill that primarily depends on her arms and hands, she gains a +[[5]] competence bonus on the check."
+    }
+   ]
+  },
+  "Burglar Boots, Major": {
+   "changes": [
+    {
+     "formula": "10",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    },
+    {
+     "formula": "10",
+     "operator": "add",
+     "priority": 0,
+     "target": "ac",
      "type": "competence"
     }
    ],
    "contextNotes": [
     {
-     "target": "cmd",
-     "text": "In addition, if this headband is attached to the outside of a hat, the wearer's hat or headgear cannot be blown off or removed by wind, water, or environmental effects, and the wearer gains a +[[5]] circumstance bonus to his cmd against steal and sunder attempts targeting his headgear."
+     "target": "skill.per",
+     "text": "Also, once per day on command, these boots grant the wearer the ability to use find traps as the spell."
     }
    ]
   },
-  "Extractor's Gloves": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "cmb",
-     "text": "Once per day, the wearer can activate the gloves by succeeding at an unarmed disarm combat maneuver against an opponent's magic weapon. Instead of disarming the weapon, the wearer can negate the weapon's special abilities (bane , flaming , and so on) for [[1d4]] rounds and apply these abilities to her own unarmed strikes (the weapon's enhancement bonus is unaffected)."
-    }
-   ]
-  },
-  "Ghoul Stone": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "strChecks",
-     "text": "Once per day, if the wearer eats a pound of flesh from a creature of its own race, the amulet grants the wearer a +[[2]] enhancement bonus to strength for [[24]] hours. If the wearer goes [[24]] hours without consuming such flesh, however, this bonus to strength ends and the wearer takes 2 points of strength damage. Every day the wearer doesn't eat such flesh, he takes 2 additional points of strength damage. A creature reduced to 0 strength by the amulet dies and rises [[24]] hours later as a ghoul, or possibly a ghast (10% chance)."
-    }
-   ]
-  },
-  "Immolation Cloak": {
+  "Charlatan's Cape": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "An immolation cloak grants its wearer resist fire 20. As a swift action, the wearer can command the cloak to burst into flame, providing the benefits of a fire shield (warm flames only). The wearer can dismiss the flames as a free action. The cloak can be used for a maximum of 10 rounds per day, which don't have to be consecutive. In addition, the wearer can expend one use of mythic power to detonate in a fiery explosion, dealing 1d8 points of fire damage per character level in a 30-foot-radius spread."
+    "Furthermore, once per day the wearer of the cloak can use ethereal jaunt , as per the spell."
    ]
   },
-  "Lidless Charm Bracelet": {
+  "Darksire Amulet": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "attack",
-     "text": "Once per day as a standard action, the wearer can touch the bracelet to a creature with a gaze attack (requiring a successful touch attack for unwilling creatures) and become immune to natural gaze attacks from all creatures of that kind for the following [[24]] hours. The wearer could, for example, touch the bracelet to a basilisk to gain immunity to the gaze attacks of all basilisks, but would not be immune to the gaze of a medusa. This ability does not grant immunity to gaze attacks from spells or magic items such as eyes of doom ."
+     "target": "skill.dip",
+     "text": "If he has cold, electricity, or fire resistance, this amulet increases that resistance by 5. Furthermore, it provides a +[[4]] insight bonus on diplomacy skill checks made to influence evil outsiders."
     }
    ]
   },
-  "Physician's Spectacles": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Also, once per day on command the wearer can touch a single creature to use delay poison on that creature."
-   ]
-  },
-  "Versatile Vest": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "You can secure up to six objects (weighing up to 1 pound each) to the vest by holding them to it and speaking a command word. You can retrieve any of these items as a move action. In addition, the vest has four large pockets, each capable of holding as much as 1/2 cubic foot in volume or 5 pounds in weight, and weighing only 1 pound when full. The first pocket contains 1 day's worth of trail rations, a quart of water in a waterskin, two candles, and a tindertwig. The vest recreates these items if the first pocket is left empty for 3 days."
-   ]
-  },
-  "Victor's Belt": {
+  "Headband of Mental Superiority +6": {
    "changes": [
     {
-     "formula": "2",
+     "formula": "6",
      "operator": "add",
      "priority": 0,
-     "target": "cmd",
-     "type": "morale"
+     "target": "int",
+     "type": "enh"
     }
    ],
    "contextNotes": [
     {
-     "target": "cmd",
-     "text": "In addition, the wearer can enter a rage (as the rage spell) as a standard action once per day. Whenever the wearer takes an amount of damage equal to at least half his current hit points in a single round, there is a 50% chance that the belt activates its rage ability automatically as an immediate action, provided the power has not already been activated that day and the wearer is not already raging. Regardless of how the rage is activated, it lasts for [[5]] rounds."
+     "target": "intChecks",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn."
     }
+   ]
+  },
+  "Marker's Monocle": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Three times per day as a standard action, the wearer can attempt an appraise check against a creature within 60 feet (dc = 10 + target's hit dice + target's wisdom bonus). With a successful check, the wearer knows the amount of currency the creature is carrying, as well as the number of valuable objects (with a price greater than 20) the target carries (though the wearer doesn't know which items qualify, or the exact value of the objects)."
+   ]
+  },
+  "Ring of Rat Fangs": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "This attack deals [[1d4]] points of piercing damage for a medium wearer or [[1d3]] points of damage for a small wearer."
+    }
+   ]
+  },
+  "Rings of Alien Geometries": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day as a standard action, the wearer of a pair of rings of alien geometries can create two shimmering portals, each 5 feet in diameter and surrounded by a 4-inch-thick ring of force. Only one side of each portal functions as a gateway; Each portal must be oriented vertically and be within 30 feet of the wearer at the time of creation."
+   ]
+  },
+  "Robe of Components": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The robe functions as a spell component pouch, providing any spell components or focuses that are necessary for the wearer's spellcasting. The robe can even produce spell components or focuses with a specific cost, though it provides no more than 50worth of such materials in any single day."
+   ]
+  },
+  "Sash of the War Champion": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer treats his fighter level as 4 higher than normal for the purpose of the armor training and bravery class features."
    ]
   }
  },
@@ -891,8 +748,8 @@
   "Halfling",
   "Dwarven",
   "Elven",
-  "Goblin",
-  "Gnome"
+  "Gnome",
+  "Goblin"
  ],
  "level": 18,
  "level_up_stats": {
@@ -971,340 +828,26 @@
  },
  "magic_talent_items": [],
  "main_stat": "dex",
- "maneuvers_choose_from": [
-  [
-   "Climactic Butchery",
-   "Incite Betrayal",
-   "Strength of Hell",
-   "Gutstrike"
-  ],
-  [
-   "Face Me",
-   "Sadistic Vitality",
-   "Intimidating Force",
-   "Shadow Feather Strike"
-  ],
-  [
-   "Erode Resolve",
-   "Leverage Dismay",
-   "Savage Drive",
-   "Tendon Rip"
-  ],
-  [
-   "Cackling Mockery",
-   "Vengeful Riposte"
-  ],
-  [
-   "Dastards Blades",
-   "Soul Consumption"
-  ],
-  [
-   "Scavengers Leer",
-   "Shadow Raptor Swarm"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Black Seraph Battle Stance": {
-   "action": "1 swift action",
-   "description": "The Black Seraph discipline teaches its disciples that relentless aggression is what wins battles, and by channeling the very might of the lower planes themselves through his form, does he gain the advantage he yearns for. Some who have witnessed a disciple of Black Seraph using this stance have seen plants wither and turn to ash around them and hazy, smoky wings appear around the disciple. Others have seen hellfire licking over their bodies. Regardless, while in this stance, any weapon that the martial disciple wields is treated as if it had theunholyspecial weapon property. Additionally, he is considered under the influence of aprotection from goodspell with acaster levelequal to his initiator level.",
-   "discipline": "Black Seraph",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Cackling Mockery": {
-   "action": "1 immediate action",
-   "description": "You steel yourself against an attack and laugh off the injury, forcing the target to press the assault against you in spite of themself. When you initiate this counter, you gain DR 20/- against the next attack that hits you. If such an attack hits, make a Bluff check opposed by the targets Sense Motive check or their AC, whichever is higher. On a success, the target must attack only you next round. You may initiate this counter in response to an adjacent ally being attacked, causing the attack to automatically hit you instead if you are in reach of the attack this activates the DR and other effects as normal.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 4,
-   "range": "Close 25 ft + 5 ft/level",
-   "type": "counter"
-  },
-  "Climactic Butchery": {
-   "action": "1 standard action",
-   "description": "You drive your weapon deep into the foe, ensuring that it wont be getting up any time soon. Make an attack which deals 2d4 additional damage. If the target is reduced to 0 or fewer hit points by this attack, they automatically fail any attempts to stabilize until they are above 1 hp again.",
-   "discipline": "Leaden Hyena",
-   "duration": "",
-   "level": 1,
-   "range": "Melee or Ranged",
-   "type": "strike"
-  },
-  "Cruel Hyenas Facade": {
-   "action": "1 swift action",
-   "description": "Assuming a swaggering gait, you perplex and destabilize foes with your movements. On a successful feint attempt, the target is shaken and flat-footed for the duration of the feint.",
-   "discipline": "Leaden Hyena",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Dastards Blades": {
-   "action": "1 swift action",
-   "description": "You disquiet your target around its allies, taking the opportunity to launch your weapon deep into a vulnerable point. For 1 round, you gain +5d6 dice of sneak attack, as the rogue class feature. In addition, any creature that you attack that is adjacent to one of their allies is considered flat-footed against your attacks.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 5,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Erode Resolve": {
-   "action": "1 standard action",
-   "description": "Striking a critical point, you halt a foe in their tracks. Make an attack roll against the target creature. On a hit, the attack deals an additional 3d6 points of damage and the target becomes fatigued for one round.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 3,
-   "range": "Melee or Ranged",
-   "type": "strike"
-  },
-  "Face Me": {
-   "action": "1 swift action",
-   "description": "With a snarl, you cow your opponents out of trying to escape. Any creatures you select must make a Will save DC 12 + your initiation modifier. On a failed save, they cannot take any actions that would place them further away from you than they were when you initiated this boost for 1 round. Moving towards you is acceptable, as is remaining equidistant to you.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 2,
-   "range": "Close 25 ft + 5 ft/level",
-   "type": "boost"
-  },
-  "Gutstrike": {
-   "action": "1 standard action",
-   "description": "With a ruthless attack or a powerful kick, the disciple strikes a foe in a way that causes him to become sickened with pain. The discipline makes a melee attack against a foe, adding his initiation modifier to the damage of the attack and the target must make a Fortitude save DC 11 + primary initiating attribute modifier or be sickened for one round.",
-   "discipline": "Black Seraph",
-   "duration": "1 round",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Incite Betrayal": {
-   "action": "1 swift action",
-   "description": "Spurring the target into a fit of rage, you send them against their own ally. One creature within range must make a Will save DC 11 + your initiation modifier. On a failure, the target takes its next action to make an attack against one creature of your choosing.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round.",
-   "level": 1,
-   "range": "Close 25 ft + 5 ft/level",
-   "type": "boost"
-  },
-  "Intimidating Force": {
-   "action": "1 swift action",
-   "description": "By using this technique, the disciples fear-inspiring countenance alone may turn aside attacks before they occur. The disciple makes anIntimidatecheck against the attackersattack roll; if theIntimidatecheck exceeds theattack rollthen the attack is negated. Librarian Note: While all Counters are predicated on being an immediate action, the book text does indeed say swift action. It is advised that GM's consider this a typo and treat the initiation action as an immediate action instead. The original text is preserved above.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Leverage Dismay": {
-   "action": "1 swift action",
-   "description": "Drawing upon your opponents unease, you lash out against them with the force of many threats at once. The next time that you strike a creature with an attack, the attack deals an additional 1d6 points of damage for every creature within 20 feet of the target that is not an ally of the target, to a maximum of your initiation modifier.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 3,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Malignant Punisher Stance": {
-   "action": "1 swift action",
-   "description": "You brace yourself to evade oncoming attacks and to injure those who fail to hit you. While in this stance, you gain a +1 dodge bonus to AC, which increases by +1 at 5th level and every 4 levels thereafter. In addition, when a creature misses you with a melee attack, they take damage equal to half your initiator level minimum 1.",
-   "discipline": "Leaden Hyena",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Razor Wings of the Black Seraph": {
-   "action": "1 swift action",
-   "description": "The graceful hunting techniques of fallenangelslend their strength to the hellish Black Seraph disciple by his adoption of this stance. He becomes preternaturally graceful and deadly, his dark soul assisting his movements in combat by forming an ethereal image of a hellish angelic form and wings of shadow. While in this stance, the character gains a fly speed equal to his movement speed average maneuverability, a +2profane bonus to AC, and he gains the use of theWhirlwind Attackfeat he does not need to meet the prerequisites for use of this feat.",
-   "discipline": "Black Seraph",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Riot of Despair": {
-   "action": "1 swift action",
-   "description": "AuraRange: 30\nonlyOthers;\n\nYou become the incarnation of your foes ruin, bringing down upon them all the mistakes that they have made and driving them back. While in this stance, all enemies within 30 feet are incapable of gaining the benefits of morale bonuses, and automatically fail any checks that they make to stabilize. In addition, enemies with 30 feet of you take an additional 1d6 points of damage from all attacks for every ally of theirs that has been reduced to 0 hit points in this encounter.",
-   "discipline": "Leaden Hyena",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Sadistic Vitality": {
-   "action": "1 swift action",
-   "description": "Like a ravenous beast, you feed off the destruction your weapons cause. When you initiate this boost, you gain temporary hit points equal to your initiator level. These temporary hit points last for 1 round/level, and are limited to a maximum of half your normal number of hit points. This boost only works if you have damaged a creature this round.",
-   "discipline": "Leaden Hyena",
-   "duration": "1 round",
-   "level": 2,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Savage Drive": {
-   "action": "1 full-round action",
-   "description": "Ever hungry for carnage, the demonic disciple demands action and satisfaction through battle. Pressing forward with ruthless efficiency, the disciple inflicts more damage than his foes, thus outlasting them. The disciple makes a charge attack which does not provokeattacks of opportunity, and this inflicts an additional 4d6 points of damage. When making a charge attack with this strike, he does not suffer the standard -2Armor Classpenalty.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Savage Stance": {
-   "action": "1 swift action",
-   "description": "The blood is the life and the disciple of the Black Seraph knows that by spilling it in great amounts, he does glory to the lower planes. While in this stance and wielding a melee weapon in two hands, the disciple adds an additional 1d8 points of damage to his attacks but suffers a -2 toattack rollsfrom the focus on increased damage. Upon reaching initiator level 9, this bonus increases to 2d8 points of damage, and increases to 3d8 upon reaching initiator level 17.",
-   "discipline": "Black Seraph",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Scavengers Leer": {
-   "action": "1 immediate action",
-   "description": "You grin mirthfully at your opponent, making them second-guess their action. When a creature within range attempts to attack, cast a spell, or use a spell-like or psi-like ability, you may make a Bluff check opposed by their Sense Motive check or their AC, whichever is higher. On a success, the targets attack automatically misses or the spell they are casting fails.",
-   "discipline": "Leaden Hyena",
-   "duration": "Instantaneous",
-   "level": 6,
-   "range": "Close 25 ft + 5 ft/level",
-   "type": "counter"
-  },
-  "Shadow Feather Strike": {
-   "action": "1 standard action",
-   "description": "By concentrating dark, spiritual energy within his hand shaping it into a rough feather-like shape, the disciple may hurl his wrath at a target with a blade of a cutting hate. When initiating this strike, the disciple makes a rangedtouch attackagainst a target that inflicts 4d6 + initiation modifier inprofanedamage.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 2,
-   "range": "30-ft",
-   "type": "strike"
-  },
-  "Shadow Raptor Swarm": {
-   "action": "1 standard action",
-   "description": "The power of a Black Seraph disciples hatred is made manifest by summoning a swarming mass of beating wings with razor tipped wings made of shadow that he directs at his foes in a cone of terror and rage. The initiator extends his hand or weapon and from this point a 30-ft cone of shadowy birds rip and rend at the disciples foes and inflict 12d6 points ofprofanedamage; a successfulReflexsave DC 16 + initiation modifier halves this damage. All targets within this maneuvers effects areshakenfor the disciples initiation modifier in rounds.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 6,
-   "range": "30-ft cone",
-   "type": "strike"
-  },
-  "Soul Consumption": {
-   "action": "1 swift action",
-   "description": "The fiendish energy channeled by the disciple hungers for the souls of fallen foes and it rewards the disciple with its unquenchable thirst. When the initiator reduces a foe minimum 1/2 HD to 0hit pointsor less, he may use this boost to draw the remaining life force of the foe into his own form to restore health to his body. Use of this maneuver restores 3d8 + initiator levelhit pointsto the initiator.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 5,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Stance of Sown Mistrust": {
-   "action": "1 swift action",
-   "description": "AuraRange: 30\nonlyOthers;\n\nYou distill away any sense of camaraderie or trust that your foes possess, replacing it with dread. Enemies within 30 feet of you are no longer treated as allies to other creatures and cant provide or benefit from flanking, use or benefit from Teamwork feats or aid another actions, or allow other creatures to move through their space. Any spell or effect that requires a willing target fails if used on an affected creature, and even harmless effects require an attack roll if applicable and require affected creatures to attempt a saving throw to resist their effects if a save is allowed.",
-   "discipline": "Leaden Hyena",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Strength of Hell": {
-   "action": "1 swift action",
-   "description": "By utilizing his bond to the lower planes from his training, the darkness he welcomed as his own, the martial disciple is capable of increasing his power at the cost of defense by bringing forth a momentary burst of hysterical fiendish strength. Until next turn, the disciple gains a +2profane bonusto attack and add an additional 1d6 points of damage to the attack.",
-   "discipline": "Black Seraph",
-   "duration": "One round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Tendon Rip": {
-   "action": "1 standard action",
-   "description": "By striking at the legs of the opponent, the disciple removes the mobility of a foe, so the foe cannot hamper his progression to victory. The initiator makes an attack on the target creature, and if successful, the attack inflicts an additional 2d6 points of damage and halves the opponents move speed for initiation modifier in rounds.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Vengeful Riposte": {
-   "action": "1 immediate action",
-   "description": "Disciples of the Black Seraph have trained themselves to look for openings while enemies attack, then respond with agonizing retorts, as vengeance is a creed the Black Seraph embraces. The disciple makes an attack at his fullbase attack bonusagainst his attacker which if successful sends a cascade of pain through the target and inflicts thestaggeredcondition for one round.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 4,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Walk in the Dark": {
-   "action": "1 swift action",
-   "description": "AuraRange: 20\nonlyOthers;\n\nUsing the principles of shadow and temporarily merging with the dark, the Black Seraph disciple becomes engulfed in smothering darkness and fear. While in this stance, the initiator is surrounded by a 20-ft. radius aura of darkness this functions identically to thedarknessspell while the character is in this stance. The initiator gainsdarkvisionof 60 ft. while in this stance. Additionally, as amove action, the disciple may focus this smothering darkness to target an individual within it to frighten them for their initiation modifier in rounds Willsave DC 14 + initiation modifier reduces this to beingshakenfor one round.",
-   "discipline": "Black Seraph",
-   "duration": "Instant",
-   "level": 4,
-   "range": "Personal",
-   "type": "stance"
-  }
- },
- "maneuvers_known_list": [
-  4,
-  4,
-  4,
-  2,
-  2,
-  2
- ],
- "maneuvers_readied_list": [
-  0,
-  2,
-  4,
-  2,
-  2,
-  2
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Face Me",
-   "Intimidating Force"
-  ],
-  [
-   "Erode Resolve",
-   "Leverage Dismay",
-   "Savage Drive",
-   "Tendon Rip"
-  ],
-  [
-   "Cackling Mockery",
-   "Vengeful Riposte"
-  ],
-  [
-   "Dastards Blades",
-   "Soul Consumption"
-  ],
-  [
-   "Scavengers Leer",
-   "Shadow Raptor Swarm"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
   "Glances at watch",
   "Crosses arms",
   "Thumbs through a book"
  ],
- "martial_disciplines": [
-  "Leaden Hyena",
-  "Black Seraph"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "cn",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Leaden Hyena)",
-  "Martial Training III (Leaden Hyena)",
-  "Martial Training V (Leaden Hyena)",
-  "Martial Training I (Black Seraph)",
-  "Martial Training III (Black Seraph)",
-  "Martial Training V (Black Seraph)"
- ],
+ "mt_feats": [],
  "normal_feat_amount": 9,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a middle income household",
+ "parents": "loving mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Punctual",
   "Prudent",
@@ -1312,7 +855,7 @@
   "Intentional",
   "Joyful"
  ],
- "platnium": 236610.0,
+ "platnium": 228950.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1733,77 +1276,50 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting",
   "Easy Focus"
  ],
  "sphere_counts": {
-  "Trap": {
+  "Alchemy": {
    "advanced": 1,
    "feats": 0,
-   "normal": 8
+   "normal": 0
   }
  },
  "sphere_drawbacks": [
-  "Skilled Casting",
-  "Material Casting",
-  "Magical Signs",
-  "Extended Casting"
+  "Extended Casting",
+  "Skilled Casting"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Darts / Tripwire)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Flash Trap)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Razor Wire / Opportunist)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Sneaky Trapper / Trap Wielder)": [
+  "Extra Combat Talent (Elixir Of Immortality)": [
    "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Razor Wire / Opportunist)",
-  "Extra Combat Talent (Darts / Tripwire)",
-  "Extra Combat Talent (Sneaky Trapper / Trap Wielder)",
-  "Extra Combat Talent (Flash Trap)"
+  "Extra Combat Talent (Elixir Of Immortality)"
  ],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Skilled Casting",
-  "Material Casting",
-  "Magical Signs",
   "Extended Casting",
-  "Fortified Casting",
+  "Skilled Casting",
   "Easy Focus"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Trap",
+   "sphere": "Alchemy",
    "system": "might"
   }
  ],
- "stances_chosen": [
-  "Cruel Hyenas Facade",
-  "Riot of Despair",
-  "Stance of Sown Mistrust",
-  "Malignant Punisher Stance",
-  "Savage Stance",
-  "Black Seraph Battle Stance",
-  "Razor Wings of the Black Seraph",
-  "Walk in the Dark"
- ],
+ "stances_chosen": [],
  "story_feat_tax_dict": {
-  "Deft Hands": [
-   "close call"
+  "Siege Engineer": [
+   "siege gunner"
   ]
  },
  "story_feats": [
-  "Deft Hands",
-  "Serene Stride",
-  "Dirgesinger",
-  "Masked Identity"
+  "Sea Legs",
+  "Master Alchemist",
+  "Siege Engineer",
+  "Fast Crawl"
  ],
  "str": 13,
  "teamwork_feat_labels": [],
@@ -1813,9 +1329,7 @@
  "trainer_calibers": [
   3,
   3,
-  2,
-  2,
-  2
+  3
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
@@ -1826,55 +1340,32 @@
   "(Trainer 2)",
   "(Trainer 3)",
   "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 5)",
-  "(Trainer 5)",
-  "(Trainer 6 - Path of War)",
-  "(Trainer 6 - Path of War)",
-  "(Trainer 6 - Path of War)",
-  "(Trainer 7 - Spheres)"
+  "(Trainer 3)"
  ],
  "trainer_feat_tax_dict": {
-  "Improved Initiative": [
-   "surprising combatant"
+  "Demonologist": [
+   "demon grafter"
   ],
-  "Martial Training I (Black Seraph)": [
-   "Martial Training II (Black Seraph)"
-  ],
-  "Martial Training III (Black Seraph)": [
-   "Martial Training IV (Black Seraph)"
-  ],
-  "Martial Training V (Black Seraph)": [
-   "Martial Training VI (Black Seraph)"
-  ],
-  "Spheres Mentor": []
+  "Focused Worker": [
+   "focused overseer"
+  ]
  },
  "trainer_feats": [
-  "Racial Heritage",
-  "Powerful Throwing (combat)",
-  "Cooperative Crafting",
-  "Celestial Obedience",
-  "Additional Traits",
-  "Equipment Trick",
-  "Flagbearer",
-  "Mother's Gift",
-  "Improved Initiative",
+  "Focused Worker",
+  "Dragonslayer",
   "Killing Madness",
-  "Shadow Strike",
-  "Strong Comeback",
-  "Martial Training I (Black Seraph)",
-  "Martial Training III (Black Seraph)",
-  "Martial Training V (Black Seraph)",
-  "Spheres Mentor"
+  "Jaguar Pounce",
+  "Flash of Insight",
+  "Precise Strike",
+  "Shapeshifter Foil",
+  "Demonologist",
+  "Blind Warrior"
  ],
- "weapon_enhancement_bonus": 2,
+ "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Thundering",
-  "Adaptive",
-  "Beaming",
-  "Ambushing",
-  "Second Chance"
+  "Designating (lesser)",
+  "Lucky",
+  "Corrosive Burst"
  ],
  "weapon_name": "Dart",
  "weight_number": 30,
