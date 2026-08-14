@@ -77,7 +77,7 @@ from utils.payload							import build_payload, gear_display, PAYLOAD_KEYS
 from utils.class_func.spheres 						import randomize_spheres_num, choose_spheres_attr, add_overflow_talents, MAX_EXTRA_TALENT_FEATS, mentor_sphere_summary, mentor_feat_worth, roll_talent_budget
 from utils.class_func.flag_assign 					import human_flag_assigner, druidic_flag_assigner
 from utils.class_func.flaws 						import flaw_chooser
-from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep#, no_prereq_loop, chosen_set_append
+from utils.class_func.generic_func 					import generic_class_option_chooser, get_data_without_prerequisites, no_prereq_prep, levels_for#, no_prereq_loop, chosen_set_append
 from utils.class_func.grand_discovery 				import grand_discovery_chooser
 from utils.class_func.gunslinger 					import choose_gun_func
 from utils.class_func.hero_point_generator 			import hero_point_generator
@@ -475,7 +475,57 @@ def phase_mythic_stake(character):
 	Absent -> mythic_rank 0 and NO RNG draw, so every non-mythic generation -- which is every
 	golden and every replayed seed that predates this phase -- is byte-identical by construction.
 	'''
-	mythic.resolve_mythic_tier(character)
+	if mythic.resolve_mythic_tier(character):
+		# The parallel-axis schedule (ticket 03), loaded only when a tier exists: levels_for reads
+		# it by attribute, and a non-mythic character deliberately has NO mythic state at all.
+		character.mythic_schedule = mythic.mythic_schedule()
+
+
+@phase(requires=['classes', 'mythic_rank', 'feats'], provides=['mythic_path'], returns=['mythic'])
+def phase_mythic_abilities(character, pw, ft):
+	'''The mythic build: path, tier-1 feature choice, per-tier path abilities, mythic feats.
+
+	Runs LATE -- after phase_feat_tax_and_swaps -- for two reasons that are both about feats. The
+	mythic feat allowance is SEPARATE from the feat economy (RAW: tiers 1/3/5/7/9, never an
+	ordinary slot), so the grants append to ft.feats after the feat-count guarantee has already
+	trimmed to target, exactly the profession-feat pattern -- the cap neither counts nor trims
+	them. And mythic feats mostly require their non-mythic namesake (mythic Power Attack wants
+	Power Attack), which is only knowable once the swaps have settled the final list.
+
+	Path abilities land in data_dict['class features'] with owner `mythic` and TIER stamps
+	(ticket 03), so both renderers show them through the machinery they already read; the `mythic`
+	record this returns is chassis + provenance for the payload block.
+
+	Descriptions register in pw.homebrew_feat_desc_dict (profession-feat precedent): the display
+	names ("Dodge (Mythic)") deliberately match no data/feats.csv row -- that miss is what keeps
+	the 139 name collisions out of every name-keyed lookup -- so the CSV backfill must never be
+	their description source.
+	'''
+	character.mythic_path = None
+	tier = getattr(character, 'mythic_rank', 0) or 0
+	if not tier:
+		return PhaseRecord(mythic=None)
+
+	path_key, feature_choice = mythic.choose_mythic_path(character)
+	character.mythic_path = path_key
+	abilities = mythic.choose_path_abilities(character, path_key, tier)
+	mythic.record_mythic_choices(character, path_key, feature_choice, abilities, tier)
+
+	feat_slot_tiers = levels_for(character, 'mythic', 'mythic_feats', tier,
+								 schedule_attr='mythic_schedule')
+	mythic_feats_granted = mythic.choose_mythic_feats(character, tier, feat_slot_tiers)
+	ft.feats.extend(g['name'] for g in mythic_feats_granted)
+	for g in mythic_feats_granted:
+		pw.homebrew_feat_desc_dict[g['name']] = g['description']
+
+	return PhaseRecord(mythic={
+		'tier': tier,
+		'path': path_key,
+		'path_display': mythic.path_ability_data()[path_key]['display'],
+		'tier1_feature': feature_choice,
+		'path_abilities': abilities,
+		'mythic_feats': mythic_feats_granted,
+	})
 
 
 @phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
@@ -2695,6 +2745,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# MASTER (half HP, master BAB/saves/ranks), and luck has only just settled Total_HP.
 		# See familiars.py's module docstring.
 		stat_familiars(character, skill_ranks)
+
+		# Mythic lands HERE, after the feat economy has fully settled: the allowance is separate
+		# (tiers 1/3/5/7/9) and the namesake prereqs read the final feat list. See the phase.
+		myth = phase_mythic_abilities(character, pw, ft)
 
 
 

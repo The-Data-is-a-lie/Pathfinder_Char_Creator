@@ -7,11 +7,14 @@ untestable by construction -- and no level gate. Absent -> never mythic, and the
 draws NOTHING from the RNG stream, which is what keeps every golden byte-identical and every
 replayed seed reproducing.
 """
+import json
 import random
 import re
 
 import pandas as pd
 
+from utils import data as static_data
+from utils.class_func.generic_func import levels_for, record_bucket_owner, _record_choice_level
 from utils.paths import repo_path
 
 # The rolled form decays toward low tiers (ticket 02 amendment, 2026-08-13): tier 1 is common,
@@ -154,3 +157,191 @@ def choose_mythic_feats(character, tier, slot_tiers):
             chooseable.add(display.lower())
 
     return grants
+
+
+# ------------------------------------------------------------------------------------------------
+# The path and its abilities (ticket 03). Data: mythic_path_abilities.json (built by
+# scripts/build/build_mythic_path_abilities.py -- six RAW paths, universal merged in, curation
+# flags load-bearing); schedule: mythic_schedule.json through the same levels_for() resolver as
+# every class bucket, with the TIER passed where a class level would be.
+# ------------------------------------------------------------------------------------------------
+
+_PATH_DATA = None
+_SCHEDULE = None
+
+PATHS = ('archmage', 'champion', 'guardian', 'hierophant', 'marshal', 'trickster')
+
+# Role-weighted path draw (Daniel, 2026-08-13): every path stays possible, nonsense stays rare.
+# Two signal sources, both additive onto a baseline of 1 per path: what the CLASSES are (weighted
+# by their level share -- a fighter 11 / wizard 3 leans champion), and, when the optimizer set a
+# role, what the ROLE wants. The numbers are draw weights, not rules; tune here.
+_CLASS_PATH_WEIGHTS = {
+    'arcane':  {'archmage': 4, 'trickster': 1},
+    'divine':  {'hierophant': 4, 'champion': 1},
+    'bab_H':   {'champion': 3, 'guardian': 2, 'marshal': 1},
+    'bab_M':   {'champion': 1, 'guardian': 1, 'marshal': 2, 'trickster': 1},
+    'skill':   {'trickster': 3, 'marshal': 1},          # no casting, not full-BAB
+}
+_ROLE_PATH_BONUS = {
+    'striker': 'champion', 'alpha': 'champion', 'sniper': 'trickster',
+    'wall': 'guardian', 'juggernaut': 'guardian',
+    'controller': 'archmage', 'specialist': 'marshal',
+}
+
+# Path-ability prereqs stay OUTSIDE the string prereq engine, like feat tier gates: most are
+# prose, but the recurring machine-readable shapes are cheap to honor. Fail-open by design --
+# an unparsed clause admits the ability rather than silently shrinking the pool.
+_CLASS_FEATURE_PREREQ_RE = re.compile(r'must have the ([a-z\' ]+?) (?:class feature|path ability)')
+_CAST_PREREQ_RE = re.compile(r'must be able to cast (arcane|divine|psychic) spells')
+
+
+def path_ability_data():
+    global _PATH_DATA
+    if _PATH_DATA is None:
+        with open(repo_path('Backend/json/mythic_path_abilities.json'), encoding='utf-8') as fh:
+            _PATH_DATA = json.load(fh)
+    return _PATH_DATA['paths']
+
+
+def mythic_schedule():
+    global _SCHEDULE
+    if _SCHEDULE is None:
+        with open(repo_path('Backend/json/mythic_schedule.json'), encoding='utf-8') as fh:
+            _SCHEDULE = json.load(fh)
+    return _SCHEDULE
+
+
+def _caster_flags(character):
+    divine_casters = getattr(static_data, 'divine_casters')
+    is_divine = any(c['name'] in divine_casters for c in character.classes)
+    is_arcane = any(c['casting_level_string'] in ('low', 'mid', 'high')
+                    and c['name'] not in divine_casters for c in character.classes)
+    return is_divine, is_arcane
+
+
+def path_weights(character):
+    """Draw weights over the six paths for THIS character. Deterministic; the draw is not."""
+    weights = {p: 1.0 for p in PATHS}
+    divine_casters = getattr(static_data, 'divine_casters')
+    total_levels = sum(c['level'] for c in character.classes) or 1
+
+    for entry in character.classes:
+        share = entry['level'] / total_levels
+        bab = str(character.class_data.get(entry['name'], {}).get('bab', 'M'))
+        casting = entry.get('casting_level_string', 'none')
+        signals = []
+        if casting in ('low', 'mid', 'high'):
+            signals.append('divine' if entry['name'] in divine_casters else 'arcane')
+        if bab == 'H':
+            signals.append('bab_H')
+        elif bab == 'M':
+            signals.append('bab_M')
+        if casting == 'none' and bab != 'H':
+            signals.append('skill')
+        for sig in signals:
+            for path, bonus in _CLASS_PATH_WEIGHTS[sig].items():
+                weights[path] += bonus * share
+
+    role = getattr(character, 'role', None)
+    if role:
+        favored = _ROLE_PATH_BONUS.get(str(role.get('name', '')).lower())
+        if favored:
+            weights[favored] += 2.0
+    return weights
+
+
+def choose_mythic_path(character):
+    """One of the six RAW paths, role-weighted (v1 walks exactly one -- Dual/Hard Path are
+    recorded not-v1). Also picks the path's tier-1 feature option (Archmage Arcana &c.)."""
+    weights = path_weights(character)
+    path_key = random.choices(PATHS, weights=[weights[p] for p in PATHS], k=1)[0]
+    meta = path_ability_data()[path_key]
+
+    feature_choice = None
+    feature = meta.get('tier1_feature') or {}
+    options = feature.get('options') or {}
+    if options:
+        name = random.choice(sorted(options))
+        feature_choice = {'feature': feature['name'], 'name': name, **options[name]}
+    return path_key, feature_choice
+
+
+def _ability_prereq_ok(description, character, chosen_lower):
+    """The two machine-readable prereq shapes; everything else admits (fail-open, see above)."""
+    text = str(description).lower()
+    for feature in _CLASS_FEATURE_PREREQ_RE.findall(text):
+        token = feature.strip()
+        if token in chosen_lower:
+            continue
+        if token not in (getattr(character, 'chooseable', None) or set()):
+            return False
+    cast = _CAST_PREREQ_RE.search(text)
+    if cast:
+        is_divine, is_arcane = _caster_flags(character)
+        if cast.group(1) == 'arcane' and not is_arcane:
+            return False
+        if cast.group(1) == 'divine' and not is_divine:
+            return False
+        if cast.group(1) == 'psychic':
+            return False    # the generator has no psychic-caster flag; conservative here
+    return True
+
+
+def choose_path_abilities(character, path_key, tier):
+    """One ability per tier from the path's merged pool, gated per slot (1st/3rd/6th-tier lists),
+    flagged entries skipped -- the flag is load-bearing, not decoration.
+
+    Returns [{'name', 'tier', 'type', 'source', 'description', 'universal'}, ...] in slot order."""
+    pool = path_ability_data()[path_key]['abilities']
+    slot_tiers = levels_for(character, 'mythic', 'Mythic Path Abilities', tier,
+                            schedule_attr='mythic_schedule')
+    chosen = []
+    chosen_lower = set()
+
+    for slot_tier in slot_tiers:
+        candidates = [name for name, entry in pool.items()
+                      if name.lower() not in chosen_lower
+                      and not entry.get('flag')
+                      and entry['tier'] <= slot_tier
+                      and _ability_prereq_ok(entry['description'], character, chosen_lower)]
+        if not candidates:
+            break
+        name = random.choice(sorted(candidates))
+        chosen_lower.add(name.lower())
+        chosen.append({'name': name, 'tier': slot_tier, **{
+            k: pool[name][k] for k in ('type', 'source', 'description', 'universal')}})
+    return chosen
+
+
+def record_mythic_choices(character, path_key, feature_choice, abilities, tier):
+    """Land the path and its picks in data_dict['class features'] + the owner/level side-tables
+    both renderers already read -- owner 'mythic', and the stamp is the TIER (rendering a tier
+    stamp where every sibling carries a level is ticket 06's line item; this only fixes what the
+    stamp IS). A mythic character is on the sheet TODAY through the existing class-features
+    path; the namespaced payload block is provenance and chassis, not the only route in."""
+    meta = path_ability_data()[path_key]
+    features = character.data_dict['class features']
+
+    path_bucket = {}
+    display = meta['display']
+    blurb = f"Mythic path ({display}); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
+    path_bucket[display] = {'benefit': blurb}
+    _record_choice_level(character, 'Mythic Path', display, 1)
+    if feature_choice:
+        entry_name = f"{feature_choice['feature']}: {feature_choice['name']}"
+        path_bucket[entry_name] = {'benefit': feature_choice['description']}
+        _record_choice_level(character, 'Mythic Path', entry_name, 1)
+    capstone = meta.get('capstone')
+    if capstone and tier >= 10:
+        path_bucket[capstone['name']] = {'benefit': capstone['description']}
+        _record_choice_level(character, 'Mythic Path', capstone['name'], 10)
+    features.setdefault('Mythic Path', {}).update(path_bucket)
+    record_bucket_owner(character, 'Mythic Path', 'mythic')
+
+    if abilities:
+        bucket = features.setdefault('Mythic Path Abilities', {})
+        for ability in abilities:
+            bucket[ability['name']] = {'benefit': ability['description']}
+            _record_choice_level(character, 'Mythic Path Abilities', ability['name'],
+                                 ability['tier'])
+        record_bucket_owner(character, 'Mythic Path Abilities', 'mythic')

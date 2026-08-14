@@ -1,0 +1,55 @@
+{
+  "_readme": [
+    "Mythic pick schedule (mythic map, ticket 03) -- the PARALLEL AXIS table beside",
+    "class_choice_schedule.json. Same schema, same resolver (generic_func.levels_for with",
+    "schedule_attr='mythic_schedule'), but the key space is TIER, not class level: the tier is",
+    "passed where a class level would be. A second axis file, not a sixth convention.",
+    "",
+    "Deliberately NOT a row inside class_choice_schedule.json: class_entry_for and",
+    "validate_class_choices.py's ast-parsed call-site gate both assume the roster of 68 rollable",
+    "classes, and a pseudo-class row would need carve-outs in each. This table's gate is",
+    "validate_mythic.py.",
+    "",
+    "Tiers cap at 10 (RAW; resolve_mythic_tier clamps), so the compact rules need no ceiling --",
+    "the same reason the class table dropped `until`. What a tier above 10 would even mean is the",
+    "map's 'Mythic above 20th' open question, not this file's.",
+    "",
+    "The single 'class' key is `mythic`: one schedule for every path, because RAW grants every",
+    "path the same cadence -- the PATHS differ in their ability pools",
+    "(mythic_path_abilities.json), never in their pick counts.",
+    "",
+    "Bucket keys are the names the code actually writes into data_dict['class features'] (the",
+    "sorcerer-row precedent in the class table): 'Mythic Path' and 'Mythic Path Abilities' are",
+    "sheet-visible section names; mythic_feats never reaches class features (it rides the general",
+    "feat track), so it keeps a code-shaped key."
+  ],
+  "classes": {
+    "mythic": {
+      "buckets": {
+        "Mythic Path": {
+          "dataset": "mythic_path_abilities",
+          "bucket": "Mythic Path",
+          "levels": [1],
+          "source": "raw",
+          "note": "The path choice itself: one of the six RAW paths, picked once at tier 1 (v1 walks exactly one path -- Dual/Hard Path are recorded not-v1). Declared here on the same complete-inventory principle that put all 14 single-pick buckets in the class table."
+        },
+        "Mythic Path Abilities": {
+          "dataset": "mythic_path_abilities",
+          "bucket": "Mythic Path Abilities",
+          "start": 1,
+          "every": 1,
+          "source": "raw",
+          "note": "One path ability per tier (Mythic Adventures). The pool is the chosen path's, with the universal list merged in at build time -- one pool per path, one bucket on the sheet. Stamps carry the TIER, owner 'mythic'."
+        },
+        "mythic_feats": {
+          "dataset": "feats.csv[type=='Mythic']",
+          "bucket": "mythic_feats",
+          "start": 1,
+          "every": 2,
+          "source": "raw",
+          "note": "One mythic feat at tier 1 and every second tier after (1,3,5,7,9). A separate allowance, never an ordinary feat slot: the grants are appended after the feat-count guarantee, profession-feat style, so the cap neither counts nor trims them."
+        }
+      }
+    }
+  }
+}

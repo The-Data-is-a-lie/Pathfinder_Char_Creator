@@ -10,7 +10,7 @@ import pandas as pd
 # scripts map keeps deliberately separate; deleting them here fails three tests.
 
 
-def levels_for(character, class_name, bucket, class_level):
+def levels_for(character, class_name, bucket, class_level, schedule_attr='class_choice_schedule'):
     """The class levels at which `class_name` gains a pick in `bucket`, up to `class_level`.
 
     The one seam over Backend/json/class_choice_schedule.json (class-choices ticket 01). A bucket
@@ -30,8 +30,14 @@ def levels_for(character, class_name, bucket, class_level):
 
     Returns [] for a bucket with no row. That is a mistake rather than a state, and the thing that
     catches it is validate_class_choices.py (ticket 05), not a guard here.
+
+    `schedule_attr` (mythic map, ticket 03): the mythic path-ability schedule is a PARALLEL table
+    with this same schema, keyed by TIER where a class schedule is keyed by level -- a second axis
+    file, not a sixth convention. Mythic calls pass schedule_attr='mythic_schedule' and the tier
+    where the class level would go; every other call site omits it and reads exactly the table it
+    always read. Its gate is validate_mythic.py, not validate_class_choices.py.
     """
-    table = (getattr(character, 'class_choice_schedule', None) or {}).get('classes', {})
+    table = (getattr(character, schedule_attr, None) or {}).get('classes', {})
     row = (table.get(class_name) or {}).get('buckets', {}).get(bucket)
     if not row:
         return []
