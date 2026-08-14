@@ -205,6 +205,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   and a pseudo-class row in the class schedule (the 68-class roster gates would each need
   carve-outs; the parallel same-schema `mythic_schedule.json` needs none). Rendering the block
   on the FoundryVTT module and the web sheet is ticket 06, the follow-up effort.
+- **`/generate_loot`: CR-budgeted encounter treasure, as a standalone endpoint** (web-sheet ticket
+  #81, decision 2026-08-13). `POST {cr, speed, seed?}` → `{coins{pp,gp,sp,cp}, gems[{name,value}],
+  items[{name, price, weight, slot, magic}], budget, value, seed}`; `GET` on the same path returns
+  a tiny capability document (`{ok, speeds, cr, version}`) and is limiter-exempt, because it exists
+  purely so the web sheet can **feature-detect** this endpoint and hide its "Roll treasure" button
+  until this deploys — which is what lets the sheet half of #81 merge without waiting on Render.
+  The route takes no character and touches none of the generation pipeline, so the sheet's
+  encounter flow can call it once per fight without paying for a character build.
+  `Backend/utils/loot.py` is the **one owner of Paizo's per-encounter treasure curve**, hand-coded
+  (CR 1–20 × slow/medium/fast, extrapolated past CR 20 by the last delta — the same ruling
+  `wealth_by_level` already applies past level 20). It is emphatically **not**
+  `data.wealth_by_level`, which is cumulative PC wealth; `test_loot.py` gates that the two curves
+  never agree at a level, because crossing them would misprice every parcel by an order of
+  magnitude. The budget is filled from the item compendia this repo already prices: wondrous items
+  through `ItemNameResolver` + `convert_price` (unlisted or unpriceable → skipped, never freed),
+  and weapons/armor through a **new mundane price parser** — their costs must not go through
+  `convert_price`, whose `adjust_price` reads any integer under 11 as a +N enhancement bonus and
+  would price a 2 gp dagger at 4,000 gp. Items are drawn price-weighted, with a floor of 20% of the
+  remaining budget and at most two mundane pieces, so a CR 20 hoard reads as magic and coin rather
+  than a rack of exotic polearms. 379 checks in `Backend/scripts/tests/test_loot.py`.
 - **Full house-rules optimized walls: generated tanks now hit AC 40–50+ at level 10+** (spec §15's
   V4 pass, rulings 2026-08-13). A new named input, `house_rules`, beside `optimize`: absent or
   false is exactly the optimizer that shipped yesterday — the ten prior goldens rewrote
