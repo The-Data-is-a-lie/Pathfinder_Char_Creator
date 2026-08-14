@@ -225,8 +225,19 @@
       "note": "DR 5/- at 19th while armored -- the metric's declared round has the fighter in its armor."}
   },
 
+  "mythic": {
+    "_why": "Basic mythic chassis coverage (mythic map, ruled 2026-08-14): the ability-score bumps fold into ability_scores exactly like level_up_stats (no model row needed -- the code reads payload.mythic.ability_bumps directly), surge is an expected-value shift on the nova round, and the power pool / Amazing Initiative ride diagnostics. Per-path-ability adders are DEFERRED -- see _blind.mythic.",
+    "surge": {"model": "surge_nova_ev",
+      "note": "Surge adds its die to a d20 roll after the fact, so on the nova round it is hit probability, not damage dice: one surge on the nova attack is worth (die_avg/20) x dpr_raw in expectation, burst_expected only."}
+  },
+
   "_blind": {
     "_why": "Printed on every profile and in the baseline report. A metric that silently rates a warder at zero is worse than one that says it cannot see maneuvers yet.",
+    "mythic": [
+      "path abilities (597 pool rows carry unmodeled numerics -- a tier-10 profile understates knowingly; deferred by ruling 2026-08-14)",
+      "mythic feats (render as text like most feats; no change rows curated yet)",
+      "tradition drawbacks/boons/qualities (prose effects, both directions)"
+    ],
     "offense": [
       "two-weapon fighting routines",
       "natural-attack routines",

@@ -92,6 +92,11 @@ IMPLEMENTED_DR_MODELS = frozenset({'scaling_dr', 'flat_dr_at'})
 # every curated name against the spell corpus, so the silent-nothing rule holds.
 IMPLEMENTED_BUFF_MODELS = frozenset({'flat', 'scaled_flat', 'stat_bonus', 'size_step',
                                      'extra_attack', 'dr'})
+# Mythic chassis models (power_adders.json::mythic) -- the BASIC coverage ruled 2026-08-14: the
+# ability-score bumps fold into ability_scores like level_up_stats (no model needed), surge is an
+# expected-value shift on the nova round, and the pool/initiative are diagnostics. Path-ability
+# adders are DEFERRED and recorded in _blind, so a tier-10 profile understates knowingly.
+IMPLEMENTED_MYTHIC_MODELS = frozenset({'surge_nova_ev'})
 
 # Flat '+N ... bonus ... to AC' in stance/ability prose (the wall pass). Scaled wordings go in
 # power_adders.json::stance_ac instead -- curate, never guess.
@@ -455,11 +460,15 @@ def ability_scores(payload):
     """
     inherent = payload.get('inherents') or {}
     levelup = payload.get('level_up_stats') or {}
+    # Mythic ability increases ride the payload's mythic block as an attributable dict, the
+    # level_up_stats pattern exactly -- same trap, same fold.
+    mythic_bumps = (payload.get('mythic') or {}).get('ability_bumps') or {}
     scores = {}
     for ab in ABILITIES:
         base = _int(payload.get(ab), 10)
         bonus, _ = ledger_sum(payload, {ab})
-        scores[ab] = base + _int(inherent.get(ab)) + _int(levelup.get(ab)) + bonus
+        scores[ab] = (base + _int(inherent.get(ab)) + _int(levelup.get(ab))
+                      + _int(mythic_bumps.get(ab)) + bonus)
     return scores
 
 
@@ -1260,6 +1269,17 @@ def profile_for(payload):
         'skill_breadth': None,
     }
 
+    # Mythic chassis shifts (::mythic, model surge_nova_ev). Surge adds its die to a d20 roll
+    # after the fact, so on the nova round it is HIT PROBABILITY, not damage dice: one surge on
+    # the nova attack is worth ~(die_avg/20) of the raw damage in expectation. burst_expected
+    # only -- burst_raw keeps the table's all-hits semantics. The pool and Amazing Initiative
+    # land in diagnostics; per-path-ability adders are deferred (see _blind).
+    mythic_block = payload.get('mythic') or {}
+    if mythic_block:
+        die = str(mythic_block.get('surge_die') or '1d6')
+        faces = _int(die.split('d')[-1], 6)
+        raw['burst_expected'] += round((1 + faces) / 2 / 20 * raw['dpr_raw'], 1)
+
     multipliers = target_multipliers()
     axes = {}
     for name, value in raw.items():
@@ -1302,5 +1322,12 @@ def profile_for(payload):
             'ac_buffed': ac['ac'] + off['buffed_ac_bonus'],
             'saves_buffed_bonus': off['buffed_saves_bonus'],
             'defense_notes': off['defense_notes'],
+            # Chassis facts with no axis of their own; None when the character is not mythic.
+            'mythic': {
+                'tier': mythic_block.get('tier'),
+                'power_pool': mythic_block.get('power_pool'),
+                'surge_die': mythic_block.get('surge_die'),
+                'amazing_initiative_bonus': mythic_block.get('amazing_initiative_bonus'),
+            } if mythic_block else None,
         },
     }

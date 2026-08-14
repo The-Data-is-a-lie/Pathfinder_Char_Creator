@@ -368,6 +368,29 @@ def check_golden_profiles():
     return len(fixtures)
 
 
+def check_mythic_table(table):
+    """The mythic chassis bucket resolves: implemented models, and the deferral is on record.
+
+    Same silent-nothing contract as every other bucket -- plus one honesty check: deferring the
+    597 path abilities is a ruling, and a ruling that falls out of _blind stops being visible on
+    every profile, which is how a knowing understatement becomes an unknowing one."""
+    block = table.get('mythic')
+    if not REPORT.check(isinstance(block, dict) and block,
+                        "power_adders.mythic is missing -- the surge EV shift and the "
+                        "diagnostics block would quietly stop firing"):
+        return
+    for name, spec in block.items():
+        if name.startswith('_') or not isinstance(spec, dict) or 'model' not in spec:
+            continue
+        REPORT.check(spec['model'] in pm.IMPLEMENTED_MYTHIC_MODELS,
+                     f"power_adders.mythic[{name!r}].model={spec['model']!r} is not implemented "
+                     f"(known: {sorted(pm.IMPLEMENTED_MYTHIC_MODELS)}) -- it would be skipped "
+                     f"silently")
+    REPORT.check(bool((table.get('_blind') or {}).get('mythic')),
+                 "power_adders._blind.mythic is empty -- the path-ability deferral must stay "
+                 "printed on every profile")
+
+
 def main():
     table = pm.adders()
     check_feat_allowlist(table)
@@ -376,6 +399,7 @@ def main():
     check_defense_tables(table)
     check_assumptions(table)
     check_class_keyed_tables(table)
+    check_mythic_table(table)
     check_benchmarks()
     check_target_multipliers()
     fixtures = check_golden_profiles()
