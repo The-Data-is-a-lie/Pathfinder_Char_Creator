@@ -1256,6 +1256,12 @@ def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
 		_talent_roll //= 2
 	if not _feat_tax_on:
 		_talent_roll //= 2
+	# V4 wall pass: the full-house wall's defensive sphere is by design, and a sphere with zero
+	# talents is an empty grant -- floor the roll at 2 (one Extra Combat Talent feat's worth), so
+	# the sphere always arrives with content. Only this population; every other roll is untouched.
+	_role = getattr(character, 'role', None)
+	if (_role and _role.get('_house') and 'ac_combat' in (_role.get('primaries') or [])):
+		_talent_roll = max(_talent_roll, 2)
 	# A mentor is forced only to cover a shortfall the budget genuinely cannot meet. `_sphere_mentor_cal`
 	# may already be set by the 25% trainer-backed branch above; forcing raises it rather than replacing
 	# it, and it stays inside the 1-4 caliber range a mentor can roll.
@@ -2390,7 +2396,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, optimize=None, ):
+						 luck_direction=None, optimize=None, house_rules=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2473,7 +2479,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# The optimizer's plan object (spec 15): off -> role None and every chooser takes its
 		# existing path, which is what keeps the seven goldens byte-identical. Runs right after
 		# the classes are picked, by ruling -- the role follows the class, never the reverse.
-		phase_power_role(character, optimize)
+		# house_rules rides along (V4 wall pass): it only ever reads as role['house'], so it is
+		# inert unless optimize already produced a role.
+		phase_power_role(character, optimize, house_rules)
 
 		#add an optional flaws rule function
 		phase_alignment_and_level(character, alignment_input, deity_flag, low_level, high_level)
@@ -2929,6 +2937,20 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				[feats_feat_tax_dict, class_feat_tax_dict, story_feat_tax_dict, flaw_feat_tax_dict,
 				 flavor_feat_tax_dict, trainer_feat_tax_dict]).items():
 			_runtime_feat_changes[str(_wf_name).lower()] = _wf_entry
+		# Strength of a Warrior (V4 wall pass, Sieg's Guide): each variant's value IS this
+		# character's modifier, so the change is baked numeric at generation time (the same
+		# convention as the @abilities bake below) -- a formula would break derive.js parity,
+		# whose ledger fold only sums numbers. Type `untyped` on purpose: the doc's taken-twice
+		# means the two variants stack, and pf1 would cap two same-typed natural bonuses.
+		# Harmless when the feat wasn't placed: the fold below only applies entries whose name
+		# is actually in _render_feat_names.
+		for _soaw_name, _soaw_mod in (("Strength of a Warrior (Str)", character.str_mod),
+									  ("Strength of a Warrior (Con)", character.con_mod)):
+			if _soaw_mod and _soaw_mod > 0:
+				_runtime_feat_changes[_soaw_name.lower()] = {
+					"changes": [{"formula": str(int(_soaw_mod)), "operator": "add", "priority": 0,
+								 "target": "nac", "type": "untyped"}],
+					"contextNotes": []}
 		for _disp in dict.fromkeys(_render_feat_names):
 			_entry = _runtime_feat_changes.get(str(_disp).lower())
 			if _entry is None:

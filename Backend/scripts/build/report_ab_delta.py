@@ -56,14 +56,14 @@ SCORE_AXES = ('to_hit', 'dpr_raw', 'burst_raw', 'ac', 'ac_combat', 'hp', 'fort',
               'dc')
 
 
-def generate(seed, level, sides='6', optimize=None):
+def generate(seed, level, sides='6', optimize=None, house_rules=None, cls='random'):
     with redirect_stdout(io.StringIO()):
         return main_test.generate_random_char(
-            class_choice='random', chosen_BAB='random', multi_class='N',
+            class_choice=cls, chosen_BAB='random', multi_class='N',
             userInput_race='random', userInput_region='Tal-Falko', alignment_input='random',
             userInput_gender='random', high_level=level, low_level=level, gold_num="",
             num_dice='4', num_sides=sides, use_backstory_api='N', spheres_flag='N', seed=seed,
-            optimize=optimize)
+            optimize=optimize, house_rules=house_rules)
 
 
 def as_set(value):
@@ -101,6 +101,13 @@ def main():
     parser.add_argument('--no-substreams', action='store_true',
                         help='compare with the default global RNG stream, to SEE the churn this '
                              'report exists to remove')
+    parser.add_argument('--role', default=None,
+                        help="force side B's role (e.g. wall) instead of drawing it from the "
+                             "class map -- the V4 wall-band batch. Also forces class_choice to a "
+                             "class that maps to the role so the pair is a fair comparison")
+    parser.add_argument('--house', action='store_true',
+                        help='side B optimizes with house_rules on (V4 full house-rules build); '
+                             'side A stays plain random either way')
     parser.add_argument('--out', default=None)
     args = parser.parse_args()
     levels = [int(x) for x in args.levels.split(',')]
@@ -120,7 +127,22 @@ def main():
                     if args.mode == 'optimized':
                         # THE REAL COMPARISON: side A is random mode, side B the optimizer, same
                         # seed, same dice, wealth-by-level gold. This is ticket 04's report.
-                        payload = generate(seed, level, '6', optimize=True if side else None)
+                        # --role pins both sides to a class that maps to the role (round-robin
+                        # over the class map), so the delta measures the BUILD, not the class draw.
+                        cls = 'random'
+                        if args.role:
+                            import json as _json
+                            _table = _json.loads((BACKEND / 'json' / 'power_roles.json')
+                                                 .read_text(encoding='utf-8'))
+                            _classes = sorted(c for c, roles in _table['class_roles'].items()
+                                              if args.role in roles)
+                            if not _classes:
+                                raise SystemExit(f'--role {args.role}: no class maps to it')
+                            cls = _classes[index % len(_classes)]
+                        payload = generate(
+                            seed, level, '6',
+                            optimize=(args.role or True) if side else None,
+                            house_rules=(True if (side and args.house) else None), cls=cls)
                     else:
                         # STAND-IN chassis: side B perturbed at an EARLY decision (the stat roll
                         # draws a different number of times), kept because it is what makes the

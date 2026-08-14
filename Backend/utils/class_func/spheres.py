@@ -28,6 +28,11 @@ Data (built by ``Backend/scripts/extract_spheres_talents.py`` from the pf1sphere
   spheres_of_power.json, spheres_of_might_enriched.json, sphere_feats.json, advanced_talents.json,
   and (harvested) spheres_traditions.json.
 
+V4 wall pass (ruling 2026-08-13): a full-house wall (optimize + house_rules, ac_combat primary)
+always dabbles ONE defensive might sphere -- any of DEFENSIVE_SPHERES, shield-weighted -- and its
+talent picks inside that sphere claim the curated fight-state talents first. Everything is gated
+on _house_wall(), so the flag-off and random paths are untouched.
+
 Public API:
     randomize_spheres_num(character)  -> int, also stored on character.sphere_count
     choose_spheres_attr(character)    -> export bundle dict (empty defaults when count 0)
@@ -67,6 +72,21 @@ ADVANCED_RATIO = 7                       # §8: this many normal-talent-equivale
 # rolls nothing is a legitimate outcome, not an error.
 TALENT_BANDS = ((5, 8), (10, 12), (20, 16))
 TALENT_20_PLUS_OFFSET = 4                # 20+ rolls 0..(level - 4); at 20 that is 0..16, continuous
+
+# V4 wall pass (ruling 2026-08-13): the might-side spheres a full-house wall counts as defensive.
+# The wall's FIRST sphere comes from this list, always -- "an optimal character can get various
+# different spheres (that are focused on defense), not just shield" -- and the talent picker
+# prefers the curated fight-state names (power_role.sphere_defense_names) inside them. Shield is
+# the only sphere with curated scoring today; the others contribute build variety and render as
+# rules text, a recorded blind spot in power_adders._blind until their values are curated.
+DEFENSIVE_SPHERES = ('shield', 'guardian', 'dual wielding', 'open hand')
+
+
+def _house_wall(character):
+    """True when this character is an optimized wall built under house_rules -- the only
+    population whose sphere behaviour this module changes."""
+    role = getattr(character, 'role', None)
+    return bool(role and role.get('_house') and 'ac_combat' in (role.get('primaries') or []))
 
 
 def roll_talent_budget(level):
@@ -232,9 +252,17 @@ def _mental_stat_name(character):
 # Count roll
 # --------------------------------------------------------------------------- #
 def randomize_spheres_num(character):
-    """Roll 0-3 spheres for a dabbler. No-op (0) unless ``character.spheres_flag`` is truthy ('Y')."""
+    """Roll 0-3 spheres for a dabbler. No-op (0) unless ``character.spheres_flag`` is truthy ('Y').
+
+    Exception (V4 wall pass): a full-house wall ALWAYS gets exactly one sphere, by design, even
+    with the flag off -- the defensive-sphere package is part of the ruled build. Deterministic 1
+    rather than a roll, so the flag-off branch consumes no RNG it did not before.
+    """
     flag = str(getattr(character, "spheres_flag", "N") or "N").upper()
     if flag not in ("Y", "YES", "TRUE", "1"):
+        if _house_wall(character):
+            character.sphere_count = 1
+            return 1
         character.sphere_count = 0
         return 0
     # The count is now UNCAPPED by the feat budget: the generator guarantees that a selected dabbler
@@ -243,6 +271,8 @@ def randomize_spheres_num(character):
     n = random.choices([0, 1, 2, 3], weights=SPHERE_COUNT_WEIGHTS, k=1)[0]
     if SINGLE_SPHERE_TESTING and n > 0:
         n = 1                            # TEMP: concentrate the flat-8 talents into one sphere for testing
+    if _house_wall(character):
+        n = max(1, n)                    # the wall's defensive sphere is by design, never a 0 roll
     character.sphere_count = n
     return n
 
@@ -286,6 +316,14 @@ def _pick_talents_in_sphere(character, system, sphere, n, counts):
         candidates = base if base else (adv if allow_adv else [])
         if not candidates:
             break  # only advanced talents remain but quota is exhausted -> the rule cannot be broken
+        # V4 wall pass: inside a defensive sphere, a full-house wall claims the curated
+        # fight-state talents (power_adders.sphere_defense) first -- the same greedy-then-random
+        # shape as the PoW stance picker. Everyone else's draw is untouched.
+        if _house_wall(character) and sphere in DEFENSIVE_SPHERES:
+            from utils.class_func.power_role import sphere_defense_names
+            curated = [c for c in candidates if c in sphere_defense_names()]
+            if curated:
+                candidates = curated
         chosen = random.choice(candidates)
         is_adv = _is_advanced(chosen, dataset, advanced_norm)
         if is_adv:
@@ -494,6 +532,14 @@ def _pick_flat_talents(character, chosen, counts, n_normal=7, n_advanced=1):
         cands = [c for c in pool if _is_advanced(c, ds, adv_sets[sphere]) == want_advanced]
         if not cands:
             return False
+        # V4 wall pass: inside a defensive sphere, a full-house wall claims the curated
+        # fight-state talents (power_adders.sphere_defense) first -- the PoW stance picker's
+        # greedy-then-random shape. Everyone else's draw is untouched.
+        if _house_wall(character) and sphere in DEFENSIVE_SPHERES:
+            from utils.class_func.power_role import sphere_defense_names
+            curated = [c for c in cands if c in sphere_defense_names()]
+            if curated:
+                cands = curated
         name = random.choice(cands)
         rec = ds[name]
         taken[sphere].add(name)
@@ -623,7 +669,17 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     # ---- choose distinct spheres + their system ------------------------- #
     chosen = []                                       # [(sphere, system), ...]
     used = set()
-    for _ in range(n):
+    # V4 wall pass: the full-house wall's FIRST sphere is a defensive might sphere, by design --
+    # any of DEFENSIVE_SPHERES, weighted toward shield because it is the one with curated
+    # fight-state scoring today (the others are build variety the metric records as blind).
+    if _house_wall(character):
+        defensive = [s for s in DEFENSIVE_SPHERES if s in pool_m]
+        if defensive:
+            weights = [3 if s == 'shield' else 1 for s in defensive]
+            sphere = random.choices(defensive, weights=weights, k=1)[0]
+            used.add(("might", sphere))
+            chosen.append((sphere, "might"))
+    for _ in range(n - len(chosen)):
         system = _system_for_sphere(character, casting_level)
         if system == "power" and not pool_p:
             system = "might"

@@ -7,6 +7,7 @@ from math import ceil, floor
 from utils.class_func.generic_func import *
 from utils.class_func.chooseable import *
 from utils.class_func.skill_ranks import homebrew_enabled
+from utils.class_func.power_role import role_feat_spine
 from utils.class_func import luck
 from utils.paths import repo_path
 
@@ -146,7 +147,7 @@ def build_selector(character):
     # fighter shipped without Power Attack (caught by the optimized_striker golden's predicate).
     role = getattr(character, 'role', None)
     if role:
-        feat_list.extend(str(name).lower() for name in role.get('feat_spine') or [])
+        feat_list.extend(str(name).lower() for name in role_feat_spine(role))
 
     result_dict_pre = feat_spell_searcher(character, character.c_class, feat_list, "feats", "prerequisites", "description")
     result_dict = transform_result_dict(character, result_dict_pre)
@@ -235,7 +236,7 @@ def _spine_pick(character, pool):
     ownership test is character.chooseable, so the spine needs no state of its own.
     """
     role = getattr(character, 'role', None)
-    spine = (role or {}).get('feat_spine') or []
+    spine = role_feat_spine(role)
     if not spine:
         return None
     lowered = {str(entry).lower(): entry for entry in pool}

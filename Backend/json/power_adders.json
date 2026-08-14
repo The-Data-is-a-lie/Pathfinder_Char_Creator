@@ -57,10 +57,14 @@
   },
 
   "posture": {
-    "_why": "The defensive posture (wall pass, ruling 2026-08-12, RAW numbers by ruling -- Pascal's sheet carries house kickers these deliberately skip). Folded into ac_combat and cmd for EVERY character that qualifies: fighting defensively is universal, Combat Expertise is house-ambient (Int 13). The declared trade -- the posture's attack penalties are NOT applied to the offense axes, because ac_combat and dpr describe different rounds (a wall fights defensively; a striker full-attacks).",
+    "_why": "The defensive posture (wall pass, ruling 2026-08-12: RAW numbers; V4 amendment 2026-08-13: two HOUSE rows join them -- Two-Weapon Defense under the sword-and-board ruling and the Cautious Warrior trait -- each keyed to something the SHEET carries, so the metric needs no house flag: a character without the feat/trait simply scores neither). Folded into ac_combat and cmd for EVERY character that qualifies: fighting defensively is universal, Combat Expertise is house-ambient (Int 13). The declared trade -- the posture's attack penalties are NOT applied to the offense axes, because ac_combat and dpr describe different rounds (a wall fights defensively; a striker full-attacks).",
     "combat_expertise": {"ac": "1 + bab // 4", "cmd": "1 + bab // 4", "requires": "ambient Combat Expertise (Int 13)"},
     "fighting_defensively": {"ac": 2, "ac_with_acrobatics_3": 3, "cmd": 0,
-      "crane_style_bonus": 1}
+      "crane_style_bonus": 1},
+    "two_weapon_defense": {"ac_fighting_defensively": 2,
+      "requires": "the Two-Weapon Defense feat held. RAW it is +1 shield AC wielding two weapons, +2 while fighting defensively; the house ruling (2026-08-13) lets sword-and-board qualify, which is how the wall spine takes it. Only the +2 fight-state half is scored -- the always-on +1 is conditional prose the ledger never carries."},
+    "cautious_warrior_trait": {"ac_fighting_defensively": 1,
+      "requires": "the Cautious Warrior combat trait among selected_traits (+1 dodge while fighting defensively or total defense; house wall trait pick, ruling 2026-08-13)"}
   },
 
   "ac_class": {
@@ -70,12 +74,38 @@
       "note": "Wis modifier + level/4, unarmored and unencumbered."}
   },
 
+  "sphere_defense": {
+    "_why": "Fight-state AC from Spheres of Might talents whose value is conditional prose the ledger never carries (V4 wall pass, ruling 2026-08-13: a full-house wall always dabbles a defensive sphere; values RAW from the talent text, the buff fold's always-available upper-bound stance). Keyed by talent name as combat_talent_items carries it, matched case-insensitively; requires_shield rows fire only when the payload wears a shield. Folded into ac_combat ONLY, like the posture rows. The other defensive spheres (guardian, dual wielding, open hand) contribute build variety and render as rules text -- their unscored values are a recorded blind spot, not a bug.",
+    "active defense": {"ac": 2, "per_bab": 4, "requires_shield": true,
+      "note": "Shield sphere base deflect: spend an AoO (or martial focus) to raise the shield bonus +2 against an attack, +1 more per 4 BAB. RAW quote verified 2026-08-13 from spheres_of_might_enriched.json."}
+  },
+
   "stance_ac": {
-    "_why": "Curated AC values for PoW stances whose prose does not parse flat ('+N bonus to AC' parses for only 4 of the AC-granting stances; 24 more mention AC with scaled or conditional wording -- a standing curation backlog, add rows as they are verified against Martial_Disciplines.json). Names are the SPACED spellings the payload uses; the validator resolves them against the data file.",
+    "_why": "Curated AC values for PoW stances whose prose does not parse flat ('+N bonus to AC' parses for only 4 of the AC-granting stances). V4 wall pass (2026-08-13): ten more rows verified against Martial_Disciplines.json prose, clearing most of the backlog; still deliberately uncurated -- ally-only (Stance of the Eternal Guardian), AoO-only (Unfettered Movement, Mithral Lightning Stance), free-hand-required (Scarlet Einhander), and stat-scaled (Clever Cat Stance) wordings, plus every apostrophe-spelled stance the name-match would miss. per_hd approximates initiator-level steps as level//per_hd, the Silver Crane precedent. Names are the SPACED spellings the payload uses; the validator resolves them against the data file.",
     "Silver Crane Waltz": {"base": 2, "per_hd": 8,
       "note": "+2, +1 per 8 HD -- verified against Pascal's sheet and the discipline text."},
     "Snapping Turtle Stance": {"base": 2,
-      "note": "+2 shield bonus with one hand free; upper bound, free hand unchecked."}
+      "note": "+2 shield bonus with one hand free; upper bound, free hand unchecked."},
+    "Iron Hand Stance": {"base": 2, "per_hd": 6,
+      "note": "+2 shield bonus with a free hand, +1 at IL 6/12/18; free hand unchecked, the Snapping Turtle stance's declared looseness."},
+    "Stance of the Defending Shell": {"base": 1, "per_hd": 4,
+      "note": "+1 shield AC, +1 per 4 IL after taking it."},
+    "Malignant Punisher Stance": {"base": 1, "per_hd": 4,
+      "note": "+1 dodge, +1 at IL 5 and every 4 after (level//4 lags the RAW steps by one level -- the conservative side)."},
+    "Flowing Water Stance": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Stance of the Thunderbrand": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Riven Hourglass Stance": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Skirmishers Stance": {"base": 2,
+      "note": "+2 dodge, conditional on moving 10 ft that turn -- counted, a mobile wall moves."},
+    "Scarlet Duelist Attitude": {"base": 5,
+      "note": "+5 insight to AC (also CMD/Initiative, not folded here)."},
+    "Inner Sphere Stance": {"base": 2, "per_hd": 6,
+      "note": "+2 dodge wielding two weapons, +1 steps from IL 6; the sword-and-board house ruling is what qualifies a wall."},
+    "Leaping Spirit Dance": {"base": 2, "per_hd": 4,
+      "note": "+2 dodge if moved 10 ft, +2 at IL 9 and 17 (level//4 tracks those steps)."}
   },
 
   "wild_shape": {

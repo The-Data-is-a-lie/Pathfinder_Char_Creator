@@ -92,6 +92,19 @@ def check_roles(table):
             REPORT.check(feat in corpus,
                          f'role {name!r} feat_spine names {feat!r}, which is in no data/feats.csv '
                          f'row -- it would never be granted')
+        # The house kickers (V4 wall pass) are spine entries like any other -- same corpus rule,
+        # or the house build silently loses the lever the band was ruled around.
+        for feat in row.get('feat_spine_house') or []:
+            REPORT.check(feat in corpus,
+                         f'role {name!r} feat_spine_house names {feat!r}, which is in no '
+                         f'data/feats.csv row -- it would never be granted')
+        for key in ('margins', 'margins_house'):
+            for axis, bar in (row.get(key) or {}).items():
+                REPORT.check(axis in TARGETABLE_AXES,
+                             f'role {name!r} {key} names axis {axis!r}, which the metric does not '
+                             f'measure -- the gate would assert against nothing')
+                REPORT.check(isinstance(bar, (int, float)) and bar > 0,
+                             f'role {name!r} {key}[{axis}]={bar!r} is not a positive bar')
         dips = row.get('dips')
         REPORT.check(isinstance(dips, list),
                      f'role {name!r} has no dips list (empty is fine; absent is a hole)')

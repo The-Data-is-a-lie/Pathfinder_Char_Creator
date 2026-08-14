@@ -54,14 +54,14 @@ SEED_BASE = 91000
 TWIN_TOLERANCE = 0.15
 
 
-def generate(cls, level, seed, optimize):
+def generate(cls, level, seed, optimize, house_rules=None):
     with redirect_stdout(io.StringIO()):
         return main_test.generate_random_char(
             class_choice=cls, chosen_BAB='random', multi_class='N',
             userInput_race='random', userInput_region='Tal-Falko', alignment_input='random',
             userInput_gender='random', high_level=level, low_level=level, gold_num="",
             num_dice='4', num_sides='6', use_backstory_api='N', spheres_flag='N',
-            seed=seed, optimize=optimize)
+            seed=seed, optimize=optimize, house_rules=house_rules)
 
 
 def sample_cells(table):
@@ -138,6 +138,25 @@ def main():
                 REPORT.check(value >= margin,
                              f'{role}/{cls} L{level} seed {seed}: {axis} {value} under the '
                              f'measured margin {margin}')
+
+            # V4 wall pass: roles carrying a measured house margin set get a THIRD generation on
+            # the same seed with house_rules on, asserted against margins_house. Same absolute-bar
+            # logic as `margins`; roles without the key skip the extra generation entirely.
+            margins_house = row.get('margins_house') or {}
+            if margins_house:
+                try:
+                    house = generate(cls, level, seed, role, house_rules=True)
+                except Exception as exc:                                # noqa: BLE001
+                    REPORT.error(f'{role}/{cls} L{level} seed {seed}: house generation '
+                                 f'raised {exc!r}')
+                    continue
+                generated += 1
+                house_prof = power_metric.profile_for(house)
+                for axis, margin in margins_house.items():
+                    value = axis_value(house_prof, axis)
+                    REPORT.check(value >= margin,
+                                 f'{role}/{cls} L{level} seed {seed} [house]: {axis} {value} '
+                                 f'under the measured house margin {margin}')
     return REPORT.finish(f'{len(cells)} role/class cells x {len(LEVELS)} levels, '
                          f'{generated} generations')
 

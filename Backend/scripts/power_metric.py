@@ -812,6 +812,18 @@ def _combat_defense(payload, table, mods, feats, bab):
     fd_ac = _int(fd.get('ac_with_acrobatics_3'), 3) if acrobatics >= 3 else _int(fd.get('ac'), 2)
     if 'Crane Style' in feats:
         fd_ac += _int(fd.get('crane_style_bonus'), 1)
+    # The two house posture rows (V4, ruling 2026-08-13) key off what the sheet carries -- the
+    # feat / the trait -- so no request flag reaches the metric and a RAW two-weapon character
+    # scores its TWD honestly too.
+    if 'Two-Weapon Defense' in feats:
+        twd = _int((posture.get('two_weapon_defense') or {}).get('ac_fighting_defensively'), 2)
+        fd_ac += twd
+        notes.append(f'two-weapon defense +{twd} while fighting defensively')
+    traits_held = {str(t).strip().lower() for t in payload.get('selected_traits') or []}
+    if 'cautious warrior' in traits_held:
+        cw = _int((posture.get('cautious_warrior_trait') or {}).get('ac_fighting_defensively'), 1)
+        fd_ac += cw
+        notes.append(f'cautious warrior trait +{cw} while fighting defensively')
     ac_bonus += fd_ac
     notes.append(f'fighting defensively +{fd_ac}')
     if 'Combat Expertise' in feats:
@@ -836,6 +848,23 @@ def _combat_defense(payload, table, mods, feats, bab):
     if stance_best:
         ac_bonus += stance_best
         notes.append(stance_note)
+
+    # Defensive-sphere talents (V4, ruling 2026-08-13): curated fight-state values for prose the
+    # ledger never carries. Keyed to what the sheet holds (combat_talent_items), so no request
+    # flag reaches the metric; requires_shield rows key off the payload's own gear.
+    sphere_rows = {str(k).lower(): v for k, v in (table.get('sphere_defense') or {}).items()
+                   if not str(k).startswith('_')}
+    if sphere_rows:
+        has_shield = _int(payload.get('shield_ac')) > 0
+        for item in payload.get('combat_talent_items') or []:
+            row = sphere_rows.get(str((item or {}).get('name') or '').strip().lower())
+            if not row or (row.get('requires_shield') and not has_shield):
+                continue
+            value = _int(row.get('ac')) + (bab // _int(row.get('per_bab'), 99)
+                                           if row.get('per_bab') else 0)
+            if value:
+                ac_bonus += value
+                notes.append(f"sphere {item.get('name')} +{value} ac")
 
     # Class AC (monk Wis) -- unarmored only; the payload's own gear decides.
     unarmored = _int(payload.get('armor_ac')) == 0 and _int(payload.get('shield_ac')) == 0

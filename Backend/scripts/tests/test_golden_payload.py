@@ -192,6 +192,17 @@ CONFIGS = {
     'witch': dict(_BASE, seed=9101, userInput_race='Human', class_choice='witch',
                   chosen_BAB='low', multi_class='N', alignment_input='NG',
                   userInput_gender='female', high_level=12, low_level=12, gold_num=30000),
+    # THE FULL HOUSE-RULES WALL (V4 pass, rulings 2026-08-13). Seed 5150 was picked because this
+    # single draw exercises every house lever at once: both Strength of a Warrior variants (str 22
+    # / con 21 clear the 20+ prereq), the forced shield (the one_handed_shield promise), the
+    # Shield sphere with Active Defense (the one curated sphere_defense row), TWF+TWD, and the
+    # Cautious Warrior trait -- ac_combat 59 vs the CR row's 24 (2.46x). house_rules off remains
+    # pinned by optimized_striker/optimized_controller, so this golden moving while those stay
+    # byte-identical is exactly the isolation the named key promises.
+    'optimized_wall': dict(_BASE, seed=5150, userInput_race='Orc', class_choice='fighter',
+                           chosen_BAB='low', multi_class='N', alignment_input='LG',
+                           userInput_gender='female', high_level=11, low_level=11,
+                           gold_num=100000, optimize='wall', house_rules=True),
 }
 
 
@@ -308,6 +319,33 @@ def _covers_witch(payload):
     return None
 
 
+def _covers_optimized_wall(payload):
+    """Every V4 house lever on one sheet -- if any is missing, the config stopped covering it."""
+    fc = {str(k).lower() for k in (payload.get('feat_changes_dict') or {})}
+    soaw = [k for k in fc if 'strength of a warrior' in k]
+    if len(soaw) < 2:
+        return (f'only {len(soaw)} Strength of a Warrior change(s) -- the seed was picked to '
+                f'clear both variants\' 20+ prereq')
+    try:
+        shield_ac = int(float(payload.get('shield_ac') or 0))
+    except (TypeError, ValueError):
+        shield_ac = 0
+    if shield_ac <= 0:
+        return 'no shield -- the one_handed_shield promise regressed'
+    talents = {str((t or {}).get('name') or '').lower()
+               for t in payload.get('combat_talent_items') or []}
+    if 'active defense' not in talents:
+        return 'no Active Defense talent -- the defensive-sphere package or its bias broke'
+    feats_all = ' '.join(str(x).lower() for b in payload.values() if isinstance(b, list)
+                         for x in b if isinstance(x, str))
+    if 'two-weapon defense' not in feats_all:
+        return 'Two-Weapon Defense missing from every feat bucket'
+    traits = {str(t).strip().lower() for t in payload.get('selected_traits') or []}
+    if 'cautious warrior' not in traits:
+        return 'Cautious Warrior missing from selected_traits -- the house trait pick broke'
+    return None
+
+
 COVERAGE = {
     'companion': _covers_companion,
     'caster': _covers_caster,
@@ -315,6 +353,7 @@ COVERAGE = {
     'optimized_striker': _covers_optimized_striker,
     'optimized_controller': _covers_optimized_controller,
     'witch': _covers_witch,
+    'optimized_wall': _covers_optimized_wall,
 }
 
 

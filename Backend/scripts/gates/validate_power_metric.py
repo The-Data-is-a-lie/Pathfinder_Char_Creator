@@ -139,10 +139,28 @@ def check_defense_tables(table):
     """The wall-pass tables resolve (ruling 2026-08-12): posture keys present, curated stance
     names hit real Martial_Disciplines entries, ac_class classes exist and its model is known."""
     posture = table.get('posture') or {}
-    for key in ('combat_expertise', 'fighting_defensively'):
+    for key in ('combat_expertise', 'fighting_defensively',
+                'two_weapon_defense', 'cautious_warrior_trait'):
         REPORT.check(key in posture,
                      f'power_adders.posture is missing {key!r} -- the defensive posture would '
                      f'silently contribute nothing to ac_combat')
+    for key in ('two_weapon_defense', 'cautious_warrior_trait'):
+        REPORT.check(_num((posture.get(key) or {}).get('ac_fighting_defensively')),
+                     f'power_adders.posture[{key!r}] has no ac_fighting_defensively value -- '
+                     f'the house row would fold nothing')
+    # sphere_defense rows must name a real Spheres of Might talent (any sphere), or the wall's
+    # talent picker would prefer -- and the scorer would wait on -- a name that can never match.
+    might = json.loads((JSON_DIR / 'class_data' / 'spheres'
+                        / 'spheres_of_might_enriched.json').read_text(encoding='utf-8'))
+    might_talents = {str(t).lower() for sphere in might.values() for t in sphere}
+    for name, row in (table.get('sphere_defense') or {}).items():
+        if name.startswith('_'):
+            continue
+        REPORT.check(str(name).lower() in might_talents,
+                     f'sphere_defense: {name!r} resolves to no spheres_of_might_enriched.json '
+                     f'talent -- a curated row that can never match a held one')
+        REPORT.check(_num(row.get('ac')) or _num(row.get('per_bab')),
+                     f'sphere_defense[{name!r}] carries neither ac nor per_bab')
     stances = pm.stance_texts()
     for name, row in (table.get('stance_ac') or {}).items():
         if name.startswith('_'):

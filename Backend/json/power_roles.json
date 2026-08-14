@@ -189,6 +189,13 @@
         "Toughness",
         "Shield Focus"
       ],
+      "_feat_spine_house_why": "V4 wall pass (rulings 2026-08-13): the house AC kickers, spliced ABOVE feat_spine only when the request set house_rules (role._house). Strength of a Warrior is Sieg's Guide (two picks, Str then Con, each that modifier as natural armor, prereq Str/Con 20); TWF+TWD ride the house ruling that sword-and-board counts as wielding two weapons.",
+      "feat_spine_house": [
+        "Strength of a Warrior (Con)",
+        "Strength of a Warrior (Str)",
+        "Two-Weapon Fighting",
+        "Two-Weapon Defense"
+      ],
       "dips": [
         {
           "class": "fighter",
@@ -198,6 +205,11 @@
       ],
       "margins": {
         "ac_combat": 1.3,
+        "hp": 1.0
+      },
+      "_margins_house_note": "V4 full house-rules band (measured 2026-08-13: 80 walls, all 10 wall classes x L10/12/15/20 x 2 seeds, house_rules on): ac_combat min 1.59 / p25 1.96 / med 2.07 / max 2.80; raw ac_combat at L10-12 min 40 / med 51 / max 70 -- Daniel's 40-50-at-L10+ band, met with spread (SoaW on only 26 of 80, TWD on 56, four defensive spheres represented). Bars sit under the measured minimum, the same safety the standard margins keep.",
+      "margins_house": {
+        "ac_combat": 1.5,
         "hp": 1.0
       }
     },
