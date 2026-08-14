@@ -485,7 +485,9 @@ def check_payload_contract():
                  "PAYLOAD_KEYS does not declare 'luck' -- both consumers read this order")
     idx = list(PAYLOAD_KEYS).index('luck')
     tail = set(PAYLOAD_KEYS[idx + 1:])
-    REPORT.check(tail <= {'buff_gaps', 'generator_version', 'license_url'},
+    # 'mythic' is the other tail-appended nested block (mythic map, ticket 05) -- added under
+    # exactly the luck precedent, so it legitimately sits after 'luck'.
+    REPORT.check(tail <= {'mythic', 'buff_gaps', 'generator_version', 'license_url'},
                  f"'luck' must sit at the tail of the content keys so no existing key shifts "
                  f"position; keys after it: {sorted(tail)}")
 

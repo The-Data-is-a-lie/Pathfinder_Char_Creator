@@ -29,6 +29,7 @@ A failure prints the class/level/seed cell plus the replayable generation seed.
 import argparse
 import io
 import json
+import random
 import sys
 import traceback
 from contextlib import redirect_stdout
@@ -36,8 +37,8 @@ from math import ceil, floor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import (BACKEND, Report, choice_schedule, schedule_due, schedule_levels,  # noqa: E402
-                      schedule_row)
+from _harness import (BACKEND, Report, choice_schedule, mythic_schedule, schedule_due,  # noqa: E402
+                      schedule_levels, schedule_row)
 import power_metric  # noqa: E402
 
 # --score (map: optimal-builder, ticket 03). OFF by default, so CI pays nothing: the flag only adds
@@ -51,6 +52,10 @@ NONZERO_AXES = ('ac', 'hp', 'to_hit')
 
 # The pick schedule, read from disk rather than through the generator's resolver.
 SCHEDULE = choice_schedule()
+# The mythic tier-keyed table, same independent expansion (mythic map, ticket 07).
+MYTHIC_SCHEDULE = mythic_schedule()
+MYTHIC_PATHS = ('archmage', 'champion', 'guardian', 'hierophant', 'marshal', 'trickster')
+MYTHIC_BUCKETS = ('Mythic Path', 'Mythic Path Abilities', 'Mythic Tradition', 'Mythic Abilities')
 
 from utils import data  # noqa: E402
 from utils.class_func import backstory as _bs  # noqa: E402
@@ -317,8 +322,12 @@ def check_luck(cell, payload):
               f"{_row['received']} -- a pool cannot be on both sides of the trade")
     # The two rows whose `final` is a number printed elsewhere on the sheet must equal it, or the
     # audit is quietly describing a different quantity than the one the player reads.
-    check(_audit['hp']['final'] == payload['Total_HP'],
-          f"{cell}: audit HP final {_audit['hp']['final']} != sheet Total_HP {payload['Total_HP']}")
+    # The mythic fold happens AFTER luck settles, so the audit's final legitimately trails a
+    # mythic character's sheet by exactly the path bonus (mythic map, ticket 05).
+    _mythic_hp = (payload.get('mythic') or {}).get('bonus_hp', 0)
+    check(_audit['hp']['final'] + _mythic_hp == payload['Total_HP'],
+          f"{cell}: audit HP final {_audit['hp']['final']} (+mythic {_mythic_hp}) != sheet "
+          f"Total_HP {payload['Total_HP']}")
     check(_audit['skill_ranks']['final'] == payload['skill_rank_budget'],
           f"{cell}: audit skill final {_audit['skill_ranks']['final']} != sheet skill_rank_budget "
           f"{payload['skill_rank_budget']}")
@@ -934,6 +943,24 @@ def check_character(cell, payload):
     want_normal = max(0, ceil(L / 2) + 2 - prof_slots)
     check(payload['normal_feat_amount'] == want_normal,
           f"{cell}: normal feats {payload['normal_feat_amount']} != ceil({L}/2)+2-{prof_slots} = {want_normal}")
+    # ---- mythic leak tripwire (mythic map, ticket 07) ----
+    # THE assertion that protects the rest of the generator from the mythic map: the input is the
+    # gate, so a character whose request never named mythic must carry NO mythic state at all.
+    # Runs on every swept character -- the whole 1,020-generation matrix is non-mythic, which is
+    # exactly the population this must hold over.
+    if payload.get('mythic') is None:
+        _all_feats = [str(f) for b in ('feats', 'story_feats', 'flaw_feats', 'flavor_feats',
+                                       'class_feats', 'trainer_feats')
+                      for f in (payload.get(b) or [])]
+        _leak = [f for f in _all_feats if '(Mythic)' in f]
+        check(not _leak,
+              f"{cell}: non-mythic character holds mythic feat(s) {_leak[:3]} -- the separate "
+              f"allowance leaked into an ordinary track")
+        _buckets = [b for b in MYTHIC_BUCKETS if (payload.get('class_features') or {}).get(b)]
+        check(not _buckets,
+              f"{cell}: non-mythic character carries mythic bucket(s) {_buckets} -- the phase ran "
+              f"without a tier")
+
     budget = payload['feat_budget']
     check(budget['story'] == 1 + L // 5,
           f"{cell}: story feats {budget['story']} != 1 + {L}//5 = {1 + L // 5}")
@@ -1197,8 +1224,12 @@ def check_character(cell, payload):
     _lk = payload.get('luck') or {}
     _stake = _lk.get('stake') or {}
     luck_hp = (_stake.get('payout') or {}).get('hp', 0) - (_stake.get('paid') or {}).get('hp', 0)
-    check(payload['Total_HP'] - want_hp - luck_hp in (0, L),
-          f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L}, luck {luck_hp:+d})")
+    # Mythic's path bonus HP folds into Total_HP after luck settles (mythic map, ticket 05) --
+    # same reasoning as the luck term: without it a mythic character reads as an HP bug.
+    mythic_hp = (payload.get('mythic') or {}).get('bonus_hp', 0)
+    check(payload['Total_HP'] - want_hp - luck_hp - mythic_hp in (0, L),
+          f"{cell}: Total_HP {payload['Total_HP']} != {want_hp} (+favored 0|{L}, luck {luck_hp:+d}"
+          f", mythic {mythic_hp:+d})")
 
     check_luck(cell, payload)
     check_bonded_creatures(cell, payload)
@@ -1424,6 +1455,168 @@ def check_choice_caps():
     print(f"  class-choice caps: exercised at 40th (brawler max_num, tactician pool)")
 
 
+def check_mythic():
+    """Forced-mythic cells (mythic map, ticket 07): generate mythic characters ON PURPOSE and
+    assert what they received against the tier-keyed table.
+
+    Same shape as `check_choice_caps`, for the same reason: the standing sweep is entirely
+    non-mythic BY CONSTRUCTION (the input is the gate), so without forced cells every mythic
+    assertion would pass vacuously forever -- and the leak tripwire in check_character is the
+    other half, running over all 1,020 non-mythic generations.
+
+    The independent witness is _harness.mythic_schedule() expanded by schedule_levels -- the
+    generator reads the same file through levels_for, so a drift between the two expansions is a
+    finding. The cells: low/mid/top tier, one at the 40-level ceiling (nothing above 20th ran
+    before the class-choices map, and that is how a live hang stayed hidden), one with spheres on
+    (the mastery pool merge), and a same-tier-different-level twin for the tier axis.
+    """
+    import pandas as pd
+    with open(BACKEND / 'json' / 'mythic_path_abilities.json', encoding='utf-8') as f:
+        path_data = json.load(f)['paths']
+    feats_csv = pd.read_csv(BACKEND.parent / 'data' / 'feats.csv', sep='|', on_bad_lines='skip')
+    mythic_feat_names = {str(n).strip().lower()
+                         for n in feats_csv[feats_csv['type'] == 'Mythic']['name']}
+    surge_steps = ((10, '1d12'), (7, '1d10'), (4, '1d8'), (1, '1d6'))
+
+    def assert_block(cell, payload, tier):
+        blk = payload.get('mythic')
+        # The guard: if the forced cell stops being mythic, the whole check is vacuous.
+        if not check(blk is not None, f"{cell}: forced mythic=<{tier}> produced a NON-mythic "
+                                      f"character -- the input gate broke"):
+            return
+        check(blk['tier'] == tier, f"{cell}: tier {blk['tier']} != forced {tier}")
+        check(blk['path'] in MYTHIC_PATHS, f"{cell}: unknown path {blk['path']!r}")
+
+        # Path abilities: count and stamps against the independent expansion. The pool (96+ per
+        # path) can never run dry inside 10 picks, so the count is exact, not min().
+        expected = schedule_levels(MYTHIC_SCHEDULE, 'mythic', 'Mythic Path Abilities', tier)
+        abilities = blk['path_abilities']
+        check(len(abilities) == len(expected),
+              f"{cell}: {len(abilities)} path abilities, schedule grants {len(expected)} at tier "
+              f"{tier}")
+        stamps = sorted((payload.get('class_feature_levels') or {})
+                        .get('Mythic Path Abilities', {}).values())
+        check(stamps == expected,
+              f"{cell}: ability stamps {stamps} != scheduled tiers {expected} -- the stamp is the "
+              f"TIER, and it comes off the same list as the count")
+        features = payload.get('class_features') or {}
+        for ability in abilities:
+            check(ability['name'] in (features.get('Mythic Path Abilities') or {}),
+                  f"{cell}: granted ability {ability['name']!r} never reached class features -- "
+                  f"generated but invisible")
+
+        # Mythic feats: the separate allowance, never ordinary slots.
+        slots = schedule_levels(MYTHIC_SCHEDULE, 'mythic', 'mythic_feats', tier)
+        granted = blk['mythic_feats']
+        check(len(granted) <= len(slots),
+              f"{cell}: {len(granted)} mythic feats exceed the {len(slots)} slots at tier {tier}")
+        held = [str(f) for f in (payload.get('feats') or [])]
+        for grant in granted:
+            check(grant['tier'] in slots,
+                  f"{cell}: mythic feat {grant['name']!r} stamped tier {grant['tier']}, not a "
+                  f"slot tier {slots}")
+            check(grant['base_name'].lower() in mythic_feat_names,
+                  f"{cell}: {grant['base_name']!r} is not a type=='Mythic' row in data/feats.csv")
+            check(grant['name'] in held,
+                  f"{cell}: mythic feat {grant['name']!r} is in the block but not on the feat "
+                  f"track -- generated but invisible")
+
+        # The chassis formulas.
+        tradition = blk.get('tradition')
+        extra = tradition['extra_mythic_power'] if tradition else 0
+        check(blk['power_pool'] == 3 + 2 * tier + extra,
+              f"{cell}: power pool {blk['power_pool']} != 3 + 2x{tier} + {extra}")
+        want_die = next(die for step, die in surge_steps if tier >= step)
+        check(blk['surge_die'] == want_die,
+              f"{cell}: surge die {blk['surge_die']} != {want_die} at tier {tier}")
+        want_init = tier if tier >= 2 else 0
+        check(blk['amazing_initiative_bonus'] == want_init,
+              f"{cell}: Amazing Initiative {blk['amazing_initiative_bonus']} != {want_init}")
+        per_tier = path_data[blk['path']]['bonus_hp_per_tier']
+        check(blk['bonus_hp'] == per_tier * tier,
+              f"{cell}: bonus HP {blk['bonus_hp']} != {per_tier} x {tier} for {blk['path']}")
+        check(sum(blk['ability_bumps'].values()) == 2 * (tier // 2),
+              f"{cell}: ability bumps {blk['ability_bumps']} sum != 2 x {tier // 2}")
+        if tradition:
+            units = len(tradition['drawbacks'])
+            check(units <= 3, f"{cell}: {units} tradition drawbacks exceed the maximum of 3")
+            check(len(tradition['boons']) + tradition['extra_mythic_power'] <= 3,
+                  f"{cell}: tradition benefits exceed what the drawbacks bought")
+
+    cells = [('fighter', 1, 20, 'N', 4141), ('cleric', 5, 12, 'N', 4242),
+             ('fighter', 10, 40, 'N', 4343), ('incanter', 6, 10, 'Y', 4444)]
+    results = {}
+    for name, tier, level, spheres, seed in cells:
+        cell = f"mythic {name} T{tier} L{level}" + (" spheres" if spheres == 'Y' else "")
+        try:
+            with redirect_stdout(io.StringIO()):
+                payload = main_test.generate_random_char(
+                    class_choice=name, chosen_BAB='high', multi_class='N',
+                    userInput_race='random', userInput_region='Tal-Falko',
+                    alignment_input='random', userInput_gender='random',
+                    high_level=level, low_level=level, gold_num=10000,
+                    num_dice='4', num_sides='6', use_backstory_api='N',
+                    spheres_flag=spheres, seed=seed, mythic_request=tier)
+        except Exception:
+            tail = traceback.format_exc().strip().splitlines()
+            REPORT.error(f"{cell}: generation raised -- {tail[-1]}")
+            continue
+        check_character(cell, payload)
+        assert_block(cell, payload, tier)
+        results[(name, tier)] = payload
+
+    # THE TIER AXIS: a level-4 tier-5 cleric and the level-12 tier-5 cleric above hold the same
+    # path-ability count and the same tier stamps -- tier and level are independent axes.
+    cell = "mythic cleric T5 L4 (axis twin)"
+    try:
+        with redirect_stdout(io.StringIO()):
+            twin = main_test.generate_random_char(
+                class_choice='cleric', chosen_BAB='high', multi_class='N',
+                userInput_race='random', userInput_region='Tal-Falko',
+                alignment_input='random', userInput_gender='random',
+                high_level=4, low_level=4, gold_num=10000,
+                num_dice='4', num_sides='6', use_backstory_api='N',
+                spheres_flag='N', seed=4242, mythic_request=5)
+    except Exception:
+        tail = traceback.format_exc().strip().splitlines()
+        REPORT.error(f"{cell}: generation raised -- {tail[-1]}")
+        twin = None
+    if twin is not None:
+        assert_block(cell, twin, 5)
+        tall = results.get(('cleric', 5))
+        if tall is not None and twin.get('mythic') and tall.get('mythic'):
+            stamps = lambda p: sorted((p.get('class_feature_levels') or {})  # noqa: E731
+                                      .get('Mythic Path Abilities', {}).values())
+            check(stamps(twin) == stamps(tall),
+                  f"tier axis: L4 stamps {stamps(twin)} != L12 stamps {stamps(tall)} at the same "
+                  f"tier -- the schedule is leaking the character level")
+
+    # Trainer wiring: trainers.py reads mythic_rank into its slot maximum. Asserted at the unit,
+    # because the roll is 0..max and a payload-level strict inequality is not guaranteed.
+    from utils.class_func.trainers import roll_trainer_slots
+    class _Stub:
+        pass
+    state = random.getstate()
+    try:
+        random.seed(97)
+        stub = _Stub()
+        stub.level = 12
+        stub.mythic_rank = 0
+        base_max = max(roll_trainer_slots(stub) for _ in range(400))
+        stub.mythic_rank = 4
+        mythic_max = max(roll_trainer_slots(stub) for _ in range(400))
+    finally:
+        random.setstate(state)
+    check(base_max == 1 + 12 // 3,
+          f"trainer slots: non-mythic max {base_max} != {1 + 12 // 3}")
+    check(mythic_max == 1 + 12 // 3 + 4,
+          f"trainer slots: tier-4 max {mythic_max} != {1 + 12 // 3 + 4} -- mythic_rank is not "
+          f"reaching the formula, the wiring broke somewhere invisible")
+
+    print(f"  mythic: {len(results)} forced cell(s) + axis twin asserted (tiers "
+          f"{sorted(t for _, t in results)}), trainer wiring unit-checked")
+
+
 def check_level_ceiling():
     """Ask for characters ABOVE the ceiling and confirm they come back at it.
 
@@ -1626,6 +1819,7 @@ def main():
     # the only thing that exercises the clamp at all.
     check_level_ceiling()
     check_choice_caps()
+    check_mythic()
 
     # Existence check only on a sweep big enough that zero picks means the wiring broke, not luck.
     if total >= 100:

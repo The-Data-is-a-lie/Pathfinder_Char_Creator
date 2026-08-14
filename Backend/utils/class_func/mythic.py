@@ -22,7 +22,9 @@ from utils.paths import repo_path
 # is legal by construction. The ticket fixes the shape; this constant owns the numbers.
 TIER_ROLL_WEIGHTS = [11 - tier for tier in range(1, 11)]
 
-_TRUEISH = ("TRUE", "Y", "YES", "1")
+# '1' is deliberately NOT here: an int-shaped request means "exactly that tier", and check_mythic
+# caught precisely this collision -- a forced tier-1 cell that quietly became a rolled tier 2.
+_TRUEISH = ("TRUE", "Y", "YES")
 
 
 def resolve_mythic_tier(character):
@@ -654,13 +656,17 @@ def record_mythic_choices(character, path_key, feature_choice, abilities, tier):
 
     path_bucket = {}
     display = meta['display']
+    # The single-pick stamp comes off the schedule row like every other single-pick bucket
+    # (the sorcerer-bloodline precedent) -- a hardcoded 1 here would orphan the row.
+    single = levels_for(character, 'mythic', 'Mythic Path', tier, schedule_attr='mythic_schedule')
+    path_stamp = single[0] if single else 1
     blurb = f"Mythic path ({display}); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
     path_bucket[display] = {'benefit': blurb}
-    _record_choice_level(character, 'Mythic Path', display, 1)
+    _record_choice_level(character, 'Mythic Path', display, path_stamp)
     if feature_choice:
         entry_name = f"{feature_choice['feature']}: {feature_choice['name']}"
         path_bucket[entry_name] = {'benefit': feature_choice['description']}
-        _record_choice_level(character, 'Mythic Path', entry_name, 1)
+        _record_choice_level(character, 'Mythic Path', entry_name, path_stamp)
     capstone = meta.get('capstone')
     if capstone and tier >= 10:
         path_bucket[capstone['name']] = {'benefit': capstone['description']}

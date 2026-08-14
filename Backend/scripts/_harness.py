@@ -192,6 +192,15 @@ def choice_schedule():
     return read_json(JSON_DIR / 'class_choice_schedule.json').get('classes', {})
 
 
+def mythic_schedule():
+    """Backend/json/mythic_schedule.json, read straight from disk -- the mythic map's parallel
+    tier-keyed table (ticket 03). Same second-implementation doctrine as choice_schedule: the
+    generator expands this file through levels_for, so the checks expand it HERE and a drift
+    between the two is a finding, not a tautology. The table's single class key is 'mythic' and
+    the 'level' passed to schedule_levels is the TIER."""
+    return read_json(JSON_DIR / 'mythic_schedule.json').get('classes', {})
+
+
 def schedule_row(table, class_name, bucket):
     """The raw schedule row for a bucket, or None. For checks that need the authored form (which
     dataset it draws from, whether it declares a continuation) rather than an expansion."""
