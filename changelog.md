@@ -18,7 +18,44 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
+### Added
+- **Full house-rules optimized walls: generated tanks now hit AC 40–50+ at level 10+** (spec §15's
+  V4 pass, rulings 2026-08-13). A new named input, `house_rules`, beside `optimize`: absent or
+  false is exactly the optimizer that shipped yesterday — the ten prior goldens rewrote
+  byte-identical, the proof — while `{optimize: "wall", house_rules: true}` builds the house AC
+  kickers. What a full-house wall now gets: **Strength of a Warrior** promoted from Sieg's Feats
+  Doc into the live corpus as two Armor-type rows (Str and Con variants, prereq BAB +1 and
+  Str/Con 20+, each baking its modifier as a numeric `nac` change so the bonus lands on the sheet
+  and in base AC parity-safely — reachable only through the wall's new house feat spine, invisible
+  to every random pool); **TWF + Two-Weapon Defense** under the ruled sword-and-board wielding;
+  the **Cautious Warrior** combat trait (+1 dodge while fighting defensively — injected at trait
+  selection, deliberately NOT in traits.csv where random mode would sample it); and a
+  **defensive-sphere package** — every full-house wall dabbles one of shield / guardian / dual
+  wielding / open hand (shield-weighted), talents picked curated-first, with the Shield sphere's
+  Active Defense scored RAW (+2, +1 per 4 BAB) via the new `power_adders.json::sphere_defense`
+  bucket. Ten more AC stances were curated into `stance_ac` (ally-only, AoO-only, free-hand and
+  stat-scaled wordings deliberately left, with the reasons). **Measured** (80 walls, all 10 wall
+  classes × L10/12/15/20): fight-state AC min 40 / median 51 / max 70 at L10–12, ratio median
+  2.07× the CR row, min 1.59× — gated by the new `margins_house` bar (1.5) in the optimized-builds
+  sweep, pinned by a new `optimized_wall` golden whose seed exercises every lever at once, and
+  A/B-reportable via `report_ab_delta.py --role wall --house`. Variety held without a sampler:
+  only 26 of the 80 carried any Strength of a Warrior (the 20+ prereq is a real gate), 56 carried
+  TWD, all four spheres appeared. Rejected alternative: folding the kickers into the metric's
+  RAW-only posture unconditionally — the metric instead keys every house row off what the SHEET
+  carries (the feat, the trait, the talent), so it needs no request flag and an organic RAW
+  two-weapon character scores its TWD honestly too.
+
 ### Fixed
+- **Optimized walls actually wear the shield their policy promises** — and the finding behind it
+  is bigger: **no generated character has ever worn a shield.** `shield_chooser` returns only on
+  its 10%-tower branch (the plain `'Shield'` case falls through to None), and the caller assigns
+  `shield_flag_func`'s return value — which is always None, the function mutates and returns
+  nothing — so every payload ships `shield_ac 0, shield_flag None`; all ten goldens confirm it.
+  The global fix changes every random character (gear, gold, AC) and so moves every golden —
+  **that ruling is deferred to Daniel, recorded as an open ticket** (optimal-builder 11). Here the
+  promise is kept role-gated: a role whose `weapon_policy` is `one_handed_shield` forces the
+  shield on (guarded off two-handed/ranged fallback draws), which no golden pins — the ten prior
+  goldens stayed byte-identical.
 - **Familiar-bond archetypes now restrict to familiar species, not phantom animals.** Winter
   Witch's RAW list (bat, hawk, owl, rat, raven, weasel — fox stays raw-only, outside the v1 pool)
   had been curated down to the single phantom pool `['cat, small']`, because at curation time no

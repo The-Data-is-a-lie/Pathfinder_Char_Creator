@@ -1440,6 +1440,30 @@ druid wall candidacy, and the half-purse ladder cap (spread before upgrading). M
 L11: ac_combat 1.71×. Stated edges: Snapping Turtle's free hand unchecked, wild shape is
 defense-only (natural-attack routines stay blind), armor materials remain unbuilt.
 
+**v4 — the full house-rules wall pass (2026-08-13, grilled decision-by-decision):** a second
+optimizer version behind the named `house_rules` key beside `optimize` — absent/false is
+yesterday's optimizer exactly (all ten prior goldens byte-identical), true builds the house AC
+kickers the v3 ruling deliberately skipped. Rulings: target is **fight-state AC as a multiplier
+anchored at L10** (median ~1.8–2.0×, i.e. 40–50 at L10–12, growing after); **Strength of a
+Warrior** is two real spine picks (Str + Con variants, prereq BAB+1 and Str/Con 20+, verified
+against Sieg's Feats Doc; two Armor-type `data/feats.csv` rows unreachable by any random pool,
+each baking its modifier as a numeric `nac` ledger change — parity-safe in base `ac`);
+**sword-and-board counts as wielding two weapons**, so TWF+TWD spine in and +2-while-FD scores;
+the **Cautious Warrior** trait (+1 dodge while FD) is the wall's trait pick, injected at
+selection (never in traits.csv); every full-house wall **always dabbles one defensive sphere**
+(shield / guardian / dual wielding / open hand, shield-weighted, curated-first talent picks, RAW
+values per talent — `power_adders.json::sphere_defense`, Active Defense = 2 + BAB/4 with a
+shield); **walls are not maximal by ruling** — levers gate naturally (stats, Dex, sphere and
+stance draws) and the sweep proves spread (26/80 with any SoaW, 56/80 with TWD, four spheres).
+The metric keys every house row off what the SHEET carries (feat/trait/talent held), never the
+request flag. Measured (80 walls, 10 classes × L10/12/15/20): ac_combat min 1.59× / med 2.07× /
+max 2.80×, raw 40/51/70 at L10–12; gated as `margins_house` (ac_combat 1.5) in the same sweep,
+pinned by the `optimized_wall` golden (seed 5150: every lever on one sheet). Escaped finding,
+ticketed (optimal-builder 11): `shield_chooser` has never given ANY character a shield — fixed
+role-gated for `one_handed_shield` roles only; the global fix moves every golden and awaits
+Daniel's ruling. Stated edges: guardian/dual-wielding/open-hand talents render unscored (curation
+backlog like stances), apostrophe-spelled stance names still miss the curated match.
+
 **The QC workflow (fastest human path, in escalation order):** (1) CI runs both gate layers free
 — a red `test_optimized_builds.py` names the exact role/class/seed/axis. (2)
 `build/qc_optimized.py --flags-only` renders machine-verdicted cards and prints only the ones
