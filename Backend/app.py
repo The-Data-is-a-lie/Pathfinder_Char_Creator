@@ -160,7 +160,7 @@ def backstory_stats():
 
 def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y",
                          misc_homebrew_rules="Y", luck_direction=None, optimize=None,
-                         house_rules=None):
+                         house_rules=None, mythic=None):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -199,7 +199,7 @@ def process_input_values(input_values, spheres_flag="N", seed=None, professions_
             return generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
             seed, professions_flag, trainers_flag, misc_homebrew_rules, luck_direction, optimize,
-            house_rules
+            house_rules, mythic
             )
 
     except ValueError as ve:
@@ -246,6 +246,12 @@ def update_character_data():
     # sword-and-board TWD, ...) on top of the standard optimized build; absent -> None -> the
     # standard optimizer, byte-identical to before this key existed.
     house_rules = data.pop('house_rules', None)
+    # Mythic grant (mythic map, ticket 02), read by NAME and popped before `items` like the flags
+    # above. THE INPUT IS THE GATE: absent -> None -> never mythic (no rarity roll, so the goldens
+    # are untouched by construction); an int 1-10 -> exactly that tier; true/'y' -> a rolled tier
+    # that decays toward the low end (weights 11 - tier, mythic.py owns the constant). No level
+    # gate -- the GM asking for a mythic character is the gate.
+    mythic = data.pop('mythic', None)
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -262,7 +268,7 @@ def update_character_data():
         non_input_data.append(value)
 
     results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag,
-                                   misc_homebrew_rules, luck_direction, optimize, house_rules)
+                                   misc_homebrew_rules, luck_direction, optimize, house_rules, mythic)
     # Promote the generator's bare '/license' path to an absolute URL. The Foundry module stores this
     # payload on an Actor and may surface the pointer long after the request, in a context that has no
     # idea which backend produced it -- a relative path would resolve against Foundry's own host.

@@ -86,9 +86,10 @@ from utils.class_func.item_and_price 				import item_chooser
 from utils.class_func.language 						import language_chooser
 from utils.class_func.level_and_bab 				import randomize_level
 from utils.class_func 								import luck
+from utils.class_func 								import mythic
 # randomize_luck() is gone (see luck.py): it implemented a DIFFERENT rule -- a 5% roll of +-1..40,
-# where the Doc's luck is bought and caps at +25/-50. randomize_mythic still lives in
-# luck_and_mythic.py and belongs to the Mythic map, not this one.
+# where the Doc's luck is bought and caps at +25/-50. randomize_mythic (luck_and_mythic.py's other
+# half) is gone too: mythic is granted by the named `mythic` input (mythic.py), never by a roll.
 from utils.class_func.path_of_war 					import randomize_path_of_war_num, choose_path_of_war_attr, martial_training_depth
 from utils.class_func.psionics 						import choose_psionics_attr, mind_blade
 from utils.class_func.backstory 					import generate_backstory, structured_bio
@@ -458,6 +459,23 @@ def phase_luck_stake(character):
 	# The reservation itself is taken in phase_feat_selection, out of the budget, not on top of it.
 	if homebrew_enabled(character):
 		character.e_kat_feat_slots = luck.e_kat_slots(character.level, len(e_kat_feat_table()))
+
+
+@phase(requires=['level'], provides=['mythic_rank'])
+def phase_mythic_stake(character):
+	'''Resolve the mythic request into a tier, before a single budget has been allocated.
+
+	Sits beside phase_luck_stake for the same reason luck's stake does: downstream phases size
+	budgets off what the character IS, and mythic tier is part of that. trainers.py already reads
+	character.mythic_rank into its slot formula (1 + hit_dice//3 + mythic_rank), and the mythic
+	abilities phase will reserve feat-economy room the same way PoW does -- both need the tier to
+	exist before they run, not while they run.
+
+	THE INPUT IS THE GATE (ticket 02): character.mythic_request is the only source of mythic.
+	Absent -> mythic_rank 0 and NO RNG draw, so every non-mythic generation -- which is every
+	golden and every replayed seed that predates this phase -- is byte-identical by construction.
+	'''
+	mythic.resolve_mythic_tier(character)
 
 
 @phase(requires=['level', 'classes', 'chosen_race'], provides=['inherents', 'level_up_stats'])
@@ -2396,7 +2414,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, optimize=None, house_rules=None, ):
+						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2465,6 +2483,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# and needs the on/off bit for its multiclass posture -- ruling 8). phase_power_role is
 		# what turns it into a role.
 		character.optimize_request = optimize
+		# The raw mythic request (mythic map, ticket 02). phase_mythic_stake is what turns it into
+		# a tier; until then it is inert, and absent means NEVER mythic -- the input is the gate.
+		character.mythic_request = mythic_request
 		# Instantitae character.class_feats_amount
 		character.class_feats_amount = 0
 		# Instantitae teamwork_feats
@@ -2490,6 +2511,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# magnitude) and the feat economy (a seller's bonus slots land on feat_amounts), and must
 		# precede stats, HP and skill ranks -- each of those settles its own share.
 		phase_luck_stake(character)
+
+		# The mythic tier, resolved before any budget exists to size off it (mythic map, ticket
+		# 02). Beside luck's stake by design: both are intent, not spending.
+		phase_mythic_stake(character)
 
 		stats = phase_roll_and_assign_stats(character, num_dice, num_sides, inherents)
 

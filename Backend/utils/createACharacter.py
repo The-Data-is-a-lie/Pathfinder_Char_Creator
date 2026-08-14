@@ -30,7 +30,8 @@ class Character:
         self.weapons=None
         self.weaponz=None
         self.luck_score=None
-        self.mythic_rank=None
+        # mythic_rank is deliberately NOT declared here: phase_mythic_stake provides it, and the
+        # @phase contract's hasattr check is only honest if the phase is the first setter.
 
         # Sometimes this is a tuple, we'll need to update the code to handle that
         self.flaw=None
