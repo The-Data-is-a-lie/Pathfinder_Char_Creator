@@ -88,6 +88,7 @@ Pathfinder Roleplaying Game Ultimate Intrigue. © 2016, Paizo Inc.
 Pathfinder Roleplaying Game Horror Adventures. © 2016, Paizo Inc.
 Spheres of Power. © 2014, Drop Dead Studios LLC; Author: Adam Meyers.
 Spheres of Might. © 2017, Drop Dead Studios LLC; Authors: Adam Meyers, Michael Sayre, Andrew Stoeckle, N. Jolly.
+Mythic Spheres. © Drop Dead Studios LLC.
 
 pf1-psionics (https://github.com/SoxMax/pf1-psionics) is credited as an intermediate
 compiled source of the psionics mechanics reconciled against in this project.

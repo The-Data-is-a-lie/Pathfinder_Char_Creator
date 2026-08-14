@@ -120,6 +120,10 @@ ADDITIONS = [
     ("Spheres of Power. © 2014, Drop Dead Studios LLC; Author: Adam Meyers.", True),
     ("Spheres of Might. © 2017, Drop Dead Studios LLC; Authors: Adam Meyers, Michael Sayre, "
      "Andrew Stoeckle, N. Jolly.", True),
+    # Mythic map, 2026-08-14: mythic_traditions.json + mythic_sphere_masteries.json ship the
+    # traditions tab and the sphere masteries from the Mythic Spheres rules ("official content
+    # published by Drop Dead Studios" per the wiki); short-form until checked against the book.
+    ("Mythic Spheres. © Drop Dead Studios LLC.", False),
 ]
 
 HEADER = """\
