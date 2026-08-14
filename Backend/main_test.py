@@ -532,14 +532,32 @@ def phase_mythic_abilities(character, pw, ft):
 	for g in mythic_feats_granted:
 		pw.homebrew_feat_desc_dict[g['name']] = g['description']
 
+	# The chassis (ticket 05's classification). The path's bonus HP folds into Total_HP HERE --
+	# after luck settled its HP share, before familiars stat off the master's final maximum. The
+	# ability-score increases ride as an attributable {stat: +2} dict exactly like level_up_stats
+	# and the luck payout: the backend never folds bump dicts into exported scores.
+	extra_power = tradition['extra_mythic_power'] if tradition else 0
+	chassis = mythic.mythic_chassis(character, tier, path_key, extra_power)
+	character.Total_HP = (getattr(character, 'Total_HP', 0) or 0) + chassis['bonus_hp']
+	character.mythic_ability_bumps = mythic.mythic_ability_bumps(character, tier)
+	mythic.record_base_abilities(character, chassis)
+
 	return PhaseRecord(mythic={
 		'tier': tier,
 		'path': path_key,
 		'path_display': mythic.path_ability_data()[path_key]['display'],
+		'power_pool': chassis['power_pool'],
+		'surge_die': chassis['surge_die'],
+		'amazing_initiative_bonus': chassis['amazing_initiative_bonus'],
+		'bonus_hp': chassis['bonus_hp'],
+		'ability_bumps': character.mythic_ability_bumps,
+		'base_abilities': chassis['base_abilities'],
 		'tier1_feature': feature_choice,
 		'path_abilities': abilities,
 		'tradition': tradition,
 		'mythic_feats': mythic_feats_granted,
+		# Filled at export, once the spell lists have had their final dedupe pass.
+		'spell_annotations': {},
 	})
 
 
@@ -2756,14 +2774,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			_cf_bucket.update(_luck_sections)
 			_cf_bucket.update(_existing)
 
+		# Mythic lands HERE, after the feat economy has fully settled (the allowance is separate,
+		# tiers 1/3/5/7/9, and the namesake prereqs read the final feat list) and BEFORE familiars
+		# stat -- the path's bonus HP folds into Total_HP and a familiar takes half the master's
+		# final maximum. See the phase.
+		myth = phase_mythic_abilities(character, pw, ft)
+
 		# Familiars stat LATE, here and not in stat_bonded_creatures: their numbers key off the
 		# MASTER (half HP, master BAB/saves/ranks), and luck has only just settled Total_HP.
 		# See familiars.py's module docstring.
 		stat_familiars(character, skill_ranks)
-
-		# Mythic lands HERE, after the feat economy has fully settled: the allowance is separate
-		# (tiers 1/3/5/7/9) and the namesake prereqs read the final feat list. See the phase.
-		myth = phase_mythic_abilities(character, pw, ft)
 
 
 
@@ -2929,6 +2949,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Scannable fact block shown on the sheet's Biography tab (empty prose = no Backstory section).
 		formatted_bio = structured_bio(_bs_brief)
 
+		# The mythic block, finalized: the spell annotations read the deduped lists above.
+		_mythic_block = myth.mythic
+		if _mythic_block is not None:
+			_mythic_block['spell_annotations'] = mythic.spell_annotations(character)
+
 		payload = build_payload(
 			character, gear=gear, look=look, kin=kin, cf=cf, pw=pw, grants=grants, ft=ft, lk=lk,
 			professions=professions, skill_ranks=skill_ranks, skill_unlock=skill_unlock, seed=seed,
@@ -2973,6 +2998,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 				# validate_payload_shape only guards the outer order; the block's own shape is
 				# asserted by scripts/gates/validate_luck.py.
 				"luck": lk.luck,
+				# Mythic (mythic map, ticket 05) -- ONE namespaced block, same tail placement and
+				# same reasoning as luck. None when the request never named mythic: a non-mythic
+				# character carries no mythic state at all. Spell annotations join here, after the
+				# final spell dedupe above, because they read the lists the sheet will render.
+				"mythic": _mythic_block,
 				})
 
 		# Make EVERY placed feat renderable by the FoundryVTT module. The module silently DROPS any feat

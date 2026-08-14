@@ -329,6 +329,145 @@ EXTRA_POOL_DRAW_WEIGHT = 8
 
 
 # ------------------------------------------------------------------------------------------------
+# The tier chassis (ticket 05's five-way classification). Numbers computed here; the power pool is
+# a RESOURCE (tracked, never enforced -- the hero_points pattern), surge and the base abilities
+# are number+prose, Amazing Initiative's bonus is a pf1 change the module attaches (ticket 06),
+# and the ability-score increases ride as an attributable {stat: bonus} dict EXACTLY like
+# level_up_stats and the luck payout -- the backend deliberately does not fold bump dicts into the
+# exported scores; the sheets apply them where they are visible and attributable.
+# ------------------------------------------------------------------------------------------------
+
+_SURGE_STEPS = ((10, '1d12'), (7, '1d10'), (4, '1d8'), (1, '1d6'))
+
+# RAW Mythic Adventures base abilities by the tier that grants them (hand-authored, ticket 05;
+# verified against AoN's Mythic Heroes rules page 2026-08-14 -- the ability TEXTS carry the tier,
+# the summary table's columns interleave). Tier 6 grants no base ability; evens grant +2 to an
+# ability score; surge steps at 1/4/7/10.
+BASE_MYTHIC_ABILITIES = (
+    (1, 'Hard to Kill', 'Whenever you are below 0 hit points, you automatically stabilize; you '
+                        'die at negative Constitution x 2 instead of negative Constitution.'),
+    (1, 'Mythic Power', 'A pool of mythic power fueling surge and many mythic abilities: '
+                        '3 + 2 per tier uses per day (plus any tradition bonus).'),
+    (1, 'Surge', 'Expend one use of mythic power to add the surge die to a d20 roll you just '
+                 'made, possibly turning failure into success. The die grows with tier '
+                 '(1d6 / 1d8 at 4th / 1d10 at 7th / 1d12 at 10th).'),
+    (2, 'Amazing Initiative', 'A bonus on initiative checks equal to your mythic tier. Also, as a '
+                              'free action on your turn, expend one use of mythic power to take '
+                              'an additional standard action this turn (not usable to cast a '
+                              'second spell in a round).'),
+    (3, 'Recuperation', 'Restored to full hit points after 8 hours of rest. Also, expend one use '
+                        'of mythic power and rest 1 hour to regain half your maximum hit points '
+                        'and all class abilities normally regained by resting 8 hours.'),
+    (5, 'Mythic Saving Throws', 'Whenever you succeed at a saving throw against a spell or '
+                                'special ability from a non-mythic source, you suffer no effect.'),
+    (7, 'Force of Will', 'As an immediate action, expend one use of mythic power to reroll a d20 '
+                         'roll you just made, or force any non-mythic creature to reroll one it '
+                         'just made; the affected creature takes the second result.'),
+    (8, 'Unstoppable', 'As a free action, expend one use of mythic power to immediately end one '
+                       'of a list of harmful conditions affecting you (bleed, dazed, shaken, '
+                       'staggered, and others); usable even when a condition would prevent it.'),
+    (9, 'Immortal', 'If you are killed, you return to life 24 hours later regardless of your '
+                    'body\'s condition, unless killed by a mythic creature of your tier or '
+                    'higher, an artifact, or a deity.'),
+    (10, 'Legendary Hero', 'You regain one use of mythic power every hour, in addition to '
+                           'completely refreshing your pool each day.'),
+)
+
+
+def surge_die(tier):
+    for step, die in _SURGE_STEPS:
+        if tier >= step:
+            return die
+    return '1d6'
+
+
+def mythic_chassis(character, tier, path_key, extra_power=0):
+    """The tier-derived numbers. `extra_power` is the tradition's +MP/day purchases."""
+    meta = path_ability_data()[path_key]
+    per_tier = meta.get('bonus_hp_per_tier') or 0
+    return {
+        'power_pool': 3 + 2 * tier + extra_power,
+        'surge_die': surge_die(tier),
+        'amazing_initiative_bonus': tier if tier >= 2 else 0,
+        'bonus_hp': per_tier * tier,
+        'base_abilities': [{'name': name, 'tier': gained, 'description': text}
+                           for gained, name, text in BASE_MYTHIC_ABILITIES if gained <= tier],
+    }
+
+
+def mythic_ability_bumps(character, tier):
+    """+2 to a DIFFERENT ability score at every even tier ('another ability score of your
+    choice'), delivered as an attributable {stat: bonus} dict like level_up_stats. Priority is
+    the role's stat order when the optimizer set one, else main stat first and a random spread."""
+    count = tier // 2
+    if not count:
+        return {}
+    from utils.class_func.power_role import stat_order
+    priority = list(stat_order(character) or [])
+    if not priority:
+        stats = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+        main = str(getattr(character, 'main_stat', '') or '').split('/')[0].strip().lower()
+        if main in stats:
+            stats.remove(main)
+            priority = [main] + random.sample(stats, k=len(stats))
+        else:
+            priority = random.sample(stats, k=len(stats))
+    bumps = {}
+    for stat in priority[:count]:
+        bumps[stat] = bumps.get(stat, 0) + 2
+    return bumps
+
+
+def record_base_abilities(character, chassis):
+    """The base tier abilities join class features (bucket 'Mythic Abilities', owner mythic,
+    tier stamps) -- automatic grants, not picks, so the bucket has no schedule row."""
+    features = character.data_dict['class features']
+    bucket = features.setdefault('Mythic Abilities', {})
+    for ability in chassis['base_abilities']:
+        text = ability['description']
+        if ability['name'] == 'Surge':
+            text = f"Current surge die: {chassis['surge_die']}. " + text
+        if ability['name'] == 'Mythic Power':
+            text = f"Current pool: {chassis['power_pool']}/day. " + text
+        bucket[ability['name']] = {'benefit': text}
+        _record_choice_level(character, 'Mythic Abilities', ability['name'], ability['tier'])
+    record_bucket_owner(character, 'Mythic Abilities', 'mythic')
+
+
+def spell_annotations(character):
+    """Mythic spell modes for spells the character already knows -- annotation, never a pick
+    (ticket 05): the data/spells.csv columns `mythic`/`mythic_text`/`augmented` render onto known
+    spells; the sampler and its weighting are untouched, and no name-keyed mythic lookup ever
+    happens because nothing is chosen."""
+    def _flatten(value):
+        if isinstance(value, (list, tuple)):
+            for item in value:
+                yield from _flatten(item)
+        elif value is not None:
+            yield str(value).strip().lower()
+
+    names = set()
+    for book in getattr(character, 'spellbooks', None) or []:
+        names.update(_flatten(book.get('spell_list_choose_from')))
+        names.update(_flatten(book.get('spells_known_list')))
+    names.discard('')
+    if not names:
+        return {}
+    data = pd.read_csv(repo_path('data/spells.csv'), sep='|', on_bad_lines='skip')
+    rows = data[(data['mythic'] == 1) & (data['name'].str.strip().str.lower().isin(names))]
+    out = {}
+    for _, row in rows.iterrows():
+        entry = {}
+        for column in ('mythic_text', 'augmented'):
+            value = row.get(column)
+            if value is not None and not pd.isna(value) and str(value).strip():
+                entry[column] = str(value).strip()
+        if entry:
+            out[str(row['name']).strip()] = entry
+    return out
+
+
+# ------------------------------------------------------------------------------------------------
 # Mythic traditions (Mythic Spheres wikidot, traditions tab -- Daniel's house scope, 2026-08-14:
 # traditions apply to EVERY mythic character, not just spherecasters). Up to three drawbacks, each
 # buying one boon or one extra use of mythic power per day; at most one quality. The counts are

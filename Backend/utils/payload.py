@@ -226,6 +226,10 @@ PAYLOAD_KEYS = (
 	'skill_rank_budget',
 	'normal_feat_amount',
 	'luck',
+	# Mythic (mythic map, ticket 05): ONE namespaced block at the tail, the luck precedent --
+	# tier, path, chassis numbers, path abilities, tradition, mythic feats, spell annotations.
+	# None for a non-mythic character; the block's own shape is validate_mythic.py's to assert.
+	'mythic',
 	'buff_gaps',
 	'generator_version',
 	'license_url',
