@@ -19,6 +19,43 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Mythic: a generated character can now walk a mythic path** (spec §14, the whole
+  [mythic map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
+  backend, rulings 2026-08-12 → 14). A new named input, `mythic`, beside `seed`/`optimize`:
+  absent is never mythic — no rarity roll, so the eleven goldens differ by exactly one
+  `"mythic": null` line — an int 1–10 forces that tier, `true` rolls one decaying toward the low
+  end (weight 11 − tier; level-banding was rejected, a level-4 tier-3 character is legal). What a
+  mythic character gets: a **role-weighted path** (casters lean Archmage/Hierophant, martials
+  Champion/Guardian, skill classes Trickster — every path stays possible) with its tier-1 feature
+  choice and 10th-tier capstone; **one path ability per tier** drawn from the full RAW pools
+  scraped whole from AoN (~53–62 per path + 43 universal merged in at build time — the map priced
+  hand-authoring ~280 and the scrape delivered 597); **mythic feats at tiers 1/3/5/7/9** as a
+  separate allowance appended after the feat-count guarantee, never an ordinary slot, collision
+  names wearing a `(Mythic)` suffix because 139 of the 158 share a name with a normal feat;
+  the **chassis** (power pool 3 + 2×tier as a tracked-not-enforced resource, surge d6→d12,
+  Amazing Initiative = tier, path bonus HP folded into Total_HP, +2 ability increases at even
+  tiers riding as an attributable dict like level-up stats); **mythic spell annotations** — the
+  247 mythic modes already sitting in `data/spells.csv` render onto spells the character knows,
+  nothing is sampled; and a **mythic tradition** (the house carve-out from Mythic Spheres,
+  2026-08-14: traditions for EVERY mythic character — 0–3 drawbacks decaying toward none, each
+  buying a boon or +1 mythic power/day, at most one quality, with **Boon: Expertise Sieg-inverted**
+  to draw a qualified-but-unselected option from the character's own classes) plus **sphere
+  masteries for sphere users** (RAW universal path abilities, merged into the candidate pool for
+  spheres actually held). Everything lands in class features with owner `mythic` and TIER stamps —
+  visible on both sheets today through machinery they already read — and the payload gains one
+  namespaced `mythic` block, the luck precedent. The power metric sees the chassis (surge as nova
+  EV, bumps through ability_scores) and prints its own blindness (`_blind.mythic`: path-ability
+  adders deferred by ruling). Two sabotage-proven witnesses: `gates/validate_mythic.py` (config —
+  caught a dropped path and an orphaned schedule row in its own proving) and
+  `check_mythic` + a per-character leak tripwire over all 1,020 non-mythic sweep generations
+  (behaviour — its first run caught `mythic: 1` being read as `true` and rolling tier 2).
+  Rejected alternatives, recorded: a rarity roll (any draw moves the goldens; the deleted
+  `randomize_mythic` stub rolled 0.5% and was untestable by construction), relaxing
+  `remove_mythic()` for mythic characters (it is name-collision disambiguation, not a pool
+  filter — relaxing it would let Mythic rows clobber normal rows in every name-keyed dict),
+  and a pseudo-class row in the class schedule (the 68-class roster gates would each need
+  carve-outs; the parallel same-schema `mythic_schedule.json` needs none). Rendering the block
+  on the FoundryVTT module and the web sheet is ticket 06, the follow-up effort.
 - **Full house-rules optimized walls: generated tanks now hit AC 40–50+ at level 10+** (spec §15's
   V4 pass, rulings 2026-08-13). A new named input, `house_rules`, beside `optimize`: absent or
   false is exactly the optimizer that shipped yesterday — the ten prior goldens rewrote

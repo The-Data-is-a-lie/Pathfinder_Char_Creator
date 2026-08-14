@@ -27,6 +27,10 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
    `LUCK_MAGNITUDE_BASE + level//2`, sellers from `luck.sell_magnitude()`, which reaches the −50
    floor at any level with depth weighted by level. The optional `luck_direction` API input
    (`'buy'`/`'sell'`) forces the branch for testing.
+   Beside it, **`phase_mythic_stake`** (`class_func/mythic.py`) — the mythic tier, resolved from
+   the `mythic` named input before any budget (trainer slots read it): absent → never, int → that
+   tier, `true` → rolled with decay (`TIER_ROLL_WEIGHTS`). The non-mythic branch draws nothing
+   from the RNG. Spec §14.
 3. Stats: `roll_stats` → `apply_racial_stats` → `assign_stats` → HP.
 4. Spells: per class entry `caster_formula` / `spells_known_*` / `spells_per_day_*` → spellbooks.
 5. Prereq pool prep: `chooseable_list*` (stats, class levels, class features, race → `character.chooseable`).
@@ -62,6 +66,15 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
    holds the same dict object. Exports the
    nested `luck` block (and `hero_points`, which *It Just Works* adds to). See
    `docs/feature_spec_todo.md` §13.
+8b. **`phase_mythic_abilities`** (`class_func/mythic.py`) — after the feat economy settles, before
+   familiars stat: the role-weighted path + tier-1 feature, one path ability per tier
+   (`mythic_path_abilities.json`, universal merged; sphere users' masteries join the pool), the
+   tradition (`mythic_traditions.json`; Expertise is Sieg-inverted via `missed_class_features`),
+   mythic feats appended post-trim (separate allowance, `(Mythic)` display names), and the chassis
+   (pool 3+2×tier, surge die, path HP into `Total_HP`, ability bumps as a dict). Schedule:
+   `mythic_schedule.json` through `levels_for(schedule_attr='mythic_schedule')` — the tier is the
+   axis. Exports the nested `mythic` block (spell annotations from `data/spells.csv` join at
+   payload build). Gates: `validate_mythic.py` + `check_mythic`/the leak tripwire. Spec §14.
 9. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
    built from the `effects`/`changes` JSONs (grep `_load_buffmap`).
 
@@ -317,8 +330,9 @@ EVERY luck number, nothing else in the tree holds one) ·
 **power_role.py** (the optimizer's plan object: `phase_power_role` picks the role after the
 classes; owns the role-table vocabularies and `stat_order`; `character.role` None = random mode
 untouched) ·
-luck_and_mythic.py (`randomize_mythic` only — `randomize_luck` was deleted, it implemented a
-different rule) · hero_point_generator.py ·
+**mythic.py** (the whole mythic subsystem — tier resolver + `TIER_ROLL_WEIGHTS`, role→path
+weights, ability/feat/tradition choosers with their curation constants, the chassis table and
+surge steps; `luck_and_mythic.py` is deleted, both halves) · hero_point_generator.py ·
 class_specific_feats.py / extra_combat_feats.py / extra_magic_feats.py · grand_discovery.py
 
 ## `Backend/scripts/` index
@@ -380,6 +394,10 @@ Backend/scripts/
 | ambient house-waived feats the metric folds (Power Attack et al.) | `power_metric.ambient_feats`, reading `feat_tax.json::tax_primary_blocklist` — ambient Dodge deliberately NOT folded (derive.js parity) |
 | parity vs the web sheet's `derive.js` (**local only**, needs Node + the sheet repo) | `build/check_derive_parity.mjs --sheet-root <path>` |
 | per-phase RNG substreams (off by default) | `pipeline.enable_phase_streams()` in `utils/class_func/pipeline.py` |
+| **the `mythic` input** (named key: absent/int 1–10/`true`) → tier → the mythic build | `app.py` pop → `generate_random_char(mythic_request=…)` → `phase_mythic_stake` (tier, beside luck's stake) → `phase_mythic_abilities` (path/abilities/traditions/feats/chassis, after the feat economy); all choosers + constants in `utils/class_func/mythic.py`, spec §14 |
+| the mythic schedule (TIER-keyed parallel table) and its data | `Backend/json/mythic_schedule.json` (via `levels_for(schedule_attr='mythic_schedule')`) · `mythic_path_abilities.json` + `mythic_traditions.json` + `mythic_sphere_masteries.json` (built by `build/build_mythic_path_abilities.py` / `build_mythic_traditions.py` — rerun after parser/override edits) |
+| the mythic gates (config + behaviour, both sabotage-proven) | `gates/validate_mythic.py` · `check_mythic` + the non-mythic leak tripwire in `tests/test_house_invariants.py` (independent expansion via `_harness.mythic_schedule`) |
+| mythic on the power metric (chassis only; path abilities deferred) | `power_metric` (`IMPLEMENTED_MYTHIC_MODELS`, surge EV in `profile_for`, bumps in `ability_scores`), `power_adders.json::mythic` + `_blind.mythic` |
 
 **Where the `build/` ÷ `attic/` line actually falls.** Ticket 03 named the buckets by prefix, which
 left ten scripts in neither: the conditional-curation chain and the audits are run repeatedly and

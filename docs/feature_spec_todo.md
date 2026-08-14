@@ -1254,12 +1254,68 @@ the curated table but not wired into `feat_changes.json`, because nothing can cu
 the **`E-Kat Exchange: Rotten Luck`** cost formula, which did not survive extraction · **spending the
 carried remainder** in play (the sub-25 leftover is exported, never used).
 
-## 14. Mythic — RESERVED
+## 14. Mythic — ✅ BACKEND + GATES BUILT (2026-08-14)
 
-> Reserved for *Mythic*, deliberately, the way §11 was held for *Class choices*.
-> [That map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
-> names §14 as its destination. Numbering the section below 15 keeps that promise rather than
-> quietly taking the slot.
+**Status: a generated character can be mythic** — tier, path, per-tier path abilities, mythic
+feats, the power/surge chassis, a tradition — legally generated, gated, and carried on the payload.
+The [map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
+ruled every design question; this section names the symbols that own the behaviour. **Rendering
+(ticket 06, both sheets) is the follow-up effort** — the class-features side-tables already carry
+everything, so a mythic character is visible today; the module/web-sheet treatment of the `mythic`
+payload block is what remains.
+
+**The grant (ticket 02): the input is the gate.** A `mythic` key beside `seed`/`optimize` —
+absent → never (no rarity roll, eleven goldens differ by one `"mythic": null` line and nothing
+else), int 1–10 → exactly that tier, `true` → a rolled tier decaying toward the low end
+(`mythic.TIER_ROLL_WEIGHTS`). No level gate. `phase_mythic_stake` resolves it beside luck's stake,
+before any budget; `phase_mythic_abilities` builds the rest after the feat economy settles.
+`'1'` is deliberately not a synonym for `true` — the tier-1 forced cell caught that collision.
+
+**The schedule (ticket 03): a parallel axis file.** `Backend/json/mythic_schedule.json`, same
+schema as the class table, keyed by TIER, expanded by the same `levels_for()` (new
+`schedule_attr` kwarg). Buckets: `Mythic Path` (single pick, role-weighted draw — casters lean
+Archmage/Hierophant, martials Champion/Guardian, skill classes Trickster; weights in
+`mythic.path_weights`), `Mythic Path Abilities` (1/tier), `mythic_feats` (1/3/5/7/9). Pools:
+`mythic_path_abilities.json`, scraped whole from AoN by `build/build_mythic_path_abilities.py` —
+~53–62 per path plus the 43 universal merged in at build time, plus each path's tier-1 feature
+options and capstone. Curation flags are load-bearing (the chooser skips them). Owners stamp
+`mythic` + the TIER.
+
+**Feats (ticket 04): the filter stays, the chooser is new.** `remove_mythic()` was never a pool
+filter — it disambiguates the 139 shared names — so it is untouched for everyone.
+`mythic.choose_mythic_feats` reads `type=='Mythic'` explicitly, tier-gates outside the string
+prereq engine, and appends post-trim like profession feats: a separate allowance, never an
+ordinary slot, never taxed. Collision names wear `(Mythic)`; Dual Path and Extra Path Ability are
+recorded v1 exclusions (`V1_EXCLUDED_MYTHIC_FEATS`).
+
+**The chassis (ticket 05), five ways:** power pool = resource (tracked, not enforced; traditions
+can buy more), surge = number + prose, Amazing Initiative = tier as a change-to-be, tier HP folds
+into `Total_HP` (after luck, before familiars), ability increases ride as an attributable
+`{stat: +2}` dict like `level_up_stats`. Mythic spells are an **annotation** on spells already
+known (`mythic.spell_annotations`, the 247 `data/spells.csv` modes) — the sampler untouched.
+Payload: ONE namespaced `mythic` block at the tail, `None` when non-mythic.
+
+**House carve-outs from Mythic Spheres (2026-08-14)** — the system stays out of scope except:
+**traditions for every mythic character** (0–3 drawbacks decaying toward none, each buying a boon
+or +1 MP/day, ≤1 quality; `mythic_traditions.json` via `build/build_mythic_traditions.py`;
+**Boon: Expertise is Sieg-inverted** — a qualified-but-unselected option from the character's OWN
+classes at their levels, never a class they lack) and **sphere masteries for sphere users** (RAW
+universal path abilities, merged into the candidate pool for spheres actually held, with a
+draw-weight lean). The power metric sees the chassis (`power_adders.json::mythic`, surge as nova
+EV, bumps through `ability_scores`); per-path-ability adders are deferred in `_blind.mythic`.
+
+**Witnesses, both layers, both sabotage-proven:** `gates/validate_mythic.py` (config — schedule
+schema, six-path roster, universal-merge drift, tradition overrides, ast call sites, payload key;
+caught a dropped path and an orphaned schedule row) and `check_mythic` +'s per-character leak
+tripwire in `tests/test_house_invariants.py` (behaviour — forced cells at tiers 1/5/6/10 incl.
+L40 and spheres-on, the tier axis via a same-tier-different-level twin, chassis formulas, trainer
+wiring at the unit; the tripwire runs over all 1,020 non-mythic generations; a sabotaged chooser
+trips 8 checks).
+
+**Deferred (recorded, not silent):** rendering (ticket 06) · Dual/Hard Path · mythic archetypes,
+templates and monsters · mythic above 20th beyond what the tier cap already implies · the
+optimizer reaching for mythic · per-path-ability metric adders · archetype-traded features in the
+Expertise pool.
 
 ## 15. Optimal builds — ✅ OPTIMIZER V1 BUILT (2026-08-11), L1–20
 
