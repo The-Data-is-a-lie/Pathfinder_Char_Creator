@@ -508,8 +508,22 @@ def phase_mythic_abilities(character, pw, ft):
 
 	path_key, feature_choice = mythic.choose_mythic_path(character)
 	character.mythic_path = path_key
-	abilities = mythic.choose_path_abilities(character, path_key, tier)
+
+	# Sphere masteries (house scope: sphere users only) are RAW universal path abilities, so they
+	# join the CANDIDATE POOL of a sphere-using mythic character -- filtered to spheres actually
+	# held -- rather than being a bonus grant. pw.spheres_chosen is PhaseRecord-only state, which
+	# is why this phase takes pw explicitly.
+	_sphere_names = [s.get('sphere') for s in (pw.spheres_chosen or []) if isinstance(s, dict)]
+	mastery_pool = mythic.sphere_mastery_pool(_sphere_names)
+	abilities = mythic.choose_path_abilities(character, path_key, tier, extra_pool=mastery_pool)
 	mythic.record_mythic_choices(character, path_key, feature_choice, abilities, tier)
+
+	# The tradition (house scope: EVERY mythic character rolls one; decaying counts, so none at
+	# all is the common case). Rolled after the abilities so Mythic Exemplar can see what is
+	# already taken.
+	tradition = mythic.roll_mythic_tradition(character, tier, _sphere_names, path_key,
+											 [a['name'] for a in abilities])
+	mythic.record_tradition(character, tradition)
 
 	feat_slot_tiers = levels_for(character, 'mythic', 'mythic_feats', tier,
 								 schedule_attr='mythic_schedule')
@@ -524,6 +538,7 @@ def phase_mythic_abilities(character, pw, ft):
 		'path_display': mythic.path_ability_data()[path_key]['display'],
 		'tier1_feature': feature_choice,
 		'path_abilities': abilities,
+		'tradition': tradition,
 		'mythic_feats': mythic_feats_granted,
 	})
 

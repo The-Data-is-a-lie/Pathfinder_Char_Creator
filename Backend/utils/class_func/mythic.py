@@ -287,12 +287,18 @@ def _ability_prereq_ok(description, character, chosen_lower):
     return True
 
 
-def choose_path_abilities(character, path_key, tier):
+def choose_path_abilities(character, path_key, tier, extra_pool=None):
     """One ability per tier from the path's merged pool, gated per slot (1st/3rd/6th-tier lists),
     flagged entries skipped -- the flag is load-bearing, not decoration.
 
+    `extra_pool` extends the candidates without touching the data file: the sphere masteries of a
+    sphere-using mythic character join here (they are RAW universal path abilities, in house scope
+    for sphere users only).
+
     Returns [{'name', 'tier', 'type', 'source', 'description', 'universal'}, ...] in slot order."""
-    pool = path_ability_data()[path_key]['abilities']
+    pool = dict(path_ability_data()[path_key]['abilities'])
+    extra_pool = extra_pool or {}
+    pool.update(extra_pool)
     slot_tiers = levels_for(character, 'mythic', 'Mythic Path Abilities', tier,
                             schedule_attr='mythic_schedule')
     chosen = []
@@ -306,11 +312,196 @@ def choose_path_abilities(character, path_key, tier):
                       and _ability_prereq_ok(entry['description'], character, chosen_lower)]
         if not candidates:
             break
-        name = random.choice(sorted(candidates))
+        candidates = sorted(candidates)
+        # A sphere user's few masteries would drown in a ~100-ability pool (one sphere = one
+        # mastery = ~1% per pick); the lean keeps the carve-out real without guaranteeing it.
+        weights = [EXTRA_POOL_DRAW_WEIGHT if name in extra_pool else 1 for name in candidates]
+        name = random.choices(candidates, weights=weights, k=1)[0]
         chosen_lower.add(name.lower())
         chosen.append({'name': name, 'tier': slot_tier, **{
             k: pool[name][k] for k in ('type', 'source', 'description', 'universal')}})
     return chosen
+
+
+# One sphere held = one mastery among ~100 candidates; a flat draw makes the sphere-user
+# carve-out invisible in practice (~1% per pick). This is a lean, not a guarantee.
+EXTRA_POOL_DRAW_WEIGHT = 8
+
+
+# ------------------------------------------------------------------------------------------------
+# Mythic traditions (Mythic Spheres wikidot, traditions tab -- Daniel's house scope, 2026-08-14:
+# traditions apply to EVERY mythic character, not just spherecasters). Up to three drawbacks, each
+# buying one boon or one extra use of mythic power per day; at most one quality. The counts are
+# rolled here with decay toward fewer -- a tradition-free mythic character is the common case.
+# ------------------------------------------------------------------------------------------------
+
+_TRADITIONS = None
+_MASTERIES = None
+
+DRAWBACK_COUNT_WEIGHTS = [4, 3, 2, 1]     # 0..3 drawback-units, decaying
+BOON_VS_POWER_WEIGHTS = (2, 1)            # each earned benefit: a boon, or +1 mythic power/day
+QUALITY_ONE_IN = 3                        # ~1 character in 3 carries a quality
+
+def tradition_data():
+    global _TRADITIONS
+    if _TRADITIONS is None:
+        with open(repo_path('Backend/json/mythic_traditions.json'), encoding='utf-8') as fh:
+            _TRADITIONS = json.load(fh)
+    return _TRADITIONS
+
+
+def sphere_mastery_pool(spheres_chosen):
+    """Sphere masteries for the spheres actually held, shaped like path-ability pool entries so
+    choose_path_abilities can merge them as extra candidates. Empty when no spheres."""
+    global _MASTERIES
+    if _MASTERIES is None:
+        with open(repo_path('Backend/json/mythic_sphere_masteries.json'), encoding='utf-8') as fh:
+            _MASTERIES = json.load(fh)
+    held = {str(s).strip().lower() for s in (spheres_chosen or [])}
+    pool = {}
+    for sphere, entry in _MASTERIES['masteries'].items():
+        if sphere.strip().lower() in held:
+            pool[f'Mythic Sphere Mastery: {sphere}'] = {
+                'tier': entry['tier'], 'type': 'Su', 'source': 'Mythic Spheres (wikidot)',
+                'description': entry['description'], 'universal': True,
+            }
+    return pool
+
+
+def _talent_description(character, name_lower):
+    """Best-effort description for an unpicked bucket option, from the owning class's datasets."""
+    for entry in character.classes:
+        datasets = getattr(character, entry['name'], None)
+        if not isinstance(datasets, dict):
+            continue
+        for dataset in datasets.values():
+            if not isinstance(dataset, dict):
+                continue
+            for key, value in dataset.items():
+                if str(key).lower() == name_lower:
+                    if isinstance(value, dict):
+                        return str(value.get('description') or value.get('benefit') or '')
+                    return str(value or '')
+    return ''
+
+
+def missed_class_features(character):
+    """The Expertise pool under the house inversion: options from classes the character HAS that
+    they qualified for at their level and did not select.
+
+    v1 sources the prereq-qualified leftovers the choosers accumulated (chooseable_talents keeps
+    every unpicked qualifying option across all of the character's classes). Features an archetype
+    traded away are NOT enumerable -- archetype swaps are deliberately unmodelled past the
+    companion bond -- and stay a recorded simplification."""
+    leftovers = list(dict.fromkeys(getattr(character, 'chooseable_talents', None) or []))
+    out = []
+    for name in leftovers:
+        out.append({'name': str(name).title(),
+                    'description': _talent_description(character, str(name).lower())})
+    return out
+
+
+def roll_mythic_tradition(character, tier, spheres_on, path_key, chosen_ability_names):
+    """Roll one tradition: 0-3 drawback-units (decaying), each buying a boon or +1 MP/day, plus an
+    independent 0-1 quality. Eligibility honors the data's machine-readable fields: `flag` skips,
+    `requires_spheres` gates on the spheres flag, `counts_as`/`cost` spend the unit budget.
+
+    Returns None when the roll produces nothing at all -- a mythic character without a tradition
+    is a legal, common state, not a half-built one."""
+    data = tradition_data()
+    spheres_on = bool(spheres_on)
+
+    def eligible(section):
+        return {name: entry for name, entry in data[section].items()
+                if not entry.get('flag') and (spheres_on or not entry.get('requires_spheres'))}
+
+    units_target = random.choices([0, 1, 2, 3], weights=DRAWBACK_COUNT_WEIGHTS, k=1)[0]
+    drawbacks, units = [], 0
+    pool = eligible('drawbacks')
+    while units < units_target and pool:
+        fits = sorted(name for name, e in pool.items() if e.get('counts_as', 1) <= units_target - units)
+        if not fits:
+            break
+        name = random.choice(fits)
+        entry = pool.pop(name)
+        units += entry.get('counts_as', 1)
+        drawbacks.append({'name': name, 'description': entry['description']})
+
+    boons, extra_power = [], 0
+    budget = units
+    boon_pool = eligible('boons')
+    while budget > 0:
+        affordable = sorted(name for name, e in boon_pool.items() if e.get('cost', 1) <= budget)
+        pick_boon = affordable and random.choices(('boon', 'power'), weights=BOON_VS_POWER_WEIGHTS, k=1)[0] == 'boon'
+        if not pick_boon:
+            extra_power += 1
+            budget -= 1
+            continue
+        name = random.choice(affordable)
+        entry = boon_pool.pop(name)
+        budget -= entry.get('cost', 1)
+        boon = {'name': name, 'description': entry['description']}
+        if entry.get('house_rule'):
+            boon['house_rule'] = entry['house_rule']
+        if entry.get('auto') == 'missed_class_feature':
+            options = missed_class_features(character)
+            if options:
+                boon['grants'] = dict(random.choice(sorted(options, key=lambda o: o['name'])),
+                                      via='Expertise (house): a qualified-but-unselected option from your own classes')
+        elif entry.get('auto') == 'bonus_first_tier_path_ability':
+            own_pool = path_ability_data()[path_key]['abilities']
+            taken = {n.lower() for n in chosen_ability_names}
+            candidates = sorted(n for n, e in own_pool.items()
+                                if e['tier'] == 1 and not e.get('flag') and n.lower() not in taken)
+            if candidates:
+                extra = random.choice(candidates)
+                boon['grants'] = {'name': extra, 'description': own_pool[extra]['description'],
+                                  'via': 'Mythic Exemplar: a bonus 1st-tier path ability'}
+        boons.append(boon)
+
+    quality = None
+    if random.randint(1, QUALITY_ONE_IN) == 1:
+        qual_pool = eligible('qualities')
+        if qual_pool:
+            name = random.choice(sorted(qual_pool))
+            quality = {'name': name, 'description': qual_pool[name]['description']}
+
+    if not drawbacks and not quality:
+        return None
+    return {'drawbacks': drawbacks, 'boons': boons,
+            'extra_mythic_power': extra_power, 'quality': quality}
+
+
+def record_tradition(character, tradition):
+    """The tradition joins class features (bucket 'Mythic Tradition', owner mythic, stamp 1) so
+    both sheets render it through machinery they already read."""
+    if not tradition:
+        return
+    features = character.data_dict['class features']
+    bucket = features.setdefault('Mythic Tradition', {})
+
+    def _add(prefix, item):
+        entry_name = f"{prefix}: {item['name']}" if prefix else item['name']
+        bucket[entry_name] = {'benefit': item['description']}
+        _record_choice_level(character, 'Mythic Tradition', entry_name, 1)
+        grants = item.get('grants')
+        if grants:
+            grant_name = f"{item['name']} → {grants['name']}"
+            bucket[grant_name] = {'benefit': f"({grants['via']}) {grants['description']}"}
+            _record_choice_level(character, 'Mythic Tradition', grant_name, 1)
+
+    for drawback in tradition['drawbacks']:
+        _add('Drawback', drawback)
+    for boon in tradition['boons']:
+        _add('Boon', boon)
+    if tradition['extra_mythic_power']:
+        name = 'Boon: Additional Mythic Power'
+        bucket[name] = {'benefit': f"+{tradition['extra_mythic_power']} use(s) of mythic power per "
+                                   f"day, bought with this tradition's drawbacks."}
+        _record_choice_level(character, 'Mythic Tradition', name, 1)
+    if tradition['quality']:
+        _add('Quality', tradition['quality'])
+    record_bucket_owner(character, 'Mythic Tradition', 'mythic')
 
 
 def record_mythic_choices(character, path_key, feature_choice, abilities, tier):
