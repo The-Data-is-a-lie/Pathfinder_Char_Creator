@@ -887,6 +887,142 @@ def check_power_metric():
           f"{len(shortfall)} would render AC-low on the web sheet")
 
 
+# --------------------------------------------------------------------------------------------- #
+# GEAR LEGALITY -- the BEHAVIOUR layer (plan docs/plan_gear_legality.md, step 8).
+#
+# `validate_gear_legality.py` gates the TABLE. This gates the CHARACTERS, and the two share no
+# code on purpose: the table being self-consistent says nothing about whether the chooser reads it.
+# The band union, the caster cap and the taboo intersection are all re-implemented below rather
+# than imported from `armor_and_weapon_chooser`, because a check that asked the chooser what the
+# rules are would agree with it whatever it did -- which is exactly how a wizard wore Full plate
+# through eleven passing goldens.
+#
+# The COVERAGE counters matter as much as the assertions. Every rule here is of the form "if the
+# character has X then Y", and a sweep that produced no shielded character at all would satisfy
+# every one of them vacuously and print a pass. So the branches are counted and a zero is a
+# failure -- the same argument the class-choice cap check makes at the bottom of this file.
+# --------------------------------------------------------------------------------------------- #
+GEAR_COVERAGE = {'chars': 0, 'armoured': 0, 'unarmoured': 0, 'shielded': 0, 'tower': 0,
+                 'two_handed_shield': 0, 'taboo': 0, 'capped': 0, 'buckler_only': 0}
+
+_GEAR_BANDS = (None, 'L', 'M', 'H')
+_GEAR_SECTION_BAND = {'Light': 'L', 'Medium': 'M', 'Heavy': 'H'}
+# The druid's list, restated rather than imported -- see the header. If the chooser's fallback and
+# this disagree, that is the finding.
+_GEAR_METAL_FREE = {'Padded', 'Leather', 'Hide'}
+
+_GEAR_TABLE = json.loads((BACKEND / 'json' / 'armor_proficiency.json')
+                         .read_text(encoding='utf-8'))['classes']
+_GEAR_ARMOR = json.loads((BACKEND / 'json' / 'armor.json').read_text(encoding='utf-8'))
+_GEAR_SECTIONS = {n: s for s, entries in _GEAR_ARMOR.items() for n in entries}
+_GEAR_WEAPONS = {n: e for group in
+                 json.loads((BACKEND / 'json' / 'weapons_data.json').read_text(encoding='utf-8'))
+                 .values() for n, e in group.items()}
+
+
+def _gear_rows(payload):
+    for entry in payload.get('classes') or []:
+        row = (_GEAR_TABLE.get(entry['name'])
+               or _GEAR_TABLE.get(str(entry['name']).replace(' (unchained)', '')))
+        if row:
+            yield entry, row
+
+
+def check_gear_legality(cell, payload):
+    GEAR_COVERAGE['chars'] += 1
+    rows = list(_gear_rows(payload))
+    if not rows:
+        return
+
+    # ---- the band the character is entitled to: union, then the arcane-caster cap ----
+    band = None
+    for _entry, row in rows:
+        if _GEAR_BANDS.index(row['armor']) > _GEAR_BANDS.index(band):
+            band = row['armor']
+    capped = False
+    for _entry, row in rows:
+        if not row.get('asf_sensitive'):
+            continue
+        cap = (row.get('asf_exempt') or {}).get('armor')
+        if _GEAR_BANDS.index(cap) < _GEAR_BANDS.index(band):
+            band, capped = cap, True
+    if capped:
+        GEAR_COVERAGE['capped'] += 1
+
+    # ---- the taboo: allowed sets INTERSECT across a multiclass ----
+    allowed = None
+    for _entry, row in rows:
+        names = row.get('armor_allow') or (list(_GEAR_METAL_FREE)
+                                           if row.get('metal_prohibited') else None)
+        if names:
+            allowed = set(names) if allowed is None else (allowed & set(names))
+    if allowed is not None:
+        GEAR_COVERAGE['taboo'] += 1
+
+    armor = payload.get('armor_name')
+    if armor and armor != 0:
+        GEAR_COVERAGE['armoured'] += 1
+        worn = _GEAR_SECTION_BAND.get(_GEAR_SECTIONS.get(armor))
+        check(worn is not None,
+              f"{cell}: wearing {armor!r}, which is not body armour in armor.json")
+        if worn is not None:
+            check(_GEAR_BANDS.index(worn) <= _GEAR_BANDS.index(band),
+                  f"{cell}: {[e['name'] for e, _ in rows]} may wear {band!r} at best but is in "
+                  f"{armor!r} ({worn})")
+        check(allowed is None or armor in allowed,
+              f"{cell}: {armor!r} is outside the taboo allowlist {sorted(allowed or [])} -- a "
+              f"metal-prohibited class is wearing what it may not")
+    else:
+        GEAR_COVERAGE['unarmoured'] += 1
+        check(band is None or allowed is not None,
+              f"{cell}: entitled to {band!r} armour and wearing none, with no taboo to explain it")
+
+    # ---- shields ----
+    shield = payload.get('shield_name')
+    if not shield or shield == ' ':
+        return
+    GEAR_COVERAGE['shielded'] += 1
+    shield_band = None
+    for _entry, row in rows:
+        ladder = (None, 'buckler', 'shield', 'tower')
+        if ladder.index(row['shield']) > ladder.index(shield_band):
+            shield_band = row['shield']
+    check(shield_band is not None,
+          f"{cell}: carrying {shield!r} with no shield proficiency in "
+          f"{[e['name'] for e, _ in rows]}")
+    if shield_band == 'buckler':
+        GEAR_COVERAGE['buckler_only'] += 1
+        check('uckler' in shield,
+              f"{cell}: {shield!r} on a buckler-only class")
+    if shield == 'Tower':
+        GEAR_COVERAGE['tower'] += 1
+        check(shield_band == 'tower',
+              f"{cell}: a Tower shield without tower proficiency")
+    for _entry, row in rows:
+        material = row.get('shield_material')
+        check(not material or material.lower() in shield.lower(),
+              f"{cell}: {row.get('shield_material')}-only class carrying {shield!r}")
+
+    # ---- D7: a shield and a two-handed weapon need an enabler on the sheet ----
+    weapon = _GEAR_WEAPONS.get(payload.get('weapon_name')) or {}
+    category = str(weapon.get('category') or '')
+    check('Ranged' not in category,
+          f"{cell}: carrying {shield!r} with the ranged weapon {payload.get('weapon_name')!r}")
+    if 'Two-Handed' not in category:
+        return
+    GEAR_COVERAGE['two_handed_shield'] += 1
+    groups = str(weapon.get('weapon groups') or '').split(' Description')[0]
+    feats = ' '.join(str(x).lower() for bucket in payload.values() if isinstance(bucket, list)
+                     for x in bucket if isinstance(x, str))
+    archetypes = str(payload.get('archetype_info') or '').lower()
+    enabled = ('pikemans training' in feats
+               or ('titan mauler' in archetypes
+                   and any(e['name'] == 'barbarian' and e['level'] >= 2 for e, _ in rows)))
+    check(enabled,
+          f"{cell}: {shield!r} with the two-handed {payload.get('weapon_name')!r} ({groups}) and "
+          f"no enabler -- neither Pikemans Training nor a 2nd-level Titan Mauler")
+
+
 def check_character(cell, payload):
     L = payload['total_level']
     classes = payload['classes']
@@ -908,6 +1044,7 @@ def check_character(cell, payload):
           f"{cell}: class levels {[c['level'] for c in classes]} sum to "
           f"{sum(c['level'] for c in classes)}, not the total level {L}")
     check_class_choices(cell, payload)
+    check_gear_legality(cell, payload)
     for c in classes:
         check(1 <= c['level'] <= MAX_CHARACTER_LEVEL,
               f"{cell}: {c['name']} is level {c['level']}, outside 1..{MAX_CHARACTER_LEVEL}")
@@ -1880,6 +2017,23 @@ def main():
           f"{CHOICE_COVERAGE['chars']} character(s), {CHOICE_COVERAGE['picks']} picks, "
           f"{CHOICE_COVERAGE['stamps']} level stamps, {CHOICE_COVERAGE['capped']} capped by "
           f"pool/max_num, {CHOICE_COVERAGE['skipped']} skipped (see CHOICE_SKIP)")
+
+    # Gear legality (plan step 8). Every assertion in check_gear_legality is conditional -- "if
+    # armoured, then within the band"; "if shielded, then proficient" -- so a sweep that produced
+    # no shielded character would print PASS having asserted nothing about the half of this feature
+    # that had never worked at all. Shields are the branch that was dead for the life of the repo,
+    # so a zero there is the failure most worth catching.
+    check(GEAR_COVERAGE['armoured'] > 0 and GEAR_COVERAGE['unarmoured'] > 0,
+          f"the gear check saw {GEAR_COVERAGE['armoured']} armoured and "
+          f"{GEAR_COVERAGE['unarmoured']} unarmoured character(s) -- it needs both to have "
+          f"asserted anything about the band")
+    check(GEAR_COVERAGE['shielded'] > 0,
+          "the gear check saw no shielded character in the whole sweep -- every shield assertion "
+          "passed vacuously, which is precisely the state this feature was already in")
+    print(f"  gear: {GEAR_COVERAGE['armoured']} armoured / {GEAR_COVERAGE['unarmoured']} not, "
+          f"{GEAR_COVERAGE['shielded']} shielded ({GEAR_COVERAGE['two_handed_shield']} on a "
+          f"two-hander, {GEAR_COVERAGE['tower']} tower, {GEAR_COVERAGE['buckler_only']} "
+          f"buckler-only), {GEAR_COVERAGE['taboo']} taboo, {GEAR_COVERAGE['capped']} caster-capped")
 
     check_power_metric()
     if SCORING:

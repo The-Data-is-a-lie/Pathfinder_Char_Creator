@@ -254,8 +254,22 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       with Titan Fighter's `incredible heft` reduction. ⚠ **Checkpoint: agree the payload shape
       with the module repo before this lands** — `createScalingAttackItem` already owns size
       scaling module-side. Census + goldens: weapon damage moves.
-- [ ] **8. Both gate layers complete and sabotage-proven** — perturb the table, perturb a generated
+- [~] **8. Both gate layers complete and sabotage-proven** — perturb the table, perturb a generated
       character, prove each layer fails independently and for a different reason.
+      **Done for steps 4–6, 2026-08-17;** the oversized-weapon invariant waits on step 7.
+      `check_gear_legality` in `test_house_invariants.py` re-implements the band union, the caster
+      cap and the taboo intersection rather than importing them, and 98,392 checks pass. Three
+      sabotages, three different failures:
+
+      | perturbation | config gate | behaviour gate |
+      |---|---|---|
+      | table hand-edited | **fails** (staleness + token re-read) | — |
+      | parser loosened, file regenerated | **fails** (token re-read alone) | — |
+      | chooser ignores the band | **green** | **fails** — 68 classes in illegal armour |
+      | shields made unreachable again | **green** | **fails** — *"every shield assertion passed vacuously"* |
+
+      That last row is the one that matters: it restores the repo's actual prior state, and the
+      gate now refuses to call it a pass.
 - [ ] **9. Re-derive baselines and document.** `test_build_archetype.py` (three armor signals and
       the shield signal go live), `power_metric.py` (the monk AC adder and the `requires_shield`
       sphere rows start firing), `changelog.md` with the decision **and the rejected alternative**,
@@ -381,6 +395,22 @@ above; these are the rest.
 - **A tower shield is now reachable by exactly four classes** — fighter, warder, aristocrat,
   warrior — and one turned up in an 816-character sweep, which is about right for 10% of 10% of
   four classes.
+
+**Step 8 (2026-08-17).**
+
+- **The behaviour gate caught a bug that 20,000 unit rolls and a six-character spot-check both
+  missed.** Six swept characters held a shield and a two-handed polearm with **no enabler**. The
+  grant was firing correctly — `enabler_feats: ['Pikemans Training']` was on the character — and it
+  survived the free-feat filter and the bucket split. **The trainer swap then spent it**: a swap
+  trades an ordinary feat for a trainer feat, and a granted feat sitting in the general list looks
+  ordinary. Fixed by moving the join to *after* `phase_feat_tax_and_swaps`, which is the only place
+  D8's "free" actually holds. The unit check could never have found this — it never reached the
+  swap.
+- **Two branches the standing sweep does not reach**, and both are reported as `0` on every run
+  rather than hidden: **tower shields** (a 10% roll on a 10% roll for four classes) and the
+  **caster cap**, which cannot fire single-class — every ASF-sensitive class's own band already
+  equals its exemption, so only a multiclass roll caps. Both were verified directly instead
+  (see steps 4 and 5). ⚠ A multiclass gear sweep would close this properly.
 
 ## Adjacent, and deliberately not in this plan
 

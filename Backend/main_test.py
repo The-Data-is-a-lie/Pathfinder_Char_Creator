@@ -1727,14 +1727,6 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	if len(character.feats) < _expected_feat_total:
 		character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
 
-	# GEAR ENABLERS (gear-legality plan, D7/D8). A character who rolled a shield and then drew a
-	# two-handed weapon is handed the one feat in the pool that lets it hold both. Deliberately
-	# AFTER the shortfall top-up: per D8 the grant is free and must not eat a slot the budget
-	# already promised, so it is not part of _expected_feat_total. Not run through
-	# capitalize_feats either -- the name here is the pool's own spelling ("Pikemans Training",
-	# no apostrophe) and both the Foundry module and the feat-resolution phase match on it.
-	character.feats.extend(getattr(character, 'enabler_feats', None) or [])
-	character.feats = dedupe_feats_case_insensitive(character.feats)
 
 	# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
 	# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
@@ -2727,6 +2719,26 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		ft = phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 								      teamwork_feats, teamwork_feat_labels, trainers_enabled)
 		feats = ft.feats
+		# GEAR ENABLERS (gear-legality plan, D7/D8). A character who rolled a shield and then drew
+		# a two-handed weapon is handed the one feat in the pool that lets it hold both.
+		#
+		# It joins HERE, after the tax and swap pass, and that position is the whole point. Adding
+		# it inside phase_feat_selection looked right -- alongside the ranger and monk merges, and
+		# after the shortfall guarantee so it could not eat a promised slot -- and it survived the
+		# free-feat filter and the bucket split intact. The trainer swap then spent it: a swap
+		# trades an ordinary feat for a trainer feat, and a granted feat sitting in the general
+		# list is an ordinary feat as far as it can tell. Six characters in the standing sweep
+		# ended up holding a shield and a two-handed weapon with nothing enabling it, which is
+		# exactly the illegal state D7 exists to prevent -- caught by the behaviour gate, not by
+		# the 20,000-roll unit check, which never got as far as the swap.
+		#
+		# Not run through capitalize_feats either: the name is the pool's own spelling ("Pikemans
+		# Training", no apostrophe) and both the Foundry module and the feat-resolution phase match
+		# on it exactly.
+		_enabler_feats = [f for f in (getattr(character, 'enabler_feats', None) or [])
+						  if f.lower() not in {str(x).lower() for x in feats}]
+		feats.extend(_enabler_feats)
+		character.feats = feats
 		story_feats = ft.story_feats
 		flaw_feats = ft.flaw_feats
 		flavor_feats = ft.flavor_feats
