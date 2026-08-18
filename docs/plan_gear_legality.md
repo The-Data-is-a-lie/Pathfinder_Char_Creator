@@ -237,9 +237,19 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       5150 → 5159**: the real roll consumes a draw the dead code never took, and its Active
       Defense talent fell out of the realigned stream. Re-swept on the *predicate*, per that
       file's own rule; it still draws the same Heavy steel shield.
-- [ ] **6. Enabler ladder.** `grants.enabler_feats` alongside `ranger_style_feats` /
+- [x] **6. Enabler ladder.** `grants.enabler_feats` alongside `ranger_style_feats` /
       `monk_bonus_feats`, appended after the count guarantee. Goldens: enabler feats appear on the
       affected builds.
+      **Done 2026-08-17.** The corrected two-rung ladder (see the census section). Each rung
+      measured over 20,000 rolls: fighter + glaive → 20.4% shield, **every one** granted
+      `Pikemans Training`; the same at BAB 0 → 0% (the prereq bites); fighter + greatsword → 0%
+      (dropped, nothing rescues it); Titan Mauler barbarian at 5th + greatsword → 20.2% with **no**
+      grant, because jotungrip is already held; the same at 1st → 0%. End-to-end the shield rate
+      over proficient non-ranged characters rose 10.2% → **13.4%**, which is the 12 polearm cells
+      the ladder rescued. Six real generated fighters spot-checked: all six two-handed shield users
+      drew a Polearms weapon and all six carry the feat.
+      **Goldens are byte-identical** — the ladder consumes no random draws, so none of the eleven
+      moved.
 - [ ] **7. Oversized weapons.** Size step, damage dice from the new table, −2/step attack penalty
       with Titan Fighter's `incredible heft` reduction. ⚠ **Checkpoint: agree the payload shape
       with the module repo before this lands** — `createScalingAttackItem` already owns size

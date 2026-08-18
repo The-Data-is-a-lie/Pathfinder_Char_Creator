@@ -937,7 +937,7 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 
 @phase(requires=['armor_type', 'gold'],
 	   provides=['armor_dict', 'weapon_type', 'weapon_dict', 'shield_flag', 'shield_dict',
-				 'mind_blade'],
+				 'shield_allow', 'enabler_feats', 'mind_blade'],
 	   returns=['weapon_name', 'equipment_list', 'equip_descrip', 'armor_ac', 'shield_ac',
 				'weapon_enhancement_chosen_list', 'weapon_enhancement_bonus',
 				'armor_enhancement_chosen_list', 'armor_enhancement_bonus',
@@ -1726,6 +1726,15 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	_expected_feat_total = character.feat_amounts + len(grants.ranger_style_feats) + len(grants.monk_bonus_feats)
 	if len(character.feats) < _expected_feat_total:
 		character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
+
+	# GEAR ENABLERS (gear-legality plan, D7/D8). A character who rolled a shield and then drew a
+	# two-handed weapon is handed the one feat in the pool that lets it hold both. Deliberately
+	# AFTER the shortfall top-up: per D8 the grant is free and must not eat a slot the budget
+	# already promised, so it is not part of _expected_feat_total. Not run through
+	# capitalize_feats either -- the name here is the pool's own spelling ("Pikemans Training",
+	# no apostrophe) and both the Foundry module and the feat-resolution phase match on it.
+	character.feats.extend(getattr(character, 'enabler_feats', None) or [])
+	character.feats = dedupe_feats_case_insensitive(character.feats)
 
 	# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
 	# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may

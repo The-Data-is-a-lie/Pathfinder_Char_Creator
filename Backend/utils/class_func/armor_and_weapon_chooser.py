@@ -179,6 +179,59 @@ TOWER_CHANCE = 10
 
 SHIELDLESS_CATEGORIES = ('Two-Handed', 'Ranged')
 
+# D7's ladder, as corrected by the step-2 census. Only two rungs, because only two things in the
+# pool one-hand a two-handed weapon AND are usable at gear time:
+#
+#   * `Pikemans Training` -- the pool's exact spelling, with no apostrophe, and the only feat in
+#     the whole pool that one-hands a two-hander for a shield user. BAB +1 and nothing else.
+#   * `jotungrip (ex)` -- the barbarian Titan Mauler's 2nd-level feature. Nothing to grant; the
+#     character already has it, and archetypes are set before gear runs.
+#
+# The census's third rung -- "Str >= 17 and BAB >= 4 -> grant Titan Technique + Titan Grip" -- is
+# NOT here, because neither feat one-hands anything. Titan Technique grants an oversized weapon
+# "using the same handedness" and Titan Grip only reduces the penalty. Twin Thunder Stance and
+# Phalanx Lancer would both work but are Path of War stances chosen in a phase that runs after
+# gear, and Quarterstaff Master would cost two free feats (it needs Weapon Focus in the
+# quarterstaff) to arm one build. See docs/plan_gear_legality.md.
+PIKEMANS_TRAINING = 'Pikemans Training'
+POLEARM_GROUPS = ('Polearms', 'Spears')
+JOTUNGRIP_ARCHETYPE = 'Titan Mauler'
+JOTUNGRIP_LEVEL = 2
+
+
+def weapon_groups(dictionary):
+    """The equipped weapon's proficiency groups. The scraped field runs the group list straight
+    into the weapon's prose ("Polearms Description A glaive is..."), so the prose is cut first."""
+    for item in (dictionary or {}).values():
+        raw = str((item or {}).get('weapon groups') or '')
+        return [group.strip() for group in raw.split(' Description')[0].split(';')]
+    return []
+
+
+def has_archetype(character, name):
+    info = getattr(character, 'archetype_info', None) or {}
+    return any(str(key).strip().lower() == name.lower() for key in info)
+
+
+def two_hand_shield_enabler(character):
+    """D7: can this character hold a shield AND the two-handed weapon it just drew?
+
+    Returns the feat name to grant for free (D8), '' when an enabler is already held and nothing
+    needs granting, or None when nothing in the pool rescues the combination -- in which case the
+    shield is dropped rather than the weapon re-drawn.
+    """
+    from utils.class_func.generic_func import class_entry_for
+
+    if any(group in POLEARM_GROUPS for group in weapon_groups(character.weapon_dict)):
+        if int(getattr(character, 'bab_total', 0) or 0) >= 1:
+            return PIKEMANS_TRAINING
+
+    barbarian = class_entry_for(character, 'barbarian')
+    if (has_archetype(character, JOTUNGRIP_ARCHETYPE)
+            and barbarian is not None and barbarian['level'] >= JOTUNGRIP_LEVEL):
+        return ''
+    return None
+
 
 def weapon_category(dictionary):
     """'Two-Handed' / 'Ranged' / '' for the single equipped weapon."""
@@ -225,6 +278,7 @@ def shield_chooser(character, dictionary):
     two-handed weapon is handled by the enabler ladder in `two_hand_shield_enabler`.
     """
     character.shield_allow = None
+    character.enabler_feats = []
     band = shield_band(character)
     if band is None:
         return None
@@ -247,7 +301,17 @@ def shield_chooser(character, dictionary):
     if not carries:
         return None
     if any(word in category for word in SHIELDLESS_CATEGORIES):
-        return None
+        # D7: the roll wanted a shield and the draw wants both hands. Climb the enabler ladder, and
+        # drop the SHIELD if nothing in the pool rescues the pair -- the weapon is not re-drawn,
+        # because re-drawing it would quietly bias the weapon distribution towards one-handers
+        # every time a shield came up.
+        enabler = two_hand_shield_enabler(character)
+        if enabler is None:
+            return None
+        if enabler:
+            # D8: granted free, through the same `grants` path the ranger's style feats and the
+            # monk's bonus feats already ride, and NOT charged to feat_amounts.
+            character.enabler_feats = list(character.enabler_feats or []) + [enabler]
 
     character.shield_allow = shield_allowlist(character, band)
     if not character.shield_allow:
