@@ -200,8 +200,14 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       validators pass. The census corrections above came out of this step. Sabotage-proven: the
       census spelling `Pikeman's Training` fails to resolve, a closed gap fails, and a transposed
       size cell fails on monotonicity.
-- [ ] **3. Payload field fixes.** `payload.py::gear_display` — the three dead lookups and the
+- [x] **3. Payload field fixes.** `payload.py::gear_display` — the three dead lookups and the
       armor/shield mixup at `:264`. Goldens move on display fields only.
+      **Done 2026-08-17.** Exactly the predicted blast radius: `armor_spell_failure` on all eleven
+      (`0` → `"35%"` / `"40%"` / `"30%"`) and three more on `optimized_wall`, the only shielded
+      golden — `shield_spell_failure` `0` → `"15%"`, `shield_armor_check_penalty` `0` → `"-2"`,
+      `shield_max_dex_bonus` `"1"` → `""`. Every value re-checked against `armor.json` by hand.
+      Full `test_all.py` green. The latent NameError was fixed in the same pass, because step 4
+      makes it reachable.
 - [ ] **4. Armor bands.** `armor_chooser` reads the table (D3/D5); `armor_type=None` returns *no
       armor* instead of falling into `list_selection`'s random-section draw. **Census: 68 classes ×
       L1/5/10/20**, band distribution before/after. Goldens: armor moves.

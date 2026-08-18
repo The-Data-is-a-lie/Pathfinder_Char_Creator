@@ -14,7 +14,7 @@
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "2",
  "armor_name": "O-yoroi",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "35%",
  "armor_weight": "45 lbs.",
  "bab_total": 10,
  "background_traits": [

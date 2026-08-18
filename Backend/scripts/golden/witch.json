@@ -14,7 +14,7 @@
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "5",
  "armor_name": "Chain coat",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "30%",
  "armor_weight": "40 lbs.",
  "bab_total": 6,
  "background_traits": [

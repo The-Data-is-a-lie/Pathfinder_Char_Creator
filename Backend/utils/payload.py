@@ -21,18 +21,27 @@ siblings fall out of `character.armor_dict`; `deity_name` out of `deity_choice`;
 the attribute. Promoting those would have added ~15 names to an object already carrying ~200, for
 values nothing but the export reads.
 
-TWO QUIRKS PRESERVED DELIBERATELY
----------------------------------
-Both predate this extraction and both are BEHAVIOUR, so a pure move keeps them. Recorded here so the
-next reader knows they were seen rather than missed:
+THE FOUR QUIRKS, NOW FIXED (gear-legality plan, step 3)
+-------------------------------------------------------
+This module used to record two quirks it had deliberately preserved through the extraction, on the
+grounds that fixing them was a behaviour change owed its own commit. That commit is `gear_display`
+below, and pulling the thread found two more of the same shape -- a lookup that misses and yields a
+falsy default, which is the failure mode the whole gear-legality plan is about:
 
-  * `shield_max_dex_bonus` reads `armor_dict`, not the shield's -- almost certainly a copy-paste
-    slip, but it is what every existing character was generated with and what the goldens record.
-  * `armor_dict` is only bound inside the `isinstance(character.armor_dict, dict)` branch, so a
-    character with no armour but a shield would raise NameError. Unreachable today; left alone
-    because fixing it is a behaviour change, not a move.
+  * `spell_failure` (twice) -- `armor.json`'s key is `arcane spell failure chance`, so arcane
+    spell failure was `0` on every character ever generated, armour and shield alike.
+  * `shield check penalty` -- the key is `armor check penalty` for shields too.
+  * `shield_max_dex_bonus` read `armor_dict`, not the shield's, so `optimized_wall`'s shield
+    reported the Full plate's `1`. Every shield in `armor.json` has an empty max-dex, correctly.
+  * `armor_dict` was bound only inside the armour branch, so a character with no armour but a
+    shield raised NameError. That was unreachable while every character wore armour; step 4 of the
+    plan makes `armor_type = None` mean NO ARMOUR, which reaches it.
 
-Fixing either is a separate, deliberate commit with a golden re-baseline.
+Emitted values are the ITEM's printed values, as raw strings, exactly like `max dex bonus` and
+`armor check penalty` already were -- `'35%'`, not `35` and not a character-level number. Per
+ruling D4 the arcane-spell-failure EXEMPTIONS some classes carry (bard, bloodrager, magus, skald,
+summoner; see `armor_proficiency.json`) are deliberately NOT folded in here: an exemption belongs
+to the character and cannot survive a multiclass caster, while this field describes the item.
 """
 import json
 
@@ -236,16 +245,37 @@ PAYLOAD_KEYS = (
 )
 
 
+# armor.json's own key names. Spelled out here because three of the four bugs this function used to
+# have were a lookup guessing at one of them and getting a falsy default instead of an error.
+_ASF_KEY = 'arcane spell failure chance'
+_ACP_KEY = 'armor check penalty'
+_MAX_DEX_KEY = 'max dex bonus'
+
+
+def _worn_item(entry):
+	"""({name, stats}) for a `{name: {...}}` slot dict, or None when nothing is worn.
+
+	One reader for both slots: a shield is an `armor.json` row like any other and its stats live
+	under the same keys, which is precisely what the old `'shield check penalty'` lookup assumed
+	otherwise.
+	"""
+	if not isinstance(entry, dict) or not entry:
+		return None
+	name = next(iter(entry))
+	stats = entry.get(name)
+	return (name, stats) if isinstance(stats, dict) else None
+
+
 def gear_display(character):
 	"""Unpack the equipped armour and shield into the flat fields the sheets read."""
-	if isinstance(character.armor_dict, dict):
-		armor_name = list(character.armor_dict.keys())[0]
-		armor_dict = character.armor_dict.get(next(iter(character.armor_dict), 0), 0)
-		armor_spell_failure = armor_dict.get('spell_failure', 0)
-		armor_armor_check_penalty = armor_dict.get('armor check penalty', 0)
-		armor_weight = armor_dict.get('weight', 0)
-		armor_max_dex_bonus = armor_dict.get('max dex bonus', 0)
-		if armor_max_dex_bonus == None:
+	armor = _worn_item(character.armor_dict)
+	if armor is not None:
+		armor_name, armor_stats = armor
+		armor_spell_failure = armor_stats.get(_ASF_KEY, 0)
+		armor_armor_check_penalty = armor_stats.get(_ACP_KEY, 0)
+		armor_weight = armor_stats.get('weight', 0)
+		armor_max_dex_bonus = armor_stats.get(_MAX_DEX_KEY, 0)
+		if armor_max_dex_bonus is None:
 			armor_max_dex_bonus = 0
 	else:
 		armor_name = 0
@@ -254,15 +284,18 @@ def gear_display(character):
 		armor_weight = 0
 		armor_max_dex_bonus = 0
 
-
-	if isinstance(character.shield_dict, dict) and character.shield_dict != None:
-		shield_name = list(character.shield_dict.keys())[0]
-		shield_dict = character.shield_dict.get(next(iter(character.shield_dict), 0), 0)
-		shield_spell_failure = shield_dict.get('spell_failure', 0)
-		shield_armor_check_penalty = shield_dict.get('shield check penalty', 0)
-		shield_weight = shield_dict.get('weight', 0)			
-		shield_max_dex_bonus = armor_dict.get('max dex bonus', 0)
-
+	shield = _worn_item(character.shield_dict)
+	if shield is not None:
+		shield_name, shield_stats = shield
+		shield_spell_failure = shield_stats.get(_ASF_KEY, 0)
+		shield_armor_check_penalty = shield_stats.get(_ACP_KEY, 0)
+		shield_weight = shield_stats.get('weight', 0)
+		# The SHIELD's own max dex, which every shield in armor.json leaves empty -- correctly, a
+		# shield imposes no Dex cap. This used to read `armor_dict` and hand the sheet the body
+		# armour's number.
+		shield_max_dex_bonus = shield_stats.get(_MAX_DEX_KEY, 0)
+		if shield_max_dex_bonus is None:
+			shield_max_dex_bonus = 0
 	else:
 		shield_name = " "
 		shield_spell_failure = " "

@@ -17,7 +17,7 @@
  ],
  "armor_max_dex_bonus": "1",
  "armor_name": "Full plate",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "35%",
  "armor_weight": "50 lbs.",
  "bab_total": 7,
  "background_traits": [

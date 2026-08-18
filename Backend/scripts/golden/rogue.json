@@ -16,7 +16,7 @@
  ],
  "armor_max_dex_bonus": "0",
  "armor_name": "Hellknight half-plate",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "40%",
  "armor_weight": "50 lbs.",
  "bab_total": 13,
  "background_traits": [

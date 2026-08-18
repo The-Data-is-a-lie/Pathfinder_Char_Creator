@@ -14,7 +14,7 @@
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "1",
  "armor_name": "Banded mail",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "35%",
  "armor_weight": "35 lbs.",
  "bab_total": 10,
  "background_traits": [

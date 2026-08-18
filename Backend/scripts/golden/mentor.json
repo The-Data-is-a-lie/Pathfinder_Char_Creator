@@ -14,7 +14,7 @@
  "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "0",
  "armor_name": "Iron lamellar",
- "armor_spell_failure": 0,
+ "armor_spell_failure": "40%",
  "armor_weight": "50 lbs.",
  "bab_total": 15,
  "background_traits": [
