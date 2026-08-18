@@ -288,6 +288,22 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   class-choices ticket 02 logged it as a gap), items.json/items_best.json, weapons_data.json,
   armor/weapon_qualities.json, feat_tax.json, profession_*.json, campaign_lore.json,
   foundry_item_names.json, spells_known/per_day.json.
+- **Gear legality** (plan `docs/plan_gear_legality.md`, rulings 2026-08-17) — three files, all
+  gated by `gates/validate_gear_legality.py`:
+  - `armor_proficiency.json` — **GENERATED** by `build/build_armor_proficiency.py` from
+    `class_data.json`'s own `weapon and armor proficiency` prose. Per class: the armour band
+    (`H`/`M`/`L`/null), the shield ladder (`tower` > `shield` > `buckler` > null), `asf_sensitive`
+    + `asf_exempt`, and the druid/shifter taboos. **This is the authority on what a class may
+    wear** — `data.armor_type_mapping` is gone (its tuple keys never matched a string lookup, so
+    every character took the `'H'` default for the life of the repo).
+  - `two_hand_enablers.json` — curated. Everything that one-hands a two-hander, oversizes a weapon,
+    or reduces the penalty, with the **exact pool spelling** (`Pikemans Training`, no apostrophe;
+    `Titan Grip (Combat)`, parenthetical inside the name). The gate resolves every in-pool row
+    against the file it names AND proves the two absent rows are still absent.
+  - `weapon_size_damage.json` — the **house** damage ladder, transcribed from
+    `Foundry_VTT_Pf_1e_Handy_Macros/Base_Weapon_Damage_Dice.JS` (resource `sizefordamage`, two
+    ladder positions per size category), with CRB Table 6-5 kept as a `raw_reference` recording
+    the deliberate divergence. The backend never scales dice — it emits a marker; see below.
 - **Item names must resolve to `foundry_item_names.json`'s own spelling** —
   `item_and_price.ItemNameResolver` (exact case-insensitive → parenthesised variant, both
   directions → Title-Case as a deliberate miss). Title-Casing alone stranded every `" of "` name —
@@ -304,7 +320,13 @@ spells.csv, traits.csv, class_ability.csv.
 feats.py (feat selection + `bonus_searcher`, `no_prereq_loop` consumers) · generic_func.py
 (all generic choosers) · class_abilities.py (fixed per-level abilities + descriptions) ·
 spells.py / adding_bonus_spells.py · stats.py · hp_rolls.py · level_and_bab.py ·
-skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py / armor_and_enhancements.py /
+skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py (**gear legality lives here**:
+`armor_chooser` / `_legal_band` / `armor_allowlist` — heaviest band, multiclass union of bands and
+intersection of taboos, capped so a rolled arcane caster is not broken; `shield_chooser` /
+`shield_band` / `shield_allowlist` / `shield_flag_func` — the ~20% roll, curated ten, tower by
+proficiency; `two_hand_shield_enabler` — the D7 ladder; `weapon_size_marker` — the oversize marker,
+called at the END of the pipeline because three of its five sources are feats) /
+armor_and_enhancements.py /
 item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power selection, power
 points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
 wizard_school.py ·

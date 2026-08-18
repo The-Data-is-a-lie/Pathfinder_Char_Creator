@@ -18,46 +18,19 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 
 ## [Unreleased]
 
-### Fixed
-- **Every generated character now wears armour its class is actually allowed, and shields exist at
-  all** (gear-legality plan, rulings 2026-08-17). Five defects of one shape — a lookup that misses
-  and yields a falsy default, so nothing ever fails loudly:
-  - `data.armor_type_mapping` keyed its entries on **tuples** while the lookup passed a string, so
-    it never matched once and every character fell through to its `'H'` default. That is why the
-    committed goldens held a **wizard in Full plate**, a **druid in Half-plate**, a rogue in
-    Hellknight half-plate and a monk in armour, all passing.
-  - When the band was `None`, `list_selection` drew a **random section out of all five** — Shields
-    and Tower included — because `None` meant "no limit" rather than "no armour".
-  - `shield_chooser` returned only on its ~10% Tower branch and `shield_flag_func` mutated then
-    returned `None`, which the caller assigned back over the attribute it had just set. **No
-    character this generator has ever produced wore a shield.** Four downstream consumers were dead
-    as a result: `build_archetype`'s shield and light/medium armour signals, `power_metric`'s
-    `requires_shield` sphere-defence rows, and its monk Wisdom-to-AC adder (every monk wore plate).
-  - `payload.gear_display` read three keys that do not exist (`spell_failure` twice — the key is
-    `arcane spell failure chance` — and `shield check penalty`), so arcane spell failure was `0`
-    on every character, and read the **armour's** max-dex for the shield.
-  - **Where the rules live now:** `Backend/json/armor_proficiency.json`, **derived** by
-    `scripts/build/build_armor_proficiency.py` from `class_data.json`'s own proficiency prose and
-    gated by `scripts/gates/validate_gear_legality.py`. Flattening the tuple keys was rejected: a
-    hand-authored 68-class list with nothing checking it is the arrangement that just failed, and
-    correcting its spelling would not have made anything check it. Runtime prose parsing was
-    rejected too — a regex that stops matching at runtime yields the same falsy default.
-- Heaviest legal band always, the item inside it still random; a multiclass **unions** the bands and
-  **intersects** the taboos, then caps so a rolled arcane caster is never broken by the armour roll
-  (a wizard/fighter goes unarmoured). `magus_armor_chooser` is deleted — its 7th/13th-level
-  promotions are moot under that cap, and its heavy branch sat behind an `elif` that could never
-  fire. The druid and shifter are held to padded/leather/hide and wooden shields; the shifter's
-  prose names no allowlist and `armor.json` has no material column, so it borrows the druid's, as a
-  ruling made in the open rather than a silent copy.
-- Shields are a ~20% roll over every shield-proficient character, ranged excluded outright, drawn
-  from a **curated ten** of `armor.json`'s fourteen (the Klar and both Madus are exotic
-  weapon-shields; the Poisoner's Buckler is 1,505 gp with empty penalty fields). Tower shields go
-  only to the four classes whose prose grants them, at ~10%. A shield beside a two-handed weapon
-  earns a free `Pikemans Training` for a polearm or spear, is kept as-is for a 2nd-level Titan
-  Mauler, and otherwise **drops the shield** rather than re-drawing the weapon — re-drawing would
-  bias the weapon distribution toward one-handers every time a shield came up.
-
 ### Added
+- **Oversized weapons are exported as a marker, not as scaled dice** (ruling D11, 2026-08-17).
+  Four new payload fields at the tail of the contract — `weapon_size`, `weapon_size_steps`,
+  `weapon_size_source`, `weapon_size_attack_penalty` — all inert (`steps: 0`) on an ordinary
+  character. A character holding the Titan Fighter's *giant weapon wielder*, the Titan Mauler's
+  *massive weapons*, `Titan Technique`, `Titan Slayer` or `Bigfolk Training` wields a weapon built
+  for a larger creature; sources do not stack (take the best), the step caps at one unless the full
+  Titan Slayer chain is held, and the attack penalty is the source's own stated value — −4 for
+  *massive weapons*, none for `Bigfolk Training` — reduced by *incredible heft* or `Titan Grip`.
+  The backend deliberately does **not** scale damage dice: the authority is the house
+  `Base_Weapon_Damage_Dice.JS` ladder, the FoundryVTT module already carries the `sizefordamage`
+  resource that `weapon_size_steps` writes into, and the web sheet pre-scales for display — a
+  fourth implementation in the backend could only disagree with those three.
 - **Mythic: a generated character can now walk a mythic path** (spec §14, the whole
   [mythic map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
   backend, rulings 2026-08-12 → 14). A new named input, `mythic`, beside `seed`/`optimize`:
@@ -122,6 +95,52 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **Every generated character now wears armour its class is actually allowed, and shields exist at
+  all** (gear-legality plan, rulings 2026-08-17). Five defects of one shape — a lookup that misses
+  and yields a falsy default, so nothing ever fails loudly:
+  - `data.armor_type_mapping` keyed its entries on **tuples** while the lookup passed a string, so
+    it never matched once and every character fell through to its `'H'` default. That is why the
+    committed goldens held a **wizard in Full plate**, a **druid in Half-plate**, a rogue in
+    Hellknight half-plate and a monk in armour, all passing.
+  - When the band was `None`, `list_selection` drew a **random section out of all five** — Shields
+    and Tower included — because `None` meant "no limit" rather than "no armour".
+  - `shield_chooser` returned only on its ~10% Tower branch and `shield_flag_func` mutated then
+    returned `None`, which the caller assigned back over the attribute it had just set. **No
+    character this generator has ever produced wore a shield.** Four downstream consumers were dead
+    as a result: `build_archetype`'s shield and light/medium armour signals, `power_metric`'s
+    `requires_shield` sphere-defence rows, and its monk Wisdom-to-AC adder (every monk wore plate).
+  - `payload.gear_display` read three keys that do not exist (`spell_failure` twice — the key is
+    `arcane spell failure chance` — and `shield check penalty`), so arcane spell failure was `0`
+    on every character, and read the **armour's** max-dex for the shield.
+  - **Where the rules live now:** `Backend/json/armor_proficiency.json`, **derived** by
+    `scripts/build/build_armor_proficiency.py` from `class_data.json`'s own proficiency prose and
+    gated by `scripts/gates/validate_gear_legality.py`. Flattening the tuple keys was rejected: a
+    hand-authored 68-class list with nothing checking it is the arrangement that just failed, and
+    correcting its spelling would not have made anything check it. Runtime prose parsing was
+    rejected too — a regex that stops matching at runtime yields the same falsy default.
+- Heaviest legal band always, the item inside it still random; a multiclass **unions** the bands and
+  **intersects** the taboos, then caps so a rolled arcane caster is never broken by the armour roll
+  (a wizard/fighter goes unarmoured). `magus_armor_chooser` is deleted — its 7th/13th-level
+  promotions are moot under that cap, and its heavy branch sat behind an `elif` that could never
+  fire. The druid and shifter are held to padded/leather/hide and wooden shields; the shifter's
+  prose names no allowlist and `armor.json` has no material column, so it borrows the druid's, as a
+  ruling made in the open rather than a silent copy.
+- Shields are a ~20% roll over every shield-proficient character, ranged excluded outright, drawn
+  from a **curated ten** of `armor.json`'s fourteen (the Klar and both Madus are exotic
+  weapon-shields; the Poisoner's Buckler is 1,505 gp with empty penalty fields). Tower shields go
+  only to the four classes whose prose grants them, at ~10%. A shield beside a two-handed weapon
+  earns a free `Pikemans Training` for a polearm or spear, is kept as-is for a 2nd-level Titan
+  Mauler, and otherwise **drops the shield** rather than re-drawing the weapon — re-drawing would
+  bias the weapon distribution toward one-handers every time a shield came up.
+- **Four dead downstream consumers came back to life**, which is the point of all of the above.
+  Measured over 1,029 scored characters: `power_metric`'s monk Wisdom-to-AC adder fired **0 → 30
+  times** (every monk used to wear plate, and the adder requires being unarmoured), and
+  `build_archetype`'s `armor_light` / `armor_medium` / `shield` signals can now take values other
+  than zero. The `requires_shield` sphere-defence rows are reachable too — `optimized_wall` is the
+  build that pins them, and it now carries both a Heavy steel shield and Active Defense. The
+  metric's AC axes moved with it: mean `ac` ratio 1.049 → 0.936 and `ac_combat` 1.363 → 1.273
+  across the comparable rows, which is characters no longer being scored in armour they could
+  never legally have worn.
 - **Optimized walls actually wear the shield their policy promises** — and the finding behind it
   is bigger: **no generated character has ever worn a shield.** `shield_chooser` returns only on
   its 10%-tower branch (the plain `'Shield'` case falls through to None), and the caller assigns

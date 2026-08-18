@@ -317,10 +317,25 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
 
       That last row is the one that matters: it restores the repo's actual prior state, and the
       gate now refuses to call it a pass.
-- [ ] **9. Re-derive baselines and document.** `test_build_archetype.py` (three armor signals and
+- [x] **9. Re-derive baselines and document.** `test_build_archetype.py` (three armor signals and
       the shield signal go live), `power_metric.py` (the monk AC adder and the `requires_shield`
       sphere rows start firing), `changelog.md` with the decision **and the rejected alternative**,
       a `feature_spec_todo.md` section, and ticket 11's resolution in the tickets repo.
+      **Done 2026-08-17**, except ticket 11 (see below). The four dead consumers were **measured,
+      not assumed** — over 1,029 scored characters, `monk_ac` fired **0 → 30 times** (its note
+      lands in `diagnostics.defense_notes`, not a top-level field, which is why a first grep read
+      zero). The metric's AC axes moved with it: mean `ac` ratio 1.049 → 0.936 and `ac_combat`
+      1.363 → 1.273, with 252 and 260 of 343 comparable rows changing — characters no longer being
+      scored in armour they could never legally have worn. The `requires_shield` sphere rows read
+      0 in the sweep because it runs `spheres_flag='N'`; that path is pinned by `optimized_wall`
+      instead, which now carries both a Heavy steel shield and Active Defense.
+      `_power_baseline.json` is untracked — a regenerated report, not a committed baseline — so
+      "re-derive" meant regenerate and **read**, which is what the numbers above are.
+      Also updated: `changelog.md` (with the rejected alternatives), `docs/CODEBASE_MAP.md` (the
+      three new JSON files and where gear legality lives in the module index), and
+      `docs/feature_spec_todo.md` **§16**.
+      ⚠ **Still to do: ticket 11's resolution**, in the separate `tickets` repo — it should point
+      at this plan and §16 rather than answer the single question it asked.
 
 ## Files to modify
 

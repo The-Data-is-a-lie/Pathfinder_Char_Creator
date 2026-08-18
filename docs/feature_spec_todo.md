@@ -1540,3 +1540,71 @@ remaining explicit/unset/unmatched truth table (`truly_random_feats` is ruled by
 `optimize` forces the build-aware path) · the Foundry batch (10) · **whether the score ships in
 the payload for every character** — still left out so no golden moves for a number not yet fully
 trusted.
+
+---
+
+## 16. Gear legality — ✅ BUILT (2026-08-17)
+
+**Plan:** `docs/plan_gear_legality.md` (rulings, censuses, and a per-step "found along the way").
+**Origin:** [`tickets: feature/optimal-builder/11`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/optimal-builder/11-shield-chooser-never-shields.md),
+which asked about `shield_chooser` and turned out to be one of five instances of the same fault.
+
+### The fault, once, in five places
+A lookup that misses and yields a **falsy default**, so nothing ever fails loudly:
+
+| where | what missed | what everyone got |
+|---|---|---|
+| `data.armor_type_mapping` | tuple keys, string lookup | `'H'` — a wizard in Full plate, a druid in Half-plate |
+| `list_selection` | `limits=None` meant "no limit" | a **random draw over all five** `armor.json` sections |
+| `shield_chooser` | returned only on its ~10% Tower branch | `None` — **no character ever wore a shield** |
+| `shield_flag_func` | mutated, then returned `None` | the caller assigned that `None` back over it |
+| `payload.gear_display` ×4 | `spell_failure`, `shield check penalty`, the armour's max-dex | `0` arcane spell failure for every character |
+
+### What replaced it
+- **`Backend/json/armor_proficiency.json`**, DERIVED by `scripts/build/build_armor_proficiency.py`
+  from `class_data.json`'s own proficiency prose. Rejected: flattening the tuple keys (a
+  hand-authored 68-class list with nothing checking it is the arrangement that failed) and runtime
+  prose parsing (a regex that stops matching yields the same falsy default).
+- **Bands (D3/D5):** heaviest band any rolled class grants, ∩ every rolled class's taboo, then
+  capped so a rolled **arcane caster** is never broken — which is why a wizard/fighter goes
+  unarmoured and the magus stays in light armour (`magus_armor_chooser` is deleted; its 7th/13th
+  promotions are moot under the cap, and its heavy branch sat behind an unreachable `elif`).
+- **Shields (D6/D9):** ~20% of every shield-proficient character, ranged excluded outright, from a
+  curated **ten** of fourteen; tower only for the four classes whose prose grants it, at ~10%.
+- **The two-hander ladder (D7/D8):** polearm/spear → a free `Pikemans Training`; a 2nd-level Titan
+  Mauler keeps its jotungrip; otherwise the **shield drops** (never the weapon — re-drawing it
+  would bias the weapon distribution).
+- **Oversized weapons (D10/D11/D12):** a payload **marker**, never scaled dice. See §16.1.
+
+### 16.1 The oversize marker
+`weapon_size`, `weapon_size_steps`, `weapon_size_source`, `weapon_size_attack_penalty`, at the tail
+of `PAYLOAD_KEYS`. Computed at the **end** of the pipeline — three of the five sources are feats,
+chosen two phases after gear. Sources never stack (take the best); the step caps at 1 unless the
+whole Titan Slayer chain is held; the penalty is the **source's own** stated value (−4 for
+*massive weapons*, none for `Bigfolk Training`), reduced by *incredible heft* or `Titan Grip`.
+The damage ladder itself is Daniel's `Base_Weapon_Damage_Dice.JS` (resource `sizefordamage`, two
+positions per size category), copied into `weapon_size_damage.json` **in the macro's own order** —
+including two pairs that are not sorted by average, because a re-sorted copy would disagree with
+the source silently. The gate warns about them.
+
+### Gates
+Two layers sharing no code, sabotage-proven to fail independently:
+- **Config** — `gates/validate_gear_legality.py`: coverage, a re-parse for staleness, and a
+  **second implementation** (token adjacency, not regex) re-reading each row's recorded evidence
+  sentence. A parser that drifts self-consistently passes the staleness check and fails that one.
+- **Behaviour** — `check_gear_legality` in `tests/test_house_invariants.py`, re-implementing the
+  band union, the caster cap and the taboo intersection rather than importing them. Its coverage
+  counters are part of the gate: making shields unreachable again now fails with *"every shield
+  assertion passed vacuously"* rather than passing.
+
+### Outstanding
+- **Rendering.** Both sheets ignore the four `weapon_size_*` fields today; the FoundryVTT module
+  already carries the `sizefordamage` resource that `weapon_size_steps` writes into, so its half is
+  setting one value. The web sheet pre-scales. Separate PRs in their own repos.
+- **Sweep blind spots**, printed as `0` on every run rather than hidden: tower shields, the
+  multiclass caster cap, and oversized weapons (every source is a Metzofitz feat, a race-gated feat
+  or a rolled archetype). All three are exercised directly instead.
+- **Two absent enablers** stay flagged not-in-pool and proved absent on every gate run: Lighten
+  Weapon, and the Equipment sphere advanced talent.
+- **The shifter's taboo** names no allowlist and `armor.json` has no material column, so it borrows
+  the druid's — a ruling, reported as a SKIP on every run.
