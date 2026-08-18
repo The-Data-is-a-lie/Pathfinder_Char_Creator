@@ -250,10 +250,31 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       drew a Polearms weapon and all six carry the feat.
       **Goldens are byte-identical** — the ladder consumes no random draws, so none of the eleven
       moved.
-- [ ] **7. Oversized weapons.** Size step, damage dice from the new table, −2/step attack penalty
-      with Titan Fighter's `incredible heft` reduction. ⚠ **Checkpoint: agree the payload shape
-      with the module repo before this lands** — `createScalingAttackItem` already owns size
-      scaling module-side. Census + goldens: weapon damage moves.
+- [~] **7. Oversized weapons.** ⚠ **Checkpoint CLEARED by Daniel, 2026-08-17.** Two rulings:
+
+      - **D11 — the backend emits a size MARKER, never scaled dice.** `weapon_size`,
+        `weapon_size_steps`, `weapon_size_source`, `weapon_size_attack_penalty`, appended at the
+        END of `PAYLOAD_KEYS` (the order is positional for both consumers). **The web sheet
+        pre-scales**; the FoundryVTT module's `createScalingAttackItem` does its own. Rejected:
+        emitting pre-scaled dice, which would put a second implementation of the ladder in the
+        backend where it can disagree with the two that already exist.
+      - **D12 — the damage ladder is Daniel's, not RAW.** `Base_Weapon_Damage_Dice.JS` in
+        `FoundryVTT/Data/Foundry_VTT_Pf_1e_Handy_Macros` is the live implementation: it reads the
+        actor resource **`sizefordamage`** and moves **two positions per size category** along a
+        44-entry average-ordered ladder. That resolves the Medium +2 gap RAW could not — the
+        ladder runs to 26d12. `weapon_size_damage.json` now carries that ladder as the authority,
+        with CRB Table 6-5 demoted to a `raw_reference` recording the deliberate divergence
+        (RAW steps 1d8→2d6; the ladder steps it 1d8→1d12).
+
+      **Done:** the data half — ladder transcribed and gated. **Outstanding:** the payload half —
+      compute the step from the held sources, emit the four keys, census + goldens.
+      *Sources and where they are known:* `giant weapon wielder (ex)` (Titan Fighter 1st) and
+      `massive weapons (ex)` (Titan Mauler 3rd) are visible **at gear time**;
+      `Titan Technique (Combat, Technique)`, `Titan Slayer (Combat)` and `Bigfolk Training` are
+      feats and are only known **after the feat phase** — so the step must be computed late, the
+      same lesson step 8 learned the hard way about the enabler grant. D10: take the best, do not
+      sum; cap 1 unless the full Titan Slayer chain is held. Penalty −2/step, reduced by
+      `incredible heft (ex)` and `Titan Grip (Combat)`.
 - [~] **8. Both gate layers complete and sabotage-proven** — perturb the table, perturb a generated
       character, prove each layer fails independently and for a different reason.
       **Done for steps 4–6, 2026-08-17;** the oversized-weapon invariant waits on step 7.
@@ -406,8 +427,14 @@ above; these are the rest.
   ordinary. Fixed by moving the join to *after* `phase_feat_tax_and_swaps`, which is the only place
   D8's "free" actually holds. The unit check could never have found this — it never reached the
   swap.
+- **The house damage ladder has two out-of-order pairs**, and this repo copies them rather than
+  fixing them: `8d6` (avg 28) sits above `5d10` (27.5), and `16d6` (56) above `10d10` (55), in
+  `Base_Weapon_Damage_Dice.JS` itself. Re-sorting the copy would make it disagree with the macro it
+  mirrors — and since a size step moves by INDEX, that disagreement would be silent. The gate
+  **warns** on both every run. ⚠ **Open for Daniel:** fix the macro and re-transcribe, or leave it
+  (the cost is at most half a point of average damage on one step).
 - **Two branches the standing sweep does not reach**, and both are reported as `0` on every run
-  rather than hidden: **tower shields** (a 10% roll on a 10% roll for four classes) and the
+  rather than hidden: **tower shields** (a 10% roll on a 10% roll for four classes), and the
   **caster cap**, which cannot fire single-class — every ASF-sensitive class's own band already
   equals its exemption, so only a multiclass roll caps. Both were verified directly instead
   (see steps 4 and 5). ⚠ A multiclass gear sweep would close this properly.

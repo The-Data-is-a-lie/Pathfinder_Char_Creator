@@ -436,19 +436,56 @@ def average(expression):
 
 
 def check_size_damage():
+    """The HOUSE ladder is the authority here, not RAW.
+
+    `Base_Weapon_Damage_Dice.JS` in the Handy Macros folder is the live implementation and this
+    file is a transcription of it, so what can be checked from inside this repo is the ladder's own
+    coherence: every entry a real die expression, every stated average the arithmetic mean of it,
+    and the whole thing sorted -- because the macro steps a size category by moving TWO POSITIONS
+    along it, which makes the ORDER load-bearing. A transposed pair is the realistic transcription
+    error and it would silently make one weapon scale downwards.
+    """
     payload = read_json(SIZE_DAMAGE)
-    table = payload.get('by_medium_damage')
-    if not isinstance(table, dict) or not table:
-        return REPORT.error(f'{SIZE_DAMAGE.name}: no "by_medium_damage" object')
+    ladder = payload.get('ladder')
+    if not isinstance(ladder, list) or len(ladder) < 4:
+        return REPORT.error(f'{SIZE_DAMAGE.name}: no usable "ladder" list')
 
     if payload.get('attack_penalty_per_step') != -2:
         REPORT.error(f'{SIZE_DAMAGE.name}: attack_penalty_per_step is '
                      f'{payload.get("attack_penalty_per_step")!r}, and the Core Rulebook says -2')
-    if not payload.get('gap'):
-        REPORT.error(f'{SIZE_DAMAGE.name}: the declared gap is gone. PF1e published no Huge weapon '
-                     f'damage table -- if one has been sourced, say where, do not just delete this')
+    if 'HOUSE RULE' not in str(payload.get('authority') or ''):
+        REPORT.error(f'{SIZE_DAMAGE.name}: the authority note no longer says this is a house rule. '
+                     f'It diverges from Core Rulebook Table 6-5 on purpose -- if that changed, say '
+                     f'so deliberately rather than by deleting the note.')
 
-    for medium, row in table.items():
+    previous = None
+    for index, entry in enumerate(ladder):
+        dice = (entry or {}).get('dice')
+        stated = (entry or {}).get('average')
+        actual = average(dice)
+        if actual is None:
+            REPORT.error(f'size ladder[{index}]: {dice!r} is not a die expression')
+            continue
+        if abs(float(stated or 0) - actual) > 1e-9:
+            REPORT.error(f'size ladder[{index}] {dice}: average is stated as {stated} but is '
+                         f'{actual}')
+        if previous is not None and actual < previous:
+            # A WARNING, not an error, and the distinction is the whole point. The macro's own
+            # ladder has two such pairs, and this file copies the macro's ORDER rather than an
+            # improved one -- re-sorting here would make the copy disagree with the source it
+            # exists to mirror, which is worse than half a point of average damage on one step.
+            # Fix the macro, then re-transcribe; do not fix it here.
+            REPORT.warn(f'size ladder[{index}] {dice} (avg {actual}) sorts below the entry above '
+                        f'it (avg {previous}) -- present in Base_Weapon_Damage_Dice.JS too, and '
+                        f'copied deliberately; see "known_inversions" in the file')
+        previous = actual
+    # Two positions per size step, so the ladder has to be able to serve the largest step the
+    # generator can ask for (D10's cap of 2) from its very first entry.
+    REPORT.check(len(ladder) > 2 * 2,
+                 f'size ladder has {len(ladder)} entries -- too short to serve a 2-step oversize')
+
+    raw = (payload.get('raw_reference') or {}).get('by_medium_damage') or {}
+    for medium, row in raw.items():
         base = average(medium)
         if base is None:
             REPORT.error(f'size table: {medium!r} is not a die expression')
@@ -472,7 +509,7 @@ def check_size_damage():
             elif smaller >= base:
                 REPORT.error(f'size table {medium}: tiny={row["tiny"]!r} averages {smaller}, which '
                              f'is not less than the Medium {base}')
-    return len(table)
+    return len(ladder)
 
 
 # --------------------------------------------------------------------------------------------- #
