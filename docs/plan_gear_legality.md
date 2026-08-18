@@ -334,8 +334,9 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       Also updated: `changelog.md` (with the rejected alternatives), `docs/CODEBASE_MAP.md` (the
       three new JSON files and where gear legality lives in the module index), and
       `docs/feature_spec_todo.md` **§16**.
-      ⚠ **Still to do: ticket 11's resolution**, in the separate `tickets` repo — it should point
-      at this plan and §16 rather than answer the single question it asked.
+      **Ticket 11 is resolved** in the `tickets` repo (`resolve(optimal-builder/11)`), pointing
+      here and at §16 rather than answering the single question it asked — and flagging tickets
+      03/04 that any A/B delta baseline taken before today is stale.
 
 ## Files to modify
 
