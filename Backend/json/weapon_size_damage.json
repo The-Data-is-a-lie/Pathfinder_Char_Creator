@@ -1,0 +1,35 @@
+{
+  "_readme": "The PF1e weapon-size damage conversion. Hand-authored from the printed table rather than scraped -- weapons_data.json carries only 'damage: 1d4 (small), 1d6 (medium)' and there is no size-progression table anywhere else in the backend. Gated by Backend/scripts/gates/validate_gear_legality.py, which checks the shape, the ladder and the one-step-up consistency; the VALUES are external rules and their authority is the sources named below, not this repo.",
+  "source": "Pathfinder RPG Core Rulebook, Table 6-5: Tiny and Large Weapon Damage. Transcribed 2026-08-17 and verified row-for-row against two independent copies -- aonprd.com/Rules.aspx?ID=110 and roll20.net/compendium/pathfinder/Weapons -- which agree exactly.",
+  "attack_penalty_per_step": -2,
+  "attack_penalty_rule": "A creature can't make optimum use of a weapon that isn't properly sized for it. A cumulative -2 penalty applies on attack rolls for each size category of difference. (Core Rulebook, quoted verbatim.)",
+  "sizes": ["Fine", "Diminutive", "Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan", "Colossal"],
+
+  "steps_published": {
+    "up_from_medium": 1,
+    "down_from_medium": 2,
+    "note": "The Core Rulebook publishes exactly two conversions off the Medium value: Tiny (two steps down) and Large (one step up). Small and Medium are printed per-weapon in the weapon tables themselves, which is what weapons_data.json's 'NdX (small), NdY (medium)' already carries. There is NO published Huge-or-larger weapon damage table in PF1e -- see 'gap' below."
+  },
+
+  "by_medium_damage": {
+    "1d2":  {"tiny": null,   "large": "1d3"},
+    "1d3":  {"tiny": "1",    "large": "1d4"},
+    "1d4":  {"tiny": "1d2",  "large": "1d6"},
+    "1d6":  {"tiny": "1d3",  "large": "1d8"},
+    "1d8":  {"tiny": "1d4",  "large": "2d6"},
+    "1d10": {"tiny": "1d6",  "large": "2d8"},
+    "1d12": {"tiny": "1d8",  "large": "3d6"},
+    "2d4":  {"tiny": "1d4",  "large": "2d6"},
+    "2d6":  {"tiny": "1d8",  "large": "3d6"},
+    "2d8":  {"tiny": "1d10", "large": "3d8"},
+    "2d10": {"tiny": "2d6",  "large": "4d8"}
+  },
+
+  "gap": {
+    "what": "A MEDIUM-sized character oversized by TWO steps (Medium -> Huge) cannot be resolved from this file, because PF1e never published a Huge weapon damage table. Applying the Large column twice does not work either: it has no row for 3d6, 3d8, 4d6 or 4d8.",
+    "who_hits_it": "Only the full Titan Slayer chain (Power Attack + Titan Technique + Titan Grip + Titan Slayer, Str 19, BAB +8) reaches +2, and per ruling D10 the generator never GRANTS its way there -- +2 requires a character who already holds the whole chain.",
+    "not_hit_by": "A SMALL character at +1 or +2 is fully covered without this table: +1 is the weapon's own printed medium damage, and +2 is the 'large' column here.",
+    "rejected": "The community 'Medium and Larger Weapon Damage' table that continues into Huge/Gargantuan/Colossal is NOT transcribed here. It could not be verified against a first-party source in the same pass as Table 6-5, and the Paizo FAQ damage-dice progression chart -- the other candidate -- deliberately disagrees with Table 6-5 (it steps 1d8 to 1d10 and 2d6 to 2d8, where the weapon-size table steps them to 2d6 and 3d6). Guessing which one applies to a physically larger weapon would put an unsourced rule in a file whose whole job is to be the source.",
+    "until_then": "Consumers must cap a Medium wielder at +1 step and say so, rather than silently returning the unchanged dice."
+  }
+}

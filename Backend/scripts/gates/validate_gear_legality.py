@@ -1,4 +1,4 @@
-"""Gate the gear-legality CONFIG layer: the derived proficiency table.
+"""Gate the gear-legality CONFIG layer: the proficiency, enabler and weapon-size tables.
 
     C:\\Python310\\python.exe Backend/scripts/gates/validate_gear_legality.py
     C:\\Python310\\python.exe Backend/scripts/gates/validate_gear_legality.py --print
@@ -29,6 +29,21 @@ Plus the cheap internal invariants a table can be wrong about on its own: an ASF
 armor the class may not wear, a shield exemption for a class with no shields, a druid allowlist
 naming an armor outside the class's own band, a taboo material no shield in the pool is made of.
 
+TWO MORE TABLES, ON THE SAME PRINCIPLE
+--------------------------------------
+`two_hand_enablers.json` is a census of everything that one-hands a two-hander, oversizes a weapon
+or reduces the penalty for it. Names are the thing most likely to be wrong about it -- the pool
+spells them `Pikemans Training` and `Titan Grip (Combat)`, not `Pikeman's Training` and
+`Titan Grip`, and a grant of a name that does not resolve is a silently dead branch of exactly the
+kind this plan exists to remove. So every `in_pool: true` row is resolved against the file it
+names, and every `in_pool: false` row is proved ABSENT -- a gap that quietly closes is a finding
+too, not a free pass.
+
+`weapon_size_damage.json` is Core Rulebook Table 6-5. Its values are external rules and this gate
+does not pretend to re-derive them; what it checks is that the table is internally coherent (every
+value is a real die expression, every `large` entry is strictly bigger than its Medium row) and
+that its declared gap stays declared, so nobody grows a Huge column by hand without sourcing it.
+
 KNOWN GAPS, REPORTED RATHER THAN HIDDEN
 ---------------------------------------
 Two things are legitimately unresolved and are printed on every run so they cannot rot quietly:
@@ -39,6 +54,9 @@ Two things are legitimately unresolved and are printed on every run so they cann
 - Six classes are non-shield-proficient by SILENCE rather than by a sentence. That is correct RAW,
   but it is one dropped sentence away from looking identical to a scrape failure, so the count is
   asserted: if it changes, the prose changed.
+- Two enablers are absent from every pool (Lighten Weapon, the Equipment sphere advanced talent),
+  and a Medium wielder cannot be oversized by two steps because PF1e published no Huge weapon
+  damage table.
 """
 import argparse
 import re
@@ -46,7 +64,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from _harness import JSON_DIR, Report, read_json                               # noqa: E402
+from _harness import JSON_DIR, REPO, Report, read_json                         # noqa: E402
 
 import build_armor_proficiency as builder                                      # noqa: E402
 from validate_class_roster import HOLDBACK_LISTS                               # noqa: E402
@@ -55,8 +73,13 @@ from utils import data as game_data                                            #
 REPORT = Report('validate_gear_legality')
 
 PROFICIENCY = JSON_DIR / 'armor_proficiency.json'
+ENABLERS = JSON_DIR / 'two_hand_enablers.json'
+SIZE_DAMAGE = JSON_DIR / 'weapon_size_damage.json'
 ARMOR_DATA = JSON_DIR / 'armor.json'
 CLASS_DATA = JSON_DIR / 'class_data.json'
+ARCHETYPES = JSON_DIR / 'archetypes.json'
+DISCIPLINES = JSON_DIR / 'class_data' / 'path_of_war' / 'Martial_Disciplines.json'
+FEATS_CSV = REPO / 'data' / 'feats_new.csv'
 
 # armor.json's section names, in the same order as builder.ARMOR_BANDS' letters.
 SECTION_BAND = {'Light': 'L', 'Medium': 'M', 'Heavy': 'H'}
@@ -278,6 +301,169 @@ def check_materials(table, armor_json):
 
 
 # --------------------------------------------------------------------------------------------- #
+# The enabler census.
+# --------------------------------------------------------------------------------------------- #
+ENABLER_KEYS = {'name', 'effect', 'kind', 'in_pool', 'where', 'visible_at_gear_time',
+                'requires_shield', 'weapon', 'size_steps', 'attack_penalty', 'prerequisites',
+                'note', 'reduces_penalty_by'}
+EFFECTS = {'one_hand', 'oversize', 'penalty_reduction'}
+KINDS = {'feat', 'class_feature', 'stance', 'talent'}
+
+
+def feat_names():
+    """Every `name` in feats_new.csv. Read as pipe-delimited text rather than with `csv` on
+    purpose: the benefit fields contain commas and quotes and the delimiter is what matters."""
+    names = set()
+    with open(FEATS_CSV, encoding='utf-8') as handle:
+        next(handle, None)
+        for line in handle:
+            head = line.split('|', 1)[0].strip()
+            if head:
+                names.add(head)
+    return names
+
+
+def resolve_enabler(row, feats, archetypes, disciplines):
+    """(found, where it was looked for) -- the same lookup for present and absent rows alike.
+
+    Absent rows go through this too. That is the point: 'not in the pool' is a claim, and a claim
+    nothing checks is how a gap silently closes and a branch stays dead after the data arrives.
+    """
+    name, kind, where = row['name'], row['kind'], row.get('where') or {}
+    if kind == 'feat':
+        return name in feats, f'feats_new.csv name column'
+    if kind == 'class_feature':
+        block = (archetypes.get(where.get('class')) or {}).get(where.get('archetype')) or {}
+        return where.get('feature') in block, (f'archetypes.json {where.get("class")}/'
+                                               f'{where.get("archetype")}')
+    if kind == 'stance':
+        block = disciplines.get(where.get('discipline')) or {}
+        return where.get('entry') in block, f'Martial_Disciplines.json {where.get("discipline")}'
+    # A talent has no pool file to resolve against yet -- that IS the gap, and the only talent row
+    # here is flagged absent. A talent claiming to be in the pool is therefore a contradiction.
+    return False, 'no talent pool is wired up'
+
+
+def check_enablers():
+    payload = read_json(ENABLERS)
+    rows = payload.get('enablers')
+    if not isinstance(rows, list) or not rows:
+        return REPORT.error(f'{ENABLERS.name}: no "enablers" list')
+
+    feats = feat_names()
+    archetypes = read_json(ARCHETYPES)
+    disciplines = read_json(DISCIPLINES)
+
+    seen, absent = set(), []
+    for row in rows:
+        name = row.get('name', '<unnamed>')
+        unknown = set(row) - ENABLER_KEYS
+        if unknown:
+            REPORT.error(f'enabler {name}: unknown keys {sorted(unknown)}')
+        if row.get('effect') not in EFFECTS:
+            REPORT.error(f'enabler {name}: effect {row.get("effect")!r} not in {sorted(EFFECTS)}')
+        if row.get('kind') not in KINDS:
+            REPORT.error(f'enabler {name}: kind {row.get("kind")!r} not in {sorted(KINDS)}')
+        if name in seen:
+            REPORT.error(f'enabler {name}: duplicate row')
+        seen.add(name)
+
+        # An oversizer must say how far, and only an oversizer may. Absent rows are exempt and in
+        # fact required to stay null: nothing has read those rules, so a number there would be
+        # invented rather than sourced.
+        steps = row.get('size_steps')
+        if not row.get('in_pool'):
+            if steps is not None or row.get('attack_penalty') is not None:
+                REPORT.error(f'enabler {name}: flagged not-in-pool but carries mechanics '
+                             f'(size_steps={steps!r}, attack_penalty='
+                             f'{row.get("attack_penalty")!r}) -- nothing has read those rules')
+        elif row.get('effect') == 'oversize':
+            if steps not in (1, 2):
+                REPORT.error(f'enabler {name}: oversize with size_steps={steps!r}, expected 1 or 2')
+        elif steps is not None:
+            REPORT.error(f'enabler {name}: size_steps={steps!r} on a {row.get("effect")!r} row')
+        if (row.get('in_pool') and row.get('effect') == 'penalty_reduction'
+                and not row.get('reduces_penalty_by')):
+            REPORT.error(f'enabler {name}: a penalty_reduction row must say reduces_penalty_by')
+
+        found, looked_in = resolve_enabler(row, feats, archetypes, disciplines)
+        if row.get('in_pool'):
+            if not found:
+                REPORT.error(f'enabler {name!r} claims to be in the pool but does not resolve in '
+                             f'{looked_in} -- check the exact spelling before anything grants it')
+        else:
+            absent.append(name)
+            if found:
+                REPORT.error(f'enabler {name!r} is flagged NOT in the pool, but it resolves in '
+                             f'{looked_in} now. The gap closed -- wire it up or re-flag it.')
+
+        # Only archetype features are visible at gear time; feats and stances are chosen in later
+        # phases. This is the fact the whole D7 ladder is built on, so it is asserted rather than
+        # left to a comment.
+        if row.get('visible_at_gear_time') and row.get('kind') != 'class_feature':
+            REPORT.error(f'enabler {name}: visible_at_gear_time on a {row.get("kind")!r} -- gear '
+                         f'runs before both the feat and the Path of War phases')
+
+    if absent:
+        REPORT.skip(f'enablers absent from every pool, deliberately left visible: {absent}')
+    return len(rows)
+
+
+# --------------------------------------------------------------------------------------------- #
+# The size table.
+# --------------------------------------------------------------------------------------------- #
+DIE = re.compile(r'^(\d+)d(\d+)$')
+
+
+def average(expression):
+    """Mean of an NdX expression; the bare '1' the table uses for the smallest step is 1.0."""
+    if expression == '1':
+        return 1.0
+    match = DIE.match(expression or '')
+    return None if match is None else int(match.group(1)) * (int(match.group(2)) + 1) / 2.0
+
+
+def check_size_damage():
+    payload = read_json(SIZE_DAMAGE)
+    table = payload.get('by_medium_damage')
+    if not isinstance(table, dict) or not table:
+        return REPORT.error(f'{SIZE_DAMAGE.name}: no "by_medium_damage" object')
+
+    if payload.get('attack_penalty_per_step') != -2:
+        REPORT.error(f'{SIZE_DAMAGE.name}: attack_penalty_per_step is '
+                     f'{payload.get("attack_penalty_per_step")!r}, and the Core Rulebook says -2')
+    if not payload.get('gap'):
+        REPORT.error(f'{SIZE_DAMAGE.name}: the declared gap is gone. PF1e published no Huge weapon '
+                     f'damage table -- if one has been sourced, say where, do not just delete this')
+
+    for medium, row in table.items():
+        base = average(medium)
+        if base is None:
+            REPORT.error(f'size table: {medium!r} is not a die expression')
+            continue
+        if set(row) != {'tiny', 'large'}:
+            REPORT.error(f'size table {medium}: columns are {sorted(row)}, expected tiny + large')
+            continue
+        # Monotonicity is the check that catches a transposed cell, which is the realistic way a
+        # hand-transcribed table goes wrong -- and the way that a spot-check of two or three rows
+        # would not notice.
+        larger = average(row['large'])
+        if larger is None:
+            REPORT.error(f'size table {medium}: large={row["large"]!r} is not a die expression')
+        elif larger <= base:
+            REPORT.error(f'size table {medium}: large={row["large"]!r} averages {larger}, which is '
+                         f'not more than the Medium {base}')
+        if row['tiny'] is not None:
+            smaller = average(row['tiny'])
+            if smaller is None:
+                REPORT.error(f'size table {medium}: tiny={row["tiny"]!r} is not a die expression')
+            elif smaller >= base:
+                REPORT.error(f'size table {medium}: tiny={row["tiny"]!r} averages {smaller}, which '
+                             f'is not less than the Medium {base}')
+    return len(table)
+
+
+# --------------------------------------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--print', dest='show', action='store_true',
@@ -335,6 +521,9 @@ def main():
                     f'material column: {gapped} -- any consumer is making a ruling here, not '
                     f'reading one')
 
+    enablers = check_enablers()
+    size_rows = check_size_damage()
+
     if args.show:
         for name in sorted(table):
             row = table[name]
@@ -348,7 +537,8 @@ def main():
                       for b in builder.ARMOR_BANDS if b in bands)
     shields = sum(1 for row in table.values() if row['shield'])
     return REPORT.finish(f'{len(table)} classes ({len(pool)} rollable) -- {shape}; '
-                         f'{shields} shield-proficient')
+                         f'{shields} shield-proficient; {enablers} enablers; '
+                         f'{size_rows} weapon-size rows')
 
 
 if __name__ == '__main__':

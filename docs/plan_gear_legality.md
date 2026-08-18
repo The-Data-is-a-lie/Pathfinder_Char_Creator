@@ -93,22 +93,49 @@ weapon:  no shield, but an oversizing source held -> +1 size step
          reduced by Titan Fighter's `incredible heft`
 ```
 
-### The enabler census (searched 2026-08-17 — do not redo this)
+### The enabler census
 
-Two distinct effects, which is what makes the two rules separable:
+> ⚠ **The first census (2026-08-17, pre-step-2) was wrong in four ways** and has been replaced by
+> the gated file **`Backend/json/two_hand_enablers.json`**, which is now the authority — every row
+> is resolved against the pool file it names on every gate run, and the two absent rows are proved
+> still absent. Read that file, not a table in this doc. What it corrected:
+>
+> 1. **Titan Technique and Titan Grip do not one-hand anything.** Titan Technique's benefit is
+>    *"wield weapons intended for creatures one size category larger than you, **using the same
+>    handedness**"*, and Titan Grip only reduces the penalty. **D7's second rung is therefore
+>    void** — see the corrected ladder below.
+> 2. **Their prerequisites were attributed to the wrong feat.** Power Attack + Str 15 is *Titan
+>    Technique*; Str 17 + BAB +4 is *Titan Grip*.
+> 3. **Three enablers were missed**: `Phalanx_Lancer` (Piercing Thunder, level **1**, one-hands a
+>    polearm *specifically when using a shield* — the cheapest thing on the ladder),
+>    `massive weapons (ex)` (Titan Mauler 3rd, an oversizer, so a Titan Mauler is both), and
+>    `Bigfolk Training` (the small-race oversizer). `Quarterstaff Master` is a fourth, weapon-locked
+>    to the quarterstaff and gated behind Weapon Focus.
+> 4. **Every name was spelled wrong.** The pool has `Pikemans Training` (no apostrophe),
+>    `Titan Grip (Combat)` and `Titan Technique (Combat, Technique)` — the parenthetical is *inside
+>    the name field*. A grant of the census spelling would have resolved to nothing, silently,
+>    which is the failure this plan exists to remove. The gate now fails on it.
 
-| Effect | Source | Kind | Where | In pool? | Known at gear time? |
-|---|---|---|---|---|---|
-| one-hand a 2H | **Jotungrip (Ex)** | Barbarian *Titan Mauler* archetype | `json/archetypes.json` | yes | **yes** |
-| one-hand a 2H | **Pikeman's Training** | Combat feat, BAB +1, polearm/spear, *requires a shield* | `data/feats_new.csv`, `data/Metzofitz_Feats.csv` | yes | no (feat phase) |
-| one-hand a 2H | **Twin Thunder Stance** | PoW, Piercing Thunder discipline | `json/class_data/path_of_war/Martial_Disciplines.json` | yes | no (PoW phase) |
-| one-hand a 2H | **Lighten Weapon** | Kobold Press 3pp combat feat | — | **NO** | — |
-| oversize | **Titan Technique → Titan Grip → Titan Slayer** | Ascension Games 3pp Combat/Technique feats; Grip needs Power Attack + Str 17 + BAB +4, Slayer Str 19 + BAB +8 | `data/feats_new.csv`, `data/Metzofitz_Feats.csv` | yes | no (feat phase) |
-| oversize | **Titan Fighter** *giant weapon wielder (ex)* / *incredible heft (ex)* | Fighter archetype | `json/archetypes.json:3366-3367` | yes | **yes** |
-| oversize | **Equipment sphere advanced talent** | Spheres of Might | — | **NO** (the `Equipment` key in `spheres_of_might_cleaned.json` is a kit/gear list, not the talent tree) | — |
+*False positives, checked and recorded in the file so they are not re-checked:* Effortless Lace
+(makes a one-hander **light**; name-only in `foundry_item_names.json`), `Scarlet_Einhander` (a
+shield bonus, not a handedness change), `Twin Thunders` (a real UC feat about fighting giants, and
+a near-miss for the stance), `Titan Strike` (a **mythic** unarmed feat), and `armament shield` (the
+*inverse* — a shield bonus for going two-handed).
 
-*Effortless Lace is a false positive* — it makes a one-hander count as **light**, and it exists in
-`json/foundry_item_names.json` as a name only, with no rules text.
+### The corrected two-hander ladder (supersedes D7's rungs)
+
+```
+hit + Two-Handed -> polearm/spear                     -> grant Pikemans Training   (BAB +1)
+                    Titan Mauler barbarian, level >=2 -> keep; jotungrip already one-hands it
+                    else                              -> DROP the shield
+```
+
+Only two rungs, because only two things in the pool can be *granted* at gear time and actually
+work. `Twin_Thunder_Stance` and `Phalanx_Lancer` are Path-of-War stances chosen in a phase that
+runs **after** gear, so they can be honoured when already present but never granted; `Quarterstaff
+Master` would cost two feats (it needs Weapon Focus in the quarterstaff) to arm one build.
+**Open for Daniel:** whether the quarterstaff rung is worth two free feats. Implemented as *no*
+— the shield drops — until told otherwise.
 
 ### Facts the design leans on (verified, don't re-derive)
 
@@ -167,8 +194,12 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       41 shield-proficient. Goldens byte-identical (no tracked file changed). The gate's three
       checks were sabotage-proven on the spot — a hand-edited table trips staleness, and a
       *loosened parser with the file regenerated* (staleness silent) trips the token re-read alone.
-- [ ] **2. Enabler + size tables.** `two_hand_enablers.json` + `weapon_size_damage.json` + their
+- [x] **2. Enabler + size tables.** `two_hand_enablers.json` + `weapon_size_damage.json` + their
       gate rows. Still no behaviour change; goldens byte-identical again.
+      **Done 2026-08-17.** 14 enabler rows (12 in pool, 2 proved absent) and 11 size rows; all 32
+      validators pass. The census corrections above came out of this step. Sabotage-proven: the
+      census spelling `Pikeman's Training` fails to resolve, a closed gap fails, and a transposed
+      size cell fails on monotonicity.
 - [ ] **3. Payload field fixes.** `payload.py::gear_display` — the three dead lookups and the
       armor/shield mixup at `:264`. Goldens move on display fields only.
 - [ ] **4. Armor bands.** `armor_chooser` reads the table (D3/D5); `armor_type=None` returns *no
@@ -239,6 +270,30 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
   wooden quickdraw, Heavy wooden, *and* Snarlshield (wooden).
 - **The old default's blast radius, measured:** `armor_type_mapping` sent all 70 classes to `'H'`.
   The table sends 10 to no armor at all and 26 to Light. Step 4's golden diff will be large.
+
+**Step 2 (2026-08-17).** The four census corrections are written up under "The enabler census"
+above; these are the rest.
+
+- **PF1e never published a Huge weapon damage table.** The Core Rulebook has exactly one
+  conversion table — Table 6-5, *Tiny and Large* — verified row-for-row against two independent
+  copies (Archives of Nethys and Roll20, which agree exactly). So **a Medium wielder cannot be
+  oversized two steps**, and applying the Large column twice does not work either: it has no row
+  for 3d6, 3d8, 4d6 or 4d8. Declared as a gap in the file rather than filled from the community
+  "Medium and Larger" table, which could not be verified first-party in the same pass.
+  ⚠ **D10's +2 case is therefore unresolvable for Medium characters** — step 7 must cap them at
+  +1 and say so. A **Small** character is fully covered: +1 is the weapon's own printed medium
+  damage, +2 is the `large` column.
+- **The Paizo FAQ dice chart is a different rule and must not be used here.** It steps 1d8→1d10
+  and 2d6→2d8 where the weapon-size table steps them to 2d6 and 3d6. It governs *effective* size
+  increases (`lead blades`, `enlarge person`); a physically larger weapon uses Table 6-5.
+- **Only two enablers are visible at gear time**, and both are archetype features
+  (`jotungrip (ex)`, `giant weapon wielder (ex)`, plus `massive weapons (ex)` and
+  `incredible heft (ex)` on the same two archetypes). The gate now asserts that: a feat or stance
+  claiming `visible_at_gear_time` fails, because gear runs before both the feat and PoW phases.
+- **Every Titan feat and Pikemans Training carries `source_dataset: Metzofitz`** in
+  `feats_new.csv`. That does not block step 6 — D8 grants them free, bypassing selection — but it
+  does mean nothing reaches them by ordinary rolling while Metzofitz selection stays commented out
+  in `feats.py`, so **+2 oversizing effectively cannot occur** and D10's cap is doing no work.
 
 ## Adjacent, and deliberately not in this plan
 
