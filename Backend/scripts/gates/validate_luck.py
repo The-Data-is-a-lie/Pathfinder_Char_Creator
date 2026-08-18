@@ -486,8 +486,14 @@ def check_payload_contract():
     idx = list(PAYLOAD_KEYS).index('luck')
     tail = set(PAYLOAD_KEYS[idx + 1:])
     # 'mythic' is the other tail-appended nested block (mythic map, ticket 05) -- added under
-    # exactly the luck precedent, so it legitimately sits after 'luck'.
-    REPORT.check(tail <= {'mythic', 'buff_gaps', 'generator_version', 'license_url'},
+    # exactly the luck precedent, so it legitimately sits after 'luck'. The four weapon_size_*
+    # fields (gear-legality plan, D11) are appended for the same reason: they are a new marker at
+    # the very end, so nothing above them moves, which is the property this check exists to
+    # protect. This list is meant to be short and to be extended DELIBERATELY -- a key turning up
+    # here that nobody added on purpose is a key that shifted somebody's sheet.
+    REPORT.check(tail <= {'mythic', 'buff_gaps', 'generator_version', 'license_url',
+                          'weapon_size', 'weapon_size_steps', 'weapon_size_source',
+                          'weapon_size_attack_penalty'},
                  f"'luck' must sit at the tail of the content keys so no existing key shifts "
                  f"position; keys after it: {sorted(tail)}")
 

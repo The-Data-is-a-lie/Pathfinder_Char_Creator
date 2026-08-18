@@ -903,7 +903,16 @@ def check_power_metric():
 # failure -- the same argument the class-choice cap check makes at the bottom of this file.
 # --------------------------------------------------------------------------------------------- #
 GEAR_COVERAGE = {'chars': 0, 'armoured': 0, 'unarmoured': 0, 'shielded': 0, 'tower': 0,
-                 'two_handed_shield': 0, 'taboo': 0, 'capped': 0, 'buckler_only': 0}
+                 'two_handed_shield': 0, 'taboo': 0, 'capped': 0, 'buckler_only': 0,
+                 'oversized': 0}
+
+_GEAR_ENABLERS = json.loads((BACKEND / 'json' / 'two_hand_enablers.json')
+                            .read_text(encoding='utf-8'))['enablers']
+_GEAR_OVERSIZERS = {r['name']: r for r in _GEAR_ENABLERS
+                    if r.get('effect') == 'oversize' and r.get('in_pool')}
+_GEAR_SIZES = ('Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan',
+               'Colossal')
+_GEAR_RACES = json.loads((BACKEND / 'json' / 'races.json').read_text(encoding='utf-8'))
 
 _GEAR_BANDS = (None, 'L', 'M', 'H')
 _GEAR_SECTION_BAND = {'Light': 'L', 'Medium': 'M', 'Heavy': 'H'}
@@ -928,9 +937,65 @@ def _gear_rows(payload):
             yield entry, row
 
 
+def check_oversized_weapon(cell, payload, rows):
+    """D10: a weapon is only oversized if the character holds something that oversizes it.
+
+    The marker is four payload fields and they have to agree with each other AND with the sheet --
+    a `weapon_size_steps` of 1 with no source named is the shape a silent default would take, and
+    it is what would reach the module's `sizefordamage` resource and quietly inflate every damage
+    roll by a size category.
+    """
+    steps = payload.get('weapon_size_steps')
+    size = payload.get('weapon_size')
+    source = payload.get('weapon_size_source')
+    penalty = payload.get('weapon_size_attack_penalty')
+
+    check(isinstance(steps, int) and steps >= 0,
+          f"{cell}: weapon_size_steps is {steps!r}, expected a non-negative int")
+    check(size in _GEAR_SIZES, f"{cell}: weapon_size is {size!r}, not a size category")
+    if not steps:
+        check(source is None and not penalty,
+              f"{cell}: no size step but source={source!r} penalty={penalty!r}")
+        return
+
+    GEAR_COVERAGE['oversized'] += 1
+    check(source in _GEAR_OVERSIZERS,
+          f"{cell}: oversized by {steps} step(s) with source {source!r}, which is not an in-pool "
+          f"oversizer in two_hand_enablers.json")
+    row = _GEAR_OVERSIZERS.get(source) or {}
+    check(steps <= (row.get('size_steps') or 0),
+          f"{cell}: {steps} step(s) from {source!r}, which grants {row.get('size_steps')!r}")
+
+    # The source must actually be ON the character -- a feat in a feat bucket, or an archetype at
+    # the level its feature arrives. This is the assertion the whole check exists for.
+    feats = {str(x).lower() for bucket in payload.values() if isinstance(bucket, list)
+             for x in bucket if isinstance(x, str)}
+    archetypes = str(payload.get('archetype_info') or '').lower()
+    if row.get('kind') == 'feat':
+        held = str(source).lower() in feats
+    else:
+        where = row.get('where') or {}
+        needed = (row.get('prerequisites') or {}).get('class_level') or 1
+        held = (str(where.get('archetype') or '').lower() in archetypes
+                and any(e['name'] == str(where.get('class') or '').lower()
+                        and e['level'] >= needed for e, _ in rows))
+    check(held, f"{cell}: oversized by {source!r}, which the character does not hold")
+
+    # Size arithmetic, and the penalty's sign. A reduction may reach 0 but never becomes a bonus.
+    # The wielder's own size is looked up in races.json rather than taken from the payload, which
+    # does not export it -- and that makes this a second opinion rather than a restatement.
+    base = str((_GEAR_RACES.get(payload.get('chosen_race')) or {}).get('size') or 'Medium').title()
+    if base in _GEAR_SIZES and size in _GEAR_SIZES:
+        check(_GEAR_SIZES.index(size) - _GEAR_SIZES.index(base) == steps,
+              f"{cell}: {base} -> {size} is not {steps} step(s)")
+    check(isinstance(penalty, int) and penalty <= 0,
+          f"{cell}: weapon_size_attack_penalty is {penalty!r}, which is not a penalty")
+
+
 def check_gear_legality(cell, payload):
     GEAR_COVERAGE['chars'] += 1
     rows = list(_gear_rows(payload))
+    check_oversized_weapon(cell, payload, rows)
     if not rows:
         return
 
@@ -2030,10 +2095,20 @@ def main():
     check(GEAR_COVERAGE['shielded'] > 0,
           "the gear check saw no shielded character in the whole sweep -- every shield assertion "
           "passed vacuously, which is precisely the state this feature was already in")
+    # NOT an error, and the reason is worth stating rather than leaving as a zero in a line of
+    # counters. Every in-pool oversizing source is either a Metzofitz-dataset feat (and that
+    # selection is still commented out in feats.py), a race-gated feat, or one of two archetypes
+    # that have to be rolled -- so a standing sweep can legitimately reach none. The branch is
+    # proven at unit level instead; if this stops reading 0, the sweep gained real coverage.
+    if not GEAR_COVERAGE['oversized']:
+        REPORT.skip("no oversized weapon in this sweep -- every source is a Metzofitz feat, a "
+                    "race-gated feat or a rolled archetype, so the D10 assertions did not fire "
+                    "here (they are exercised directly instead)")
     print(f"  gear: {GEAR_COVERAGE['armoured']} armoured / {GEAR_COVERAGE['unarmoured']} not, "
           f"{GEAR_COVERAGE['shielded']} shielded ({GEAR_COVERAGE['two_handed_shield']} on a "
           f"two-hander, {GEAR_COVERAGE['tower']} tower, {GEAR_COVERAGE['buckler_only']} "
-          f"buckler-only), {GEAR_COVERAGE['taboo']} taboo, {GEAR_COVERAGE['capped']} caster-capped")
+          f"buckler-only), {GEAR_COVERAGE['taboo']} taboo, {GEAR_COVERAGE['capped']} caster-capped, "
+          f"{GEAR_COVERAGE['oversized']} oversized")
 
     check_power_metric()
     if SCORING:

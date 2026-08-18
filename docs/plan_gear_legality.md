@@ -277,18 +277,32 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       is downstream of the resource, not a second scaler to negotiate with. **The web sheet is
       therefore the only consumer that needs new scaling code**, which is what D11 already says.
 
-      **Done:** the data half — ladder transcribed and gated. **Outstanding:** the payload half —
-      compute the step from the held sources, emit the four keys, census + goldens.
-      *Sources and where they are known:* `giant weapon wielder (ex)` (Titan Fighter 1st) and
-      `massive weapons (ex)` (Titan Mauler 3rd) are visible **at gear time**;
-      `Titan Technique (Combat, Technique)`, `Titan Slayer (Combat)` and `Bigfolk Training` are
-      feats and are only known **after the feat phase** — so the step must be computed late, the
-      same lesson step 8 learned the hard way about the enabler grant. D10: take the best, do not
-      sum; cap 1 unless the full Titan Slayer chain is held. Penalty −2/step, reduced by
-      `incredible heft (ex)` and `Titan Grip (Combat)`.
-- [~] **8. Both gate layers complete and sabotage-proven** — perturb the table, perturb a generated
+      **Done 2026-08-17.** `weapon_size_marker` computes the step at the very END of the pipeline,
+      off `_render_feat_names` (post tax, post swap, post luck) — three of the five sources are
+      feats and are not chosen until two phases after gear. Four keys appended at the tail of
+      `PAYLOAD_KEYS`; the goldens gained exactly those four and nothing else moved (44 insertions,
+      0 deletions), with the halfling rogue correctly reading `Small`. Every branch exercised
+      directly:
+
+      | held | result |
+      |---|---|
+      | nothing | Medium, 0 steps, no source, no penalty |
+      | Titan Fighter 1st | Large, 1, `giant weapon wielder (ex)`, −2 |
+      | Titan Fighter 10th | same, penalty **0** — `incredible heft` reduces 2 |
+      | Titan Fighter, one-handed weapon | **no** oversize — the `two_handed_melee` filter |
+      | Titan Mauler 3rd | Large, 1, `massive weapons (ex)`, **−4** (its own stated penalty) |
+      | Titan Technique | Large, 1, −2 |
+      | full Titan Slayer chain, BAB 16 | **Huge, 2**, penalty 0 via Titan Grip |
+      | Titan Slayer *without* the chain | **capped to 1** (D10) |
+      | Bigfolk Training, gnome | Small→Medium, 1, penalty **0** |
+
+      Two corrections came out of this against a flat −2/step rule: `massive weapons` states −4,
+      and `Bigfolk Training` states none — the source's own `attack_penalty` is used, not a
+      formula. The `validate_luck.py` payload-tail allowlist was extended deliberately; it caught
+      the contract change, which is what it is for.
+- [x] **8. Both gate layers complete and sabotage-proven** — perturb the table, perturb a generated
       character, prove each layer fails independently and for a different reason.
-      **Done for steps 4–6, 2026-08-17;** the oversized-weapon invariant waits on step 7.
+      **Done 2026-08-17, including the oversized-weapon invariant.**
       `check_gear_legality` in `test_house_invariants.py` re-implements the band union, the caster
       cap and the taboo intersection rather than importing them, and 98,392 checks pass. Three
       sabotages, three different failures:
@@ -299,6 +313,7 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       | parser loosened, file regenerated | **fails** (token re-read alone) | — |
       | chooser ignores the band | **green** | **fails** — 68 classes in illegal armour |
       | shields made unreachable again | **green** | **fails** — *"every shield assertion passed vacuously"* |
+      | every character oversized, no source held | **green** | **fails** — 77 × *"which the character does not hold"* |
 
       That last row is the one that matters: it restores the repo's actual prior state, and the
       gate now refuses to call it a pass.

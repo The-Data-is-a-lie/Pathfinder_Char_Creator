@@ -486,6 +486,134 @@ def weapon_chooser(character):
     return character.weapon_type
 
 
+# --- Oversized weapons (rulings D10, D11, D12) --------------------------------------------------
+# The backend emits a size MARKER and never scaled damage dice. Three things already know how to
+# scale: Daniel's `Base_Weapon_Damage_Dice.JS` macro (the authority -- two positions per size step
+# along the ladder in weapon_size_damage.json, keyed off the actor resource `sizefordamage`), the
+# FoundryVTT module, which already puts that resource on every generated sheet and only needs its
+# value, and the web sheet, which pre-scales for display. A fourth implementation here could only
+# disagree with them.
+#
+# WHEN this runs is the whole subtlety. Two of the five sources are archetype features and are
+# visible at gear time; the other three are FEATS, and feats are chosen two phases later. So the
+# step is computed at the END of the pipeline, off the final held-feat list -- the same lesson the
+# enabler grant learned when the trainer swap ate it.
+_ENABLERS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))), 'json', 'two_hand_enablers.json')
+_ENABLERS = None
+
+SIZES = ('Fine', 'Diminutive', 'Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan',
+         'Colossal')
+DEFAULT_SIZE = 'Medium'
+# D10: one step, and only the full Titan Slayer chain reaches two.
+MAX_SIZE_STEPS = 1
+TITAN_SLAYER_CHAIN = ('Titan Technique (Combat, Technique)', 'Titan Grip (Combat)',
+                      'Titan Slayer (Combat)')
+
+
+def two_hand_enablers():
+    global _ENABLERS
+    if _ENABLERS is None:
+        with open(_ENABLERS_PATH, encoding='utf-8') as handle:
+            _ENABLERS = json.load(handle).get('enablers', [])
+    return _ENABLERS
+
+
+def _holds(row, held_feats, character):
+    """Does the character have this enabler? Feats by name, class features by archetype+level."""
+    if not row.get('in_pool'):
+        return False
+    if row['kind'] == 'feat':
+        return row['name'].lower() in held_feats
+    if row['kind'] == 'class_feature':
+        from utils.class_func.generic_func import class_entry_for
+        where = row.get('where') or {}
+        if not has_archetype(character, where.get('archetype') or ''):
+            return False
+        entry = class_entry_for(character, str(where.get('class') or '').lower())
+        needed = (row.get('prerequisites') or {}).get('class_level') or 1
+        return entry is not None and entry['level'] >= needed
+    # Stances are chosen in the Path of War phase and none of them oversize anything, so there is
+    # nothing to resolve here rather than nothing to look for.
+    return False
+
+
+def _penalty_reduction(character, held_feats, bab, fighter_level):
+    """The best reduction held, not the sum -- D10's "take the best" applied to the penalty too."""
+    best = 0
+    for row in two_hand_enablers():
+        if row.get('effect') != 'penalty_reduction' or not _holds(row, held_feats, character):
+            continue
+        if row['name'] == 'Titan Grip (Combat)':
+            # 1, and another at BAB +8 and every 4 thereafter, to a maximum reduction of 5.
+            best = max(best, min(5, 1 + sum(1 for step in (8, 12, 16, 20) if bab >= step)))
+        else:
+            # incredible heft (ex): 1 at 3rd, another at 7th and every 4 levels after.
+            best = max(best, 1 + sum(1 for step in (7, 11, 15, 19) if fighter_level >= step))
+    return best
+
+
+def _wielder_size(character):
+    """The character's own size category. `races.json` carries it (7 Small races, 2 Large); the
+    character object does not, and the payload has never exported it."""
+    explicit = str(getattr(character, 'size', None) or '').title()
+    if explicit in SIZES:
+        return explicit
+    try:
+        row = (getattr(character, 'races', None) or {}).get(
+            getattr(character, 'chosen_race', None)) or {}
+    except Exception:                                    # a lazily-loaded dataset that isn't there
+        row = {}
+    candidate = str(row.get('size') or '').title()
+    return candidate if candidate in SIZES else DEFAULT_SIZE
+
+
+def weapon_size_marker(character, held_feats):
+    """(size, steps, source, attack_penalty) for the equipped weapon.
+
+    `steps` is how many size categories LARGER than the wielder the weapon is built for, and is
+    what the module writes into its `sizefordamage` resource. Zero means an ordinary weapon and
+    every field below it is inert.
+    """
+    base = _wielder_size(character)
+    held = {str(f).strip().lower() for f in (held_feats or [])}
+    two_handed = 'Two-Handed' in weapon_category(getattr(character, 'weapon_dict', None))
+
+    steps, winner = 0, None
+    for row in two_hand_enablers():
+        if row.get('effect') != 'oversize' or not _holds(row, held, character):
+            continue
+        # giant weapon wielder and massive weapons both say "two-handed melee weapons"; the three
+        # feats say nothing, so they apply to whatever is held. D10: take the best, never the sum.
+        if row.get('weapon') == 'two_handed_melee' and not two_handed:
+            continue
+        if row['size_steps'] > steps:
+            steps, winner = row['size_steps'], row
+
+    # D10's cap. Two steps are reachable only by holding the entire chain -- Titan Slayer's own
+    # prerequisites already say so, but the cap is asserted here rather than trusted, because a
+    # granted feat can arrive without its prerequisites having been checked.
+    if steps > MAX_SIZE_STEPS and not all(f.lower() in held for f in TITAN_SLAYER_CHAIN):
+        steps = MAX_SIZE_STEPS
+    if not steps:
+        return base, 0, None, 0
+
+    # The SOURCE's own stated penalty, not a flat -2 a step. Two rows in the table say something
+    # different and both would be wrong under a flat rule: the Titan Mauler's massive weapons has
+    # its penalty "increased by 4", and Bigfolk Training -- a Small character wielding Medium gear
+    # -- carries none at all, because the weapon is not actually oversized for anybody.
+    stated = winner.get('attack_penalty')
+    if stated == 0:
+        return SIZES[min(SIZES.index(base) + steps, len(SIZES) - 1)], steps, winner['name'], 0
+
+    from utils.class_func.generic_func import class_entry_for
+    fighter = class_entry_for(character, 'fighter')
+    reduction = _penalty_reduction(character, held, int(getattr(character, 'bab_total', 0) or 0),
+                                   fighter['level'] if fighter else 0)
+    penalty = min(0, min(int(stated or -2), -2 * steps) + reduction)
+    return SIZES[min(SIZES.index(base) + steps, len(SIZES) - 1)], steps, winner['name'], penalty
+
+
 # `magus_armor_chooser` lived here and is gone. It promoted a magus to medium armour at 7th and
 # (via an `elif` that could never be reached after the `if` above it) heavy at 13th. Both are real
 # magus class features, and both are now MOOT: the magus's arcane spell failure exemption covers

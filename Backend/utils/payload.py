@@ -240,6 +240,15 @@ PAYLOAD_KEYS = (
 	# None for a non-mythic character; the block's own shape is validate_mythic.py's to assert.
 	'mythic',
 	'buff_gaps',
+	# Oversized weapons (gear-legality plan, D11). A MARKER, never scaled damage dice: three things
+	# downstream already know how to scale and a fourth here could only disagree with them. The
+	# FoundryVTT module writes `weapon_size_steps` straight into the `sizefordamage` resource it
+	# already puts on every generated sheet; the web sheet pre-scales for display. `steps` is 0 on
+	# an ordinary character, which makes the other three inert.
+	'weapon_size',
+	'weapon_size_steps',
+	'weapon_size_source',
+	'weapon_size_attack_penalty',
 	'generator_version',
 	'license_url',
 )

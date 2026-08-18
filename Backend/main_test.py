@@ -48,7 +48,8 @@ from utils.class_func.familiars 				import stat_familiars
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
-                                                                 shield_flag_func, ac_bonus_calculator, weapon_type_flag_func)
+                                                                 shield_flag_func, ac_bonus_calculator, weapon_type_flag_func,
+                                                                 weapon_size_marker)
 from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race, chooseable_list_archetypes#, chooseable_list_class
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
@@ -3244,6 +3245,21 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			print(f"item names not in foundry_item_names.json: {len(_unresolved)} rejected roll(s), "
 				  f"e.g. {', '.join(_unresolved[:3])}")
 		payload["buff_gaps"] = _buff_gaps
+
+		# OVERSIZED WEAPONS (gear-legality plan, D10/D11/D12). Emitted as a MARKER -- the size the
+		# weapon is built for, how many categories that is above the wielder, which source granted
+		# it, and the attack penalty after reductions. NEVER scaled damage dice: the authority is
+		# Daniel's Base_Weapon_Damage_Dice.JS ladder, the FoundryVTT module already carries a
+		# `sizefordamage` resource that `weapon_size_steps` writes straight into, and the web sheet
+		# pre-scales for display. A fourth implementation here could only disagree with those three.
+		#
+		# Computed HERE, at the very end, because three of the five oversizing sources are FEATS and
+		# feats are not chosen until two phases after gear. `_render_feat_names` is the fullest list
+		# -- post tax, post swap, post luck -- which is what "the character holds this" means, and
+		# it is the list the enabler grant had to learn to survive.
+		payload["weapon_size"], payload["weapon_size_steps"], payload["weapon_size_source"], \
+			payload["weapon_size_attack_penalty"] = weapon_size_marker(character,
+																	   _render_feat_names)
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
 			for _gap_line in format_gaps(_buff_gaps):
