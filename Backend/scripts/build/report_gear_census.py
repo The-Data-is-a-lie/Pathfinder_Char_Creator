@@ -103,9 +103,18 @@ def main():
     table = read_json(JSON_DIR / 'armor_proficiency.json').get('classes', {})
     class_data = read_json(JSON_DIR / 'class_data.json')
     armor_json = read_json(JSON_DIR / 'armor.json')
+    # weapons_data.json is keyed by proficiency group (Simple/Martial/Exotic/Special); flattened
+    # here because the payload only reports a weapon NAME.
+    weapons = {n: entry
+               for group in read_json(JSON_DIR / 'weapons_data.json').values()
+               for n, entry in group.items()}
     sections = {n: section for section, entries in armor_json.items() for n in entries}
     before, after = Counter(), Counter()
     per_class, capped, unarmoured, worn = {}, [], [], Counter()
+    shields, shield_eligible, shield_carried = Counter(), Counter(), Counter()
+    shield_two_handed = Counter()
+    illegal_shields = []
+    proficiency = table
 
     for name in names:
         bands = set()
@@ -133,8 +142,36 @@ def main():
                 if band != expected:
                     capped.append(f'{cell}: table says {BAND_LABEL[expected]}, wore '
                                   f'{BAND_LABEL[band]}')
+                # Shields (D6/D9). The RATE is the number that has to be read rather than
+                # asserted: a gate can only say "more than zero", and the difference between 20%
+                # of the proficient and 20% of everybody is invisible to it.
+                shield_band = (proficiency.get(name) or {}).get('shield')
+                # The payload carries the weapon's NAME, not its category, so the category is
+                # looked back up in weapons_data.json. Needed for the denominator: D6's "~20%"
+                # is 20% of the proficient characters who are not holding a bow, and measuring it
+                # against every proficient character understates it by more than half.
+                category = str((weapons.get(payload.get('weapon_name')) or {}).get('category') or '')
+                ranged = 'Ranged' in category
+                two_handed = 'Two-Handed' in category
+                eligible = shield_band is not None
+                if eligible and not ranged:
+                    shield_eligible[name] += 1
+                    if two_handed:
+                        shield_two_handed[name] += 1
+                shield = payload.get('shield_name')
+                has_shield = bool(shield) and shield != ' '
+                if has_shield:
+                    shields[shield] += 1
+                    shield_carried[name] += 1
+                    if not eligible:
+                        illegal_shields.append(f'{cell}: {shield} with no shield proficiency')
+                    elif shield_band == 'buckler' and 'uckler' not in shield:
+                        illegal_shields.append(f'{cell}: {shield} on a buckler-only class')
+                    elif shield == 'Tower' and shield_band != 'tower':
+                        illegal_shields.append(f'{cell}: Tower without tower proficiency')
                 if args.verbose:
-                    print(f'  {cell:<34} {BAND_LABEL[band]:<7} {armor}')
+                    print(f'  {cell:<34} {BAND_LABEL[band]:<7} {str(armor):<24} '
+                          f'{shield if has_shield else "-"}')
         per_class[name] = bands
 
     print(f'\n{len(names)} classes x {len(levels)} level(s) x {args.seeds} seed(s) = '
@@ -156,6 +193,24 @@ def main():
             print(f'  ... and {len(capped) - 20} more')
 
     print(f'\nmost-worn armours: {", ".join(f"{n} x{c}" for n, c in worn.most_common(10))}')
+
+    eligible_cells = sum(shield_eligible.values())
+    carried = sum(shield_carried.values())
+    total = sum(after.values())
+    print(f'\nshields')
+    two_h = sum(shield_two_handed.values())
+    print(f'  shield-proficient and not ranged: {eligible_cells}/{total}'
+          f'  (of which two-handed: {two_h})')
+    print(f'  carrying a shield:       {carried}'
+          f'{f" ({100.0 * carried / eligible_cells:.1f}% of the proficient)" if eligible_cells else ""}')
+    print(f'  distribution: {", ".join(f"{n} x{c}" for n, c in shields.most_common()) or "none"}')
+    if illegal_shields:
+        print(f'  ILLEGAL -- {len(illegal_shields)}:')
+        for line in illegal_shields[:15]:
+            print(f'    {line}')
+    unarmed_shield = sorted(n for n in shield_carried if not shield_eligible.get(n))
+    if unarmed_shield:
+        print(f'  classes carrying shields without proficiency: {unarmed_shield}')
     REPORT.finish(f'{sum(after.values())} characters censused')
     return 0
 

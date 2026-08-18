@@ -192,14 +192,20 @@ CONFIGS = {
     'witch': dict(_BASE, seed=9101, userInput_race='Human', class_choice='witch',
                   chosen_BAB='low', multi_class='N', alignment_input='NG',
                   userInput_gender='female', high_level=12, low_level=12, gold_num=30000),
-    # THE FULL HOUSE-RULES WALL (V4 pass, rulings 2026-08-13). Seed 5150 was picked because this
+    # THE FULL HOUSE-RULES WALL (V4 pass, rulings 2026-08-13). The seed is picked because this
     # single draw exercises every house lever at once: both Strength of a Warrior variants (str 22
     # / con 21 clear the 20+ prereq), the forced shield (the one_handed_shield promise), the
     # Shield sphere with Active Defense (the one curated sphere_defense row), TWF+TWD, and the
-    # Cautious Warrior trait -- ac_combat 59 vs the CR row's 24 (2.46x). house_rules off remains
-    # pinned by optimized_striker/optimized_controller, so this golden moving while those stay
-    # byte-identical is exactly the isolation the named key promises.
-    'optimized_wall': dict(_BASE, seed=5150, userInput_race='Orc', class_choice='fighter',
+    # Cautious Warrior trait. house_rules off remains pinned by optimized_striker /
+    # optimized_controller, so this golden moving while those stay byte-identical is exactly the
+    # isolation the named key promises.
+    #
+    # RESEEDED 2026-08-17 (was 5150). The gear-legality plan's step 5 gave shield_chooser a real
+    # ~20% roll, which consumes a draw the old dead code never took, and 5150's Active Defense
+    # talent fell out of the realigned stream. Swept 5150-5400 on the PREDICATE below -- not on the
+    # talent list, which is only how the coverage happened to arrive -- and 5159 is the first seed
+    # that satisfies all five levers again. It still draws the same Heavy steel shield.
+    'optimized_wall': dict(_BASE, seed=5159, userInput_race='Orc', class_choice='fighter',
                            chosen_BAB='low', multi_class='N', alignment_input='LG',
                            userInput_gender='female', high_level=11, low_level=11,
                            gold_num=100000, optimize='wall', house_rules=True),

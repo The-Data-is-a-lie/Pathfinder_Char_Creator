@@ -151,20 +151,123 @@ def ac_bonus_calculator(character, dictionary):
         armor_bonus = value.get('armor bonus', 0)
     return armor_bonus
 
+# --- Shields (rulings D6, D7, D9) ---------------------------------------------------------------
+# What was here before returned None in every case that mattered: `shield_chooser` computed
+# `limits = 'Shield'` for every one-handed character but only `return`ed on its ~10% Tower branch,
+# and `shield_flag_func` mutated `character.shield_flag` and returned None, which `main_test` then
+# assigned back over the attribute it had just set. Between them, NO character this generator has
+# ever produced wore a shield -- every golden records shield_ac 0 and shield_flag None -- which in
+# turn left `build_archetype`'s shield signal and `power_metric`'s requires_shield rows dead.
+
+# D9: the curated ten, out of armor.json's fourteen. Excluded are Klar and both Madus (exotic
+# weapon-shields, which would need weapon proficiency the shield roll knows nothing about) and the
+# Poisoner's Buckler (1,505 gp, and its ACP/ASF fields are empty -- a data gap, not a cheap shield).
+CURATED_SHIELDS = (
+    'Buckler',
+    'Light steel', 'Light steel quickdraw',
+    'Light wooden', 'Light wooden quickdraw',
+    'War-shield, dwarven',
+    'Heavy steel', 'Heavy wooden',
+    'Snarlshield, steel', 'Snarlshield, wooden',
+)
+
+SHIELD_BANDS = (None, 'buckler', 'shield', 'tower')
+# D6: roughly one shield-proficient character in five carries one. D9: a tower on roughly one in
+# ten of the few classes proficient with one.
+SHIELD_CHANCE = 20
+TOWER_CHANCE = 10
+
+SHIELDLESS_CATEGORIES = ('Two-Handed', 'Ranged')
+
+
+def weapon_category(dictionary):
+    """'Two-Handed' / 'Ranged' / '' for the single equipped weapon."""
+    for item in (dictionary or {}).values():
+        return str((item or {}).get('category') or '')
+    return ''
+
+
+def shield_band(character):
+    """The best shield the character is proficient with, unioned across every rolled class."""
+    table = armor_proficiency()
+    band = None
+    for name in _rolled_class_names(character):
+        row = _row_for(table, name)
+        if row and SHIELD_BANDS.index(row['shield']) > SHIELD_BANDS.index(band):
+            band = row['shield']
+    return band
+
+
+def shield_allowlist(character, band):
+    """The shield names this character may be handed, or None for the whole curated pool.
+
+    Two restrictions stack, and like the armour taboo they INTERSECT across a multiclass: the
+    druid's and shifter's wood-only rule, and a buckler-only proficiency (the swashbuckler and the
+    marksman, whose prose grants "bucklers" and not shields).
+    """
+    allowed = set(CURATED_SHIELDS)
+    if band == 'buckler':
+        allowed &= {'Buckler'}
+    table = armor_proficiency()
+    for name in _rolled_class_names(character):
+        row = _row_for(table, name)
+        material = row and row.get('shield_material')
+        if material:
+            allowed &= {n for n in allowed if material.lower() in n.lower()}
+    return allowed
+
+
 def shield_chooser(character, dictionary):
-    shieldless_weapons = ["Two-Handed", "Ranged"]
-    for item in dictionary.values():
-        category = item.get('category', 'no shield')
-        limits = 'Shield' if all(weapon not in category for weapon in shieldless_weapons) else 'no shield'
-    if limits == 'Shield' and (character.armor_type == 'H' and random.randint(1,100)>90):
-        limits = 'Tower'
-        return limits
+    """Decide whether the character carries a shield, and which section it comes from.
+
+    Returns the `list_selection` limits -- 'Shield', 'Tower' or None -- and sets
+    `character.shield_allow` for the item filter. Ranged weapons are excluded outright (D6); a
+    two-handed weapon is handled by the enabler ladder in `two_hand_shield_enabler`.
+    """
+    character.shield_allow = None
+    band = shield_band(character)
+    if band is None:
+        return None
+    category = weapon_category(dictionary)
+    if 'Ranged' in category:
+        return None
+
+    # D6: the roll is over every shield-proficient character regardless of what they are holding,
+    # so the two-handed case is decided AFTER it, not instead of it.
+    carries = random.randint(1, 100) <= SHIELD_CHANCE
+
+    # OPTIMIZED MODE (spec 15): a role whose weapon policy is one_handed_shield has declared the
+    # shield as part of its build, the same way optimized_armor_pick declares the best armour. It
+    # is honoured rather than rolled for -- but only after the roll above, so the random stream is
+    # identical either way and random mode's goldens do not move when a role is added.
+    role = getattr(character, 'role', None)
+    if role and role.get('weapon_policy') == 'one_handed_shield':
+        carries = True
+
+    if not carries:
+        return None
+    if any(word in category for word in SHIELDLESS_CATEGORIES):
+        return None
+
+    character.shield_allow = shield_allowlist(character, band)
+    if not character.shield_allow:
+        return None
+    # D9: a tower shield only where the class table actually grants one -- the fighter and the
+    # warder say "including tower shields", and the aristocrat and warrior say "all types of armor
+    # and shields", which is the SRD's same grant with the parenthetical lost in the scrape.
+    if band == 'tower' and random.randint(1, 100) <= TOWER_CHANCE:
+        character.shield_allow = None       # the Tower section holds exactly one entry
+        return 'Tower'
+    return 'Shield'
+
+
 def shield_flag_func(character, limits):
-    if limits == 'Shield' or limits == 'Tower':
-        character.shield_flag = True
-    else:
-        character.shield_flag = False
-    
+    """True when a shield was chosen. It used to mutate and return None, and the caller assigned
+    that None straight back over the attribute this had just set."""
+    character.shield_flag = limits in ('Shield', 'Tower')
+    return character.shield_flag
+
+
 def weapon_type_flag_func(character, dictionary):
     for item in dictionary.values():
         if item.get('category', 'no shield') == 'Ranged':
@@ -173,7 +276,7 @@ def weapon_type_flag_func(character, dictionary):
             weapon_type = 'Melee'
     return weapon_type
 
-def list_selection(character, name, limits=None, shield_flag=True):
+def list_selection(character, name, limits=None, shield_flag=True, allow=None):
     if shield_flag == True:
         useable_weapons = getattr(data, 'useable_weapons')
         # `limits is None` means NOTHING IS LEGAL -- no armour band, no shield -- and the answer is
@@ -187,12 +290,13 @@ def list_selection(character, name, limits=None, shield_flag=True):
         section = getattr(character, name).get(choice, {})
         result = list(section.keys())
 
-        # The druid/shifter taboo (D4). Applied to the item list rather than to the band, so the
-        # band stays the rules answer and the taboo stays a filter over it. `_legal_band` has
-        # already walked down to a band this cannot empty.
-        allowed = getattr(character, 'armor_allow', None)
-        if name == 'armor' and allowed:
-            legal = [item for item in result if item in allowed]
+        # The legality filter over the section: the druid/shifter armour taboo (D4), and for a
+        # shield the curated ten plus any wood-only or buckler-only restriction (D9). Passed in
+        # rather than read off the character, because armour and shields BOTH select from the
+        # `armor` dataset and an attribute lookup here could not tell which one it was filtering.
+        # `_legal_band` has already walked the armour band down to one this cannot empty.
+        if allow:
+            legal = [item for item in result if item in allow]
             if legal:
                 result = legal
                 section = {item: section[item] for item in legal}

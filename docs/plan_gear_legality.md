@@ -224,10 +224,19 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       rollable classes × 4 levels). Goldens: the wizard and the witch now wear nothing, the druid
       wears Leather, the rogue Rosewood, the summoner a Chain shirt; the four fighters keep heavy.
       Full `test_all.py` and all 32 validators green.
-- [ ] **5. Shields.** `shield_chooser` / `shield_flag_func` return properly; curated pool; Tower by
+- [x] **5. Shields.** `shield_chooser` / `shield_flag_func` return properly; curated pool; Tower by
       proficiency; the ~20% roll (D6/D9). Delete the V4 wall-pass patch at `main_test.py:967-980`,
       which the real fix supersedes. **Census: shield rate and shield distribution.** Goldens:
       shields appear.
+      **Done 2026-08-17.** The rule measured in isolation over 20,000 rolls, which is the only way
+      to see the rate rather than the outcome: one-handed **20.03%**, two-handed **0%**, ranged
+      **0%**, Tower **9.4% of shields** (D9's ~10%), non-proficient 0%. End-to-end over 816
+      characters: 373 proficient-and-not-ranged cells, 38 shields (10.2%) — the gap is the 115
+      two-handed cells that step 6's ladder has not rescued yet. Distribution spans nine of the
+      curated ten plus one Tower; no illegal shield in the sweep. `optimized_wall` **reseeded
+      5150 → 5159**: the real roll consumes a draw the dead code never took, and its Active
+      Defense talent fell out of the realigned stream. Re-swept on the *predicate*, per that
+      file's own rule; it still draws the same Heavy steel shield.
 - [ ] **6. Enabler ladder.** `grants.enabler_feats` alongside `ranger_style_feats` /
       `monk_bonus_feats`, appended after the count guarantee. Goldens: enabler feats appear on the
       affected builds.
@@ -345,6 +354,23 @@ above; these are the rest.
 - **Two goldens moved far more than their armour** (`caster` 465 lines, `companion` 321). Cascade,
   not corruption: cheaper armour leaves more purse, which changes the enhancement budget and the
   item rolls downstream.
+
+**Step 5 (2026-08-17).**
+
+- **The optimizer's shield promise moved into `shield_chooser` rather than being deleted.** The V4
+  patch is gone from `main_test.py`, but a role declaring `one_handed_shield` still gets its
+  shield — it is a declared build, exactly like `optimized_armor_pick` choosing the best armour,
+  not a random draw. It is applied *after* the roll so the RNG stream is identical in random mode
+  and adding a role cannot move a random golden.
+- **`shield_flag` is not a payload key.** It goes to `build_archetype`'s signal dict as
+  `character.shield_flag`, which is what step 9's `sig['shield']` reads. Reading the payload for
+  it returns `None` whether or not a shield was drawn — a trap worth knowing before step 9.
+- **The end-to-end rate is not the roll.** 20% of the proficient roll a shield; the two-handed ones
+  are then dropped, which is why the sweep reads 10.2%. Both numbers are real and they answer
+  different questions — assert the rule in isolation, read the distribution end-to-end.
+- **A tower shield is now reachable by exactly four classes** — fighter, warder, aristocrat,
+  warrior — and one turned up in an 816-character sweep, which is about right for 10% of 10% of
+  four classes.
 
 ## Adjacent, and deliberately not in this plan
 

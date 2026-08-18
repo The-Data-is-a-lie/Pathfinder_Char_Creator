@@ -52,7 +52,7 @@
   }
  },
  "appearance": [
-  "Nose ring"
+  "Flat nose"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
@@ -765,35 +765,20 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this wide leather is held together with\r two strands of oxen skin threaded\r through holes on each end. The belt's\r wearer is affected as though subject to a\r permanent ant haul spell (advanced player's guide). ",
-   "item_name": "Heavyload Belt"
-  },
-  "body": {
-   "description": " this brightly colored robe is made of fine silk and cut in the vudrani style. As a full-round action, the wearer can shift the original hue of the garment slightly (from red to pink or crimson, from blue to cyan or sapphire, and so on) or return it to its original color; the robe instantly reverts to its original color if the wearer removes the robe. The wearer gains a +2 competence bonus on perform (dance) checks. If irori is the wearer's patron, once per day as a free action the wearer can touch a tiny button on the wrist of the robe, granting her the effects of haste for 1 round. Once per day, the wearer can also perform a healing dance that lasts 5 minutes. When she does so, up to 7 allies within 30 feet heal 1 hit point. ",
-   "item_name": "Robe of the Master of Masters"
+   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
+   "item_name": "Belt of Tumbling"
   },
   "chest": {
-   "description": " these linen bandages have the same\r color and softness as the feathers of a\r dove, but their antiseptic smell suggests\r a less natural origin. Any creature\r wrapped in these bandages recovers\r from wounds and ability damage each\r day as if receiving complete bed rest, regardless of activity\r (core rulebook 191). A creature actually receiving long-term\r care (from the heal skill) or complete bed rest while wearing\r the bandages gains a +4 bonus to its effective level or hit\r dice when determining how many hit points it recovers each\r day. The bandages are destroyed once removed or when the\r wearer recovers all hit points and ability damage, whichever\r comes first. ",
-   "item_name": "Bandages of Rapid Recovery"
-  },
-  "hands": {
-   "description": " these supple silk gloves are skintight. As a standard action, the wearer can deliver a complex secret message to a single target that can see the wearer as if she had succeeded at a dc 20 bluff check. This message is conveyed in a series of rapid, complicated hand gestures that the target automatically understands. Creatures that see the wearer send a message can attempt a dc 20 sense motive check to notice that the wearer is delivering a secret message and decipher it. ",
-   "item_name": "Whispering Gloves"
-  },
-  "head": {
-   "description": " this black leather cord has a red wooden ball attached at its center. When the cord is tied around a creature's head and the wooden ball is placed in the creature's mouth, the creature cannot speak or make any vocal sounds, including verbal components of spells. When removed from the creature, the ball breaks off from the leather cord, ending the effect. A creature that is not otherwise restrained can easily untie the gag and remove it. ",
-   "item_name": "Gag of Silence"
+   "description": " this simple silk vest looks nondescript, \r but is actually studded with numerous\r secret pockets sewn into its lining. \r hidden inside these are magic lockpicks\r that provide a +4 competence bonus\r on disable device checks. The vest also\r grants its wearer a +6 competence bonus\r on escape artist checks. ",
+   "item_name": "Vest of Escape"
   }
  },
  "equipment_list": [
-  "Whispering Gloves",
-  "Heavyload Belt",
-  "Robe of the Master of Masters",
-  "Bandages of Rapid Recovery",
-  "Gag of Silence"
+  "Vest of Escape",
+  "Belt of Tumbling"
  ],
  "eye_color": [
-  "Blue"
+  "Green"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -875,25 +860,20 @@
   "Storm-Lashed",
   "Augment Physical Prowess",
   "Ferocious Loyalty",
-  "Improved Dirty Trick",
-  "Martial Training I (Veiled Moon)",
+  "Martial Training I (Shattered Mirror)",
+  "Martial Training III (Shattered Mirror)",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Improved Dirty Trick": [
-   "greater dirty trick",
-   "dirty trick master",
-   "quick dirty trick"
+  "Martial Training I (Shattered Mirror)": [
+   "Martial Training II (Shattered Mirror)"
   ],
-  "Martial Training I (Veiled Moon)": [
-   "Martial Training II (Veiled Moon)"
+  "Martial Training III (Shattered Mirror)": [
+   "Martial Training IV (Shattered Mirror)"
   ],
-  "Martial Training III (Veiled Moon)": [
-   "Martial Training IV (Veiled Moon)"
-  ],
-  "Martial Training V (Veiled Moon)": [
-   "Martial Training VI (Veiled Moon)"
+  "Martial Training V (Shattered Mirror)": [
+   "Martial Training VI (Shattered Mirror)"
   ]
  },
  "flavor_feat_tax_dict": {},
@@ -933,17 +913,17 @@
   "Maximize Spell",
   "Force Magic Device"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Veiled Moon\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An excellent trainer who taught them Unsanctioned Knowledge, Nature Soul, Eye of the Arclord\n- Training: An excellent trainer who taught them Rime Spell, Persistent Spell, Rod Wielder\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 1 Younger Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Bald White\n- Eyes: Blue\n- Build: Nose Ring",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Shattered Mirror\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An excellent trainer who taught them Unseelie Hunter, Nature Soul, Eye of the Arclord\n- Training: An excellent trainer who taught them Rime Spell, Persistent Spell, Rod Wielder\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 1 Younger Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Flowing Blond\n- Eyes: Green\n- Build: Flat Nose",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
  "generator_version": "2026-07-15 racial-stats",
  "gold": 0,
  "hair_color": [
-  "White"
+  "Blond"
  ],
  "hair_type": [
-  "Bald"
+  "Flowing"
  ],
  "height_number": "5'1\"",
  "hero_points": 2,
@@ -956,14 +936,13 @@
   "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
   "Force Magic Device": "",
   "Greater Enrune Shield": "",
-  "Improved Dirty Trick": "You are skilled at pulling dirty tricks on your foes",
   "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
-  "Martial Training I (Veiled Moon)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Veiled Moon)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Veiled Moon)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Veiled Moon)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Veiled Moon)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Veiled Moon)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training I (Shattered Mirror)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Shattered Mirror)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Shattered Mirror)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Shattered Mirror)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Shattered Mirror)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Shattered Mirror)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
   "Maximize Spell": "Your spells have the maximum possible effect",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Nature Soul": "You are innately in tune with nature and venerate the power and mystery of the natural world",
@@ -974,7 +953,7 @@
   "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
   "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Unsanctioned Knowledge": "You have searched though forbidden texts and are privy to powerful but proscribed magic"
+  "Unseelie Hunter": ""
  },
  "inherents": {
   "cha": 0,
@@ -988,31 +967,33 @@
  "initiator_level": 7,
  "int": 13,
  "item_changes_dict": {
-  "Bandages of Rapid Recovery": {
+  "Belt of Tumbling": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skills",
-     "text": "Any creature wrapped in these bandages recovers from wounds and ability damage each day as if receiving complete bed rest, regardless of activity (core rulebook 191). A creature actually receiving long-term care (from the heal skill) or complete bed rest while wearing the bandages gains a +[[4]] bonus to its effective level or hit dice when determining how many hit points it recovers each day."
+     "target": "skill.acr",
+     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
     }
    ]
   },
-  "Robe of the Master of Masters": {
+  "Vest of Escape": {
    "changes": [
     {
-     "formula": "2",
+     "formula": "4",
      "operator": "add",
      "priority": 0,
-     "target": "skill.prf",
+     "target": "skill.dev",
+     "type": "competence"
+    },
+    {
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.esc",
      "type": "competence"
     }
    ],
-   "contextNotes": [
-    {
-     "target": "skill.prf",
-     "text": "As a full-round action, the wearer can shift the original hue of the garment slightly (from red to pink or crimson, from blue to cyan or sapphire, and so on) or return it to its original color; If irori is the wearer's patron, once per day as a free action the wearer can touch a tiny button on the wrist of the robe, granting her the effects of haste for [[1]] round. Once per day, the wearer can also perform a healing dance that lasts [[5]] minutes. When she does so, up to 7 allies within [[30]] feet heal 1 hit point."
-    }
-   ]
+   "contextNotes": []
   }
  },
  "known_list": [],
@@ -1020,15 +1001,15 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Auran",
+  "Giant",
   "Infernal",
+  "Auran",
+  "Undercommon",
   "Draconic",
   "Elven",
   "Kelish",
-  "Giant",
-  "Ignan",
   "Wayang",
-  "Aquan"
+  "Ignan"
  ],
  "level": 4,
  "level_up_stats": {
@@ -1109,143 +1090,143 @@
  "main_stat": "wis",
  "maneuvers_choose_from": [
   [
-   "Inner Sense",
-   "Ghost Hunting Blow"
+   "Breaking Glass Strike",
+   "Left-Hand Strike"
   ],
   [
-   "Cursed Fate",
-   "Resonance Strike"
+   "Obsidian Razor Style",
+   "Broken Mirror Strike"
   ],
   [
-   "Ghostwalk",
-   "Brilliant Moon"
+   "Curse of the Twisted Reflection",
+   "Shattered Glass Smite"
   ],
   [
-   "Breath of the Moon"
+   "Carnival Swap"
   ],
   [
-   "Essence Shattering Strike"
+   "Curse of the Smoking Mirror"
   ],
   [
-   "Ether Wave"
+   "Copycats Cunning"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Breath of the Moon": {
+  "Breaking Glass Strike": {
    "action": "1 standard action",
-   "description": "The moon is a source of madness, so the legend goes, and by using the principles of lunar cycles on the psyche of mortals, the disciple may temporarily relieve a target of its sanity for a few moments in combat. The initiator must make a melee attack against a target creature, and if successful, in addition to damage the target must make a Will save DC 14 + initiation modifier or be confused as the spell confusion for 1d4 rounds. After the application of this maneuver, the subject briefly forgets that the initiator exists and thus may not target the initiator while confused.",
-   "discipline": "Veiled Moon",
-   "duration": "1d4 rounds",
+   "description": "Your vicious strike flares with shards of mirror-bright color that dazzle and dizzy your victim. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 11 + your initiation modifier or become dazed for one round. Regardless of whether or not they succeed at their save, a struck target also becomes dazzled for a number of rounds equal to your initiation modifier.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Broken Mirror Strike": {
+   "action": "1 standard action",
+   "description": "With a mirror-bright slash, you put jagged cracks in your opponents defenses. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Reflex save DC 12 + your initiation modifier or its armor or shield your choice gains the broken condition for a number of rounds equal to your initiator level.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Carnival Swap": {
+   "action": "1 swift action",
+   "description": "You catch your enemy in the reflection of your blade and twist reality like a funhouse mirror, leaving an unfair trade. The next time this round that you make an attack that hits, you may select one power, psi-like ability, spell, or spell-like ability affecting the struck creature. That creature loses the benefits of the chosen effect and you gain them for a number of rounds equal to your initiation modifier. Select a power, psi-like ability, spell, or spell-like ability affecting you. You lose the chosen effect and the struck creature gains it for a number of rounds equal to your initiation modifier.",
+   "discipline": "Shattered Mirror",
+   "duration": "Special see text",
    "level": 4,
-   "range": "Melee or ranged attack",
-   "type": "strike"
+   "range": "Close 25-ft + 5-ft/2 levels",
+   "type": "boost"
   },
-  "Brilliant Moon": {
-   "action": "1 standard action",
-   "description": "By partially phasing a portion of his attack out of this reality, the disciple may ignore certain obstacles, such as armor, when striking at an opponent. The initiator makes an attack roll and ignores the targets armor bonus to AC unless this armor bonus comes from a force effect, such asmage armor. A successful hit inflicts an additional 4d4 points of force damage from the spiritual power the disciple infuses into the attack.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Cursed Fate": {
-   "action": "1 standard action",
-   "description": "The disciple can befuddle and bewilder his opponent with this strike, causing a grave imbalance in the psyche of the victim. The initiator must make a successful attack against the target, inflicting an additional 2d6 points of damage and the target must attempt a Will save DC 12 + initiation modifier or suffer a -4 to all d20 rolls until the disciples next turn.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Essence Shattering Strike": {
-   "action": "1 standard action",
-   "description": "With a powerful strike, the Veiled Moon disciple attacks at the very spirit of his foe with his silver-blue light. The initiator makes an attack against a target creature, and inflicts an additional 6d6 points of force damage and dazes his foe for 1d4 rounds due to the disturbance on a failed Fortitude save DC 15 + initiation modifier.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous, 1d4 rounds",
-   "level": 5,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Ether Wave": {
-   "action": "1 standard action",
-   "description": "The Veiled Moon disciple concentrates his spiritual energies to his hand and tears into the barrier between the Astral and the Material, and releases the energies that form from this in a wracking wave of silvery-blue energy. The initiator unleashes a 40-ft. cone of dimensional energy which inflicts 12d6 points of force damage to all targets within its area with a Reflex saving throw DC 16 + initiation modifier for half damage.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
+  "Copycats Cunning": {
+   "action": "1 swift action",
+   "description": "opponent within range Your supernatural mimicry permits you to ape the tools used by your friends and foes. When you initiate this boost, choose another creatures armor, shield, or weapon within close range 25 feet + 5 feet per 2 initiator levels. A single piece of equipment wielded or worn by you of the same type as the targeted item may use the enhancement bonus of that item for a number of rounds equal to your initiation modifier. In addition, for the same duration, that piece of equipment gains the properties and special abilities on the chosen item in addition to its own, unless those properties or special abilities could not be applied to your equipment for example, if you targeted a +2 distant longbow with this boost while wielding a +1 greatsword, your greatswords enhancement bonus would increase to +2, but it would not gain the distant weapon special ability.",
+   "discipline": "Shattered Mirror",
+   "duration": "See text",
    "level": 6,
-   "range": "40-ft.",
-   "type": "strike"
-  },
-  "Formless Dance": {
-   "action": "1 swift action",
-   "description": "The Veiled Moon disciple immerses himself in a sort of dimensional flux, causing him to be able to see what cannot be perceived and seemingly be in many places at once. While in this stance, the initiator gains the benefits of asee invisibilityspell and theblurspell.",
-   "discipline": "Veiled Moon",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Ghost Hunting Blow": {
-   "action": "1 swift action",
-   "description": "By reaching across the barrier between worlds, the disciple may strike at disembodied spirits as easily he would strike a normal mortal. Any and all of the initiators attacks made this round, including attacks of opportunity, are made as if the initiators weapon possessed theghost touchproperty. This is an Ethereal plane using maneuver.",
-   "discipline": "Veiled Moon",
-   "duration": "One round",
-   "level": 1,
-   "range": "Personal",
+   "range": "Close 25 ft. + 5 ft./2 levels",
    "type": "boost"
   },
-  "Ghostwalk": {
-   "action": "1 swift action",
-   "description": "The initiator steps through to the borderland between the Material and the Ethereal planes, becoming an incorporeal figure in both realities for a few moments. Until the beginning of his next turn, the initiator gains the incorporeal subtype. This is an Ethereal plane using maneuver.",
-   "discipline": "Veiled Moon",
-   "duration": "One round",
-   "level": 3,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Inner Sense": {
-   "action": "1 immediate action",
-   "description": "By sensing ripples in the spiritual world around him, the Veiled Moon disciple is capable of better avoiding dangerous effects and situations. This counter grants the disciple a +2 insight bonus to a single saving throw.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Leaping Spirit Dance": {
-   "action": "1 swift action",
-   "description": "Light as a feather, the Veiled Moon disciple moves gracefully in combat, with the smooth and practiced grace of an incorporeal being. The disciple gains a +2 dodge bonus to AC and a +2 competence bonus to Reflex saves while in this stance so long as he moves at least 10 feet on his turn each round. This bonus increases by +2 at initiator level 9, and by an additional +2 at initiator level 17.",
-   "discipline": "Veiled Moon",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Resonance Strike": {
+  "Curse of the Smoking Mirror": {
    "action": "1 standard action",
-   "description": "By funneling his spiritual power into his attack, the Veiled Moon practitioner may strike an opponent with glowing silvery light on the Material or the Ethereal plane. This strike is resolved as a melee or ranged touch attack, and it inflicts 3d6 + initiator level points of force damage in lieu of normal damage, and this attack may strike incorporeal creatures without suffering reduced damage. This is an Ethereal plane using maneuver.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee or ranged attack",
+   "description": "With an obsidian-edged blow, you reflect an enemys malice back onto itself, tainting them from within. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 15 + your initiation modifier or fall prey to a reflected curse for a number of rounds equal to your initiation modifier. While affected, the target becomes cursed, and whenever it deals damage by any means during this time it takes an equal amount of damage of the same types. Damage reduction, resistances, and immunities are applied to this damage as normal.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 5,
+   "range": "Melee attack",
    "type": "strike"
   },
-  "Spirit Sensing Stance": {
+  "Curse of the Twisted Reflection": {
+   "action": "1 standard action",
+   "description": "With a hideous strike, you distort the perceptions of your enemies. Make an attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 13 + your initiation modifier or become confused for a number of rounds equal to your initiation modifier. In addition, a struck target becomes cursed for a number of rounds equal to your initiation modifier, regardless of whether or not it succeeded on its save.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Cursed Mirror Stance": {
    "action": "1 swift action",
-   "description": "By sensing the different patterns all beings that exist have, the senses of the Veiled Moon disciple exceed that of natural beings and move into the realm of supernatural awareness. While in this stance, the initiators gains the scent special ability and he may detect creatures on the Ethereal plane that are near the Material plane within 30-ft. of his position.",
-   "discipline": "Veiled Moon",
+   "description": "You mimic your opponents movements, visiting retribution upon them. While you maintain this stance, you can make a number of additional attacks of opportunity each round equal to your initiation modifier. This stacks with the Combat Reflexes feat and other effects that increase the number of attacks of opportunity you can make in a round. In addition, any creature that hits you with a melee attack or melee touch attack provokes an attack of opportunity from you.",
+   "discipline": "Shattered Mirror",
    "duration": "Stance",
-   "level": 1,
+   "level": 6,
    "range": "Personal",
    "type": "stance"
   },
-  "Stance of the Ether Gate": {
+  "Infinity Mirror Stance": {
    "action": "1 swift action",
-   "description": "By shifting his essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, he may teleport up to his movement speed as a move action, or twice his movement speed as a full round action, at will. He must see his destination clearly to be able to teleport to it. The initiator may not take any creatures with him when teleporting; only himself and the gear he is carrying plus up to an additional 20 lbs. This stance meets the qualifications for the Dimensional Agility feats, should the initiator wish to take them.",
-   "discipline": "Veiled Moon",
+   "description": "By bending the light near yourself, you create a deceptive defense against assault. When you enter this stance, you gain the benefits of amirror imagespell with a caster level equal to your initiator level. Instead of the normal amount of mirror images generated, you create one image for every four initiator levels you possess minimum 1, and the effect lasts until you enter another stance, at which point any remaining images fade.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Left-Hand Strike": {
+   "action": "1 standard action",
+   "description": "A minor twist of reality makes it seem like your strike is two places at once. When you initiate this strike, make a Craft check, using the targets AC as the DC. Then make a melee attack against the target. If it hits, it deals weapon damage as normal. If your Craft check succeeded, your target loses its shield bonus to AC against this and other attacks this round, and your attack deals an additional 1d6 points of damage.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous see text",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Obsidian Razor Style": {
+   "action": "1 swift action",
+   "description": "Like obsidian, you create a reflection that is beautiful, dark, and deadly at the edge of your weapon. After initiating this boost, you gain an insight bonus equal to your ranks in one Craft skill chosen when you initiate this boost on melee damage rolls for one round.",
+   "discipline": "Shattered Mirror",
+   "duration": "1 round",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Obsidian Reflection Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 20\n\nYou emanate an aura that either enhances the perceptions of those within it or makes them warped and twisted. While you maintain this stance, all creatures including you within 20 feet of you gain either a +1 bonus on attack and damage rolls or a 1 penalty on attack and damage rolls. Once per round as a free action, you can change which of these effects is applied. These bonuses increase by +1 for every four initiator levels you possess +/ 2 at 4th level, +/ 3 at 8th level, and so on.",
+   "discipline": "Shattered Mirror",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal see text",
+   "type": "stance"
+  },
+  "Shattered Glass Smite": {
+   "action": "1 standard action",
+   "description": "With your will and your weapon, you shatter reality as you would shatter a mirror, shredding your enemies with false glass. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of magical slashing damage, and you create a 30-foot cone of shattered glass originating in the targets space and aimed in a direction of your choice. This cone deals 3d6 points of magical slashing damage to each creature caught within it. You and the initial target of this strike do not take damage from this cone.",
+   "discipline": "Shattered Mirror",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Silvered Mirror Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 30\nonlyOthers;\n\nLike a prism or a silver mirror, you splash joy and light onto those whom you love. When you enter this stance, choose a single power, psi-like ability, spell, or spell-like ability with a range greater than personal affecting you. While you maintain this stance, allies within 30 feet of you also gain the benefits of the chosen effect for as long as it is affecting you.",
+   "discipline": "Shattered Mirror",
    "duration": "Stance",
    "level": 5,
-   "range": "Personal",
+   "range": "Personal see text",
    "type": "stance"
   }
  },
@@ -1268,20 +1249,20 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Cursed Fate"
+   "Obsidian Razor Style"
   ],
   [
-   "Brilliant Moon",
-   "Ghostwalk"
+   "Shattered Glass Smite",
+   "Curse of the Twisted Reflection"
   ],
   [
-   "Breath of the Moon"
+   "Carnival Swap"
   ],
   [
-   "Essence Shattering Strike"
+   "Curse of the Smoking Mirror"
   ],
   [
-   "Ether Wave"
+   "Copycats Cunning"
   ]
  ],
  "manifesters": [],
@@ -1292,14 +1273,14 @@
   "Cracks knuckles"
  ],
  "martial_disciplines": [
-  "Veiled Moon"
+  "Shattered Mirror"
  ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Veiled Moon)",
-  "Martial Training III (Veiled Moon)",
-  "Martial Training V (Veiled Moon)"
+  "Martial Training I (Shattered Mirror)",
+  "Martial Training III (Shattered Mirror)",
+  "Martial Training V (Shattered Mirror)"
  ],
  "mythic": null,
  "normal_feat_amount": 7,
@@ -2046,10 +2027,10 @@
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Leaping Spirit Dance",
-  "Formless Dance",
-  "Stance of the Ether Gate",
-  "Spirit Sensing Stance"
+  "Infinity Mirror Stance",
+  "Obsidian Reflection Stance",
+  "Silvered Mirror Stance",
+  "Cursed Mirror Stance"
  ],
  "story_feat_tax_dict": {},
  "story_feats": [
@@ -2085,7 +2066,7 @@
   ]
  },
  "trainer_feats": [
-  "Unsanctioned Knowledge",
+  "Unseelie Hunter",
   "Nature Soul",
   "Eye of the Arclord",
   "Rime Spell",

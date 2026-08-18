@@ -955,30 +955,23 @@ def phase_gear_and_equipment(character):
 	requires `armor_type` (armor_chooser sets it, and list_selection limits on it) and `gold`
 	(assign_gold fills the purse every spender below draws down).
 	'''
-	character.armor_dict = list_selection(character, 'armor', limits=character.armor_type)
+	character.armor_dict = list_selection(character, 'armor', limits=character.armor_type,
+										  allow=character.armor_allow)
 
 	# required to set up weapon_type
 	weapon_chooser(character)
 	character.weapon_dict = list_selection(character, 'weapons_data', limits=character.weapon_type)
 
 	weapon_name = list(character.weapon_dict.keys())[0]
+	# The V4 wall-pass patch lived here and is gone. It forced a shield on for roles that declared
+	# one because shield_chooser could not deliver: it only returned on its ~10% Tower branch, and
+	# shield_flag_func mutated then returned None, so no character had ever worn one. Both are
+	# fixed, and the role's promise now lives inside shield_chooser next to the roll it overrides.
 	limits = shield_chooser(character, character.weapon_dict)
 	character.shield_flag = shield_flag_func(character, limits=limits)
-	# OPTIMIZED MODE (V4 wall pass, 2026-08-13): the one_handed_shield weapon policy PROMISES a
-	# shield -- but shield_chooser only returns on its Tower branch and shield_flag_func
-	# mutates-then-returns None, so in fact NO character has ever worn one (every golden:
-	# shield_ac 0, shield_flag None). The global fix moves every random golden and is a ruling
-	# for Daniel (ticketed as a live finding); HERE the promise is kept only for the roles that
-	# declared it, which no golden pins. Guarded off two-handed/ranged draws the policy fallback
-	# can still produce.
-	_shield_role = getattr(character, 'role', None)
-	if (_shield_role and _shield_role.get('weapon_policy') == 'one_handed_shield'
-			and not any(_w in str((_e or {}).get('category') or '')
-						for _e in (character.weapon_dict or {}).values()
-						for _w in ('Two-Handed', 'Ranged'))):
-		limits = limits or 'Shield'
-		character.shield_flag = True
-	character.shield_dict = list_selection(character, 'armor', limits=limits, shield_flag = character.shield_flag)
+	character.shield_dict = list_selection(character, 'armor', limits=limits,
+										   shield_flag=character.shield_flag,
+										   allow=character.shield_allow)
 
 	# Magic enhancements get first claim on a reserved share of the purse (utils/class_func/
 	# armor_and_enhancements.py: ENHANCEMENT_SHARE / ENHANCEMENT_SPLIT). Runs here, after

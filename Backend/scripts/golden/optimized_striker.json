@@ -4,7 +4,7 @@
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
-  "Sassy"
+  "Gap-toothed"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Qadira  Dawnflower Dervish\": {\n        \"source\": \"Inner Sea Primer pg. 25 In Qadira, home of the whirlwind, the scorpion, and the djinni, no enemy is as feared as the dervishes of Sarenrae. While dervishes can be clerics, paladins, or rangers, zealous fighters join their ranks as well. These spinning warriors prefer light or no armor and wield scimitars with devastating consequences, moving swiftly over the treacherous desert sands to attack with lightning-fast strikes. They maneuver quickly among their enemies, relying on their speed and their skill to see them through the battle.\",\n        \"suggested feats\": \" Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack.\",\n        \"burst of speed (ex)\": \" At 3rd level, a Dawnflower dervish takes only a -1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1.\",\n        \"desert stride (ex)\": \" At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2.\",\n        \"rapid attack (ex)\": \" At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.\",\n        \"lightning strike (ex)\": \" At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish's highest base attack bonus, but each attack in the round (including the extra one) takes a -2 penalty. This ability replaces armor training 4.\"\n    }\n}",
@@ -38,58 +38,36 @@
  "casting_tradition": {
   "bonus_spell_points": 0,
   "boons": [
-   "Overcharge",
-   "Empowered Abilities",
+   "Fortified Casting",
    "Easy Focus",
-   "Fortified Casting"
+   "Empowered Abilities"
   ],
   "boons_detail": [
    {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
-   },
-   {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
    },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
    },
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Prepared Caster",
-   "Material Casting",
    "Magical Signs",
-   "Somatic Casting",
    "Extended Casting",
-   "Addictive Casting"
+   "Addictive Casting",
+   "Prepared Caster"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
-   },
-   {
-    "counts_as": 1,
     "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
     "name": "Magical Signs"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
    },
    {
     "counts_as": 2,
@@ -100,6 +78,11 @@
     "counts_as": 2,
     "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
     "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
    }
   ]
  },
@@ -222,14 +205,14 @@
   "Lightning Reflexes": [
    "improved lightning reflexes"
   ],
-  "Martial Training I (Primal Fury)": [
-   "Martial Training II (Primal Fury)"
+  "Martial Training I (Roaring Mouse)": [
+   "Martial Training II (Roaring Mouse)"
   ],
-  "Martial Training III (Primal Fury)": [
-   "Martial Training IV (Primal Fury)"
+  "Martial Training III (Roaring Mouse)": [
+   "Martial Training IV (Roaring Mouse)"
   ],
-  "Martial Training V (Primal Fury)": [
-   "Martial Training VI (Primal Fury)"
+  "Martial Training V (Roaring Mouse)": [
+   "Martial Training VI (Roaring Mouse)"
   ],
   "Vital Strike": [
    "improved vital strike",
@@ -240,9 +223,9 @@
   "Endurance",
   "Nemesis",
   "Dark Allure",
-  "Martial Training I (Primal Fury)",
-  "Martial Training III (Primal Fury)",
-  "Martial Training V (Primal Fury)",
+  "Martial Training I (Roaring Mouse)",
+  "Martial Training III (Roaring Mouse)",
+  "Martial Training V (Roaring Mouse)",
   "Toughness",
   "Lightning Reflexes",
   "Vital Strike"
@@ -357,25 +340,25 @@
  "dex": 15,
  "enhancement_effects_dict": {
   "weapon": {
-   "Fate-Stealing": {
+   "Seaborne": {
     "conditionals": [
      {
       "default": false,
       "modifiers": [],
-      "name": "Fate-Stealing: on striking a creature with grit or panache, steal [[1]] point as a swift action and regain [[1]] grit or panache point (foe's grit can restore your panache and vice versa)"
+      "name": "Seaborne: Swim bonus equal to twice the enhancement bonus while in hand; no underwater attack/damage penalties (as freedom of movement)"
      }
     ],
-    "description": "This special ability can be placed only on melee weapons. When a fate-stealing weapon strikes a creature that possesses either grit or panache, the wielder can steal 1 grit point or panache point as a swift action. When the wielder steals a grit or panache point, she can regain 1 grit point or 1 panache point (if the wielder has any). The wielder can use a foe's grit to restore her own panache, or use a foe's panache to restore her own grit. If the wielder attempts to use this ability against a foe that isn't a grit or panache user, or that currently has no points of grit or panache remaining, the wielder doesn't expend an action, and the attempt fails."
+    "description": "This special ability can only be placed on melee weapons. A seaborne weapon functions easily in watery environments. With the weapon in hand, the wielder gains a bonus on Swim checks equal to twice the weapon's enhancement bonus. In addition, the wielder does not take the normal penalties to attack and damage rolls imposed by being underwater, as if he were subject to the spell freedom of movement"
    },
-   "Jurist": {
+   "Spell Storing": {
     "conditionals": [
      {
       "default": false,
       "modifiers": [],
-      "name": "Jurist: (inquisitor) while judgment is active, enhancement bonus on Perception and to CMD: +[[1]] on the first round, +[[2]] on the second, +[[3]] on the third and after"
+      "name": "Spell Storing: stores one targeted spell of up to 3rd level (casting time [[1]] standard action); when the weapon damages a creature, cast the stored spell on it as a free action, then the weapon may be recharged"
      }
     ],
-    "description": "When an inquisitor wielder uses her judgment class ability while wielding a jurist weapon, it grants her an enhancement bonus on her Perception checks and to CMD. The bonus is +1 on the first round of her judgment, and increases by +1 each round, to a maximum of +3 on the third and following rounds."
+    "description": "A spell storing weapon allows a spellcaster to store a single targeted spell of up to 3rd level in the weapon. (The spell must have a casting time of 1 standard action.) Anytime the weapon strikes a creature and the creature takes damage from it, the weapon can immediately cast the spell on that creature as a free action if the wielder desires. (This special ability is an exception to the general rule that casting a spell from an item takes at least as long as casting that spell normally.) Once the spell has been cast from the weapon, a spellcaster can cast any other targeted spell of up to 3rd level into it. The weapon magically imparts to the wielder the name of the spell currently stored within it. A randomly rolled spell storing weapon has a 50% chance of having a spell stored in it already. This special ability can only be placed on melee weapons. A spell storing weapon emits a strong aura of the evocation school, plus the aura of the spell currently stored."
    }
   }
  },
@@ -385,28 +368,32 @@
    "item_name": "Belt of Giant Strength +6"
   },
   "body": {
-   "description": " this dapper robe enables a sorcerer to add the effects of her\r 1st-level bloodline power to spells she casts. As a swift action\r before casting a spell, the wearer expends one use of her\r 1st-level bloodline power and selects one target of the spell\r to be affected by that bloodline power. If the spell allows a\r saving throw, a successful save against the spell means the\r bloodline power deals half damage (if it normally deals hit\r point damage) or is negated (if it does not). The robe can be\r used up to three times per day. ",
-   "item_name": "Sorcerer's Robe"
+   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
+   "item_name": "Glorious Tabard, Lesser"
   },
   "chest": {
-   "description": " this black linen tunic has simple brass buttons. Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. This damage cannot be reduced or redirected, and if the wielder is incapable of sacrificing hit points, the damage to the ally cannot be prevented. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement. ",
-   "item_name": "Shadowbond Tunic"
+   "description": " carefully embroidered black leather makes up this stylish bandolier, which can hold as many as 12 daggers, vials, or similarly shaped items. The wearer of a pickpocket's bandolier opposes sleight of hand checks attempt against her with her own sleight of hand checks (instead of perception). Additionally, as a swift action after succeeding at a sleight of hand check, the wearer can stuff stolen goods (of size tiny or smaller) into one of the slots on the pickpocket's bandolier , making the purloined object appear to be a simple dagger. Only a careful examination of the bandolier reveals the true nature of items concealed in this manner. ",
+   "item_name": "Pickpocket's Bandolier"
   },
   "eyes": {
-   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. These large goggles feature adjustable lenses. When calibrated correctly, they sense the thoughts of a particular creature and send them into the wearer's mind. If the wearer spends 3 rounds studying a creature, spending a standard action each round to calibrate the lenses, she may scan a target's surface thoughts as if she had spent 3 rounds studying the target with detect thoughts . The target can attempt a dc 13 will save to negate the effect. The wearer must spend three consecutive standard actions each time she wishes to read the mind of a new creature. If the wearer is an android, he can spend a nanite surge to immediately detect surface thoughts instead of concentrating for 3 rounds. ",
-   "item_name": "Eyes of Mind Reading"
+   "description": " this lens, mounted in a round electrum frame, fits snugly over the wearer's eye. Upon donning the monocle, the user sees a swirl of arcane sigils through the lens, but the sensation quickly fades. The monocle allows the user to decipher magical inscriptions, as per read magic once worn for 24 consecutive hours, an eldritch scholar's monocle also protects the user from anything dangerous to read or view. While wearing the monocle, whenever the user triggers a curse effect, an effect that causes sanity loss, or a magic trap (such as explosive runes or sepia snake sigil) simply by reading or viewing an object, the monocle's glass starts shaking, pulling the wearer's attention away from the dangerous details in the object. This allows the wearer to roll any saving throw against such an effect twice and take the better result. This effect functions only once per day. For the remainder of the day, everything viewed through the lens appears blurred and distorted, and the read magic effect no longer functions. ",
+   "item_name": "Eldritch Scholar's Monocle"
   },
   "feet": {
    "description": " as a free action, the wearer of boots\r of speed can click her heels together, \r letting her act as though affected by\r a haste spell for up to 10 rounds each\r day. The haste effect's duration need\r not be consecutive rounds. ",
    "item_name": "Boots of Speed"
   },
   "hands": {
-   "description": " these gloves of thick leather do not impair delicate work and grant a +4 competence bonus on disable device checks to disable magic traps. Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day. ",
-   "item_name": "Saboteur's Gloves"
+   "description": " these supple beige calfskin gloves greatly enhance a thief's\r talents. The wearer gains a +5 competence bonus on sleight of\r hand checks. ",
+   "item_name": "Gloves of Larceny"
   },
   "head": {
-   "description": " a wearer can remove this mask as a move action to change his appearance as if using disguise self . The effect persists for 10 minutes. A vigilante can instead remove a quick-change mask to switch his identity as a move action. If the mask is used in this way, the effect functions just like changing identities normally (except faster), and doesn't have a limited duration. Regardless of which way he is using a quick-change mask , the user can attempt a bluff check to create a diversion so he can use stealth as part of the same move action he uses to activate the mask. The mask dissolves when used. ",
-   "item_name": "Quick-Change Mask"
+   "description": " this soft cap helps the wearer free herself from outside\r influences. Once per day, when the wearer fails a saving throw against a mind-affecting effect, she can reroll the save and take the second result. ",
+   "item_name": "Cap of the Free Thinker"
+  },
+  "headband": {
+   "description": " this tied headband helps the wearer focus his ki more\r effectively. Whenever the wearer spends ki points to make\r an additional attack, that attack roll gains a +1 insight bonus\r (+2 if the wearer is using a ki focus weapon with that attack). \r furthermore, the wearer of a headband of ki focus is immune\r to the ninja's ki block trick or similar effects that block the\r wearer from using ki points. ",
+   "item_name": "Headband of Ki Focus"
   },
   "neck": {
    "description": " this amulet, usually containing some\r type of magically preserved monster\r hide or other natural armorsuch as\r bone, horn, carapace, or beast scales\r toughens the wearer's body and flesh, \r giving him an enhancement bonus\r to his natural armor from +1 to +5, \r depending on the kind of amulet. ",
@@ -419,6 +406,10 @@
   "shoulders": {
    "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). ",
    "item_name": "Cloak of Resistance +5"
+  },
+  "wrist": {
+   "description": " these thick brass and leather bracers allow the wearer\r to tear through bone and muscle like paper. Once per\r day, as part of a melee attack, the wearer can activate\r the bracers to inflict a horrific injury on an opponent. If\r the attack hits, the target must make a dc 14 will save. \r if the save fails, the wand reduces the target's strength, \r dexterity, or constitution (wearer's choice) by 6. This\r penalty cannot reduce the target's ability score below 1. \r the injury heals over time, reducing the penalty by 1 for\r each day that passes since the time of the injury, and is\r immediately removed by heal , regenerate , restoration , or\r any magic that can break a curse. ",
+   "item_name": "Bonebreaker Bracers"
   }
  },
  "equipment_list": [
@@ -427,14 +418,16 @@
   "Boots of Speed",
   "Ring of Protection +4",
   "Amulet of Natural Armor +3",
-  "Sorcerer's Robe",
-  "Shadowbond Tunic",
-  "Eyes of Mind Reading",
-  "Saboteur's Gloves",
-  "Quick-Change Mask"
+  "Pickpocket's Bandolier",
+  "Eldritch Scholar's Monocle",
+  "Gloves of Larceny",
+  "Cap of the Free Thinker",
+  "Headband of Ki Focus",
+  "Bonebreaker Bracers",
+  "Glorious Tabard, Lesser"
  ],
  "eye_color": [
-  "Amber"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -619,20 +612,20 @@
   "Run",
   "Mobility"
  ],
- "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Master Enchanter (rank 10)\n- Profession: Lamp Lighter (rank 10)\n- Profession: Grand Lorekeeper (rank 3)\n- Profession: Watch Underling (rank 8)\n- Known for: Cooking\n- Training: An average trainer who taught them Disorienting Maneuver, Urban Tracking\n- Training: An average trainer who taught them Shadow Strike, Catch Off-Guard\n- Training: An average trainer who taught them Improved Drag, Necromantic Affinity\n- Training: An average trainer who taught them Lastwall Phalanx, Cooperative Crafting\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 1 Older Brother\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Spiky Blond\n- Eyes: Amber\n- Build: Sassy",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Torag\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Roaring Mouse\n- Homeland: Tal-falko\n\nVocation\n- Profession: Master Enchanter (rank 10)\n- Profession: Lamp Lighter (rank 10)\n- Profession: Grand Lorekeeper (rank 3)\n- Profession: Watch Underling (rank 8)\n- Known for: Cooking\n- Training: An average trainer who taught them Disorienting Maneuver, Urban Tracking\n- Training: An average trainer who taught them Shadow Strike, Catch Off-Guard\n- Training: An average trainer who taught them Improved Drag, Necromantic Affinity\n- Training: An average trainer who taught them Lastwall Phalanx, Cooperative Crafting\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- 1 Older Brother\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Touseled Blond\n- Eyes: Hazel\n- Build: Gap-toothed",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 110,
+ "gold": 200,
  "hair_color": [
   "Blond"
  ],
  "hair_type": [
-  "Spiky"
+  "Touseled"
  ],
  "height_number": "5'10\"",
- "hero_points": 2,
+ "hero_points": 3,
  "homebrew_feat_desc_dict": {
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
   "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
@@ -650,12 +643,12 @@
   "Lightning Reflexes": "You have faster ref lexes than normal",
   "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
   "Lunge": "You can strike foes that would normally be out of reach",
-  "Martial Training I (Primal Fury)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Primal Fury)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Primal Fury)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Primal Fury)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Primal Fury)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Primal Fury)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training I (Roaring Mouse)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Roaring Mouse)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Roaring Mouse)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Roaring Mouse)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Roaring Mouse)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Roaring Mouse)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
   "Middle Finger": "Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
   "Mobility": "You can easily move through a dangerous melee",
   "Multi Talented": "Your profession rank cap increases by 10.",
@@ -713,11 +706,29 @@
     }
    ]
   },
+  "Bonebreaker Bracers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Once per day, as part of a melee attack, the wearer can activate the bracers to inflict a horrific injury on an opponent. If the attack hits, the target must make a dc [[14]] will save. If the save fails, the wand reduces the target's strength, dexterity, or constitution (wearer's choice) by 6. This penalty cannot reduce the target's ability score below 1. The injury heals over time, reducing the penalty by 1 for each day that passes since the time of the injury, and is immediately removed by heal , regenerate , restoration , or any magic that can break a curse."
+    }
+   ]
+  },
   "Boots of Speed": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
     "As a free action, the wearer of boots of speed can click her heels together, letting her act as though affected by a haste spell for up to 10 rounds each day."
+   ]
+  },
+  "Cap of the Free Thinker": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "Once per day, when the wearer fails a saving throw against a mind-affecting effect, she can reroll the save and take the second result."
+    }
    ]
   },
   "Cloak of Resistance +5": {
@@ -732,11 +743,50 @@
    ],
    "contextNotes": []
   },
-  "Quick-Change Mask": {
+  "Eldritch Scholar's Monocle": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "The monocle allows the user to decipher magical inscriptions, as per read magic once worn for 24 consecutive hours, an eldritch scholar's monocle also protects the user from anything dangerous to read or view. This allows the wearer to roll any saving throw against such an effect twice and take the better result. This effect functions only once per day."
+    }
+   ]
+  },
+  "Glorious Tabard, Lesser": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +[[2]] sacred bonus to her ac and on saving throws for [[10]] minutes. In addition, whenever a greater glorious tabard is activated, all longswords within [[20]] feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for [[3]] rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5."
+    }
+   ]
+  },
+  "Gloves of Larceny": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.slt",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Headband of Ki Focus": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Whenever the wearer spends ki points to make an additional attack, that attack roll gains a +[[1]] insight bonus (+[[2]] if the wearer is using a ki focus weapon with that attack). Furthermore, the wearer of a headband of ki focus is immune to the ninja's ki block trick or similar effects that block the wearer from using ki points."
+    }
+   ]
+  },
+  "Pickpocket's Bandolier": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "A wearer can remove this mask as a move action to change his appearance as if using disguise self . The effect persists for 10 minutes. A vigilante can instead remove a quick-change mask to switch his identity as a move action. Regardless of which way he is using a quick-change mask , the user can attempt a bluff check to create a diversion so he can use stealth as part of the same move action he uses to activate the mask."
+    "Carefully embroidered black leather makes up this stylish bandolier, which can hold as many as 12 daggers, vials, or similarly shaped items. Additionally, as a swift action after succeeding at a sleight of hand check, the wearer can stuff stolen goods (of size tiny or smaller) into one of the slots on the pickpocket's bandolier , making the purloined object appear to be a simple dagger."
    ]
   },
   "Ring of Protection +4": {
@@ -750,67 +800,34 @@
     }
    ],
    "contextNotes": []
-  },
-  "Saboteur's Gloves": {
-   "changes": [
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dev",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.dev",
-     "text": "Once per day, a wearer trained in disable device can command the gloves to alter an unattended magic item she touches to incorporate a trap. The wearer attempts a caster level check using the higher of her caster level or the gloves' caster level (dc = 11 + the target item's caster level). If the check is successful, the target item is marked with a glyph of warding (blast glyph only) that lasts for up to 1 day."
-    }
-   ]
-  },
-  "Shadowbond Tunic": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement."
-   ]
-  },
-  "Sorcerer's Robe": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "This dapper robe enables a sorcerer to add the effects of her 1st-level bloodline power to spells she casts. As a swift action before casting a spell, the wearer expends one use of her 1st-level bloodline power and selects one target of the spell to be affected by that bloodline power. If the spell allows a saving throw, a successful save against the spell means the bloodline power deals half damage (if it normally deals hit point damage) or is negated (if it does not)."
-    }
-   ]
   }
  },
  "known_list": [],
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Sylvan",
-  "Gnoll",
-  "Sphinx",
-  "Draconic",
-  "Drow Sign Language",
   "Grippli",
-  "Undercommon",
+  "Sphinx",
+  "Gnoll",
   "Dwarven",
   "Kelish",
   "Orc",
-  "Ignan",
-  "Giant",
-  "Gnome",
-  "Infernal",
-  "Elven",
-  "Abyssal",
-  "Aquan",
-  "Auran",
-  "Celestial",
   "Tengu",
-  "Protean",
-  "Wayang"
+  "Ignan",
+  "Halfling",
+  "Abyssal",
+  "Celestial",
+  "Giant",
+  "Auran",
+  "Gnome",
+  "Sylvan",
+  "Undercommon",
+  "Infernal",
+  "Aklo",
+  "Terran",
+  "Wayang",
+  "Draconic",
+  "Protean"
  ],
  "level": 16,
  "level_up_stats": {
@@ -924,144 +941,144 @@
  "main_stat": "str",
  "maneuvers_choose_from": [
   [
-   "Crushing Blow",
-   "Panthera on the Hunt"
+   "Give Me a Hand",
+   "Over and Under"
   ],
   [
-   "Bloody Riposte",
-   "Crippling Strike"
+   "Distraction Strike",
+   "Nimble Mouse"
   ],
   [
-   "Disparity Blow",
-   "Frenzy Strike"
+   "Cat Takes the Rat",
+   "Two for One"
   ],
   [
-   "Impaling Strike"
+   "All According to Plan"
   ],
   [
-   "Dizzying Blow"
+   "Rat in a Cage"
   ],
   [
-   "Charge of the Battle Panthera"
+   "Bell the Cat"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Bloody Riposte": {
-   "action": "1 immediate action",
-   "description": "Stoking the furnace of rage within him upon receiving injury, the disciple uses the momentary lapse in his attackers defenses when struck in combat to make a vicious riposte. Upon being struck in combat by an enemy, the initiator may make an immediate counter attack at his full base attack bonus that inflicts an additional 2d6 points of damage.",
-   "discipline": "Primal Fury",
+  "All According to Plan": {
+   "action": "1 swift action",
+   "description": "You set up a brilliant plan for your allies to execute. Select a number of allies up to your initiation modifier within range. They may make a single attack against any one creature with the tricked condition that they threaten. Ranged attackers may make an attack against any tricked creature within Close range of you.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
+   "level": 4,
+   "range": "Close 25 ft. + 5ft./2 levels",
+   "type": "boost"
   },
-  "Charge of the Battle Panthera": {
-   "action": "1 full round action",
-   "description": "With a running start that ends in a blood-drenched finish, the disciple mimics the final moments of the hunting great cat as he delivers the death blow to his prey. The initiator makes a charge attack against a target, and if successful he inflicts an additional 12d6 points of damage and the target must make a Reflex save DC 16 + initiation modifier or be knocked prone.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
+  "Bell the Cat": {
+   "action": "1 standard action",
+   "description": "Who will bell the cat? You, thats who. Make an attack. If it hits, it deals damage as normal plus an additional 5d6 damage. Additionally, you may make an Escape Artist check against the targets CMD. If successful, they are tricked for a number of rounds equal to your initiation modifier and this strike gains an extra effect of your choice. Exploit: The blinded or deafened condition is permanent, and must be healed with magic that would cure such ailments or a Heal check with a DC equal to 15 + your initiator level. This Heal check takes 10 minutes to complete.",
+   "discipline": "Roaring Mouse",
+   "duration": "Instantaneous see text",
    "level": 6,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Crippling Strike": {
+  "Cat Takes the Rat": {
+   "action": "1 swift action",
+   "description": "Its not nice to play with your food, but that never stopped you. Upon initiating this boost, select one opponent with the tricked condition within range. The next successful attack within 1 round against them deals an extra 3 damage per round of the tricked condition they have remaining at the time you initiated this boost, to a maximum of 3 times your initiator level. Exploit: The maximum limit of extra damage is doubled, to 6 times your initiator level. Upon using this exploit, the target is immune to this exploit for two rounds.",
+   "discipline": "Roaring Mouse",
+   "duration": "1 round",
+   "level": 3,
+   "range": "Close 25 ft. + 5ft./2 levels",
+   "type": "boost"
+  },
+  "Clever Cat Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 25 + 5*floor(@attributes.hd.total/2)\n\nYour movements set your foes on edge, distracting them and preventing them from using their abilities to the fullest. As long as you maintain this stance, you and all allies within Close range 25 feet + 5 feet per 2 initiator levels gain a bonus equal to your initiation modifier to AC, skill checks, and on saving throws against attacks and effects from tricked enemies. Alternatively, you can enter a reversed version of this stance. If you do so, your tricked foes within range suffer a penalty equal to your initiation modifier on AC, skill checks, and saving throws. If you exploit a foe while they are affected by this stance, the penalty does not end until the exploit is complete. You may reverse or revert this stances effects with a swift action, as if taking a different stance. If you do so, the previous effect immediately ends.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal see text",
+   "type": "stance"
+  },
+  "Crouching Lion": {
+   "action": "1 swift action",
+   "description": "You move with a strange grace, befuddling your enemies. While maintaining this stance, any Roaring Mouse maneuvers with durations greater than instantaneous last for 1 round longer than normal including the duration of effects or conditions imparted by these maneuvers. This increases by 1 additional round for every 6 initiator levels you have. The maneuver must be performed while you are in this stance, and if you leave it, this effect immediately ends. In addition, any creature you hit with a melee weapon including natural weapons becomes tricked for a number of rounds equal to your initiation modifier. This stances effect resolves after other effects relating to the attack such as strikes or weapon properties.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Distraction Strike": {
    "action": "1 standard action",
-   "description": "By specifically targeting a victims most vulnerable areas, the disciple is capable of rending arterial injuries into his foe. The initiator initiating this maneuver inflicts an additional 2d6 points of damage upon a successful melee attack, and his victim gains the bleeding condition suffering 1d3 points of damage per round until the application of any spell or effect that cures hit point damage or someone staunches the blood with a DC 15 Heal check.",
-   "discipline": "Primal Fury",
+   "description": "Your antics give your allies a juicy target. Make a melee attack. If successful, you deal an additional 1d6 damage, trick your target for a number of rounds equal to your initiation modifier, and one ally within Close range can make an attack against your target. Your ally must be threatening the target to make a melee attack, otherwise they must make a ranged attack. Ranged attacks made by your ally do not provoke from the target of this strike, but may provoke from other creatures. Your ally may not benefit from this strike more than once per round, regardless of the source. Exploit: Your ally may perform any standard action in place of making an attack, so long as that standard action targets the target of this strike or includes them in its area of effect. Spells, powers, and spell-like or psi-like abilities used by your ally do not provoke from the target of this strike, but may provoke from other creatures. Your ally is staggered after benefitting from this exploit. Upon using this exploit, the target is immune to this exploit for one round.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
    "level": 2,
-   "range": "Melee attack",
+   "range": "Melee attack see text",
    "type": "strike"
   },
-  "Crushing Blow": {
+  "Give Me a Hand": {
+   "action": "1 swift action",
+   "description": "You know how to gang up on your enemies, using your allies to your advantage. Upon initiating this boost, you and your allies are considered to be flanking any foe so long as you are adjacent to them, regardless of your actual position. Additionally, if your ally is maintaining a Roaring Mouse stance, you both gain a +2 bonus on attacks against the foe that you are flanking.",
+   "discipline": "Roaring Mouse",
+   "duration": "One round",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Nimble Mouse": {
+   "action": "1 swift action",
+   "description": "Armor means nothing, if you know the weak points. After you initiate this boost, the next melee attack you make against a tricked creature until the start of your next turn is resolved against touch AC.",
+   "discipline": "Roaring Mouse",
+   "duration": "One round",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Over and Under": {
    "action": "1 standard action",
-   "description": "By bringing his weapon high and bringing it down with ferocious finality, the disciples forceful blow is enough to weaken the defenses of his foe momentarily. The initiator makes an attack and if successful, the strike inflicts an additional 1d6 points of damage and may potentially render his foe flat-footed until its next turn on a failed Fortitude save DC 11 + initiation modifier.",
-   "discipline": "Primal Fury",
+   "description": "You use your trickery to your advantage, either striking a foe in a vulnerable spot or knocking them down. Make a melee attack. If it hits, gain an extra effect of your choice.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
    "level": 1,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Disparity Blow": {
-   "action": "1 standard action",
-   "description": "With a powerful upswing, the Primal Fury disciple brings his weapon in low and with his attack drives his opponent to the ground as he raises it high to show his superiority. The initiator makes a melee attack and if successful, inflicts an additional 2d6 points of damage and may make an immediate trip attack against the target with a +4 circumstance bonus. This trip attempt does not provoke attacks of opportunity.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
+  "Pussyfoot Stance": {
+   "action": "1 swift action",
+   "description": "You are always just out of sight, striking where your foes least expect it. While maintaining this stance you can share the space of allies. Doing so does not incur the normal penalties for sharing space on either you or your ally. While doing so, you gain concealment 20% miss chance against opponents and count as flanking with that ally. This concealment allows you to use Stealth and other abilities that depend on concealment, so long as that ally is visible and not using Stealth themself. If your ally is also maintaining a Roaring Mouse stance, your concealment cannot be pierced by effects that allow foes to ignore concealment. Finally, regardless of whether you are sharing space with an ally, any foes hit by your attacks are tricked for a number of rounds equal to your initiation modifier.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
    "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
+   "range": "Personal",
+   "type": "stance"
   },
-  "Dizzying Blow": {
-   "action": "1 full around action",
-   "description": "The disciple of the Primal Fury rockets across the battlefield to unleash a powerful strike to the vitals of his foe, leaving him agonized and sick with pain. The initiator makes a charge attack against a target creature, if successful the attack inflicts an additional 10d6 points of damage and the target must make a Fortitude save DC 15 + initiation modifier or be nauseated for 1d4 rounds.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
+  "Rat in a Cage": {
+   "action": "1 standard action",
+   "description": "You show your foes just what its like being helpless and alone. Make a melee attack. If successful, you deal an additional 4d6 damage. Additionally, make an Escape Artist check with a DC equal to the targets CMD. If successful, your foe is entangled and rooted to their current position and cannot move for 1d4 rounds. Exploit: The target cannot treat any creature as an ally for a number of rounds equal to your initiation modifier. You do not need to succeed at the Escape Artist check to use this exploit.",
+   "discipline": "Roaring Mouse",
+   "duration": "Instantaneous see text",
    "level": 5,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Frenzy Strike": {
+  "Swarming Stance": {
+   "action": "1 swift action",
+   "description": "You have absolutely no regard for personal space, especially your foes. While maintaining this stance, you can share the space of any opponent whose size differs from yours and can enter their space without provoking an attack of opportunity. Doing so does not incur the normal penalties for sharing space on you, however, it does incur these penalties on your opponent for reference, the standard penalties are -4 to attack and AC even if you or your opponent is small enough that they would not normally incur any penalties for sharing space. While doing so, any opponent whose space you are sharing is considered to be flanked by you as long as one of your allies is threatening them. Your opponent is considered to have any Betrayal feats you possess, and you may use them as an abettor. If your opponent is also maintaining a Roaring Mouse stance, however, they may use you as an abettor for any Betrayal feats you possess, though they do not know what those feats are unless they have seen them in action. If your opponent moves, you may stay within their space so long as the movement does not exceed your maximum movement. Any movement made to stay with your opponent subtracts from your maximum movement on your turn.",
+   "discipline": "Roaring Mouse",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Two for One": {
    "action": "1 standard action",
-   "description": "By emulating the ferocious assault of a raging great cat, the disciples knowledge of the natural world and the way its predators operate assists him in combat with a furious set of attacks. The initiator makes one attack with each weapon he has wielded or with both heads of a double weapon; this includes natural attacks and armor or shield spikes at his full base attack bonus. Upon a each successful attack, the initiator inflicts an additional 2d6 points of damage.",
-   "discipline": "Primal Fury",
+   "description": "Youre so generous, you give you foes plenty of attention. When you initiate this strike, you may make two attacks. You may make both against one creature or one each against two creatures. Exploit: You may make two attacks each against two creatures. Both creatures you target must have the tricked condition in order to use this exploit against them.",
+   "discipline": "Roaring Mouse",
    "duration": "Instantaneous",
    "level": 3,
    "range": "Melee attack",
    "type": "strike"
-  },
-  "Impaling Strike": {
-   "action": "1 standard action",
-   "description": "The disciple who has reached this level of mastery in the art of Primal Fury has learned that by striking to a foes heart and center with a singular but powerful blow, it causes the foes ability to withstand punishment to falter. The initiator makes an attack against his target and if successful, inflicts an additional 4d6 points of damage to this attack which ignores damage reduction. The target must make a Fortitude save DC 14 + primary initiation modifier or suffer an additional 1d4 points of Constitution damage from being hit in a vital area. Targets immune to critical hits are not subject to this Constitution damage.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Panthera on the Hunt": {
-   "action": "1 full round action",
-   "description": "With a deep breath and the tightening of honed muscles, the Primal Fury disciple may launch off into a lightning-fast charge. The initiator initiating this maneuver gains +2 circumstance bonus to attack and damage rolls on his charge attack, and ignores attacks of opportunity from moving through threatened squares.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Primal Warrior Stance": {
-   "action": "1 swift action",
-   "description": "By taking a wide stance that invites the death of any before him, the mighty disciple of Primal Fury wields the power of overwhelming force to its greatest effects. The initiator ignores difficult terrain when charging while in this stance, and whenever he is subject to a size modifier for CMB checks or to his CMD, the disciple is treated as one size category larger if doing so would be advantageous to him. He is also considered to be one size larger when determining whether a creatures special attacks based on size such as grab or swallow whole can affect him. Additionally, any melee weapon, unarmed strike, or natural weapon is treated as if it were two sizes larger. The benefits of this stance stack with abilities or effects that increase the initiators size such asenlarge person.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Running Hunters Stance": {
-   "action": "1 swift action",
-   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Skirmishers Stance": {
-   "action": "1 swift action",
-   "description": "By adopting a hit-and-run attitude, the disciple of Primal Fury disciple moves swiftly and strikes with deadly force. While in this stance, if the initiator moves 10-ft. or more on his turn, attacks made by him inflict an additional 2d6 points of damage and he gains a +2 dodge bonus to his Armor Class.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Stance of Aggression": {
-   "action": "1 swift action",
-   "description": "By focusing his fury on the ending of his foes, the disciple forgoes finesse for devastating power. While in this stance, the initiator suffers a -2 penalty on his AC but any successful attack inflicts an additional 1d6 points of damage. This damage bonus increases by 1d6 every eight initiator levels.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
   }
  },
  "maneuvers_known_list": [
@@ -1083,20 +1100,20 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Bloody Riposte"
+   "Distraction Strike"
   ],
   [
-   "Disparity Blow",
-   "Frenzy Strike"
+   "Cat Takes the Rat",
+   "Two for One"
   ],
   [
-   "Impaling Strike"
+   "All According to Plan"
   ],
   [
-   "Dizzying Blow"
+   "Rat in a Cage"
   ],
   [
-   "Charge of the Battle Panthera"
+   "Bell the Cat"
   ]
  ],
  "manifesters": [],
@@ -1106,14 +1123,14 @@
   "Clenches fists"
  ],
  "martial_disciplines": [
-  "Primal Fury"
+  "Roaring Mouse"
  ],
  "mini_alignment": "lg",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Primal Fury)",
-  "Martial Training III (Primal Fury)",
-  "Martial Training V (Primal Fury)"
+  "Martial Training I (Roaring Mouse)",
+  "Martial Training III (Roaring Mouse)",
+  "Martial Training V (Roaring Mouse)"
  ],
  "mythic": null,
  "normal_feat_amount": 9,
@@ -1127,7 +1144,7 @@
   "Selfish",
   "Fearsome"
  ],
- "platnium": 11.0,
+ "platnium": 20.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1477,41 +1494,35 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Overcharge",
-  "Empowered Abilities",
+  "Fortified Casting",
   "Easy Focus",
-  "Fortified Casting"
+  "Empowered Abilities"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Prepared Caster",
-  "Material Casting",
   "Magical Signs",
-  "Somatic Casting",
   "Extended Casting",
-  "Addictive Casting"
+  "Addictive Casting",
+  "Prepared Caster"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Prepared Caster",
-  "Material Casting",
   "Magical Signs",
-  "Somatic Casting",
   "Extended Casting",
   "Addictive Casting",
-  "Overcharge",
-  "Empowered Abilities",
+  "Prepared Caster",
+  "Fortified Casting",
   "Easy Focus",
-  "Fortified Casting"
+  "Empowered Abilities"
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Stance of Aggression",
-  "Primal Warrior Stance",
-  "Skirmishers Stance",
-  "Running Hunters Stance"
+  "Crouching Lion",
+  "Pussyfoot Stance",
+  "Swarming Stance",
+  "Clever Cat Stance"
  ],
  "story_feat_tax_dict": {
   "Furious Focus": [
@@ -1571,8 +1582,8 @@
  ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Fate-Stealing",
-  "Jurist"
+  "Spell Storing",
+  "Seaborne"
  ],
  "weapon_name": "Greatsword",
  "weight_number": 221,

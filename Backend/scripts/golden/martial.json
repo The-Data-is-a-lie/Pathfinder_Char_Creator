@@ -11,9 +11,7 @@
  "armor_ac": "8",
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 5,
- "armor_enhancement_chosen_list": [
-  "Shadow"
- ],
+ "armor_enhancement_chosen_list": [],
  "armor_max_dex_bonus": "0",
  "armor_name": "Half-plate",
  "armor_spell_failure": "40%",
@@ -31,8 +29,8 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "Man-at-Arms",
- "build_tactics": "Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.",
+ "build_archetype": "AC Tank",
+ "build_tactics": "Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.",
  "c_class": "fighter",
  "c_class_2": "",
  "c_class_display": "Fighter",
@@ -326,56 +324,77 @@
  "deity_name": "Erastil",
  "dex": 16,
  "enhancement_effects_dict": {
-  "armor": {
-   "Shadow": {
-    "changes": [
-     {
-      "formula": "5",
-      "operator": "add",
-      "priority": 0,
-      "target": "skill.ste",
-      "type": "competence"
-     }
-    ],
-    "contextNotes": [],
-    "description": "This armor blurs the wearer whenever she tries to hide, while also dampening the sound around her, granting a +5 competence bonus on Stealth checks. The armor's armor check penalty still applies normally."
-   }
-  },
   "weapon": {
-   "Ghost Touch": {
+   "Shock": {
     "conditionals": [
      {
       "default": true,
-      "modifiers": [],
-      "name": "Ghost Touch: deals full damage to incorporeal creatures; can be wielded by them"
+      "modifiers": [
+       {
+        "critical": "nonCrit",
+        "damageType": [
+         "electric"
+        ],
+        "formula": "1d6",
+        "subTarget": "allDamage",
+        "target": "damage",
+        "type": "untyped"
+       }
+      ],
+      "name": "Shock"
      }
     ],
-    "description": "A ghost touch weapon deals damage normally against incorporeal creatures, regardless of its bonus. An incorporeal creature's 50% reduction in damage from corporeal sources does not apply to attacks made against it with ghost touch weapons. The weapon can be picked up and moved by an incorporeal creature at any time. A manifesting ghost can wield the weapon against corporeal foes. Essentially, a ghost touch weapon counts as both corporeal or incorporeal. This special ability can only be placed on melee weapons and ammunition."
+    "description": "Upon command, a shock weapon is sheathed in crackling electricity that deals an extra 1d6 points of electricity damage on a successful hit. The electricity does not harm the wielder. The effect remains until another command is given."
    },
-   "Skewering": {
+   "Spirit-Hunting": {
     "conditionals": [
      {
       "default": false,
-      "modifiers": [],
-      "name": "Skewering: (light/one-handed piercing) on a critical threat, spend [[1]] panache as an immediate action to auto-confirm the crit (no panache regained for confirming)"
+      "modifiers": [
+       {
+        "critical": "normal",
+        "damageType": [],
+        "formula": "2",
+        "subTarget": "allAttack",
+        "target": "attack",
+        "type": "enh"
+       },
+       {
+        "critical": "crit",
+        "damageType": [],
+        "formula": "2",
+        "subTarget": "allAttack",
+        "target": "attack",
+        "type": "enh"
+       },
+       {
+        "critical": "nonCrit",
+        "damageType": [],
+        "formula": "2d6",
+        "subTarget": "allDamage",
+        "target": "damage",
+        "type": "untyped"
+       }
+      ],
+      "name": "Spirit-Hunting: only vs the designated foe with a mystery or spirit class feature — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/blood-hunting don't stack but each such ability past the first adds +[[1d6]] damage"
      }
     ],
-    "description": "This special ability can be placed only on light or one-handed piercing melee weapons. Weapons with this enhancement are particularly devastating in the hands of a swashbuckler. Anytime the weapon threatens a critical hit, the wielder can spend 1 panache point as an immediate action to automatically confirm the critical hit. When the swashbuckler confirms a critical hit in this fashion, she doesn't regain panache for confirming the critical hit, though she can regain panache normally if the attack is a killing blow."
+    "description": "A spirit-hunting weapon excels against enemies with either the mystery or spirit class feature (but has no effect against a shaman who has a temporary bond to the appropriate spirit by way of the wandering spirit class feature or similar effect). Against a designated foe, the weapon's enhancement bonus is 2 better than its actual bonus. It also deals 2d6 additional points of damage against such foes. When combined with abilities like bane or blood-hunting , the enhancement bonus increases granted by these abilities do not stack, but an additional 1d6 points of damage are added to the additional damage for each special ability beyond the first. (For example, a bane spirit-hunting weapon would deal 3d6 additional points of damage, and a bane blood-hunting spirit-hunting weapon would deal 4d6 additional points of damage.) To randomly determine a weapon's designated foe, roll on the following table. Other designated foes are possible, but most of these weapons are tuned against creatures with the following mysteries or spirits. d% Designated Foe 01–10 Battle 11–20 Bones 21–30 Flame 31–40 Heavens 41–50 Life 51–60 Lore 61–70 Nature 71–80 Stone 81–90 Waves 91–00 Wind"
    }
   }
  },
  "equip_descrip": {
   "belts": {
-   "description": " this belt functions as a plague rat belt , except it grants\r the wearer a +2 enhancement bonus to dexterity and\r constitution. Treat this as a temporary ability bonus for the\r first 24 hours the belt is worn. ",
-   "item_name": "Plague Rat Belt, Greater"
+   "description": " this belt is worked with images of horses stampeding across\r a barren, windswept plain. The belt's wearer automatically\r succeeds at any check to guide with the knees, stay in the\r saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's\r wearer is wearing medium, light, or no armor. Furthermore, \r the belt grants a +4 competence bonus on all other ride checks, \r including ones made while the wearer is in heavy armor. ",
+   "item_name": "Equestrian Belt"
   },
   "body": {
-   "description": " this black corset fits neatly beneath armor. As a free action, \r the wearer can compress herself to fit through tight spaces\r as though affected by a squeeze spell (advanced race\r guide) for up to 10 rounds per day. While using the corset's\r magic, she gains a +5 bonus on escape artist checks. ",
-   "item_name": "Corset of the Vishkanya"
+   "description": " this normal-appearing garment is\r attuned to one of three types of\r alignment. It can be white (0145 on\r d%, good alignment), gray (4675, \r neither good nor evil alignment), or\r black (76100, evil alignment). To most\r wearers, the robe offers no powers\r or has no effects unless the wearer's\r alignment doesn't match that of the\r robe (see below). Only an arcane spellcaster can fully realize\r this potent magic item's powers once the robe is donned. \r these powers are as follows. +5 armor bonus to ac\r spell resistance 18\r +4 resistance bonus on all saving throws\r +2 enhancement bonus on caster level checks made to\r overcome spell resistance if a white robe is donned by an evil character, she\r immediately gains three permanent negative levels. The\r same is true with respect to a black robe donned by a good\r character. An evil or good character who puts on a gray\r robe, or a neutral character who dons either a white or black\r robe, gains two permanent negative levels. These negative\r levels remain as long as the garment is worn and cannot be\r overcome in any way (including through restoration spells). \r negative levels are immediately removed if the robe is\r removed from the wearer. ",
+   "item_name": "Robe of the Archmagi"
   },
   "chest": {
-   "description": " this black linen tunic has simple brass buttons. Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. This damage cannot be reduced or redirected, and if the wielder is incapable of sacrificing hit points, the damage to the ally cannot be prevented. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement. ",
-   "item_name": "Shadowbond Tunic"
+   "description": " this stylish silk shirt has a loose and flowing fit except for the sleeves, which cling snugly to the wearer's arms from elbow to wrist. The sleeves guide the wearer's attacks to take advantage of brief gaps in a foe's defenses. Five times per day, the wearer can make a lunging melee maneuver and extend his reach by 5 feet for a single melee attack. If the wearer has the lunge feat, he can instead use that feat five times per day without taking the normal 2 penalty. ",
+   "item_name": "Swordmaster's Shirt"
   },
   "eyes": {
    "description": " these nondescript, brass-rimmed spectacles have green-tinted lenses and are favored by practicing doctors and adventurers alike. When worn, they grant the wearer a constant awareness of poisons and diseases as the detect poison and diagnose disease spells. Also, once per day on command the wearer can touch a single creature to use delay poison on that creature. ",
@@ -394,20 +413,16 @@
    "item_name": "Helm of Electric Radiance"
   },
   "headband": {
-   "description": " this plain white band makes the wearer seem more\r attractive. The wearer gains a +2 competence bonus on\r charisma-based checks with other members of his creature\r type. If the wearer is of the humanoid type, he gains a +5\r competence bonus on creatures of his subtype instead. Once\r per day, the wearer can attempt to affect a creature as the\r spell unnatural lust (ultimate magic) but with a duration of\r 10 minutes. ",
-   "item_name": "Headband of Seduction"
+   "description": " this simple yet elegant silver headband mentally warns the wearer before she commits a social misstep, which includes any action that would increase the dcs of diplomacy checks to alter the attitudes of those around her or worsen the attitude of a person that the wearer considers very important. This effect functions similarly to that of a phylactery of faithfulness , except no contemplation is required; the headband simply alerts the wearer of the consequences before she can perform the action. ",
+   "item_name": "Headband of Social Competence"
   },
   "neck": {
-   "description": " a stormlure is usually fashioned from pieces of creatures\r known for their affinity to airthe feathers of birds, the\r shells of flying insects, and the scales of a dragon. When\r activated, stormlures call to the wind, causing a tempestuous\r gale. Once per day on command, the wearer of a stormlure is\r surrounding by swirling winds for 1 minute, granting a 50%\r miss chance against all ranged attacks, including rays and\r other ranged spells that require a roll to hit. This wind does\r not hinder the wearer of the stormlure in any way. At any\r one time during this duration, as a swift action, the wearer\r can cause the air around her to fill with crackling lightning, \r dealing 4d6 points of electricity damage to all creatures\r adjacent to her. A dc 14 reflex save halves this damage. ",
-   "item_name": "Stormlure"
-  },
-  "rings": {
-   "description": "This gold ring resembles tiny angel wings folded around a clear crystal. Once per day, the wearer can target herself with a protection from chaos or protection from law effect that lasts for 10 minutes. However, if the wearer uses the ring of entropy and order to gain protection from chaos while on a plane with the mildly chaos-aligned or strongly chaos-aligned trait, or to gain protection from law while on a plane with the mildly law-aligned or strongly law-aligned trait, the effect instead lasts for 1 hour. If the wearer fails a saving throw against a charm or compulsion effect while on a plane with the mildly chaos-aligned, mildly law-aligned, strongly chaos-aligned, or strongly law-aligned traits, she can activate the effect as an immediate action.",
-   "item_name": "Ring of Entropy and Order"
+   "description": " a hand-sized clay rebus of the master of masters (see the sidebar on page 86 for more information on irori's rebus), sometimes inlaid with copper or tiny gemstones, hangs from this braided hair necklace. It is normally worn under clothing against the skin, and grants the wearer a +2 resistance bonus on saving throws against disease and poison. Once per day, the wearer can use purify food and drink , cleansing 1 cubic foot of food and water. ",
+   "item_name": "Purification Talisman"
   },
   "shoulders": {
-   "description": " this silvery cape furls and ripples\r like a flag with every step its\r owner takes. As a swift action, \r the wearer can order the cape to\r transform into a faint sphere of\r force that surrounds him on all\r sides. The field grants the wearer\r concealment (20% miss chance)\r against ranged attacks and lasts for 1 minute or until the\r wearer is missed by a ranged attack due to the power of the\r cloak, whichever comes first. When the field is used, all magic\r is lost from the cloak, leaving only a mundane silvery garment. ",
-   "item_name": "Catching Cape"
+   "description": " this plain cloak only has any effect when worn by a member\r of a half-human race, such as a Half-Orc or Half-Elf. It alters\r the wearer's appearance similarly to a hat of disguise , but\r only to the extent that it conceals or alters the wearer's nonhuman\r physical traits so the creature appears fully human. \r any feature that is plausibly human remains. For example, \r a Half-Orc wearing the cloak loses his green or gray skin\r color and pointed ears, has no visible tusks, and is otherwise\r completely able to pass as a human version of his normal\r self. Likewise, a Half-Elf wearing the cloak has round ears, \r humanlike eyes, and no other traits indicating elven ancestry. \r the wearer has no control over the specific guise, and those\r familiar with his normal appearance can recognize him in his\r human guise. ",
+   "item_name": "Cloak of Human Guise"
   },
   "wrist": {
    "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
@@ -415,17 +430,16 @@
   }
  },
  "equipment_list": [
-  "Plague Rat Belt, Greater",
-  "Corset of the Vishkanya",
-  "Shadowbond Tunic",
+  "Equestrian Belt",
+  "Robe of the Archmagi",
+  "Swordmaster's Shirt",
   "Physician's Spectacles",
   "Daredevil Softpaws",
   "Hand Wraps of Blinding Ki",
   "Helm of Electric Radiance",
-  "Headband of Seduction",
-  "Stormlure",
-  "Ring of Entropy and Order",
-  "Catching Cape",
+  "Headband of Social Competence",
+  "Purification Talisman",
+  "Cloak of Human Guise",
   "Sleeves of Many Garments"
  ],
  "eye_color": [
@@ -532,12 +546,12 @@
   "Simple Weapon Proficiency",
   "Desperate Battler"
  ],
- "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Man-at-Arms\n- Tactics: Fights the way it drilled: hold the line, strike the enemy in front of you, keep your shield up and your footing. No tricks, no gimmick -- just a professional doing soldier's work.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Spectacled",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: AC Tank\n- Tactics: Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Spectacled",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 500,
+ "gold": 600,
  "hair_color": [
   "Blond"
  ],
@@ -586,24 +600,6 @@
  "initiator_level": 0,
  "int": 10,
  "item_changes_dict": {
-  "Catching Cape": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "As a swift action, the wearer can order the cape to transform into a faint sphere of force that surrounds him on all sides. The field grants the wearer concealment (20% miss chance) against ranged attacks and lasts for [[1]] minute or until the wearer is missed by a ranged attack due to the power of the cloak, whichever comes first."
-    }
-   ]
-  },
-  "Corset of the Vishkanya": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.esc",
-     "text": "As a free action, the wearer can compress herself to fit through tight spaces as though affected by a squeeze spell (advanced race guide) for up to [[10]] rounds per day. While using the corset's magic, she gains a +[[5]] bonus on escape artist checks."
-    }
-   ]
-  },
   "Daredevil Softpaws": {
    "changes": [],
    "contextNotes": [
@@ -617,29 +613,21 @@
     }
    ]
   },
+  "Equestrian Belt": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.rid",
+     "text": "Furthermore, the belt grants a +[[4]] competence bonus on all other ride checks, including ones made while the wearer is in heavy armor."
+    }
+   ]
+  },
   "Hand Wraps of Blinding Ki": {
    "changes": [],
    "contextNotes": [
     {
      "target": "attack",
      "text": "When the wearer spends ki to make an additional attack, he can spend 1 additional point of ki to use the stunning fist feat with the attack, even if he has already used the feat that round."
-    }
-   ]
-  },
-  "Headband of Seduction": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "chaChecks",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "chaChecks",
-     "text": "If the wearer is of the humanoid type, he gains a +[[5]] competence bonus on creatures of his subtype instead. Once per day, the wearer can attempt to affect a creature as the spell unnatural lust (ultimate magic) but with a duration of [[10]] minutes."
     }
    ]
   },
@@ -657,35 +645,30 @@
     "Also, once per day on command the wearer can touch a single creature to use delay poison on that creature."
    ]
   },
-  "Plague Rat Belt, Greater": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "dexChecks",
-     "text": "This belt functions as a plague rat belt , except it grants the wearer a +[[2]] enhancement bonus to dexterity and constitution. Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
-    }
-   ]
-  },
-  "Ring of Entropy and Order": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day, the wearer can target herself with a protection from chaos or protection from law effect that lasts for 10 minutes. However, if the wearer uses the ring of entropy and order to gain protection from chaos while on a plane with the mildly chaos-aligned or strongly chaos-aligned trait, or to gain protection from law while on a plane with the mildly law-aligned or strongly law-aligned trait, the effect instead lasts for 1 hour."
-   ]
-  },
-  "Shadowbond Tunic": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day, the wielder can attune the garment to one ally by standing for 1 minute in a position in which both the wielder's and his ally's shadows overlap. For the next 24 hours, whenever the wielder is adjacent to that ally and that ally takes damage, the wielder can sacrifice up to 10 hit points to prevent an equal amount of damage done to the ally. If the vest is removed before its duration ends, the connection between the wielder and ally is lost and the vest is powerless until 24 hours have passed since its last attunement."
-   ]
-  },
-  "Stormlure": {
+  "Purification Talisman": {
    "changes": [],
    "contextNotes": [
     {
      "target": "allSavingThrows",
-     "text": "Once per day on command, the wearer of a stormlure is surrounding by swirling winds for [[1]] minute, granting a 50% miss chance against all ranged attacks, including rays and other ranged spells that require a roll to hit. At any one time during this duration, as a swift action, the wearer can cause the air around her to fill with crackling lightning, dealing [[4d6]] points of electricity damage to all creatures adjacent to her. A dc [[14]] reflex save halves this damage."
+     "text": "A hand-sized clay rebus of the master of masters (see the sidebar on page 86 for more information on irori's rebus), sometimes inlaid with copper or tiny gemstones, hangs from this braided hair necklace. Once per day, the wearer can use purify food and drink , cleansing 1 cubic foot of food and water. It is normally worn under clothing against the skin, and grants the wearer a +[[2]] resistance bonus on saving throws against disease and poison."
+    }
+   ]
+  },
+  "Robe of the Archmagi": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "It can be white (0145 on d%, good alignment), gray (4675, neither good nor evil alignment), or black (76100, evil alignment). +[[5]] armor bonus to ac spell resistance 18 +[[4]] resistance bonus on all saving throws +[[2]] enhancement bonus on caster level checks made to overcome spell resistance if a white robe is donned by an evil character, she immediately gains three permanent negative levels."
+    }
+   ]
+  },
+  "Swordmaster's Shirt": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Five times per day, the wearer can make a lunging melee maneuver and extend his reach by [[5]] feet for a single melee attack. If the wearer has the lunge feat, he can instead use that feat five times per day without taking the normal 2 penalty."
     }
    ]
   }
@@ -833,7 +816,7 @@
   "Selfish",
   "Fearsome"
  ],
- "platnium": 50.0,
+ "platnium": 60.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1224,14 +1207,14 @@
   }
  ],
  "sheet_health": 160,
- "shield_ac": 0,
- "shield_armor_check_penalty": " ",
- "shield_enhancement_bonus": 0,
+ "shield_ac": "1",
+ "shield_armor_check_penalty": "-2",
+ "shield_enhancement_bonus": 3,
  "shield_enhancement_chosen_list": [],
- "shield_max_dex_bonus": " ",
- "shield_name": " ",
- "shield_spell_failure": " ",
- "shield_weight": " ",
+ "shield_max_dex_bonus": "",
+ "shield_name": "Light wooden quickdraw",
+ "shield_spell_failure": "5%",
+ "shield_weight": "6 lbs.",
  "skill_rank_budget": 161,
  "skill_ranks": {
   "acrobatics": 11,
@@ -1333,8 +1316,8 @@
  "trainer_feats": [],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Ghost Touch",
-  "Skewering"
+  "Shock",
+  "Spirit-Hunting"
  ],
  "weapon_name": "Rapier",
  "weight_number": 210,

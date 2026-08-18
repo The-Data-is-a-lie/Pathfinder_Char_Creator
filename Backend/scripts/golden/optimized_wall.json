@@ -1,13 +1,13 @@
 {
- "Total_HP": 237,
- "age_number": 27,
+ "Total_HP": 242,
+ "age_number": 28,
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
-  "Plump"
+  "Thin"
  ],
  "archetype1": null,
- "archetype_info": "{\n    \"Shielded Fighter\": {\n        \"source\": \"Advanced Player's Guide pg. 108 A shielded fighter focuses on both offense and defense, blending weapon and shield in perfect balance to impede his enemies while delivering deadly blows, and even turning the shield itself into a formidable weapon. These fighting school benefits apply when wielding a weapon and a shield simultaneously.\",\n        \"active defense (ex)\": \"  At 3rd level, a shielded fighter gains a +1 dodge bonus to AC when wielding a shield and fighting defensively, using Combat Expertise, or using total defense. This bonus increases by +1 for every four levels beyond 3rd. As a swift action, he may share this bonus with one adjacent ally, or half of the bonus (minimum +0) with all adjacent allies, until the beginning of his next turn. This ability replaces armor training 1, 2, 3, and 4.\",\n        \"shield fighter (ex)\": \"  At 5th level, a shielded fighter gains a +1 bonus on attack and damage rolls when making a shield bash. These bonuses increase by +1 every four levels beyond 5th. With a full attack action, a shielded fighter may alternate between using his weapon or his shield for each attack. This action does not grant additional attacks or incur penalties as two-weapon fighting does. This ability replaces weapon training 1.\",\n        \"shield buffet (ex)\": \"  At 9th level, as a move action, a shielded fighter may make a combat maneuver check to use his shield to impede an adjacent enemy. If successful, the target suffers a -2 penalty on its attack rolls against the shielded fighter and a -2 penalty to AC on attacks made by the shielded fighter until the beginning of his next turn. At 13th level, a shielded fighter may use this ability as a swift action. This ability replaces weapon training 2 and 3.\",\n        \"shield guard (ex)\": \"  At 17th level, as a swift action, a shielded fighter may designate one square adjacent to him. He may designate two squares if using a heavy shield or three squares if using a tower shield, but these squares must be contiguous. Enemies in these squares cannot flank the shielded fighter and do not count for flanking with other creatures. This effect lasts until he moves from his position or uses another swift action to change the affected squares. This ability replaces weapon training 4.\",\n        \"shield mastery (ex)\": \"  At 19th level, a shielded fighter gains DR 5/- when wielding a shield. This ability replaces armor mastery.\",\n        \"shield ward (ex)\": \"  At 20th level, a shielded fighter gains evasion (as a rogue) while wielding a shield, and adds his shield bonus to his AC (not including enhancement bonuses) on Reflex saves and to his touch AC. In addition, his shield cannot be disarmed or sundered. This ability replaces weapon mastery.\"\n    }\n}",
+ "archetype_info": "{\n    \"Mobile Fighter\": {\n        \"source\": \"Advanced Player's Guide pg. 105 Where some fighters focus on strength and raw power, the mobile fighter relies on swiftness and mobility, gliding across the battlefield like a steel whirlwind and leaving destruction in his wake.\",\n        \"agility (ex)\": \"  At 2nd level, a mobile fighter gains a +1 bonus on saving throws made against effects that cause him to become paralyzed, slowed, or entangled. This bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.\",\n        \"leaping attack (ex)\": \"  At 5th level, when a mobile fighter moves at least 5 feet prior to attacking, he gains a +1 bonus on attack and damage rolls. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1, 2, 3, and 4.\",\n        \"rapid attack (ex)\": \"  At 11th level, a mobile fighter can combine a full attack action with a single move. He must forgo the attack at his highest bonus but may take the remaining attacks at any point during his movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.\",\n        \"fleet footed (ex)\": \"  At 15th level, the mobile fighter's speed increases by 10 feet. He can take 10 on Acrobatics checks even while distracted or threatened, and can take 20 on an Acrobatics check once per day for every five fighter levels he possesses. This ability replaces armor training 4.\",\n        \"whirlwind blitz (ex)\": \"  At 20th level, a mobile fighter can make a full-attack action as a standard action. He may also use the Whirlwind Attack feat as a standard action. This ability replaces weapon mastery.\"\n    }\n}",
  "armor_ac": "9",
  "armor_armor_check_penalty": "-6",
  "armor_enhancement_bonus": 3,
@@ -18,8 +18,9 @@
  "armor_weight": "50 lbs.",
  "bab_total": 11,
  "background_traits": [
-  "Devoted Healer",
-  "Dog-Sniff-Hate"
+  "Wanderlust",
+  "Courtesan",
+  "Bruising Intellect"
  ],
  "backstory": "",
  "bloodline": "N/A",
@@ -27,22 +28,22 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "AC Tank",
- "build_tactics": "Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.",
+ "build_archetype": "HP Tank",
+ "build_tactics": "Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.",
  "c_class": "fighter",
  "c_class_2": "",
  "c_class_display": "Fighter",
  "casting_level_str_foundry": "None",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Fortified Casting",
+   "Overcharge",
    "Empowered Abilities"
   ],
   "boons_detail": [
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    },
    {
     "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
@@ -51,48 +52,48 @@
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Somatic Casting",
-   "Addictive Casting",
-   "Material Casting",
-   "Skilled Casting"
+   "Verbal Casting",
+   "Focus Casting",
+   "Skilled Casting",
+   "Magical Signs"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 2,
-    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
-    "name": "Addictive Casting"
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    },
    {
     "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
    },
    {
     "counts_as": 1,
     "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
     "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
    }
   ]
  },
  "cha": 8,
- "character_full_name": "Alice Gagné",
+ "character_full_name": "Zoé Bertin",
  "chosen_race": "Orc",
  "chosen_spell_descriptor": [
   "air",
-  "language-dependent"
+  "water"
  ],
  "class feature levels": {
   "armor_training": {
-   "armored master": 7,
-   "unmoving (ex)": 11
+   "armored confidence (ex)": 11,
+   "unmoving (ex)": 7
   },
   "weapon_training": {
-   "versatile training (ex)": 9
+   "trained grace (ex)": 9
   }
  },
  "class feature owners": {
@@ -110,43 +111,47 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
+   "Actions (Purchased)": {
+    "Rotten Luck": "Ignore targets luck and any luck bonuses for one roll for a number of E-kats according to the following formula."
+   },
    "Feats Not Taken (reference)": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
     "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Feats Taken": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
-    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
+    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck."
    },
    "Reserve": {
-    "Your reserve": "15 E-Kat(s) carried into play, of 15 earned at creation (0 spent on Luck Traits at 25 each). Storage cap 99."
+    "Your reserve": "5 E-Kat(s) carried into play, of 30 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
    }
   },
-  "Skill Unlock: Bluff": {
-   "10 Ranks": "You take no penalty to Bluff a creature after a failed check unless you failed by 5 or more.",
-   "15 Ranks": "Creatures magically attempting to read your thoughts, detect your alignment, or reveal when you are lying must succeed at a caster level check (DC 11 + your Bluff ranks) or the effect reveals nothing.",
-   "20 Ranks": "As a full-round action you can make a suggestion (as the spell, max 1 hour) to a creature within 30 feet (Will negates, DC 15 + Cha mod). This is an extraordinary mind-affecting compulsion.",
-   "5 Ranks": "The penalty to Bluff a creature after a failed check is halved unless you failed by 5 or more."
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
   "armor_training": {
-   "armored master": {
-    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   "armored confidence (ex)": {
+    "description": "while wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +1 for light armor, +2 for medium armor, or +3 for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +4 at 19th level. In addition, the fighter adds half his armored confidence bonus to the dc of intimidate checks to demoralize him. "
    },
    "unmoving (ex)": {
     "description": "select one combat maneuver (except sunder). Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. While wearing armor or wielding a shield, the fighter gains a bonus to his cmd against the chosen combat maneuver. The bonus is +1 if hes wearing light armor, +2 if hes wearing medium armor, and +3 if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +5 for light armor, +6 for medium armor, and +7 for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type. "
    }
   },
   "weapon_training": {
-   "versatile training (ex)": {
-    "description": "the fighter can use his base attack bonus in place of his ranks in two skills of his choice that are associated with the fighter weapon group he has chosen with this option. "
+   "trained grace (ex)": {
+    "description": "when the fighter uses weapon finesse to make a melee attack with a weapon, using his dexterity modifier on attack rolls and his strength modifier on damage rolls, he doubles his weapon training bonus on damage rolls. The fighter must have weapon finesse in order to choose this option. "
    }
   }
  },
@@ -175,23 +180,28 @@
   "Fighter 10"
  ],
  "class_feat_tax_dict": {
-  "Combat Reflexes": [
-   "bodyguard",
-   "in harm's way"
-  ],
   "Toughness": [
    "reverse-feint"
   ]
  },
  "class_feats": [
+  "Murderer's Circle",
+  "Demon Hunter",
   "Snapping Turtle Style",
   "Toughness",
   "Shield Focus",
-  "Combat Reflexes",
-  "Winds of War",
-  "Bull Charge (combat)"
+  "Craft Construct"
  ],
  "class_feature_changes_dict": {
+  "armored confidence (ex)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "While wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +[[1]] for light armor, +[[2]] for medium armor, or +[[3]] for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +[[4]] at 19th level."
+    }
+   ]
+  },
   "unmoving (ex)": {
    "changes": [],
    "contextNotes": [
@@ -200,25 +210,16 @@
      "text": "Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. The bonus is +[[1]] if hes wearing light armor, +[[2]] if hes wearing medium armor, and +[[3]] if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +[[5]] for light armor, +[[6]] for medium armor, and +[[7]] for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type."
     }
    ]
-  },
-  "versatile training (ex)": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "The fighter can use his base attack bonus in place of his ranks in two skills of his choice that are associated with the fighter weapon group he has chosen with this option."
-    }
-   ]
   }
  },
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {
   "armor_training": {
-   "armored master": 7,
-   "unmoving (ex)": 11
+   "armored confidence (ex)": 11,
+   "unmoving (ex)": 7
   },
   "weapon_training": {
-   "versatile training (ex)": 9
+   "trained grace (ex)": 9
   }
  },
  "class_feature_owners": {
@@ -236,57 +237,60 @@
     "5 E-Kats: stabilize": "Stabilize ANYONE within five feet, provided they are not already beyond stabilization.",
     "99 E-Kats: Destined Template": "Gain the \"Destined\" Template (only once per player). This action locks your slot into a future campaign and ties it to this character.",
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
+    "Active modifiers": "Permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
+   "Actions (Purchased)": {
+    "Rotten Luck": "Ignore targets luck and any luck bonuses for one roll for a number of E-kats according to the following formula."
+   },
    "Feats Not Taken (reference)": {
-    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
     "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
    },
    "Feats Taken": {
     "Feat: Ass Pull": "[+4 Luck] Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
-    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
+    "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
+    "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck."
    },
    "Reserve": {
-    "Your reserve": "15 E-Kat(s) carried into play, of 15 earned at creation (0 spent on Luck Traits at 25 each). Storage cap 99."
+    "Your reserve": "5 E-Kat(s) carried into play, of 30 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
    }
   },
-  "Skill Unlock: Bluff": {
-   "10 Ranks": "You take no penalty to Bluff a creature after a failed check unless you failed by 5 or more.",
-   "15 Ranks": "Creatures magically attempting to read your thoughts, detect your alignment, or reveal when you are lying must succeed at a caster level check (DC 11 + your Bluff ranks) or the effect reveals nothing.",
-   "20 Ranks": "As a full-round action you can make a suggestion (as the spell, max 1 hour) to a creature within 30 feet (Will negates, DC 15 + Cha mod). This is an extraordinary mind-affecting compulsion.",
-   "5 Ranks": "The penalty to Bluff a creature after a failed check is halved unless you failed by 5 or more."
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
   "armor_training": {
-   "armored master": {
-    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   "armored confidence (ex)": {
+    "description": "while wearing armor, the fighter gains a bonus on intimidate checks based upon the type of armor he is wearing: +1 for light armor, +2 for medium armor, or +3 for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +4 at 19th level. In addition, the fighter adds half his armored confidence bonus to the dc of intimidate checks to demoralize him. "
    },
    "unmoving (ex)": {
     "description": "select one combat maneuver (except sunder). Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. While wearing armor or wielding a shield, the fighter gains a bonus to his cmd against the chosen combat maneuver. The bonus is +1 if hes wearing light armor, +2 if hes wearing medium armor, and +3 if hes wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +5 for light armor, +6 for medium armor, and +7 for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type. "
    }
   },
   "weapon_training": {
-   "versatile training (ex)": {
-    "description": "the fighter can use his base attack bonus in place of his ranks in two skills of his choice that are associated with the fighter weapon group he has chosen with this option. "
+   "trained grace (ex)": {
+    "description": "when the fighter uses weapon finesse to make a melee attack with a weapon, using his dexterity modifier on attack rolls and his strength modifier on damage rolls, he doubles his weapon training bonus on damage rolls. The fighter must have weapon finesse in order to choose this option. "
    }
   }
  },
  "classes": [
   {
    "archetype": {
-    "Shielded Fighter": {
-     "active defense (ex)": "  At 3rd level, a shielded fighter gains a +1 dodge bonus to AC when wielding a shield and fighting defensively, using Combat Expertise, or using total defense. This bonus increases by +1 for every four levels beyond 3rd. As a swift action, he may share this bonus with one adjacent ally, or half of the bonus (minimum +0) with all adjacent allies, until the beginning of his next turn. This ability replaces armor training 1, 2, 3, and 4.",
-     "shield buffet (ex)": "  At 9th level, as a move action, a shielded fighter may make a combat maneuver check to use his shield to impede an adjacent enemy. If successful, the target suffers a -2 penalty on its attack rolls against the shielded fighter and a -2 penalty to AC on attacks made by the shielded fighter until the beginning of his next turn. At 13th level, a shielded fighter may use this ability as a swift action. This ability replaces weapon training 2 and 3.",
-     "shield fighter (ex)": "  At 5th level, a shielded fighter gains a +1 bonus on attack and damage rolls when making a shield bash. These bonuses increase by +1 every four levels beyond 5th. With a full attack action, a shielded fighter may alternate between using his weapon or his shield for each attack. This action does not grant additional attacks or incur penalties as two-weapon fighting does. This ability replaces weapon training 1.",
-     "shield guard (ex)": "  At 17th level, as a swift action, a shielded fighter may designate one square adjacent to him. He may designate two squares if using a heavy shield or three squares if using a tower shield, but these squares must be contiguous. Enemies in these squares cannot flank the shielded fighter and do not count for flanking with other creatures. This effect lasts until he moves from his position or uses another swift action to change the affected squares. This ability replaces weapon training 4.",
-     "shield mastery (ex)": "  At 19th level, a shielded fighter gains DR 5/- when wielding a shield. This ability replaces armor mastery.",
-     "shield ward (ex)": "  At 20th level, a shielded fighter gains evasion (as a rogue) while wielding a shield, and adds his shield bonus to his AC (not including enhancement bonuses) on Reflex saves and to his touch AC. In addition, his shield cannot be disarmed or sundered. This ability replaces weapon mastery.",
-     "source": "Advanced Player's Guide pg. 108 A shielded fighter focuses on both offense and defense, blending weapon and shield in perfect balance to impede his enemies while delivering deadly blows, and even turning the shield itself into a formidable weapon. These fighting school benefits apply when wielding a weapon and a shield simultaneously."
+    "Mobile Fighter": {
+     "agility (ex)": "  At 2nd level, a mobile fighter gains a +1 bonus on saving throws made against effects that cause him to become paralyzed, slowed, or entangled. This bonus increases by +1 for every four levels beyond 2nd. This ability replaces bravery.",
+     "fleet footed (ex)": "  At 15th level, the mobile fighter's speed increases by 10 feet. He can take 10 on Acrobatics checks even while distracted or threatened, and can take 20 on an Acrobatics check once per day for every five fighter levels he possesses. This ability replaces armor training 4.",
+     "leaping attack (ex)": "  At 5th level, when a mobile fighter moves at least 5 feet prior to attacking, he gains a +1 bonus on attack and damage rolls. This bonus increases by +1 for every four levels beyond 5th. This ability replaces weapon training 1, 2, 3, and 4.",
+     "rapid attack (ex)": "  At 11th level, a mobile fighter can combine a full attack action with a single move. He must forgo the attack at his highest bonus but may take the remaining attacks at any point during his movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.",
+     "source": "Advanced Player's Guide pg. 105 Where some fighters focus on strength and raw power, the mobile fighter relies on swiftness and mobility, gliding across the battlefield like a steel whirlwind and leaving destruction in his wake.",
+     "whirlwind blitz (ex)": "  At 20th level, a mobile fighter can make a full-attack action as a standard action. He may also use the Whirlwind Attack feat as a standard action. This ability replaces weapon mastery."
     }
    },
    "display": "Fighter",
@@ -310,8 +314,8 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "As long as you have martial focus, you may use active defense to benefit an ally when an ally within your shield's reach is targeted by an attack.\n\nNote: This only provides the benefits of active defense, not the benefit of the base shield. (Source)",
-   "name": "Cover Ally",
+   "description": "You may spend an immediate action to redirect the damage from a successful attack against you to your shield. This action is taken after the result of the attack roll is known but before the damage is revealed. Attacks that do not target you directly or which do not deal hit point damage cannot be redirected in this manner.",
+   "name": "Sacrificial Shield",
    "sphere": "Shield",
    "system": "Spheres of Might",
    "type": "base",
@@ -332,74 +336,52 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "You may expend martial focus as a free action that can be taken even when it's not your turn to apply your active defense against all valid triggering attacks until the start of your next turn without spending attacks of opportunity. If you possess the Cover Ally talent, you may apply this benefit to all allies within reach.",
-   "name": "Extensive Defense",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You do not lose your shield bonus to AC when making an attack with your shield. Additionally, you may make shield bash attacks with a buckler as if it were a light shield. Reduce the damage as if the shield bash was one size smaller when used this way. Associated Feat: Improved Shield Bash.",
-   "name": "Bashing Shield",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Your shield bonus to AC applies against touch attacks.",
-   "name": "Deflecting Shield",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Whenever you take the total defense action while wielding a shield, creatures that miss you provoke attacks of opportunity from you. You may make these attacks of opportunity but take a penalty on the attack rolls as if you were fighting defensively.",
-   "name": "Reactive Defense",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You may spend an immediate action to redirect the damage from a successful attack against you to your shield. This action is taken after the result of the attack roll is known but before the damage is revealed. Attacks that do not target you directly or which do not deal hit point damage cannot be redirected in this manner.",
-   "name": "Sacrificial Shield",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "While wielding a buckler, shield, or tower shield, you may spend a move action to regain your martial focus whenever you choose to fight defensively as part of an attack action.\n\nAdditionally, whenever an attack misses a creature benefiting from your active defense, you may regain your martial focus as an immediate action.",
-   "name": "Shielded Focus",
-   "sphere": "Shield",
-   "system": "Spheres of Might",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
    "description": "Creatures benefiting from your active defense bonus (including yourself) gain DR/- equal to the bonus from active defense against attacks that hit despite active defense. This damage reduction stacks with damage reduction from other sources.",
    "name": "Interposing Shield",
+   "sphere": "Shield",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a move action to use a shield to grant you cover until the beginning of your next turn. Bucklers, heavy shields, and light shields provide partial cover while tower shields provide total cover. When using a shield in this way, you must choose one edge of your space. That edge is treated as a solid wall for attacks targeting you only. You gain cover for attacks that pass through this edge. The shield does not, however, provide cover against targeted spells; a spellcaster can cast a spell on you by targeting the shield you are holding. Cover granted this way is insufficient to enable you to make a Stealth check to hide and the shield may be targeted as an attended object.\n\nAs an immediate action, you may change the selected edge of your space even when it is not your turn. If you expend martial focus, you may use this talent as an immediate action.",
+   "name": "Flexible Cover",
+   "sphere": "Shield",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever a melee attack misses a creature benefiting from your active defense, you may initiate a bull rush combat maneuver against the attacking creature as a free action that can be taken even when it's not your turn. You may add your shield's shield bonus to AC (including enhancement bonus) as a circumstance bonus to the roll.",
+   "name": "Forced Rebound",
+   "sphere": "Shield",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever an attack misses a creature benefiting from your active defense, if the attack was made with a piercing or slashing melee weapon, you can allow the weapon to strike your shield. If you do, the attack hits your shield, dealing damage to the shield as normal, and the weapon becomes bound. As long as the creature's weapon is bound, they cannot move from the square they currently occupy. A creature whose weapon is bound may release the weapon as a free action or attempt to break the bind as a standard action by making a successful combat maneuver check against your disarm CMD. If the bound weapon is a natural attack or unarmed strike, the creature must succeed at a successful combat maneuver check to break the bind. You cannot attack with, receive any shield bonus from, nor use active defense with the shield used to bind a creature as long as the bind is in effect. If any effect, including this attack, renders the shield broken or destroyed, this effect ends immediately.",
+   "name": "Catch Blade",
+   "sphere": "Shield",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever a melee attack misses a creature benefiting from your active defense, you may initiate a disarm combat maneuver against the attacking creature as a free action that does not provoke an attack of opportunity and that can be taken even when it is not your turn. This must target the weapon used for the triggering attack, and must be accomplished with your shield, rather than a weapon you are wielding. You may add your shield's enhancement bonus to AC to your disarm check.",
+   "name": "Jarring Block",
    "sphere": "Shield",
    "system": "Spheres of Might",
    "type": "base",
@@ -417,18 +399,19 @@
    "uses": null
   }
  ],
- "con": 21,
+ "con": 22,
  "counter_schools": [
-  "enchantment"
+  "illusion",
+  "transmutation"
  ],
  "counter_spell_descriptor": [
-  "fire",
-  "sonic"
+  "evil",
+  "fear"
  ],
- "craft_type": "Bookbinding",
+ "craft_type": "Stonemasonry",
  "day_list": [],
  "deity_name": "Iomedae",
- "dex": 17,
+ "dex": 16,
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
@@ -436,20 +419,8 @@
    "item_name": "Belt of Mighty Constitution +2"
   },
   "body": {
-   "description": " the cut and color of this solemn vestment varies from religion\r to religion, but its properties are the same. The wearer may\r command the cassock of the clergy to display the holy symbol\r of her deity or hide this symbol. At the most basic level, the\r garment functions as a divine focus. Additionally, the wearer\r gains a +3 competence bonus on charisma-based checks to\r influence creatures that match her alignment or that of her\r patron deity. Also, the wearer may use bless and sanctuary (dc 11) each once per day, and may prepare one additional\r orison each day. If the wearer is a spontaneous divine caster, \r once per day she may spend 1 hour in prayer to gain an\r orison of her choice as a spell known for the next 24 hours. ",
-   "item_name": "Cassock of the Clergy"
-  },
-  "chest": {
-   "description": " this tight-fitting garment of fine silk has thin bone ribbing sewn into it. Once per day as a move action, the wearer can take an additional swift action. This swift action can't be used to cast a spell or spell-like ability. The shirt must be worn for 24 hours before this ability can be used. ",
-   "item_name": "Corset of Delicate Moves"
-  },
-  "eyes": {
-   "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
-   "item_name": "Patternward Spectacles"
-  },
-  "hands": {
-   "description": " the wearer of these simple gloves can\r speak a command word create a glowing\r disembodied hand. As a swift action, the\r wearer can have the hand assist him with\r a task as if using the aid another action. \r the hand uses the wearer's base attack\r bonus or skill ranks when making the check to see if aid another is\r successful (it does not gain the benefit of the wearer's ability scores\r or other bonuses). The hand remains until it has attempted one\r action or until 1 minute passes, whichever comes first, at which\r time the gloves become nonmagical. ",
-   "item_name": "Assisting Gloves"
+   "description": " this long, double-breasted jacket is sewn from durable, dun-colored\r canvas with a removable liner to keep its wearer comfortable in\r a wide range of temperatures. Anyone wearing the coat notes\r many small cloth patches of various shapes. Only the wearer of\r the robe can see these patches, recognize them for the items they\r become, and detach them. One patch can be detached each round. \r detaching a patch causes it to become an actual item, as indicated\r below. A pathfinder greatcoat has each of the following patches\r (unless noted otherwise, the coat has only one of each patch): 10 days of trail rations and five full waterskins\r a case containing five adamantine bolts, five cold iron bolts, \r and two silver bolts\r a large scroll case containing a 2-foot-by-10-foot roll of paper\r and two sticks of charcoal\r a quiver containing five adamantine arrows, five cold iron\r arrows, and two silver arrows\r a 10-square-yard roll of canvas containing 10 pitons and a\r small hammer\r a silver aspis consortium badge and three bronze aspis\r consortium badges\r bullseye lanterns (2; full and lit)\r daggers (2)\r disguise kit\r healer's kit\r hemp ropes (2; 50-foot coil)\r light combat-trained horse with a military saddle\r mirrors (2; highly polished 2-foot-by-4-foot steel mirrors)\r noble's outfit with jewelry worth 200 gold pieces\r oil of bless weapon oil of daylight poles (2; 10-foot length)\r potion of cure moderate wounds sacks (2)\r universal solvent wand of prestidigitation (cl 1st, 5 charges) ",
+   "item_name": "Pathfinder Greatcoat"
   },
   "head": {
    "description": " this conical iron jingasa, or war hat, grants the wearer a\r +1 deflection bonus to ac. When struck by a critical\r hit or sneak attack, the wearer can spend an immediate\r action to negate the critical hit or sneak attack (similar to\r the fortification armor special ability, but without requiring a\r roll). The damage is instead rolled normally. \r this ability functions only once, though the jingasa continues to grant its deflection bonus even after the other ability is expended. ",
@@ -466,10 +437,6 @@
   "shoulders": {
    "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). ",
    "item_name": "Cloak of Resistance +3"
-  },
-  "wrist": {
-   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
-   "item_name": "Sleeves of Many Garments"
   }
  },
  "equipment_list": [
@@ -478,11 +445,7 @@
   "Amulet of Natural Armor +2",
   "Cloak of Resistance +3",
   "Belt of Mighty Constitution +2",
-  "Cassock of the Clergy",
-  "Corset of Delicate Moves",
-  "Patternward Spectacles",
-  "Assisting Gloves",
-  "Sleeves of Many Garments"
+  "Pathfinder Greatcoat"
  ],
  "eye_color": [
   "Amber"
@@ -491,12 +454,12 @@
   "bloodline": 0,
   "class": 6,
   "flavor": 1,
-  "flaw": 2,
-  "normal": -2,
+  "flaw": 1,
+  "normal": 2,
   "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 7
  },
  "feat_changes_dict": {
   "Crane Style": {
@@ -505,6 +468,15 @@
     {
      "target": "ac",
      "text": "While fighting defensively or using total defense: the fighting-defensively attack penalty is only -2, and you gain an additional +1 dodge bonus to AC."
+    }
+   ]
+  },
+  "Demon Hunter": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.kpl",
+     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
     }
    ]
   },
@@ -517,10 +489,19 @@
     }
    ]
   },
+  "Solo Maneuvers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "+1 on combat maneuver checks against, and +1 to CMD against, an opponent you alone threaten"
+    }
+   ]
+  },
   "Strength of a Warrior (con)": {
    "changes": [
     {
-     "formula": "5",
+     "formula": "6",
      "operator": "add",
      "priority": 0,
      "target": "nac",
@@ -532,7 +513,7 @@
   "Strength of a Warrior (str)": {
    "changes": [
     {
-     "formula": "6",
+     "formula": "5",
      "operator": "add",
      "priority": 0,
      "target": "nac",
@@ -557,134 +538,139 @@
    "modifiers": [],
    "name": "Crane Style: Effect: fighting defensively costs only [[-2]] on attack rolls instead of the normal penalty, and grants an additional +[[1]] dodge bonus to AC while fighting defensively or using total defense",
    "tier": "A"
+  },
+  "Demon Hunter": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
   }
  },
  "feats": [
+  "Animal Affinity",
   "Ass Pull",
   "It Just Works",
-  "Right of Deferment",
-  "Extra Combat Talent (Active Defense / Cover Ally)",
-  "Extra Combat Talent (Punch Block / Extensive Defense)",
-  "Extra Combat Talent (Bashing Shield / Deflecting Shield)",
-  "Extra Combat Talent (Reactive Defense / Sacrificial Shield)",
+  "Double Down",
+  "Demonologist",
+  "Extra Combat Talent (Active Defense / Sacrificial Shield)",
+  "Extra Combat Talent (Punch Block)",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Extra Combat Talent (Active Defense / Cover Ally)": [
+  "Demonologist": [
+   "demon grafter"
+  ],
+  "Extra Combat Talent (Active Defense / Sacrificial Shield)": [
    "Extra Combat Talent"
   ],
-  "Extra Combat Talent (Bashing Shield / Deflecting Shield)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Punch Block / Extensive Defense)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Quaking Block)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Reactive Defense / Sacrificial Shield)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Shielded Focus / Interposing Shield)": [
+  "Extra Combat Talent (Punch Block)": [
    "Extra Combat Talent"
   ]
  },
- "flavor_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {
+  "Crane Style": [
+   "crane wing",
+   "crane riposte"
+  ]
+ },
  "flavor_feats": [
-  "Additional Traits"
+  "Crane Style"
  ],
  "flaw": [
-  "Insomniac",
-  "Bespectacled"
+  "Racial Distrust"
  ],
  "flaw_effects_dict": {
-  "Bespectacled": {
+  "Racial Distrust": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.per",
-     "text": "Bespectacled: -[[20]] Perception when not wearing glasses."
+     "target": "skill.sen",
+     "text": "Racial Distrust: on meeting a stranger of another race, Sense Motive DC [[30]] or your attitude is unfriendly; the Diplomacy DC to sway you is +[[10]]; you can never become Fanatic toward them."
     }
    ],
-   "description": "Without your glasses the world is a smear of color. You take a -20 penalty on Perception checks when not wearing your glasses.",
-   "tier": "major"
-  },
-  "Insomniac": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "fort",
-     "text": "Insomniac: each morning, [[20]]% chance to start the day fatigued."
-    }
-   ],
-   "description": "You have trouble achieving a full and restful sleep. Each morning there is a 20% chance you begin the day fatigued until you next get a full night's rest.",
+   "description": "You deeply distrust other peoples. When you meet a person (PC or NPC) whom you do not know and who is not the same race as you, you must make a Sense Motive check against DC 30. If you fail, your attitude toward them is automatically unfriendly. In addition, the Diplomacy DC to improve your attitude is increased by +10, and you can never have a Fanatic attitude toward someone of another race.",
    "tier": "minor"
   }
  },
  "flaw_feat_tax_dict": {
-  "Crane Style": [
-   "crane wing",
-   "crane riposte"
-  ],
   "Two-Weapon Defense": [
    "improved two-weapon defense",
    "greater two-weapon defense"
   ]
  },
  "flaw_feats": [
-  "Two-Weapon Defense",
-  "Crane Style"
+  "Two-Weapon Defense"
  ],
- "formatted_bio": "Alice Gagné\n- Alignment: Lawful Good\n- Deity: Iomedae\n- Race: Orc\n- Class: Level 11 Fighter\n- Archetype: AC Tank\n- Tactics: Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Royal Envoy (rank 1)\n- Profession: Ironmonger (rank 1)\n- Profession: Hearthmaster (rank 10)\n- Profession: Alley Caper (rank 4)\n- Profession: Magician (rank 10)\n- Known for: Bookbinding\n\nFamily\n- Absent Mother\n- Dead Father\n- Adopted Into A Middle Income Family\n- 1 Younger Brother\n- 2 Younger Sisters\n\nPersonality\n- Personality: Idiosyncratic, Contemplative, Attentive, Ambitious\n- Mannerisms: Twists hair, Jingles keys, Brushes hair out of face, Covers ears\n- Flaws: Insomniac, Bespectacled\n\nAppearance\n- Hair: Spiky Brown\n- Eyes: Amber\n- Build: Plump",
+ "formatted_bio": "Zoé Bertin\n- Alignment: Lawful Good\n- Deity: Iomedae\n- Race: Orc\n- Class: Level 11 Fighter\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Scullery Hand (rank 9)\n- Profession: Margin Scribbler (rank 10)\n- Profession: Assassin (rank 7)\n- Known for: Stonemasonry\n- Training: An excellent trainer who taught them Run, Feint Partner, Polearm Expertise (combat)\n- Training: An excellent trainer who taught them Diving Strike, Solo Maneuvers, Blade of Terror\n- Training: An excellent (Spheres) trainer who taught them Interposing Shield, Flexible Cover, Forced Rebound, Catch Blade, Jarring Block, Quaking Block\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- 3 Younger Sisters\n\nPersonality\n- Personality: Genuine, Impressive, Distant\n- Mannerisms: Scratches head, Puts hands in pockets, Crouches\n- Flaws: Racial Distrust\n\nAppearance\n- Hair: Straight Brown\n- Eyes: Amber\n- Build: Thin",
  "full_domain": [],
  "gender": "Female",
- "generation_seed": 5150,
+ "generation_seed": 5159,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 270,
+ "gold": 0,
  "hair_color": [
   "Brown"
  ],
  "hair_type": [
-  "Spiky"
+  "Straight"
  ],
- "height_number": "7'9\"",
- "hero_points": 4,
+ "height_number": "7'2\"",
+ "hero_points": 2,
  "homebrew_feat_desc_dict": {
-  "Additional Traits": "You have more traits than normal",
+  "Animal Affinity": "You are skilled at working with animals and mounts",
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
-  "Bull Charge (combat)": "You rush into battle with a devastating attack. Normal Charging causes you to take a -2 penalty to your AC until the start of your next turn. you take no penalty to your ac when you make a charge attack. if you have the vital strike feat, you can use vital strike (or improved vital strike or greater vital strike, if you have them) in place of the attack at the end of a charge. the damage dice added by vital strike, improved vital strike, or greater vital strike are not doubled when charging with a lance while mounted.",
-  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Blade of Terror": "You have learned to blend the fearsome arts of the dread with your mind blade. you may use your mind blade to deliver your terrors as if you had used your devastating touch, and you may add half your soulknife level (rounded down) to your dread level to determine saving throws for your terrors. additionally, anytime you successfully use a fear effect (either through a terror or a manifested power) you may regain your psychic strike as a free action once per round.",
+  "Craft Construct": "You can create construct creatures like golems",
   "Crane Style": "Your unarmed fighting techniques blend poise with graceful defense",
+  "Demon Hunter": "You are well-versed in demonic lore",
+  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
+  "Diving Strike": "With a tremendous dive, you can both move and attack your foe. when you charge, you may make both a bull rush and a basic melee attack, in that order.",
+  "Double Down": "Double permanent E-Kat acquisition.",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Active Defense / Cover Ally)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Active Defense (Shield): If you are using a shield and you are attacked by a creature you are aware of while not flat-footed, you may spend an attack of opportunity to increase your shield bonus to AC against that attack by +2. This decision must be made before the roll is made. For every 4 points of base attack bonus you p\n- Cover Ally (Shield): As long as you have martial focus, you may use active defense to benefit an ally when an ally within your shield's reach is targeted by an attack.  Note: This only provides the benefits of active defense, not the benefit of the base shield. (Source)",
-  "Extra Combat Talent (Bashing Shield / Deflecting Shield)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Bashing Shield (Shield): You do not lose your shield bonus to AC when making an attack with your shield. Additionally, you may make shield bash attacks with a buckler as if it were a light shield. Reduce the damage as if the shield bash was one size smaller when used this way. Associated Feat: Improved Shield Bash.\n- Deflecting Shield (Shield): Your shield bonus to AC applies against touch attacks.",
-  "Extra Combat Talent (Punch Block / Extensive Defense)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Punch Block (Shield): When you use your active defense, you may choose to make an attack roll as if making a shield bash and must use the result of this attack in place of your AC for resolving the attack, even if lower. You must be capable of making shield bash attacks with the shield to use this ability.  Note: Punch B\n- Extensive Defense (Shield): You may expend martial focus as a free action that can be taken even when it's not your turn to apply your active defense against all valid triggering attacks until the start of your next turn without spending attacks of opportunity. If you possess the Cover Ally talent, you may apply this benefit t",
-  "Extra Combat Talent (Quaking Block)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Quaking Block (Shield): Whenever an attack misses a creature benefiting from your active defense, you may spend an immediate action to release a burst of energy, dealing damage as if you had made a successful shield bash to all enemies within a 15-foot cone (or a 10-foot radius burst), centered on the initial target. Creat",
-  "Extra Combat Talent (Reactive Defense / Sacrificial Shield)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Reactive Defense (Shield): Whenever you take the total defense action while wielding a shield, creatures that miss you provoke attacks of opportunity from you. You may make these attacks of opportunity but take a penalty on the attack rolls as if you were fighting defensively.\n- Sacrificial Shield (Shield): You may spend an immediate action to redirect the damage from a successful attack against you to your shield. This action is taken after the result of the attack roll is known but before the damage is revealed. Attacks that do not target you directly or which do not deal hit point damage cannot be r",
-  "Extra Combat Talent (Shielded Focus / Interposing Shield)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Shielded Focus (Shield): While wielding a buckler, shield, or tower shield, you may spend a move action to regain your martial focus whenever you choose to fight defensively as part of an attack action.  Additionally, whenever an attack misses a creature benefiting from your active defense, you may regain your martial focus\n- Interposing Shield (Shield): Creatures benefiting from your active defense bonus (including yourself) gain DR/- equal to the bonus from active defense against attacks that hit despite active defense. This damage reduction stacks with damage reduction from other sources.",
+  "Extra Combat Talent (Active Defense / Sacrificial Shield)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Active Defense (Shield): If you are using a shield and you are attacked by a creature you are aware of while not flat-footed, you may spend an attack of opportunity to increase your shield bonus to AC against that attack by +2. This decision must be made before the roll is made. For every 4 points of base attack bonus you p\n- Sacrificial Shield (Shield): You may spend an immediate action to redirect the damage from a successful attack against you to your shield. This action is taken after the result of the attack roll is known but before the damage is revealed. Attacks that do not target you directly or which do not deal hit point damage cannot be r",
+  "Extra Combat Talent (Punch Block)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Punch Block (Shield): When you use your active defense, you may choose to make an attack roll as if making a shield bash and must use the result of this attack in place of your AC for resolving the attack, even if lower. You must be capable of making shield bash attacks with the shield to use this ability.  Note: Punch B",
+  "Feint Partner": "A little diversion is all you need to slip through your foe's defenses",
   "It Just Works": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
+  "Murderer's Circle": "After savaging your foe, you circle like a hunter ready for the kill",
+  "Polearm Expertise (combat)": "Your expertise with reach weapons lets you strike foes that are adjacent to you. Normal You cannot strike an enemy that is adjacent to you while wielding a reach weapon. as a free action, you can shorten your grip on a reach weapon that you are proficient with to use it against adjacent targets. while doing so, the weapon does not have reach, instead threatening the area for a normal melee weapon. you have a 2 penalty on attack rolls while using this feat. you can use another free action to return to the normal grip and reach.",
+  "Run": "You are swift of foot",
   "Shield Focus": "You are skilled at def lecting blows with your shield",
   "Snapping Turtle Style": "Your deft unarmed style allows you to shield your body from harm",
+  "Solo Maneuvers": "You fight best when you're on your own",
+  "Spheres Mentor": "<strong>Spheres funded:</strong> Shield (Might)<br><br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br>Extra Combat Talent > Extra Combat Talent<br><br>Interposing Shield (Shield)<br>Flexible Cover (Shield)<br>Forced Rebound (Shield)<br>Catch Blade (Shield)<br>Jarring Block (Shield)<br>Quaking Block (Shield)",
   "Strength of a Warrior (con)": "Your muscle bound body shirks off blows with ease, your tough hide and muscles deflect arrows like thick armor",
   "Strength of a Warrior (str)": "Your muscle bound body shirks off blows with ease, your tough hide and muscles deflect arrows like thick armor",
   "Toughness": "You have enhanced physical stamina",
   "Two-Weapon Defense": "You are skilled at defending yourself while dual-wielding",
-  "Two-Weapon Fighting": "You can fight with a weapon wielded in each of your hands You can make one extra attack each round with the secondary weapon",
-  "Winds of War": "Those you have Claimed cannot hide, and now they can no longer even run. you gain a +5-foot bonus to each of your movement speeds. this bonus increases by +5 feet for each creature you currently have claimed."
+  "Two-Weapon Fighting": "You can fight with a weapon wielded in each of your hands You can make one extra attack each round with the secondary weapon"
  },
  "inherents": {
   "cha": 0,
   "con": 10,
   "dex": 0,
   "int": 0,
-  "str": 3,
+  "str": 1,
   "wis": 0
  },
  "initiation_stat": "int",
  "initiator_level": 0,
- "int": 10,
+ "int": 9,
  "item_changes_dict": {
   "Amulet of Natural Armor +2": {
    "changes": [
@@ -697,13 +683,6 @@
     }
    ],
    "contextNotes": []
-  },
-  "Assisting Gloves": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer of these simple gloves can speak a command word create a glowing disembodied hand. As a swift action, the wearer can have the hand assist him with a task as if using the aid another action. The hand remains until it has attempted one action or until 1 minute passes, whichever comes first, at which time the gloves become nonmagical."
-   ]
   },
   "Belt of Mighty Constitution +2": {
    "changes": [
@@ -722,23 +701,6 @@
     }
    ]
   },
-  "Cassock of the Clergy": {
-   "changes": [
-    {
-     "formula": "3",
-     "operator": "add",
-     "priority": 0,
-     "target": "chaChecks",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "chaChecks",
-     "text": "At the most basic level, the garment functions as a divine focus. Also, the wearer may use bless and sanctuary (dc [[11]]) each once per day, and may prepare one additional orison each day. If the wearer is a spontaneous divine caster, once per day she may spend [[1]] hour in prayer to gain an orison of her choice as a spell known for the next [[24]] hours."
-    }
-   ]
-  },
   "Cloak of Resistance +3": {
    "changes": [
     {
@@ -750,13 +712,6 @@
     }
    ],
    "contextNotes": []
-  },
-  "Corset of Delicate Moves": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day as a move action, the wearer can take an additional swift action. This swift action can't be used to cast a spell or spell-like ability. The shirt must be worn for 24 hours before this ability can be used."
-   ]
   },
   "Jingasa of the Fortunate Soldier": {
    "changes": [
@@ -770,11 +725,11 @@
    ],
    "contextNotes": []
   },
-  "Patternward Spectacles": {
+  "Pathfinder Greatcoat": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
+    "A pathfinder greatcoat has each of the following patches (unless noted otherwise, the coat has only one of each patch): 10 days of trail rations and five full waterskins a case containing five adamantine bolts, five cold iron bolts, and two silver bolts a large scroll case containing a 2-foot-by-10-foot roll of paper and two sticks of charcoal a quiver containing five adamantine arrows, five cold iron arrows, and two silver arrows a 10-square-yard roll of canvas containing 10 pitons and a small hammer a silver aspis consortium badge and three bronze aspis consortium badges bullseye lanterns (2;"
    ]
   },
   "Ring of Protection +4": {
@@ -794,16 +749,12 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Orc",
-  "Undercommon",
-  "Gnoll",
-  "Goblin",
-  "Dwarven"
+  "Orc"
  ],
  "level": 11,
  "level_up_stats": {
   "cha": 0,
-  "con": 1,
+  "con": 2,
   "dex": 0,
   "int": 0,
   "str": 0,
@@ -811,15 +762,18 @@
  },
  "license_url": "/license",
  "luck": {
-  "attribute_bumps": {},
+  "attribute_bumps": {
+   "str": 1,
+   "wis": 1
+  },
   "audit": {
    "attribute_points": {
-    "after": 1,
+    "after": 2,
     "before": 2,
-    "final": 1,
-    "luck_cost": 0,
-    "received": 0,
-    "spent": 1
+    "final": 2,
+    "luck_cost": 10,
+    "received": 2,
+    "spent": 0
    },
    "feats": {
     "after": 0,
@@ -830,74 +784,103 @@
     "spent": 0
    },
    "hp": {
-    "after": 226,
-    "before": 231,
-    "final": 237,
-    "luck_cost": 0,
-    "received": 0,
-    "spent": 5
+    "after": 242,
+    "before": 242,
+    "final": 242,
+    "luck_cost": 4,
+    "received": 8,
+    "spent": 0
    },
    "skill_ranks": {
-    "after": 34,
-    "before": 44,
-    "final": 53,
-    "luck_cost": 0,
-    "received": 0,
-    "spent": 10
+    "after": 33,
+    "before": 33,
+    "final": 52,
+    "luck_cost": 4,
+    "received": 8,
+    "spent": 0
    }
   },
-  "cap": 25,
+  "cap": 40,
   "derivation": [
-   "Bought +4 (10 skill ranks, 5 HP, 1 level-up points)",
-   "+9 from 3 E-Kat feat(s)",
-   "= 13"
+   "Sold -18 luck for 8 HP, 8 skill points, 2 attribute point(s)",
+   "+9 from 3 luck feat(s) -- not applied (luck was sold)",
+   "= -18"
   ],
-  "dr_pool": 13,
-  "e_kat_earned": 15,
-  "e_kat_reserve": 15,
+  "dr_pool": 0,
+  "e_kat_earned": 30,
+  "e_kat_reserve": 5,
   "e_kat_store_cap": 99,
   "feats": [
    "Ass Pull",
    "It Just Works",
-   "Right of Deferment"
+   "Double Down"
   ],
   "floor": -50,
   "luck_feats": [],
-  "mod": 2,
+  "mod": -4,
   "negative_feats": [],
-  "payout_changes": [],
-  "score": 13,
+  "payout_changes": [
+   {
+    "flavor": "Negative luck payout",
+    "formula": "8",
+    "operator": "add",
+    "priority": 0,
+    "target": "mhp",
+    "type": "untyped"
+   },
+   {
+    "flavor": "Negative luck payout",
+    "formula": "8",
+    "operator": "add",
+    "priority": 0,
+    "target": "bonusSkillRanks",
+    "type": "untyped"
+   },
+   {
+    "flavor": "Negative luck payout",
+    "formula": "1",
+    "operator": "add",
+    "priority": 0,
+    "target": "str",
+    "type": "untyped"
+   },
+   {
+    "flavor": "Negative luck payout",
+    "formula": "1",
+    "operator": "add",
+    "priority": 0,
+    "target": "wis",
+    "type": "untyped"
+   }
+  ],
+  "score": -18,
   "stake": {
    "bonus_feat_slots": 0,
-   "direction": "buy",
-   "luck_points": {
-    "hp": 1,
-    "level_up_points": 1,
-    "skill_ranks": 2
+   "direction": "sell",
+   "luck_type": "Dimorphic",
+   "paid": {},
+   "payout": {
+    "attribute_points": 2,
+    "feats": 0,
+    "hp": 8,
+    "skill_points": 8
    },
-   "luck_type": "Default",
-   "paid": {
-    "hp": 5,
-    "level_up_points": 1,
-    "skill_ranks": 10
-   },
-   "payout": {},
-   "requested": {
-    "hp": 5,
-    "level_up_points": 1,
-    "skill_ranks": 10
-   },
-   "target": 4
+   "requested": {},
+   "target": -18
   },
-  "trait_benefits": {},
+  "trait_benefits": {
+   "E-Kat Exchange: Rotten Luck": "Ignore targets luck and any luck bonuses for one roll for a number of E-kats according to the following formula."
+  },
   "trait_changes": {},
-  "traits": [],
+  "traits": [
+   "E-Kat Exchange: Rotten Luck"
+  ],
   "twist_fate_per_day": 0,
-  "type": "Default",
+  "type": "Dimorphic",
   "values": {
-   "default": 13,
-   "negative": 0,
-   "proximity": 0
+   "default": -18,
+   "negative": -18,
+   "proximity": -18
   },
   "vault": 0,
   "vault_cap": 77
@@ -911,10 +894,9 @@
  "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
-  "Twists hair",
-  "Jingles keys",
-  "Brushes hair out of face",
-  "Covers ears"
+  "Scratches head",
+  "Puts hands in pockets",
+  "Crouches"
  ],
  "martial_disciplines": [],
  "mini_alignment": "lg",
@@ -925,14 +907,13 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, dead father, adopted into a middle income family",
+ "parents": "dead mother, loving father, raised in a poor household",
  "personality_traits": [
-  "Idiosyncratic",
-  "Contemplative",
-  "Attentive",
-  "Ambitious"
+  "Genuine",
+  "Impressive",
+  "Distant"
  ],
- "platnium": 27.0,
+ "platnium": 0.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -941,25 +922,13 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.sur",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dip",
+     "target": "skill.pro",
      "type": "competence"
     }
    ],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+1 morale vs. fear for one hour after resting an hour by the hearth"
-    }
-   ],
-   "description": "<p><em>Profession (Hearthmaster) - rank 10/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Handle Animal, Craft, Sense Motive.</em></p><hr><p><strong>Larder Keeper (Ex)</strong></p><p>The pantry is deep and well organized. The character gains a <strong>+2 competence bonus</strong> on Profession (cook) and Survival checks made to provide food and water for others.</p><hr><p><strong>Honest Welcome (Ex)</strong></p><p>A reputation for fair dealing precedes this innkeeper. They gain a <strong>+2 competence bonus</strong> on all Diplomacy checks.</p><hr><p><strong>Warming Hearth (Ex)</strong></p><p>The common-room fire is kept high and bright, and the character knows how to settle frayed nerves. Allies who rest near them for one hour gain a <strong>+1 morale bonus</strong> on saves against fear for the next hour.</p>",
-   "name": "Profession Rank 5: (Hearthmaster)",
+   "contextNotes": [],
+   "description": "<p><em>Profession (Scullery Hand) - rank 9/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Use Magic Device, Perception.</em></p><hr><p><strong>Free Refill (Ex)</strong></p><p>A standing pitcher of weak cider is always within reach. Each day you can provide free food and weak drink to a number of creatures equal to your Profession ranks, sparing each a day's ration cost; a creature you serve in this way that then rests for 1 hour removes the <strong>fatigued</strong> condition. You can grant this fatigue relief to a number of creatures per day equal to 1 + your Charisma modifier (minimum 1).</p><hr><p><strong>Clean Apron (Ex)</strong></p><p>You keep an immaculate station and a ready rag. You gain a <strong>+2 competence bonus</strong> on Profession (innkeeper, cook, or server) checks and on Diplomacy checks made to wait on or serve a creature, and once per day you can spend 1 minute to clean and press a creature's clothing or your own to grant a <strong>+2 circumstance bonus</strong> on its next Diplomacy or Disguise check made within 1 hour.</p>",
+   "name": "Profession Rank 5: (Scullery Hand)",
    "uses": null
   },
   {
@@ -968,14 +937,37 @@
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "skill.kar",
+     "target": "skill.lin",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
      "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Magician) - rank 10/10. Associate skills (ranks 1/4/7/10): Sense Motive, Craft, Profession, Use Magic Device.</em></p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Fighter's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Fighter can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
-   "name": "Profession Rank 5: (Magician)",
+   "description": "<p><em>Profession (Margin Scribbler) - rank 10/10. Associate skills (ranks 1/4/7/10): Use Magic Device, Sleight of Hand, Diplomacy, Appraise.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Footnote Hoarder (Ex)</strong></p><p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+   "name": "Profession Rank 5: (Margin Scribbler)",
    "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+    }
+   ],
+   "description": "<p><em>Profession (Assassin) - rank 7/10. Associate skills (ranks 1/4/7/10): Handle Animal, Craft, Knowledge (local).</em></p><hr><p><strong>Brawler's Fury (Ex)</strong></p><p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p><hr><p><strong>Phalanx Veteran (Ex)</strong></p><p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p><hr><p><strong>Combat Reflexes Drill (Ex)</strong></p><p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p>",
+   "name": "Profession Rank 5: (Assassin)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
   }
  ],
  "profession_feat_desc": {
@@ -987,148 +979,96 @@
  "profession_pool": 26,
  "profession_ranks": [
   {
-   "ability_theme": "noble",
-   "ability_tier": "average",
-   "associate_skills": [
-    "Handle Animal"
-   ],
-   "cap": 10,
-   "name": "Royal Envoy",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Royal Envoy)"
-  },
-  {
-   "ability_theme": "trade",
-   "ability_tier": "average",
-   "associate_skills": [
-    "Sense Motive"
-   ],
-   "cap": 10,
-   "name": "Ironmonger",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Ironmonger)"
-  },
-  {
    "ability_theme": "service",
-   "ability_tier": "good",
+   "ability_tier": "bad",
    "associate_skills": [
     "Knowledge (local)",
-    "Handle Animal",
-    "Craft",
-    "Sense Motive"
+    "Use Magic Device",
+    "Perception"
    ],
    "cap": 10,
-   "name": "Hearthmaster",
+   "name": "Scullery Hand",
    "rank15_abilities": [],
    "rank5_abilities": [
     {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.sur",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>The pantry is deep and well organized. The character gains a <strong>+2 competence bonus</strong> on Profession (cook) and Survival checks made to provide food and water for others.</p>",
-     "name": "Larder Keeper (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.dip",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>A reputation for fair dealing precedes this innkeeper. They gain a <strong>+2 competence bonus</strong> on all Diplomacy checks.</p>",
-     "name": "Honest Welcome (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [],
-     "contextNotes": [
-      {
-       "target": "allSavingThrows",
-       "text": "+1 morale vs. fear for one hour after resting an hour by the hearth"
-      }
-     ],
-     "desc": "<p>The common-room fire is kept high and bright, and the character knows how to settle frayed nerves. Allies who rest near them for one hour gain a <strong>+1 morale bonus</strong> on saves against fear for the next hour.</p>",
-     "name": "Warming Hearth (Ex)",
-     "uses": null
-    }
-   ],
-   "ranks": 10,
-   "skill_label": "Profession (Hearthmaster)"
-  },
-  {
-   "ability_theme": "performance",
-   "ability_tier": "garbage",
-   "associate_skills": [
-    "Knowledge (local)",
-    "Craft"
-   ],
-   "cap": 10,
-   "name": "Alley Caper",
-   "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 4,
-   "skill_label": "Profession (Alley Caper)"
-  },
-  {
-   "ability_theme": "arcane",
-   "ability_tier": "good",
-   "associate_skills": [
-    "Sense Motive",
-    "Craft",
-    "Profession",
-    "Use Magic Device"
-   ],
-   "cap": 10,
-   "name": "Magician",
-   "rank15_abilities": [],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kar",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Years bent over grimoires sharpen the Fighter's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
-     "name": "Scholar's Insight (Ex)",
-     "uses": null
-    },
-    {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
-     "name": "Apprentice Spellcasting (Sp)",
+     "desc": "<p>A standing pitcher of weak cider is always within reach. Each day you can provide free food and weak drink to a number of creatures equal to your Profession ranks, sparing each a day's ration cost; a creature you serve in this way that then rests for 1 hour removes the <strong>fatigued</strong> condition. You can grant this fatigue relief to a number of creatures per day equal to 1 + your Charisma modifier (minimum 1).</p>",
+     "name": "Free Refill (Ex)",
      "uses": {
-      "maxFormula": "4",
+      "maxFormula": "max(1, 1 + @abilities.cha.mod)",
       "per": "day",
       "value": null
      }
     },
     {
-     "changes": [],
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.pro",
+       "type": "competence"
+      }
+     ],
      "contextNotes": [],
-     "desc": "<p>Once per day the Fighter can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
-     "name": "Mage Armor (Sp)",
+     "desc": "<p>You keep an immaculate station and a ready rag. You gain a <strong>+2 competence bonus</strong> on Profession (innkeeper, cook, or server) checks and on Diplomacy checks made to wait on or serve a creature, and once per day you can spend 1 minute to clean and press a creature's clothing or your own to grant a <strong>+2 circumstance bonus</strong> on its next Diplomacy or Disguise check made within 1 hour.</p>",
+     "name": "Clean Apron (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "ranks": 9,
+   "skill_label": "Profession (Scullery Hand)"
+  },
+  {
+   "ability_theme": "scholar",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Use Magic Device",
+    "Sleight of Hand",
+    "Diplomacy",
+    "Appraise"
+   ],
+   "cap": 10,
+   "name": "Margin Scribbler",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
+     "name": "Bookish (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.lin",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
+     "name": "Footnote Hoarder (Ex)",
      "uses": {
       "maxFormula": "1",
       "per": "day",
@@ -1137,15 +1077,59 @@
     }
    ],
    "ranks": 10,
-   "skill_label": "Profession (Magician)"
+   "skill_label": "Profession (Margin Scribbler)"
+  },
+  {
+   "ability_theme": "martial",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Handle Animal",
+    "Craft",
+    "Knowledge (local)"
+   ],
+   "cap": 10,
+   "name": "Assassin",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>As a swift action you can enter a focused fury for 1 minute, gaining the benefit of a single combat feat you do not possess (you must meet its prerequisites). You can use this once per day.</p>",
+     "name": "Brawler's Fury (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "attack",
+       "text": "+1 dodge AC and +1 morale to attack while flanking with an ally"
+      }
+     ],
+     "desc": "<p>You fight best shoulder to shoulder. You gain a +1 dodge bonus to AC and a +1 morale bonus on attack rolls whenever at least one ally is adjacent to you and engaged with the same foe.</p>",
+     "name": "Phalanx Veteran (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Sentry training keeps your blade always moving. You may make a number of attacks of opportunity each round equal to 1 + your Dexterity modifier, and you can do so even while flat-footed.</p>",
+     "name": "Combat Reflexes Drill (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 7,
+   "skill_label": "Profession (Assassin)"
   }
  ],
  "professions": [
-  "Royal Envoy",
-  "Ironmonger",
-  "Hearthmaster",
-  "Alley Caper",
-  "Magician"
+  "Scullery Hand",
+  "Margin Scribbler",
+  "Assassin"
  ],
  "racial_stats": {
   "cha": -2,
@@ -1163,43 +1147,43 @@
  },
  "school": "N/A",
  "selected_traits": [
-  "Civilized",
-  "Vagabond Child",
-  "Vigilant Battler",
-  "Caravan Guard",
-  "Hunter's Knack",
-  "Chosen One",
-  "Domineering",
+  "Grim Optimism",
+  "Inspiring Rush",
+  "Planar Savant",
+  "Ghoulish Affinity",
+  "Doublespeak",
+  "Town Gossip",
+  "Desperate Speed",
   "Cautious Warrior"
  ],
  "selected_traits_desc": [
   {
-   "description": "You gain a +1 trait bonus on Knowledge (nobility) checks and Knowledge (local) checks. Knowledge (local) is always a class skill for you.",
-   "name": "Civilized"
+   "description": "As a standard action, you can joke about a troublesome situation to lighten the load of dealing with it for yourself and others. You and all allies within 30 feet who can hear you gain a +2 morale bonus on saving throws against fear and pain effects for 1d4 rounds. A character cannot benefit from this effect more than once in 24 hours.",
+   "name": "Grim Optimism"
   },
   {
-   "description": "Select one of the following skills: Disable Device or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
-   "name": "Vagabond Child"
+   "description": "Once per day when you make a charge attack, you gain a +1 trait bonus on both your attack and damage rolls, as do any allies who make a charge attack before the beginning of your next turn.",
+   "name": "Inspiring Rush"
   },
   {
-   "description": "You gain a +1 trait bonus on all Sense Motive checks. This trait bonus increases to +2 when used to counter a feint in combat.",
-   "name": "Vigilant Battler"
+   "description": "You may use your Charisma modifier when making Knowledge (planes) checks instead of your Intelligence modifier.",
+   "name": "Planar Savant"
   },
   {
-   "description": "You gain a +1 trait bonus on Survival checks, and Survival becomes a class skill for you.",
-   "name": "Caravan Guard"
+   "description": "You gain a +2 trait bonus on Perception checks to notice undead disguised as living creatures, and a +2 trait bonus on Fortitude saves against diseases and poisons inflicted by undead.",
+   "name": "Ghoulish Affinity"
   },
   {
-   "description": "You gain a +1 trait bonus on attack rolls against your favored enemies when you make such attacks as part of a readied action.",
-   "name": "Hunter's Knack"
+   "description": "You gain a +2 trait bonus on Bluff checks to pass along secret messages.",
+   "name": "Doublespeak"
   },
   {
-   "description": "You may cast light once per day as a spell-like ability (caster level 1st), and you begin play with a masterwork longsword. In addition, whenever light is cast upon this sword, the radius of light and its duration is doubled.",
-   "name": "Chosen One"
+   "description": "Choose a community that you've lived in for at least 5 years. You gain a +2 trait bonus on Diplomacy checks while in that community.",
+   "name": "Town Gossip"
   },
   {
-   "description": "Choose one 1st-level enchantment spell you are capable of casting. The DC of that spell increases by 1.",
-   "name": "Domineering"
+   "description": "Your eidolon receives a +5-foot enhancement bonus to one type of speed it has that you do not, such as a climb or swim speed. If your eidolon doesn't already possess such a mode of movement, you may apply this trait bonus later if it gains an evolution that grants it such a mode. Once this bonus is applied to a mode of movement, it can't be switched to another mode.",
+   "name": "Desperate Speed"
   },
   {
    "description": "You know when to fight carefully. Benefit: You gain an additional +1 dodge bonus to your Armor Class when fighting defensively or using total defense. (Sieg's table combat trait, ruling 2026-08-13.)",
@@ -1215,56 +1199,59 @@
  "shield_name": "Heavy steel",
  "shield_spell_failure": "15%",
  "shield_weight": "15 lbs.",
- "skill_rank_budget": 53,
+ "skill_rank_budget": 52,
  "skill_ranks": {
   "acrobatics": 3,
-  "appraise": 2,
-  "bluff": 2,
-  "climb": 3,
-  "craft": 2,
+  "appraise": 3,
+  "bluff": 4,
+  "climb": 0,
+  "craft": 0,
+  "diplomacy": 0,
   "disable device": 0,
   "disguise": 0,
-  "escape artist": 0,
-  "fly": 0,
-  "handle animal": 0,
-  "heal": 0,
+  "escape artist": 7,
+  "fly": 1,
+  "handle animal": 5,
+  "heal": 1,
   "intimidate": 0,
-  "knowledge arcana": 0,
-  "knowledge dungeoneering": 0,
-  "knowledge engineering": 10,
-  "knowledge geography": 6,
-  "knowledge history": 1,
-  "knowledge local": 4,
+  "knowledge arcana": 2,
+  "knowledge dungeoneering": 7,
+  "knowledge engineering": 0,
+  "knowledge geography": 2,
+  "knowledge history": 3,
+  "knowledge local": 0,
   "knowledge nature": 0,
-  "knowledge nobility": 2,
+  "knowledge nobility": 4,
   "knowledge planes": 0,
   "knowledge religion": 0,
-  "linguistics": 4,
+  "linguistics": 0,
   "perception": 0,
-  "perform": 3,
+  "perform": 2,
   "profession": 0,
   "ride": 0,
   "sense motive": 0,
-  "sleight of hand": 2,
-  "stealth": 9,
-  "survival": 0,
+  "sleight of hand": 0,
+  "spellcraft": 0,
+  "stealth": 2,
+  "survival": 6,
   "swim": 0,
   "use magic device": 0
  },
  "skill_unlock": {
-  "base_skill": "bluff",
-  "ranks": 2,
-  "skill": "Bluff",
+  "base_skill": "appraise",
+  "ranks": 3,
+  "skill": "Appraise",
   "unlock": {
-   "10": "You take no penalty to Bluff a creature after a failed check unless you failed by 5 or more.",
-   "15": "Creatures magically attempting to read your thoughts, detect your alignment, or reveal when you are lying must succeed at a caster level check (DC 11 + your Bluff ranks) or the effect reveals nothing.",
-   "20": "As a full-round action you can make a suggestion (as the spell, max 1 hour) to a creature within 30 feet (Will negates, DC 15 + Cha mod). This is an extraordinary mind-affecting compulsion.",
-   "5": "The penalty to Bluff a creature after a failed check is halved unless you failed by 5 or more."
+   "10": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
   },
-  "unlock_html": "<h2>Bluff</h2><p><strong>5 Ranks</strong>: The penalty to Bluff a creature after a failed check is halved unless you failed by 5 or more.</p><p><strong>10 Ranks</strong>: You take no penalty to Bluff a creature after a failed check unless you failed by 5 or more.</p><p><strong>15 Ranks</strong>: Creatures magically attempting to read your thoughts, detect your alignment, or reveal when you are lying must succeed at a caster level check (DC 11 + your Bluff ranks) or the effect reveals nothing.</p><p><strong>20 Ranks</strong>: As a full-round action you can make a suggestion (as the spell, max 1 hour) to a creature within 30 feet (Will negates, DC 15 + Cha mod). This is an extraordinary mind-affecting compulsion.</p>"
+  "unlock_html": "<h2>Appraise</h2><p><strong>5 Ranks</strong>: You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries.</p><p><strong>10 Ranks</strong>: As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.</p><p><strong>15 Ranks</strong>: Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.</p><p><strong>20 Ranks</strong>: Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.</p>"
  },
  "specialty_schools": [
-  "abjuration"
+  "abjuration",
+  "enchantment"
  ],
  "spell_changes_dict": {},
  "spell_list_choose_from": [],
@@ -1273,57 +1260,41 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Fortified Casting",
+  "Overcharge",
   "Empowered Abilities"
  ],
  "sphere_counts": {
   "Shield": {
    "advanced": 1,
    "feats": 0,
-   "normal": 10
+   "normal": 8
   }
  },
  "sphere_drawbacks": [
-  "Somatic Casting",
-  "Addictive Casting",
-  "Material Casting",
-  "Skilled Casting"
+  "Verbal Casting",
+  "Focus Casting",
+  "Skilled Casting",
+  "Magical Signs"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Active Defense / Cover Ally)": [
+  "Extra Combat Talent (Active Defense / Sacrificial Shield)": [
    "Extra Combat Talent"
   ],
-  "Extra Combat Talent (Bashing Shield / Deflecting Shield)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Punch Block / Extensive Defense)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Quaking Block)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Reactive Defense / Sacrificial Shield)": [
-   "Extra Combat Talent"
-  ],
-  "Extra Combat Talent (Shielded Focus / Interposing Shield)": [
+  "Extra Combat Talent (Punch Block)": [
    "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Active Defense / Cover Ally)",
-  "Extra Combat Talent (Punch Block / Extensive Defense)",
-  "Extra Combat Talent (Bashing Shield / Deflecting Shield)",
-  "Extra Combat Talent (Reactive Defense / Sacrificial Shield)",
-  "Extra Combat Talent (Shielded Focus / Interposing Shield)",
-  "Extra Combat Talent (Quaking Block)"
+  "Extra Combat Talent (Active Defense / Sacrificial Shield)",
+  "Extra Combat Talent (Punch Block)"
  ],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Somatic Casting",
-  "Addictive Casting",
-  "Material Casting",
+  "Verbal Casting",
+  "Focus Casting",
   "Skilled Casting",
-  "Fortified Casting",
+  "Magical Signs",
+  "Overcharge",
   "Empowered Abilities"
  ],
  "spheres_chosen": [
@@ -1339,20 +1310,44 @@
   "Strength of a Warrior (str)",
   "Two-Weapon Fighting"
  ],
- "str": 22,
+ "str": 20,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 11,
  "total_rolled_hp": 100,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_calibers": [
+  3,
+  3
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3 - Spheres)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Solo Maneuvers": [
+   "betraying blow"
+  ],
+  "Spheres Mentor": []
+ },
+ "trainer_feats": [
+  "Run",
+  "Feint Partner",
+  "Polearm Expertise (combat)",
+  "Diving Strike",
+  "Solo Maneuvers",
+  "Blade of Terror",
+  "Spheres Mentor"
+ ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
  "weapon_name": "Scizore",
- "weight_number": 387,
- "wis": 10,
- "younger_brothers": " you have 1 younger brothers",
- "younger_sisters": " you have 2 younger sisters"
+ "weight_number": 340,
+ "wis": 9,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 3 younger sisters"
 }
