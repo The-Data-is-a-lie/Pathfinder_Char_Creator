@@ -4,6 +4,7 @@
     "alchemist": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -21,6 +22,7 @@
     "antipaladin": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -38,6 +40,7 @@
     "arcanist": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -55,6 +58,7 @@
     "barbarian": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -72,6 +76,7 @@
     "barbarian (unchained)": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -89,6 +94,7 @@
     "bard": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "L",
         "shield": true
@@ -106,6 +112,7 @@
     "bloodrager": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "M",
         "shield": false
@@ -123,6 +130,7 @@
     "brawler": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -140,6 +148,7 @@
     "cavalier": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -157,6 +166,7 @@
     "cleric": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -174,6 +184,7 @@
     "druid": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -195,6 +206,7 @@
     "fighter": {
       "armor": "H",
       "shield": "tower",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -212,6 +224,7 @@
     "gunslinger": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -229,6 +242,7 @@
     "hunter": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -246,6 +260,7 @@
     "inquisitor": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -263,6 +278,7 @@
     "investigator": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -280,6 +296,7 @@
     "kineticist": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -297,6 +314,7 @@
     "magus": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "L",
         "shield": false
@@ -314,6 +332,7 @@
     "medium": {
       "armor": "M",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -331,6 +350,7 @@
     "mesmerist": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -348,6 +368,7 @@
     "monk": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -365,6 +386,7 @@
     "monk (unchained)": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -382,6 +404,7 @@
     "ninja": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -399,6 +422,7 @@
     "occultist": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -416,6 +440,7 @@
     "oracle": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -433,6 +458,7 @@
     "paladin": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -450,6 +476,7 @@
     "psychic": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -467,6 +494,7 @@
     "ranger": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -484,6 +512,7 @@
     "rogue": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -501,6 +530,7 @@
     "rogue (unchained)": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -518,6 +548,7 @@
     "samurai": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -535,6 +566,7 @@
     "shaman": {
       "armor": "M",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -552,6 +584,7 @@
     "shifter": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -569,6 +602,7 @@
     "skald": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "M",
         "shield": true
@@ -586,6 +620,7 @@
     "slayer": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -603,6 +638,7 @@
     "sorcerer": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -620,6 +656,7 @@
     "spiritualist": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -637,6 +674,7 @@
     "summoner": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "L",
         "shield": false
@@ -654,6 +692,7 @@
     "summoner (unchained)": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": "L",
         "shield": false
@@ -671,6 +710,7 @@
     "swashbuckler": {
       "armor": "L",
       "shield": "buckler",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -688,6 +728,7 @@
     "vigilante": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -705,6 +746,7 @@
     "warpriest": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -722,6 +764,7 @@
     "witch": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -739,6 +782,7 @@
     "wizard": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": true,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -756,6 +800,7 @@
     "stalker": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -773,6 +818,7 @@
     "warlord": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -790,6 +836,7 @@
     "warder": {
       "armor": "H",
       "shield": "tower",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -807,6 +854,7 @@
     "harbinger": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -824,6 +872,7 @@
     "mystic": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -841,6 +890,7 @@
     "zealot": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -858,6 +908,7 @@
     "medic": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -875,6 +926,7 @@
     "aegis": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -892,6 +944,7 @@
     "cryptic": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -909,6 +962,7 @@
     "dread": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -926,6 +980,7 @@
     "highlord": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -943,6 +998,7 @@
     "marksman": {
       "armor": "L",
       "shield": "buckler",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -960,6 +1016,7 @@
     "psion": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -977,6 +1034,7 @@
     "psychic warrior": {
       "armor": "H",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -994,6 +1052,7 @@
     "soulknife": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1011,6 +1070,7 @@
     "tactician": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1028,6 +1088,7 @@
     "vitalist": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1045,6 +1106,7 @@
     "voyager": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1062,6 +1124,7 @@
     "wilder": {
       "armor": "L",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1079,6 +1142,7 @@
     "adept": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1096,6 +1160,7 @@
     "aristocrat": {
       "armor": "H",
       "shield": "tower",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1113,6 +1178,7 @@
     "commoner": {
       "armor": null,
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1130,6 +1196,7 @@
     "expert": {
       "armor": "L",
       "shield": null,
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1147,6 +1214,7 @@
     "warrior": {
       "armor": "H",
       "shield": "tower",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1164,6 +1232,7 @@
     "omdura": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false
@@ -1181,6 +1250,7 @@
     "vampire hunter": {
       "armor": "M",
       "shield": "shield",
+      "asf_sensitive": false,
       "asf_exempt": {
         "armor": null,
         "shield": false

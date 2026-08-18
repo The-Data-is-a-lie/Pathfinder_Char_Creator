@@ -4,18 +4,18 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Hazel-eyed"
+  "Jagged scar"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Storm Caller\": {\n        \"source\": \"Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.\",\n        \"stormy eidolon\": \" A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.\",\n        \"summon storm's fury (sp)\": \" A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities.\",\n        \"electrical polarity (su)\": \" At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.\",\n        \"storm's wings (su)\": \" At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.\"\n    }\n}",
- "armor_ac": "7",
- "armor_armor_check_penalty": "-6",
+ "armor_ac": "4",
+ "armor_armor_check_penalty": "-2",
  "armor_enhancement_bonus": 2,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "1",
- "armor_name": "Banded mail",
- "armor_spell_failure": "35%",
- "armor_weight": "35 lbs.",
+ "armor_max_dex_bonus": "4",
+ "armor_name": "Chain shirt",
+ "armor_spell_failure": "20%",
+ "armor_weight": "25 lbs.",
  "bab_total": 10,
  "background_traits": [
   "Inspiring Rush"
@@ -26,38 +26,38 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "Spellblade",
- "build_tactics": "Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.",
+ "build_archetype": "Eidolon Master",
+ "build_tactics": "Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.",
  "c_class": "summoner",
  "c_class_2": "cleric",
  "c_class_display": "Summoner (Unchained)",
  "casting_level_str_foundry": "med",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Overcharge"
+   "Easy Focus"
   ],
   "boons_detail": [
    {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
    }
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Draining Casting",
-   "Extended Casting"
+   "Somatic Casting",
+   "Verbal Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
    },
    {
-    "counts_as": 2,
-    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
-    "name": "Extended Casting"
+    "counts_as": 1,
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
    }
   ]
  },
@@ -277,7 +277,85 @@
    "name": "cleric"
   }
  ],
- "combat_talent_items": [],
+ "combat_talent_items": [
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When collecting non-firearm ammunition after it has been used in combat, you have a 85% chance of retrieving the ammo in good condition such that it can be used again, rather than 50%. You may draw a thrown weapon or a piece of non-firearm ammunition from the environment or a dead creature as part of the same action used to make a ranged attack with it.\n\nYou may attempt to extract thrown weapons or non-firearm ammunition from a living creature as well, but doing so requires you to make a steal combat maneuver. If successful, you may extract as many thrown weapons or pieces of non-firearm ammunition as you desire from the target creature, up to the total amount present. If the steal was performed as a standard action, you may use the ammunition to make an attack action as part of the same standard action used to perform the steal combat maneuver.\n\nWhen extracting weapons or ammunition from a target in this fashion, that target suffers 1 point of bleed damage per piece of ammunition extracted. This bleed damage stacks with itself.",
+   "name": "Battlefield Scavenger",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you have martial focus, you do not provoke an attack of opportunity when making a ranged attack. If you possess the Vigilant Sharpshooter talent, you may flank targets in your threatened area with your ranged weapons.",
+   "name": "Close Combat Specialist",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever you successfully strike the same creature twice during a barrage, that creature is battered for 1 round. This is increased by 1 round for every additional successful attack.",
+   "name": "Unbalancing Combination",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever you move at least 10 ft. but no more than half your total speed using a move action on your turn, you regain your martial focus.",
+   "name": "Mobile Focus",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When performing a barrage, you may make 2 extra attacks instead of one, but must target the same creature with both of these extra attacks. However, your shots are wild, and the target can easily duck, causing both of your extra attacks to miss. However, doing so causes the target to have its movement speed reduced by half and to suffer a -3 penalty to Perception checks and to all attack rolls until the end of their next round, -1 for each additional extra attack augmented with the suppressing fire (blitz) that targets this creature. The target can choose not to avoid these attacks, in which case you may roll the attacks as normal, and the target doesn't suffer the penalties.",
+   "name": "Suppressing Fire",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you make a barrage special attack action, you may forgo making your first ranged attack and instead make a Bull Rush combat maneuver as a free action against a creature within your natural reach. This does not provoke an attack of opportunity. Your barrage penalty to attack rolls also applies to your CMB with this combat maneuver. Associated Feat: Stabbing Shot.",
+   "name": "Shove And Shoot",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may expend your martial focus as a full-round action to make a special barrage. You forgo your ability to add (blitz) talents and instead make a single attack against every creature within a close range (25 ft. +5 ft. per 2 base attack bonus) cone. Roll a single attack and apply it to every creature within range, dealing damage to any creature you successfully strike. This may affect swarms that are usually immune to weapon damage.\n\nYou may take this talent a total of three times, up to once per 5 base attack bonus you possess. If taken twice, increase the size of the effect to a medium (100 ft. + 10 ft. per base attack bonus) range cone. If taken three times, increase the size of the effect to a long range (400 ft. + 40 ft. per base attack bonus) cone.\n\nUsing Cone of Death is the equivalent of making 10 attacks with ranged or thrown weapons; if you do not have enough ammunition or are incapable of reloading your weapon or drawing weapons as a free action, you cannot use Cone of Death. Special abilities, features, or other enhancements (special ammunition, enhancement bonuses, etc.) only apply to Cone of Death if all 10 ranged or thrown attacks would be augmented by them.",
+   "name": "Cone Of Death",
+   "sphere": "Barrage",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  }
+ ],
  "con": 12,
  "counter_schools": [
   "illusion",
@@ -299,89 +377,102 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this wide leather is held together with\r two strands of oxen skin threaded\r through holes on each end. The belt's\r wearer is affected as though subject to a\r permanent ant haul spell (advanced player's guide). ",
-   "item_name": "Heavyload Belt"
+   "description": " this bandolier is made of finely tanned\r leather. It has slots for up to 200 rounds\r of ammunition. Pellets and black\r powder are kept in tiny individual\r pouches, and bullets in small loops. The bandolier alters itself\r as needed to accommodate both. There are also places on the beneficial bandolier for a gunsmith's kit and a powder horn. \r regardless of what quantities of these items are placed within\r the beneficial bandolier , its weight does not change. As a swift action, the wearer can command a single round\r of ammunition from the beneficial bandolier to teleport into a\r firearm of the appropriate type that he is wielding. ",
+   "item_name": "Beneficial Bandolier"
   },
   "body": {
-   "description": " the surface of this delicate-looking blue silk robe is adorned\r with tiny embossed runes across its entire surface. If the\r wearer is a spontaneous caster, once per day she may use a\r spell slot to cast a spell from a written source (such as a scroll\r or spellbook) as if she knew that spell. The spell must be on her\r spell list, the same spell level or lower than the expended spell\r slot, and the same type of spell (arcane or divine) as the spell\r slot expended. The caster must also understand the written\r source (such as using decipher script or read magic) and be\r carrying it. Activating the robe is not an action, but casting\r the spell otherwise works as normal, including casting time, \r providing components or foci, and so on. Using a mnemonic\r vestment's properties does not consume the written source. A mnemonic vestment must be worn for 24 consecutive hours before using its effects. ",
-   "item_name": "Mnemonic Vestment"
+   "description": " this warm outfit consists of a woolen coat and pants, boots, gloves, and a heavy fur cloak with a leather hood. The habit of the winter explorer provides a constant endure elements effect in cold weather (it has no effect in warm weather), and the wearer gains a +2 bonus on saving throws against magic cold effects and spells with the cold descriptor. When the hood of the habit is drawn up around the head, the wearer's eyes turn a piercing sky blue color. The wearer becomes immune to snow blindness and gains the ability to see through natural or magical fog, sleet, snow, and other similar weather conditions with a range of 60 feet. The habit of the winter explorer also grants its wearer a +4 competence bonus on stealth checks made in cold weather (temperatures below 40 f). In addition, once per day in cold weather, the wearer may turn invisible for 3 rounds as the vanish spell (pathfinder rpg advanced player's guide 253). All pieces of the habit of the winter explorer must be worn for the item to function. ",
+   "item_name": "Habit of the Winter Explorer"
+  },
+  "chest": {
+   "description": " this tight-fitting garment of fine silk has thin bone ribbing sewn into it. Once per day as a move action, the wearer can take an additional swift action. This swift action can't be used to cast a spell or spell-like ability. The shirt must be worn for 24 hours before this ability can be used. ",
+   "item_name": "Corset of Delicate Moves"
+  },
+  "eyes": {
+   "description": " these goggles, made from a pair of smoky crystal lenses set in an adjustable leather strap, help the wearer see through storms of rain, snow, or even dust. A pair of storm goggles fully negates any perception penalties imposed by a natural storm or atmospheric condition. Also, once per round when the wearer makes an attack against a target that has concealment from him because of natural or magical fog, mist, clouds, or vapor, the wearer can choose to roll the miss chance percentile twice and take the better of the two results. ",
+   "item_name": "Storm Goggles"
   },
   "feet": {
-   "description": " boots of friendly terrain turn inhospitable\r territory into a perfect hunting grounds for\r any ranger who wears them, so much so\r that his footprints vanish behind him with\r each step he takes. Each pair of these supple\r leather boots corresponds to a specific sort\r of environment as defined by the ranger's favored terrain class\r feature (jungles, plains, and so on). A ranger wearing the boots\r can treat the corresponding environment of the boots as one of\r his favored terrains, granting him a +2 bonus. If he already has\r that particular environment as one of his favored terrains, that\r terrain's bonus increases by 2. ",
-   "item_name": "Boots of Friendly Terrain"
-  },
-  "head": {
-   "description": " this large, furry hat is sewn from the thick pelt of an animal native to the frozen north, and has earflaps that can be pulled down or folded up over the crown of the hat. When worn, an ushanka of the northlands grants its wearer a +2 resistance bonus on saving throws against cold effects and a +5 competence bonus on survival checks. When the earflaps are pulled down, the wearer gains a +2 bonus on saving throws against sonic effects, but also takes a 2 penalty on perception checks made to hear. Pulling the earflaps down is a move action. ",
-   "item_name": "Ushanka of the Northlands"
-  },
-  "neck": {
-   "description": " these runes may be carved from wood or cast in silver and are\r worn on a leather cord. When a witch prepares her spells, she\r may also choose to use the hexing runes to augment one hex\r she can use. The save dc of this hex increases by 1 for 24 hours. \r additionally, once per day when she speaks the command\r word, the wearer gains the benefits of the ward hex as if cast\r by an 8th level witch. ",
-   "item_name": "Hexing Runes"
+   "description": " these leather boots bear a knife\r motif worked into their durable blue\r leather. Three times per day, the\r wearer can speak a command word\r as a swift action, causing a serrated\r knife to fly from the boots and instantly slice through any\r nonmagical bond currently restraining the wearer. The\r knife conjured from bondbreaker's boots can cut through\r brambles, ropes, tanglefoot bags, vines, webs, or any other\r similar nonmagical item restraining the wearer, but cannot\r help when the owner is actively restrained by a creature. Bondbreaker's boots also cannot free the wearer if manacles\r or chains restrain her. ",
+   "item_name": "Bondbreaker's Boots"
   }
  },
  "equipment_list": [
-  "Heavyload Belt",
-  "Boots of Friendly Terrain",
-  "Ushanka of the Northlands",
-  "Hexing Runes",
-  "Mnemonic Vestment"
+  "Beneficial Bandolier",
+  "Habit of the Winter Explorer",
+  "Corset of Delicate Moves",
+  "Storm Goggles",
+  "Bondbreaker's Boots"
  ],
  "eye_color": [
-  "Blue"
+  "Grey"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 7,
+  "normal": 5,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
-  "trainer": 5
+  "trainer": 7
  },
  "feat_changes_dict": {},
  "feat_conditionals_dict": {
-  "Arcane Strike": {
+  "Bludgeoner": {
    "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "max(1, floor(@spells.primary.cl.total / 5))",
-     "subTarget": "allDamage",
-     "target": "damage",
-     "type": "untyped"
-    }
-   ],
-   "name": "Arcane Strike: Activation: swift action; Effect: +[[max(1, floor(@spells.primary.cl.total / 5))]] damage and weapons count as magic for 1 round",
+   "modifiers": [],
+   "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
    "tier": "A"
   }
  },
  "feats": [
-  "Arcane Vendetta",
-  "Scholar",
-  "Healer's Mercy",
-  "Lunar Strike (combat)",
-  "Dampen Presence",
-  "Focused Eidolon",
-  "Arcane Shield",
-  "Basic Magic Training",
+  "Light Armor Proficiency",
+  "Wand Desperado",
+  "Siege Engineer",
+  "Unknowable Fear",
+  "Throw Anything",
+  "Extra Combat Talent (Battlefield Scavenger / Close Combat Specialist)",
+  "Extra Combat Talent (Unbalancing Combination / Mobile Focus)",
+  "Extra Combat Talent (Suppressing Fire / Shove And Shoot)",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": [
-   "Extra Magic Talent"
-  ]
- },
- "flavor_feat_tax_dict": {
+  "Extra Combat Talent (Battlefield Scavenger / Close Combat Specialist)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Cone Of Death)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Suppressing Fire / Shove And Shoot)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Unbalancing Combination / Mobile Focus)": [
+   "Extra Combat Talent"
+  ],
+  "Light Armor Proficiency": [
+   "arcane armor training",
+   "medium armor proficiency",
+   "arcane armor mastery",
+   "heavy armor proficiency"
+  ],
+  "Siege Engineer": [
+   "siege gunner"
+  ],
   "Throw Anything": [
    "ricochet splash weapon"
   ]
  },
+ "flavor_feat_tax_dict": {
+  "Net Adept": [
+   "net maneuvering",
+   "net trickery"
+  ]
+ },
  "flavor_feats": [
-  "Throw Anything"
+  "Net Adept"
  ],
  "flaw": [
   "Animal Phobia",
@@ -411,16 +502,12 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Siege Engineer": [
-   "siege gunner"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Siege Engineer",
-  "Unknowable Fear"
+  "Skilled Driver",
+  "Bloodletting"
  ],
- "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An excellent trainer who taught them Arcane Strike, Improved Initiative, Cloud Gazer\n- Training: An average trainer who taught them Planned Spontaneity, Siphon Poison\n\nFamily\n- Dead Mother\n- Dead Father\n- Adopted Into A Middle Income Family\n- 3 Younger Brothers\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Red\n- Eyes: Blue\n- Build: Hazel-eyed",
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Eidolon Master\n- Tactics: Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Charm-Peddler (rank 15)\n- Profession: Medusa Hunter (rank 6)\n- Profession: Stoneshaper (rank 1)\n- Profession: Book Seller (rank 1)\n- Profession: Sea Urchin Harvester (rank 7)\n- Known for: Locks\n- Training: An average trainer who taught them Unseen Terror, Defensive Combat Training\n- Training: An average trainer who taught them Extra Cantrips Or Orisons, Arcane Shield\n- Training: An excellent trainer who taught them Improved Shield Bash, Cloud Gazer, Dimensional Agility\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Sister\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Grey\n- Build: Jagged Scar",
  "full_domain": [
   "Luck",
   "Strength"
@@ -428,39 +515,41 @@
  "gender": "Female",
  "generation_seed": 5002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 100,
+ "gold": 20,
  "hair_color": [
   "Red"
  ],
  "hair_type": [
-  "Frizzy"
+  "Unkempt"
  ],
  "height_number": "5'8\"",
- "hero_points": 0,
+ "hero_points": 1,
  "homebrew_feat_desc_dict": {
   "Arcane Shield": "You can convert any spell into a defense",
-  "Arcane Strike": "You draw upon your arcane power to enhance your weapons with magical energy",
-  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
-  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Water Creature (Fallen Fey)",
   "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
+  "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
   "Cloud Gazer": "Your insight into your elemental heritage gives you a clarity of sight few humans possess",
-  "Dampen Presence": "Your habitual stillness makes you difficult to perceive for creatures that use blindsight or blindsense",
-  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
-  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Greater Fey-link (Fallen Fey): Your fey-link endures for 10 minutes per caster level rather than 1 minute per caster level. You may spend a spell point to increase this duration to 1 hour per caster level instead.\n- Fairy Ring Traveler (Fallen Fey): You know the secrets of traveling via the fey realms. You may spend a 1-round action to determine the direction to the nearest fairy ring. You may open a fairy ring with a 10 minute ritual or by spending a spell point as a standard action. Once opened, creatures may pass through the fairy ring into ",
-  "Focused Eidolon": "Your bond with your eidolon helps to focus your concentration",
-  "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
-  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Defensive Combat Training": "You excel at defending yourself from all manner of combat maneuvers",
+  "Dimensional Agility": "Teleportation does not faze you",
+  "Extra Cantrips Or Orisons": "You are a master of minor spells",
+  "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
+  "Extra Combat Talent (Battlefield Scavenger / Close Combat Specialist)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Battlefield Scavenger (Barrage): When collecting non-firearm ammunition after it has been used in combat, you have a 85% chance of retrieving the ammo in good condition such that it can be used again, rather than 50%. You may draw a thrown weapon or a piece of non-firearm ammunition from the environment or a dead creature as part o\n- Close Combat Specialist (Barrage): When you have martial focus, you do not provoke an attack of opportunity when making a ranged attack. If you possess the Vigilant Sharpshooter talent, you may flank targets in your threatened area with your ranged weapons.",
+  "Extra Combat Talent (Cone Of Death)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Cone Of Death (Barrage): You may expend your martial focus as a full-round action to make a special barrage. You forgo your ability to add (blitz) talents and instead make a single attack against every creature within a close range (25 ft. +5 ft. per 2 base attack bonus) cone. Roll a single attack and apply it to every crea",
+  "Extra Combat Talent (Suppressing Fire / Shove And Shoot)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Suppressing Fire (Barrage): When performing a barrage, you may make 2 extra attacks instead of one, but must target the same creature with both of these extra attacks. However, your shots are wild, and the target can easily duck, causing both of your extra attacks to miss. However, doing so causes the target to have its moveme\n- Shove And Shoot (Barrage): When you make a barrage special attack action, you may forgo making your first ranged attack and instead make a Bull Rush combat maneuver as a free action against a creature within your natural reach. This does not provoke an attack of opportunity. Your barrage penalty to attack rolls also applies t",
+  "Extra Combat Talent (Unbalancing Combination / Mobile Focus)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Unbalancing Combination (Barrage): Whenever you successfully strike the same creature twice during a barrage, that creature is battered for 1 round. This is increased by 1 round for every additional successful attack.\n- Mobile Focus (Barrage): Whenever you move at least 10 ft. but no more than half your total speed using a move action on your turn, you regain your martial focus.",
+  "Fleet": "You are faster than most",
+  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
   "Light Armor Proficiency": "You are skilled at wearing light armor",
-  "Lunar Strike (combat)": "A surge of pale moonlight disorients foes you strike. you can use this a number of times per day equal to your wisdom modifier (minimum 1). you can choose to use this ability as a free action after you hit the enemy with the attack. this is a supernatural ability.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Net Adept": "You have trained to use the net as a melee weapon",
-  "Planned Spontaneity": "You have a measure of flexibility when preparing spells",
-  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
   "Siege Engineer": "You are proficient with all siege weaponry",
-  "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Steam Caster": "You imbue your fire spells with elemental water, transforming them into powerful gouts of steam",
   "Throw Anything": "You are used to throwing things you have on hand",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Uncanny Activation": "You can coax greater power out of magical devices",
   "Unknowable Fear": "Your terrifying presence precedes you. other creatures take a 2 penalty on intimidate checks against you, and you can perform the project hostility occult skill unlock even if you can't cast psychic spells. if you can cast psychic spells or have the psychic sensitivity feat, then creatures do not become immune to your project hostility for 24 hours after being targeted with it.",
+  "Unseen Terror": "Creatures are naturally afraid of what they cannot see. Normal You can only make an Intimidate check to demoralize an opponent if it is within 30 feet and can clearly see and hear you. you can make intimidate checks to demoralize a creature even if it cannot see you. you must still influence it in some other way, such as by taunting, making sounds, or using visual effects such as silent image or light from a torch. you gain a +2 bonus on intimidate checks made while in dim light or darkness.",
   "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch."
  },
  "inherents": {
@@ -475,39 +564,50 @@
  "initiator_level": 0,
  "int": 17,
  "item_changes_dict": {
-  "Boots of Friendly Terrain": {
+  "Beneficial Bandolier": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "A ranger wearing the boots can treat the corresponding environment of the boots as one of his favored terrains, granting him a +2 bonus. If he already has that particular environment as one of his favored terrains, that terrain's bonus increases by 2."
+    "It has slots for up to 200 rounds of ammunition. As a swift action, the wearer can command a single round of ammunition from the beneficial bandolier to teleport into a firearm of the appropriate type that he is wielding."
    ]
   },
-  "Hexing Runes": {
+  "Bondbreaker's Boots": {
    "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Three times per day, the wearer can speak a command word as a swift action, causing a serrated knife to fly from the boots and instantly slice through any nonmagical bond currently restraining the wearer."
+   ]
+  },
+  "Corset of Delicate Moves": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day as a move action, the wearer can take an additional swift action. This swift action can't be used to cast a spell or spell-like ability. The shirt must be worn for 24 hours before this ability can be used."
+   ]
+  },
+  "Habit of the Winter Explorer": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.ste",
+     "type": "competence"
+    }
+   ],
    "contextNotes": [
     {
      "target": "allSavingThrows",
-     "text": "When a witch prepares her spells, she may also choose to use the hexing runes to augment one hex she can use. The save dc of this hex increases by 1 for [[24]] hours. Additionally, once per day when she speaks the command word, the wearer gains the benefits of the ward hex as if cast by an 8th level witch."
+     "text": "The habit of the winter explorer provides a constant endure elements effect in cold weather (it has no effect in warm weather), and the wearer gains a +[[2]] bonus on saving throws against magic cold effects and spells with the cold descriptor. The wearer becomes immune to snow blindness and gains the ability to see through natural or magical fog, sleet, snow, and other similar weather conditions with a range of [[60]] feet. In addition, once per day in cold weather, the wearer may turn invisible for [[3]] rounds as the vanish spell (pathfinder rpg advanced player's guide 253)."
     }
    ]
   },
-  "Mnemonic Vestment": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "If the wearer is a spontaneous caster, once per day she may use a spell slot to cast a spell from a written source (such as a scroll or spellbook) as if she knew that spell. A mnemonic vestment must be worn for 24 consecutive hours before using its effects."
-   ]
-  },
-  "Ushanka of the Northlands": {
+  "Storm Goggles": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "An ushanka of the northlands grants its wearer a +[[2]] resistance bonus on saving throws against cold effects and a +[[5]] competence bonus on survival checks."
-    },
-    {
-     "target": "skill.per",
-     "text": "When the earflaps are pulled down, the wearer gains a +[[2]] bonus on saving throws against sonic effects, but also takes a 2 penalty on perception checks made to hear."
+     "target": "attack",
+     "text": "Also, once per round when the wearer makes an attack against a target that has concealment from him because of natural or magical fog, mist, clouds, or vapor, the wearer can choose to roll the miss chance percentile twice and take the better of the two results."
     }
    ]
   }
@@ -521,6 +621,9 @@
  "land_speed": 30,
  "language_text": [
   "Common",
+  "Celestial",
+  "Drow Sign Language",
+  "Elven",
   "Terran",
   "Sphinx",
   "Gnoll",
@@ -529,14 +632,11 @@
   "Halfling",
   "Draconic",
   "Aklo",
+  "Orc",
   "Protean",
-  "Auran",
+  "Ignan",
   "Kelish",
-  "Elven",
-  "Drow Sign Language",
-  "Gnome",
-  "Dwarven",
-  "Undercommon"
+  "Tengu"
  ],
  "level": 9,
  "level_up_stats": {
@@ -613,41 +713,7 @@
   "vault": 0,
   "vault_cap": 77
  },
- "magic_talent_items": [
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "This fey-blessing grants you the ability to communicate and control water. When granted, you gain the following abilities:\n\nHydrokinesis: When touching a body of water, you may attempt the bullrush, drag, grapple, reposition, or trip combat maneuver against another creature touching that body of water within medium range as a standard action. Use your caster level in place of your base attack bonus and your casting attribute modifier in place of your Strength modifier for determining your combat maneuver bonus for this check. Failure on a trip attempt does not allow the target to trip you in return. You have no bonuses or penalties from size on this maneuver and are not limited by the size of your target.\n\nWaterspout: When touching a body of water, you may attempt to damage a creature touching that body of water within close range as a standard action. The targeted creature must succeed on a Reflex save or take 1d6 bludgeoning damage. This damage increases by 1d6 at 3rd caster level and every 2 caster levels thereafter.\n\nWaveglide: As a standard action, you can create waves and currents to double or halve the speed of creatures or objects traveling on the surface of the water, affecting up to 10 contiguous 5-foot squares per caster level within long range. This requires line of effect to some part of the area, and lasts as long as you concentrate. An unwilling target can ignore the effect for 1 round by succeeding on a Will saving throw.",
-   "name": "Water Creature",
-   "sphere": "Fallen Fey",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": false,
-   "changes": [],
-   "contextNotes": [],
-   "description": "Your fey-link endures for 10 minutes per caster level rather than 1 minute per caster level. You may spend a spell point to increase this duration to 1 hour per caster level instead.",
-   "name": "Greater Fey-link",
-   "sphere": "Fallen Fey",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  },
-  {
-   "advanced": true,
-   "changes": [],
-   "contextNotes": [],
-   "description": "You know the secrets of traveling via the fey realms. You may spend a 1-round action to determine the direction to the nearest fairy ring. You may open a fairy ring with a 10 minute ritual or by spending a spell point as a standard action. Once opened, creatures may pass through the fairy ring into the realm of Faerie. The ring remains open for 3d6 rounds. While in Faerie, you may spend a 1-round action to determine the direction to the fairy ring connected to the spot nearest your desired destination.\n\nWhen rolling on Table: Time Difference, you may spend two spell points to shift the result by one step in the direction of your choice. These points must be spent before the result of the roll is known. (See Traveling Through Faerie, below, for more information.)",
-   "name": "Fairy Ring Traveler",
-   "sphere": "Fallen Fey",
-   "system": "Spheres of Power",
-   "type": "base",
-   "uses": null
-  }
- ],
+ "magic_talent_items": [],
  "main_stat": "int",
  "maneuvers_choose_from": [],
  "maneuvers_desc_dict": {},
@@ -668,9 +734,9 @@
  "mythic": null,
  "normal_feat_amount": 8,
  "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 0 older sisters",
+ "older_sisters": " you have 1 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, dead father, adopted into a middle income family",
+ "parents": "loving mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Enthusiastic",
   "Agreeable",
@@ -678,7 +744,7 @@
   "Judicious",
   "Gregarious"
  ],
- "platnium": 10.0,
+ "platnium": 2.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1355,56 +1421,58 @@
   3
  ],
  "sphere_boons": [
-  "Overcharge"
+  "Easy Focus"
  ],
  "sphere_counts": {
-  "Fallen Fey": {
+  "Barrage": {
    "advanced": 1,
    "feats": 0,
-   "normal": 2
+   "normal": 6
   }
  },
  "sphere_drawbacks": [
-  "Draining Casting",
-  "Extended Casting"
+  "Somatic Casting",
+  "Verbal Casting"
  ],
  "sphere_feat_tax": {
-  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)": [
-   "Extra Magic Talent"
+  "Extra Combat Talent (Battlefield Scavenger / Close Combat Specialist)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Cone Of Death)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Suppressing Fire / Shove And Shoot)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Unbalancing Combination / Mobile Focus)": [
+   "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Basic Magic Training",
-  "Extra Magic Talent (Greater Fey-link / Fairy Ring Traveler)"
+  "Extra Combat Talent (Battlefield Scavenger / Close Combat Specialist)",
+  "Extra Combat Talent (Unbalancing Combination / Mobile Focus)",
+  "Extra Combat Talent (Suppressing Fire / Shove And Shoot)",
+  "Extra Combat Talent (Cone Of Death)"
  ],
- "sphere_mana_pool": 6,
+ "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Draining Casting",
-  "Extended Casting",
-  "Overcharge"
+  "Somatic Casting",
+  "Verbal Casting",
+  "Easy Focus"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Fallen Fey",
-   "system": "power"
+   "sphere": "Barrage",
+   "system": "might"
   }
  ],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Light Armor Proficiency": [
-   "arcane armor training",
-   "medium armor proficiency"
-  ],
-  "Net Adept": [
-   "net maneuvering",
-   "net trickery"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Bloodletting",
-  "Net Adept",
-  "Light Armor Proficiency",
-  "Wand Desperado"
+  "Fleet",
+  "Steam Caster",
+  "Uncanny Activation",
+  "Bludgeoner"
  ],
  "str": 10,
  "teamwork_feat_labels": [],
@@ -1412,37 +1480,44 @@
  "total_level": 15,
  "total_rolled_hp": 112,
  "trainer_calibers": [
-  3,
-  2
+  2,
+  2,
+  3
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
-  "(Trainer 2)"
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 3)"
  ],
  "trainer_feat_tax_dict": {
-  "Arcane Strike": [
-   "deadly dealer",
-   "sunlit strike"
+  "Dimensional Agility": [
+   "dimensional assault",
+   "dimensional dervish",
+   "dimensional maneuvers",
+   "dimensional savant"
   ],
-  "Improved Initiative": [
-   "surprising combatant"
+  "Extra Cantrips Or Orisons": [
+   "extra cantrips or orisons"
   ]
  },
  "trainer_feats": [
-  "Arcane Strike",
-  "Improved Initiative",
+  "Unseen Terror",
+  "Defensive Combat Training",
+  "Extra Cantrips Or Orisons",
+  "Arcane Shield",
+  "Improved Shield Bash",
   "Cloud Gazer",
-  "Planned Spontaneity",
-  "Siphon Poison"
+  "Dimensional Agility"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Mere club",
+ "weapon_name": "Sling",
  "weight_number": 217,
  "wis": 12,
- "younger_brothers": " you have 3 younger brothers",
+ "younger_brothers": " you have 0 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

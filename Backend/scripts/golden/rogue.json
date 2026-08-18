@@ -8,16 +8,16 @@
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Shadow Scion\": {\n        \"source\": \"Legacy of the First World pg. 15 Count Ranalc's worshipers congregate in the places between dark and light, searching for secrets that might one day free their patron from his mysterious exile. Shadow scions have learned some of these secrets and draw power from the shadows themselves. Many shadow scions are dedicated fetchling ( Pathfinder RPG Bestiary 2 123) or wayang ( Pathfinder RPG Bestiary 4 274) devotees of Count Ranalc.\",\n        \"shadow dweller (ex)\": \" A shadow scion gains darkvision with a range of 30 feet and a +1 competence bonus on Stealth checks in dim light and darkness. If she already has darkvision, the range of her darkvision increases by 10 feet. At 3rd level, and every 2 levels thereafter, the range of her darkvision increases by 10 feet and her bonus on Stealth checks increases by 1. This ability replaces trapfinding.\",\n        \"shadow strike\": \" At 2nd level, a shadow scion gains Shadow Strike APG as a bonus feat. A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains Blind-Fight as a bonus feat. This ability replaces the rogue talent gained at 2nd level.\",\n        \"shadow step (sp)\": \" At 8th level, a shadow scion can walk through the Shadow Plane and reappear elsewhere on the Material Plane as a standard action. The shadow scion can travel up to 30 feet per rogue level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in increments of at least 5 feet and does not provoke attacks of opportunity. Travel through the Shadow Plane is imprecise; when the shadow scion arrives back on the Material Plane, she reenters 1 square off target, as per the rules for thrown splash weapons. If this would place her in an occupied square, she instead arrives in the nearest safe location. When the shadow scion arrives on the Material Plane, she is cloaked in shadow and gains concealment as per the blur spell for 1 round. This ability replaces the rogue talent gained at 8th level.\",\n        \"shadow speaker (sp)\": \" At 14th level, a shadow scion can spend 1 minute meditating within a patch of dim light or darkness; at the end of the time, she can draw information from the shadows. This functions as commune with nature , except that it functions in any terrain to a radius of 100 feet per rogue level, and it cannot reveal information about any object or subject that is not currently in dim light or darkness. The shadow scion can use this ability once per day at 14th level and twice per day at 19th level. This ability replaces the rogue talent gained at 14th level.\",\n        \"shadow master (su)\": \" At 20th level, whenever a shadow scion is in an area of dim light, she gains DR 10/cold iron and a +2 luck bonus on all saving throws. In addition, whenever she confirms a critical hit against a foe that is in an area of dim light, that foe is blinded for 1d6 rounds. This ability replaces master strike.\",\n        \"rogue talents\": \" The following rogue talents complement the shadow scion archetype: false friend ARG , fast stealth, slow reactions, surprise attack, and underhanded UC\",\n        \"advanced talents\": \" The following advanced rogue talents complement the shadow walker archetype: hide in plain sight UC , improved evasion, slippery mind, and unwitting ally UC\"\n    }\n}",
- "armor_ac": "8",
- "armor_armor_check_penalty": "-7",
+ "armor_ac": "2",
+ "armor_armor_check_penalty": "0",
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [
   "Vigilant"
  ],
- "armor_max_dex_bonus": "0",
- "armor_name": "Hellknight half-plate",
- "armor_spell_failure": "40%",
- "armor_weight": "50 lbs.",
+ "armor_max_dex_bonus": "6",
+ "armor_name": "Rosewood armor",
+ "armor_spell_failure": "10%",
+ "armor_weight": "15 lbs.",
  "bab_total": 13,
  "background_traits": [
   "Caravan Guard"

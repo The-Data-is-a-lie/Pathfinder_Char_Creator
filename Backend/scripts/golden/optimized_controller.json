@@ -8,17 +8,17 @@
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Scroll Scholar\": {\n        \"source\": \"Pathfinder Society Field Guide pg. 26 A scroll scholar values knowledge and learning as much as her other abilities, trading a portion of her potential in her chosen class for greater breadth of skill at deciphering old texts, piecing together strange fragments of esoteric lore, and deciphering the hidden qualities of strange and unusual magical items. The scroll scholar archetype can be taken by either clerics or wizards-they give up different class abilities for the new abilities granted by this archetype. A wizard must either be a universalist wizard or a diviner wizard in order to take this archetype-other types of school specializations are not suited to this archetype's focus. A scroll scholar has the following class features.\",\n        \"diligent student (ex)\": \" At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains-the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner's fortune (if a diviner) or hand of the apprentice (if a universalist).\",\n        \"secrets revealed (sp)\": \" At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar's choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level-her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level.\",\n        \"flash of insight (su)\": \" At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character's spells per day- from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards.\"\n    }\n}",
- "armor_ac": "9",
- "armor_armor_check_penalty": "-6",
+ "armor_ac": 0,
+ "armor_armor_check_penalty": 0,
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [
   "Terrain-striding",
   "Withstanding"
  ],
- "armor_max_dex_bonus": "1",
- "armor_name": "Full plate",
- "armor_spell_failure": "35%",
- "armor_weight": "50 lbs.",
+ "armor_max_dex_bonus": 0,
+ "armor_name": 0,
+ "armor_spell_failure": 0,
+ "armor_weight": 0,
  "bab_total": 7,
  "background_traits": [
   "Inspiring Rush"

@@ -84,8 +84,16 @@ FEATS_CSV = REPO / 'data' / 'feats_new.csv'
 # armor.json's section names, in the same order as builder.ARMOR_BANDS' letters.
 SECTION_BAND = {'Light': 'L', 'Medium': 'M', 'Heavy': 'H'}
 
-ROW_KEYS = {'armor', 'shield', 'asf_exempt', 'armor_allow', 'metal_prohibited',
+ROW_KEYS = {'armor', 'shield', 'asf_sensitive', 'asf_exempt', 'armor_allow', 'metal_prohibited',
             'shield_material', 'evidence'}
+
+# The ten classes whose spells arcane spell failure can actually spoil, and the whole basis of
+# ruling D5's caster cap. Asserted by name rather than counted: this set decides whether a
+# multiclass character is allowed into plate, so it must not drift on a re-scrape without somebody
+# looking. Psionic classes are absent on purpose -- their prose says "Armor does not interfere with
+# the manifestation of powers" -- and so are the psychic-magic occult classes.
+ASF_SENSITIVE_CLASSES = {'arcanist', 'bard', 'bloodrager', 'magus', 'skald', 'sorcerer',
+                         'summoner', 'summoner (unchained)', 'witch', 'wizard'}
 
 # Classes that are non-shield-proficient because their prose never mentions shields at all, rather
 # than because it denies them. Asserted as an exact set: a re-scrape that drops a sentence would
@@ -271,6 +279,10 @@ def check_internal(name, row, armor_sections):
                          f'{row["armor"]!r}')
     if exempt.get('shield') and row['shield'] is None:
         REPORT.error(f'{name}: ASF-exempt while using a shield, but not shield-proficient')
+    # An exemption from a thing you do not suffer is a parse that crossed two classes' sentences.
+    if (exempt.get('armor') or exempt.get('shield')) and not row.get('asf_sensitive'):
+        REPORT.error(f'{name}: carries an arcane-spell-failure exemption but is not marked '
+                     f'asf_sensitive -- one of the two was read out of the wrong sentence')
 
     if row.get('shield_material') and row['shield'] is None:
         REPORT.error(f'{name}: shield_material={row["shield_material"]!r} but no shield '
@@ -514,6 +526,12 @@ def main():
         REPORT.error(f'the set of classes non-shield-proficient by SILENCE changed: '
                      f'{sorted(silent)} (expected {sorted(SILENT_ON_SHIELDS)}). Either the prose '
                      f'moved or a scrape dropped a sentence -- re-read it before updating this.')
+    sensitive = {name for name, row in table.items() if row.get('asf_sensitive')}
+    if sensitive != ASF_SENSITIVE_CLASSES:
+        REPORT.error(f'the arcane-spell-failure-sensitive set changed: {sorted(sensitive)} '
+                     f'(expected {sorted(ASF_SENSITIVE_CLASSES)}). D5 caps a multiclass band on '
+                     f'exactly this set, so read the prose before updating the constant.')
+
     gapped = sorted(name for name, row in table.items()
                     if row['metal_prohibited'] and not row['armor_allow'])
     if gapped:

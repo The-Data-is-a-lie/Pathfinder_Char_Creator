@@ -208,9 +208,22 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
       `shield_max_dex_bonus` `"1"` → `""`. Every value re-checked against `armor.json` by hand.
       Full `test_all.py` green. The latent NameError was fixed in the same pass, because step 4
       makes it reachable.
-- [ ] **4. Armor bands.** `armor_chooser` reads the table (D3/D5); `armor_type=None` returns *no
+- [x] **4. Armor bands.** `armor_chooser` reads the table (D3/D5); `armor_type=None` returns *no
       armor* instead of falling into `list_selection`'s random-section draw. **Census: 68 classes ×
       L1/5/10/20**, band distribution before/after. Goldens: armor moves.
+      **Done 2026-08-17.** Census (`scripts/build/report_gear_census.py`, 272 characters):
+
+      | band | before | after |
+      |---|---|---|
+      | none | 36 | **40** |
+      | light | 0 | **100** |
+      | medium | 0 | **88** |
+      | heavy | **236** | 44 |
+
+      Read and accepted: the after column is exactly the table (25 L + 22 M + 11 H + 10 none
+      rollable classes × 4 levels). Goldens: the wizard and the witch now wear nothing, the druid
+      wears Leather, the rogue Rosewood, the summoner a Chain shirt; the four fighters keep heavy.
+      Full `test_all.py` and all 32 validators green.
 - [ ] **5. Shields.** `shield_chooser` / `shield_flag_func` return properly; curated pool; Tower by
       proficiency; the ~20% roll (D6/D9). Delete the V4 wall-pass patch at `main_test.py:967-980`,
       which the real fix supersedes. **Census: shield rate and shield distribution.** Goldens:
@@ -300,6 +313,38 @@ above; these are the rest.
   `feats_new.csv`. That does not block step 6 — D8 grants them free, bypassing selection — but it
   does mean nothing reaches them by ordinary rolling while Metzofitz selection stays commented out
   in `feats.py`, so **+2 oversizing effectively cannot occur** and D10's cap is doing no work.
+
+**Step 4 (2026-08-17).**
+
+- **`magus_armor_chooser` is deleted, and D5 is why.** It promoted a magus to medium armour at 7th
+  and heavy at 13th — via an `elif` that could never fire after the `if` above it, so the heavy
+  branch was already dead. Both are real class features, and both are now moot: the magus's ASF
+  exemption covers *light* armour only, so the caster cap holds it at Light regardless. Keeping the
+  ladder would have left code computing a band nothing uses.
+- **The shifter ruling, made in the open:** a metal-prohibited class with no allowlist of its own
+  gets the druid's `(Padded, Leather, Hide)`, named as `_METAL_FREE_FALLBACK` next to the gate that
+  reports the gap. Both the druid and the shifter therefore always wear **Hide** — band M, and Hide
+  is the only allowlisted Medium armour. That is D3 working as written ("heaviest legal band; the
+  pick inside the band stays random"), not a bug, but it does mean two classes have a deterministic
+  armour.
+- **The cap only bites in multiclass, so the single-class census cannot see it.** Verified
+  directly instead: wizard/fighter → **no armour** (capped by wizard), bard/fighter → light,
+  magus/fighter → light, bloodrager/fighter → medium, druid/fighter → medium *with the druid's
+  allowlist still intersected in*, and cleric/fighter → heavy (divine, no ASF). psion/fighter →
+  heavy, because psionic prose says armour does not interfere with manifesting.
+- **A wizard/fighter goes unarmoured.** That is D5 read literally and it is a real consequence
+  worth seeing before it ships: the plate would not stop the fighter working, only the wizard.
+  ⚠ **Open for Daniel** if the preference is the other way round.
+- **`asf_sensitive` had to be added to the table** to make D5's cap expressible.
+  `data.base_classes` is the Paizo base-class *roster* (it contains the fighter), so it cannot
+  answer "is this an arcane caster"; the prose can, and does, for all ten.
+- **The census read the wrong field on its first run** and reported every band as `none` while the
+  armour names were visibly correct — `armor_type` is not a payload key. It now derives the band by
+  looking the worn armour back up in `armor.json`, which is a second opinion rather than the
+  generator agreeing with itself.
+- **Two goldens moved far more than their armour** (`caster` 465 lines, `companion` 321). Cascade,
+  not corruption: cheaper armour leaves more purse, which changes the enhancement budget and the
+  item rolls downstream.
 
 ## Adjacent, and deliberately not in this plan
 

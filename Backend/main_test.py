@@ -1016,7 +1016,11 @@ def phase_gear_and_equipment(character):
 	if _mind_blade:
 		weapon_name = _mind_blade['name']
 		weapon_enhancement_bonus = _mind_blade['max_enhancement_bonus']
-	armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor')
+	# The `bool(armor_dict)` is the same guard the shield has always had, and it starts mattering
+	# now: since the gear-legality plan's step 4, `armor_type = None` means the character wears NO
+	# ARMOUR (a wizard, a monk), and enchanting a suit nobody is wearing spends the purse on
+	# nothing.
+	armor_enhancement_chosen_list, armor_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,armor_enhancement, 'Armor', bool(character.armor_dict))
 	shield_enhancement_chosen_list, shield_enhancement_bonus = enhancement_chooser(character, character.armor_qualities,shield_enhancement, 'Shield', character.shield_flag)
 
 	return PhaseRecord(

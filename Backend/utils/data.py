@@ -145,12 +145,17 @@ lore = ["Goblin Lore",
 # is written down. Deleted rather than deprecated: a second schedule nobody reads is the failure
 # CLAUDE.md's stale-`critical` story is about.
 
-armor_type_mapping = {
-    ('monk', 'unchained_monk'): None,
-    ('rogue', 'bard', 'brawler'): 'L',
-    ('barbarian', 'unchained_barbarian', 'ranger'): 'M',
-    (): 'H'
-}
+# `armor_type_mapping` lived here and is gone. It mapped classes to armour bands, and it never
+# fired once in the life of this repo: its keys were TUPLES (`('rogue','bard','brawler'): 'L'`)
+# while `armor_chooser` looked up a plain string, so every character took the `(): 'H'` default.
+# That is why the committed goldens held a wizard in Full plate and a druid in Half-plate.
+#
+# The authority is now Backend/json/armor_proficiency.json -- DERIVED from class_data.json's own
+# proficiency prose by scripts/build/build_armor_proficiency.py, and gated by
+# scripts/gates/validate_gear_legality.py. Deleted rather than corrected: a hand-authored list of
+# 68 classes with nothing checking it against the rules is the arrangement that just failed, and
+# flattening the tuple keys would only have spelled it correctly. Same reasoning as `formulas`
+# above.
 
 enhancement_bonus_mapping = {
     2000: 1,

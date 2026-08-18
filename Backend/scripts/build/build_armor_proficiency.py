@@ -112,6 +112,20 @@ WOOD_SHIELD = re.compile(r'crafted from wood', re.I)
 ASF_SENTENCE = re.compile(r'without incurring the normal arcane spell failure', re.I)
 ASF_CLAUSE = re.compile(r'\bwhile wearing\s+(.*?)\s*without incurring', re.I | re.DOTALL)
 
+# WHO suffers arcane spell failure at all, which is a different question from who is exempt from
+# some of it, and the one ruling D5's cap turns on. Derived from the prose rather than from a
+# caster list because `data.base_classes` is the Paizo base-class ROSTER (it contains the fighter)
+# and there is no arcane/psychic/divine split anywhere else that covers all 70 rows. The three
+# phrasings below are every way the books say it: the five classes with an exemption say "arcane
+# spell failure" outright, and the four full arcane casters with no armour proficiency say their
+# spells "fail" or point at "Arcane Spells and Armor". Psionic classes are correctly EXCLUDED --
+# their prose says the opposite in as many words ("Armor does not interfere with the manifestation
+# of powers"), and psychic magic has no somatic components to spoil.
+ASF_SENSITIVE = re.compile(
+    r'arcane spell failure'
+    r'|Arcane Spells and Armor'
+    r'|spells with somatic components to fail', re.I)
+
 
 def sentences(prose):
     return [s.strip() for s in SENTENCE_SPLIT.split(prose or '') if s.strip()]
@@ -232,6 +246,7 @@ def parse_class(name, entry, armor_names):
     row = {
         'armor': armor,
         'shield': shield,
+        'asf_sensitive': bool(ASF_SENSITIVE.search(prose)),
         'asf_exempt': asf,
         'armor_allow': allow,
         'metal_prohibited': metal_prohibited,

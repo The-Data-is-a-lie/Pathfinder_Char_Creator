@@ -4,18 +4,18 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Skeletal"
+  "Braided hair"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Herb Witch\": {\n        \"source\": \"Ultimate Wilderness pg. 89 , Heroes of the Wild pg. 11 Some witches dedicate their lives to the mastery of herb lore. Herb witches brew foul-tasting medicines, sweet poisons, and other concoctions from the untamed plants of the wild.\",\n        \"patron spells\": \" An herb witch must choose a patron with a theme compatible with the needs of the natural world, selected from the following list: ancestors, animals, death, elements, healing, plague, strength, time, water, winter, wisdom, or woodlands. This alters the witch's patron spells.\",\n        \"herb lore (ex)\": \" Herb witches are masters of herbalism, and they can use what they gather from garden or grove to duplicate many of the effects of alchemy. An herb witch can attempt Profession (herbalist) checks in place of Craft (alchemy) checks, and she gains a bonus on Profession (herbalist) checks equal to half her class level. Herb witches are adept at brewing thick herbal cure-alls called remedies. An herb witch prepares these remedies while communing with her familiar, during which she can prepare a number of remedies equal to 3 + her Intelligence modifier (minimum 1 remedy). A remedy becomes inert if it leaves the herb witch's possession, reactivating as soon as it returns to her keeping. A witch can never have more remedies than 3 + her Intelligence modifier. As a standard action, the herb witch can administer a remedy to herself or a creature within reach which consumes the remedy. The herb witch attempts a Profession (herbalist) check against the save DC of any one disease or poison currently afflicting the consumer. If she is successful, the affliction is suppressed for 1 minute. At 10th level, if she exceeds the DC of the check by 10 or more, the affliction immediately ends. If the disease or poison doesn't allow saving throws, the remedy is ineffective. An herb witch can also use a remedy to attempt to remove the blinded, deafened, fatigued, nauseated, sickened, and staggered conditions. This requires a Profession (herbalist) check with a DC equal to the spell or effect that caused the condition, or a DC 25 check if the condition was caused by an effect that doesn't allow a saving throw. If the herb witch succeeds, the condition is removed unless the condition is permanent; at 10th level, if the herb witch succeeds by 10 or more, her remedy can remove a permanent condition. Only a single condition, disease, or poison can be removed with each application of a remedy, and a creature can only benefit from one herbal remedy each day, whether or not the herb witch succeeds at her skill check. This replaces the hexes gained at 1st and 10th levels.\",\n        \"hexes\": \" An herb witch must select cauldron as her hex at 2nd level. The following witch hexes complement the herb witch archetype: fortune, healing, poison steep, swamp hag.\",\n        \"major hexes\": \" The following major hexes complement the herb witch archetype: major healing, weather control, witch's brew.\",\n        \"grand hexes\": \" The following grand hex complements the herb witch archetype: life giver.\"\n    }\n}",
- "armor_ac": "4",
- "armor_armor_check_penalty": "-2",
+ "armor_ac": 0,
+ "armor_armor_check_penalty": 0,
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
- "armor_max_dex_bonus": "5",
- "armor_name": "Chain coat",
- "armor_spell_failure": "30%",
- "armor_weight": "40 lbs.",
+ "armor_max_dex_bonus": 0,
+ "armor_name": 0,
+ "armor_spell_failure": 0,
+ "armor_weight": 0,
  "bab_total": 6,
  "background_traits": [
   "Demon Smiter",
@@ -269,9 +269,19 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
+   "Empowered Abilities",
+   "Overcharge",
    "Easy Focus"
   ],
   "boons_detail": [
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
@@ -279,25 +289,43 @@
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Verbal Casting",
-   "Focus Casting",
-   "Prepared Caster"
+   "Prepared Caster",
+   "Painful Magic",
+   "Draining Casting",
+   "Addictive Casting",
+   "Somatic Casting",
+   "Wild Magic"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
-    "name": "Verbal Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
-   },
-   {
-    "counts_as": 1,
     "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
     "name": "Prepared Caster"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
    }
   ]
  },
@@ -564,40 +592,35 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this belt has a large silver buckle, \r usually depicting the image of a\r tiger. The belt grants the wearer an\r enhancement bonus to dexterity\r of +2, +4, or +6. Treat this as a\r temporary ability bonus for the first 24 hours the belt is worn. ",
-   "item_name": "Belt of Incredible Dexterity +4"
+   "description": " this belt is worked with images of horses stampeding across\r a barren, windswept plain. The belt's wearer automatically\r succeeds at any check to guide with the knees, stay in the\r saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's\r wearer is wearing medium, light, or no armor. Furthermore, \r the belt grants a +4 competence bonus on all other ride checks, \r including ones made while the wearer is in heavy armor. ",
+   "item_name": "Equestrian Belt"
   },
   "body": {
-   "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
-   "item_name": "Glorious Tabard, Lesser"
+   "description": " this blue and white silk robe gives the impression of ice\r and frozen fog forming over its surface. The robe grants the\r wearer cold resistance 5 and increases the wearer's caster\r level for all spells with the cold descriptor by +1. Once per\r day on command, the wearer of the robe can emit a 20-footradius\r burst of cold. Creatures other than the wearer within\r the area take 2d6 points of cold damage (reflex dc 16 half). ",
+   "item_name": "Voidfrost Robe"
   },
   "chest": {
    "description": " this shirt is made of light, gossamer-thin fabric embroidered\r with arrangements of winged feet. Once per day as a swift\r action, the wearer can take an additional move action to move\r and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability. ",
    "item_name": "Quick Runner's Shirt"
   },
-  "hands": {
-   "description": " strapped to the hands, these spiked climbing claws grant a +2\r competence bonus on climb checks and acrobatics checks made\r when using both hands to aid in movement, and allow the\r wearer to ignore the normal penalties on those skills for slippery\r or icy surfaces. In addition, up to 3 times per day, the wearer can\r activate the claws as a swift action to gain the benefits of spider\r climb for 1 round. The wearer cannot hold anything else in her\r hands while using claws of the ice bear. If used as a weapon, claws of the ice bear function as spiked gauntlets. ",
-   "item_name": "Claws of the Ice Bear"
+  "eyes": {
+   "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
+   "item_name": "Patternward Spectacles"
   },
-  "shoulders": {
-   "description": " the wearer of this rough, gray cloak can, as a move action, \r grasp the garment's edge and cause it to harden. The wearer\r can use the hardened edge it as if it were a masterwork light\r wooden shield. Using the cloak in this fashion imposes no\r armor check penalty, but does impose a 5% arcane spell\r failure chance. The edge of the cloak can be dropped and\r made pliant again as a free action. Shield enhancement\r bonuses and special abilities can be added to the cloak as if it\r were a masterwork shield. ",
-   "item_name": "Shield Cloak"
-  },
-  "wrist": {
-   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
-   "item_name": "Sleeves of Many Garments"
+  "headband": {
+   "description": " this simple bronze headband\r is decorated with an intricate\r pattern of fine green etchings. The\r headband grants the wearer an\r enhancement bonus to wisdom of +2, +4, or +6. Treat this as\r a temporary ability bonus for the first 24 hours the headband\r is worn. ",
+   "item_name": "Headband of Inspired Wisdom +2"
   }
  },
  "equipment_list": [
-  "Belt of Incredible Dexterity +4",
-  "Claws of the Ice Bear",
-  "Shield Cloak",
-  "Glorious Tabard, Lesser",
+  "Equestrian Belt",
+  "Voidfrost Robe",
+  "Headband of Inspired Wisdom +2",
   "Quick Runner's Shirt",
-  "Sleeves of Many Garments"
+  "Patternward Spectacles"
  ],
  "eye_color": [
-  "Green"
+  "Amber"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -664,20 +687,20 @@
   "Biomech Pilot",
   "Spell Bluff"
  ],
- "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Hard to Fool, Spell Hex\n- Training: An excellent trainer who taught them Duck and Cover, Demonic Obedience, Dragoncrafting\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Wavy White\n- Eyes: Green\n- Build: Skeletal",
+ "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Hard to Fool, Spell Hex\n- Training: An excellent trainer who taught them Duck and Cover, Demonic Obedience, Dragoncrafting\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Unkempt Brown\n- Eyes: Amber\n- Build: Braided Hair",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 9101,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 100,
+ "gold": 50,
  "hair_color": [
-  "White"
+  "Brown"
  ],
  "hair_type": [
-  "Wavy"
+  "Unkempt"
  ],
  "height_number": "5'7\"",
- "hero_points": 3,
+ "hero_points": 2,
  "homebrew_feat_desc_dict": {
   "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
   "Acrobatic": "You are skilled at leaping, jumping, and flying",
@@ -711,39 +734,37 @@
  "initiator_level": 0,
  "int": 21,
  "item_changes_dict": {
-  "Belt of Incredible Dexterity +4": {
+  "Equestrian Belt": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.rid",
+     "text": "Furthermore, the belt grants a +[[4]] competence bonus on all other ride checks, including ones made while the wearer is in heavy armor."
+    }
+   ]
+  },
+  "Headband of Inspired Wisdom +2": {
    "changes": [
     {
-     "formula": "4",
+     "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "dex",
+     "target": "wis",
      "type": "enh"
     }
    ],
    "contextNotes": [
     {
-     "target": "dexChecks",
-     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
+     "target": "wisChecks",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn."
     }
    ]
   },
-  "Claws of the Ice Bear": {
+  "Patternward Spectacles": {
    "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.acr",
-     "text": "Strapped to the hands, these spiked climbing claws grant a +[[2]] competence bonus on climb checks and acrobatics checks made when using both hands to aid in movement, and allow the wearer to ignore the normal penalties on those skills for slippery or icy surfaces. In addition, up to [[3]] times per day, the wearer can activate the claws as a swift action to gain the benefits of spider climb for [[1]] round. If used as a weapon, claws of the ice bear function as spiked gauntlets."
-    }
-   ]
-  },
-  "Glorious Tabard, Lesser": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "ac",
-     "text": "Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +[[2]] sacred bonus to her ac and on saving throws for [[10]] minutes. In addition, whenever a greater glorious tabard is activated, all longswords within [[20]] feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for [[3]] rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5."
-    }
+   "contextNotes": [],
+   "unplaced": [
+    "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
    ]
   },
   "Quick Runner's Shirt": {
@@ -753,11 +774,11 @@
     "Once per day as a swift action, the wearer can take an additional move action to move and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability."
    ]
   },
-  "Shield Cloak": {
+  "Voidfrost Robe": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The wearer of this rough, gray cloak can, as a move action, grasp the garment's edge and cause it to harden. The wearer can use the hardened edge it as if it were a masterwork light wooden shield. Using the cloak in this fashion imposes no armor check penalty, but does impose a 5% arcane spell failure chance. The edge of the cloak can be dropped and made pliant again as a free action."
+    "The robe grants the wearer cold resistance 5 and increases the wearer's caster level for all spells with the cold descriptor by +1. Once per day on command, the wearer of the robe can emit a 20-footradius burst of cold. Creatures other than the wearer within the area take 2d6 points of cold damage (reflex dc 16 half)."
    ]
   }
  },
@@ -774,12 +795,12 @@
  "language_text": [
   "Common",
   "Orc",
-  "Aquan",
-  "Draconic",
-  "Kelish",
-  "Ignan",
-  "Grippli",
-  "Auran"
+  "Auran",
+  "Celestial",
+  "Aklo",
+  "Protean",
+  "Gnoll",
+  "Wayang"
  ],
  "level": 12,
  "level_up_stats": {
@@ -886,7 +907,7 @@
   "Intentional",
   "Realistic"
  ],
- "platnium": 10.0,
+ "platnium": 5.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1756,21 +1777,31 @@
   2
  ],
  "sphere_boons": [
+  "Empowered Abilities",
+  "Overcharge",
   "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Verbal Casting",
-  "Focus Casting",
-  "Prepared Caster"
+  "Prepared Caster",
+  "Painful Magic",
+  "Draining Casting",
+  "Addictive Casting",
+  "Somatic Casting",
+  "Wild Magic"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Verbal Casting",
-  "Focus Casting",
   "Prepared Caster",
+  "Painful Magic",
+  "Draining Casting",
+  "Addictive Casting",
+  "Somatic Casting",
+  "Wild Magic",
+  "Empowered Abilities",
+  "Overcharge",
   "Easy Focus"
  ],
  "spheres_chosen": [],
@@ -1811,7 +1842,7 @@
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Club",
+ "weapon_name": "Stonebow",
  "weight_number": 219,
  "wis": 15,
  "younger_brothers": " you have 0 younger brothers",
