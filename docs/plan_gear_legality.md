@@ -266,6 +266,17 @@ cause. The census runs are the defence against the re-seed trap that has bitten 
         with CRB Table 6-5 demoted to a `raw_reference` recording the deliberate divergence
         (RAW steps 1d8→2d6; the ladder steps it 1d8→1d12).
 
+      **The Foundry side is already built.** `scripts/build/weapon-finishing.js`
+      (`addSizeForDamageFeature`) puts a `sizefordamage` feature on **every** generated sheet, and
+      `templates/character_sheet_folder/sizefordamage_feature.json` gives it
+      `uses: {value: 0, per: "charges", maxFormula: "99"}`. The scaling script on the attack item
+      reads `@resources.sizefordamage`, and the weapon already carries the two actions it needs
+      (`[0] Attack`, `[1] Don't Touch`, the pristine base damage it scales from). So the module
+      work is **not new machinery** — it is setting that one `uses.value` from the payload instead
+      of leaving it at 0, which makes `weapon_size_steps` map 1:1 onto it. `createScalingAttackItem`
+      is downstream of the resource, not a second scaler to negotiate with. **The web sheet is
+      therefore the only consumer that needs new scaling code**, which is what D11 already says.
+
       **Done:** the data half — ladder transcribed and gated. **Outstanding:** the payload half —
       compute the step from the held sources, emit the four keys, census + goldens.
       *Sources and where they are known:* `giant weapon wielder (ex)` (Titan Fighter 1st) and
