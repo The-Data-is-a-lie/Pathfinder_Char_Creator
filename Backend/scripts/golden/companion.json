@@ -52,7 +52,7 @@
   }
  },
  "appearance": [
-  "Flat nose"
+  "Hunched"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
@@ -403,7 +403,7 @@
   "bonus_spell_points": 1,
   "boons": [
    "Fortified Casting",
-   "Easy Focus"
+   "Empowered Abilities"
   ],
   "boons_detail": [
    {
@@ -411,33 +411,22 @@
     "name": "Fortified Casting"
    },
    {
-    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
-    "name": "Easy Focus"
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
-   "Somatic Casting",
-   "Focus Casting",
-   "Skilled Casting",
+   "Wild Magic",
    "Verbal Casting",
-   "Draining Casting"
+   "Addictive Casting",
+   "Skilled Casting"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
    },
    {
     "counts_as": 1,
@@ -445,9 +434,14 @@
     "name": "Verbal Casting"
    },
    {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
     "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
    }
   ]
  },
@@ -473,11 +467,11 @@
   "favored_terrains": "ranger"
  },
  "class features": {
-  "Skill Unlock: Disguise": {
-   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15 Ranks": "You can create a disguise as a full-round action.",
-   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  "Skill Unlock: Ride": {
+   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
   "Talents": {
    "Order of the Eclipse": {
@@ -496,7 +490,7 @@
    }
   },
   "favored_enemies": [
-   "Outsider (water)"
+   "Ooze"
   ],
   "favored_terrains": [
    "Planes [choose]"
@@ -652,11 +646,11 @@
   "favored_terrains": "ranger"
  },
  "class_features": {
-  "Skill Unlock: Disguise": {
-   "10 Ranks": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15 Ranks": "You can create a disguise as a full-round action.",
-   "20 Ranks": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5 Ranks": "You can create a disguise in 1d3 minutes."
+  "Skill Unlock: Ride": {
+   "10 Ranks": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
   "Talents": {
    "Order of the Eclipse": {
@@ -675,7 +669,7 @@
    }
   },
   "favored_enemies": [
-   "Outsider (water)"
+   "Ooze"
   ],
   "favored_terrains": [
    "Planes [choose]"
@@ -754,7 +748,7 @@
   "light",
   "sonic"
  ],
- "craft_type": "Featherwork",
+ "craft_type": "Toys",
  "day_list": [
   6,
   7,
@@ -765,120 +759,56 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
-   "item_name": "Belt of Tumbling"
+   "description": " the brass buckle on this stout leather\r belt is fashioned to resemble three\r demonic faces. Once each round, this\r belt's buckle can animate, lashing out\r at a creature that provokes an attack of\r opportunity within 5 feet. This attack uses its wearer's base\r attack bonus and strength modifier, with a +4 competence\r bonus. It deals damage as a bite attack made by a creature\r of its wearer's size (1d6 for a medium wearer; see table\r 31: natural attacks by size, bestiary 302) plus the wearer's\r strength modifier. This belt does not add to the normal\r number of attacks the wearer can make in a round; it offers\r another way in which to make attacks of opportunity. ",
+   "item_name": "Belt of Teeth"
   },
-  "chest": {
-   "description": " this simple silk vest looks nondescript, \r but is actually studded with numerous\r secret pockets sewn into its lining. \r hidden inside these are magic lockpicks\r that provide a +4 competence bonus\r on disable device checks. The vest also\r grants its wearer a +6 competence bonus\r on escape artist checks. ",
-   "item_name": "Vest of Escape"
+  "neck": {
+   "description": " occasionally, half-elves find it socially advantageous to blend in fully with either elves or humans. As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human. The magic of this brooch actually changes the wearer's features physically, granting him a +20 circumstance bonus on disguise checks to appear as a member of the selected race. The transformation does not otherwise alter the wearer's features, and those who know him recognize him without a perception check. This change remains until the brooch is used again or removed. This change does not radiate magic and cannot be seen with detect magic , although true seeing does reveal the alteration. This item only functions for half-elves, but there are versions that exist for Half-Orcs as well. ",
+   "item_name": "Brooch of Blending"
   }
  },
  "equipment_list": [
-  "Vest of Escape",
-  "Belt of Tumbling"
+  "Belt of Teeth",
+  "Brooch of Blending"
  ],
  "eye_color": [
-  "Green"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 9,
-  "profession": 2,
+  "normal": 7,
+  "profession": 4,
   "story": 3,
   "teamwork": 1,
-  "trainer": 6
+  "trainer": 10
  },
- "feat_changes_dict": {
-  "Eye of the Arclord": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "While the third eye is open (1/day standard action, 1 minute), +8 on Perception checks to notice invisible creatures."
-    }
-   ]
-  },
-  "Nature Soul": {
-   "changes": [
-    {
-     "formula": "ifelse(gte(@skills.kna.rank,10),4,2)",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kna",
-     "type": "untyped"
-    },
-    {
-     "formula": "ifelse(gte(@skills.sur.rank,10),4,2)",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sur",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Storm-Lashed": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+2 on all saving throws against electrical effects."
-    }
-   ]
-  }
- },
- "feat_conditionals_dict": {
-  "Ferocious Loyalty": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
-    }
-   ],
-   "name": "Ferocious Loyalty: +1 morale on attack rolls vs a foe threatening an ally who also has this feat (+2 morale for 1 min if such an ally is downed/killed within 30 ft)"
-  }
- },
+ "feat_changes_dict": {},
+ "feat_conditionals_dict": {},
  "feats": [
-  "Greater Enrune Shield",
-  "Diehard",
-  "Storm-Lashed",
-  "Augment Physical Prowess",
-  "Ferocious Loyalty",
-  "Martial Training I (Shattered Mirror)",
-  "Martial Training III (Shattered Mirror)",
+  "Field Repair",
+  "Run",
+  "Vermin Heart",
+  "Rapid Emplacement",
+  "Double Slice",
   "Multi Talented",
-  "True Calling"
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)"
  ],
  "feats_feat_tax_dict": {
-  "Martial Training I (Shattered Mirror)": [
-   "Martial Training II (Shattered Mirror)"
+  "Martial Training I (Golden Lion)": [
+   "Martial Training II (Golden Lion)"
   ],
-  "Martial Training III (Shattered Mirror)": [
-   "Martial Training IV (Shattered Mirror)"
-  ],
-  "Martial Training V (Shattered Mirror)": [
-   "Martial Training VI (Shattered Mirror)"
+  "Martial Training III (Golden Lion)": [
+   "Martial Training IV (Golden Lion)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Echoing Spell"
+  "Martial Charge"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -910,50 +840,55 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Maximize Spell",
-  "Force Magic Device"
+  "Silent Magic",
+  "Expert Driver"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Shattered Mirror\n- Homeland: Tal-falko\n\nVocation\n- Profession: Margin Scribbler (rank 15)\n- Profession: Worldforger Eternal (rank 10)\n- Profession: Pickpocket (rank 1)\n- Profession: Apprentice Smith (rank 2)\n- Profession: Grave Necromancer (rank 1)\n- Known for: Featherwork\n- Training: An excellent trainer who taught them Unseelie Hunter, Nature Soul, Eye of the Arclord\n- Training: An excellent trainer who taught them Rime Spell, Persistent Spell, Rod Wielder\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 1 Younger Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Flowing Blond\n- Eyes: Green\n- Build: Flat Nose",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Toys\n- Training: An average trainer who taught them Tenebrous Spell, Spell Shield\n- Training: An average trainer who taught them Shield Wall, Minor Spell Expertise\n- Training: An average trainer who taught them Improved Shield Bash, Shadowmorph Focus\n- Training: An excellent trainer who taught them Rod Mastery, Major Spell Expertise, Wild Talent\n- Training: A terrible (Path of War) trainer who taught them Martial Training V (Golden Lion)\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Bald White\n- Eyes: Hazel\n- Build: Hunched",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
  "generator_version": "2026-07-15 racial-stats",
  "gold": 0,
  "hair_color": [
-  "Blond"
+  "White"
  ],
  "hair_type": [
-  "Flowing"
+  "Bald"
  ],
  "height_number": "5'1\"",
- "hero_points": 2,
+ "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Athame Knowledge": "",
-  "Augment Physical Prowess": "",
-  "Diehard": "You are especially hard to kill Not only do your wounds automatically stabilize when grievously injured, but you can remain conscious and continue to act even at death's door",
-  "Echoing Spell": "You have learned how to release most, but not all, of a spell's potential when you cast it",
-  "Eye of the Arclord": "Your understanding of the esoteric teachings of the Arclords of Nex allows you to open an eldritch eye that grants you superior perception of the magical world",
-  "Ferocious Loyalty": "You have a powerful sense of responsibility for your allies",
-  "Force Magic Device": "",
-  "Greater Enrune Shield": "",
-  "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
-  "Martial Training I (Shattered Mirror)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Shattered Mirror)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Shattered Mirror)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Shattered Mirror)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Shattered Mirror)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Shattered Mirror)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Maximize Spell": "Your spells have the maximum possible effect",
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Double Slice": "Your off-hand weapon while dual-wielding strikes with greater power",
+  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
+  "Field Repair": "You can repair your broken weapon or armor to serviceability even without the benefits of artisan tools",
+  "Hellcat Stealth": "You are difficult to see in the light",
+  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
+  "Major Spell Expertise": "You can cast a single low-level spell as a spell-like ability",
+  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Martial Training I (Golden Lion)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Golden Lion)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Golden Lion)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Golden Lion)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Golden Lion)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Golden Lion)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Master of the Staff": "You have whipped your servants into shape - they are the best in the business. Note This is not a metamagic feat and does not modify the level of the spell. unseen servants, whether conjured by the spell or the battle butler class feature, have improved statistics. they have a strength score of 6 (about 60 pounds of lift, 300 lbs dragging), its base speed is 30 feet, and they can take 20 points of damage before they disappear.",
+  "Minor Spell Expertise": "You are able to cast a 1st-level spell as a spell-like ability",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Nature Soul": "You are innately in tune with nature and venerate the power and mystery of the natural world",
-  "Persistent Spell": "You can modify a spell to become more tenacious when its targets resist its effect",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "Rapid Emplacement": "Constant use, training, and reflexes has allowed you to more rapidly apply cover with your shield. you may use your tower shield to provide cover as a move action rather than a standard action. you still suffer the penalty to attack rolls imposed by a tower shield while using it for cover.",
   "Rime Spell": "Creatures damaged by your spells with the cold descriptor become entangled",
-  "Rod Wielder": "",
-  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
-  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
-  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
+  "Rod Mastery": "",
+  "Run": "You are swift of foot",
+  "Shadowmorph Focus": "Your shadowmorph spells are more difficult to resist. add +1 to the difficulty class for all saving throws against spells you cast with the shadowmorph descriptor.",
+  "Shield Wall": "You form a unified defense with those around you",
+  "Silent Magic": "",
+  "Spell Shield": "",
+  "Strike Back": "You can strike at foes that attack you using their superior reach, by targeting their limbs or weapons as they come at you",
+  "Tenebrous Spell": "You blend shadow into your spells, increasing their efficacy at the price of susceptibility to light",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Unseelie Hunter": ""
+  "Vermin Heart": "You have a special bond with things that creep, crawl, skitter, and sting",
+  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
  },
  "inherents": {
   "cha": 0,
@@ -967,33 +902,31 @@
  "initiator_level": 7,
  "int": 13,
  "item_changes_dict": {
-  "Belt of Tumbling": {
+  "Belt of Teeth": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.acr",
-     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
+     "target": "attack",
+     "text": "Once each round, this belt's buckle can animate, lashing out at a creature that provokes an attack of opportunity within [[5]] feet. This attack uses its wearer's base attack bonus and strength modifier, with a +[[4]] competence bonus. It deals damage as a bite attack made by a creature of its wearer's size ([[1d6]] for a medium wearer; See table 31: natural attacks by size, bestiary 302) plus the wearer's strength modifier."
     }
    ]
   },
-  "Vest of Escape": {
+  "Brooch of Blending": {
    "changes": [
     {
-     "formula": "4",
+     "formula": "20",
      "operator": "add",
      "priority": 0,
-     "target": "skill.dev",
-     "type": "competence"
-    },
-    {
-     "formula": "6",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.esc",
-     "type": "competence"
+     "target": "skill.dis",
+     "type": "circumstance"
     }
    ],
-   "contextNotes": []
+   "contextNotes": [
+    {
+     "target": "skill.dis",
+     "text": "As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human."
+    }
+   ]
   }
  },
  "known_list": [],
@@ -1001,15 +934,11 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Giant",
+  "Celestial",
+  "Aquan",
+  "Grippli",
   "Infernal",
-  "Auran",
-  "Undercommon",
-  "Draconic",
-  "Elven",
-  "Kelish",
-  "Wayang",
-  "Ignan"
+  "Protean"
  ],
  "level": 4,
  "level_up_stats": {
@@ -1090,144 +1019,144 @@
  "main_stat": "wis",
  "maneuvers_choose_from": [
   [
-   "Breaking Glass Strike",
-   "Left-Hand Strike"
+   "Demoralizing Roar",
+   "Pride Movement"
   ],
   [
-   "Obsidian Razor Style",
-   "Broken Mirror Strike"
+   "Call to Action",
+   "Defending the Pride"
   ],
   [
-   "Curse of the Twisted Reflection",
-   "Shattered Glass Smite"
+   "Kill the Wounded",
+   "Circling the Prey"
   ],
   [
-   "Carnival Swap"
+   "Direct the Pride"
   ],
   [
-   "Curse of the Smoking Mirror"
+   "Guard the Pride"
   ],
   [
-   "Copycats Cunning"
+   "Lions Feast"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Breaking Glass Strike": {
+  "Call to Action": {
    "action": "1 standard action",
-   "description": "Your vicious strike flares with shards of mirror-bright color that dazzle and dizzy your victim. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 11 + your initiation modifier or become dazed for one round. Regardless of whether or not they succeed at their save, a struck target also becomes dazzled for a number of rounds equal to your initiation modifier.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous see text",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Broken Mirror Strike": {
-   "action": "1 standard action",
-   "description": "With a mirror-bright slash, you put jagged cracks in your opponents defenses. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Reflex save DC 12 + your initiation modifier or its armor or shield your choice gains the broken condition for a number of rounds equal to your initiator level.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous see text",
+   "description": "With a mighty blow, the disciple aids an ally by providing an opening in combat to move by an opponent. The initiator makes a melee attack, inflicting an additional 2d6 points of damage and granting an adjacent ally an immediate move action.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
    "level": 2,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Carnival Swap": {
+  "Circling the Prey": {
    "action": "1 swift action",
-   "description": "You catch your enemy in the reflection of your blade and twist reality like a funhouse mirror, leaving an unfair trade. The next time this round that you make an attack that hits, you may select one power, psi-like ability, spell, or spell-like ability affecting the struck creature. That creature loses the benefits of the chosen effect and you gain them for a number of rounds equal to your initiation modifier. Select a power, psi-like ability, spell, or spell-like ability affecting you. You lose the chosen effect and the struck creature gains it for a number of rounds equal to your initiation modifier.",
-   "discipline": "Shattered Mirror",
-   "duration": "Special see text",
+   "description": "With practiced precision and a quick shout, the disciple and his allies move in unison for better strategic advantage. The initiators shout grants himself and his allies a free 5-ft. step that must be taken when this boost is used.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 3,
+   "range": "60-ft.",
+   "type": "boost"
+  },
+  "Defending the Pride": {
+   "action": "1 swift action",
+   "description": "With a cry to defend themselves from incoming attacks, the inspirational words of the disciple aid his allies in their defense. As a swift action, the initiator grants all allies within 60-ft. a +4 morale bonus to their AC for one round.",
+   "discipline": "Golden Lion",
+   "duration": "One round",
+   "level": 2,
+   "range": "60-ft.",
+   "type": "boost"
+  },
+  "Demoralizing Roar": {
+   "action": "1 swift action",
+   "description": "With a shout of rage and defiance, the Golden Lion disciple wades into battle with fearless determination, shattering the resolve of his foes. As a swift action the initiators attacks become filled with the dread of defeat, causing his target opponent to be shaken for one round Will save DC 11 + initiation modifier negates.",
+   "discipline": "Golden Lion",
+   "duration": "One round",
+   "level": 1,
+   "range": "Any attack",
+   "type": "boost"
+  },
+  "Direct the Pride": {
+   "action": "1 swift action",
+   "description": "Cooperation and teamwork form the backbone of tactical warfare, and through his knowledge of all of these things, the Golden Lion disciple may help direct the actions of his ally to greater effectiveness. As a swift action, the initiator targets an adjacent ally who has not yet acted this turn. That initiator may now act immediately following the Golden Lion disciples action as if his initiative result was one lower than the disciple. The following round, the target of this boost returns to his previous initiative result.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
    "level": 4,
-   "range": "Close 25-ft + 5-ft/2 levels",
+   "range": "Adjacent ally",
    "type": "boost"
   },
-  "Copycats Cunning": {
+  "Golden Commander Stance": {
    "action": "1 swift action",
-   "description": "opponent within range Your supernatural mimicry permits you to ape the tools used by your friends and foes. When you initiate this boost, choose another creatures armor, shield, or weapon within close range 25 feet + 5 feet per 2 initiator levels. A single piece of equipment wielded or worn by you of the same type as the targeted item may use the enhancement bonus of that item for a number of rounds equal to your initiation modifier. In addition, for the same duration, that piece of equipment gains the properties and special abilities on the chosen item in addition to its own, unless those properties or special abilities could not be applied to your equipment for example, if you targeted a +2 distant longbow with this boost while wielding a +1 greatsword, your greatswords enhancement bonus would increase to +2, but it would not gain the distant weapon special ability.",
-   "discipline": "Shattered Mirror",
-   "duration": "See text",
-   "level": 6,
-   "range": "Close 25 ft. + 5 ft./2 levels",
-   "type": "boost"
-  },
-  "Curse of the Smoking Mirror": {
-   "action": "1 standard action",
-   "description": "With an obsidian-edged blow, you reflect an enemys malice back onto itself, tainting them from within. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 15 + your initiation modifier or fall prey to a reflected curse for a number of rounds equal to your initiation modifier. While affected, the target becomes cursed, and whenever it deals damage by any means during this time it takes an equal amount of damage of the same types. Damage reduction, resistances, and immunities are applied to this damage as normal.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous see text",
-   "level": 5,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Curse of the Twisted Reflection": {
-   "action": "1 standard action",
-   "description": "With a hideous strike, you distort the perceptions of your enemies. Make an attack. If it hits, it deals weapon damage as normal, and the target must succeed at a Will save DC 13 + your initiation modifier or become confused for a number of rounds equal to your initiation modifier. In addition, a struck target becomes cursed for a number of rounds equal to your initiation modifier, regardless of whether or not it succeeded on its save.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous see text",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Cursed Mirror Stance": {
-   "action": "1 swift action",
-   "description": "You mimic your opponents movements, visiting retribution upon them. While you maintain this stance, you can make a number of additional attacks of opportunity each round equal to your initiation modifier. This stacks with the Combat Reflexes feat and other effects that increase the number of attacks of opportunity you can make in a round. In addition, any creature that hits you with a melee attack or melee touch attack provokes an attack of opportunity from you.",
-   "discipline": "Shattered Mirror",
-   "duration": "Stance",
-   "level": 6,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Infinity Mirror Stance": {
-   "action": "1 swift action",
-   "description": "By bending the light near yourself, you create a deceptive defense against assault. When you enter this stance, you gain the benefits of amirror imagespell with a caster level equal to your initiator level. Instead of the normal amount of mirror images generated, you create one image for every four initiator levels you possess minimum 1, and the effect lasts until you enter another stance, at which point any remaining images fade.",
-   "discipline": "Shattered Mirror",
+   "description": "AuraRange: 30\nonlyOthers;\n\nThrough the use of the Golden Lion disciples superior tactical ability, he is able to direct his allies in combat for maximum effectiveness. As long as his allies within 30-ft. of him can clearly hear his shouts and understand his language, he grants his allies the ability to gain flanking with all adjacent allies that are fighting in melee against the same opponent i.e. if two allies of the initiator are 20-ft. away fighting a target together, and the initiator has another ally assisting him in combat against a different target, both pairs gain flanking bonuses against their foes even if they are not normally in flanking position.",
+   "discipline": "Golden Lion",
    "duration": "Stance",
    "level": 3,
    "range": "Personal",
    "type": "stance"
   },
-  "Left-Hand Strike": {
-   "action": "1 standard action",
-   "description": "A minor twist of reality makes it seem like your strike is two places at once. When you initiate this strike, make a Craft check, using the targets AC as the DC. Then make a melee attack against the target. If it hits, it deals weapon damage as normal. If your Craft check succeeded, your target loses its shield bonus to AC against this and other attacks this round, and your attack deals an additional 1d6 points of damage.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous see text",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Obsidian Razor Style": {
+  "Golden Generals Attitude": {
    "action": "1 swift action",
-   "description": "Like obsidian, you create a reflection that is beautiful, dark, and deadly at the edge of your weapon. After initiating this boost, you gain an insight bonus equal to your ranks in one Craft skill chosen when you initiate this boost on melee damage rolls for one round.",
-   "discipline": "Shattered Mirror",
+   "description": "AuraRange: 60\nonlyOthers;\n\nA true Golden Lion disciple is a beacon of command on the field of battle, inspiring his troops by his mere presence. All allies within 60-ft. of the initiator gain a +1 morale bonus to attack and damage rolls, and to saves vs fear effects per four initiator levels.",
+   "discipline": "Golden Lion",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Golden Lion Charger": {
+   "action": "1 swift action",
+   "description": "A student of the art of war and of the Golden Lion, a disciple who has training in the art of engaging an enemy knows that sometimes a powerful opening charge can be the edge the warrior needs. While in this stance and performing a charge, the initiator gains an additional +2 bonus to hit making the bonus received from the charge attack a total of +4 and when charging through a threatened square, the initiator does not provoke attacks of opportunity.",
+   "discipline": "Golden Lion",
+   "duration": "Stance",
+   "level": 4,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Guard the Pride": {
+   "action": "1 immediate action",
+   "description": "By trusting the awareness of the celestial realm, the discipline trusts in his heavenly sense of the battle around him to see where the next attack is coming and move away from danger. As an immediate action, the initiator grants a circumstance bonus to the target adjacent allys Armor Class for one round equal to half the disciples initiator level.",
+   "discipline": "Golden Lion",
    "duration": "1 round",
-   "level": 2,
-   "range": "Personal",
-   "type": "boost"
+   "level": 5,
+   "range": "Adjacent ally",
+   "type": "counter"
   },
-  "Obsidian Reflection Stance": {
-   "action": "1 swift action",
-   "description": "AuraRange: 20\n\nYou emanate an aura that either enhances the perceptions of those within it or makes them warped and twisted. While you maintain this stance, all creatures including you within 20 feet of you gain either a +1 bonus on attack and damage rolls or a 1 penalty on attack and damage rolls. Once per round as a free action, you can change which of these effects is applied. These bonuses increase by +1 for every four initiator levels you possess +/ 2 at 4th level, +/ 3 at 8th level, and so on.",
-   "discipline": "Shattered Mirror",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal see text",
-   "type": "stance"
-  },
-  "Shattered Glass Smite": {
+  "Kill the Wounded": {
    "action": "1 standard action",
-   "description": "With your will and your weapon, you shatter reality as you would shatter a mirror, shredding your enemies with false glass. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of magical slashing damage, and you create a 30-foot cone of shattered glass originating in the targets space and aimed in a direction of your choice. This cone deals 3d6 points of magical slashing damage to each creature caught within it. You and the initial target of this strike do not take damage from this cone.",
-   "discipline": "Shattered Mirror",
-   "duration": "Instantaneous",
+   "description": "The Golden Lion disciple makes a ferocious assault on his foe, opening the enemys defenses to the attacks of his allies. The initiator makes a melee attack against a foe and if successful, subsequent attacks made by the initiators allies inflict an additional 2d6 points of damage per successful attack until the initiators next turn.",
+   "discipline": "Golden Lion",
+   "duration": "One round",
    "level": 3,
-   "range": "Melee attack",
+   "range": "Any attack",
    "type": "strike"
   },
-  "Silvered Mirror Stance": {
+  "Lions Feast": {
    "action": "1 swift action",
-   "description": "AuraRange: 30\nonlyOthers;\n\nLike a prism or a silver mirror, you splash joy and light onto those whom you love. When you enter this stance, choose a single power, psi-like ability, spell, or spell-like ability with a range greater than personal affecting you. While you maintain this stance, allies within 30 feet of you also gain the benefits of the chosen effect for as long as it is affecting you.",
-   "discipline": "Shattered Mirror",
+   "description": "As the thrill of a successful hunt invigorates a pride of lions on the plains, so does the thrill of victory over foes invigorate the disciples allies. By initiating this boost as a swift action, enemies that are subsequently reduced to 0 or fewer hit points within 20-ft. of the initiator grant all adjacent allies to the initiator temporary hit points equal to twice the fallen enemys Hit Dice.",
+   "discipline": "Golden Lion",
+   "duration": "1 round",
+   "level": 6,
+   "range": "All adjacent allies",
+   "type": "boost"
+  },
+  "Pride Leaders Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 20 + 10*floor((@attributes.hd.total - 1) / 5)\n\nBy adopting the mannerisms of commanding lions of the great savannahs, the disciple inspires heroics by his presence. By adopting this stance, the initiator and all allies within 20-ft. of his position gain a +4 morale bonus to saves vs fear effects and demoralization effects. The radius of this effect increases by 10-ft. per five initiator levels starting at initiator level 6.",
+   "discipline": "Golden Lion",
    "duration": "Stance",
-   "level": 5,
-   "range": "Personal see text",
+   "level": 1,
+   "range": "Personal",
    "type": "stance"
+  },
+  "Pride Movement": {
+   "action": "1 swift action",
+   "description": "By having a watchful eye on the flow of combat, the disciple knows when to spur an ally into a better position. As a swift action, the initiator may grant a move action to an adjacent ally. This ally may then use this move action immediately to move up to his base speed, as if it were a free action taken on the initiators turn.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 1,
+   "range": "",
+   "type": "boost"
   }
  },
  "maneuvers_known_list": [
@@ -1249,20 +1178,20 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Obsidian Razor Style"
+   "Call to Action"
   ],
   [
-   "Shattered Glass Smite",
-   "Curse of the Twisted Reflection"
+   "Circling the Prey",
+   "Kill the Wounded"
   ],
   [
-   "Carnival Swap"
+   "Direct the Pride"
   ],
   [
-   "Curse of the Smoking Mirror"
+   "Guard the Pride"
   ],
   [
-   "Copycats Cunning"
+   "Lions Feast"
   ]
  ],
  "manifesters": [],
@@ -1273,21 +1202,21 @@
   "Cracks knuckles"
  ],
  "martial_disciplines": [
-  "Shattered Mirror"
+  "Golden Lion"
  ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Shattered Mirror)",
-  "Martial Training III (Shattered Mirror)",
-  "Martial Training V (Shattered Mirror)"
+  "Martial Training I (Golden Lion)",
+  "Martial Training III (Golden Lion)",
+  "Martial Training V (Golden Lion)"
  ],
  "mythic": null,
- "normal_feat_amount": 7,
- "older_brothers": " you have 0 older brothers",
+ "normal_feat_amount": 5,
+ "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, dead father, raised in a middle income household",
+ "parents": "loving mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Astute",
   "Energetic",
@@ -1299,280 +1228,103 @@
   {
    "changes": [
     {
-     "formula": "2",
+     "formula": "3",
      "operator": "add",
      "priority": 0,
-     "target": "skill.lin",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.lin",
+     "target": "skill.hea",
      "type": "competence"
     }
    ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Margin Scribbler) - rank 15/15. Associate skills (ranks 1/4/7/10): Profession, Sleight of Hand, Handle Animal, Perception.</em></p><hr><p><strong>Bookish (Ex)</strong></p><p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p><hr><p><strong>Footnote Hoarder (Ex)</strong></p><p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
-   "name": "Profession Rank 5: (Margin Scribbler)",
-   "uses": null
-  },
-  {
-   "changes": [
+   "contextNotes": [
     {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kar",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kge",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.lin",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kar",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.khi",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kge",
-     "type": "competence"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kna",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [],
-   "description": "<p><em>Profession (Margin Scribbler) - rank 15/15.</em></p><hr><p><strong>Lore Master (Ex)</strong></p><p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p><hr><p><strong>Polyglot's Ear (Ex)</strong></p><p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p><hr><p><strong>Encyclopedic Recall (Ex)</strong></p><p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
-   "name": "Profession Rank 15: (Margin Scribbler)",
-   "uses": null
-  },
-  {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
      "target": "fort",
-     "type": "resistance"
+     "text": "+2 vs disease, poison, and nausea"
+    }
+   ],
+   "description": "<p><em>Profession (Equine Dentist) - rank 15/15. Associate skills (ranks 1/4/7/10): Appraise, Perception, Sense Motive, Use Magic Device.</em></p><hr><p><strong>Steady Hands (Ex)</strong></p><p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p><hr><p><strong>Disease Ward (Ex)</strong></p><p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
+   "name": "Profession Rank 5: (Equine Dentist)",
+   "uses": null
+  },
+  {
+   "changes": [],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Equine Dentist) - rank 15/15.</em></p><hr><p><strong>Antivenom Expert (Sp)</strong></p><p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p><hr><p><strong>Poultice Maker (Sp)</strong></p><p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p><hr><p><strong>Healer's Touch (Sp)</strong></p><p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
+   "name": "Profession Rank 15: (Equine Dentist)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
     }
    ],
    "contextNotes": [],
-   "description": "<p><em>Profession (Worldforger Eternal) - rank 10/10. Associate skills (ranks 1/4/7/10): Appraise, Perception, Sense Motive, Use Magic Device.</em></p><hr><p><strong>Venom Immunity (Ex)</strong></p><p>A lifetime among serpents, spiders, and toxic flora has hardened your body. You are immune to all poison, regardless of its source or type.</p><hr><p><strong>Thousand Faces (Su)</strong></p><p>Channeling the shifting nature of the wild, you can alter your physical appearance at will as an <em>alter self</em> spell (caster level equal to your character level). You may change your form a number of times per day equal to 3 + your Wisdom modifier, and each change lasts until you dismiss it or change again.</p><hr><p><strong>Endure Elements (Su)</strong></p><p>The wild's harshest extremes leave you unbothered. You take no harm from severe heat or cold (between -50 and 140 degrees Fahrenheit), and you gain a +2 resistance bonus on Fortitude saves against weather, environmental hazards, and energy damage from heat or cold.</p>",
-   "name": "Profession Rank 5: (Worldforger Eternal)",
-   "uses": {
-    "maxFormula": "3 + @abilities.wis.mod",
-    "per": "day",
-    "value": null
-   }
+   "description": "<p><em>Profession (Wizard) - rank 10/10. Associate skills (ranks 1/4/7/10): Profession, Appraise, Handle Animal, Use Magic Device.</em></p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+   "name": "Profession Rank 5: (Wizard)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.apr",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Torchbearer) - rank 8/10. Associate skills (ranks 1/4/7/10): Sleight of Hand, Knowledge (local), Profession.</em></p><hr><p><strong>Scavenger's Knack (Ex)</strong></p><p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p><hr><p><strong>Roadworn Feet (Ex)</strong></p><p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
+   "name": "Profession Rank 5: (Torchbearer)",
+   "uses": null
   }
  ],
  "profession_feat_desc": {
+  "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
   "Multi Talented": "Your profession rank cap increases by 10.",
+  "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "profession_feats": [
   "Multi Talented",
-  "True Calling"
+  "True Calling",
+  "Always Improving",
+  "Multi Talented (2nd)"
  ],
- "profession_pool": 29,
+ "profession_pool": 39,
  "profession_ranks": [
   {
-   "ability_theme": "scholar",
-   "ability_tier": "bad",
-   "associate_skills": [
-    "Profession",
-    "Sleight of Hand",
-    "Handle Animal",
-    "Perception"
-   ],
-   "cap": 15,
-   "name": "Margin Scribbler",
-   "rank15_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kar",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kge",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>You gain a +2 bonus on all Knowledge checks and can always take 10 on them. You can attempt any Knowledge check untrained.</p>",
-     "name": "Lore Master (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.lin",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Hours of study across foreign grammars let you puzzle out unfamiliar speech and script. You gain a +2 competence bonus on Linguistics checks, and you can read a message in a language you do not know, or decipher an unfamiliar cipher, with a Linguistics check (DC 10 + half your character level + your Intelligence modifier).</p>",
-     "name": "Polyglot's Ear (Ex)",
-     "uses": null
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kar",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.khi",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kge",
-       "type": "competence"
-      },
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.kna",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Your memory is a well-ordered archive of names, dates, and minor facts. You gain a +2 competence bonus on all Knowledge checks, and you can attempt any Knowledge check untrained to recall an obscure fact.</p>",
-     "name": "Encyclopedic Recall (Ex)",
-     "uses": null
-    }
-   ],
-   "rank5_abilities": [
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.lin",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>Years buried in dusty tomes let you read and write any language you know and grant a +2 competence bonus on Linguistics checks and on any one Knowledge skill in which you have at least 1 rank. Once per day you may take 20 on a Knowledge or Linguistics check made to research a written record without spending extra time.</p>",
-     "name": "Bookish (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    },
-    {
-     "changes": [
-      {
-       "formula": "2",
-       "operator": "add",
-       "priority": 0,
-       "target": "skill.lin",
-       "type": "competence"
-      }
-     ],
-     "contextNotes": [],
-     "desc": "<p>You obsessively annotate every margin and cross-reference the most obscure citations. You gain a +2 competence bonus on Linguistics checks, and once per day you may reroll a single failed Linguistics check and take the better result.</p>",
-     "name": "Footnote Hoarder (Ex)",
-     "uses": {
-      "maxFormula": "1",
-      "per": "day",
-      "value": null
-     }
-    }
-   ],
-   "ranks": 15,
-   "skill_label": "Profession (Margin Scribbler)"
-  },
-  {
-   "ability_theme": "nature",
-   "ability_tier": "top",
+   "ability_theme": "medical",
+   "ability_tier": "average",
    "associate_skills": [
     "Appraise",
     "Perception",
     "Sense Motive",
     "Use Magic Device"
    ],
-   "cap": 10,
-   "name": "Worldforger Eternal",
-   "rank15_abilities": [],
-   "rank5_abilities": [
+   "cap": 15,
+   "name": "Equine Dentist",
+   "rank15_abilities": [
     {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>A lifetime among serpents, spiders, and toxic flora has hardened your body. You are immune to all poison, regardless of its source or type.</p>",
-     "name": "Venom Immunity (Ex)",
-     "uses": null
+     "desc": "<p>You have a near-perfect understanding of toxins. You can cast delay poison at will on touch, and once per day each you can cast lesser restoration and remove sickness as spell-like abilities (caster level equal to your character level).</p>",
+     "name": "Antivenom Expert (Sp)",
+     "uses": {
+      "maxFormula": "2",
+      "per": "day",
+      "value": null
+     }
     },
     {
      "changes": [],
      "contextNotes": [],
-     "desc": "<p>Channeling the shifting nature of the wild, you can alter your physical appearance at will as an <em>alter self</em> spell (caster level equal to your character level). You may change your form a number of times per day equal to 3 + your Wisdom modifier, and each change lasts until you dismiss it or change again.</p>",
-     "name": "Thousand Faces (Su)",
+     "desc": "<p>You can prepare a healing poultice that, when applied as a standard action, acts as cure light wounds (caster level equal to your character level). You can apply such a poultice a number of times per day equal to 3 + your Wisdom modifier.</p>",
+     "name": "Poultice Maker (Sp)",
      "uses": {
       "maxFormula": "3 + @abilities.wis.mod",
       "per": "day",
@@ -1580,70 +1332,175 @@
      }
     },
     {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You can cast cure light wounds three times per day as a spell-like ability, and you can remove the fatigued, shaken, or sickened condition from a creature by touch (caster level equal to your character level).</p>",
+     "name": "Healer's Touch (Sp)",
+     "uses": {
+      "maxFormula": "3",
+      "per": "day",
+      "value": null
+     }
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "3",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.hea",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years of delicate work have given you unflinching control. You gain a +3 competence bonus on Heal checks, and you never take a penalty on Heal checks for working in poor conditions or under duress.</p>",
+     "name": "Steady Hands (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [
+      {
+       "target": "fort",
+       "text": "+2 vs disease, poison, and nausea"
+      }
+     ],
+     "desc": "<p>Constant exposure to contagion has toughened your constitution. You gain a +2 resistance bonus on Fortitude saves against disease, poison, and nausea.</p>",
+     "name": "Disease Ward (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_label": "Profession (Equine Dentist)"
+  },
+  {
+   "ability_theme": "arcane",
+   "ability_tier": "good",
+   "associate_skills": [
+    "Profession",
+    "Appraise",
+    "Handle Animal",
+    "Use Magic Device"
+   ],
+   "cap": 10,
+   "name": "Wizard",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
+     "name": "Apprentice Spellcasting (Sp)",
+     "uses": {
+      "maxFormula": "4",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day the Druid can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
+     "name": "Mage Armor (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
      "changes": [
       {
        "formula": "2",
        "operator": "add",
        "priority": 0,
-       "target": "fort",
-       "type": "resistance"
+       "target": "skill.kar",
+       "type": "competence"
       }
      ],
      "contextNotes": [],
-     "desc": "<p>The wild's harshest extremes leave you unbothered. You take no harm from severe heat or cold (between -50 and 140 degrees Fahrenheit), and you gain a +2 resistance bonus on Fortitude saves against weather, environmental hazards, and energy damage from heat or cold.</p>",
-     "name": "Endure Elements (Su)",
+     "desc": "<p>Years bent over grimoires sharpen the Druid's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+     "name": "Scholar's Insight (Ex)",
      "uses": null
     }
    ],
    "ranks": 10,
-   "skill_label": "Profession (Worldforger Eternal)"
+   "skill_label": "Profession (Wizard)"
   },
   {
-   "ability_theme": "skill",
+   "ability_theme": "wayfarer",
    "ability_tier": "bad",
    "associate_skills": [
+    "Sleight of Hand",
+    "Knowledge (local)",
     "Profession"
    ],
    "cap": 10,
-   "name": "Pickpocket",
+   "name": "Torchbearer",
    "rank15_abilities": [],
-   "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Pickpocket)"
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.apr",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>You make do with what the road leaves behind. You gain a +2 competence bonus on Appraise checks and on Survival checks to forage food and water in the wild.</p>",
+     "name": "Scavenger's Knack (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You have walked farther than most folk ever will. You can hustle for 1 additional hour each day before risking nonlethal damage, and you gain a +2 competence bonus on Constitution checks to avoid fatigue from a forced march.</p>",
+     "name": "Roadworn Feet (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 8,
+   "skill_label": "Profession (Torchbearer)"
   },
   {
-   "ability_theme": "craft",
+   "ability_theme": "wayfarer",
    "ability_tier": "bad",
    "associate_skills": [
-    "Handle Animal"
+    "Sense Motive"
    ],
    "cap": 10,
-   "name": "Apprentice Smith",
+   "name": "Wayfarer's Lackey",
    "rank15_abilities": [],
    "rank5_abilities": [],
    "ranks": 2,
-   "skill_label": "Profession (Apprentice Smith)"
+   "skill_label": "Profession (Wayfarer's Lackey)"
   },
   {
-   "ability_theme": "occult",
+   "ability_theme": "scholar",
    "ability_tier": "average",
    "associate_skills": [
-    "Handle Animal"
+    "Appraise",
+    "Knowledge (local)"
    ],
    "cap": 10,
-   "name": "Grave Necromancer",
+   "name": "Ledger Clerk",
    "rank15_abilities": [],
    "rank5_abilities": [],
-   "ranks": 1,
-   "skill_label": "Profession (Grave Necromancer)"
+   "ranks": 4,
+   "skill_label": "Profession (Ledger Clerk)"
   }
  ],
  "professions": [
-  "Margin Scribbler",
-  "Worldforger Eternal",
-  "Pickpocket",
-  "Apprentice Smith",
-  "Grave Necromancer"
+  "Equine Dentist",
+  "Wizard",
+  "Torchbearer",
+  "Wayfarer's Lackey",
+  "Ledger Clerk"
  ],
  "racial_stats": {
   "cha": 0,
@@ -1715,52 +1572,53 @@
  "shield_weight": " ",
  "skill_rank_budget": 190,
  "skill_ranks": {
-  "appraise": 6,
-  "bluff": 4,
-  "climb": 8,
-  "craft": 19,
-  "diplomacy": 4,
+  "acrobatics": 9,
+  "appraise": 14,
+  "bluff": 8,
+  "climb": 0,
+  "craft": 10,
+  "diplomacy": 0,
   "disable device": 0,
-  "disguise": 2,
-  "escape artist": 16,
-  "fly": 5,
-  "handle animal": 7,
-  "heal": 11,
+  "disguise": 0,
+  "escape artist": 8,
+  "fly": 0,
+  "handle animal": 9,
+  "heal": 3,
   "intimidate": 0,
-  "knowledge arcana": 6,
-  "knowledge dungeoneering": 4,
-  "knowledge engineering": 0,
-  "knowledge geography": 17,
-  "knowledge history": 13,
-  "knowledge local": 6,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 11,
+  "knowledge geography": 25,
+  "knowledge history": 8,
+  "knowledge local": 0,
   "knowledge nature": 0,
-  "knowledge nobility": 9,
-  "knowledge planes": 8,
-  "knowledge religion": 13,
-  "linguistics": 8,
-  "perception": 3,
-  "perform": 0,
+  "knowledge nobility": 5,
+  "knowledge planes": 0,
+  "knowledge religion": 9,
+  "linguistics": 4,
+  "perception": 13,
+  "perform": 8,
   "profession": 0,
-  "ride": 0,
+  "ride": 12,
   "sense motive": 0,
-  "sleight of hand": 12,
-  "spellcraft": 0,
-  "stealth": 3,
+  "sleight of hand": 13,
+  "spellcraft": 4,
+  "stealth": 8,
   "survival": 0,
-  "swim": 6,
+  "swim": 9,
   "use magic device": 0
  },
  "skill_unlock": {
-  "base_skill": "disguise",
-  "ranks": 2,
-  "skill": "Disguise",
+  "base_skill": "ride",
+  "ranks": 12,
+  "skill": "Ride",
   "unlock": {
-   "10": "You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.",
-   "15": "You can create a disguise as a full-round action.",
-   "20": "You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.",
-   "5": "You can create a disguise in 1d3 minutes."
+   "10": "When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.",
+   "15": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
+   "20": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
+   "5": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
   },
-  "unlock_html": "<h2>Disguise</h2><p><strong>5 Ranks</strong>: You can create a disguise in 1d3 minutes.</p><p><strong>10 Ranks</strong>: You can create a disguise in 1d3 rounds; taking the full time means no penalty for disguising gender, race, or age.</p><p><strong>15 Ranks</strong>: You can create a disguise as a full-round action.</p><p><strong>20 Ranks</strong>: You can create a disguise as a standard action, or combine it with a Bluff diversion to hide in plain sight.</p>"
+  "unlock_html": "<h2>Ride</h2><p><strong>5 Ranks</strong>: Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.</p><p><strong>10 Ranks</strong>: When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.</p><p><strong>15 Ranks</strong>: While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.</p><p><strong>20 Ranks</strong>: Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.</p>"
  },
  "specialty_schools": [
   "transmutation",
@@ -2003,79 +1861,97 @@
  ],
  "sphere_boons": [
   "Fortified Casting",
-  "Easy Focus"
+  "Empowered Abilities"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Somatic Casting",
-  "Focus Casting",
-  "Skilled Casting",
+  "Wild Magic",
   "Verbal Casting",
-  "Draining Casting"
+  "Addictive Casting",
+  "Skilled Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Somatic Casting",
-  "Focus Casting",
-  "Skilled Casting",
+  "Wild Magic",
   "Verbal Casting",
-  "Draining Casting",
+  "Addictive Casting",
+  "Skilled Casting",
   "Fortified Casting",
-  "Easy Focus"
+  "Empowered Abilities"
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Infinity Mirror Stance",
-  "Obsidian Reflection Stance",
-  "Silvered Mirror Stance",
-  "Cursed Mirror Stance"
+  "Pride Leaders Stance",
+  "Golden Commander Stance",
+  "Golden Lion Charger",
+  "Golden Generals Attitude"
  ],
- "story_feat_tax_dict": {},
+ "story_feat_tax_dict": {
+  "Extra Arcane Pool": [
+   "extra arcane pool"
+  ]
+ },
  "story_feats": [
-  "Lingering Shadows",
-  "Scholar",
-  "Skilled Driver"
+  "Strike Back",
+  "Master of the Staff",
+  "Rime Spell"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Athame Knowledge"
+  "Hellcat Stealth"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
  "trainer_calibers": [
-  3,
+  2,
+  2,
+  2,
   3
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
-  "(Trainer 2)"
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 4)",
+  "(Trainer 5 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
-  "Nature Soul": [
-   "friend to animals",
-   "boon companion"
+  "Martial Training V (Golden Lion)": [
+   "Martial Training VI (Golden Lion)"
+  ],
+  "Minor Spell Expertise": [
+   "major spell expertise"
+  ],
+  "Tenebrous Spell": [
+   "umbral spell",
+   "shadow grasp"
   ]
  },
  "trainer_feats": [
-  "Unseelie Hunter",
-  "Nature Soul",
-  "Eye of the Arclord",
-  "Rime Spell",
-  "Persistent Spell",
-  "Rod Wielder"
+  "Tenebrous Spell",
+  "Spell Shield",
+  "Shield Wall",
+  "Minor Spell Expertise",
+  "Improved Shield Bash",
+  "Shadowmorph Focus",
+  "Rod Mastery",
+  "Major Spell Expertise",
+  "Wild Talent",
+  "Martial Training V (Golden Lion)"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
- "weapon_name": "Baston fighting stick",
+ "weapon_name": "Traveling kettle",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,
  "weapon_size_source": null,
@@ -2083,5 +1959,5 @@
  "weight_number": 149,
  "wis": 18,
  "younger_brothers": " you have 0 younger brothers",
- "younger_sisters": " you have 1 younger sisters"
+ "younger_sisters": " you have 0 younger sisters"
 }

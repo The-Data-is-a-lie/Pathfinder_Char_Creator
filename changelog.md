@@ -119,10 +119,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     correcting its spelling would not have made anything check it. Runtime prose parsing was
     rejected too — a regex that stops matching at runtime yields the same falsy default.
 - Heaviest legal band always, the item inside it still random; a multiclass **unions** the bands and
-  **intersects** the taboos, then caps so a rolled arcane caster is never broken by the armour roll
-  (a wizard/fighter goes unarmoured). `magus_armor_chooser` is deleted — its 7th/13th-level
-  promotions are moot under that cap, and its heavy branch sat behind an `elif` that could never
-  fire. The druid and shifter are held to padded/leather/hide and wooden shields; the shifter's
+  **intersects** the taboos, then **weights** the result so a rolled arcane caster usually — but not
+  always — stays inside its own arcane-spell-failure exemption. A wizard/fighter goes unarmoured
+  about three times in four; the fourth time it wears the armour and is handed **Arcane Armor
+  Training** free to take the edge off, because a gish in plate is a legitimate if poor build and
+  forbidding it outright gave a suspiciously tidy result every single time. Below caster level 3
+  there is no grant and the character simply eats the failure. `magus_armor_chooser` is deleted —
+  its 7th/13th-level promotions are moot when the magus's exemption covers light armour only, and
+  its heavy branch sat behind an `elif` that could never fire. The druid and shifter are held to padded/leather/hide and wooden shields; the shifter's
   prose names no allowlist and `armor.json` has no material column, so it borrows the druid's, as a
   ruling made in the open rather than a silent copy.
 - Shields are a ~20% roll over every shield-proficient character, ranged excluded outright, drawn

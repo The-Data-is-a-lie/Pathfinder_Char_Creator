@@ -66,26 +66,28 @@ lookup that silently misses and yields a falsy default:
 | D8 | Enabler feats are **granted free**, via the existing `grants` path | paid out of `feat_amounts` |
 | D9 | Shield pool is the **curated ten**; Tower keyed to proficiency (fighter only), ~10% | all 14; dropping Tower entirely |
 | D10 | Oversizing: **+1 size step, cap 1** — only the full Titan Slayer chain reaches +2. Sources do **not** stack; take the best, not the sum | one step per feat to a cap of 2 |
+| D13 | An arcane caster **may** wear armour past its own exemption — the exemption is a **weighted preference** (`ASF_RESTRAINT_CHANCE = 75`), not a cap. When it does, it is granted `Arcane Armor Training` free if it qualifies (caster level 3) | forcing the safe band, which made a wizard/fighter unarmoured *every* time; granting the whole Arcane Armor chain |
 
 ### The rules, stated
 
 ```
 armor:   band = highest granted by any rolled class
                 ∩ every rolled class's prohibition
-                capped so it never breaks a rolled caster
+         then, if a rolled class is an ARCANE CASTER and the band exceeds its own
+         exemption:  75% -> drop to the exemption
+                     25% -> keep it, and grant Arcane Armor Training free (needs CL 3)
          None means NO armor
-         (today None means "random section", which is how a wizard got Full plate)
+         (before this plan None meant "random section", which is how a wizard got Full plate)
 
 shield:  shield-proficient? roll ~20%
            hit + One-Handed/Light  -> shield from the curated ten
-           hit + Two-Handed        -> enabler ladder:
-                                        polearm/spear    -> grant Pikeman's Training
-                                        Str>=17 & BAB>=4 -> grant Titan Technique + Titan Grip
-                                                            (+ Power Attack if absent)
-                                        already has Jotungrip / Twin Thunder Stance -> keep
-                                        else             -> DROP the shield
+           hit + Two-Handed        -> enabler ladder (CORRECTED -- see the census):
+                                        polearm/spear         -> grant Pikemans Training
+                                        Titan Mauler, level 2 -> keep (jotungrip)
+                                        else                  -> DROP the shield
            hit + Ranged            -> no shield
-         Tower only where the table says `tower` (fighter), ~10%
+         Tower only where the table says `tower` (fighter, warder,
+         aristocrat, warrior), ~10%
 
 weapon:  no shield, but an oversizing source held -> +1 size step
            full Titan Slayer chain                -> +2
@@ -430,7 +432,7 @@ above; these are the rest.
   heavy, because psionic prose says armour does not interfere with manifesting.
 - **A wizard/fighter goes unarmoured.** That is D5 read literally and it is a real consequence
   worth seeing before it ships: the plate would not stop the fighter working, only the wizard.
-  ⚠ **Open for Daniel** if the preference is the other way round.
+  ~~⚠ Open for Daniel~~ → **ruled 2026-08-17 as D13, and reversed.** See the step-9½ note below.
 - **`asf_sensitive` had to be added to the table** to make D5's cap expressible.
   `data.base_classes` is the Paizo base-class *roster* (it contains the fighter), so it cannot
   answer "is this an arcane caster"; the prose can, and does, for all ten.
@@ -480,6 +482,44 @@ above; these are the rest.
   **caster cap**, which cannot fire single-class — every ASF-sensitive class's own band already
   equals its exemption, so only a multiclass roll caps. Both were verified directly instead
   (see steps 4 and 5). ⚠ A multiclass gear sweep would close this properly.
+
+**Step 9½ — D13, the caster cap reversed (2026-08-17).**
+
+Daniel's ruling after reading step 4's consequence: *"wizard/fighter or sorc/fighter can go
+armoured (but then they just need to commit to one of the multiple feats that can decrease spell
+failure)... we can also just make it more likely instead of forcing it, some builds can be bad."*
+
+- **The exemption is now a weighted preference, not a ceiling.** `ASF_RESTRAINT_CHANCE = 75`: an
+  arcane caster who *could* wear heavier armour than its class exempts stays inside the exemption
+  ~75% of the time and goes heavier ~25%. Measured over 4,000 rolls: wizard/fighter 76% unarmoured
+  / 23% heavy, bard/fighter 76% light / 23% heavy, cleric/fighter 100% heavy (divine, no ASF), and
+  a **pure** wizard is untouched at 100% unarmoured — it has no armour proficiency to argue about,
+  so the roll never fires and no single-class RNG stream moves.
+- **Going heavy grants `Arcane Armor Training` free** (caster level 3 and light-armour
+  proficiency, which the band already proves), through the same channel the two-hander enabler
+  uses. Verified end-to-end: **51 of 51** armoured multiclass wizards carry it. At caster level 2
+  the grant correctly does not fire and the character simply eats the failure — the "some builds
+  can be bad" half.
+- **The ASF-mitigation census** (do not redo): `Arcane Armor Training` (AoN, 10%, Light Armor
+  Prof + CL 3) is the only one cheap enough to grant. Also in the pool and deliberately not
+  granted — `Arcane Armor Mastery` (20%, but needs Training + Medium Armor Prof + CL 7, so
+  granting it means granting a chain), `Still Spell` (avoids ASF entirely at +1 spell slot, a
+  playstyle choice not a gear fix), the Spheres of Might Equipment talent **`arcane armor`**
+  (`spheres_of_might_enriched.json` `/equipment/arcane armor`, 10% and repeatable, but it belongs
+  to the sphere economy), and `Arcane Armor Affinity` (Metzofitz, race-gated to pragians).
+- ⚠ **`Arcane Armor Training` appears TWICE in `feats_new.csv`** — the second row is really the
+  *Improved* variant (its prerequisite is "Arcane Armor Training" and it removes the swift action)
+  scraped under the base name. A name-based grant is therefore ambiguous. Harmless today, worth
+  fixing at the scrape.
+- **Two goldens moved**, both legitimately: `caster` (summoner/cleric) rolled the 25% branch and is
+  now in an **Erutaki coat with Arcane Armor Training**; `companion` (druid/magus/ranger/samurai)
+  rolled restraint and stayed in Leather. Both coverage predicates survived.
+- **The behaviour gate changed with the rule**: the exemption is no longer asserted as a ceiling
+  (only the union is), and a new invariant takes its place — *exceeding the exemption is fine, but
+  the character must then hold Arcane Armor Training unless it is below caster level 3*. The
+  now-unreachable `capped` coverage counter was **deleted** rather than left reading 0 forever.
+- The standing sweep is single-class, so it reports **0 ASF-exposed**; the branch is exercised
+  directly instead, as with the tower and oversize branches.
 
 ## Adjacent, and deliberately not in this plan
 

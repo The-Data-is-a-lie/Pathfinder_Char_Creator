@@ -32,6 +32,23 @@ BAND_SECTION = {'L': 'Light', 'M': 'Medium', 'H': 'Heavy'}
 # ruling is greppable from the gate that reports the gap.
 _METAL_FREE_FALLBACK = ('Padded', 'Leather', 'Hide')
 
+# D13 (2026-08-17). How often an arcane caster who COULD wear heavier armour than its own class
+# exempts decides not to. Not 100: a gish in plate is a legitimate, if poor, build, and forcing the
+# safe band made a wizard/fighter unarmoured every single time -- suspiciously tidy for a random
+# generator. Not 0 either: most casters should still be castable.
+ASF_RESTRAINT_CHANCE = 75
+
+# The mitigation the pool actually offers, censused 2026-08-17. `Arcane Armor Training` (AoN,
+# Light Armor Proficiency + caster level 3) is the only one cheap enough to grant: it costs 10% and
+# nothing else. Also in the pool and deliberately NOT granted -- `Arcane Armor Mastery` (20%, but
+# it needs Training first plus Medium Armor Proficiency and CL 7, so granting it means granting a
+# chain), `Still Spell` (avoids failure entirely but costs a spell slot per cast, which is a
+# playstyle choice rather than a gear fix), the Spheres of Might Equipment talent `arcane armor`
+# (10%, repeatable, but it belongs to the sphere economy and only exists for sphere users), and
+# `Arcane Armor Affinity` (Metzofitz, race-gated to pragians and worded for "diving armor").
+ARCANE_ARMOR_TRAINING = 'Arcane Armor Training'
+ARCANE_ARMOR_TRAINING_CL = 3
+
 
 def armor_proficiency():
     """Backend/json/armor_proficiency.json's class table, read once."""
@@ -278,7 +295,9 @@ def shield_chooser(character, dictionary):
     two-handed weapon is handled by the enabler ladder in `two_hand_shield_enabler`.
     """
     character.shield_allow = None
-    character.enabler_feats = []
+    # Appended to, never reset: `armor_chooser` runs FIRST and may already have put an Arcane Armor
+    # Training grant in here (D13). Clearing the list would silently drop it.
+    character.enabler_feats = list(getattr(character, 'enabler_feats', None) or [])
     band = shield_band(character)
     if band is None:
         return None
@@ -442,17 +461,29 @@ def _legal_band(character):
         if ARMOR_BANDS.index(row['armor']) > ARMOR_BANDS.index(band):
             band = row['armor']
 
-    # ...then the cap. An arcane caster's spells fail in anything its own class does not exempt, so
-    # the band drops to that exemption -- to nothing at all for a wizard or sorcerer, which have no
-    # exemption to give. This is why a wizard/fighter goes unarmoured rather than into plate, and
-    # it is deliberate: ruling D5 says a rolled caster must not be broken by the armour roll.
+    # ...then the arcane caster's preference. An arcane caster's spells fail in anything its own
+    # class does not exempt, so a wizard/fighter in plate is a real cost -- but D13 (2026-08-17)
+    # rules it is the CHARACTER's cost to bear, not something the generator forbids. A gish can go
+    # armoured; it just has to live with the spell failure, or spend a feat on it.
+    #
+    # So this is a weighted preference rather than the hard cap D5 first described: most of the
+    # time the caster stays inside its exemption, and sometimes it does not, because some builds
+    # are allowed to be bad. Rejected: forcing the safe band (which made a wizard/fighter
+    # unarmoured every single time, an oddly tidy outcome for a random generator).
+    #
+    # The roll only happens when there is an actual decision to make -- a class already inside its
+    # exemption never reaches it -- so no single-class character's RNG stream moves.
     for name in _rolled_class_names(character):
         row = _row_for(table, name)
         if not row or not row.get('asf_sensitive'):
             continue
-        cap = (row.get('asf_exempt') or {}).get('armor')
-        if ARMOR_BANDS.index(cap) < ARMOR_BANDS.index(band):
-            band, capped_by = cap, name
+        exempt = (row.get('asf_exempt') or {}).get('armor')
+        if ARMOR_BANDS.index(exempt) >= ARMOR_BANDS.index(band):
+            continue
+        if random.randint(1, 100) <= ASF_RESTRAINT_CHANCE:
+            band, capped_by = exempt, name
+        else:
+            character.asf_exposed_by = name
 
     # A taboo can make a band unreachable: the heaviest section with nothing legal in it is not the
     # heaviest LEGAL band. Walk down until something in the section survives the allowlist.
@@ -474,7 +505,22 @@ def armor_chooser(character):
     which is how the random-section draw reached Shields and Tower.
     """
     character.armor_allow = armor_allowlist(character)
+    character.asf_exposed_by = None
+    # This is the first of the two gear choosers, so it OWNS the reset; shield_chooser appends.
+    character.enabler_feats = []
     character.armor_type = _legal_band(character)
+
+    # D13's other half. A caster that chose to wear armour its class does not exempt "just needs to
+    # commit to one of the feats that decrease spell failure" -- so it is handed the cheapest one,
+    # free, through the same channel the two-hander enabler uses. Only when it would actually be
+    # legal (caster level 3, and light armour proficiency, which the band already proves); below
+    # that the character simply wears the armour and eats the failure, which is the "some builds
+    # can be bad" half of the same ruling.
+    if character.asf_exposed_by and character.armor_type:
+        caster_level = int(getattr(character, 'casting_level_num', 0) or 0)
+        if caster_level >= ARCANE_ARMOR_TRAINING_CL:
+            character.enabler_feats = list(getattr(character, 'enabler_feats', None) or []) \
+                + [ARCANE_ARMOR_TRAINING]
     return character.armor_type
 
 

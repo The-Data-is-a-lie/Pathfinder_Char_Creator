@@ -1566,8 +1566,12 @@ A lookup that misses and yields a **falsy default**, so nothing ever fails loudl
   hand-authored 68-class list with nothing checking it is the arrangement that failed) and runtime
   prose parsing (a regex that stops matching yields the same falsy default).
 - **Bands (D3/D5):** heaviest band any rolled class grants, ∩ every rolled class's taboo, then
-  capped so a rolled **arcane caster** is never broken — which is why a wizard/fighter goes
-  unarmoured and the magus stays in light armour (`magus_armor_chooser` is deleted; its 7th/13th
+  then **weighted** (D13) so a rolled **arcane caster** usually stays inside its own
+  arcane-spell-failure exemption — `ASF_RESTRAINT_CHANCE = 75`. It may exceed it, and when it does
+  it is granted `Arcane Armor Training` free if it qualifies (caster level 3); below that it eats
+  the failure, because some builds are allowed to be bad. Rejected: a hard cap, which made a
+  wizard/fighter unarmoured *every* time. The magus stays in light armour either way
+  (`magus_armor_chooser` is deleted; its 7th/13th
   promotions are moot under the cap, and its heavy branch sat behind an unreachable `elif`).
 - **Shields (D6/D9):** ~20% of every shield-proficient character, ranged excluded outright, from a
   curated **ten** of fourteen; tower only for the four classes whose prose grants it, at ~10%.
@@ -1602,7 +1606,7 @@ Two layers sharing no code, sabotage-proven to fail independently:
   already carries the `sizefordamage` resource that `weapon_size_steps` writes into, so its half is
   setting one value. The web sheet pre-scales. Separate PRs in their own repos.
 - **Sweep blind spots**, printed as `0` on every run rather than hidden: tower shields, the
-  multiclass caster cap, and oversized weapons (every source is a Metzofitz feat, a race-gated feat
+  multiclass ASF-exposed branch, and oversized weapons (every source is a Metzofitz feat, a race-gated feat
   or a rolled archetype). All three are exercised directly instead.
 - **Two absent enablers** stay flagged not-in-pool and proved absent on every gate run: Lighten
   Weapon, and the Equipment sphere advanced talent.

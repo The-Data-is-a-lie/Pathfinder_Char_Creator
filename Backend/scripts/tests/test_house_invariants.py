@@ -903,8 +903,8 @@ def check_power_metric():
 # failure -- the same argument the class-choice cap check makes at the bottom of this file.
 # --------------------------------------------------------------------------------------------- #
 GEAR_COVERAGE = {'chars': 0, 'armoured': 0, 'unarmoured': 0, 'shielded': 0, 'tower': 0,
-                 'two_handed_shield': 0, 'taboo': 0, 'capped': 0, 'buckler_only': 0,
-                 'oversized': 0}
+                 'two_handed_shield': 0, 'taboo': 0, 'buckler_only': 0,
+                 'oversized': 0, 'asf_exposed': 0}
 
 _GEAR_ENABLERS = json.loads((BACKEND / 'json' / 'two_hand_enablers.json')
                             .read_text(encoding='utf-8'))['enablers']
@@ -1004,15 +1004,16 @@ def check_gear_legality(cell, payload):
     for _entry, row in rows:
         if _GEAR_BANDS.index(row['armor']) > _GEAR_BANDS.index(band):
             band = row['armor']
-    capped = False
+    # D13: an arcane caster PREFERS to stay inside its own exemption but is allowed to exceed it,
+    # so the exemption is not a ceiling and cannot be asserted as one. What can be asserted is the
+    # union -- nothing may wear armour no rolled class grants -- plus the consequence below.
+    exempt = band
     for _entry, row in rows:
         if not row.get('asf_sensitive'):
             continue
-        cap = (row.get('asf_exempt') or {}).get('armor')
-        if _GEAR_BANDS.index(cap) < _GEAR_BANDS.index(band):
-            band, capped = cap, True
-    if capped:
-        GEAR_COVERAGE['capped'] += 1
+        row_exempt = (row.get('asf_exempt') or {}).get('armor')
+        if _GEAR_BANDS.index(row_exempt) < _GEAR_BANDS.index(exempt):
+            exempt = row_exempt
 
     # ---- the taboo: allowed sets INTERSECT across a multiclass ----
     allowed = None
@@ -1037,6 +1038,20 @@ def check_gear_legality(cell, payload):
         check(allowed is None or armor in allowed,
               f"{cell}: {armor!r} is outside the taboo allowlist {sorted(allowed or [])} -- a "
               f"metal-prohibited class is wearing what it may not")
+        # D13's consequence. Wearing armour your own class does not exempt is ALLOWED, and the
+        # generator does it on purpose about a quarter of the time -- but it must then have taken
+        # the cheap mitigation, unless the character is too low a caster level to qualify for it.
+        # That is the difference between "a deliberately suboptimal build" and "nobody thought
+        # about it", and only the second is a bug.
+        if worn is not None and _GEAR_BANDS.index(worn) > _GEAR_BANDS.index(exempt):
+            GEAR_COVERAGE['asf_exposed'] += 1
+            feats = {str(x).lower() for bucket in payload.values() if isinstance(bucket, list)
+                     for x in bucket if isinstance(x, str)}
+            level = max((e['level'] for e, r in rows if r.get('asf_sensitive')), default=0)
+            check('arcane armor training' in feats or level < 3,
+                  f"{cell}: an arcane caster is in {worn!r} armour ({armor!r}) past its {exempt!r} "
+                  f"exemption at caster level ~{level}, with no Arcane Armor Training to show for "
+                  f"it")
     else:
         GEAR_COVERAGE['unarmoured'] += 1
         check(band is None or allowed is not None,
@@ -2107,7 +2122,8 @@ def main():
     print(f"  gear: {GEAR_COVERAGE['armoured']} armoured / {GEAR_COVERAGE['unarmoured']} not, "
           f"{GEAR_COVERAGE['shielded']} shielded ({GEAR_COVERAGE['two_handed_shield']} on a "
           f"two-hander, {GEAR_COVERAGE['tower']} tower, {GEAR_COVERAGE['buckler_only']} "
-          f"buckler-only), {GEAR_COVERAGE['taboo']} taboo, {GEAR_COVERAGE['capped']} caster-capped, "
+          f"buckler-only), {GEAR_COVERAGE['taboo']} taboo, "
+          f"{GEAR_COVERAGE['asf_exposed']} ASF-exposed, "
           f"{GEAR_COVERAGE['oversized']} oversized")
 
     check_power_metric()
