@@ -1,0 +1,1199 @@
+{
+  "_readme": "DERIVED FILE -- do not hand-edit. Built by Backend/scripts/build/build_armor_proficiency.py from class_data.json's \"weapon and armor proficiency\" prose, and re-parsed on every run of Backend/scripts/gates/validate_gear_legality.py, which fails if this file has drifted from the prose. armor: heaviest legal band (H/M/L or null for none). shield: ladder tower > shield > buckler, null for none. asf_exempt: the class's own arcane-spell-failure exemption, which is a CHARACTER-level fact the payload does not apply to the item's printed value. armor_allow / metal_prohibited / shield_material: the druid and shifter taboos.",
+  "classes": {
+    "alchemist": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are also proficient with light armor, but not with shields.",
+        "shield": "They are also proficient with light armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "antipaladin": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Antipaladins are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield": "Antipaladins are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "arcanist": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are not proficient with any type of armor or shield.",
+        "shield": "They are not proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "barbarian": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "barbarian (unchained)": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "bard": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": "L",
+        "shield": true
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Bards are also proficient with light armor and shields (except tower shields).",
+        "shield": "Bards are also proficient with light armor and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": "A bard can cast bard spells while wearing light armor and use a shield without incurring the normal arcane spell failure chance."
+      }
+    },
+    "bloodrager": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": "M",
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Bloodragers are proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "Bloodragers are proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": "A bloodrager can cast bloodrager spells while wearing light armor or medium armor without incurring the normal arcane spell failure chance."
+      }
+    },
+    "brawler": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "She is proficient with light armor and shields (except tower shields).",
+        "shield": "She is proficient with light armor and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "cavalier": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Cavaliers are proficient with all simple and martial weapons, with all types of armor (heavy, light, and medium) and with shields (except tower shields).",
+        "shield": "Cavaliers are proficient with all simple and martial weapons, with all types of armor (heavy, light, and medium) and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "cleric": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Clerics are proficient with all simple weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "Clerics are proficient with all simple weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "druid": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": [
+        "Padded",
+        "Leather",
+        "Hide"
+      ],
+      "metal_prohibited": true,
+      "shield_material": "wood",
+      "evidence": {
+        "armor": "Druids are proficient with light and medium armor but are prohibited from wearing metal armor; thus, they may wear only padded, leather, or hide armor.",
+        "shield": "Druids are proficient with shields (except tower shields) but must use only those crafted from wood.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "fighter": {
+      "armor": "H",
+      "shield": "tower",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (including tower shields).",
+        "shield": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (including tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "gunslinger": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are proficient with all light armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": null
+      }
+    },
+    "hunter": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A hunter is proficient with all simple and martial weapons and with light armor, medium armor, and shields (except tower shields).",
+        "shield": "A hunter is proficient with all simple and martial weapons and with light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "inquisitor": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "She is also proficient with light armor, medium armor, and shields (except tower shields).",
+        "shield": "She is also proficient with light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "investigator": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are proficient in light armors, but not shields.",
+        "shield": "They are proficient in light armors, but not shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "kineticist": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Kineticists are proficient with all simple weapons and light armor, but not shields.",
+        "shield": "Kineticists are proficient with all simple weapons and light armor, but not shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "magus": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": "L",
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A magus is also proficient with light armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": "He can cast magus spells while wearing light armor without incurring the normal arcane spell failure chance."
+      }
+    },
+    "medium": {
+      "armor": "M",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Mediums are proficient with all simple weapons, light armor, and medium armor, but not with shields.",
+        "shield": "Mediums are proficient with all simple weapons, light armor, and medium armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "mesmerist": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "He is proficient with light armor, but not with shields.",
+        "shield": "He is proficient with light armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "monk": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Monks are not proficient with any armor or shields.",
+        "shield": "Monks are not proficient with any armor or shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "monk (unchained)": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Monks are not proficient with any armor or shields.",
+        "shield": "Monks are not proficient with any armor or shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "ninja": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are proficient with light armor but not with shields.",
+        "shield": "They are proficient with light armor but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "occultist": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "An occultist is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "An occultist is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "oracle": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Oracles are proficient with all simple weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "Oracles are proficient with all simple weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "paladin": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Paladins are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield": "Paladins are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "psychic": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A psychic is proficient with all simple weapons, but not with any type of armor or shield.",
+        "shield": "A psychic is proficient with all simple weapons, but not with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "ranger": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A ranger is proficient with all simple and martial weapons and with light armor, medium armor, and shields (except tower shields).",
+        "shield": "A ranger is proficient with all simple and martial weapons and with light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "rogue": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are proficient with light armor, but not with shields.",
+        "shield": "They are proficient with light armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "rogue (unchained)": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are proficient with light armor, but not with shields.",
+        "shield": "They are proficient with light armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "samurai": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Samurai are proficient with all types of armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield": "Samurai are proficient with all types of armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "shaman": {
+      "armor": "M",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A shaman is proficient with all simple weapons, and with light and medium armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": null
+      }
+    },
+    "shifter": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": true,
+      "shield_material": "wood",
+      "evidence": {
+        "armor": "Shifters are proficient with light and medium armor but are prohibited from wearing metal armor.",
+        "shield": "Shifters are proficient with shields (except tower shields) but must use only those crafted from wood.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "skald": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": "M",
+        "shield": true
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A skald is proficient with all simple and martial weapons, light and medium armor, and shields (except tower shields).",
+        "shield": "A skald is proficient with all simple and martial weapons, light and medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": "A skald can cast skald spells while wearing light or medium armor and even using a shield without incurring the normal arcane spell failure chance."
+      }
+    },
+    "slayer": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A slayer is proficient with all simple and martial weapons, as well as with light armor, medium armor, and shields (except tower shields).",
+        "shield": "A slayer is proficient with all simple and martial weapons, as well as with light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "sorcerer": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are not proficient with any type of armor or shield.",
+        "shield": "They are not proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "spiritualist": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A spiritualist is proficient with all simple weapons, kukris, saps, and scythes, as well as with light armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": null
+      }
+    },
+    "summoner": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": "L",
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Summoners are also proficient with light armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": "A summoner can cast summoner spells while wearing light armor without incurring the normal arcane spell failure chance."
+      }
+    },
+    "summoner (unchained)": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": "L",
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Summoners are proficient with all simple weapons and light armor.",
+        "shield": null,
+        "shield_stated": false,
+        "asf": "A summoner can cast summoner spells while wearing light armor without incurring the normal arcane spell failure chance."
+      }
+    },
+    "swashbuckler": {
+      "armor": "L",
+      "shield": "buckler",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Swashbucklers are proficient with simple and martial weapons, as well as light armor and bucklers.",
+        "shield": "Swashbucklers are proficient with simple and martial weapons, as well as light armor and bucklers.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "vigilante": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Vigilantes are proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield": "Vigilantes are proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "warpriest": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A warpriest is proficient with all simple and martial weapons, as well as the favored weapon of his deity, and with all armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield": "A warpriest is proficient with all simple and martial weapons, as well as the favored weapon of his deity, and with all armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "witch": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are not proficient with any type of armor or shield.",
+        "shield": "They are not proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "wizard": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield.",
+        "shield": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "stalker": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Stalkers are proficient with all simple and martial weapons, and with light armor.",
+        "shield": "Stalkers are not proficient with shields of any kind.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "warlord": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Warlords are proficient with all simple weapons and martial weapons, and with light and medium armor, and with shields.",
+        "shield": "Warlords are proficient with all simple weapons and martial weapons, and with light and medium armor, and with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "warder": {
+      "armor": "H",
+      "shield": "tower",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Warders are proficient with all simple and martial melee weapons, with all armor, and with shields (including tower shields).",
+        "shield": "Warders are proficient with all simple and martial melee weapons, with all armor, and with shields (including tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "harbinger": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A harbinger is proficient with all simple weapons, martial melee weapons, light armor, and shields (except tower shields).",
+        "shield": "A harbinger is proficient with all simple weapons, martial melee weapons, light armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "mystic": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A mystic is proficient with all simple and martial weapons, katanas and wakizashis, and with light armor and shields (except tower shields).",
+        "shield": "A mystic is proficient with all simple and martial weapons, katanas and wakizashis, and with light armor and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "zealot": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A zealot is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield": "A zealot is proficient with all simple and martial weapons and with all armor (heavy, light, and medium) and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "medic": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A medic is proficient with all simple and martial weapons, with light and medium armor, and with shields (except for tower shields).",
+        "shield": "A medic is proficient with all simple and martial weapons, with light and medium armor, and with shields (except for tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "aegis": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Aegii are proficient with light armor and shields (but not tower shields).",
+        "shield": "Aegii are proficient with light armor and shields (but not tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "cryptic": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Cryptics are proficient with light armor but not with shields.",
+        "shield": "Cryptics are proficient with light armor but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "dread": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Dreads are proficient with all simple and martial weapons, with light armor but not with shields.",
+        "shield": "Dreads are proficient with all simple and martial weapons, with light armor but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "highlord": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A highlord is proficient with all simple and martial weapons, light, medium, and heavy armor, and shields (except tower shields).",
+        "shield": "A highlord is proficient with all simple and martial weapons, light, medium, and heavy armor, and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "marksman": {
+      "armor": "L",
+      "shield": "buckler",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A Marksman is proficient with all simple weapons, all light, projectile, and thrown martial weapons, light armor, and with bucklers.",
+        "shield": "A Marksman is proficient with all simple weapons, all light, projectile, and thrown martial weapons, light armor, and with bucklers.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "psion": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "They are not proficient with any type of armor or shield.",
+        "shield": "They are not proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "psychic warrior": {
+      "armor": "H",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Psychic warriors are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield": "Psychic warriors are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "soulknife": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A soulknife is proficient with all simple weapons, with her own mind blade (regardless of form), with light and medium armor, and with shields (but not tower shields).",
+        "shield": "A soulknife is proficient with all simple weapons, with her own mind blade (regardless of form), with light and medium armor, and with shields (but not tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "tactician": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Tacticians are proficient with all simple and martial weapons, with all types of light and medium armor, and with shields (except tower shields).",
+        "shield": "Tacticians are proficient with all simple and martial weapons, with all types of light and medium armor, and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "vitalist": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Vitalists are proficient with all simple weapons and light armor, but not with shields.",
+        "shield": "Vitalists are proficient with all simple weapons and light armor, but not with shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "voyager": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "She is proficient with light armor and shields (except tower shields).",
+        "shield": "She is proficient with light armor and shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "wilder": {
+      "armor": "L",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Wilders are proficient with all simple weapons, with light armor, and with shields (except tower shields).",
+        "shield": "Wilders are proficient with all simple weapons, with light armor, and with shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "adept": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Adepts are not proficient with any type of armor or shield.",
+        "shield": "Adepts are not proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "aristocrat": {
+      "armor": "H",
+      "shield": "tower",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Aristocrats are proficient with all simple and martial weapons and with all types of armor and shields.",
+        "shield": "Aristocrats are proficient with all simple and martial weapons and with all types of armor and shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "commoner": {
+      "armor": null,
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "He is not proficient with any other weapons, nor is he proficient with any type of armor or shield.",
+        "shield": "He is not proficient with any other weapons, nor is he proficient with any type of armor or shield.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "expert": {
+      "armor": "L",
+      "shield": null,
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "The expert is proficient in the use of all simple weapons and with light armor, but not shields.",
+        "shield": "The expert is proficient in the use of all simple weapons and with light armor, but not shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "warrior": {
+      "armor": "H",
+      "shield": "tower",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "Warriors are proficient with all simple and martial weapons and with all types of armor and shields.",
+        "shield": "Warriors are proficient with all simple and martial weapons and with all types of armor and shields.",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "omdura": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "An omdura is proficient with all simple weapons and with light armor, medium armor, shields (except tower shields).",
+        "shield": "An omdura is proficient with all simple weapons and with light armor, medium armor, shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    },
+    "vampire hunter": {
+      "armor": "M",
+      "shield": "shield",
+      "asf_exempt": {
+        "armor": null,
+        "shield": false
+      },
+      "armor_allow": null,
+      "metal_prohibited": false,
+      "shield_material": null,
+      "evidence": {
+        "armor": "A vampire hunter is proficient with all simple weapons, all martial weapons and with light armor, medium armor, shields (except tower shields).",
+        "shield": "A vampire hunter is proficient with all simple weapons, all martial weapons and with light armor, medium armor, shields (except tower shields).",
+        "shield_stated": true,
+        "asf": null
+      }
+    }
+  }
+}
