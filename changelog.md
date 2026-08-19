@@ -19,6 +19,25 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **An eidolon's evolutions now reach its Foundry sheet, under their own `Evolutions` band**
+  (companion-sheets ticket 05, 2026-08-18). The creature the backend spends 16 evolution points
+  building arrived on a sheet showing only the seven specials its class table grants — darkvision,
+  link, share spells — and **not one of the choices it was built from**. It now gets a divider in
+  the same family as Variable Modifiers and Natural AC, an opening line naming the pool
+  (`Evolution Pool — 16 EP`, saying what was spent and what Aspect took), the base form's free
+  evolutions, and then every bought evolution as a real class-feature item carrying its rules text.
+  The band above it now names the creature too — `Class Features (Eidolon)`, not
+  `(Animal Companion)`.
+  Each item says **on its face** whether the numbers counted it: 73 of the 81 evolutions cannot be
+  expressed in a stat block, and one that read "Folded" when nothing had folded it would be a lie
+  the player has no way to catch. Repeats are one item with a count (`Limbs (Arms) (1 EP) ×2`)
+  rather than two — the renderer de-duplicates by name, so two identical items would have silently
+  collapsed into one and taken the count with them.
+  *Rejected:* folding evolutions into the single class-features band, which would have mixed a
+  fixed class table with a list of purchases; and a separate "not folded" band, which would have
+  split each evolution's rules text away from the note about it.
+  An **unchained** summoner's eidolon still gets the band, carrying one item that names the debt —
+  a feature that is merely absent reads exactly like a bug.
 - **A summoner's eidolon is now generated, and it is built rather than picked** (spec §8 "Eidolon
   (v1.1)", companions ticket 07, 2026-08-17). A chained summoner rolls one of the **six** base forms
   in either size, keeps its free evolutions, and then spends its **evolution-point pool** — greedily
@@ -115,6 +134,13 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **An eidolon now clones the body the compendium has for it.** The Foundry renderer looked its
+  creature up by **species**, which is the actor's name for every animal, mount and familiar — the
+  Bird actor is called "Bird". An eidolon's species is its base-form slug (`biped`) and its actor is
+  "Biped Baseform", so every eidolon missed and degraded to a bare NPC with no art and no natural
+  attacks, while the field authored for exactly this match (`pf_content`, whose 1:1 mapping the data
+  gate already asserts) sat unread on the entry. The lookup now tries `pf_content` first and keeps
+  species as the fallback, so nothing that matched before stops matching.
 - **A rolled summoner is no longer hollow.** Both summoner variants have been rollable since the
   class pool opened, and neither produced an eidolon at all — the grantor row was real but its
   species list had never been authored, so the resolver skipped it and even the *degraded* entry D4

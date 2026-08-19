@@ -340,20 +340,30 @@ Aspect cap at 10th/18th, the fold's holdbacks, `size_change` only when it grew �
 guard that fails if a run saw only degraded entries), and the **`summoner` golden** (seed 8555,
 swept on six covered paths rather than on a class list).
 
-**Still open:** both renderers (a ticket on the companion-sheets map — evolution items on the
-Foundry Actor, the web sheet's display), evolutions as buffs/conditionals, a curated eidolon feat
-allowlist (the pool is RAW-legal but a fail-closed reader still lets through flavourless picks like
-Spell Penetration), and the unchained model.
+**The Foundry renderer landed 2026-08-18** (companion-sheets ticket 05, Foundry half). The module's
+`companion-sections.js::evolutionItems` builds an **`Evolutions` band** below the class-features one:
+the pool line, the base form's free evolutions, then one class-feature item per bought evolution with
+its rules text and a line stating whether the numbers counted it — read off `stats.unapplied`, so an
+item cannot claim a fold that did not happen. Repeats are grouped with a count because
+`attachSections` de-duplicates by name. Two facts the build turned up: the class-features divider had
+to name the creature type (`Class Features (Eidolon)`), and `findSource` matched on **species**,
+which is not the eidolon's actor name — every eidolon had been degrading to a bare NPC until it
+learned to read `pf_content`. Pinned by the `summoner` fixture in `tools/create_eidolon.test.mjs`.
+
+**Still open:** the **web sheet's** display (companion-sheets ticket 05, other half — the tab reads
+`stats.unapplied` already but none of `evolutions` / `free_evolutions` / `ep`; the gap is noted in
+`companions.js`), evolutions as buffs/conditionals, a curated eidolon feat allowlist (the pool is
+RAW-legal but a fail-closed reader still lets through flavourless picks like Spell Penetration), and
+the unchained model.
 
 What is **not** built, and what the remaining sheets wait on:
 
-- **No renderer.** `createCharacter.js` creates exactly one Actor (#33); the web sheet's Companions
-  tab is hand-typed (#34). Both wait on tickets 02 and 03 of the companion-sheets map.
 - **`progression_override` is carried, not applied.** It is prose; the entry reports it under
   `stats.unapplied` rather than implying otherwise (D12).
-
-`summoner` and `summoner (unchained)` are rollable today and generate no eidolon at all, so a
-summoner NPC is still missing its entire class identity.
+- **The web sheet's Companions tab shows an eidolon's stat block but not its evolutions** — the last
+  half of companion-sheets ticket 05, and the only renderer gap left on this section. Both renderers
+  otherwise ship: `createCompanions.js` creates one Actor per bonded creature (tickets 01/02) and the
+  web sheet pre-fills the tab from `bonded_creatures` (ticket 03).
 
 ### The twelve locked decisions
 

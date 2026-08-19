@@ -631,7 +631,12 @@ move and diffing them — not by reading the diff.
   - `scripts/createCharacter.js` builds the PC Actor; `scripts/createCompanions.js` builds one Actor
     per `bonded_creatures` entry (spec §8 D1/D2/D10 — its header owns the pf1 patching rules that
     [`tickets: feature/companion-sheets` 02](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/02-pf1-actor-patching.md)
-    settled). `scripts/skills-dict.js` holds skill name → pf1 id and must stay in lockstep with
+    settled). The bands on a bonded creature's sheet are `scripts/companion-sections.js`, which is
+    PURE (no `game`, no Actor) so `tools/create_companions.test.mjs` can drive every branch headless;
+    `evolutionItems()` there is the eidolon's `Evolutions` band, and `tools/create_eidolon.test.mjs`
+    replays the `summoner` fixture through the same harness. Note `createCompanions.js::findSource`
+    matches `entry.pf_content` BEFORE `entry.species` — an eidolon's species is its base-form slug,
+    not its actor name. `scripts/skills-dict.js` holds skill name → pf1 id and must stay in lockstep with
     `utils/data.py::SKILL_IDS`; ⚠ `modify-abilities.js` still declares its own identical copy —
     the dedupe is pending, and its header says so.
 - Web sheet: standalone `Pathfinder-Character-Sheet` repo in `FoundryVTT\Data` — the only web front
