@@ -148,6 +148,22 @@ CONFIGS = {
     'companion': dict(_BASE, seed=7899, userInput_race='Human', class_choice='druid',
                       chosen_BAB='medium', multi_class='Y', alignment_input='NG',
                       userInput_gender='female', high_level=14, low_level=14),
+    # AN EIDOLON, BUILT RATHER THAN PICKED (spec section 8 "Eidolon (v1.1)", companions ticket 07).
+    # The eight configs above roll no summoner, so the whole EP economy -- the pool, the greedy
+    # spend, the legality filter, the partial fold and the Aspect diversion -- had no pinned output
+    # anywhere. It is its own golden rather than a widened `companion` because nothing about it is
+    # shared: a different chassis table, per-form saves, bought attacks, and a creature the resolver
+    # builds instead of drawing from a list.
+    #
+    # Seed 8555 was swept (8500-8560) on COVERAGE, not on a class list -- the lesson the `companion`
+    # golden learned three reseeds the hard way. It is the one seed in that range that reaches all
+    # six paths at once: the pool spent whole (15 + 1 diverted of 16), ASPECT firing at 12th, the
+    # creature GROWING to Large, the fold landing `applied_changes`, holdbacks recorded on
+    # `stats.unapplied`, and an evolution whose CHOICE was rolled. Sweep those six, not "rolls a
+    # summoner" -- and if this prose ever disagrees with the golden, re-scan rather than edit it.
+    'summoner': dict(_BASE, seed=8555, userInput_race='Human', class_choice='summoner',
+                     chosen_BAB='medium', multi_class='N', alignment_input='NG',
+                     userInput_gender='female', high_level=12, low_level=12),
     # A MANIFESTER, AND A POINTS-ONLY ONE. The six configs above all carry `manifesters: []`, so
     # power selection -- the pool filter, the level-weighted pick, the discipline bias, the
     # powers_by_level buckets both renderers group on -- had no pinned output anywhere.
@@ -352,8 +368,38 @@ def _covers_optimized_wall(payload):
     return None
 
 
+def _covers_summoner(payload):
+    """The six eidolon paths this seed was swept for. Each is a separate way for the fixture to
+    stop covering what it exists for -- and every one of them is invisible in a passing diff, since
+    a golden that pins a POORER creature still matches itself."""
+    eidolons = [e for e in (payload.get('bonded_creatures') or [])
+                if e.get('type') == 'eidolon' and e.get('species')
+                and 'unchained_degraded' not in (e.get('flags') or [])]
+    if not eidolons:
+        return ('no chained eidolon -- the summoner grant is unconditional at 1st, so the resolver '
+                'or the chained/unchained split broke')
+    entry = eidolons[0]
+    stats = entry.get('stats') or {}
+    ep = entry.get('ep') or {}
+    if ep.get('spent', 0) + ep.get('diverted', 0) < ep.get('pool', 0):
+        return (f"{ep.get('pool', 0) - ep.get('spent', 0) - ep.get('diverted', 0)} EP left unspent "
+                f"-- ticket 07 ruling 7 spends the pool whole at the resolved level")
+    if not ep.get('diverted'):
+        return 'Aspect diverted nothing -- the 10th-level branch stopped being covered'
+    if entry.get('size') == entry.get('base_size'):
+        return 'the eidolon never grew -- the Large branch and size_change stopped being covered'
+    if not stats.get('applied_changes'):
+        return 'nothing folded into the stat block -- the partial fold stopped being covered'
+    if not stats.get('unapplied'):
+        return 'no holdbacks recorded -- D12 discipline stopped being covered'
+    if not any(pick.get('choice') for pick in entry.get('evolutions') or []):
+        return 'no evolution rolled a choice -- the ability/energy/limb picker stopped being covered'
+    return None
+
+
 COVERAGE = {
     'companion': _covers_companion,
+    'summoner': _covers_summoner,
     'caster': _covers_caster,
     'manifester': _covers_manifester,
     'optimized_striker': _covers_optimized_striker,

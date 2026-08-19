@@ -77,7 +77,10 @@ METZ_PICKS = [0]
 # "both=0, neither=0 over 400 generations" was measured by a sample that could not reach the path it
 # claimed to clear.
 BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
-        'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0, 'familiar': 0}
+        'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0, 'familiar': 0,
+        # The eidolon branches (v1.1). `degraded` is the unchained summoner's base-form-only entry,
+        # `chained` the fully spent one; `aspect` and `grew` are the two conditional paths inside it.
+        'eidolon': 0, 'degraded': 0, 'aspect': 0, 'grew': 0}
 
 # The feat economy's own data, imported rather than restated -- the pool and the tax allowlist are
 # curated files and this test must fail when a creature strays outside them, not when a copy here
@@ -1523,6 +1526,103 @@ def check_companion_feats(tag, entry, stats):
           f"{tag}: stats.context_notes is missing")
 
 
+def check_eidolon(tag, entry):
+    """Spec section 8 "Eidolon (v1.1)", companions ticket 07. What only a whole generated character
+    can show: that the pool was spent, that the caps held, and that the degraded branch really is
+    degraded rather than accidentally empty.
+
+    The EP assertion is the load-bearing one. "Spent whole at the resolved level" (07 ruling 7) is
+    invisible in any single sheet -- an eidolon three points short looks exactly like a legal one --
+    so it is asserted against the table row the entry itself carries.
+    """
+    BOND['eidolon'] += 1
+    evolutions = entry.get('evolutions')
+    ep = entry.get('ep') or {}
+    check(isinstance(evolutions, list), f"{tag}: evolutions is not a list")
+    check(entry.get('pf_content'), f"{tag}: no pf_content actor to clone (D3 would degrade it)")
+    check(entry.get('base_form'), f"{tag}: no base_form")
+
+    if 'unchained_degraded' in (entry.get('flags') or []):
+        # D4 + 07 ruling 1: base form and identity, nothing else -- and the debt NAMED, because an
+        # unmodelled feature that is merely absent is indistinguishable from a bug.
+        BOND['degraded'] += 1
+        check(entry.get('stats') is None,
+              f"{tag}: the unchained eidolon carries a stats block")
+        check(not evolutions, f"{tag}: the unchained eidolon bought {len(evolutions or [])} "
+                              f"evolutions -- its EP table is not sourced")
+        check(entry.get('chassis') is None, f"{tag}: the unchained eidolon carries a chassis row")
+        check(str(entry.get('holdback') or '').strip(),
+              f"{tag}: degraded with no holdback text saying what is missing")
+        return
+
+    chassis = entry.get('chassis') or {}
+    stats = entry.get('stats')
+    check(isinstance(stats, dict), f"{tag}: a chained eidolon has no stats block")
+    check(bool(chassis), f"{tag}: a chained eidolon has no chassis row")
+    if not chassis or not isinstance(stats, dict):
+        return
+
+    pool = int(chassis.get('evolution_pool') or 0)
+    spent = sum(int(pick.get('cost') or 0) for pick in evolutions or [])
+    diverted = int(ep.get('diverted') or 0)
+    check(ep.get('pool') == pool,
+          f"{tag}: ep.pool {ep.get('pool')} != the table's {pool} at effective level "
+          f"{entry.get('effective_level')}")
+    check(ep.get('spent') == spent,
+          f"{tag}: ep.spent {ep.get('spent')} != the {spent} its picks actually cost")
+    check(spent + diverted <= pool,
+          f"{tag}: spent {spent} + diverted {diverted} exceeds the pool of {pool}")
+
+    # 07 ruling 5: Aspect is a 10th-level feature, Greater Aspect an 18th, and the diversion is
+    # ROLLED inside the cap -- so the assertion is the cap, not a fixed amount.
+    level = int(entry.get('effective_level') or 0)
+    cap = 6 if level >= 18 else (2 if level >= 10 else 0)
+    check(diverted <= cap,
+          f"{tag}: diverted {diverted} EP to the summoner, cap at level {level} is {cap}")
+    if diverted:
+        BOND['aspect'] += 1
+
+    # The feat economy's own half: the eidolon table dates the slots, so the count and the labels
+    # both come off it and cannot disagree with each other.
+    feats, labels = entry.get('feats') or [], entry.get('feat_labels') or []
+    check(len(feats) <= int(chassis.get('feats') or 0),
+          f"{tag}: {len(feats)} feats, the table grants {chassis.get('feats')} at this level")
+    check(len(labels) == len(feats),
+          f"{tag}: {len(labels)} feat labels for {len(feats)} feats")
+    check(all(str(label).startswith('Eidolon ') for label in labels),
+          f"{tag}: a feat label is not dated to the eidolon's own track: {labels}")
+    check(not entry.get('feat_tax_dict'),
+          f"{tag}: a taxed feat was granted, but the eidolon tax allowlist is empty by ruling")
+
+    attacks = stats.get('attacks') or []
+    check(len(attacks) <= int(chassis.get('max_attacks') or 0),
+          f"{tag}: {len(attacks)} natural attacks, Max Attacks is {chassis.get('max_attacks')}")
+    check(stats.get('hd') == chassis.get('hd'),
+          f"{tag}: stats.hd {stats.get('hd')} != chassis hd {chassis.get('hd')}")
+
+    # The partial fold's holdback discipline (D12): an evolution this block cannot express is NAMED
+    # on stats.unapplied. Most of the 81 cannot be, so an empty list on a creature that bought
+    # several is the signature of a fold that dropped them instead.
+    foldable = {'improved natural armor', 'large', 'tail', 'ability increase'}
+    unfoldable = [pick for pick in evolutions or [] if pick.get('key') not in foldable]
+    check(not unfoldable or (stats.get('unapplied') or []),
+          f"{tag}: bought {len(unfoldable)} evolution(s) the block cannot express but "
+          f"stats.unapplied is empty")
+
+    if stats.get('size') != entry.get('base_size'):
+        # An eidolon grows only by BUYING Large, so unlike a companion the provenance record has a
+        # named cause -- and being born Small is not growth, which is why `base_size` exists.
+        BOND['grew'] += 1
+        check(stats.get('size_change'),
+              f"{tag}: grew {entry.get('base_size')} -> {stats.get('size')} with no size_change")
+        check(any(pick.get('key') == 'large' for pick in evolutions or []),
+              f"{tag}: size changed to {stats.get('size')} but no evolution granted it")
+    else:
+        check(not stats.get('size_change'),
+              f"{tag}: size_change on a creature that never changed size -- a renderer would "
+              f"apply the geometry twice (D11)")
+
+
 def check_bonded_creatures(cell, payload):
     """Map #18, slice K (#35). The stat-block arithmetic is gated species-by-species in
     `validate_companion_stats.py`; what is checkable only HERE is the shape of the emitted list and
@@ -1556,6 +1656,14 @@ def check_bonded_creatures(cell, payload):
         BOND['granted'] += 1
         check(entry.get('effective_level', 0) >= 1,
               f"{tag}: granted at effective level {entry.get('effective_level')!r}")
+
+        if entry.get('type') == 'eidolon':
+            # Its own shape entirely: no advancement merge, its own chassis table, and a legitimate
+            # stats-less form (D4's degraded unchained entry). Checked separately rather than
+            # bent into the animal path, which would have to be weakened for both.
+            check_eidolon(tag, entry)
+            continue
+
         stats = entry.get('stats')
         check(isinstance(stats, dict), f"{tag}: species {entry['species']!r} has no stats block")
         if not isinstance(stats, dict):
@@ -2068,11 +2176,22 @@ def main():
         check(BOND['familiar'] > 0,
               f"no familiar was granted in {total} generations -- the witch grant alone is "
               f"unconditional, so zero means the familiar resolver or late pass broke")
+        # Both eidolon branches, for the same reason. The summoner grant is unconditional at 1st,
+        # so zero eidolons means the resolver stopped emitting them; and a sweep that saw only the
+        # degraded unchained entry would prove nothing about the EP spender at all.
+        check(BOND['eidolon'] > 0,
+              f"no eidolon was granted in {total} generations -- the summoner grant is "
+              f"unconditional at 1st level, so zero means the resolver broke")
+        check(BOND['eidolon'] > BOND['degraded'],
+              f"all {BOND['eidolon']} eidolons were the degraded unchained entry -- every EP, cap "
+              f"and fold check above was skipped, so this run proves nothing about the spender")
     print(f"  bonded creatures: {BOND['granted']} granted ({BOND['familiar']} familiars), "
           f"{BOND['absent']} absence entries, "
           f"{BOND['druid_flip']} druid flips (both={BOND['both']}, neither={BOND['neither']})")
     print(f"  companion feats: {BOND['feats']} rolled, {BOND['tax']} taxed in, "
           f"{BOND['flaws']} flaws, {BOND['applied']} folded changes")
+    print(f"  eidolons: {BOND['eidolon']} ({BOND['degraded']} degraded unchained), "
+          f"{BOND['aspect']} diverted EP to Aspect, {BOND['grew']} grew to Large")
 
     # Same guard, same reason: every occult check is conditional on rolling one of the six.
     if total >= 100:
