@@ -1,0 +1,893 @@
+{
+  "meta": {
+    "source": "https://www.d20pfsrd.com/classes/base-classes/summoner/eidolons/",
+    "note": "Draft. Curate into eidolon_evolutions.json: confirm every `auto` hint, add costs of paid upgrades, author `changes` for the numeric evolutions. Nothing here is authoritative."
+  },
+  "evolutions": {
+    "ability increase": {
+      "name": "Ability Increase",
+      "cost": 2,
+      "benefit": "An eidolon grows larger muscles, gains faster reflexes, achieves greater intelligence, or acquires another increase to one of its abilities. Increase one of the eidolon's ability scores by +2. This evolution can be selected more than once. It can only be applied once to an individual ability score, plus 1 additional time for every 6 levels the summoner possesses.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true,
+          "plus_one_per_summoner_levels": 6
+        }
+      }
+    },
+    "absorb occult energy": {
+      "name": "Absorb Occult Energy",
+      "cost": 2,
+      "benefit": "Magic Unbound Volume 2 Whenever the eidolon successfully strikes a creature with an unarmed attack, natural attack , or touch attack , the struck creature must succeed on a Will save (DC equals 10 + Â½ the eidolon's hit dice + its Charisma modifier) or have 1 random minor granted ability the target possesses stolen from them. The minor granted ability becomes suppressed for 24 hours and the eidolon enjoys its benefits for 1d4 minutes before it fades away. This ability cannot steal vestigial companions.",
+      "type": "su",
+      "source": "PACT",
+      "third_party": true,
+      "auto": {}
+    },
+    "alignment smite": {
+      "name": "Alignment Smite",
+      "cost": 2,
+      "benefit": "Choose : A single alignment component that opposes one of the summoner's own. Benefit : Once per day as a swift action , the eidolon chooses one target within sight. If this target's alignment matches that chosen for this ability, the eidolon deals an additional +1d6 points of damage with one of its natural weapons . This attack is treated as good-aligned for the purposes of overcoming damage reduction . The alignment smite persists until the target is dead or the eidolon is dismissed. At 10th level, the summoner may spend 1 additional evolution point to allow the eidolon a second daily use of this ability. The summoner must be at least 5th level before selecting this evolution. Evil or true neutral summoners cannot select this evolution.",
+      "type": "su",
+      "source": "PZO9450",
+      "auto": {
+        "min_summoner_level": 5,
+        "has_paid_upgrade": true
+      }
+    },
+    "basic magic": {
+      "name": "Basic Magic",
+      "cost": 1,
+      "benefit": "An eidolon learns to cast a basic spell as a spell-like ability . Select one spell from the following list: acid splash , dancing lights , daze , detect magic , flare , ghost sound , light , mage hand , ray of frost , stabilize , or touch of fatigue . This spell can be cast once per day as a spell-like ability . At 4th level, this spell can be cast three times per day by spending 2 additional evolution points. The caster level for this evolution is equal to the eidolon's Hit Dice . The save DC for this spell is 10 + the eidolon's Charisma modifier. The eidolon must have a Charisma score of at least 10 to take this evolution. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a new spell.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        },
+        "has_paid_upgrade": true
+      }
+    },
+    "bite": {
+      "name": "Bite",
+      "cost": 1,
+      "benefit": "An eidolon's maw is full of razor-sharp teeth, giving it a bite attack. This attack is a primary attack. The bite deals 1d6 points of damage (1d8 if Large, 2d6 if Huge). If the eidolon already has a bite attack, this evolution allows it to deal 1-1/2 times its Strength modifier on damage rolls made with its bite.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "attack_prose": true
+      }
+    },
+    "bleed": {
+      "name": "Bleed",
+      "cost": 1,
+      "benefit": "An eidolon gains the ability to inflict bleeding wounds. Select one type of attack. Attacks of that type deal 1d6 points of bleed damage. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a different attack. The bleed effect doesn't stack.",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "blindsense": {
+      "name": "Blindsense",
+      "cost": 3,
+      "benefit": "An eidolon's senses become incredibly acute, giving it blindsense out to a range of 30 feet. This ability allows the eidolon to pinpoint the location of creatures that it cannot see without having to make a Perception check, but such creatures still have total concealment from the eidolon. Visibility still affects the eidolon's movement and it is still denied its Dexterity bonus to Armor Class against attacks from creatures it cannot see. The summoner must be at least 9th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9
+      }
+    },
+    "blindsight": {
+      "name": "Blindsight",
+      "cost": 4,
+      "benefit": "An eidolon's senses sharpen even further, granting it blindsight out to a range of 30 feet. The eidolon can maneuver and attack as normal, ignoring darkness, invisibility , and most forms of concealment as long as it has line of effect to the target. The eidolon must possess the blindsense evolution to take this evolution. The summoner must be at least 11th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 11,
+        "requires_evolutions": [
+          "blindsense"
+        ]
+      }
+    },
+    "breath weapon": {
+      "name": "Breath Weapon",
+      "cost": 4,
+      "benefit": "An eidolon learns to exhale a cone or line of magical energy, gaining a breath weapon. Select either acid, cold, electricity, or fire. The eidolon can breathe a 30-foot cone (or 60-foot line) that deals 1d6 points of damage of the selected type per HD it possesses. Those caught in the breath weapon can attempt a Reflex save for half damage. The DC is equal to 10 + 1/2 the eidolon's HD + the eidolon's Constitution modifier. The eidolon can use this ability once per day. The eidolon can use this ability 1 additional time per day by spending an additional 1 evolution point (maximum 3/day). The summoner must be at least 9th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9
+      }
+    },
+    "burrow": {
+      "name": "Burrow",
+      "cost": 3,
+      "benefit": "An eidolon grows thick and gnarled claws, allowing it to move through the earth. The eidolon gains a burrow speed equal to 1/2 its base speed. It can use this speed to move through dirt, clay, sand, and earth. It does not leave a hole behind, nor is its passage marked on the surface. The summoner must be at least 9th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9
+      }
+    },
+    "celestial appearance": {
+      "name": "Celestial Appearance",
+      "cost": 3,
+      "benefit": "The eidolon appears as a celestial creature and manifests some of the abilities of a celestial. Prerequisite : Must be of good alignment Benefit : Spells and effects that target creatures with the good subtype or have specific effects against such creatures affect the eidolon as if it were a celestial. The eidolon gains a +2 bonus on saves against disease , petrification, poison , and electricity spells and effects. It also gains spell resistance equal to 5 + its HD against spells with the evil descriptor . At 7th level, by spending 2 additional evolution points, this bonus on saves is increased to +4 and the spell resistance is extended to affect any spells and effects from evil creatures. At 12th level, by spending 2 additional evolution points, this protection is increased to immunity against these attacks and the spell resistance is increased to 11 + its HD (the summoner must pay for the 7th-level upgrade before paying for this 12th-level upgrade).",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {
+        "has_paid_upgrade": true
+      }
+    },
+    "channel resistance": {
+      "name": "Channel Resistance",
+      "cost": 2,
+      "benefit": "An eidolon becomes less easily affected by the channel energy ability of clerics or paladins . The eidolon gains a +2 bonus on any saves that are made to resist the effects of channel energy , including effects that rely on the use of channel energy (such as the Command Undead feat). At 7th level, this bonus can be increased to +4 by spending 2 additional evolution points. The eidolon must possess the undead appearance evolution to take this evolution.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {
+        "has_paid_upgrade": true
+      }
+    },
+    "claws": {
+      "name": "Claws",
+      "cost": 1,
+      "benefit": "An eidolon has a pair of vicious claws at the end of its limbs, giving it two claw attacks. These attacks are primary attacks. The claws deal 1d4 points of damage (1d6 if Large, 1d8 if Huge). The eidolon must have the limbs evolution to take this evolution. This evolution can only be applied to the limbs (legs) evolution once This evolution can be selected more than once, but the eidolon must possess an equal number of the limbs evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "limbs"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "climb": {
+      "name": "Climb",
+      "cost": 1,
+      "benefit": "An eidolon becomes a skilled climber, gaining a climb speed equal to its base speed. This evolution can be selected more than once. Each additional time it is selected, increase the eidolon's climb speed by 20 feet.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "constrict": {
+      "name": "Constrict",
+      "cost": 2,
+      "benefit": "An eidolon gains powerful muscles that allow it to crush those it grapples. Whenever the eidolon successfully grapples a foe using the grab evolution, it deals additional damage equal to the amount of damage dealt by the attack used by the grab evolution. This evolution is only available to eidolons of the serpentine base form.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "form_restriction": "serpentine"
+      }
+    },
+    "damage reduction": {
+      "name": "Damage Reduction",
+      "cost": 3,
+      "benefit": "An eidolon's body becomes resistant to harm, granting it damage reduction . Choose : one alignment: chaotic, evil, good, or lawful. Benefit : The eidolon gains DR 5 that can be bypassed by weapons that possess the chosen alignment. The alignment must be opposite to one of the alignments possessed by the eidolon. At 12th level, this protection can be increased to DR 10 by spending 2 additional evolution points. The summoner must be at least 9th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9,
+        "has_paid_upgrade": true
+      }
+    },
+    "dimension door": {
+      "name": "Dimension Door",
+      "cost": 4,
+      "benefit": "An eidolon learns to cast dimension door as a spell-like ability once per day. The caster level for this evolution is equal to the eidolon's Hit Dice . The save DC for this spell is 10 + 1/2 the eidolon's HD + the eidolon's Charisma modifier. The eidolon must have a Charisma score of at least 14 to take this evolution. The summoner must be at least 13th level before selecting this evolution.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 13
+      }
+    },
+    "energy attacks": {
+      "name": "Energy Attacks",
+      "cost": 2,
+      "benefit": "An eidolon's attacks become charged with energy. Pick one energy type: acid, cold, electricity, or fire. All of the eidolon's natural attacks deal 1d6 points of energy damage of the chosen type on a successful hit. The summoner must be at least 5th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 5
+      }
+    },
+    "extra feat": {
+      "name": "Extra Feat",
+      "cost": 2,
+      "benefit": "The eidolon gains an extra feat. It must meet the prerequisites of the feat.",
+      "type": "ex",
+      "source": "PZO9480",
+      "auto": {}
+    },
+    "fast healing": {
+      "name": "Fast Healing",
+      "cost": 4,
+      "benefit": "An eidolon's body gains the ability to heal wounds very quickly, giving it fast healing 1. The eidolon heals 1 point of damage each round, just like natural healing. Fast healing does not restore hit points lost due to starvation, thirst, or suffocation, nor does it allow the eidolon to regrow lost body parts (or to reattach severed parts). Fast healing functions as long as the eidolon is alive. This fast healing does not function when the eidolon is not on the same plane as its summoner. This healing can be increased by 1 per round for every 2 additional evolution points spent (maximum 5). The summoner must be at least 11th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 11,
+        "has_paid_upgrade": true
+      }
+    },
+    "fiendish appearance": {
+      "name": "Fiendish Appearance",
+      "cost": 3,
+      "benefit": "The eidolon appears as a fiendish creature and manifests some of the abilities of a fiend. Spells and effects that target creatures with the evil subtype or have specific effects against such creatures affect the eidolon as if it had that subtype. The eidolon gains a +2 bonus on saving throws against acid , disease , fire, and poison spells and effects. It also gains an amount of spell resistance equal to 5 + its HD against spells with the good descriptor . The summoner must be evil-aligned to select this evolution. At 7th level, by spending 2 additional evolution points, the summoner increases the bonus on saving throws to +4 and extends the spell resistance to affect any spells and spell-like abilities cast by good creatures. At 12th level, by spending 2 additional evolution points, the eidolon gains immunity to acid , disease , fire, and poison . Its spell resistance increases to an amount of equal to 11 + its HD. (The summoner must pay for the 7th-level upgrade before paying for this 12th-level upgrade.)",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {
+        "has_paid_upgrade": true
+      }
+    },
+    "flight": {
+      "name": "Flight",
+      "cost": 2,
+      "benefit": "An eidolon grows large wings, like those of a bat, bird, insect, or dragon, gaining the ability to fly. The eidolon gains a fly speed equal to its base speed. The eidolon's maneuverability depends on it size. Medium or smaller eidolons have good maneuverability. Large eidolons have average maneuverability, while Huge eidolons have poor maneuverability. For 2 additional evolution points, the eidolon flies by means of magic. It loses its wings, but its maneuverability increases to perfect. Flying via magi makes this a supernatural ability. The eidolon's fly speed can be increased by spending additional evolution points, gaining a 20-foot increase to fly speed for each additional point spent. The summoner must be at least 5th level before selecting this evolution.",
+      "type": "ex or su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 5,
+        "has_paid_upgrade": true
+      }
+    },
+    "frightful presence": {
+      "name": "Frightful Presence",
+      "cost": 3,
+      "benefit": "An eidolon becomes unsettling to its foes, gaining the frightful presence ability. The eidolon can activate this ability as part of an offensive action, such as a charge or attack. Opponents within 30 feet of the eidolon must make a Will save or become shaken for 3d6 rounds. The DC of this save is equal to 10 + 1/2 the eidolon's HD + the eidolon's Charisma modifier. If the eidolon has at least 4 more Hit Dice than an opponent, that opponent becomes frightened instead. Foes with more HD than the eidolon are immune to this effect. The summoner must be at least 11th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 11
+      }
+    },
+    "gills": {
+      "name": "Gills",
+      "cost": 1,
+      "benefit": "An eidolon has gills and can breathe underwater indefinitely.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "gore": {
+      "name": "Gore",
+      "cost": 2,
+      "benefit": "An eidolon grows a number of horns on its head, giving it a gore attack. This attack is a primary attack. The gore deals 1d6 points of damage (1d8 if Large, 2d6 if Huge).",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "attack_prose": true
+      }
+    },
+    "grab": {
+      "name": "Grab",
+      "cost": 2,
+      "benefit": "An eidolon becomes adept at grappling foes, gaining the grab ability. Pick bite, claw, pincers, slam, tail slap, or tentacle attacks. Whenever the eidolon makes a successful attack of the selected type, it can attempt a free combat maneuver check. If successful, the eidolon grapples the target. This ability only works on creatures of a size one category smaller than the eidolon or smaller. Eidolons with this evolution receive a +4 bonus on CMB checks made to grapple .",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "head": {
+      "name": "Head",
+      "cost": 2,
+      "benefit": "An eidolon grows an additional head. The eidolon does not gain any additional natural attacks for the additional head, but the additional head does allow the eidolon to take other evolutions that add an additional attack to a head (such as a bite, gore, or breath weapon ). This evolution can be selected more than once.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "hooves": {
+      "name": "Hooves",
+      "cost": 1,
+      "benefit": "An eidolon has a pair of sharp hooves at the end of its limbs, giving it two hoof attacks. These attacks are secondary attacks. The hooves deal 1d4 points of damage (1d6 if Large, 1d8 if Huge). The eidolon must have the limbs evolution to take this evolution. This evolution can only be applied to the limbs (legs) evolution once. Alternatively, the eidolon can replace the claws evolution from its base form with these hoof attacks (this still costs 1 evolution point). This evolution can be selected more than once, but the eidolon must possess an equal number of limbs evolutions.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {
+        "requires_evolutions": [
+          "limbs"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "immunity": {
+      "name": "Immunity",
+      "cost": 2,
+      "benefit": "An eidolon's body becomes extremely resilient to one energy type, gaining immunity to that type. Pick one energy type: acid, cold, electricity, fire, or sonic. The eidolon gains immunity to that energy type. This evolution can be selected more than once. Its effects do not stack. Each time it applies to a different energy type. The summoner must be at least 7th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 7,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "improved damage": {
+      "name": "Improved Damage",
+      "cost": 1,
+      "benefit": "One of the eidolon's natural attacks is particularly deadly. Select one natural attack form and increase the damage die type by one step. This evolution can be selected more than once. Its effects do not stack. Each time an eidolon selects this evolution, it applies to a different natural attack.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "improved natural armor": {
+      "name": "Improved Natural Armor",
+      "cost": 1,
+      "benefit": "An eidolon's hide grows thick fur, rigid scales, or bony plates, giving it a +2 bonus to its natural armor. This evolution can be taken once for every five levels the summoner possesses.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "per_summoner_levels": 5
+        }
+      }
+    },
+    "incorporeal form": {
+      "name": "Incorporeal Form",
+      "cost": 4,
+      "benefit": "Once per day, an eidolon can become incorporeal for 1 round per summoner level. While in this form, the eidolon gains the incorporeal subtype and incorporeal quality. It only takes half damage from corporeal sources as long as they are magic (it takes no damage from nonmagical weapons and objects). Likewise, its spells or spell-like abilities deal only half damage to corporeal creatures. Spells and other effects that do not deal damage function normally. The summoner must be at least 15th level before selecting this evolution.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 15
+      }
+    },
+    "keen scent": {
+      "name": "Keen Scent",
+      "cost": 2,
+      "benefit": "An eidolon's sense of smell becomes even more acute. The eidolon can notice other creatures by scent in a 180-foot radius underwater and can detect blood in the water at ranges of up to a mile. The eidolon must possess the gills and scent evolutions to take this evolution.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {}
+    },
+    "large": {
+      "name": "Large",
+      "cost": 4,
+      "benefit": "An eidolon grows in size, becoming Large. The eidolon gains a +8 bonus to Strength , a +4 bonus to Constitution , and a +2 bonus to its natural armor. It takes a -2 penalty to its Dexterity . This size change also gives the creature a -1 size penalty to its AC and on attack rolls, a +1 bonus to its CMB and CMD , a -2 penalty on Fly skill checks, and a -4 penalty on Stealth skill checks. If the eidolon has the biped base form, it also gains 10-foot reach. Any reach evolutions the eidolon possesses are added to this total. The eidolon must be Medium to take this evolution. The summoner must be at least 8th level before selecting this evolution. If 6 additional evolution points are spent, the eidolon instead becomes Huge. The eidolon gains a +16 bonus to Strength , a +8 bonus to Constitution , and a +5 bonus to its natural armor. It takes a -4 penalty to its Dexterity . This size change also give the creature a -2 size penalty to its AC and attack rolls, a +2 bonus to its CMB and CMD , 10-foot reach, a -4 penalty on Fly skill checks, and a -8 penalty on Stealth skill checks. If the eidolon has the biped base form, its reach increases to 15 feet (10 feet for all other base forms). Any reach evolutions the eidolon possesses are added to this total. These bonuses and penalties replace, and do not stack with, those gained from becoming Large. The summoner must be at least 13th level before selecting this option. The ability increase evolution costs twice as much (4 evolution points) when adding to the Strength or Constitution scores of a Large or Huge eidolon.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 8,
+        "requires_size": "medium",
+        "has_paid_upgrade": true
+      }
+    },
+    "lifesense": {
+      "name": "Lifesense",
+      "cost": 4,
+      "benefit": "An eidolon can pinpoint living creatures with ease. The eidolon notices and locates living creatures within 60 feet, just as if it possessed the blindsight evolution. The eidolon must possess the undead appearance evolution to take this evolution. The summoner must be at least 11th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 11
+      }
+    },
+    "limbs": {
+      "name": "Limbs",
+      "cost": 2,
+      "benefit": "An eidolon grows an additional pair of limbs. These limbs can take one of two forms. They can be made into legs, complete with feet. Each pair of legs increases the eidolon's base speed by 10 feet. Alternatively, they can be made into arms, complete with hands. The eidolon does not gain any additional natural attacks for an additional pair of arms, but it can take other evolutions that add additional attacks (such as claws or a slam). Arms that have hands can be used to wield weapons, if the eidolon is proficient. This evolution can be selected more than once.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "low-light vision": {
+      "name": "Low-Light Vision",
+      "cost": 1,
+      "benefit": "An eidolon gains low-light vision , enabling it to see twice as far as a human in conditions of dim light.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {}
+    },
+    "magic attacks": {
+      "name": "Magic Attacks",
+      "cost": 1,
+      "benefit": "An eidolon is infused with magic, allowing it to treat all of its natural attacks as if they were magic for the purpose of overcoming damage reduction . If the summoner is 10th level or higher, all of the eidolon's weapons are treated as the alignment of the eidolon for the purpose of overcoming damage reduction .",
+      "type": "su",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "major magic": {
+      "name": "Major Magic",
+      "cost": 3,
+      "benefit": "An eidolon learns to cast a major spell as a spell-like ability . Select one spell from the following list: acid arrow , cure moderate wounds , darkness , daze monster , glide [APG] , invisibility (self only), lesser restoration , levitate , minor image , scorching ray , see invisibility , or spider climb . This spell can be cast once per day as a spell-like ability . At 10th level, this spell can be cast three times per day by spending 2 additional evolution points. The caster level for this evolution is equal to the eidolon's Hit Dice - 2. The save DC for this spell is 10 + 1/2 the eidolon's HD + the eidolon's Charisma modifier. The eidolon must have a Charisma score of at least 12 and must possess the minor magic evolution to take this evolution. The summoner must be at least 7th level before selecting this evolution. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a new spell from the above list.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 7,
+        "repeat_cap": {
+          "repeatable": true
+        },
+        "has_paid_upgrade": true
+      }
+    },
+    "minor magic": {
+      "name": "Minor Magic",
+      "cost": 2,
+      "benefit": "An eidolon learns to cast a minor spell as a spell-like ability . Select one spell from the following list: burning hands , comprehend languages , cure light wounds , detect chaos /evil/good/law, magic missile , obscuring mist , silent image , vanish [APG] (self only), or ventriloquism . This spell can be cast once per day as a spell-like ability . At 7th level, this spell can be cast three times per day by spending 2 additional evolution points. The caster level for this evolution is equal to the eidolon's Hit Dice - 2. The save DC for this spell is 10 + 1/2 the eidolon's HD + the eidolon's Charisma modifier. The eidolon must have a Charisma score of at least 11 and must possess the basic magic evolution to take this evolution. The summoner must be at least 4th level before selecting this evolution. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a new spell from the above list.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 4,
+        "repeat_cap": {
+          "repeatable": true
+        },
+        "has_paid_upgrade": true
+      }
+    },
+    "mount": {
+      "name": "Mount",
+      "cost": 1,
+      "benefit": "An eidolon is properly skilled and formed to serve as a combat-trained mount. The eidolon must be at least one size category larger than its rider. This evolution is only available to eidolons of the quadruped and serpentine base forms.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "no breath": {
+      "name": "No Breath",
+      "cost": 4,
+      "benefit": "An eidolon no longer needs to breathe. The eidolon does not breathe, and is immune to effects that require breathing (such as inhaled poison ). This does not give immunity to cloud or gas attacks that do not require breathing. The summoner must be at least 11th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 11
+      }
+    },
+    "pincers": {
+      "name": "Pincers",
+      "cost": 1,
+      "benefit": "An eidolon grows a large pincers at the end of one pair of its limbs, giving it two pincer attacks. These attacks are secondary attacks. The pincers deal 1d6 points of damage (1d8 if Large, 2d6 if Huge). Eidolons with the grab evolution linked to pincers gain a +2 bonus on CMB checks made to grapple . The eidolon must have the limbs (arms) evolution to take this evolution. Alternatively, the eidolon can replace the claws from its base form with pincers (this still costs 1 evolution point). This evolution can be selected more than once, but the eidolon must possess an equal number of the limbs evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "limbs (arms)"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "poison": {
+      "name": "Poison",
+      "cost": 2,
+      "benefit": "An eidolon secretes toxic venom, gaining a poison attack. Pick one bite or sting attack. Whenever the selected attack hits, the target is poisoned. Eidolon poison -- type poison (injury); save Fort negates; frequency 1/round for 4 rounds; effect 1d4 Str damage; cure 1 save. The save DC is equal to 10 + 1/2 the eidolon's HD + the eidolon's Constitution modifier. For 2 additional evolution points, this poison deals Constitution damage instead. This poison can be used no more than once per round. The summoner must be at least 7th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 7,
+        "has_paid_upgrade": true
+      }
+    },
+    "pounce": {
+      "name": "Pounce",
+      "cost": 1,
+      "benefit": "An eidolon gains quick reflexes, allowing it to make a full attack after a charge . This evolution is only available to eidolons of the quadruped base form.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "form_restriction": "quadruped"
+      }
+    },
+    "pull": {
+      "name": "Pull",
+      "cost": 1,
+      "benefit": "An eidolon gains the ability to pull creatures closer with a successful attack. Select one type of natural attack. Whenever the eidolon makes a successful attack of the selected type, it can attempt a free combat maneuver check. If successful, the target of the attack is pulled 5 feet closer to the eidolon. This ability only works on creatures of a size equal to or smaller than the eidolon. Creatures pulled in this way do not provoke attacks of opportunity . The eidolon must have a reach of 10 feet or more to select this evolution. This evolution can be selected more than once. Its effects do not stack. Each time an eidolon selects this evolution, it applies to a different natural attack.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "push": {
+      "name": "Push",
+      "cost": 1,
+      "benefit": "An eidolon gains the ability to push creatures away with a successful attack. Select one type of natural attack. Whenever the eidolon makes a successful attack of the selected type, it can attempt a free combat maneuver check. If successful, the target of the attack is pushed 5 feet directly away from the eidolon. This ability only works on creatures of a size equal to or smaller than the eidolon. Creatures pushed in this way do not provoke attacks of opportunity . This evolution can be selected more than once. Its effects do not stack. Each time an eidolon selects this evolution, it applies to a different natural attack.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "rake": {
+      "name": "Rake",
+      "cost": 2,
+      "benefit": "An eidolon grows dangerous claws on its feet, allowing it to make 2 rake attacks on foes it is grappling . These attacks are primary attacks. The eidolon receives these additional attacks each time it succeeds on a grapple check against the target. These rake attacks deal 1d4 points of damage (1d6 if Large, 1d8 if Huge). This evolution is only available to eidolons of the quadruped base form. This evolution counts as one natural attack toward the eidolon's maximum. The summoner must be at least 4th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "form_restriction": "quadruped",
+        "min_summoner_level": 4,
+        "grants_attack": 1
+      }
+    },
+    "reach": {
+      "name": "Reach",
+      "cost": 1,
+      "benefit": "One of an eidolon's attacks is capable of striking at foes at a distance. Pick one attack. The eidolon's reach with that attack increases by 5 feet.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "rend": {
+      "name": "Rend",
+      "cost": 2,
+      "benefit": "An eidolon learns to rip and tear the flesh of those it attacks with its claws, gaining the rend ability. Whenever the eidolon makes two successful claw attacks against the same target in 1 round, its claws latch onto the flesh and deal extra damage. This damage is equal to the damage dealt by one claw attack plus 1-1/2 times the eidolon's Strength modifier. The eidolon must possess the claws evolution to select this evolution. The summoner must be at least 6th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 6,
+        "requires_evolutions": [
+          "claws"
+        ]
+      }
+    },
+    "resistance": {
+      "name": "Resistance",
+      "cost": 1,
+      "benefit": "An eidolon's form takes on a resiliency to one particular energy type, which is usually reflected in its physical body (ashen hide for fire, icy breath for cold, and so on). Pick one energy type (acid, cold, electricity, fire, or sonic). The eidolon gains resist 5 against that energy type. This resistance increases by 5 for every 5 levels the summoner possesses, to a maximum of 15 at 10th level. This evolution can be selected more than once. Its effects do not stack. Each time an eidolon selects this evolution, it applies to a different energy type.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "rider bond": {
+      "name": "Rider Bond",
+      "cost": 2,
+      "benefit": "You and your eidolon share an empathic connection while you ride it. You gain a bonus on Ride checks equal to one-half your summoner level and you also gain Mounted Combat as a bonus feat when mounted on your eidolon . The eidolon must possess the mount evolution to take this evolution. FYI The shadow blend and shadow form evolutions are more common among fetchling summoners , but are available to any summoner .",
+      "type": "ex",
+      "source": "PZO9457",
+      "auto": {
+        "requires_evolutions": [
+          "mount"
+        ]
+      }
+    },
+    "sacrifice": {
+      "name": "Sacrifice",
+      "cost": 3,
+      "benefit": "An eidolon can sacrifice its own health to heal another creature. As a standard action , the eidolon can sacrifice up to 2 hit points per Hit Die and then touch the target creature, thereby healing the creature for half the amount sacrificed.",
+      "type": "su",
+      "source": "PZO9450",
+      "auto": {}
+    },
+    "scent": {
+      "name": "Scent",
+      "cost": 1,
+      "benefit": "An eidolon's sense of smell becomes quite acute. The eidolon gains the scent special quality, allowing it to detect opponents within 30 feet by sense of smell. If the opponent is upwind, the range increases to 60 feet; if downwind, it drops to 15 feet. Strong scents can be detected at twice the normal range. Scent does not allow the eidolon to precisely locate the creature, only to detect its presence. It can detect the direction with a move action . The eidolon can pinpoint the creature's location if it is within 5 feet. The eidolon can use scent to track creatures.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "see in darkness": {
+      "name": "See in Darkness",
+      "cost": 3,
+      "benefit": "An eidolon can see perfectly in darkness of any kind, including that created by deeper darkness . The summoner must be at least 9th level before selecting this evolution.",
+      "type": "su",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 9
+      }
+    },
+    "shadow blend": {
+      "name": "Shadow Blend",
+      "cost": 2,
+      "benefit": "In any condition of illumination other than bright light, the eidolon disappears into the shadows, giving it concealment (20% miss chance). If it has the shadow form evolution, it instead gains total concealment (50% miss chance). The eidolon can suspend or resume this ability as a free action .",
+      "type": "su",
+      "source": "PZO1121",
+      "auto": {}
+    },
+    "shadow form": {
+      "name": "Shadow Form",
+      "cost": 2,
+      "benefit": "The eidolon's body becomes shadowy and more indistinct. This shadow form grants the eidolon constant concealment (20% miss chance), and its melee attacks affect incorporeal creatures as if it had the ghost touch weapon property. The eidolon's melee attacks deal only half damage to corporeal creatures.",
+      "type": "su",
+      "source": "PZO1121",
+      "auto": {}
+    },
+    "shared evolution": {
+      "name": "Shared Evolution",
+      "cost": 1,
+      "benefit": "Select a 1-point or 2-point evolution the eidolon has. As a standard action , the eidolon can touch the summoner and transfer the selected evolution to him. This functions as the summoner's aspect ability, and the same limitations apply. The summoner can touch the eidolon as a standard action to return the evolution. The evolution returns to the eidolon automatically if the eidolon is dismissed by the summoner or sent back to its home plane.",
+      "type": "su",
+      "source": "PZO9480",
+      "auto": {}
+    },
+    "shared slot": {
+      "name": "Shared Slot",
+      "cost": 2,
+      "benefit": "Select a magic item slot. A magic item worn by the eidolon in that slot remains active even if the summoner is also wearing a magic item in that slot. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a new slot.",
+      "type": "su",
+      "source": "PZO9480",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "sickening": {
+      "name": "Sickening",
+      "cost": 2,
+      "benefit": "The eidolon's smell or appearance is so offensive it sickens nearby creatures. Any living creature except its summoner that approaches within 20 feet or begins its turn in that area is sickened for 1 round unless it succeeds at a Fortitude save (DC = 10 + 1/2 the eidolon's HD + its Con modifier). Creatures that successfully save cannot be affected by the same eidolon's sickening effect for 24 hours.",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {}
+    },
+    "skilled": {
+      "name": "Skilled",
+      "cost": 1,
+      "benefit": "An eidolon becomes especially adept at a specific skill, gaining a +8 racial bonus on that skill. This evolution can be selected more than once. Its effects do not stack. Each time an eidolon selects this evolution, it applies to a different skill.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "slam": {
+      "name": "Slam",
+      "cost": 1,
+      "benefit": "An eidolon can deliver a devastating slam attack. This attack is a primary attack. The slam deals 1d8 points of damage (2d6 if Large, 2d8 if Huge). The eidolon must have the limbs (arms) evolution to take this evolution. Alternatively, the eidolon can replace the claws from its base form with this slam attack (this still costs 1 evolution point). This evolution can be selected more than once, but the eidolon must possess an equal number of the limbs evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "limbs (arms)"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "slippery": {
+      "name": "Slippery",
+      "cost": 1,
+      "benefit": "Due to its slimy hide or a slick exoskeleton, the eidolon is especially slippery. The eidolon gains a +4 bonus to CMD to escape a grapple and on Escape Artist checks.",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {}
+    },
+    "spell resistance": {
+      "name": "Spell Resistance",
+      "cost": 4,
+      "benefit": "An eidolon is protected against magic, gaining spell resistance . The eidolon's spell resistance is equal to 11 + the summoner's level. This spell resistance does not apply to spells cast by the summoner. The summoner must be at least 9th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9
+      }
+    },
+    "spirit-touched": {
+      "name": "Spirit-Touched",
+      "cost": 1,
+      "benefit": "Magic Unbound Volume 2 The eidolon is spirit-touched, granting it 1 minor granted ability from a 1st level spirit of the summoner's choice. Each time the eidolon is summoned, it manifests the same granted ability as well as the physical sign and influence of that spirit.",
+      "type": "su",
+      "source": "PACT",
+      "third_party": true,
+      "auto": {}
+    },
+    "sticky": {
+      "name": "Sticky",
+      "cost": 1,
+      "benefit": "The eidolon is especially sticky, whether from a coating of adhesive slime, partially congealed blood, or tiny barbed spines. The eidolon gains a +4 bonus on combat maneuver checks to initiate or maintain a grapple .",
+      "type": "ex",
+      "source": "PZO9450",
+      "auto": {}
+    },
+    "sting": {
+      "name": "Sting",
+      "cost": 1,
+      "benefit": "An eidolon possesses a long, barbed stinger at the end of its tail, granting it a sting attack. This attack is a primary attack. The sting deals 1d4 points of damage (1d6 if Large, 1d8 if Huge). The eidolon must possess the tail evolution to take this evolution. This evolution can be selected more than once, but the eidolon must possess an equal number of the tail evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "tail"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "swallow whole": {
+      "name": "Swallow Whole",
+      "cost": 3,
+      "benefit": "An eidolon gains the swallow whole ability, giving it the ability to consume its foes. If the eidolon begins its turn with a creature grappled using its bite attack (see the grab evolution), it can attempt a combat maneuver check to swallow the creature. The creature can be up to one size category smaller than the eidolon. Swallowed creatures take damage equal to the eidolon's bite damage each round plus 1d6 points of bludgeoning damage. A swallowed creature keeps the grappled condition, but can attempt to cut its way free with a light slashing or piercing weapon. The amount of damage needed to cut free is equal to 1/10 the eidolon's total hit points . The eidolon's AC against these attacks is equal to 10 + 1/2 its natural armor bonus. If a swallowed creature cuts its way out, the eidolon loses this ability until it heals this damage. Alternatively, the swallowed creature can attempt to escape the grapple as normal. Success indicates that it has returned to the eidolon's mouth, where it can attempt to escape or be swallowed again. The eidolon must possess the grab evolution, tied to a bite attack, to take this evolution. The summoner must be at least 9th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 9,
+        "requires_evolutions": [
+          "grab"
+        ]
+      }
+    },
+    "swim": {
+      "name": "Swim",
+      "cost": 1,
+      "benefit": "An eidolon gains webbed hands, feet, or powerful flippers, giving it a swim speed equal to its base speed. This evolution does not give the eidolon the ability to breathe underwater. This evolution can be selected more than once. Each additional time it is selected, increase the eidolon's swim speed by 20 feet.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "tail": {
+      "name": "Tail",
+      "cost": 1,
+      "benefit": "An eidolon grows a long, powerful tail. This grants it a +2 racial bonus on Acrobatics checks made to balance on a surface. This evolution can be selected more than once.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "tail slap": {
+      "name": "Tail Slap",
+      "cost": 1,
+      "benefit": "An eidolon can use its tail to bash nearby foes, granting it a tail slap attack. This attack is a secondary attack. The tail slap deals 1d6 points of damage (1d8 if Large, 2d6 if Huge). The eidolon must possess the tail evolution to take this evolution. This evolution can be selected more than once, but the eidolon must possess an equal number of the tail evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "tail"
+        ],
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "tentacle": {
+      "name": "Tentacle",
+      "cost": 1,
+      "benefit": "An eidolon possesses a long, sinuous tentacle, granting it a tentacle attack. This attack is a secondary attack. The tentacle attack deals 1d4 points of damage (1d6 if Large, 1d8 if Huge). This evolution can be selected more than once.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "attack_prose": true,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "trample": {
+      "name": "Trample",
+      "cost": 2,
+      "benefit": "An eidolon gains the ability to crush its foes underfoot, gaining the trample ability. As a full-round action , the eidolon can overrun any creature that is at least one size smaller than itself. This works like the overrun combat maneuver , but the eidolon does not need to make a check, it merely has to move over opponents in its path. The creatures take 1d6 points of damage (1d8 if Large, 2d6 if Huge), plus 1-1/2 times the eidolon's Strength modifier. Targets of the trample can make attacks of opportunity at a -4 penalty. If a target forgoes the attack of opportunity , it can make a Reflex save for half damage. The DC of this save is 10 + 1/2 the eidolon's HD + the eidolon's Strength modifier. A trampling eidolon can only deal trampling damage to a creature once per round. This evolution is only available to eidolons of the biped or quadruped base forms.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {}
+    },
+    "tremorsense": {
+      "name": "Tremorsense",
+      "cost": 2,
+      "benefit": "An eidolon becomes attuned to vibrations in the ground, gaining tremorsense out to a range of 30 feet. This works like the blindsense evolution, but only if both the eidolon and the creature to be pinpointed are in contact with the ground. The summoner must be at least 7th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 7
+      }
+    },
+    "trip": {
+      "name": "Trip",
+      "cost": 2,
+      "benefit": "An eidolon becomes adept at knocking foes to the ground with its bite, granting it a trip attack. Whenever the eidolon makes a successful bite attack of the selected type, it can attempt a free combat maneuver check. If successful, the target is knocked prone . If the check fails, the eidolon is not tripped in return. This ability only works on creatures of a size equal to or smaller than the eidolon. The eidolon must possess the bite evolution to select this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "bite"
+        ]
+      }
+    },
+    "ultimate magic": {
+      "name": "Ultimate Magic",
+      "cost": 4,
+      "benefit": "An eidolon learns to cast a powerful spell as a spell-like ability . Select one spell from the following list: arcane sight , create food and water , cure serious wounds , daylight , fireball , fly , gaseous form , lightning bolt , major image , stinking cloud , tongues , or water breathing . This spell can be cast once per day as a spell-like ability . The caster level for this evolution is equal to the eidolon's Hit Dice - 2. The save DC for this spell is 10 + 1/2 the eidolon's HD + the eidolon's Charisma modifier. The eidolon must have a Charisma score of at least 13 and must possess the major magic evolution to take this evolution. The summoner must be at least 11th level before selecting this evolution. This evolution can be selected more than once. Each time an eidolon selects this evolution, it applies to a new spell from the above list.",
+      "type": "sp",
+      "source": "PZO1117",
+      "auto": {
+        "min_summoner_level": 11,
+        "repeat_cap": {
+          "repeatable": true
+        }
+      }
+    },
+    "undead appearance": {
+      "name": "Undead Appearance",
+      "cost": 2,
+      "benefit": "An eidolon appears as an undead creature, and mimics some of an undead creature's abilities and weaknesses. Negative energy heals the eidolon, and positive energy (including a cleric's channel energy ability) harms it. Spells and effects that target undead or have specific effects against undead (such as Command Undead , hold (halt?) undead , and searing light ) affect the eidolon as if it were undead . The eidolon gains a +2 bonus on saves against disease , exhaustion , fatigue , paralysis , poison , sleep effects, and stunning. At 7th level, this bonus on saves can be increased to +4 by spending 2 additional evolution points. At 12th level, this protection can be increased to immunity against these attacks by spending 2 additional evolution points (the summoner must pay for the 7th-level upgrade before paying for this 12th-level upgrade). Although the eidolon appears undead , it is still an outsider .",
+      "type": "ex",
+      "source": "PZO1117",
+      "auto": {
+        "has_paid_upgrade": true
+      }
+    },
+    "unnatural aura": {
+      "name": "Unnatural Aura",
+      "cost": 1,
+      "benefit": "An eidolon is obviously of unnatural origin. Normal animals do not willingly approach the eidolon unless the animal's master makes a DC 25 Handle Animal , Ride , or wild empathy check.",
+      "type": "su",
+      "source": "PZO1117",
+      "auto": {}
+    },
+    "weapon training": {
+      "name": "Weapon Training",
+      "cost": 2,
+      "benefit": "An eidolon learns to use a weapon, gaining Simple Weapon Proficiency as a bonus feat. If 2 additional evolution points are spent, it gains proficiency with all martial weapons as well.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "has_paid_upgrade": true
+      }
+    },
+    "web": {
+      "name": "Web",
+      "cost": 3,
+      "benefit": "An eidolon gains a pair of spinnerets, giving it the ability to spin webs. The eidolon can use these webs to support itself plus up to one creature of the same size. It can throw webbing as a ranged touch attack up to 8 times per day, entangling a creature up to one size larger than the eidolon. The webbing has a range of 50 feet and a 10-foot range increment. Creatures entangled by the web can escape with an Escape Artist check or a Strength check (at a -4 penalty). The DC of these checks is equal to 10 + 1/2 the eidolon's HD + the eidolon's Con modifier. The webs have a Hardness of 0 and a number of hits points equal to the eidolon's total Hit Dice. The eidolon can climb its own webs at its climb speed and can pinpoint any creature touching its webs. The eidolon must possess the climb evolution to take this evolution. The summoner must be at least 7th level before selecting this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "min_summoner_level": 7,
+        "requires_evolutions": [
+          "climb"
+        ]
+      }
+    },
+    "wing buffet": {
+      "name": "Wing Buffet",
+      "cost": 1,
+      "benefit": "An eidolon learns to use its wings to batter foes, granting it two wing buffet attacks. These attacks are secondary attacks. The wing buffets deal 1d4 points of damage (1d6 if Large, 1d8 if Huge). The eidolon must possess the flight evolution, with wings, to select this evolution.",
+      "type": "ex",
+      "source": "PZO1115",
+      "auto": {
+        "requires_evolutions": [
+          "flight"
+        ],
+        "attack_prose": true
+      }
+    }
+  }
+}
