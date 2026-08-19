@@ -177,7 +177,7 @@
       "species_pool": [
         "eidolon"
       ],
-      "species_data": "eidolon_base_forms.json (not built yet -- resolver emits nothing; D4's degraded eidolon takes its base form from pf_content_companions.json[\"pf-eidolon-forms\"])",
+      "species_note": "the species pool is eidolon_base_forms.json, not an animal_choices tier; the resolver's eidolon section reads it directly and the unchained summoner degrades to a base form with no evolutions (companions ticket 07, ruling 1)",
       "choice": null
     },
     {

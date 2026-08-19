@@ -42,7 +42,7 @@ LICENSE_PATH = "/license"
 from utils.class_func.adding_bonus_spells			import add_bonus_spells, add_bonus_spells_from_dict
 from utils.class_func.alignment_and_deity 			import randomize_deity, choose_alignment
 from utils.class_func.animal_companions 			import resolve_bonded_creatures
-from utils.class_func.companion_feats 			import companion_feats
+from utils.class_func.companion_feats 			import companion_feats, eidolon_feats
 from utils.class_func.companion_stats 			import stat_bonded_creatures
 from utils.class_func.familiars 				import stat_familiars
 from utils.class_func.appearance 					import randomize_apperance_attr, randomize_body_feature, get_racial_attr
@@ -161,6 +161,9 @@ character_json_config = {
 	'cleric_domains': Load_when_needed('Backend/json/cleric_domains.json'),				
 	'deity': Load_when_needed('Backend/json/deity.json'),	
 	'druid_domains': Load_when_needed('Backend/json/druid_domains.json'),
+	'eidolon_base_forms': Load_when_needed('Backend/json/eidolon_base_forms.json'),
+	'eidolon_evolutions': Load_when_needed('Backend/json/eidolon_evolutions.json'),
+	'eidolon_table': Load_when_needed('Backend/json/eidolon_table.json'),
 	'familiar_choices': Load_when_needed('Backend/json/familiar_choices.json'),
 	'familiar_master_bonus': Load_when_needed('Backend/json/familiar_master_bonus.json'),
 	'feat_buckets': Load_when_needed('Backend/json/feat_buckets.json'),
@@ -753,6 +756,7 @@ def phase_class_options(character):
 	resolve_bonded_creatures(character)
 	domain_chooser(character)
 	character.animal_companion_feats = companion_feats(character)
+	eidolon_feats(character)
 	# #31: the numbers, last -- the merge reads the post-stack chassis and the feats are already
 	# on the entry by here. D14 makes that ordering load-bearing rather than incidental: the
 	# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.

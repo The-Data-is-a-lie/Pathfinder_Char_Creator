@@ -32,15 +32,17 @@ import re
 import pandas as pd
 
 from utils.paths import repo_path
-from utils.class_func.companion_stats import _abilities, _rng, merge_advancement
+from utils.class_func.companion_stats import (_abilities, _rng, eidolon_abilities,
+                                              merge_advancement)
 from utils.class_func.feat_tax import feat_tax_func
 from utils.class_func.flaws import ANIMAL_FLAWS, pick_flaws
 from utils.class_func.level_and_bab import misc_homebrew_enabled
 from utils.class_func.randomize_flaw import randomize_flaw_amount
 
-# The creature types that ride the animal chassis and therefore have this feat economy. Familiars
-# use their master's feats (RAW) and eidolons are evolution-driven; neither resolves to an entry
-# today anyway -- see `animal_companions`' "WHAT THIS SLICE DOES NOT DO".
+# The creature types that ride the ANIMAL chassis and therefore have this feat economy. Familiars
+# use their master's feats (RAW). Eidolons have their own economy in `eidolon_feats` below -- the
+# same picker and the same fail-closed prerequisite reader, but the whole book as its pool and the
+# eidolon table dating its slots.
 CHASSIS_TYPES = ('companion', 'mount')
 
 # How each creature type reads in a feat label. `Animal Companion 5: Weapon Focus`.
@@ -214,6 +216,79 @@ def _tax(character, entry, owned, levels, feats, abilities, bab, allowed, grante
         if kept:
             out[primary] = kept
     return out, dropped
+
+
+_EIDOLON_POOL_CACHE = None
+
+# Which `data/feats.csv` types an eidolon may draw from. The same exact-type-match discipline
+# `feats.py::metzofitz_feat_frame` uses for the homebrew pool, and for the same reason: the excluded
+# types are SUBSYSTEM feats whose subsystem the creature does not have. Metamagic and Item Creation
+# need spellcasting, Story needs a story, Grit needs grit, Mythic needs a tier, Path of War needs an
+# initiator level, Achievement needs a campaign. Left in, they are legal-but-dead picks -- the first
+# smoke run handed a 15-HD eidolon `Intensified Spell`, which it can never use.
+EIDOLON_FEAT_TYPES = ('General', 'Combat', 'Monster', 'Monster, Combat')
+
+
+def _eidolon_pool():
+    """The feats an eidolon may draw from: `data/feats.csv`, filtered by type.
+
+    NOT the curated 27-name animal pool. An eidolon is an outsider a summoner BUILDS -- RAW puts no
+    list in its way, so the pool is the book and `legal_for_companion` is what makes it safe: it
+    fails CLOSED, so a prerequisite this reader cannot parse is a feat the creature does not get.
+    The animal pool exists because a wolf's options genuinely are a short list; borrowing it here
+    would cap a 15-HD outsider at what a wolf may take.
+    """
+    global _EIDOLON_POOL_CACHE
+    if _EIDOLON_POOL_CACHE is None:
+        frame = pd.read_csv(repo_path('data/feats.csv'), sep='|', on_bad_lines='skip')
+        wanted = frame[frame['type'].isin(EIDOLON_FEAT_TYPES)]['name'].dropna().astype(str)
+        _EIDOLON_POOL_CACHE = sorted({canonical_name(name) for name in wanted})
+    return _EIDOLON_POOL_CACHE
+
+
+def eidolon_feats(character):
+    """Feats for every chained eidolon, dated off `eidolon_table.json`'s own Feats column.
+
+    Two deliberate differences from the chassis creatures, both recorded rather than implied:
+      * **No flaws.** `ANIMAL_FLAWS` is a list of animal defects (skittish, one-eyed); an eidolon is
+        a summoned outsider and ticket 07 ruled the model RAW with no house layer. Rolling animal
+        flaws on it would be inventing content.
+      * **An empty tax allowlist.** D15's `tax_children` list was curated for what suits an ANIMAL.
+        Until the equivalent is curated here, no taxed child is granted -- the safe direction, and
+        the same allowlist discipline rather than an exception to it.
+    """
+    entries = [entry for entry in getattr(character, 'bonded_creatures', None) or []
+               if entry.get('type') == 'eidolon' and entry.get('species')
+               and 'unchained_degraded' not in (entry.get('flags') or [])]
+    if not entries:
+        return None
+    table = ((getattr(character, 'eidolon_table', None) or {}).get('levels')) or {}
+    pool = _eidolon_pool()
+
+    for entry in entries:
+        chassis = entry.get('chassis') or {}
+        if not chassis:
+            continue
+        rng = _rng(entry, salt='feats')
+        abilities = eidolon_abilities(character, entry)
+        bab = int(chassis.get('bab') or 0)
+
+        owned, refusals = set(), {}
+        levels = _slot_levels(table, entry.get('effective_level'))
+        wanted = min(int(chassis.get('feats') or 0), len(levels))
+        feats = _pick(pool, owned, abilities, bab, rng, wanted, refusals)
+
+        entry['feats'] = feats
+        entry['feat_labels'] = [f'{TYPE_NOUNS["eidolon"]} {level}'
+                                for level in levels[:len(feats)]]
+        entry['feat_tax_dict'] = {}
+        entry['flaw_feats'] = []
+        # Only the refusals for feats it actually tried are worth carrying: the pool is the whole
+        # book, and 1,300 "ineligible" lines would bury the entry rather than explain it.
+        entry['feat_notes'] = [f'feat pool: {len(pool)} feats from data/feats.csv, '
+                               f'{len(feats)} taken, prerequisites fail closed',
+                               'no flaws and no feat-tax children by ruling (see eidolon_feats)']
+    return {feat for entry in entries for feat in entry.get('feats') or []}
 
 
 def companion_feats(character):
