@@ -19,6 +19,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **A summoner's eidolon is now generated, and it is built rather than picked** (spec §8 "Eidolon
+  (v1.1)", companions ticket 07, 2026-08-17). A chained summoner rolls one of the **six** base forms
+  in either size, keeps its free evolutions, and then spends its **evolution-point pool** — greedily
+  and at random, the way every other chooser in this repo works — until nothing legal is affordable.
+  Legality is data, not code: cost, prerequisites (including the eidolon's own ability scores),
+  form restriction, size, each evolution's printed repeat cap and the table's Max Attacks column.
+  At 10th level the summoner may divert up to 2 EP to itself as **Aspect** (6 at 18th), rolled
+  inside the cap and rendered through the ordinary class-feature machinery. The creature arrives at
+  a full stat block — HD, BAB, per-form saves, AC, abilities, bought natural attacks, skills — with
+  its feats drawn from the whole General/Combat feat list behind the fail-closed prerequisite
+  reader, dated to the eidolon's own track (`Eidolon 6: Combat Reflexes`).
+  *Rejected:* widening `generic_class_option_chooser`, which counts picks rather than spending
+  points, and the Spheres funding pattern, which exists to convert feats into talents — an eidolon
+  spends a class-table resource and no feat is involved.
+  Only 8 of the 81 evolutions can be expressed as numbers in a stat block; the other 73 are **named
+  on `stats.unapplied`** with their own holdback text rather than silently dropped, which is the
+  same discipline `progression_override` rides.
+  *Deliberately not built:* both renderers (a ticket on the companion-sheets map), evolutions as
+  buffs or weapon conditionals, and animal flaws or feat-tax children for a creature that is
+  neither an animal nor covered by the animal allowlist.
 - **Oversized weapons are exported as a marker, not as scaled dice** (ruling D11, 2026-08-17).
   Four new payload fields at the tail of the contract — `weapon_size`, `weapon_size_steps`,
   `weapon_size_source`, `weapon_size_attack_penalty` — all inert (`steps: 0`) on an ordinary
@@ -95,6 +115,18 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **A rolled summoner is no longer hollow.** Both summoner variants have been rollable since the
+  class pool opened, and neither produced an eidolon at all — the grantor row was real but its
+  species list had never been authored, so the resolver skipped it and even the *degraded* entry D4
+  promised was missing. Chained summoners now build a full creature (above); **unchained** ones
+  emit the named base form with its identity and compendium actor, and say on the entry exactly
+  what is missing and why — their subtype-granted evolutions, alignment locks and separate EP table
+  are not sourced. An unmodelled feature is described, never silently absent.
+- **The eidolon evolution data had five prerequisites nothing was enforcing.** The scrape reads
+  headings, and the spell-like-ability chain (basic → minor → major → ultimate) plus both undead
+  gates state their prerequisite in the *tail* of the benefit prose. The data gate now sweeps every
+  "must possess the X evolution" sentence against what the entry declares, so a re-scrape that
+  rewords a benefit fails loudly instead of quietly unlocking a 4-EP evolution.
 - **Every generated character now wears armour its class is actually allowed, and shields exist at
   all** (gear-legality plan, rulings 2026-08-17). Five defects of one shape — a lookup that misses
   and yields a falsy default, so nothing ever fails loudly:

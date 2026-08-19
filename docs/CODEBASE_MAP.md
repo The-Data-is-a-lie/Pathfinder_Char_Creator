@@ -272,8 +272,8 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
       domain/companion block sits below the bloodline choosers in `main_test.py` rather than where
       `animal_chooser` used to be. Moving it back breaks archetype effects and Arcane-bloodline
       familiars.
-    - Rows whose species data is not authored yet (`eidolon`) carry a `species_data`
-      note and resolve to **no entry**, so the table stays complete while the resolver stays honest.
+    - The `summoner` row's `species_note` says its pool is `eidolon_base_forms.json` rather than an
+      `animal_choices` tier, because the eidolon section below reads it directly.
   - **Familiars (2026-08-13)**: `familiar_choices.json` (the ten Core Rulebook species, shaped like
     `animal_choices.json`) + `familiar_master_bonus.json` (the 20-row master table, species perks,
     ability notes). Resolved by the same grantor path via `_species_buckets`, but a familiar entry
@@ -281,7 +281,21 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     `class_func/familiars.py::stat_familiars`, a **late pass** called in `main_test.py` after luck
     resolution (the master's HP/skills are not final where `stat_bonded_creatures` runs). Gated by
     `gates/validate_familiar_data.py`; the `witch` golden pins the output.
-  - Still absent: `eidolon_base_forms.json`.
+  - **Eidolons (2026-08-17, spec §8 "Eidolon (v1.1)")**: three files — `eidolon_base_forms.json`
+    (six chained forms + the Small package), `eidolon_table.json` (the 20-level class table: EP
+    pool, Max Attacks, HD/BAB/saves/skills/feats), `eidolon_evolutions.json` (81 curated
+    evolutions). Built by `scripts/build/scrape_eidolon.py` → `eidolon_evolutions.draft.json` →
+    `scripts/build/curate_eidolon_evolutions.py` (re-runnable; `CURATION` holds only corrections,
+    and the attack damage / primary-secondary lines are PARSED from the prose). Gated by
+    `gates/validate_eidolon_data.py`.
+    - The EP spender is the delimited **eidolon section at the foot of `animal_companions.py`**, and
+      it runs **after `_stack`** — the pool is read at the creature's final effective level, so
+      `_stack`'s chassis re-read skips eidolons the way it already skips familiars.
+    - The stat block is `companion_stats.eidolon_stats` (its own function, not a branch: different
+      chassis columns, per-form saves, bought attacks); the feats are
+      `companion_feats.eidolon_feats` (the General/Combat feat list, `Eidolon N:` labels, no flaws
+      and an empty tax allowlist by ruling).
+    - Pinned by the `summoner` golden and the invariant sweep's eidolon branch.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,
   witch_patrons.json (**no reader** — a witch's patron is a real 1st-level pick nothing makes;

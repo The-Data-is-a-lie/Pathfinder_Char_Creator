@@ -253,7 +253,8 @@ class lists / lowest level first. Validator: `Backend/scripts/gates/validate_spe
 ---
 
 ## 8. Bonded creatures (animal companions, mounts, familiars, eidolons)
-**Status: SPEC LOCKED (2026-08-01) — build slices 1–4 landed, 5–9 open.** Charted in
+**Status: SPEC LOCKED (2026-08-01) — every creature type now generates; the eidolon's v1.1 backend
+landed 2026-08-17 (see "Eidolon (v1.1)" below). Both renderers remain open.** Charted in
 `tickets: feature/companions` (closed); this section is that map's destination. The **build** is
 charted separately in
 [`tickets: feature/companion-sheets`](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/map.md)
@@ -285,6 +286,64 @@ with rules text plus the species perk, as prose, never folded into the master's 
 `validate_familiar_data.py`, the names gate (all ten match `pf-familiars`), the invariant sweep's
 familiar branch, and the `witch` golden. Familiar feats (Weapon Finesse et al.) are not modeled —
 same simplification as companions; improved familiars stay in Deferred.
+
+### Eidolon (v1.1) — ✅ BACKEND BUILT (2026-08-17)
+
+The model is [companions ticket 07](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companions/07-eidolon-evolution-model.md);
+this subsection records it and what the build found. A chained summoner's eidolon is **built, not
+picked**: a base form, its free evolutions, then an **evolution-point budget** spent greedily until
+nothing legal is affordable. It is an EP spender in `animal_companions.py`'s own delimited section
+(the generic count-based chooser does not fit a point budget, and Spheres' funding machinery
+converts *feats*, which have no analogue here), a stat block in `companion_stats.eidolon_stats`, and
+its own feat economy in `companion_feats.eidolon_feats`.
+
+Data (all three gated by `Backend/scripts/gates/validate_eidolon_data.py`, validator 34):
+`eidolon_base_forms.json` · `eidolon_table.json` · `eidolon_evolutions.json`, built by
+`scripts/build/scrape_eidolon.py` → `scripts/build/curate_eidolon_evolutions.py` from the draft.
+
+**The ordering fact:** the spend runs **after `_stack`**, because the pool is read at the creature's
+FINAL effective level (07 ruling 7). `_stack`'s chassis re-read therefore excludes eidolons the way
+it already excludes familiars — a different table entirely.
+
+**Where the build differs from the ticket, and why:**
+
+- **Six base forms, not seven.** `pf-eidolon-forms` ships an Aberrant Baseform the d20pfsrd chained
+  rules do not contain. It is intentionally unmapped, and the gate asserts that pair is the *only*
+  unmapped one, so a form that silently stops mapping fails (the D3 lesson).
+- **81 evolutions, not ~76** (32 @1 EP / 28 @2 / 11 @3 / 10 @4); the two 3PP rows stay in the file
+  and out of the pool, with the gate refusing a `third_party` entry that loses its `exclude`.
+- **Five prerequisites the scrape never saw**, because the text states them in the tail of the
+  benefit rather than in a heading: the whole spell-like chain (basic → minor → major → ultimate)
+  and both undead gates. Unenforced, a greedy spender bought Ultimate Magic on an eidolon that had
+  never bought a cantrip. The gate now sweeps every *"must possess the X evolution"* sentence against
+  what the entry declares, so a reworded benefit cannot drop a gate silently. The same sentences
+  carry the Cha 11/12/13 gates, which became the `min_ability` prereq field.
+- **Prerequisite PARITY, not presence.** Slam's printed rule is "an equal number of the limbs
+  evolution", and claws / hooves / pincers / sting / tail slap hang off a body part the same way.
+- **Attack damage and primary/secondary are PARSED, not hand-authored** — all eleven attack
+  evolutions state both uniformly. **Small takes the Medium die plus a `damage_steps_down` marker**
+  rather than a scaled die: same ruling as §16's D11, the ladder's owner scales it.
+- **No flaws and no feat-tax children.** `ANIMAL_FLAWS` describes animal defects and an eidolon is a
+  summoned outsider; the `tax_children` allowlist was curated for what suits an animal. Both stay
+  empty until an eidolon equivalent is curated — the safe direction, not an exception.
+- **The feat pool is `data/feats.csv` filtered to General/Combat/Monster types**, behind the
+  fail-closed `legal_for_companion` reader. The type filter is `feats.py::metzofitz_feat_frame`'s
+  discipline: the excluded types are subsystem feats (metamagic, item creation, story, grit, mythic)
+  whose subsystem the creature does not have.
+
+**Unchained summoners degrade** (07 ruling 1): base form, identity and `pf_content`, no evolutions
+and no stats, with the debt named on `entry['holdback']` — its subtype-granted evolutions, alignment
+locks and own EP table are unsourced. That pays D4's debt, which had emitted nothing at all.
+
+**Gated by** the data gate, the invariant sweep's eidolon branch (EP spent whole, Max Attacks, the
+Aspect cap at 10th/18th, the fold's holdbacks, `size_change` only when it grew — with a coverage
+guard that fails if a run saw only degraded entries), and the **`summoner` golden** (seed 8555,
+swept on six covered paths rather than on a class list).
+
+**Still open:** both renderers (a ticket on the companion-sheets map — evolution items on the
+Foundry Actor, the web sheet's display), evolutions as buffs/conditionals, a curated eidolon feat
+allowlist (the pool is RAW-legal but a fail-closed reader still lets through flavourless picks like
+Spell Penetration), and the unchained model.
 
 What is **not** built, and what the remaining sheets wait on:
 
