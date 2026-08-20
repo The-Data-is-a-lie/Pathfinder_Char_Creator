@@ -134,6 +134,45 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **A bonded creature's Foundry sheet is levelled at its master, not at its hit dice** (module
+  `createCompanions.js`, ruled 2026-08-19). A druid 10's companion read `Animal Companion 9` and a
+  summoner 10's eidolon read `Eidolon 8`: ticket 02's recipe had the class item driven at
+  `stats.hd`, and `entry.effective_level` — which the payload has emitted since the creature
+  shipped — went unread. Two things say the level is the right number to drive it at. Every formula
+  `pf-content` prints on these bodies is written against the master's level: the eidolon body states
+  *its own hit dice* as `round((@class.level - 1) * .75) + 1`, and its evolution pool, feat count and
+  save steps are the same shape, so at HD they were all computing one to three levels short. And the
+  creature's own feat labels are already dated on the master's track — a summoner 12's eidolon can
+  carry `Eidolon 11: Deceitful` under a class line reading 9.
+  **The numbers did not move.** pf1 has no companion table — it reads a class level as a count of
+  hit dice — so it now over-derives BAB, saves and HP by the table lag, and `reconcile()` seeds the
+  difference back out; the sheet stays on the PF1e figures the payload and the web sheet both carry.
+  *Rejected:* letting the creature grow to its master's level (a house buff of +1–2 BAB, +1 save and
+  1–2 HD, and it would need the backend, six goldens and two validators to move with it or Foundry
+  and the web sheet would disagree). The backend is untouched by this fix.
+  Also corrected: the 2.2.0 release note claimed pf1's `floor(@class.level / 3)` raises Str/Dex a
+  level early. Checked row by row against `animal_companion.json`, it reproduces the column
+  **exactly at all twenty levels** — given the master's level, which is what the module was
+  withholding. The two compendium items stay deleted for the reason that always held: the backend
+  already folded that table, and leaving them counts it twice.
+- **A bonded creature's trained skills were 3 low on the Foundry sheet, and pf-content's
+  "Requires Manual Setup" note is now answered rather than shipped** (module `createCompanions.js`,
+  2026-08-19). Found by pulling on that note, which asks the player to pick the eidolon's four extra
+  class skills and delete whichever evolution-pool tracker does not apply. The first half exposed a
+  silent arithmetic bug: `companion_stats._skills` adds **+3 to every skill it ranks**, but pf1 only
+  grants that bonus off `classSkills` on the class item, and the module never wrote it. `pf-content`
+  declares six class skills on its Animal Companion where PF1e gives **nine** (the backend's
+  `ANIMAL_SKILLS` is the RAW nine), six on its eidolon, and a degraded creature has **no** class item
+  from the pack at all — so the golden reef snake was 3 short on 3 of 5 ranked skills, the golden
+  eidolon on **27 of 32**, and a degraded creature on every one. Nothing caught it because nothing
+  compares skill *totals*: `reconcile()` covers saves, HP and BAB, and the harness summed ranks.
+  The module now flags every ranked skill, merging into the pack's list rather than replacing it,
+  deletes the setup note, and keeps only the chained/unchained pool tracker the entry's
+  `unchained_degraded` flag selects. Three new harness assertions, each sabotage-proven.
+  **Left open, deliberately:** RAW gives an eidolon 6 class skills + 4 of its choice, and the backend
+  ranks 32 skills at Int ≥ 3 and grants +3 on all of them. Matching pf1 to the payload was the
+  module's job under D2; deciding whether the *payload* should stop over-granting is a backend
+  ruling that would re-baseline goldens, and it is not made here.
 - **An eidolon now clones the body the compendium has for it.** The Foundry renderer looked its
   creature up by **species**, which is the actor's name for every animal, mount and familiar — the
   Bird actor is called "Bird". An eidolon's species is its base-form slug (`biped`) and its actor is

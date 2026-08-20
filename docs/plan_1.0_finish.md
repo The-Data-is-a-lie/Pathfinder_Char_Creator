@@ -208,10 +208,17 @@ wayfinder maps — decisions before code — and each ends at a spec section in
             [ticket 02](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/02-pf1-actor-patching.md)
             is resolved and
             carries the mechanical recipe: pf1 keeps stored fields and rebuilds every `.total`, the
-            clone's `Animal Companion` class item is driven at the creature's **HD count** (not its
-            effective level), and the two change-bearing items every `pf-content` Actor ships must be
-            deleted or the companion table lands twice. Two narrow claims (re-render persistence,
-            `healthConfig` on a cloned character) are checked on the first live import.
+            clone's class item drives the chassis, and the two change-bearing items every
+            `pf-content` Actor ships must be deleted or the companion table lands twice. Two narrow
+            claims (re-render persistence, `healthConfig` on a cloned character) are checked on the
+            first live import.
+            ⚠ **Ticket 02's "drive it at the HD count" half was reversed on 2026-08-19** — it put a
+            level-10 druid's companion on the sheet as `Animal Companion 9` and a level-10
+            summoner's eidolon as `Eidolon 8`, against both the master's level and the creature's
+            own feat labels. The class item now sits at `entry.effective_level`, which is what every
+            `pf-content` formula on these bodies expects, and `reconcile()` seeds out the 1–2 points
+            pf1 over-derives from reading that level as hit dice. Numbers stay RAW; only the
+            displayed level moved.
       - [ ] 8. (**#34**) Web sheet: auto-fill the nested Companions tab from `bonded_creatures` (D10 —
             **not** a second roster character). **Unblocked 2026-08-03** —
             [ticket 03](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/03-web-sheet-autofill-ownership.md)
