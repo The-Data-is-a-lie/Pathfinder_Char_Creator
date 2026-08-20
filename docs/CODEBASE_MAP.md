@@ -628,6 +628,14 @@ move and diffing them — not by reading the diff.
   User-facing walkthrough: the module repo's `README.md`.
 - FoundryVTT module `pf1e_random_char_generator`: repo in `%LOCALAPPDATA%`-adjacent
   `FoundryVTT\Data\modules` (NOT Documents\GitHub); GitLab MRs; release via its `release.ps1`.
+  - `scripts/button-locations.js` owns WHERE the generator button appears (floating / Token scene
+    controls / sidebar tab rail / Create Actor dialog) — four `client` settings registered in
+    `scripts/module.js`, hooks registered unconditionally and each reading its setting when it fires.
+    The click sequence itself is `scripts/generator-launch.js::runGenerator(overrides)`; `button.js`
+    is now just the floating location. ⚠ Foundry changed shapes between generations and both are
+    live here: `getSceneControlButtons` gets a Record keyed `tokens` on v13 and an Array keyed
+    `token` before it, and render hooks pass a native `HTMLElement` on v13 vs jQuery on v10–v12.
+    `tools/button_locations.test.mjs` is the gate.
   - `scripts/createCharacter.js` builds the PC Actor; `scripts/createCompanions.js` builds one Actor
     per `bonded_creatures` entry (spec §8 D1/D2/D10 — its header owns the pf1 patching rules that
     [`tickets: feature/companion-sheets` 02](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/companion-sheets/02-pf1-actor-patching.md)

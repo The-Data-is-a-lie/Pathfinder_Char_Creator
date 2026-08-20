@@ -19,6 +19,50 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The Foundry module's Character Generator button can now appear in four places, each a
+  per-user setting** (2026-08-20). It had exactly one home: a `position: fixed` button appended
+  straight to `document.body` at load, floating over the canvas with nowhere else to go. It now
+  also offers a tool in the **Token scene controls**, an entry at the bottom of the **sidebar tab
+  rail** (below the settings gear), and a button inside Foundry's own **Create Actor dialog** —
+  four independent `client`-scoped booleans (`buttonFloating`, `buttonSceneControls`,
+  `buttonCreateActor`, `buttonSidebar` in the module's `scripts/module.js`), so several can be on
+  at once and each person at the table answers for themselves.
+  - *Independent checkboxes, not one dropdown:* someone who puts it in the Create Actor dialog
+    usually still wants it on the scene controls. *Client scope, not world:* a GM's layout is not
+    a table-wide rule. *Defaults floating-on / new-three-off:* an upgrade must not silently
+    rearrange anyone's interface.
+  - **From the Create Actor dialog the generator honours the Name and Folder already typed there**
+    — `createAndAssignActor()` takes an overrides object, and the name rides in on the same single
+    `actor.update()` that already carried the folder (setting it on `Actor.create` would just be
+    overwritten by the injected sheet). Bonded creatures already shared that folder id, so they
+    follow. Blank name keeps the generated one; blank folder keeps the auto-created
+    *Random Characters*.
+  - **Rejected: honouring the dialog's Type dropdown (PC/NPC).** Foundry forbids changing a
+    document's type after creation, so an "NPC" would mean passing the type to `Actor.create` and
+    stripping `type` from the injected payload — building an actor of a type the backend's export
+    template was never written for. That is a data change wearing a button placement's clothes, and
+    it would have shipped untested. Always a `character`.
+  - ⚠ **Three v13 traps this cost time on.** A scene-control tool defining BOTH `onChange` (v13) and
+    `onClick` (v10–v12) fires twice — `SceneControls##onChange` calls the new callback and then the
+    old one as a deprecation shim — so the tool generated two characters per click. Exactly one is
+    set now, chosen by the shape of the hook payload, and `tools/button_locations.test.mjs` asserts
+    the other is absent. Carrying both handlers reads like harmless version-tolerance; it is not.
+    Second, `getSceneControlButtons` fires only when SceneControls *re-prepares* its control list,
+    which a plain `ui.controls.render()` does not do — the toggle silently did nothing until the
+    next reload, and the fix is `render({reset: true})`. Third, the Create Actor dialog's own
+    `<form id="document-create">` never exists in the DOM: DialogV2 interpolates the template into
+    its own `<form class="dialog-form">` and the HTML parser drops a nested `<form>` start tag, so
+    the fields must be addressed through the outer form.
+  - **Rejected: gating registration of the hooks on the settings.** Each hook is registered
+    unconditionally and reads its setting when it fires, matching the module's existing
+    "read settings at click time" idiom — a toggle then lands with no reload, and there is no
+    init-order question about whether the setting existed yet.
+  - The click sequence itself moved out of the button's event listener into
+    `scripts/generator-launch.js` (`runGenerator(overrides)` / `openGeneratorDialog()`) so all four
+    locations share one path; `scripts/button-locations.js` owns the three new injectors, and
+    `tools/button_locations.test.mjs` pins the scene-control injector against BOTH Foundry shapes
+    (v13's Record keyed `tokens`, v10–v12's Array keyed `token`) and asserts the render-hook
+    injectors swallow errors rather than break a core hook for every other module on it.
 - **An eidolon's evolutions now reach its Foundry sheet, under their own `Evolutions` band**
   (companion-sheets ticket 05, 2026-08-18). The creature the backend spends 16 evolution points
   building arrived on a sheet showing only the seven specials its class table grants — darkvision,
