@@ -178,6 +178,29 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **A fresh clone of the Foundry module repo would have shipped seven compendium packs that
+  cannot open** (module `.gitattributes`, 2026-08-21). The pack tree is LevelDB, but it sat under
+  the repo's blanket `* text=auto` rule with `core.autocrlf=true` locally, so git converted line
+  endings on the way *out*. `CURRENT` is the file that breaks: it holds a bare
+  `MANIFEST-NNNNNN\n` pointer that LevelDB reads verbatim, so a checkout on Windows produces
+  `MANIFEST-000042\r`, no manifest by that name exists, and the compendium fails to load — with
+  no error that names the cause. The whole pack tree is now marked `binary`.
+  - *The `.ldb` and `MANIFEST-*` files were never safe, only lucky* — they escaped conversion
+    through git's NUL-byte binary heuristic rather than any rule, so one manifest without a NUL
+    byte early enough would corrupt the same way. Hence a rule over `packs/**`, not a patch to
+    `CURRENT`.
+  - Nothing in history needed repair: git normalises on the way in, and LevelDB never writes
+    CRLF, so the committed blobs were already byte-accurate — verified by md5 against the
+    working tree before the fix landed.
+  - **Rejected: git-ignoring the volatile pack bookkeeping** (`CURRENT`, `MANIFEST-*`, the
+    numbered `.log`) to stop Foundry's compaction dirtying the working tree, which is what
+    prompted looking at this at all. Those files *are* the shipped artifact — the packs are built
+    by in-Foundry macros (`tools/build_all_packs.macro.js`), not by a headless build a clone
+    could re-run — so dropping them ships `.ldb` data with no manifest to read it, the same dead
+    pack by another route. The module's `.gitignore` already carries this decision, and the note
+    that ignoring `packs/` once failed silently and twice. The churn is instead captured the way
+    `b861f4d` captured it: committed as bookkeeping, with each `CURRENT` checked to resolve to a
+    manifest in the same commit.
 - **A bonded creature's Foundry sheet is levelled at its master, not at its hit dice** (module
   `createCompanions.js`, ruled 2026-08-19). A druid 10's companion read `Animal Companion 9` and a
   summoner 10's eidolon read `Eidolon 8`: ticket 02's recipe had the class item driven at
