@@ -201,6 +201,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     that ignoring `packs/` once failed silently and twice. The churn is instead captured the way
     `b861f4d` captured it: committed as bookkeeping, with each `CURRENT` checked to resolve to a
     manifest in the same commit.
+  - **Proven rather than reasoned about, now that it is cheap to check.** A fresh clone at the
+    pre-fix commit fails to open all seven packs; the same clone at the fixed commit opens all
+    seven (8,816 feats · 6,035 items · 3,029 spells · 2,064 traits, and their `-mods` twins).
+    LevelDB's error for the broken case is `Database is not open`, which names neither the file
+    nor the cause.
+  - `release.ps1` re-checks it at build time instead of trusting it: for each pack it reads
+    `CURRENT` out of the finished zip and fails the release if the pointer carries a CR or names a
+    manifest the archive does not contain. The old check confirmed `CURRENT` was *present* and
+    never opened it — both failures survive that. Verified against the shipped zip (passes) and
+    two synthetic zips reproducing each failure (both abort).
 - **A bonded creature's Foundry sheet is levelled at its master, not at its hit dice** (module
   `createCompanions.js`, ruled 2026-08-19). A druid 10's companion read `Animal Companion 9` and a
   summoner 10's eidolon read `Eidolon 8`: ticket 02's recipe had the class item driven at
