@@ -43,7 +43,11 @@ def plan_enhancements(character, share=ENHANCEMENT_SHARE, has_shield=None):
     if has_shield is None:
         has_shield = bool(getattr(character, 'shield_flag', False))
 
-    split = dict(ENHANCEMENT_SPLIT)
+    # Optimized mode (spec 15): the role's own split replaces the hardcoded one -- a controller
+    # puts the reserve into armor, a wall into armor+shield. Random mode never has a role, so the
+    # constant keeps owning that path and the goldens do not move.
+    role = getattr(character, 'role', None)
+    split = dict((role or {}).get('enhancement_split') or ENHANCEMENT_SPLIT)
     if not has_shield:
         # Give the shield's share to the other two in proportion, so a shieldless character spends
         # its full reserve on the gear it actually carries.
@@ -67,29 +71,44 @@ def plan_enhancements(character, share=ENHANCEMENT_SHARE, has_shield=None):
 def enhancement_chooser(character, data, enhancement_bonus, weapon_type, shield_type = True):
     """Returns (chosen quality names, flat +N enhancement bonus).
 
-    enhancement_bonus is the total effective bonus budget (PF pricing, up to +10); qualities
-    spend from it until at most 5 remains, and that leftover is the item's flat +N (1..5).
+    enhancement_bonus is the total effective bonus budget (PF pricing, up to +10). The FLAT +N is
+    reserved FIRST -- min(5, budget) -- and qualities spend only what is left, never overshooting.
+
+    It used to be the other way around: qualities bought first (`while budget - total > 5`) and the
+    flat +N was the leftover, so a +10 budget routinely yielded a +3 weapon wearing +7 of qualities
+    -- measured at a 1.5M-gp purse -- and an overshooting quality granted bonus value the budget
+    never paid for. Flat-first is also the PF1e shape: the flat enhancement is what every attack
+    and AC roll actually feels, and an item legally needs it before any quality. (Which qualities
+    load stays a uniform draw -- preferring the strong one is the optimizer's job, not random
+    mode's. Map: optimal-builder, ruling 2026-08-11.)
     """
     if weapon_type == 'Shield' and shield_type != True:
         return [], 0
     else:
-        total_bonus = 0
         enhancement_list = list(data.get(weapon_type).keys())
         chosen_enhancement_list = []
-        while (enhancement_bonus - total_bonus) > 5:
+        flat_bonus = max(1, min(5, enhancement_bonus)) if enhancement_bonus >= 1 else 0
+        remaining = enhancement_bonus - flat_bonus
+
+        def cost_of(name):
+            return int((data[weapon_type].get(name, {}) or {}).get('enhancement', 0) or 0)
+
+        # Stop as soon as nothing left in the pool can still reduce `remaining`: without this, a
+        # pool holding only zero-cost flavour qualities would be vacuumed wholesale onto every
+        # high-budget item. Zero-cost qualities can still ride along while real shopping happens,
+        # which is the old behaviour.
+        while (remaining > 0 and enhancement_list
+               and any(0 < cost_of(name) <= remaining for name in enhancement_list)):
             chosen_enhancement = random.choice(enhancement_list)
+            enhancement_list.remove(chosen_enhancement)
             item_list = get_enhancement_info(character, weapon_type)
             enhancement_limits(character, item_list, weapon_type, chosen_enhancement)
-            chosen_enhancement_bonus = data[weapon_type].get(chosen_enhancement,0).get('enhancement', 0)
-            total_bonus += int(chosen_enhancement_bonus or 0)
+            cost = cost_of(chosen_enhancement)
+            if cost > remaining:
+                continue          # does not fit -- skip it, never overshoot
+            remaining -= cost
+            chosen_enhancement_list.append(chosen_enhancement)
 
-            try:
-                enhancement_list.remove(chosen_enhancement)
-                chosen_enhancement_list.append(chosen_enhancement)
-            except:
-                pass
-
-        flat_bonus = max(1, min(5, enhancement_bonus - total_bonus)) if enhancement_bonus >= 1 else 0
         return chosen_enhancement_list, flat_bonus
     
 def get_enhancement_info(character, weapon_type):

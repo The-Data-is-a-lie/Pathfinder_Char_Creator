@@ -1,0 +1,937 @@
+{
+  "_readme": [
+    "Authoritative pick schedule: how many class-specific options each class chooses, and at",
+    "which of ITS OWN class levels. Ticket 01 of the class-choices wayfinder map.",
+    "",
+    "A bucket declares EITHER a compact rule {start, every} OR an explicit {levels: []}.",
+    "generic_func.levels_for(class, bucket, class_level) expands either into a level list; the",
+    "count is len(levels) and the k-th pick's level stamp is levels[k-1].",
+    "",
+    "ABOVE 20th THE PICKS KEEP COMING. Class levels reach 40 (level_and_bab.py:19) and past 20 the",
+    "game is homebrew, so a level-30 character goes on gaining rogue talents, rage powers and",
+    "customizations at their class's own cadence. This is already the codebase's model, not a new",
+    "rule: spells and maneuvers read `capped_level` (min(level, 20)) because there is no 10th-level",
+    "spell, while class choices read the uncapped class level. A compact rule therefore has NO cap",
+    "-- an earlier `until` field existed only to reproduce the truncated scrape lists and was",
+    "removed as an artifact rather than a ruling.",
+    "",
+    "  repeat      the whole level list tiles every N levels. For schedules with deliberate HOLES",
+    "              (shaman hexes skip 6 and 14 for wandering hexes; kineticist infusions skip 7 and",
+    "              15), so the holes survive above 20 instead of being filled in.",
+    "  then_every  after the last listed level, keep granting one every N levels. For lists whose",
+    "              irregularity is only in the opening levels.",
+    "  neither     the list is the whole story: warpriest blessings and inquisitor inquisitions are",
+    "              [1, 1], a fixed package at 1st level rather than a progression.",
+    "  stamps      false where the chooser records no level stamp (generic_multi_chooser does not).",
+    "  source      raw | approximation | unverified | bug.",
+    "              `unverified` means a human authored the number and nobody has checked it against",
+    "              Sieg's Guide yet -- NOT that it is wrong. `bug` means the number was never chosen",
+    "              by anyone: it was defaulted at the call site. Ticket 01 ruling 5.",
+    "",
+    "Every rollable class has a row, so a class joining the pool without a schedule is a hard",
+    "failure rather than a silence. A row with buckets needs no verdict -- the buckets ARE the",
+    "verdict. An EMPTY row carries `reason` plus a `note` saying why, and ticket 02 swept all 68:",
+    "",
+    "  none-by-design    the class genuinely chooses nothing (the four NPC classes; the",
+    "                    swashbuckler, whose deeds are granted by level in RAW). NOT a gap, written",
+    "                    down so it is not re-opened as one.",
+    "  other-subsystem   real choices, modelled somewhere this table does not reach. The note names",
+    "                    the symbol: domain_chooser, wizard_school_chooser, path_of_war.py, the",
+    "                    psionics power pipeline. The cleric, druid and wizard are here because",
+    "                    their buckets are named after the rolled domain/school, so no fixed row",
+    "                    can describe them.",
+    "  other-effort      an open ticket elsewhere owns it (the summoner's eidolon, companions 07).",
+    "  aliased           an unchained variant that picks through its base class's row, because the",
+    "                    call site passes the base name and class_entry_for strips the suffix.",
+    "  gap               a real missing choice. Each is a section 11 build slice.",
+    "",
+    "PER-USE CHOICES ARE ROLLED ONCE AND FROZEN (ticket 02). A feature re-chosen at every use or",
+    "every day has no natural home in a static snapshot, so the generator rolls one and records it",
+    "like any other pick, with the note saying it is a snapshot. The medium's daily seance set the",
+    "precedent (section 10); the hunter's animal focus, the shifter's aspect and the omdura's",
+    "invocation follow it. Rejected: emitting the whole pool as a reference bucket, which is a new",
+    "bucket kind both renderers would have to learn.",
+    "",
+    "FIVE CONVENTIONS, NOT THREE. Ticket 01 migrated three count arithmetics into this table; the",
+    "ticket 02 sweep found two more that no one had counted, and both are now rows here:",
+    "  4. data.formulas + eval() in feats.formula_grabber, read by simple_list_chooser --",
+    "     ranger favored terrains/enemies, brawler maneuvers.",
+    "  5. an inline floor((level - 1) / 4) in gunslinger.choose_gun_func -- gun training.",
+    "Neither was reachable from data.amount, which is why reading the three known call sites did",
+    "not find them and generating a character for all 68 classes did."
+  ],
+  "classes": {
+    "adept": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "NPC class. Spells and a familiar, and no option bucket at all -- the familiar is a bonded creature and belongs to section 8, not here."
+    },
+    "aegis": {
+      "buckets": {
+        "customizations": {
+          "dataset": "customizations",
+          "bucket": "customizations",
+          "start": 1,
+          "every": 2,
+          "source": "approximation",
+          "note": "Customization POINTS (3 at 1st rising to 26 at 20th), modelled as one pick per ~2.5 points, which is what the published 1-to-4-point costs average out to. Tune this list, not the chooser."
+        }
+      }
+    },
+    "alchemist": {
+      "buckets": {
+        "discoveries": {
+          "dataset": "basic",
+          "bucket": "discoveries",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "antipaladin": {
+      "buckets": {
+        "cruelty": {
+          "dataset": "cruelty",
+          "bucket": "cruelty",
+          "start": 3,
+          "every": 3,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "arcanist": {
+      "buckets": {
+        "exploits": {
+          "dataset": "basic",
+          "bucket": "exploits",
+          "start": 1,
+          "every": 2,
+          "source": "raw",
+          "note": "Exploits: 1st, then every odd level."
+        }
+      }
+    },
+    "aristocrat": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "NPC class. No class-specific choices exist in RAW; the audit must not invent one."
+    },
+    "barbarian": {
+      "buckets": {
+        "rage_powers": {
+          "dataset": "basic",
+          "bucket": "rage_powers",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "barbarian (unchained)": {
+      "buckets": {},
+      "reason": "aliased",
+      "note": "Picks rage_powers through the `barbarian` row. The call site passes the base name and class_entry_for strips ' (unchained)', so the unchained entry resolves to the base class's schedule. VERIFIED by generation, not by reading: an unchained barbarian 20 receives 10 rage powers, the same as a chained one."
+    },
+    "bard": {
+      "buckets": {
+        "versatile_performances": {
+          "dataset": "versatile_perfomances",
+          "bucket": "versatile_performances",
+          "start": 2,
+          "every": 4,
+          "source": "raw",
+          "note": "2nd, then every 4 levels -- the schedule the old picker already carried as choose_list. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        },
+        "martial_performance": {
+          "dataset": "martial_performance",
+          "bucket": "martial_performance",
+          "start": 2,
+          "every": 4,
+          "source": "unverified",
+          "note": "UNDOCUMENTED HOUSE CONTENT. Maps Perform categories to WEAPON GROUPS (act -> close, double), which is not RAW and appears nowhere in docs/ or the OKF bundle -- it exists only in bard_choices.json and the picker whose output was thrown away. Kept and made visible rather than deleted; schedule assumed to match versatile performance. Flagged for Sieg s Guide. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        },
+        "expanded_versatility": {
+          "dataset": "expanded_versatility",
+          "bucket": "expanded_versatility",
+          "start": 2,
+          "every": 4,
+          "source": "unverified",
+          "note": "Adds a skill to an existing versatile performance. Schedule assumed to match versatile performance; the old picker gated it on the same list. Each of the bard's three pools has its OWN row. The old picker indexed one shared level list across all three (i = len(chosen) + len(martial_set)) and its two loops were mutually exclusive on a coin flip, so a bard got ~5 picks split between them -- martial performances OR expanded versatility, never both. The table cannot express a budget shared across buckets, and the shared budget was not a written rule, so it was split. A bard now gains more total picks than before: intended, not incidental."
+        }
+      }
+    },
+    "bloodrager": {
+      "buckets": {
+        "Talents": {
+          "dataset": "bloodline",
+          "bucket": "Talents",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row."
+        }
+      }
+    },
+    "brawler": {
+      "buckets": {
+        "manuevers": {
+          "dataset": "manuevers",
+          "bucket": "manuevers",
+          "start": 3,
+          "every": 4,
+          "stamps": false,
+          "source": "raw",
+          "note": "Was 'floor((character.c_class_level + 1)/4)'. BUCKET NAME IS A TYPO -- 'manuevers', spelled that way in data.py, in the call site and therefore on both sheets; renaming it moves a shipped payload, so ticket 04 owns it. VERIFIED CORRECT by Daniel 2026-08-07: start=3/every=4 (3, 7, 11, 15, 19) is the house-correct progression, so this row is `raw` rather than the `unverified` ticket 02's sweep filed it as. The sweep had read RAW as 5th-and-every-4 and flagged the 5th maneuver at 19th as suspect; that reading was wrong, and it is recorded here because ticket 01 ruling 5's whole point is that a number a human authored gets checked by a human, not edited on a sweep's suspicion. The call site also passes max_num=8, declared here as a `max_num` field because ticket 03 ruled the gate must read all three terms of min(scheduled, pool, max_num) -- at 40th this cap, not the pool, is what holds the count to 8. Martial flexibility is a per-use feat loan, not an option bucket.",
+          "max_num": 8
+        }
+      }
+    },
+    "cavalier": {
+      "buckets": {
+        "Talents": {
+          "dataset": "orders",
+          "bucket": "Talents",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row."
+        }
+      }
+    },
+    "cleric": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Domains, via domain_chooser -- NOT a generic chooser, and its buckets are named after the rolled domain (a cleric of War and Glory ships buckets 'War' and 'Glory'). Dynamic bucket names are why no fixed row can describe it."
+    },
+    "commoner": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "NPC class. No class-specific choices exist in RAW."
+    },
+    "cryptic": {
+      "buckets": {
+        "insights": {
+          "dataset": "insights",
+          "bucket": "insights",
+          "start": 2,
+          "every": 2,
+          "source": "raw"
+        }
+      }
+    },
+    "dread": {
+      "buckets": {
+        "terrors": {
+          "dataset": "terrors",
+          "bucket": "terrors",
+          "start": 2,
+          "every": 2,
+          "source": "raw"
+        }
+      }
+    },
+    "druid": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Nature bond: an animal companion (resolve_bonded_creatures, section 8) or a domain (domain_chooser). Neither is a generic-chooser bucket, and which one is rolled decides whether any bucket appears at all."
+    },
+    "expert": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "NPC class. Its defining feature is free skill selection, which the skill-rank system already owns."
+    },
+    "fighter": {
+      "buckets": {
+        "armor_training": {
+          "dataset": "armor_train",
+          "bucket": "armor_training",
+          "start": 7,
+          "every": 4,
+          "source": "raw",
+          "note": "Advanced armor training: 7th, then every 4 levels."
+        },
+        "weapon_training": {
+          "dataset": "weapon_train",
+          "bucket": "weapon_training",
+          "start": 9,
+          "every": 4,
+          "source": "raw",
+          "note": "Advanced weapon training: 9th, then every 4 levels."
+        }
+      }
+    },
+    "gunslinger": {
+      "buckets": {
+        "gun training": {
+          "dataset": "firearms",
+          "bucket": "gun training",
+          "start": 5,
+          "every": 4,
+          "stamps": false,
+          "source": "unverified",
+          "note": "Was floor((level - 1) / 4), inline in gunslinger.choose_gun_func -- a FIFTH convention. start=5/every=4 reproduces it exactly. Picks firearm CATEGORIES, not deeds: deeds are granted by level in RAW and gunslinger_deeds_dares.json had no reader, so that file was deleted rather than wired. Believed RAW (5th, then every 4), unverified."
+        }
+      }
+    },
+    "harbinger": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Maneuvers, stances and disciplines, via path_of_war.py -- specified in section 1 and out of this map's scope, which excludes spells, powers and maneuvers."
+    },
+    "highlord": {
+      "buckets": {
+        "decrees": {
+          "dataset": "decrees",
+          "bucket": "decrees",
+          "start": 1,
+          "every": 3,
+          "source": "raw"
+        }
+      }
+    },
+    "hunter": {
+      "buckets": {
+        "animal_focus": {
+          "dataset": "aspects",
+          "bucket": "animal_focus",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "approximation",
+          "note": "Two picks at 1st, both FROZEN. The aspect is re-chosen per use, but the class text gives two simultaneous applications -- one to the hunter herself, one to her animal companion -- so a static snapshot legitimately holds two rather than one. Per-use freeze ruling, ticket 02; source is approximation because the freeze is the approximation, not the count. PREREQUISITE-AWARE: 143 of the 155 aspects are gated on an archetype named in their own prerequisites, so this draws through no_prereq_loop and chooseable_list_archetypes rather than a filter -- a plain hunter gets the 12 base aspects, a Verminous Hunter also reaches its own. The 12 were 11 until ticket 02 repaired a scraped key whose name cell was empty; validate_class_choices.py now pins the base list so a re-scrape cannot lose one silently."
+        }
+      }
+    },
+    "inquisitor": {
+      "buckets": {
+        "Talents": {
+          "dataset": "inquisitions",
+          "bucket": "Talents",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "unverified",
+          "note": "Two picks both stamped 1st. RAW grants one inquisition at 1st; authored, so not touched."
+        }
+      }
+    },
+    "investigator": {
+      "buckets": {
+        "investigator_talents": {
+          "dataset": "basic",
+          "bucket": "investigator_talents",
+          "start": 3,
+          "every": 2,
+          "source": "raw",
+          "note": "RAW: 3rd, then every 2 levels -> 9 talents at 20th, on odd levels. Was {start: 2, every: 2} = 10 on even levels, from the same defaulted divisor. The old convention could not express a start offset at all, so the count and the level stamp were wrong together."
+        }
+      }
+    },
+    "kineticist": {
+      "buckets": {
+        "wild_talents": {
+          "dataset": "wild talents",
+          "bucket": "wild_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw"
+        },
+        "infusions": {
+          "dataset": "infusions",
+          "bucket": "infusions",
+          "levels": [
+            1,
+            3,
+            5,
+            9,
+            11,
+            13,
+            17,
+            19
+          ],
+          "source": "raw",
+          "repeat": 20
+        },
+        "elemental_focus": {
+          "dataset": "elemental focus",
+          "bucket": "elemental_focus",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
+        }
+      }
+    },
+    "magus": {
+      "buckets": {
+        "arcana": {
+          "dataset": "basic",
+          "bucket": "arcana",
+          "start": 3,
+          "every": 3,
+          "source": "raw",
+          "note": "RAW: 3rd, then every 3 levels -> 6 arcana at 20th. Was {start: 2, every: 2} = 10, because main_test.py passed no divisor and get_data_without_prerequisites defaulted it to 2. Nobody chose 2 for the magus, which is why this was fixed rather than flagged (ticket 01 ruling 5)."
+        }
+      }
+    },
+    "marksman": {
+      "buckets": {
+        "combat_style": {
+          "dataset": "combat styles",
+          "bucket": "combat_style",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
+        }
+      }
+    },
+    "medic": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Maneuvers and stances via path_of_war.py -- section 1."
+    },
+    "medium": {
+      "buckets": {
+        "medium_spirit": {
+          "dataset": "spirits",
+          "bucket": "medium_spirit",
+          "levels": [
+            1
+          ],
+          "source": "approximation",
+          "note": "Single pick, gained at 1st level. RAW the medium chooses a spirit at every day's seance; the generator emits a static snapshot, so one seance is rolled and frozen. House ruling, recorded in section 10 and now the PRECEDENT for every per-use choice (hunter animal focus, shifter aspect, omdura invocation). Bucket is 'medium_spirit', not 'spirit', because the shaman already owns 'spirits'."
+        }
+      }
+    },
+    "mesmerist": {
+      "buckets": {
+        "mesmerist_tricks": {
+          "dataset": "mesmerist tricks",
+          "bucket": "mesmerist_tricks",
+          "levels": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
+          "source": "raw",
+          "note": "One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.",
+          "then_every": 2
+        },
+        "bold_stare": {
+          "dataset": "bold stare",
+          "bucket": "bold_stare",
+          "start": 3,
+          "every": 4,
+          "source": "raw"
+        }
+      }
+    },
+    "monk": {
+      "buckets": {
+        "ki_powers": {
+          "dataset": "ki_powers",
+          "bucket": "ki_powers",
+          "start": 4,
+          "every": 2,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "monk (unchained)": {
+      "buckets": {},
+      "reason": "aliased",
+      "note": "Picks ki_powers through the `monk` row -- verified by generation (9 ki powers at 20th). This ROW CLEARS A STANDING SUSPICION: the map's 'found along the way' flagged an unchained monk as possibly taking zero ki powers, because the dataset lookup getattr(character, 'monk') has no unchained fallback. It needs none -- the call site passes the literal 'monk' for both the dataset AND the schedule, so only class_entry_for ever sees the unchained name."
+    },
+    "mystic": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Maneuvers and stances via path_of_war.py -- section 1."
+    },
+    "ninja": {
+      "buckets": {
+        "ninja_talents": {
+          "dataset": "basic",
+          "bucket": "ninja_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "occultist": {
+      "buckets": {
+        "implements": {
+          "dataset": "implements",
+          "bucket": "implements",
+          "levels": [
+            1,
+            1,
+            2,
+            6,
+            10,
+            14,
+            18
+          ],
+          "source": "raw",
+          "note": "Two implement schools at 1st (hence the repeated 1), then 2nd and every 4 levels, to seven at 18th -- the count the prose states, so the list is self-checking. NO continuation past 20: 'a maximum of seven implement schools' is a stated cap and only eight schools of magic exist, so this is a bounded feature like the warpriest's blessings, not a progression."
+        },
+        "focus_powers": {
+          "dataset": "focus powers",
+          "bucket": "focus_powers",
+          "start": 1,
+          "every": 2,
+          "source": "raw",
+          "note": "One SELECTED power at 1st; the two base powers come with the schools and are not picks."
+        }
+      }
+    },
+    "omdura": {
+      "buckets": {
+        "invocation": {
+          "dataset": "invocations",
+          "bucket": "invocation",
+          "levels": [
+            1
+          ],
+          "source": "approximation",
+          "note": "Single pick at 1st, FROZEN. RAW the omdura re-selects an invocation type every time she calls the power and may swap it as a swift action; the generator emits a static snapshot, so one is rolled and kept. Same house ruling as the medium daily seance, which ticket 02 promoted from a one-off to the general rule for per-use choices. `approximation` rather than `raw` because the freeze is the approximation, not the level. Pool parsed from bolded headings inside the pack's `Invocation` item's own description -- the nine types are not items, which is why ticket 02 filed this as having no source."
+        }
+      }
+    },
+    "oracle": {
+      "buckets": {
+        "mysteries": {
+          "dataset": "mysteries",
+          "bucket": "mysteries",
+          "levels": [
+            1,
+            3,
+            7,
+            11,
+            15,
+            19,
+            23,
+            27
+          ],
+          "source": "raw",
+          "note": "Revelations: 1st, 3rd, then every 4 levels.",
+          "then_every": 4
+        },
+        "curses": {
+          "dataset": "curses",
+          "bucket": "curses",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. NOTE the oracle's mystery shares the `mysteries` bucket with its revelations: the single-pick call and the multi-pick call both pass dict_name='mysteries', so the bucket's key count is the mystery plus the revelations and neither can be counted alone. Recorded for ticket 04; not changed here, because renaming a bucket moves a shipped payload."
+        }
+      }
+    },
+    "paladin": {
+      "buckets": {
+        "mercy": {
+          "dataset": "mercy",
+          "bucket": "mercy",
+          "start": 3,
+          "every": 3,
+          "stamps": false,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "psion": {
+      "buckets": {
+        "psion_discipline": {
+          "dataset": "disciplines",
+          "bucket": "psion_discipline",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick at 1st. NOT cosmetic: the discipline decides which powers are legal, so a psion who never chose one had 39 powers nothing could check -- which is why ticket 02 filed this as a gap the charting table never named. The pool is DERIVED, not harvested: the roster comes from the class prose that names all seven disciplines, the counts from psionic_powers.json own tags, so the pick and the powers it gates read one source. The pf1-psionics compendium carries only a single Discipline feature item and no options behind it."
+        }
+      }
+    },
+    "psychic": {
+      "buckets": {
+        "phrenic_amplifications": {
+          "dataset": "phrenic amplifications",
+          "bucket": "phrenic_amplifications",
+          "levels": [
+            1,
+            3,
+            7,
+            11,
+            15,
+            19
+          ],
+          "source": "raw",
+          "note": "Major amplifications are taken IN PLACE OF one of these from 11th, so they are the same pick, not an extra one -- no separate list.",
+          "then_every": 4
+        },
+        "psychic_discipline": {
+          "dataset": "disciplines",
+          "bucket": "psychic_discipline",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
+        }
+      }
+    },
+    "psychic warrior": {
+      "buckets": {
+        "warrior_path": {
+          "dataset": "warrior paths",
+          "bucket": "warrior_path",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
+        }
+      }
+    },
+    "ranger": {
+      "buckets": {
+        "favored_terrains": {
+          "dataset": "favored_terrains",
+          "bucket": "favored_terrains",
+          "start": 3,
+          "every": 5,
+          "stamps": false,
+          "source": "unverified",
+          "note": "Was data.formulas['favored_terrains'], the eval'd string 'ceil((character.c_class_level - 2) / 5)' -- a FOURTH pick-count convention ticket 01 never saw, read by simple_list_chooser via formula_grabber. start=3/every=5 reproduces it exactly at every level. Believed RAW (3rd, then every 5), unverified against Sieg's Guide."
+        },
+        "favored_enemies": {
+          "dataset": "favored_enemies",
+          "bucket": "favored_enemies",
+          "levels": [
+            1,
+            5,
+            10,
+            15,
+            20
+          ],
+          "then_every": 5,
+          "stamps": false,
+          "source": "unverified",
+          "note": "Was '1 + floor(character.c_class_level / 5)'. The opening 1st-level pick is why this is a list rather than a compact rule. Believed RAW (1st, then every 5), unverified."
+        }
+      }
+    },
+    "rogue": {
+      "buckets": {
+        "rogue_talents": {
+          "dataset": "basic",
+          "bucket": "rogue_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "rogue (unchained)": {
+      "buckets": {},
+      "reason": "aliased",
+      "note": "Picks rogue_talents through the `rogue` row -- verified by generation (10 talents at 20th). See `barbarian (unchained)`."
+    },
+    "samurai": {
+      "buckets": {
+        "Talents": {
+          "dataset": "orders",
+          "bucket": "Talents",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row. companion.json records this one live: its class_feature_owners reads {'Talents': 'samurai'}."
+        }
+      }
+    },
+    "shaman": {
+      "buckets": {
+        "hexes": {
+          "dataset": "hexes",
+          "bucket": "hexes",
+          "levels": [
+            2,
+            4,
+            8,
+            10,
+            12,
+            16,
+            18,
+            20,
+            24,
+            26,
+            28,
+            32,
+            34,
+            36,
+            40,
+            42,
+            44,
+            48,
+            50,
+            52
+          ],
+          "source": "raw",
+          "note": "The gaps at 6 and 14 are wandering hexes -- a separate feature, not omissions. The published list already runs to 52, past the level-40 ceiling, so it needs no continuation rule: the pattern (even levels, minus every 8th starting at 6) is carried in the data itself."
+        },
+        "spirits": {
+          "dataset": "spirits",
+          "bucket": "spirits",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. The shaman's hexes are the separate row above."
+        }
+      }
+    },
+    "shifter": {
+      "buckets": {
+        "shifter_aspects": {
+          "dataset": "aspects",
+          "bucket": "shifter_aspects",
+          "levels": [
+            1,
+            9,
+            14,
+            20
+          ],
+          "source": "unverified",
+          "note": "ONLY THE LEVELS THE DATA NAMES (Daniel, 2026-08-07). The shifter's own prose gives 1st (first aspect), 9th (chimeric: assume two at once), 14th (greater chimeric: three) and 20th ('gains access to a fifth aspect'). The 9th and 14th entries are about how many she can ASSUME simultaneously, not how many she knows, and when aspects 2-4 are learned is stated nowhere in the repo. KNOWN DISCREPANCY: this yields four by 20th where that 20th-level text implies five. Recorded rather than smoothed over -- a tidier [1,5,10,15,20] was rejected because it invents three levels to satisfy one inferred total. Flagged for Sieg's Guide alongside the ranger and gunslinger rows. Permanent build choice, NOT per-use, so nothing is frozen. Pool extracted from class_data.json's shifter entry; three aspects named their gating archetype in the KEY and now carry it as a real prerequisites field."
+        }
+      }
+    },
+    "skald": {
+      "buckets": {
+        "rage_powers": {
+          "dataset": "basic",
+          "bucket": "rage_powers",
+          "start": 3,
+          "every": 3,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "slayer": {
+      "buckets": {
+        "slayer_talents": {
+          "dataset": "basic",
+          "bucket": "slayer_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "sorcerer": {
+      "buckets": {
+        "Talents": {
+          "dataset": "bloodline",
+          "bucket": "Talents",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here so the table is the complete inventory of class choices. BUCKET NAME IS WRONG: the call site omits dict_name=, so the bloodline lands in generic_class_option_chooser's default bucket 'Talents' -- shared with the bloodrager, cavalier and samurai. Ticket 04's to fix; recorded here under the name the code actually writes."
+        }
+      }
+    },
+    "soulknife": {
+      "buckets": {
+        "blade_skills": {
+          "dataset": "blade skills",
+          "bucket": "blade_skills",
+          "start": 2,
+          "every": 2,
+          "source": "raw"
+        }
+      }
+    },
+    "spiritualist": {
+      "buckets": {
+        "emotional_focus": {
+          "dataset": "emotional focus",
+          "bucket": "emotional_focus",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. The phantom itself is section 8's."
+        }
+      }
+    },
+    "summoner": {
+      "buckets": {},
+      "reason": "other-effort",
+      "note": "Eidolon evolutions -- companions map ticket 07, deferred to v1.1. The eidolon is BUILT from a point-budgeted evolution pool rather than picked from a list, which is why it is a separate question rather than another row here."
+    },
+    "summoner (unchained)": {
+      "buckets": {},
+      "reason": "other-effort",
+      "note": "Eidolon evolutions -- companions map ticket 07, deferred to v1.1."
+    },
+    "swashbuckler": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "Deeds are granted by level in RAW, not chosen, so 'no chooser' is CORRECT. Written down so the empty row is not re-opened as a gap: the charting pass listed it as a coverage candidate and the sweep cleared it."
+    },
+    "tactician": {
+      "buckets": {
+        "strategies": {
+          "dataset": "strategies",
+          "bucket": "strategies",
+          "start": 4,
+          "every": 3,
+          "source": "raw"
+        }
+      }
+    },
+    "vampire hunter": {
+      "buckets": {
+        "vampiric_foci": {
+          "dataset": "vampiric foci",
+          "bucket": "vampiric_foci",
+          "levels": [
+            1,
+            8,
+            16
+          ],
+          "source": "raw",
+          "note": "The class's own rules text states it: 'At 1st level, the vampire hunter must select one common vampiric power to mimic... At 8th and 16th level, the vampire hunter learns an additional vampiric focus.' The only one of ticket 02's seven gaps that is not a single pick -- the sweep's write-up called it one, and the pack text corrected that. Pool harvested by build_collab_class_options.py; 10 foci, gated on system.associations.classes."
+        }
+      }
+    },
+    "vigilante": {
+      "buckets": {
+        "vigilante_talents": {
+          "dataset": "basic",
+          "bucket": "vigilante_talents",
+          "start": 2,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        },
+        "social_talents": {
+          "dataset": "social",
+          "bucket": "social_talents",
+          "start": 1,
+          "every": 2,
+          "source": "raw",
+          "note": "No cap today: the arithmetic is unbounded, so a character above 20th receives more picks than any published table grants. Recorded, not changed -- see ticket 03."
+        }
+      }
+    },
+    "vitalist": {
+      "buckets": {
+        "vitalist_method": {
+          "dataset": "methods",
+          "bucket": "vitalist_method",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
+        }
+      }
+    },
+    "voyager": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Powers, via the psionics pipeline -- section 9. Voyager Knowledge grants bonus feats rather than options, which is why no subsystem chooser names it."
+    },
+    "warder": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Maneuvers and stances via path_of_war.py -- section 1. Verified by generation: a warder 20 carries 9 maneuvers and 7 stances, none of them in `class features`."
+    },
+    "warlord": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Maneuvers and stances via path_of_war.py -- section 1."
+    },
+    "warpriest": {
+      "buckets": {
+        "Talents": {
+          "dataset": "blessing",
+          "bucket": "Talents",
+          "levels": [
+            1,
+            1
+          ],
+          "source": "unverified",
+          "note": "Two picks both stamped 1st. RAW grants one blessing at 1st; authored, so not touched."
+        }
+      }
+    },
+    "warrior": {
+      "buckets": {},
+      "reason": "none-by-design",
+      "note": "NPC class. Bonus combat feats only, chosen by the feat pipeline (class_func/feats.py), which this map puts out of scope."
+    },
+    "wilder": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Powers, via the psionics pipeline -- section 9. Wild surge and psychic enervation are automatic, not chosen."
+    },
+    "witch": {
+      "buckets": {
+        "hexes": {
+          "dataset": "basic",
+          "bucket": "hexes",
+          "start": 2,
+          "every": 2,
+          "source": "unverified",
+          "note": "RAW grants a hex at 1st as well as 2nd; this list starts at 2nd. Authored, so not touched."
+        },
+        "patron": {
+          "dataset": "patrons",
+          "bucket": "patron",
+          "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "Single pick at 1st. THE GAP THAT HID INSIDE A NON-EMPTY ROW: witch_patrons.json had no reader anywhere, and the witch already had a filled hexes row, so a sweep that only looked at empty rows would have missed it. The pool moved into class_data/witch.json because that is where the chooser reads it from; witch_patrons.json is deleted. Its spells DO reach the spell list, level-gated -- a patron grants nine spells at witch levels 2,4,...,18, which are spell levels 1-9 in order, so truncating by the witch's own level maps straight onto add_bonus_spells' positional convention."
+        }
+      }
+    },
+    "wizard": {
+      "buckets": {},
+      "reason": "other-subsystem",
+      "note": "Arcane school, via wizard_school_chooser, whose bucket is named after the school ('conjuration'). Same dynamic-bucket shape as the cleric's domains. The arcane bond is section 8's."
+    }
+  }
+}

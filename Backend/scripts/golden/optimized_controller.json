@@ -1,0 +1,2111 @@
+{
+ "Total_HP": 195,
+ "age_number": 46,
+ "alignment": "Neutral Good",
+ "animal_companion": null,
+ "appearance": [
+  "Homely"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Scroll Scholar\": {\n        \"source\": \"Pathfinder Society Field Guide pg. 26 A scroll scholar values knowledge and learning as much as her other abilities, trading a portion of her potential in her chosen class for greater breadth of skill at deciphering old texts, piecing together strange fragments of esoteric lore, and deciphering the hidden qualities of strange and unusual magical items. The scroll scholar archetype can be taken by either clerics or wizards-they give up different class abilities for the new abilities granted by this archetype. A wizard must either be a universalist wizard or a diviner wizard in order to take this archetype-other types of school specializations are not suited to this archetype's focus. A scroll scholar has the following class features.\",\n        \"diligent student (ex)\": \" At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains-the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner's fortune (if a diviner) or hand of the apprentice (if a universalist).\",\n        \"secrets revealed (sp)\": \" At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar's choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level-her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level.\",\n        \"flash of insight (su)\": \" At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character's spells per day- from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards.\"\n    }\n}",
+ "armor_ac": 0,
+ "armor_armor_check_penalty": 0,
+ "armor_enhancement_bonus": 5,
+ "armor_enhancement_chosen_list": [
+  "Terrain-striding",
+  "Withstanding"
+ ],
+ "armor_max_dex_bonus": 0,
+ "armor_name": 0,
+ "armor_spell_failure": 0,
+ "armor_weight": 0,
+ "bab_total": 7,
+ "background_traits": [
+  "Inspiring Rush"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [
+  {
+   "archetype": "Scroll Scholar",
+   "chassis": null,
+   "contributors": [
+    "wizard"
+   ],
+   "effective_level": 15,
+   "feats": [],
+   "flags": [],
+   "gear": [],
+   "gear_source": "not modelled in v1; when added, funded from character.gold (PF1e: companions have no wealth-by-level)",
+   "grantor": "wizard",
+   "kind": "familiar",
+   "master_abilities": {
+    "abilities": [
+     {
+      "name": "alertness",
+      "note": "While the familiar is within arm's reach, the master gains the Alertness feat."
+     },
+     {
+      "name": "improved evasion",
+      "note": "On a Reflex save for half damage, the familiar takes no damage on a success and half damage on a failure."
+     },
+     {
+      "name": "share spells",
+      "note": "The master may cast a spell with a target of 'You' on the familiar (as a touch spell) instead of on himself."
+     },
+     {
+      "name": "empathic link",
+      "note": "The master and familiar share an empathic link to 1 mile; the master cannot see through its eyes."
+     },
+     {
+      "name": "deliver touch spells",
+      "note": "The familiar can deliver touch spells for the master if in contact with him when he casts."
+     },
+     {
+      "name": "speak with master",
+      "note": "The master and familiar can communicate verbally as if using a common language."
+     },
+     {
+      "name": "speak with animals of its kind",
+      "note": "The familiar can communicate with animals of approximately its own kind."
+     },
+     {
+      "name": "spell resistance",
+      "note": "The familiar gains spell resistance equal to the master's level + 5."
+     },
+     {
+      "name": "scry on familiar",
+      "note": "The master may scry on his familiar (as the scrying spell) once per day."
+     }
+    ],
+    "species_perk": "+2 bonus on Fortitude saves"
+   },
+   "name": "Anaïs",
+   "outcome": "granted",
+   "sex": "Female",
+   "species": "rat",
+   "species_stats": {
+    "starting statistics": {
+     "ability scores": {
+      "cha": 2,
+      "con": 11,
+      "dex": 15,
+      "int": 2,
+      "str": 2,
+      "wis": 13
+     },
+     "ac": "+0 natural armor",
+     "attack": "bite (1d3)",
+     "size": "tiny",
+     "special qualities": "low-light vision, scent",
+     "speed": "15 ft. , climb 15 ft. , swim 15 ft. "
+    }
+   },
+   "stats": {
+    "abilities": {
+     "cha": 2,
+     "con": 11,
+     "dex": 15,
+     "int": 13,
+     "str": 2,
+     "wis": 13
+    },
+    "ability_modifiers": {
+     "cha": -4,
+     "con": 0,
+     "dex": 2,
+     "int": 1,
+     "str": -4,
+     "wis": 1
+    },
+    "ac": 22,
+    "attacks": [
+     {
+      "alternative": false,
+      "atk": 5,
+      "count": 1,
+      "crit_multiplier": null,
+      "damage": "1d3-4",
+      "name": "bite",
+      "notes": null
+     }
+    ],
+    "bab": 7,
+    "cmb": 7,
+    "cmd": 13,
+    "flat_footed_ac": 20,
+    "hd": 15,
+    "hit_die": null,
+    "hp": 97,
+    "initiative": 2,
+    "merge_notes": [],
+    "natural_armor": 8,
+    "other": {},
+    "saves": {
+     "fort": 5,
+     "ref": 7,
+     "will": 10
+    },
+    "size": "tiny",
+    "size_change": null,
+    "skills": {
+     "acrobatics": {
+      "ranks": 11,
+      "total": 16
+     },
+     "appraise": {
+      "ranks": 15,
+      "total": 19
+     },
+     "climb": {
+      "ranks": 9,
+      "total": 8
+     },
+     "diplomacy": {
+      "ranks": 6,
+      "total": 5
+     },
+     "disable device": {
+      "ranks": 4,
+      "total": 9
+     },
+     "escape artist": {
+      "ranks": 14,
+      "total": 19
+     },
+     "fly": {
+      "ranks": 1,
+      "total": 6
+     },
+     "handle animal": {
+      "ranks": 3,
+      "total": 2
+     },
+     "heal": {
+      "ranks": 13,
+      "total": 17
+     },
+     "intimidate": {
+      "ranks": 7,
+      "total": 6
+     },
+     "knowledge arcana": {
+      "ranks": 12,
+      "total": 16
+     },
+     "knowledge dungeoneering": {
+      "ranks": 1,
+      "total": 5
+     },
+     "knowledge engineering": {
+      "ranks": 10,
+      "total": 14
+     },
+     "knowledge history": {
+      "ranks": 8,
+      "total": 12
+     },
+     "knowledge local": {
+      "ranks": 7,
+      "total": 11
+     },
+     "knowledge nobility": {
+      "ranks": 11,
+      "total": 15
+     },
+     "knowledge planes": {
+      "ranks": 10,
+      "total": 14
+     },
+     "knowledge religion": {
+      "ranks": 8,
+      "total": 12
+     },
+     "linguistics": {
+      "ranks": 15,
+      "total": 19
+     },
+     "ride": {
+      "ranks": 8,
+      "total": 13
+     },
+     "sense motive": {
+      "ranks": 7,
+      "total": 11
+     },
+     "sleight of hand": {
+      "ranks": 5,
+      "total": 10
+     },
+     "spellcraft": {
+      "ranks": 2,
+      "total": 6
+     },
+     "stealth": {
+      "ranks": 12,
+      "total": 25
+     },
+     "survival": {
+      "ranks": 7,
+      "total": 11
+     },
+     "swim": {
+      "ranks": 8,
+      "total": 7
+     },
+     "use magic device": {
+      "ranks": 5,
+      "total": 4
+     }
+    },
+    "space": 2.5,
+    "special": "alertness, improved evasion, share spells, empathic link, deliver touch spells, speak with master, speak with animals of its kind, spell resistance, scry on familiar",
+    "special_attacks": null,
+    "special_qualities": "low-light vision, scent",
+    "speed": "15 ft. , climb 15 ft. , swim 15 ft. ",
+    "spell_resistance": 20,
+    "touch_ac": 14
+   },
+   "type": "familiar"
+  }
+ ],
+ "buff_gaps": [],
+ "build_archetype": "Magic Battlefield Controller",
+ "build_tactics": "Never races the enemy's damage -- changes the terms instead: a wall splits their line, a pit deletes a flanker, fog blinds the archers. Each round it removes options until the survivors stand exactly where its party wants them.",
+ "c_class": "wizard",
+ "c_class_2": "",
+ "c_class_display": "Wizard",
+ "casting_level_str_foundry": "high",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Overcharge",
+   "Fortified Casting"
+  ],
+  "boons_detail": [
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   }
+  ],
+  "casting_ability_modifier": "Intelligence",
+  "drawbacks": [
+   "Painful Magic",
+   "Wild Magic",
+   "Addictive Casting",
+   "Verbal Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
+    "name": "Verbal Casting"
+   }
+  ]
+ },
+ "cha": 8,
+ "character_full_name": "Pauline Dupont",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "curseUM"
+ ],
+ "class feature levels": {},
+ "class feature owners": {
+  "evocation": "wizard"
+ },
+ "class features": {
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
+  },
+  "evocation": {
+   "description": "evokers revel in the raw power of magic, using it to create and destroy with shocking ease. ",
+   "elemental wall": {
+    "description": "creates a wall of energy that deals acid, cold, electricity, or fire damage. Limited rounds per day. Functions like wall of fire. ",
+    "usage": "rounds per day",
+    "walldamagetypes": "acid, cold, electricity, or fire",
+    "wallduration": "wizard level rounds"
+   },
+   "force missile": {
+    "damage": "1d4 plus intense spells bonus",
+    "description": "unleashes a force missile that automatically strikes a foe, dealing force damage. Limited uses per day. ",
+    "forceeffect": "yes",
+    "usage": "3 + intelligence modifier times per day"
+   },
+   "intense spells": {
+    "bonusdamage": "1/2 wizard level (minimum +1)",
+    "bonustype": "same type as the spell",
+    "description": "adds a bonus to the damage of evocation spells that deal hit point damage. Bonus damage based on wizard level. ",
+    "penetratingspell resistance": "at 20th level"
+   }
+  }
+ },
+ "class_ability": [
+  "spells_wizard",
+  "bonus languages_wizard",
+  "arcane bond (ex or sp)_wizard",
+  "arcane school_wizard",
+  "cantrips_wizard",
+  "scribe scroll_wizard",
+  "bonus feats_wizard",
+  "spellbooks_wizard"
+ ],
+ "class_ability_desc": {
+  "arcane bond (ex or sp)": "At 1st level, wizards form a powerful bond with an object or a creature. This bond can take one of two forms: a familiar or a bonded object. A familiar is a magical pet that enhances the wizard's skills and senses and can aid him in magic, while a bonded object is an item a wizard can use to cast additional spells or to serve as a magical item. Once a wizard makes this choice, it is permanent and cannot be changed. Rules for bonded items are given below, while rules for familiars are at the end of this section. Wizards who select a bonded object begin play with one at no cost. Objects that are the subject of an arcane bond must fall into one of the following categories: amulet, ring, staff, wand, or weapon. These objects are always masterwork quality. Weapons acquired at 1st level are not made of any special material. If the object is an amulet or ring, it must be worn to have effect, while staves, wands, and weapons must be wielded. If a wizard attempts to cast a spell without his bonded object worn or in hand, he must make a concentration check or lose the spell. The DC for this check is equal to 20 + the spell's level. If the object is a ring or amulet, it occupies the ring or neck slot accordingly. A bonded object can be used once per day to cast any one spell that the wizard has in his spellbook and is capable of casting, even if the spell is not prepared. This spell is treated like any other spell cast by the wizard, including casting time, duration, and other effects dependent on the wizard's level. This spell cannot be modified by metamagic feats or other abilities. The bonded object cannot be used to cast spells from the wizard's opposition schools (see arcane school). A wizard can add additional magic abilities to his bonded object as if he has the required item creation feats and if he meets the level prerequisites of the feat. For example, a wizard with a bonded dagger must be at least 5th level to add magic abilities to the dagger (see the Craft Magic Arms and Armor feat in Feats). If the bonded object is a wand, it loses its wand abilities when its last charge is consumed, but it is not destroyed and it retains all of its bonded object properties and can be used to craft a new wand. The magic properties of a bonded object, including any magic abilities added to the object, only function for the wizard who owns it. If a bonded object's owner dies, or the item is replaced, the object reverts to being an ordinary masterwork item of the appropriate type. If a bonded object is damaged, it is restored to full hit points the next time the wizard prepares his spells. If the object of an arcane bond is lost or destroyed, it can be replaced after 1 week in a special ritual that costs 200 gp per wizard level plus the cost of the masterwork item. This ritual takes 8 hours to complete. Items replaced in this way do not possess any of the additional enchantments of the previous bonded item. A wizard can designate an existing magic item as his bonded item. This functions in the same way as replacing a lost or destroyed item except that the new magic item retains its abilities while gaining the benefits and drawbacks of becoming a bonded item.",
+  "arcane school": "A wizard can choose to specialize in one school of magic, gaining additional spells and powers based on that school. This choice must be made at 1st level, and once made, it cannot be changed. A wizard that does not select a school receives the universalist school instead. A wizard that chooses to specialize in one school of magic must select two other schools as his opposition schools, representing knowledge sacrificed in one area of arcane lore to gain mastery in another. A wizard who prepares spells from his opposition schools must use two spell slots of that level to prepare the spell. For example, a wizard with evocation as an opposition school must expend two of his available 3rd-level spell slots to prepare a fireball . In addition, a specialist takes a -4 penalty on any skill checks made when crafting a magic item that has a spell from one of his opposition schools as a prerequisite. A universalist wizard can prepare spells from any school without restriction. Each arcane school gives the wizard a number of school powers. In addition, specialist wizards receive an additional spell slot of each spell level he can cast, from 1st on up. Each day, a wizard can prepare a spell from his specialty school in that slot. This spell must be in the wizard's spellbook. A wizard can select a spell modified by a metamagic feat to prepare in his school slot, but it uses up a higher-level spell slot. Wizards with the universalist school do not receive a school slot.",
+  "bonus feats": "At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, he can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums. These bonus feats are in addition to the feats that a character of any class gets from advancing levels. The wizard is not limited to the categories of item creation feats, metamagic feats, or Spell Mastery when choosing those feats.",
+  "bonus languages": "A wizard may substitute Draconic for one of the bonus languages available to the character because of his race.",
+  "cantrips": "Wizards can prepare a number of cantrips, or 0-level spells, each day, as noted on Table: Wizard under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again. A wizard can prepare a cantrip from a prohibited school, but it uses up two of his available slots (see below).",
+  "scribe scroll": "At 1st level, a wizard gains Scribe Scroll as a bonus feat.",
+  "spellbooks": "A wizard must study his spellbook each day to prepare his spells. He cannot prepare any spell not recorded in his spellbook, except for read magic, which all wizards can prepare from memory. A wizard begins play with a spellbook containing all 0-level wizard spells (except those from his prohibited schools, if any; see Arcane Schools) plus three 1st-level spells of his choice. The wizard also selects a number of additional 1st-level spells equal to his Intelligence modifier to add to the spellbook. At each new wizard level, he gains two new spells of any spell level or levels that he can cast (based on his new wizard level) for his spellbook. At any time, a wizard can also add spells found in other wizards' spellbooks to his own (see Magic). Alternate Capstones",
+  "spells": "A wizard casts arcane spells drawn from the sorcerer/wizard spell list presented in Spell Lists. A wizard must choose and prepare his spells ahead of time. To learn, prepare, or cast a spell, the wizard must have an Intelligence score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a wizard's spell is 10 + the spell level + the wizard's Intelligence modifier. A wizard can cast only a certain number of spells of each spell level per day. His base daily spell allotment is given on Table: Wizard. In addition, he receives bonus spells per day if he has a high Intelligence score (see Table: Ability Modifiers and Bonus Spells). A wizard may know any number of spells. He must choose and prepare his spells ahead of time by getting 8 hours of sleep and spending 1 hour studying his spellbook. While studying, the wizard decides which spells to prepare."
+ },
+ "class_feat_labels": [
+  "Wizard 5",
+  "Wizard 10",
+  "Wizard 15"
+ ],
+ "class_feat_tax_dict": {
+  "Deft Hands": [
+   "close call"
+  ],
+  "Demonologist": [
+   "demon grafter"
+  ]
+ },
+ "class_feats": [
+  "Deft Hands",
+  "Demonologist",
+  "Craft Staff"
+ ],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {},
+ "class_feature_owners": {
+  "evocation": "wizard"
+ },
+ "class_features": {
+  "Skill Unlock: Appraise": {
+   "10 Ranks": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15 Ranks": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20 Ranks": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5 Ranks": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
+  },
+  "evocation": {
+   "description": "evokers revel in the raw power of magic, using it to create and destroy with shocking ease. ",
+   "elemental wall": {
+    "description": "creates a wall of energy that deals acid, cold, electricity, or fire damage. Limited rounds per day. Functions like wall of fire. ",
+    "usage": "rounds per day",
+    "walldamagetypes": "acid, cold, electricity, or fire",
+    "wallduration": "wizard level rounds"
+   },
+   "force missile": {
+    "damage": "1d4 plus intense spells bonus",
+    "description": "unleashes a force missile that automatically strikes a foe, dealing force damage. Limited uses per day. ",
+    "forceeffect": "yes",
+    "usage": "3 + intelligence modifier times per day"
+   },
+   "intense spells": {
+    "bonusdamage": "1/2 wizard level (minimum +1)",
+    "bonustype": "same type as the spell",
+    "description": "adds a bonus to the damage of evocation spells that deal hit point damage. Bonus damage based on wizard level. ",
+    "penetratingspell resistance": "at 20th level"
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Scroll Scholar": {
+     "diligent student (ex)": " At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains-the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner's fortune (if a diviner) or hand of the apprentice (if a universalist).",
+     "flash of insight (su)": " At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character's spells per day- from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards.",
+     "secrets revealed (sp)": " At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar's choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level-her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level.",
+     "source": "Pathfinder Society Field Guide pg. 26 A scroll scholar values knowledge and learning as much as her other abilities, trading a portion of her potential in her chosen class for greater breadth of skill at deciphering old texts, piecing together strange fragments of esoteric lore, and deciphering the hidden qualities of strange and unusual magical items. The scroll scholar archetype can be taken by either clerics or wizards-they give up different class abilities for the new abilities granted by this archetype. A wizard must either be a universalist wizard or a diviner wizard in order to take this archetype-other types of school specializations are not suited to this archetype's focus. A scroll scholar has the following class features."
+    }
+   },
+   "display": "Wizard",
+   "level": 15,
+   "name": "wizard"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 14,
+ "counter_schools": [
+  "abjuration",
+  "divination"
+ ],
+ "counter_spell_descriptor": [
+  "light"
+ ],
+ "craft_type": "Upholstery",
+ "day_list": [
+  1,
+  5,
+  5,
+  5,
+  4,
+  4,
+  3,
+  2,
+  1
+ ],
+ "deity_name": "Ragathiel",
+ "dex": 13,
+ "enhancement_effects_dict": {
+  "armor": {
+   "Terrain-striding": {
+    "changes": [],
+    "contextNotes": [
+     {
+      "target": "ac",
+      "text": "Terrain-striding: in the attuned favored terrain, +[[10]]-ft enhancement to speed and no armor check penalty on Acrobatics, Climb, and Stealth."
+     }
+    ],
+    "description": "Armor with the terrain-striding special ability is attuned to a specific terrain when the armor is created, selected from rangers' favored terrains. The wearer of armor gains a 10-foot enhancement bonus to her speed while in the associated terrain, and the armor's armor check penalty does not apply to Acrobatics, Climb, and Stealth checks attempted in that terrain. The terrain-striding special ability can be applied only to medium armor."
+   },
+   "Withstanding": {
+    "changes": [],
+    "contextNotes": [
+     {
+      "target": "ac",
+      "text": "Withstanding: vs the chosen creature type — [[50]]% chance to negate a sneak attack or confirmed crit (doesn't stack with fortification); +[[2]] enhancement on Knowledge checks about that type."
+     }
+    ],
+    "description": "A suit of withstanding armor is inscribed with eldritch runes across its surface and decorated with the snarling countenances of specific creatures. Each suit of withstanding armor is tailored to a specific type of creature, chosen from the same list as the options for bane weapons. The wearer of this armor gains a +2 enhancement bonus on Knowledge checks related to the chosen type of creature, and when the wearer is struck by a sneak attack or a confirmed critical hit by creatures of the chosen type, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally. This does not stack with any other form of critical hit negation, such as that imposed by the fortification special ability. Only medium armor can be enchanted with the withstanding special ability."
+   }
+  }
+ },
+ "equip_descrip": {
+  "belts": {
+   "description": " this belt's golden buckle depicts a\r bear's head. The belt grants the wearer\r an enhancement bonus to constitution\r of +2, +4, or +6. Treat this as a temporary\r ability bonus for the first 24 hours the belt is worn. ",
+   "item_name": "Belt of Mighty Constitution +2"
+  },
+  "body": {
+   "description": " this black bodysuit is of the type typically worn by ninjas and assassins, but it grants its wearer a +2 armor bonus and a +5 competence bonus on stealth checks. In addition, if the wearer is in illumination of less than normal light, she can use invisibility , as the spell, once per day. If the wearer is a ninja with the vanishing trick ninja trick, then the wearer can use that ability twice per day without the expenditure of any ki points and regardless of the surrounding light level. ",
+   "item_name": "Shozoku of the Night Wind"
+  },
+  "chest": {
+   "description": " the sacred stones, graven star-patterns, and wisdom-writings\r of the ancients on this chestplate increase the wearer's chance\r of success with augury , divination , and contact other plane . \r the wearer adds 1d6 to the d% roll each time she uses such\r a spell. When casting commune or commune with nature , the\r wearer may ask one additional question or gain one additional\r piece of information. ",
+   "item_name": "Prophet's Pectoral"
+  },
+  "eyes": {
+   "description": " when worn, these innocent-looking spectacles convert\r any written language to one known by the wearer, as the comprehend languages spell. The glasses are also good at\r detecting falsified documents, granting their wearer a +5\r bonus to linguistics checks to identify forgeries and the\r ability make such checks untrained. ",
+   "item_name": "Spectacles of Understanding"
+  },
+  "hands": {
+   "description": " much like wayfinders , an ioun gauntlet grants enhanced or altogether new abilities depending on the type of ioun stone inserted into its matrix. In its base form, an ioun gauntlet grants its wearer the ability to cast detect magic as a spell-like ability once per day. When the detect magic effect is active, the gauntlet also sheds illumination as light in the 60- foot cone of the detect magic effect. An ioun gauntlet features a single matrix in the back of the hand, suitable for one ioun stone . When an ioun stone is inserted into the matrix as a standard action, the wearer gains the associated bonus from the ioun stone as well an additional effect based on the shape of the ioun stone inserted, as listed below. While a creature can put on two ioun gauntlets , the wearer gains the additional benefit from only one inserted ioun stone cabochon : +1 enhancement bonus on acrobatics checks. Disk : +1 enhancement bonus on linguistics checks. Ellipsoid : +1 enhancement bonus on knowledge (arcana) checks. Nodule : +1 enhancement bonus on knowledge (geography) checks. Pentacle : +1 enhancement bonus on knowledge (religion) checks. Prism : +1 enhancement bonus on perception checks. Pyramid : +1 enhancement bonus on appraise checks. Rhomboid : +1 enhancement bonus on stealth checks. Sphere : +1 enhancement bonus on sense motive checks. Spindle : bonus language (aboleth). Star : +1 enhancement bonus on knowledge (nobility) checks. Trillian : +1 enhancement bonus on bluff checks. ",
+   "item_name": "Ioun Gauntlet"
+  },
+  "headband": {
+   "description": " this intricate gold headband is\r decorated with several small blue\r and deep purple gemstones. The\r headband grants the wearer an\r enhancement bonus to intelligence of +2, +4, or +6. Treat this as a temporary ability bonus for the first 24 hours the\r headband is worn. A headband of vast intelligence has one\r skill associated with it per +2 bonus it grants. After being worn\r for 24 hours, the headband grants a number of skill ranks in\r those skills equal to the wearer's total hit dice. These ranks\r do not stack with the ranks a creature already possesses. \r these skills are chosen when the headband is created. If no\r skill is listed, the headband is assumed to grant skill ranks in\r randomly determined knowledge skills. ",
+   "item_name": "Headband of Vast Intelligence +6"
+  },
+  "neck": {
+   "description": " this amulet, usually containing some\r type of magically preserved monster\r hide or other natural armorsuch as\r bone, horn, carapace, or beast scales\r toughens the wearer's body and flesh, \r giving him an enhancement bonus\r to his natural armor from +1 to +5, \r depending on the kind of amulet. ",
+   "item_name": "Amulet of Natural Armor +3"
+  },
+  "rings": {
+   "description": "This ring offers continual magical protection in the form of a deflection bonus of +1 to +5 to AC.",
+   "item_name": "Ring of Protection +3"
+  },
+  "shoulders": {
+   "description": " flecks of silver or steel are often sown amid the fabric of\r these magical cloaks. This garment offers magical protection\r in the form of a +1 to +5 resistance bonus on all saving throws\r (fortitude, reflex, and will). ",
+   "item_name": "Cloak of Resistance +5"
+  },
+  "wrist": {
+   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
+   "item_name": "Sleeves of Many Garments"
+  }
+ },
+ "equipment_list": [
+  "Headband of Vast Intelligence +6",
+  "Cloak of Resistance +5",
+  "Ring of Protection +3",
+  "Amulet of Natural Armor +3",
+  "Belt of Mighty Constitution +2",
+  "Shozoku of the Night Wind",
+  "Prophet's Pectoral",
+  "Spectacles of Understanding",
+  "Ioun Gauntlet",
+  "Sleeves of Many Garments"
+ ],
+ "eye_color": [
+  "Blue"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 3,
+  "flavor": 1,
+  "flaw": 2,
+  "normal": 9,
+  "profession": 2,
+  "story": 4,
+  "teamwork": 0,
+  "trainer": 0
+ },
+ "feat_changes_dict": {
+  "Demon Hunter": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.kpl",
+     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
+    }
+   ]
+  },
+  "Prodigy (Profession (Sigil-Scribe), Profession (Whittler))": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Stone Read": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Demon Hunter": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
+  }
+ },
+ "feats": [
+  "Prodigy (Profession (Sigil-Scribe), Profession (Whittler))",
+  "Persuasive",
+  "Magical Aptitude",
+  "Stealthy",
+  "Dazing Spell",
+  "Silent Spell",
+  "Scholar",
+  "Demon Hunter",
+  "Multi Talented",
+  "True Calling"
+ ],
+ "feats_feat_tax_dict": {
+  "Persuasive": [
+   "rhetorical flourish"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [
+  "Stone Read"
+ ],
+ "flaw": [
+  "City Slicker",
+  "Shattered Psyche",
+  "Elemental Vulnerability"
+ ],
+ "flaw_effects_dict": {
+  "City Slicker": {
+   "changes": [
+    {
+     "formula": "-2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.sur",
+     "type": "untyped"
+    },
+    {
+     "formula": "-2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.han",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [],
+   "description": "You suffer from a lack of experience in the wilds. You take a -2 penalty on Survival and Handle Animal checks.",
+   "tier": "minor"
+  },
+  "Elemental Vulnerability": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Elemental Vulnerability: you take +[[50]]% damage from your chosen energy type."
+    }
+   ],
+   "description": "One energy type (chosen when this flaw is gained: fire, cold, electricity, or acid) ravages you. You take 50% more damage from that energy type.",
+   "tier": "major"
+  },
+  "Shattered Psyche": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "intSkills",
+     "text": "Shattered Psyche: -[[2]] on Intelligence-based skill checks."
+    },
+    {
+     "target": "wisSkills",
+     "text": "Shattered Psyche: -[[2]] on Wisdom-based skill checks."
+    },
+    {
+     "target": "concentration",
+     "text": "Shattered Psyche: -[[2]] on concentration checks."
+    }
+   ],
+   "description": "Your mind is crowded with dozens of voices, fragmented snippets of your past lives. You take a -2 penalty on all Intelligence-based skill checks, Wisdom-based skill checks, and concentration checks.",
+   "tier": "major"
+  }
+ },
+ "flaw_feat_tax_dict": {
+  "Alertness": [
+   "uncanny alertness"
+  ]
+ },
+ "flaw_feats": [
+  "Deceitful",
+  "Alertness"
+ ],
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Ragathiel\n- Race: Human\n- Class: Level 15 Wizard\n- Archetype: Magic Battlefield Controller\n- Tactics: Never races the enemy's damage -- changes the terms instead: a wall splits their line, a pit deletes a flanker, fog blinds the archers. Each round it removes options until the survivors stand exactly where its party wants them.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Sigil-Scribe (rank 15)\n- Profession: Whittler (rank 9)\n- Profession: Sea Urchin Harvester (rank 6)\n- Known for: Upholstery\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: City Slicker, Shattered Psyche, Elemental Vulnerability\n\nAppearance\n- Hair: Bald White\n- Eyes: Blue\n- Build: Homely",
+ "full_domain": [],
+ "gender": "Female",
+ "generation_seed": 5002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 200,
+ "hair_color": [
+  "White"
+ ],
+ "hair_type": [
+  "Bald"
+ ],
+ "height_number": "6'1\"",
+ "hero_points": 1,
+ "homebrew_feat_desc_dict": {
+  "Alertness": "You often notice things that others might miss",
+  "Craft Staff": "You can create magic staves",
+  "Dazing Spell": "You can daze creatures with the power of your spells",
+  "Deceitful": "You are skilled at deceiving others, both with the spoken word and with physical disguises",
+  "Deft Hands": "You have exceptional manual dexterity",
+  "Demon Hunter": "You are well-versed in demonic lore",
+  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
+  "Fast Crawl": "You are skilled at moving while prone",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Magical Aptitude": "You are skilled at spellcasting and using magic items",
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "Persuasive": "You are skilled at swaying attitudes and intimidating others into your way of thinking",
+  "Prodigy (Profession (Sigil-Scribe), Profession (Whittler))": "",
+  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
+  "Silent Spell": "You can cast your spells without making any sound",
+  "Spell Focus": "Choose a school of magic Any spells you cast of that school are more difficult to resist",
+  "Spell Penetration": "Your spells break through spell resistance more easily than most",
+  "Stealthy": "You are good at avoiding unwanted attention and slipping out of bonds",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 8,
+  "dex": 0,
+  "int": 10,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "int",
+ "initiator_level": 0,
+ "int": 16,
+ "item_changes_dict": {
+  "Amulet of Natural Armor +3": {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "nac",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Belt of Mighty Constitution +2": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "con",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "conChecks",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
+    }
+   ]
+  },
+  "Cloak of Resistance +5": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Headband of Vast Intelligence +6": {
+   "changes": [
+    {
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "int",
+     "type": "enh"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn. A headband of vast intelligence has one skill associated with it per +[[2]] bonus it grants. After being worn for [[24]] hours, the headband grants a number of skill ranks in those skills equal to the wearer's total hit dice."
+    }
+   ]
+  },
+  "Ioun Gauntlet": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "In its base form, an ioun gauntlet grants its wearer the ability to cast detect magic as a spell-like ability once per day. When the detect magic effect is active, the gauntlet also sheds illumination as light in the 60- foot cone of the detect magic effect. When an ioun stone is inserted into the matrix as a standard action, the wearer gains the associated bonus from the ioun stone as well an additional effect based on the shape of the ioun stone inserted, as listed below. While a creature can put on two ioun gauntlets , the wearer gains the additional benefit from only one inserted ioun stone cabochon : +[[1]] enhancement bonus on acrobatics checks."
+    },
+    {
+     "target": "skill.lin",
+     "text": "Disk : +[[1]] enhancement bonus on linguistics checks."
+    },
+    {
+     "target": "skill.kar",
+     "text": "Ellipsoid : +[[1]] enhancement bonus on knowledge (arcana) checks."
+    },
+    {
+     "target": "skill.kge",
+     "text": "Nodule : +[[1]] enhancement bonus on knowledge (geography) checks."
+    },
+    {
+     "target": "skill.kre",
+     "text": "Pentacle : +[[1]] enhancement bonus on knowledge (religion) checks."
+    },
+    {
+     "target": "skill.per",
+     "text": "Prism : +[[1]] enhancement bonus on perception checks."
+    },
+    {
+     "target": "skill.apr",
+     "text": "Pyramid : +[[1]] enhancement bonus on appraise checks."
+    },
+    {
+     "target": "skill.ste",
+     "text": "Rhomboid : +[[1]] enhancement bonus on stealth checks."
+    },
+    {
+     "target": "skill.sen",
+     "text": "Sphere : +[[1]] enhancement bonus on sense motive checks."
+    },
+    {
+     "target": "skill.kno",
+     "text": "Star : +[[1]] enhancement bonus on knowledge (nobility) checks."
+    },
+    {
+     "target": "skill.blf",
+     "text": "Trillian : +[[1]] enhancement bonus on bluff checks."
+    }
+   ]
+  },
+  "Prophet's Pectoral": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer adds 1d6 to the d% roll each time she uses such a spell."
+   ]
+  },
+  "Ring of Protection +3": {
+   "changes": [
+    {
+     "formula": "3",
+     "operator": "add",
+     "priority": 0,
+     "target": "ac",
+     "type": "deflection"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Shozoku of the Night Wind": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.ste",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.ste",
+     "text": "In addition, if the wearer is in illumination of less than normal light, she can use invisibility , as the spell, once per day. If the wearer is a ninja with the vanishing trick ninja trick, then the wearer can use that ability twice per day without the expenditure of any ki points and regardless of the surrounding light level."
+    }
+   ]
+  },
+  "Spectacles of Understanding": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
+ "known_list": [
+  15,
+  7,
+  12,
+  5,
+  8,
+  6,
+  9,
+  8,
+  5
+ ],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Grippli",
+  "Terran",
+  "Giant",
+  "Sylvan",
+  "Elven",
+  "Kelish",
+  "Protean",
+  "Aklo",
+  "Sphinx",
+  "Orc",
+  "Wayang",
+  "Draconic",
+  "Gnoll",
+  "Tengu",
+  "Undercommon",
+  "Ignan",
+  "Gnome",
+  "Abyssal",
+  "Dwarven",
+  "Aquan",
+  "Drow Sign Language"
+ ],
+ "level": 15,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 3,
+  "str": 0,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "luck": {
+  "attribute_bumps": {},
+  "audit": {
+   "attribute_points": {
+    "after": 3,
+    "before": 3,
+    "final": 3,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "feats": {
+    "after": 0,
+    "before": 0,
+    "final": 0,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "hp": {
+    "after": 180,
+    "before": 180,
+    "final": 195,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   },
+   "skill_ranks": {
+    "after": 210,
+    "before": 210,
+    "final": 240,
+    "luck_cost": 0,
+    "received": 0,
+    "spent": 0
+   }
+  },
+  "cap": 25,
+  "derivation": [
+   "= 0"
+  ],
+  "dr_pool": 0,
+  "e_kat_earned": 0,
+  "e_kat_reserve": 0,
+  "e_kat_store_cap": 99,
+  "feats": [],
+  "floor": -50,
+  "luck_feats": [],
+  "mod": 0,
+  "negative_feats": [],
+  "payout_changes": [],
+  "score": 0,
+  "stake": null,
+  "trait_benefits": {},
+  "trait_changes": {},
+  "traits": [],
+  "twist_fate_per_day": 0,
+  "type": "Default",
+  "values": {
+   "default": 0,
+   "negative": 0,
+   "proximity": 0
+  },
+  "vault": 0,
+  "vault_cap": 77
+ },
+ "magic_talent_items": [],
+ "main_stat": "int",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "manifesters": [],
+ "mannerisms": [
+  "Taps pencil",
+  "Rub hands together",
+  "Bursts into laughter",
+  "Crouches"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "ng",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "mythic": null,
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": [
+  "transmutation",
+  "evocation"
+ ],
+ "parents": "dead mother, loving father, raised in a poor household",
+ "personality_traits": [
+  "Enthusiastic",
+  "Agreeable",
+  "Goal-oriented",
+  "Judicious",
+  "Gregarious"
+ ],
+ "platnium": 20.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [
+  {
+   "changes": [],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Sigil-Scribe) - rank 15/15. Associate skills (ranks 1/4/7/10): Use Magic Device, Sense Motive, Perception, Profession.</em></p><hr><p><strong>Spark of Talent (Sp)</strong></p><p>Once per day the Wizard may cast a single 1st-level arcane spell of their choice, a faint glimmer of untrained potential.</p><hr><p><strong>Detect Magic (Sp)</strong></p><p>The Wizard can cast <strong>detect magic</strong> at will, sensing the presence and rough strength of magical auras nearby.</p>",
+   "name": "Profession Rank 5: (Sigil-Scribe)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.kar",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Sigil-Scribe) - rank 15/15.</em></p><hr><p><strong>Mage Armor (Sp)</strong></p><p>Once per day the Wizard can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p><hr><p><strong>Apprentice Spellcasting (Sp)</strong></p><p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p><hr><p><strong>Scholar's Insight (Ex)</strong></p><p>Years bent over grimoires sharpen the Wizard's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+   "name": "Profession Rank 15: (Sigil-Scribe)",
+   "uses": null
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.crf",
+     "type": "competence"
+    },
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.crf",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Whittler) - rank 9/10. Associate skills (ranks 1/4/7/10): Knowledge (local), Craft, Diplomacy.</em></p><hr><p><strong>Patient Mender (Ex)</strong></p><p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p><hr><p><strong>Calloused Grip (Ex)</strong></p><p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+   "name": "Profession Rank 5: (Whittler)",
+   "uses": {
+    "maxFormula": "1",
+    "per": "day",
+    "value": null
+   }
+  },
+  {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [],
+   "description": "<p><em>Profession (Sea Urchin Harvester) - rank 6/10. Associate skills (ranks 1/4/7/10): Appraise, Sleight of Hand.</em></p><hr><p><strong>Shifty Eyes (Ex)</strong></p><p>Always watching for marks and witnesses, the Wizard notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p><hr><p><strong>Quick Study (Ex)</strong></p><p>You pick up the tricks of any trade. You gain a +1 bonus on two skills associated with your profession, and you can attempt those skills untrained.</p>",
+   "name": "Profession Rank 5: (Sea Urchin Harvester)",
+   "uses": null
+  }
+ ],
+ "profession_feat_desc": {
+  "Multi Talented": "Your profession rank cap increases by 10.",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+ },
+ "profession_feats": [
+  "Multi Talented",
+  "True Calling"
+ ],
+ "profession_pool": 30,
+ "profession_ranks": [
+  {
+   "ability_theme": "arcane",
+   "ability_tier": "average",
+   "associate_skills": [
+    "Use Magic Device",
+    "Sense Motive",
+    "Perception",
+    "Profession"
+   ],
+   "cap": 15,
+   "name": "Sigil-Scribe",
+   "rank15_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day the Wizard can sheathe themselves in <strong>mage armor</strong>, conjuring a tangible field of force that wards off blows for the better part of a day.</p>",
+     "name": "Mage Armor (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Choose two spells of 1st or 2nd level from the wizard/sorcerer spell list (such as mage armor, shield, or magic missile). You can cast each twice per day as a spell-like ability (caster level equal to your character level).</p>",
+     "name": "Apprentice Spellcasting (Sp)",
+     "uses": {
+      "maxFormula": "4",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.kar",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years bent over grimoires sharpen the Wizard's recall of arcane lore. They gain a <strong>+2 competence</strong> bonus on Knowledge (arcana) checks, and may always take 10 on Knowledge (arcana) even when distracted or threatened.</p>",
+     "name": "Scholar's Insight (Ex)",
+     "uses": null
+    }
+   ],
+   "rank5_abilities": [
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>Once per day the Wizard may cast a single 1st-level arcane spell of their choice, a faint glimmer of untrained potential.</p>",
+     "name": "Spark of Talent (Sp)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>The Wizard can cast <strong>detect magic</strong> at will, sensing the presence and rough strength of magical auras nearby.</p>",
+     "name": "Detect Magic (Sp)",
+     "uses": null
+    }
+   ],
+   "ranks": 15,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 4,
+     "feat": "Prodigy"
+    }
+   ],
+   "skill_label": "Profession (Sigil-Scribe)"
+  },
+  {
+   "ability_theme": "craft",
+   "ability_tier": "bad",
+   "associate_skills": [
+    "Knowledge (local)",
+    "Craft",
+    "Diplomacy"
+   ],
+   "cap": 10,
+   "name": "Whittler",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Given 1 hour and any scrap materials at hand, you can repair a broken (but not destroyed) object, restoring it to working order; the repair lasts 24 hours before the object becomes broken again unless properly fixed. Once per day this same repair can instead be permanent. You also gain a +2 competence bonus on Craft checks made to repair items.</p>",
+     "name": "Patient Mender (Ex)",
+     "uses": {
+      "maxFormula": "1",
+      "per": "day",
+      "value": null
+     }
+    },
+    {
+     "changes": [
+      {
+       "formula": "1",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.crf",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Years at the bench and forge have hardened your hands against splinters, sparks, and burns. You gain a +1 competence bonus on Craft checks, and you take no penalty on Craft or Profession checks made while working in hazardous conditions such as a hot forge, a rocking ship, or extreme cold.</p>",
+     "name": "Calloused Grip (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 9,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 2,
+     "feat": "Prodigy"
+    }
+   ],
+   "skill_label": "Profession (Whittler)"
+  },
+  {
+   "ability_theme": "skill",
+   "ability_tier": "garbage",
+   "associate_skills": [
+    "Appraise",
+    "Sleight of Hand"
+   ],
+   "cap": 10,
+   "name": "Sea Urchin Harvester",
+   "rank15_abilities": [],
+   "rank5_abilities": [
+    {
+     "changes": [
+      {
+       "formula": "2",
+       "operator": "add",
+       "priority": 0,
+       "target": "skill.per",
+       "type": "competence"
+      }
+     ],
+     "contextNotes": [],
+     "desc": "<p>Always watching for marks and witnesses, the Wizard notices the small things others miss. They gain a <strong>+2</strong> competence bonus on Perception checks.</p>",
+     "name": "Shifty Eyes (Ex)",
+     "uses": null
+    },
+    {
+     "changes": [],
+     "contextNotes": [],
+     "desc": "<p>You pick up the tricks of any trade. You gain a +1 bonus on two skills associated with your profession, and you can attempt those skills untrained.</p>",
+     "name": "Quick Study (Ex)",
+     "uses": null
+    }
+   ],
+   "ranks": 6,
+   "skill_label": "Profession (Sea Urchin Harvester)"
+  }
+ ],
+ "professions": [
+  "Sigil-Scribe",
+  "Whittler",
+  "Sea Urchin Harvester"
+ ],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 2,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 5,
+  "ref": 5,
+  "will": 9
+ },
+ "school": "evocation",
+ "selected_traits": [
+  "Channel the Earth (Plane of Earth)",
+  "Seasoned Climber",
+  "Caretaker",
+  "Evident Supporter",
+  "Transmuter",
+  "Mammoth Master",
+  "Vagabond Child",
+  "Into Enemy Territory"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "Whenever you channel positive energy to heal living creatures, affected targets gain a +2 profane bonus to CMD to resist bull rush, reposition, and trip combat maneuvers. Alternately, if you channel negative energy to harm living creatures, affected targets take a –2 penalty to CMD against such combat maneuvers. This effect lasts 1 round.",
+   "name": "Channel the Earth (Plane of Earth)"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.",
+   "name": "Seasoned Climber"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Heal checks, and Heal is always a class skill for you.",
+   "name": "Caretaker"
+  },
+  {
+   "description": "The Sense Motive DC needed for a city guard, a politician, or other governmental functionary in a large town or larger settlement to gain a hunch about your trustworthiness is 25 (instead of 20). On a failed check, you're seen as trustworthy regardless of the situation.",
+   "name": "Evident Supporter"
+  },
+  {
+   "description": "Whenever you cast a spell from the transmutation school, its effects manifest at +1 caster level. Additionally, select one of the following transmutation spells: bear's endurance, bull's strength, cat's grace, eagle's splendor, fox's cunning, or owl's wisdom. Once per day when you cast that spell, its duration is doubled. A spell affected by this trait cannot be modified further by the Extend Spell metamagic feat or similar abilities.",
+   "name": "Transmuter"
+  },
+  {
+   "description": "You gain a +4 trait bonus on Handle Animal checks related to large creatures such as mammoths, mastodons, woolly rhinoceroses, and other megafauna.",
+   "name": "Mammoth Master"
+  },
+  {
+   "description": "Select one of the following skills: Disable Device or Sleight of Hand. You gain a +1 trait bonus on that skill, and it is always a class skill for you.",
+   "name": "Vagabond Child"
+  },
+  {
+   "description": "Pick one of the three categories of saving throw. You gain a +1 trait bonus on all saving throws of that type.",
+   "name": "Into Enemy Territory"
+  }
+ ],
+ "sheet_health": 90,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 240,
+ "skill_ranks": {
+  "acrobatics": 11,
+  "appraise": 17,
+  "bluff": 0,
+  "climb": 9,
+  "craft": 7,
+  "diplomacy": 6,
+  "disable device": 4,
+  "disguise": 0,
+  "escape artist": 14,
+  "fly": 1,
+  "handle animal": 3,
+  "heal": 13,
+  "intimidate": 7,
+  "knowledge arcana": 12,
+  "knowledge dungeoneering": 1,
+  "knowledge engineering": 10,
+  "knowledge history": 8,
+  "knowledge local": 7,
+  "knowledge nature": 0,
+  "knowledge nobility": 11,
+  "knowledge planes": 10,
+  "knowledge religion": 8,
+  "linguistics": 18,
+  "perception": 0,
+  "perform": 9,
+  "profession": 0,
+  "ride": 8,
+  "sense motive": 7,
+  "sleight of hand": 5,
+  "spellcraft": 2,
+  "stealth": 12,
+  "survival": 7,
+  "swim": 8,
+  "use magic device": 5
+ },
+ "skill_unlock": {
+  "base_skill": "appraise",
+  "ranks": 17,
+  "skill": "Appraise",
+  "unlock": {
+   "10": "As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.",
+   "15": "Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.",
+   "20": "Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.",
+   "5": "You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries."
+  },
+  "unlock_html": "<h2>Appraise</h2><p><strong>5 Ranks</strong>: You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries.</p><p><strong>10 Ranks</strong>: As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.</p><p><strong>15 Ranks</strong>: Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.</p><p><strong>20 Ranks</strong>: Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.</p>"
+ },
+ "specialty_schools": [
+  "enchantment",
+  "transmutation"
+ ],
+ "spell_changes_dict": {
+  "Flame Arrow": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "nonCrit",
+     "damageType": [
+      "fire"
+     ],
+     "formula": "1d6",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Flame Arrow: turns ammunition such as arrows, bolts, shuriken, and sling stones into fiery projectiles that deal extra fire damage on a hit and can ignite flammable objects (but not creatures). Duration [[10]] min./level."
+  },
+  "Form of the Dragon III": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "nonCrit",
+     "damageType": [
+      "untyped"
+     ],
+     "formula": "12d8",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Form of the Dragon III: as form of the dragon II, but you take the form of a Huge chromatic or metallic dragon, gaining +[[10]] size Strength, +[[8]] size Constitution, +[[8]] natural armor, fly [[120]] feet (poor), blindsense [[60]] feet, darkvision [[120]] feet, a breath weapon, DR [[10]]/magic, frightful presence (DC = this spell's DC), and immunity to one element. Natural attacks are one bite ([[2d8]]), two claws ([[2d6]]), two wings ([[1d8]]), and one tail slap ([[2d6]]). The breath weapon recharges after [[1d4]] rounds between uses and allows a Reflex save for half breath damage; lines become [[100]]-foot lines and cones become [[50]]-foot cones. Duration [[1]] minute/level."
+  },
+  "Form of the Exotic Dragon II": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "nonCrit",
+     "damageType": [
+      "untyped"
+     ],
+     "formula": "8d8",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Form of the Exotic Dragon II: as form of the exotic dragon I, but you take the form of a Large imperial or primal dragon, gaining +[[6]] size Strength, +[[4]] size Constitution, +[[6]] natural armor, fly [[90]] feet (poor), darkvision [[60]] feet, a breath weapon, DR [[5]]/magic, and resistance to one form of energy or another bonus. Natural attacks are one bite ([[2d6]]), two claws ([[1d8]]), a tail slap ([[1d8]]), and either a gore ([[2d6]]) for an imperial dragon or two wings ([[1d6]]) for a primal dragon. The breath weapon allows a Reflex save to halve the breath damage; lines become [[80]]-foot lines and cones become [[40]]-foot cones. Duration [[1]] minute/level."
+  }
+ },
+ "spell_list_choose_from": [
+  [
+   "Acid Splash",
+   "Chameleon Scales",
+   "Daze",
+   "Disrupt Undead",
+   "Flare",
+   "Haunted Fey Aspect",
+   "Jolt",
+   "Light",
+   "Mage Hand",
+   "Mending",
+   "Message",
+   "Open/Close",
+   "Root",
+   "Scrivener's Chant",
+   "Touch of Fatigue"
+  ],
+  [
+   "Alchemical Tinkering",
+   "Ant Haul",
+   "Blood Money",
+   "Charm Person",
+   "Endothermic Touch",
+   "Hide Weapon",
+   "Pesh Vigor"
+  ],
+  [
+   "Buoyancy",
+   "Daze Monster",
+   "Diminish Resistance",
+   "Fleshcurdle",
+   "Full Pouch",
+   "Mark of Blood",
+   "Staggering Fall",
+   "Sun's Disdain",
+   "Telekinetic Volley",
+   "Touch of Mercy",
+   "Unnatural Lust",
+   "Visualization of the Body"
+  ],
+  [
+   "Draconic Malice",
+   "Enter Image",
+   "Flame Arrow",
+   "Kalistocrat's Nightmare",
+   "Slave to Sin"
+  ],
+  [
+   "Concealed Breath",
+   "Irregular Size",
+   "Lost Passage",
+   "Mad Sultan's Melody",
+   "Malicious Spite",
+   "Nixie's Lure",
+   "Reduce Person, Mass",
+   "Vermin Shape I"
+  ],
+  [
+   "Apathy",
+   "Flexile Curse",
+   "Passing Fancy, Mass",
+   "Rune of Ruin",
+   "Smug Narcissism",
+   "Sun's Disdain, Mass"
+  ],
+  [
+   "Beast Shape IV",
+   "Bull's Strength, Mass",
+   "Elemental Body III",
+   "Fluid Form",
+   "Jatembe's Ire",
+   "Tar Pool",
+   "Transformation",
+   "Undead Anatomy III",
+   "Utter Contempt"
+  ],
+  [
+   "Crime Wave",
+   "Form of the Exotic Dragon II",
+   "Ice Body",
+   "Inflict Pain, Mass",
+   "Planetary Adaptation, Mass",
+   "Plant Shape III",
+   "Power Word Blind",
+   "Statue"
+  ],
+  [
+   "Angelic Aspect, Greater",
+   "Euphoric Tranquility",
+   "Form of the Dragon III",
+   "Frightful Aspect",
+   "Symbol of Insanity"
+  ]
+ ],
+ "spell_list_choose_from_dict": [
+  [
+   "Acid Splash",
+   "Chameleon Scales",
+   "Daze",
+   "Disrupt Undead",
+   "Flare",
+   "Haunted Fey Aspect",
+   "Jolt",
+   "Light",
+   "Mage Hand",
+   "Mending",
+   "Message",
+   "Open/Close",
+   "Root",
+   "Scrivener's Chant",
+   "Touch of Fatigue"
+  ],
+  [
+   "Alchemical Tinkering",
+   "Ant Haul",
+   "Blood Money",
+   "Charm Person",
+   "Endothermic Touch",
+   "Hide Weapon",
+   "Pesh Vigor"
+  ],
+  [
+   "Buoyancy",
+   "Daze Monster",
+   "Diminish Resistance",
+   "Fleshcurdle",
+   "Full Pouch",
+   "Mark of Blood",
+   "Staggering Fall",
+   "Sun's Disdain",
+   "Telekinetic Volley",
+   "Touch of Mercy",
+   "Unnatural Lust",
+   "Visualization of the Body"
+  ],
+  [
+   "Draconic Malice",
+   "Enter Image",
+   "Flame Arrow",
+   "Kalistocrat's Nightmare",
+   "Slave to Sin"
+  ],
+  [
+   "Concealed Breath",
+   "Irregular Size",
+   "Lost Passage",
+   "Mad Sultan's Melody",
+   "Malicious Spite",
+   "Nixie's Lure",
+   "Reduce Person, Mass",
+   "Vermin Shape I"
+  ],
+  [
+   "Apathy",
+   "Flexile Curse",
+   "Passing Fancy, Mass",
+   "Rune of Ruin",
+   "Smug Narcissism",
+   "Sun's Disdain, Mass"
+  ],
+  [
+   "Beast Shape IV",
+   "Bull's Strength, Mass",
+   "Elemental Body III",
+   "Fluid Form",
+   "Jatembe's Ire",
+   "Tar Pool",
+   "Transformation",
+   "Undead Anatomy III",
+   "Utter Contempt"
+  ],
+  [
+   "Crime Wave",
+   "Form of the Exotic Dragon II",
+   "Ice Body",
+   "Inflict Pain, Mass",
+   "Planetary Adaptation, Mass",
+   "Plant Shape III",
+   "Power Word Blind",
+   "Statue"
+  ],
+  [
+   "Angelic Aspect, Greater",
+   "Euphoric Tranquility",
+   "Form of the Dragon III",
+   "Frightful Aspect",
+   "Symbol of Insanity"
+  ]
+ ],
+ "spell_riders_dict": {
+  "Apathy": {
+   "attack": null,
+   "riders": [
+    "Range: [[400 + 40*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; target takes a -[[5]] penalty on all skill checks and ability checks to investigate, pursue, or otherwise advance its goals in relation to the designated subject, and typically does not attempt such checks if they can be avoided; if the designated activity would be harmful for the target to refrain from doing (such as eating, sleeping, or holding its breath underwater), the target gains a +[[5]] bonus on the saving throw or check required by its inaction, and receives a new saving throw with the same +[[5]] bonus immediately after to negate this spell; this bonus increases by [[1]] for each subsequent check required by the same condition; the spell immediately ends if you directly interact with the target, such as by engaging it in combat or targeting it with another spell or effect"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Blood Money": {
+   "attack": null,
+   "riders": [
+    "Range: [[0]] ft; cast just before casting another spell; cutting your hand deals [[1d6]] damage to you and transforms your blood into one material component of your choice required by the second spell cast that round; components worth more than [[1]] gp cost an additional [[1]] point of Strength damage, plus a further [[1]] point for every full [[500]] gp of the component's value (a component worth [[500]]-[[999]] gp costs [[2]] points total, [[1]],[[000]]-[[1]],[[499]] gp costs [[3]] points total, and so on); magic items cannot be created with blood money; components created this way transform back into blood at the end of the round if not used as a material component; spellcasters without blood cannot cast blood money, and casters immune to Strength damage cannot use it to create valuable material components"
+   ],
+   "save": null
+  },
+  "Charm Person": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; humanoid target treats the caster as a trusted friend and ally (attitude: friendly) for [[@spells.primary.cl.total]] hours; target gains a +[[5]] bonus on its save if it is currently being threatened or attacked by the caster or its allies; caster may give the target orders, but must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do (no retries); affected creature never obeys suicidal or obviously harmful orders, though it might be convinced something very dangerous is worth doing; any act by the caster or its apparent allies that threatens the charmed creature breaks the spell; caster must speak the target's language to communicate commands or be skilled at pantomime; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Daze": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affects one humanoid of [[4]] or fewer HD (humanoids with [[5]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Daze Monster": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; functions like daze, but affects any one living creature of [[6]] or fewer HD (creatures of [[7]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Endothermic Touch": {
+   "attack": null,
+   "riders": [
+    "Range: touch; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; target is staggered and moves at half its normal speed (rounded down to the next [[5]]-foot increment) for [[@spells.primary.cl.total]] rounds; target can hold its breath for twice as long as normal during this time; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Flare": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; target is dazzled for [[1]] minute; sightless creatures and creatures already dazzled are unaffected; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Fleshcurdle": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Fortitude DC [[ 10 + @slvl + @castMod ]] negates; choose one effect to inflict for [[@spells.primary.cl.total]] rounds: attacks - one natural attack takes a -[[2]] penalty on attack and damage rolls, only scores a critical hit on a natural [[20]], and only deals x[[2]] damage on a confirmed critical hit; defense - natural armor bonus decreases by -[[4]] (minimum +[[0]]); movement - one movement speed is halved; amorphous creatures and creatures without flesh (such as elementals, oozes, plants, gaseous or incorporeal creatures, and skeletons): immune; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "fortitude"
+   }
+  },
+  "Lost Passage": {
+   "attack": null,
+   "riders": [
+    "Range: [[400 + 40*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] partial; creatures that enter the area must attempt a new Survival check to avoid becoming lost immediately, regardless of the outcome of their saving throw; a creature that fails its save takes a penalty on such Survival checks equal to [[2*@spells.primary.cl.total]], treats all squares it enters as difficult terrain while in the area and for [[@spells.primary.cl.total]] hours thereafter, loses the benefit of all effects that let it ignore difficult terrain, and takes a -[[4]] penalty to Dexterity; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Mad Sultan's Melody": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; targets only creatures with the ooze type, creatures with the amorphous special ability, and non-bipedal creatures with a special association with the Outer Gods, no two of which may be more than [[30]] ft. apart; draws the targets' attention to you as per the fascinate bardic performance ability; it affects mindless creatures despite the mindless quality normally granting immunity to mind-affecting effects, though it does not ignore any other immunity to mind-affecting effects a creature might have; you do not need to maintain the effect each round, as the music continues for the spell's duration; creatures fascinated by this spell become immune to any other casting of it for [[24]] hours after the spell ends, and the spell ends for all targets if the fascination breaks on any of them for any reason (such as an attack); if you have the bardic performance class feature and the fascinate bardic performance, you can choose to use the spell's save DC or a DC equal to [[10]] plus half your levels in the class that grants bardic performance plus your Charisma modifier, whichever is higher; if you use the latter DC, each round of the melody costs [[1]] round of bardic performance and counts as an active performance for determining how many performances you can have active; each time you cast this spell you take [[1d4]] Wisdom damage, or [[2d6]] sanity damage instead if your campaign uses the sanity system; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Malicious Spite": {
+   "attack": null,
+   "riders": [
+    "Cost: [[150]] gp material component (powdered turquoise); Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; the target's malice is directed at a second creature designated by you at the time of casting; the target subtly attempts to slander, abuse, and plot against that individual, remaining within its financial and ethical means while pushed to the limit of what it would do to a hated foe; each day, the target takes [[2]] Wisdom damage as the spite dominates its thoughts, which can only be alleviated by the target performing a spiteful act against the designated individual; when the spell ends, the target remembers its spiteful behavior but not the motivation behind it; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Pesh Vigor": {
+   "attack": null,
+   "riders": [
+    "Cost: [[15]] gp material component (dose of pesh); Range: touch; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; target gains a +[[2]] enhancement bonus to Strength; as a free action once per round, the target can increase the enhancement bonus by [[2]] for [[1]] round, taking [[1d6]] nonlethal damage and reducing the spell's duration by [[1]] additional round; for every [[5]] caster levels the caster has, the target can increase the bonus by an additional [[2]] (taking an additional [[1d6]] nonlethal damage and reducing the duration by [[1]] additional round per increase), to a maximum enhancement bonus of +[[10]] and [[4d6]] nonlethal damage at caster level [[15]]th; the target cannot spend more rounds than remain in the duration; when the spell ends, the target becomes fatigued; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Power Word Blind": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; target blinded permanently if it has [[50]] hp or less; blinded for [[1d4+1]] minutes if it has [[51]]-[[100]] hp; blinded for [[1d4+1]] rounds if it has [[101]]-[[200]] hp; a creature with [[201]] or more hit points is unaffected; spell resistance: yes"
+   ],
+   "save": null
+  },
+  "Slave to Sin": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates (see below); if the target fails its save, a glowing rune identifying its most susceptible deadly sin appears on its body (usually the brow) and it is overwhelmed with an inability to repress urges to indulge that sin; each round at the start of its turn, the target must attempt a new Will save against the spell's DC: if it succeeds, it is sickened for that round by the distractions of its sin; if it fails, it is sickened and staggered as it spends part of its action wallowing in its sin; lasts up to [[@spells.primary.cl.total]] rounds; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates (see below)",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Smug Narcissism": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; lasts [[10*@spells.primary.cl.total]] minutes; the target is constantly distracted, always looking for a reflective surface to gaze upon, giving it a -[[2]] penalty on all skill checks; in social situations it tries to comment on how attractive it is or how ugly others are by comparison; in combat it worries about its appearance and focuses on defense rather than offense, favoring defensive spells, fighting defensively, or total defense over offensive actions; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Staggering Fall": {
+   "attack": null,
+   "riders": [
+    "Range: [[100 + 10*@spells.primary.cl.total]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates staggered condition (the additional falling damage applies regardless of this save); on a failure the target is staggered until it succeeds at a new Will save, attempted as a free action each round, or until the spell's duration ends; a staggered creature must take a standard action to stand up; [[1d6]] additional damage from the fall; spell duration [[@spells.primary.cl.total]] rounds; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates staggered condition (the additional falling damage applies regardless of this save); on a failure the target is staggered until it succeeds at a new Will save, attempted as a free action each round, or until the spell's duration ends; a staggered creature must take a standard action to stand up",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Sun's Disdain": {
+   "attack": null,
+   "riders": [
+    "Range: touch; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; the cursed creature gains light blindness and is blinded for [[1]] round if exposed to bright light, such as sunlight or a daylight spell; the cursed creature is dazzled for as long as it remains in areas of bright light; it is treated as particularly susceptible to sunlight for the purposes of resolving spells such as searing light, sunbeam, and sunburst; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Tar Pool": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Reflex DC [[ 10 + @slvl + @castMod ]] partial; on a failed save the creature becomes entangled; see text for additional per-round and per-action saves; deals [[ (min(10, floor(@spells.primary.cl.total/2)))d6 ]] fire damage to creatures in the area when the tar appears; an entangled creature receives a saving throw each round to free itself, or can spend a move action to attempt a Strength check or Escape Artist check (DC equal to this spell's save DC) to break free; it costs [[2]] squares of movement to enter a square in the area, and the DC of Acrobatics checks within the area increases by [[5]]; the area is difficult terrain; a creature that moves into or starts its turn in the area takes [[2d6]] fire damage and must reattempt its Reflex save or become entangled; a creature that falls prone in the area takes a -[[4]] penalty on its Reflex save against the tar and on Strength and Escape Artist checks to escape; a creature that escapes the tar still takes fire damage from the tar until the spell ends or it spends a full-round action removing the tar; a creature with tar on it takes a -[[4]] penalty on Acrobatics and Fly checks made to fly with wings or similar appendages; spell resistance: no"
+   ],
+   "save": {
+    "dc": "",
+    "description": "partial; on a failed save the creature becomes entangled; see text for additional per-round and per-action saves",
+    "harmless": false,
+    "type": "reflex"
+   }
+  }
+ },
+ "spellbooks": [
+  {
+   "capped_level": 15,
+   "casting_level_num": 15,
+   "casting_level_string": "high",
+   "casting_stat": "int",
+   "display": "Wizard",
+   "divine": false,
+   "highest_spell_known": 8,
+   "level": 15,
+   "name": "wizard",
+   "spell_list_choose_from": [
+    [
+     "Acid Splash",
+     "Chameleon Scales",
+     "Daze",
+     "Disrupt Undead",
+     "Flare",
+     "Haunted Fey Aspect",
+     "Jolt",
+     "Light",
+     "Mage Hand",
+     "Mending",
+     "Message",
+     "Open/Close",
+     "Root",
+     "Scrivener's Chant",
+     "Touch of Fatigue"
+    ],
+    [
+     "Alchemical Tinkering",
+     "Ant Haul",
+     "Blood Money",
+     "Charm Person",
+     "Endothermic Touch",
+     "Hide Weapon",
+     "Pesh Vigor"
+    ],
+    [
+     "Buoyancy",
+     "Daze Monster",
+     "Diminish Resistance",
+     "Fleshcurdle",
+     "Full Pouch",
+     "Mark of Blood",
+     "Staggering Fall",
+     "Sun's Disdain",
+     "Telekinetic Volley",
+     "Touch of Mercy",
+     "Unnatural Lust",
+     "Visualization of the Body"
+    ],
+    [
+     "Draconic Malice",
+     "Enter Image",
+     "Flame Arrow",
+     "Kalistocrat's Nightmare",
+     "Slave to Sin"
+    ],
+    [
+     "Concealed Breath",
+     "Irregular Size",
+     "Lost Passage",
+     "Mad Sultan's Melody",
+     "Malicious Spite",
+     "Nixie's Lure",
+     "Reduce Person, Mass",
+     "Vermin Shape I"
+    ],
+    [
+     "Apathy",
+     "Flexile Curse",
+     "Passing Fancy, Mass",
+     "Rune of Ruin",
+     "Smug Narcissism",
+     "Sun's Disdain, Mass"
+    ],
+    [
+     "Beast Shape IV",
+     "Bull's Strength, Mass",
+     "Elemental Body III",
+     "Fluid Form",
+     "Jatembe's Ire",
+     "Tar Pool",
+     "Transformation",
+     "Undead Anatomy III",
+     "Utter Contempt"
+    ],
+    [
+     "Crime Wave",
+     "Form of the Exotic Dragon II",
+     "Ice Body",
+     "Inflict Pain, Mass",
+     "Planetary Adaptation, Mass",
+     "Plant Shape III",
+     "Power Word Blind",
+     "Statue"
+    ],
+    [
+     "Angelic Aspect, Greater",
+     "Euphoric Tranquility",
+     "Form of the Dragon III",
+     "Frightful Aspect",
+     "Symbol of Insanity"
+    ]
+   ],
+   "spells_known_list": [
+    15,
+    7,
+    12,
+    5,
+    8,
+    6,
+    9,
+    8,
+    5
+   ],
+   "spells_per_day_list": [
+    1,
+    5,
+    5,
+    5,
+    4,
+    4,
+    3,
+    2,
+    1
+   ],
+   "spells_prepared_per_level": [
+    1,
+    5,
+    5,
+    5,
+    4,
+    4,
+    3,
+    2,
+    1
+   ]
+  }
+ ],
+ "spells_prepared_per_level": [
+  1,
+  5,
+  5,
+  5,
+  4,
+  4,
+  3,
+  2,
+  1
+ ],
+ "sphere_boons": [
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Painful Magic",
+  "Wild Magic",
+  "Addictive Casting",
+  "Verbal Casting"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Painful Magic",
+  "Wild Magic",
+  "Addictive Casting",
+  "Verbal Casting",
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {
+  "Spell Focus": [
+   "greater spell focus",
+   "spell specialization",
+   "varisian tattoo",
+   "greater spell specialization"
+  ],
+  "Spell Penetration": [
+   "greater spell penetration",
+   "spell chain"
+  ]
+ },
+ "story_feats": [
+  "Spell Focus",
+  "Spell Penetration",
+  "Improved Initiative",
+  "Fast Crawl"
+ ],
+ "str": 11,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 15,
+ "total_rolled_hp": 84,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 3,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Wooden stake",
+ "weapon_size": "Medium",
+ "weapon_size_attack_penalty": 0,
+ "weapon_size_source": null,
+ "weapon_size_steps": 0,
+ "weight_number": 213,
+ "wis": 12,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}

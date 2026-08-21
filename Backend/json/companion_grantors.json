@@ -35,8 +35,16 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["normal", "plant", "vermin"],
-      "choice": { "odds": 90, "on_win": "granted", "on_loss": "domain" }
+      "species_pool": [
+        "normal",
+        "plant",
+        "vermin"
+      ],
+      "choice": {
+        "odds": 90,
+        "on_win": "granted",
+        "on_loss": "domain"
+      }
     },
     {
       "grantor": "ranger",
@@ -44,8 +52,14 @@
       "level_gained": 4,
       "effective_level": "level - 3",
       "conditional": null,
-      "species_pool": ["normal"],
-      "choice": { "odds": 75, "on_win": "granted", "on_loss": "bond_with_allies" }
+      "species_pool": [
+        "normal"
+      ],
+      "choice": {
+        "odds": 75,
+        "on_win": "granted",
+        "on_loss": "bond_with_allies"
+      }
     },
     {
       "grantor": "hunter",
@@ -53,7 +67,9 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["normal"],
+      "species_pool": [
+        "normal"
+      ],
       "choice": null
     },
     {
@@ -62,9 +78,14 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["familiar"],
-      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
-      "choice": { "odds": 70, "on_win": "granted", "on_loss": "bonded_object" }
+      "species_pool": [
+        "familiar"
+      ],
+      "choice": {
+        "odds": 70,
+        "on_win": "granted",
+        "on_loss": "bonded_object"
+      }
     },
     {
       "grantor": "adept",
@@ -72,8 +93,9 @@
       "level_gained": 2,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["familiar"],
-      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "species_pool": [
+        "familiar"
+      ],
       "choice": null
     },
     {
@@ -81,10 +103,17 @@
       "creature_type": "familiar",
       "level_gained": 1,
       "effective_level": "level",
-      "conditional": { "bloodline": "arcane" },
-      "species_pool": ["familiar"],
-      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
-      "choice": { "odds": 70, "on_win": "granted", "on_loss": "bonded_object" }
+      "conditional": {
+        "bloodline": "arcane"
+      },
+      "species_pool": [
+        "familiar"
+      ],
+      "choice": {
+        "odds": 70,
+        "on_win": "granted",
+        "on_loss": "bonded_object"
+      }
     },
     {
       "grantor": "witch",
@@ -92,8 +121,9 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["familiar"],
-      "species_data": "familiar_choices.json (not built yet -- resolver emits nothing)",
+      "species_pool": [
+        "familiar"
+      ],
       "choice": null
     },
     {
@@ -102,7 +132,12 @@
       "level_gained": 5,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["horse", "pony", "camel", "elk"],
+      "species_pool": [
+        "horse",
+        "pony",
+        "camel",
+        "elk"
+      ],
       "choice": null
     },
     {
@@ -111,7 +146,12 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["horse", "pony", "camel", "elk"],
+      "species_pool": [
+        "horse",
+        "pony",
+        "camel",
+        "elk"
+      ],
       "choice": null
     },
     {
@@ -120,7 +160,12 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["horse", "pony", "camel", "elk"],
+      "species_pool": [
+        "horse",
+        "pony",
+        "camel",
+        "elk"
+      ],
       "choice": null
     },
     {
@@ -129,8 +174,10 @@
       "level_gained": 1,
       "effective_level": "level",
       "conditional": null,
-      "species_pool": ["eidolon"],
-      "species_data": "eidolon_base_forms.json (not built yet -- resolver emits nothing; D4's degraded eidolon takes its base form from pf_content_companions.json[\"pf-eidolon-forms\"])",
+      "species_pool": [
+        "eidolon"
+      ],
+      "species_note": "the species pool is eidolon_base_forms.json, not an animal_choices tier; the resolver's eidolon section reads it directly and the unchained summoner degrades to a base form with no evolutions (companions ticket 07, ruling 1)",
       "choice": null
     },
     {
@@ -140,8 +187,12 @@
       "level_gained": 1,
       "effective_level": "max(bab, handle_animal, ride) - 3",
       "minimum": 1,
-      "conditional": { "talent": "animal companion" },
-      "species_pool": ["normal"],
+      "conditional": {
+        "talent": "animal companion"
+      },
+      "species_pool": [
+        "normal"
+      ],
       "choice": null
     }
   ]

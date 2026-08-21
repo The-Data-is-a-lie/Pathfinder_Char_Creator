@@ -1,0 +1,112 @@
+{
+ "aspects": {
+  "bat": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), wing (B)."
+  },
+  "bear": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "boar": {
+   "prerequisites": "",
+   "description": "Gore (P), hoof (B)."
+  },
+  "bull": {
+   "prerequisites": "",
+   "description": "Gore (P), hoof (B), slam (B)."
+  },
+  "crocodile": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), tail slap (B)."
+  },
+  "dinosaur, deinonychus": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), talon (S)."
+  },
+  "dolphin/orca": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), slam (B)."
+  },
+  "dragon": {
+   "prerequisites": "Dragonblood Shifter",
+   "description": "Bite (B, P, S), tail slap (B), wing (B)."
+  },
+  "dragonfly": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), wing (B)."
+  },
+  "electric eel": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), tail slap (B)."
+  },
+  "falcon": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), talon (S)."
+  },
+  "fey": {
+   "prerequisites": "Feyform Shifter",
+   "description": "Bite (B, P, S), sting (P)."
+  },
+  "frog": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "lizard": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), tail slap (B)."
+  },
+  "mantis": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "monkey": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "mouse": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "octopus": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), tentacle (B)."
+  },
+  "owl": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), talons (S)."
+  },
+  "scorpion": {
+   "prerequisites": "",
+   "description": "Pincers (B), sting (P)."
+  },
+  "snake": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S), tail slap (B)."
+  },
+  "spider": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "stag": {
+   "prerequisites": "",
+   "description": "Gore (P), hoof (B)."
+  },
+  "swarm": {
+   "prerequisites": "Swarm Shifter",
+   "description": "Bite (B, P, S), pincers (B), sting (P)."
+  },
+  "tiger": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "wolf": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  },
+  "wolverine": {
+   "prerequisites": "",
+   "description": "Bite (B, P, S)."
+  }
+ }
+}

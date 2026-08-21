@@ -1717,7 +1717,12 @@
     ],
     "signed_off": true,
     "species_pool": [
-      "cat, small"
+      "bat",
+      "hawk",
+      "owl",
+      "rat",
+      "raven",
+      "weasel"
     ],
     "species_pool_raw": [
       "bat",
@@ -1729,7 +1734,7 @@
       "weasel"
     ],
     "verdict_source": "deep-dive read of the full rules text (map #18 #40)",
-    "why": "\"limits winter witch familiar choices to\""
+    "why": "\"limits winter witch familiar choices to\" -- resolved against familiar_choices.json (2026-08-13); fox stays in species_pool_raw only, outside the v1 familiar pool"
   },
   "Witch/Wyrm Witch": {
     "confidence": "high",

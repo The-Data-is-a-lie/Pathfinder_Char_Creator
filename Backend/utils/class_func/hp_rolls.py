@@ -1,6 +1,7 @@
 import random
 from math import ceil, floor
 
+from utils.class_func import luck
 from utils.class_func.skill_ranks import final_ability_mod, homebrew_enabled
 
 
@@ -39,4 +40,22 @@ def total_hp_calc(character):
     con_mod = final_ability_mod(character, 'con')
     character.sheet_health = character.total_hp_rolls + character.Hit_dice1
     character.Total_HP = character.sheet_health + con_mod * character.level
+    # Luck trades against HP in both directions -- 5 HP buys +1 luck, and "2 hit points ... for -1
+    # luck" pays a seller back. It lands on Total_HP and deliberately NOT on sheet_health:
+    # sheet_health means "full hit dice", which is the house rule itself (skills-and-hp.md), and a
+    # luck purchase does not repeal the house rule -- it spends the result of it. Keeping the two
+    # apart is what lets test_house_invariants keep asserting the full-HP rule unchanged.
+    stake = luck.stake_of(character)
+    _before = character.Total_HP
+    _spent = luck.settle(stake, luck.CURRENCY_HP, character.Total_HP)
+    character.Total_HP -= _spent
+    # THE PAYOUT IS NO LONGER ADDED HERE. It is delivered as a pf1 `mhp` change on the Negative Luck
+    # Payout item instead, for a reason this line could not fix: the FoundryVTT module builds actor
+    # HP from `total_rolled_hp` (the raw dice), never from `Total_HP`, so every point added here was
+    # invisible on the sheet the character is actually played from. A change lands.
+    #
+    # The BUY side still settles here, because that is a deduction from a pool this function owns
+    # and a negative `mhp` change would misrepresent it as a penalty rather than a smaller pool.
+    _received = luck.payout(stake, luck.PAYOUT_HP)
+    luck.record_audit(character, 'hp', _before, _spent, _received, character.Total_HP)
     return character.Total_HP

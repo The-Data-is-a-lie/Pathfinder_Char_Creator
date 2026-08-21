@@ -1,0 +1,119 @@
+{
+  "_readme": [
+    "The familiar species pool: the ten PF1e Core Rulebook base familiars, schema-matched to",
+    "animal_choices.json's species entries (starting-statistics block only). Familiars carry NO",
+    "'<n>th-level advancement' block: they never advance on their own chassis -- all scaling is the",
+    "master-level table in familiar_master_bonus.json, applied by class_func/familiars.py.",
+    "Conventions (same as animal_choices.json): 'ac' records ONLY the natural armor bonus; 'attack'",
+    "damage dice carry no Str mod (the stat builder adds it); species keys are lowercase and match",
+    "the pf-content 'pf-familiars' compendium Actor names case-insensitively (the module norms both).",
+    "Improved familiars are deliberately absent: their alignment/caster-level prerequisites are",
+    "unverified, and the v1 ruling (companions ticket 02) scoped v1 to the base list.",
+    "Master-facing species perks (+3 Fly for a bat, ...) live in familiar_master_bonus.json, NOT",
+    "here: any extra key on a species entry would be folded into the creature's own stat block by",
+    "companion_stats.merge_advancement, and the perk belongs to the master.",
+    "Sources: d20pfsrd bestiary pages + the wizard Familiar class feature page, fetched 2026-08-12."
+  ],
+  "familiar": {
+    "bat": {
+      "starting statistics": {
+        "size": "diminutive",
+        "speed": "5 ft. , fly 40 ft. (good)",
+        "ac": "+0 natural armor",
+        "attack": "bite (1d3)",
+        "ability scores": {"str": 1, "dex": 15, "con": 6, "int": 2, "wis": 14, "cha": 5},
+        "special qualities": "blindsense 20 ft., low-light vision"
+      }
+    },
+    "cat": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "30 ft. ",
+        "ac": "+0 natural armor",
+        "attack": "2 claws (1d2), bite (1d3)",
+        "ability scores": {"str": 3, "dex": 15, "con": 8, "int": 2, "wis": 12, "cha": 7},
+        "special qualities": "low-light vision, scent"
+      }
+    },
+    "hawk": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "10 ft. , fly 60 ft. (average)",
+        "ac": "+0 natural armor",
+        "attack": "2 talons (1d4)",
+        "ability scores": {"str": 6, "dex": 17, "con": 11, "int": 2, "wis": 14, "cha": 7},
+        "special qualities": "low-light vision"
+      }
+    },
+    "lizard": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "20 ft. , climb 20 ft. ",
+        "ac": "+0 natural armor",
+        "attack": "bite (1d4)",
+        "ability scores": {"str": 3, "dex": 15, "con": 8, "int": 1, "wis": 12, "cha": 2},
+        "special qualities": "low-light vision"
+      }
+    },
+    "owl": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "10 ft. , fly 60 ft. (average)",
+        "ac": "+0 natural armor",
+        "attack": "2 talons (1d4)",
+        "ability scores": {"str": 6, "dex": 17, "con": 11, "int": 2, "wis": 15, "cha": 6},
+        "special qualities": "low-light vision"
+      }
+    },
+    "rat": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "15 ft. , climb 15 ft. , swim 15 ft. ",
+        "ac": "+0 natural armor",
+        "attack": "bite (1d3)",
+        "ability scores": {"str": 2, "dex": 15, "con": 11, "int": 2, "wis": 13, "cha": 2},
+        "special qualities": "low-light vision, scent"
+      }
+    },
+    "raven": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "10 ft. , fly 40 ft. (average)",
+        "ac": "+0 natural armor",
+        "attack": "bite (1d3)",
+        "ability scores": {"str": 2, "dex": 15, "con": 8, "int": 2, "wis": 15, "cha": 7},
+        "special qualities": "low-light vision; speaks one language of its master's choice"
+      }
+    },
+    "toad": {
+      "starting statistics": {
+        "size": "diminutive",
+        "speed": "5 ft. ",
+        "ac": "+0 natural armor",
+        "attack": null,
+        "ability scores": {"str": 1, "dex": 12, "con": 6, "int": 1, "wis": 15, "cha": 4},
+        "special qualities": "low-light vision, scent"
+      }
+    },
+    "viper": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "20 ft. , climb 20 ft. , swim 20 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d2 plus poison)",
+        "ability scores": {"str": 4, "dex": 17, "con": 8, "int": 1, "wis": 13, "cha": 2},
+        "special qualities": "low-light vision, scent, poison (bite--injury; save Fort DC 9; frequency 1/round for 6 rounds; effect 1d2 Con damage; cure 1 save)"
+      }
+    },
+    "weasel": {
+      "starting statistics": {
+        "size": "tiny",
+        "speed": "20 ft. , climb 20 ft. ",
+        "ac": "+1 natural armor",
+        "attack": "bite (1d3 plus attach)",
+        "ability scores": {"str": 3, "dex": 15, "con": 10, "int": 2, "wis": 12, "cha": 5},
+        "special qualities": "low-light vision, scent, attach (automatically grapples on a successful bite, dealing automatic bite damage each round attached)"
+      }
+    }
+  }
+}

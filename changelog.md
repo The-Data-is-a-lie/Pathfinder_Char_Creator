@@ -19,6 +19,1559 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The Foundry module's Character Generator button can now appear in four places, each a
+  per-user setting** (2026-08-20). It had exactly one home: a `position: fixed` button appended
+  straight to `document.body` at load, floating over the canvas with nowhere else to go. It now
+  also offers a tool in the **Token scene controls**, an entry at the bottom of the **sidebar tab
+  rail** (below the settings gear), and a button inside Foundry's own **Create Actor dialog** —
+  four independent `client`-scoped booleans (`buttonFloating`, `buttonSceneControls`,
+  `buttonCreateActor`, `buttonSidebar` in the module's `scripts/module.js`), so several can be on
+  at once and each person at the table answers for themselves.
+  - *Independent checkboxes, not one dropdown:* someone who puts it in the Create Actor dialog
+    usually still wants it on the scene controls. *Client scope, not world:* a GM's layout is not
+    a table-wide rule. *Defaults floating-on / new-three-off:* an upgrade must not silently
+    rearrange anyone's interface.
+  - **From the Create Actor dialog the generator honours the Name and Folder already typed there**
+    — `createAndAssignActor()` takes an overrides object, and the name rides in on the same single
+    `actor.update()` that already carried the folder (setting it on `Actor.create` would just be
+    overwritten by the injected sheet). Bonded creatures already shared that folder id, so they
+    follow. Blank name keeps the generated one; blank folder keeps the auto-created
+    *Random Characters*.
+  - **Rejected: honouring the dialog's Type dropdown (PC/NPC).** Foundry forbids changing a
+    document's type after creation, so an "NPC" would mean passing the type to `Actor.create` and
+    stripping `type` from the injected payload — building an actor of a type the backend's export
+    template was never written for. That is a data change wearing a button placement's clothes, and
+    it would have shipped untested. Always a `character`.
+  - ⚠ **Three v13 traps this cost time on.** A scene-control tool defining BOTH `onChange` (v13) and
+    `onClick` (v10–v12) fires twice — `SceneControls##onChange` calls the new callback and then the
+    old one as a deprecation shim — so the tool generated two characters per click. Exactly one is
+    set now, chosen by the shape of the hook payload, and `tools/button_locations.test.mjs` asserts
+    the other is absent. Carrying both handlers reads like harmless version-tolerance; it is not.
+    Second, `getSceneControlButtons` fires only when SceneControls *re-prepares* its control list,
+    which a plain `ui.controls.render()` does not do — the toggle silently did nothing until the
+    next reload, and the fix is `render({reset: true})`. Third, the Create Actor dialog's own
+    `<form id="document-create">` never exists in the DOM: DialogV2 interpolates the template into
+    its own `<form class="dialog-form">` and the HTML parser drops a nested `<form>` start tag, so
+    the fields must be addressed through the outer form.
+  - **Rejected: gating registration of the hooks on the settings.** Each hook is registered
+    unconditionally and reads its setting when it fires, matching the module's existing
+    "read settings at click time" idiom — a toggle then lands with no reload, and there is no
+    init-order question about whether the setting existed yet.
+  - The click sequence itself moved out of the button's event listener into
+    `scripts/generator-launch.js` (`runGenerator(overrides)` / `openGeneratorDialog()`) so all four
+    locations share one path; `scripts/button-locations.js` owns the three new injectors, and
+    `tools/button_locations.test.mjs` pins the scene-control injector against BOTH Foundry shapes
+    (v13's Record keyed `tokens`, v10–v12's Array keyed `token`) and asserts the render-hook
+    injectors swallow errors rather than break a core hook for every other module on it.
+- **An eidolon's evolutions now reach its Foundry sheet, under their own `Evolutions` band**
+  (companion-sheets ticket 05, 2026-08-18). The creature the backend spends 16 evolution points
+  building arrived on a sheet showing only the seven specials its class table grants — darkvision,
+  link, share spells — and **not one of the choices it was built from**. It now gets a divider in
+  the same family as Variable Modifiers and Natural AC, an opening line naming the pool
+  (`Evolution Pool — 16 EP`, saying what was spent and what Aspect took), the base form's free
+  evolutions, and then every bought evolution as a real class-feature item carrying its rules text.
+  The band above it now names the creature too — `Class Features (Eidolon)`, not
+  `(Animal Companion)`.
+  Each item says **on its face** whether the numbers counted it: 73 of the 81 evolutions cannot be
+  expressed in a stat block, and one that read "Folded" when nothing had folded it would be a lie
+  the player has no way to catch. Repeats are one item with a count (`Limbs (Arms) (1 EP) ×2`)
+  rather than two — the renderer de-duplicates by name, so two identical items would have silently
+  collapsed into one and taken the count with them.
+  *Rejected:* folding evolutions into the single class-features band, which would have mixed a
+  fixed class table with a list of purchases; and a separate "not folded" band, which would have
+  split each evolution's rules text away from the note about it.
+  An **unchained** summoner's eidolon still gets the band, carrying one item that names the debt —
+  a feature that is merely absent reads exactly like a bug.
+- **A summoner's eidolon is now generated, and it is built rather than picked** (spec §8 "Eidolon
+  (v1.1)", companions ticket 07, 2026-08-17). A chained summoner rolls one of the **six** base forms
+  in either size, keeps its free evolutions, and then spends its **evolution-point pool** — greedily
+  and at random, the way every other chooser in this repo works — until nothing legal is affordable.
+  Legality is data, not code: cost, prerequisites (including the eidolon's own ability scores),
+  form restriction, size, each evolution's printed repeat cap and the table's Max Attacks column.
+  At 10th level the summoner may divert up to 2 EP to itself as **Aspect** (6 at 18th), rolled
+  inside the cap and rendered through the ordinary class-feature machinery. The creature arrives at
+  a full stat block — HD, BAB, per-form saves, AC, abilities, bought natural attacks, skills — with
+  its feats drawn from the whole General/Combat feat list behind the fail-closed prerequisite
+  reader, dated to the eidolon's own track (`Eidolon 6: Combat Reflexes`).
+  *Rejected:* widening `generic_class_option_chooser`, which counts picks rather than spending
+  points, and the Spheres funding pattern, which exists to convert feats into talents — an eidolon
+  spends a class-table resource and no feat is involved.
+  Only 8 of the 81 evolutions can be expressed as numbers in a stat block; the other 73 are **named
+  on `stats.unapplied`** with their own holdback text rather than silently dropped, which is the
+  same discipline `progression_override` rides.
+  *Deliberately not built:* both renderers (a ticket on the companion-sheets map), evolutions as
+  buffs or weapon conditionals, and animal flaws or feat-tax children for a creature that is
+  neither an animal nor covered by the animal allowlist.
+- **Oversized weapons are exported as a marker, not as scaled dice** (ruling D11, 2026-08-17).
+  Four new payload fields at the tail of the contract — `weapon_size`, `weapon_size_steps`,
+  `weapon_size_source`, `weapon_size_attack_penalty` — all inert (`steps: 0`) on an ordinary
+  character. A character holding the Titan Fighter's *giant weapon wielder*, the Titan Mauler's
+  *massive weapons*, `Titan Technique`, `Titan Slayer` or `Bigfolk Training` wields a weapon built
+  for a larger creature; sources do not stack (take the best), the step caps at one unless the full
+  Titan Slayer chain is held, and the attack penalty is the source's own stated value — −4 for
+  *massive weapons*, none for `Bigfolk Training` — reduced by *incredible heft* or `Titan Grip`.
+  The backend deliberately does **not** scale damage dice: the authority is the house
+  `Base_Weapon_Damage_Dice.JS` ladder, the FoundryVTT module already carries the `sizefordamage`
+  resource that `weapon_size_steps` writes into, and the web sheet pre-scales for display — a
+  fourth implementation in the backend could only disagree with those three.
+- **Mythic: a generated character can now walk a mythic path** (spec §14, the whole
+  [mythic map](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/mythic/map.md)
+  backend, rulings 2026-08-12 → 14). A new named input, `mythic`, beside `seed`/`optimize`:
+  absent is never mythic — no rarity roll, so the eleven goldens differ by exactly one
+  `"mythic": null` line — an int 1–10 forces that tier, `true` rolls one decaying toward the low
+  end (weight 11 − tier; level-banding was rejected, a level-4 tier-3 character is legal). What a
+  mythic character gets: a **role-weighted path** (casters lean Archmage/Hierophant, martials
+  Champion/Guardian, skill classes Trickster — every path stays possible) with its tier-1 feature
+  choice and 10th-tier capstone; **one path ability per tier** drawn from the full RAW pools
+  scraped whole from AoN (~53–62 per path + 43 universal merged in at build time — the map priced
+  hand-authoring ~280 and the scrape delivered 597); **mythic feats at tiers 1/3/5/7/9** as a
+  separate allowance appended after the feat-count guarantee, never an ordinary slot, collision
+  names wearing a `(Mythic)` suffix because 139 of the 158 share a name with a normal feat;
+  the **chassis** (power pool 3 + 2×tier as a tracked-not-enforced resource, surge d6→d12,
+  Amazing Initiative = tier, path bonus HP folded into Total_HP, +2 ability increases at even
+  tiers riding as an attributable dict like level-up stats); **mythic spell annotations** — the
+  247 mythic modes already sitting in `data/spells.csv` render onto spells the character knows,
+  nothing is sampled; and a **mythic tradition** (the house carve-out from Mythic Spheres,
+  2026-08-14: traditions for EVERY mythic character — 0–3 drawbacks decaying toward none, each
+  buying a boon or +1 mythic power/day, at most one quality, with **Boon: Expertise Sieg-inverted**
+  to draw a qualified-but-unselected option from the character's own classes) plus **sphere
+  masteries for sphere users** (RAW universal path abilities, merged into the candidate pool for
+  spheres actually held). Everything lands in class features with owner `mythic` and TIER stamps —
+  visible on both sheets today through machinery they already read — and the payload gains one
+  namespaced `mythic` block, the luck precedent. The power metric sees the chassis (surge as nova
+  EV, bumps through ability_scores) and prints its own blindness (`_blind.mythic`: path-ability
+  adders deferred by ruling). Two sabotage-proven witnesses: `gates/validate_mythic.py` (config —
+  caught a dropped path and an orphaned schedule row in its own proving) and
+  `check_mythic` + a per-character leak tripwire over all 1,020 non-mythic sweep generations
+  (behaviour — its first run caught `mythic: 1` being read as `true` and rolling tier 2).
+  Rejected alternatives, recorded: a rarity roll (any draw moves the goldens; the deleted
+  `randomize_mythic` stub rolled 0.5% and was untestable by construction), relaxing
+  `remove_mythic()` for mythic characters (it is name-collision disambiguation, not a pool
+  filter — relaxing it would let Mythic rows clobber normal rows in every name-keyed dict),
+  and a pseudo-class row in the class schedule (the 68-class roster gates would each need
+  carve-outs; the parallel same-schema `mythic_schedule.json` needs none). Rendering the block
+  on the FoundryVTT module and the web sheet is ticket 06, the follow-up effort.
+- **Full house-rules optimized walls: generated tanks now hit AC 40–50+ at level 10+** (spec §15's
+  V4 pass, rulings 2026-08-13). A new named input, `house_rules`, beside `optimize`: absent or
+  false is exactly the optimizer that shipped yesterday — the ten prior goldens rewrote
+  byte-identical, the proof — while `{optimize: "wall", house_rules: true}` builds the house AC
+  kickers. What a full-house wall now gets: **Strength of a Warrior** promoted from Sieg's Feats
+  Doc into the live corpus as two Armor-type rows (Str and Con variants, prereq BAB +1 and
+  Str/Con 20+, each baking its modifier as a numeric `nac` change so the bonus lands on the sheet
+  and in base AC parity-safely — reachable only through the wall's new house feat spine, invisible
+  to every random pool); **TWF + Two-Weapon Defense** under the ruled sword-and-board wielding;
+  the **Cautious Warrior** combat trait (+1 dodge while fighting defensively — injected at trait
+  selection, deliberately NOT in traits.csv where random mode would sample it); and a
+  **defensive-sphere package** — every full-house wall dabbles one of shield / guardian / dual
+  wielding / open hand (shield-weighted), talents picked curated-first, with the Shield sphere's
+  Active Defense scored RAW (+2, +1 per 4 BAB) via the new `power_adders.json::sphere_defense`
+  bucket. Ten more AC stances were curated into `stance_ac` (ally-only, AoO-only, free-hand and
+  stat-scaled wordings deliberately left, with the reasons). **Measured** (80 walls, all 10 wall
+  classes × L10/12/15/20): fight-state AC min 40 / median 51 / max 70 at L10–12, ratio median
+  2.07× the CR row, min 1.59× — gated by the new `margins_house` bar (1.5) in the optimized-builds
+  sweep, pinned by a new `optimized_wall` golden whose seed exercises every lever at once, and
+  A/B-reportable via `report_ab_delta.py --role wall --house`. Variety held without a sampler:
+  only 26 of the 80 carried any Strength of a Warrior (the 20+ prereq is a real gate), 56 carried
+  TWD, all four spheres appeared. Rejected alternative: folding the kickers into the metric's
+  RAW-only posture unconditionally — the metric instead keys every house row off what the SHEET
+  carries (the feat, the trait, the talent), so it needs no request flag and an organic RAW
+  two-weapon character scores its TWD honestly too.
+
+### Fixed
+- **A bonded creature's Foundry sheet is levelled at its master, not at its hit dice** (module
+  `createCompanions.js`, ruled 2026-08-19). A druid 10's companion read `Animal Companion 9` and a
+  summoner 10's eidolon read `Eidolon 8`: ticket 02's recipe had the class item driven at
+  `stats.hd`, and `entry.effective_level` — which the payload has emitted since the creature
+  shipped — went unread. Two things say the level is the right number to drive it at. Every formula
+  `pf-content` prints on these bodies is written against the master's level: the eidolon body states
+  *its own hit dice* as `round((@class.level - 1) * .75) + 1`, and its evolution pool, feat count and
+  save steps are the same shape, so at HD they were all computing one to three levels short. And the
+  creature's own feat labels are already dated on the master's track — a summoner 12's eidolon can
+  carry `Eidolon 11: Deceitful` under a class line reading 9.
+  **The numbers did not move.** pf1 has no companion table — it reads a class level as a count of
+  hit dice — so it now over-derives BAB, saves and HP by the table lag, and `reconcile()` seeds the
+  difference back out; the sheet stays on the PF1e figures the payload and the web sheet both carry.
+  *Rejected:* letting the creature grow to its master's level (a house buff of +1–2 BAB, +1 save and
+  1–2 HD, and it would need the backend, six goldens and two validators to move with it or Foundry
+  and the web sheet would disagree). The backend is untouched by this fix.
+  Also corrected: the 2.2.0 release note claimed pf1's `floor(@class.level / 3)` raises Str/Dex a
+  level early. Checked row by row against `animal_companion.json`, it reproduces the column
+  **exactly at all twenty levels** — given the master's level, which is what the module was
+  withholding. The two compendium items stay deleted for the reason that always held: the backend
+  already folded that table, and leaving them counts it twice.
+- **A bonded creature's trained skills were 3 low on the Foundry sheet, and pf-content's
+  "Requires Manual Setup" note is now answered rather than shipped** (module `createCompanions.js`,
+  2026-08-19). Found by pulling on that note, which asks the player to pick the eidolon's four extra
+  class skills and delete whichever evolution-pool tracker does not apply. The first half exposed a
+  silent arithmetic bug: `companion_stats._skills` adds **+3 to every skill it ranks**, but pf1 only
+  grants that bonus off `classSkills` on the class item, and the module never wrote it. `pf-content`
+  declares six class skills on its Animal Companion where PF1e gives **nine** (the backend's
+  `ANIMAL_SKILLS` is the RAW nine), six on its eidolon, and a degraded creature has **no** class item
+  from the pack at all — so the golden reef snake was 3 short on 3 of 5 ranked skills, the golden
+  eidolon on **27 of 32**, and a degraded creature on every one. Nothing caught it because nothing
+  compares skill *totals*: `reconcile()` covers saves, HP and BAB, and the harness summed ranks.
+  The module now flags every ranked skill, merging into the pack's list rather than replacing it,
+  deletes the setup note, and keeps only the chained/unchained pool tracker the entry's
+  `unchained_degraded` flag selects. Three new harness assertions, each sabotage-proven.
+  **Left open, deliberately:** RAW gives an eidolon 6 class skills + 4 of its choice, and the backend
+  ranks 32 skills at Int ≥ 3 and grants +3 on all of them. Matching pf1 to the payload was the
+  module's job under D2; deciding whether the *payload* should stop over-granting is a backend
+  ruling that would re-baseline goldens, and it is not made here.
+- **An eidolon now clones the body the compendium has for it.** The Foundry renderer looked its
+  creature up by **species**, which is the actor's name for every animal, mount and familiar — the
+  Bird actor is called "Bird". An eidolon's species is its base-form slug (`biped`) and its actor is
+  "Biped Baseform", so every eidolon missed and degraded to a bare NPC with no art and no natural
+  attacks, while the field authored for exactly this match (`pf_content`, whose 1:1 mapping the data
+  gate already asserts) sat unread on the entry. The lookup now tries `pf_content` first and keeps
+  species as the fallback, so nothing that matched before stops matching.
+- **A rolled summoner is no longer hollow.** Both summoner variants have been rollable since the
+  class pool opened, and neither produced an eidolon at all — the grantor row was real but its
+  species list had never been authored, so the resolver skipped it and even the *degraded* entry D4
+  promised was missing. Chained summoners now build a full creature (above); **unchained** ones
+  emit the named base form with its identity and compendium actor, and say on the entry exactly
+  what is missing and why — their subtype-granted evolutions, alignment locks and separate EP table
+  are not sourced. An unmodelled feature is described, never silently absent.
+- **The eidolon evolution data had five prerequisites nothing was enforcing.** The scrape reads
+  headings, and the spell-like-ability chain (basic → minor → major → ultimate) plus both undead
+  gates state their prerequisite in the *tail* of the benefit prose. The data gate now sweeps every
+  "must possess the X evolution" sentence against what the entry declares, so a re-scrape that
+  rewords a benefit fails loudly instead of quietly unlocking a 4-EP evolution.
+- **Every generated character now wears armour its class is actually allowed, and shields exist at
+  all** (gear-legality plan, rulings 2026-08-17). Five defects of one shape — a lookup that misses
+  and yields a falsy default, so nothing ever fails loudly:
+  - `data.armor_type_mapping` keyed its entries on **tuples** while the lookup passed a string, so
+    it never matched once and every character fell through to its `'H'` default. That is why the
+    committed goldens held a **wizard in Full plate**, a **druid in Half-plate**, a rogue in
+    Hellknight half-plate and a monk in armour, all passing.
+  - When the band was `None`, `list_selection` drew a **random section out of all five** — Shields
+    and Tower included — because `None` meant "no limit" rather than "no armour".
+  - `shield_chooser` returned only on its ~10% Tower branch and `shield_flag_func` mutated then
+    returned `None`, which the caller assigned back over the attribute it had just set. **No
+    character this generator has ever produced wore a shield.** Four downstream consumers were dead
+    as a result: `build_archetype`'s shield and light/medium armour signals, `power_metric`'s
+    `requires_shield` sphere-defence rows, and its monk Wisdom-to-AC adder (every monk wore plate).
+  - `payload.gear_display` read three keys that do not exist (`spell_failure` twice — the key is
+    `arcane spell failure chance` — and `shield check penalty`), so arcane spell failure was `0`
+    on every character, and read the **armour's** max-dex for the shield.
+  - **Where the rules live now:** `Backend/json/armor_proficiency.json`, **derived** by
+    `scripts/build/build_armor_proficiency.py` from `class_data.json`'s own proficiency prose and
+    gated by `scripts/gates/validate_gear_legality.py`. Flattening the tuple keys was rejected: a
+    hand-authored 68-class list with nothing checking it is the arrangement that just failed, and
+    correcting its spelling would not have made anything check it. Runtime prose parsing was
+    rejected too — a regex that stops matching at runtime yields the same falsy default.
+- Heaviest legal band always, the item inside it still random; a multiclass **unions** the bands and
+  **intersects** the taboos, then **weights** the result so a rolled arcane caster usually — but not
+  always — stays inside its own arcane-spell-failure exemption. A wizard/fighter goes unarmoured
+  about three times in four; the fourth time it wears the armour and is handed **Arcane Armor
+  Training** free to take the edge off, because a gish in plate is a legitimate if poor build and
+  forbidding it outright gave a suspiciously tidy result every single time. Below caster level 3
+  there is no grant and the character simply eats the failure. `magus_armor_chooser` is deleted —
+  its 7th/13th-level promotions are moot when the magus's exemption covers light armour only, and
+  its heavy branch sat behind an `elif` that could never fire. The druid and shifter are held to padded/leather/hide and wooden shields; the shifter's
+  prose names no allowlist and `armor.json` has no material column, so it borrows the druid's, as a
+  ruling made in the open rather than a silent copy.
+- Shields are a ~20% roll over every shield-proficient character, ranged excluded outright, drawn
+  from a **curated ten** of `armor.json`'s fourteen (the Klar and both Madus are exotic
+  weapon-shields; the Poisoner's Buckler is 1,505 gp with empty penalty fields). Tower shields go
+  only to the four classes whose prose grants them, at ~10%. A shield beside a two-handed weapon
+  earns a free `Pikemans Training` for a polearm or spear, is kept as-is for a 2nd-level Titan
+  Mauler, and otherwise **drops the shield** rather than re-drawing the weapon — re-drawing would
+  bias the weapon distribution toward one-handers every time a shield came up.
+- **Four dead downstream consumers came back to life**, which is the point of all of the above.
+  Measured over 1,029 scored characters: `power_metric`'s monk Wisdom-to-AC adder fired **0 → 30
+  times** (every monk used to wear plate, and the adder requires being unarmoured), and
+  `build_archetype`'s `armor_light` / `armor_medium` / `shield` signals can now take values other
+  than zero. The `requires_shield` sphere-defence rows are reachable too — `optimized_wall` is the
+  build that pins them, and it now carries both a Heavy steel shield and Active Defense. The
+  metric's AC axes moved with it: mean `ac` ratio 1.049 → 0.936 and `ac_combat` 1.363 → 1.273
+  across the comparable rows, which is characters no longer being scored in armour they could
+  never legally have worn.
+- **Optimized walls actually wear the shield their policy promises** — and the finding behind it
+  is bigger: **no generated character has ever worn a shield.** `shield_chooser` returns only on
+  its 10%-tower branch (the plain `'Shield'` case falls through to None), and the caller assigns
+  `shield_flag_func`'s return value — which is always None, the function mutates and returns
+  nothing — so every payload ships `shield_ac 0, shield_flag None`; all ten goldens confirm it.
+  The global fix changes every random character (gear, gold, AC) and so moves every golden —
+  **that ruling is deferred to Daniel, recorded as an open ticket** (optimal-builder 11). Here the
+  promise is kept role-gated: a role whose `weapon_policy` is `one_handed_shield` forces the
+  shield on (guarded off two-handed/ranged fallback draws), which no golden pins — the ten prior
+  goldens stayed byte-identical.
+- **Familiar-bond archetypes now restrict to familiar species, not phantom animals.** Winter
+  Witch's RAW list (bat, hawk, owl, rat, raven, weasel — fox stays raw-only, outside the v1 pool)
+  had been curated down to the single phantom pool `['cat, small']`, because at curation time no
+  familiar species file existed to resolve against; Putrefactor's rat/toad list had resolved to
+  nothing at all. `build_companion_archetypes.py` now keeps **two vocabularies** — animal names for
+  companion/mount bonds, `familiar_choices.json` names for the familiar classes — rather than one
+  merged set, which in a first attempt let druid/cavalier fly-speed restrictions derive Diminutive
+  familiar bodies as nature-bond companions. The overrides file was corrected, the generated table
+  rebuilt, and `validate_companion_archetypes.py` learned the familiar vocabulary. Caught by the
+  new familiar invariant (a witch's familiar species must come from the RAW pool). Known remaining
+  oddity, recorded not fixed: Swarm Monger (a druid whose nature bond becomes a familiar) keeps
+  its signed-off `['cat, small']` — the resolver takes the creature type from the grantor row, so
+  a type-changing archetype is unmodeled and an animal body is the honest fallback.
+- **`LICENSE-OGL.txt` section 15 now attributes what the repo actually ships** (mythic ticket 08's
+  sweep). Added verified copyright lines for *Mythic Adventures*, *Advanced Race Guide*, *Ultimate
+  Campaign*, *Advanced Class Guide* and *Occult Adventures* (quoted from Paizo's PRD section 15),
+  short-form unverified lines for *Ultimate Intrigue* / *Horror Adventures*, and verified lines for
+  *Spheres of Power* / *Spheres of Might*; stopped dropping the four *Path of War* /
+  *Divergent Paths* lines — that drop predated Path of War being wired into the generator.
+  All changes live in `build_ogl_license.py`'s data (the generated file is never hand-edited).
+  Known remaining gap, recorded in the ticket: the ~50-booklet Player Companion / Campaign Setting
+  tail cited by `data/feats.csv` has no lines yet. Rejected alternative: composing author lists
+  from memory for unverifiable works — short-form year+publisher lines flagged unverified instead.
+
+### Added
+- **Familiars arrive at a full stat block** (spec §8's v1 debt, companions ticket 02's promise
+  finally kept — a witch used to generate no familiar at all). The `species_pool: ["familiar"]`
+  grantor rows now resolve: species from the ten Core Rulebook base familiars
+  (`json/familiar_choices.json`, schema-matched to `animal_choices.json`), scaling from the
+  master-level table (`json/familiar_master_bonus.json`: natural armor, Int override, special
+  abilities; SR = master level + 5 from 11th). The numbers key off the **master**, not a chassis —
+  half the master's HP, the master's BAB, best-of base saves, the master's skill ranks overlaid at
+  the familiar's own modifiers, HD = master level — so they are computed by a **late pass**
+  (`utils/class_func/familiars.py::stat_familiars`, after luck resolution) instead of inside
+  `stat_bonded_creatures`, where the master's HP/skills/luck are not yet final and every number
+  would be wrong; body geometry reuses `companion_stats`' parsers so the attack/armor rules cannot
+  drift apart. Entries also ship `master_abilities` — the table abilities with one-line rules text
+  plus the species perk — recorded as prose, never folded into the master's math (Alertness is
+  conditional on arm's reach). Gates: new `validate_familiar_data.py` (pool exact, sizes Tiny-,
+  table cumulative and complete); the names gate sweeps the pool against `pf-familiars` (all 10
+  match); the invariant sweep grew a familiar branch asserting the master-derived numbers against
+  the payload's own, with a coverage guard so a sweep that granted none fails. New `witch` golden
+  (unconditional grant — coverage cannot be realigned away by a pool change);
+  `optimized_controller` deliberately rebaselined — the wizard now draws its 70/30 arcane-bond
+  roll and a rat familiar, shifting every later draw for that seed. The other eight goldens are
+  byte-identical, the proof random mode elsewhere never moved. Known simplification: familiar
+  feats (Weapon Finesse et al.) are not modeled, same as companions. Improved familiars stay
+  deferred (unverified prerequisites), recorded in §8.
+- **Foundry module: "Optimized builds (dev)" setting** — a client-scoped checkbox (default off) in
+  the module settings that adds `optimize: true` to the generation request at click time, so
+  optimized mode can be A/B-tested from Foundry without console surgery on `deliverData.json`.
+  Mirrors the `forceLuckDirection` pattern: per-machine, merged in per click (never persisted with
+  the dialog's saved inputs), so it can never ship enabled or leak into a stored request. The hint
+  warns it must stay off against the hosted backend, whose positional parser predates the
+  `optimize` key and would misread the request. Rejected alternative: a dialog field — the dialog
+  rewrites its saved state on every save, which is exactly how the flag kept getting wiped.
+- **The power metric sees burst damage and damage reduction** (spec §15's first design ruling made
+  code). `burst_raw`/`burst_expected` score a second declared round-shape — the round-1 alpha, with
+  the limited-use class offense the character actually has switched on (rage, smite, challenge,
+  bard song, flanked sneak attack; `power_adders.json::nova`) against the same CR damage column, so
+  a ratio above 1 is a spike above the table. A new `dr` axis reports always-on damage reduction
+  from a curated class table (barbarian's scaler, the fighter's armor mastery;
+  `power_adders.json::dr`) plus DR stated in text the character actually holds — deliberately NOT
+  `class_ability_desc` (no level filter — it lists abilities the class gets at levels the
+  character hasn't reached) and NOT chosen class options (their prose states scaling maxima and
+  conditionals; the first measurement read DR 15 off a level-5 character that way — choice-granted
+  DR gets curated into the table instead). Energy resistance is harvested into diagnostics only. Both gate layers cover the new
+  tables (misspelled model or class name fails loudly), and the blind list shrank accordingly.
+
+- **Optimized mode — the opt-in build-quality mode, v1** (spec §15; `optimize: true | "<role>"` as
+  a named JSON key beside `seed`). A power **role** is chosen right after the classes are
+  (`utils/class_func/power_role.py`, table in `Backend/json/power_roles.json`: seven roles, a
+  68-class candidate map, floors, measured margins, 2–3 gear ladders each, feat spines, stat
+  priorities, dips) and the spine choosers serve it: the **gear ladder** buys the big six at the
+  best affordable tier — each bonus type once, so typed non-stacking holds by construction — with
+  a per-role enhancement split replacing the hardcoded .5/.35/.15; **stats** honour the dice and
+  place all six slots by role priority with level-up bumps and inherents on the primaries;
+  **weapon and armor** are picked deterministically by role policy and AC math; the **feat spine**
+  flows through the existing legality machinery (spine candidates join the pool upstream of the
+  prereq filter); an explicit `multi_class='Y'` becomes the least-hurt single-dip shape, and
+  casting-role first picks dip from non-casters only. Random mode is byte-identical — the seven
+  random goldens never moved, and two new optimized fixtures (`optimized_striker`,
+  `optimized_controller`, forced roles) pin the optimized path with coverage predicates. Gated
+  twice: `gates/validate_power_roles.py` (the table resolves against code, corpus and roster;
+  casting roles carry no dips) and `tests/test_optimized_builds.py` (floors hold, primaries beat
+  the same-seed random twin, measured margins clear — **proven to fail**: a sabotaged do-nothing
+  optimizer trips 50 checks). The A/B report (`build/report_ab_delta.py --mode optimized`) is the
+  human witness: over 40 same-seed pairs at L5–20, saves rose (fort median +0.40), AC +0.12,
+  DC +0.17, with damage flat-to-up even among the worst pairs.
+  - *Deferred, recorded:* the payload `optimize` block (needs the web sheet's positional key-order
+    coordination first — the fixed payload-shape manifest makes a mode-dependent key a breaking
+    change); leaf scoring (talents/skills/spells); a DR purchase lever (then `dr` returns as a
+    wall primary); a burst-caster role (needs a kineticist blast rule or destruction-sphere leaf
+    scoring); luck stays random by ruling.
+- **The metric and the optimizer see the 3pp offense layer — v2, the sweaty pass** (rulings
+  2026-08-11: min-max as hard as the rules allow; items, spells, everything). The metric now
+  folds: **Path of War bonus dice** parsed from prose the character holds (`additional NdM`;
+  stance dice ride every attack in both rounds — Savage Stance's +2d8 — while the best readied
+  strike's dice land once in the nova round); **haste and ki extra attacks** (Boots of Speed in
+  the gear list, monk/ninja ki as a nova rule); a **vital-strike standard-action alpha** as a
+  second nova shape (burst = the better routine); **spheres talent** structured `changes`; and a
+  curated **`power_adders.json::spell_buffs`** table — every buff the character can cast, in two
+  duration tiers (persistent 10+ min/level counts in both rounds; combat buffs in the nova round,
+  no action-economy cap, a declared upper bound), with size buffs stepping the weapon dice
+  (righteous might, enlarge person). Defensive buff values land in `ac_buffed`/`saves_buffed`
+  diagnostics only — the base AC/save axes stay parity-locked to `derive.js`. The optimizer
+  exploits all of it on the optimized path: PoW stance/maneuver picks prefer the biggest parsed
+  dice, martial-role casters weight the buff list ×1000 in spell selection (the Gorum war-priest
+  gets built, not just measured — cleric/oracle/inquisitor/omdura gained striker candidacy, and
+  the striker stat priority keeps the casting stat second so those buffs stay castable), and the
+  martial ladders buy Boots of Speed. Random mode untouched; seven random goldens byte-identical;
+  the `optimized_striker` fixture regenerated (its measured dpr: 246, burst 288 at L16 — stance
+  dice plus a +12d6 strike).
+  - *Stated upper-bound edges:* castability is list-membership (the casting-stat minimum is not
+    checked); talent prose is not parsed (structured `changes` only); ~12 of 1,033 maneuvers
+    fail the dice parse.
+- **The metric and the optimizer see fight-state DEFENSE — v3, the wall pass** (rulings
+  2026-08-12, calibrated against a real 60+-AC L11 table fighter). A new benchmarked
+  **`ac_combat`** axis scores what a built wall actually defends at — sheet AC plus defensive
+  buffs and talents, the RAW defensive posture (Fighting Defensively +2/+3-with-3-Acrobatics-ranks,
+  +1 more and half penalty with Crane Style; the house-ambient Combat Expertise at 1+BAB/4), the
+  active PoW stance's AC (flat prose parses; scaled stances curated in
+  `power_adders.json::stance_ac`), monk Wis-to-AC when unarmored (`::ac_class`), style feats, the
+  ambient Dodge, wild-shape natural armor by druid band (`::wild_shape`, defense only —
+  natural-attack routines stay blind), and a held-text AC harvest — while the base `ac` axis stays
+  sheet-state and derive.js-parity-locked. A raw **`cmd`** axis makes maneuver-defense stacking
+  visible, and Stoneskin joins the buff table as DR. The optimizer builds it: wall roles pick
+  stances by AC (offense roles keep dice), the wall spine runs the Crane/Snapping Turtle chains,
+  walls bank 3 Acrobatics ranks, ladders buy the jingasa, and the druid gains wall candidacy.
+  Measured: an optimized L11 wall fighter lands at **ac_combat 1.71×** the CR row (41 vs 24),
+  Crane Style and Snapping Turtle live.
+  - **Two defects this pass caught and fixed (optimized path only):** the prereq parser required
+    every comma-part verbatim, so an `or`-clause ("base attack bonus +2 or monk level 1st")
+    locked every style feat out of every pool, forever — satisfied-by-any-alternative now applies
+    under optimization (widening random mode would move goldens and is its own decision); and the
+    gear ladder's greedy top-tier buying let a +5 ring eat 60% of a mid-level purse — a single
+    ladder purchase now caps at half the remaining gold unless it is the cheapest tier, which
+    bought the whole big-six spread AND raised the fort save.
+- **QC cards for optimized characters** (`build/qc_optimized.py`): one six-line block per
+  character — stats with placement, weapon/armor with enhancements, big-six purchases, spine
+  feats landed/missing, every floored and margined axis with its verdict, unspent gold — stamped
+  PASS or FLAG with the reasons and the seed to replay. `--flags-only` prints just the cards
+  worth a human's time; exit code 1 when anything flags, so it scripts.
+
+### Fixed
+- **The power metric now counts the house-waived ambient feats.** `feat_tax.json`'s
+  `tax_primary_blocklist` (Power Attack, Weapon Finesse, Combat Expertise, Dodge, …) means every
+  qualifying character at this table simply HAS those feats — they are never picked and never
+  exported, so the metric's Power Attack model, gated on the name appearing in a payload bucket,
+  had **never fired for anyone**: every martial's baseline damage was understated. Found by the
+  `optimized_striker` golden's coverage predicate hunting for Power Attack and finding it in no
+  bucket. The metric now folds `power_metric.ambient_feats` (qualification = each feat's own
+  published prerequisite against final scores); ambient Dodge is deliberately NOT folded into AC,
+  which would silently break `derive.js` parity — it is a named blind-list entry instead.
+- **The spheres destructive blast now actually contributes damage.** The `blast_dice` rule sat in
+  `power_adders.json` from day one — and the blind list claimed the base blast was modelled — but
+  the scorer never dispatched it, so every Destruction-sphere character scored weapon-only. The
+  blast now competes with the weapon routine (an at-will standard action is a routine, not an
+  adder) in both the sustained and nova rounds. Caster level is the capped character level (the
+  payload exports no sphere CL — an upper bound, stated on the rule), and the expected figure is
+  scored against full benchmark AC because the CR table has no touch column, so it reads
+  deliberately low; the all-hits figure is exact.
+
+### Changed
+- **The optimal-builder design is ruled** (spec §15; argument in `tickets: feature/optimal-builder`,
+  2026-08-11). The optimizer targets **levels 1–20** and is built around a small **power-role
+  vocabulary** (~6–9 roles, floors + unbounded primaries, class→roles map) with a
+  plan-the-spine/score-the-leaves pipeline shape; DR and a nova/burst round enter the metric first;
+  gear varies by role ladder, stats honour the dice and place optimally, race stays random,
+  multiclass is role-aware dip lists, margins are fixed after measurement, and the mode switches on
+  via a named `optimize` key with its own payload block and goldens.
+  - *Rejected:* per-class or per-archetype bucket tables (68/33 rows of tuning surface), a weighted
+    scalar objective (indefensible exchange rates + the tautology trap), target-then-spread
+    satisficing (leaves primary-axis power on the table), optimizer-chosen races (demographic
+    sameness), a flavour gear reserve (random mode already owns variety), elite-array stats
+    (overrides an explicit input), and luck-market play in v1 (would flatten a variance subsystem).
+
+### Fixed
+- **Characters now buy the magic items they were always meant to.** A third of the item catalogue
+  -- 1,888 of 6,035 FoundryVTT names, precisely the ones containing `" of "` -- was unreachable,
+  because the item chooser Title-Cased every rolled name ("Belt **Of** Mighty Constitution") before
+  testing it against a list that spells `of` lowercase, and the retry loop silently re-rolled every
+  miss. That set was exactly PF1e's big six: Ring of Protection, Amulet of Natural Armor, Cloak of
+  Resistance, every stat belt and headband. Measured at level 20: **88x the gold bought +4 AC and
+  nothing else**; hit points, saves and damage were byte-identical across 300x wealth. Names now
+  resolve to the list's own spelling (`ItemNameResolver`: exact case-insensitive, then
+  parenthesised-variant both directions, then the old Title-Case as a deliberate miss), which is
+  what "needs to be exact for FoundryVTT" always meant.
+  - *Rejected: leaving random mode untouched and fixing it only in the future optimized mode.* The
+    optimal-builder map's "goldens stay byte-identical" constraint exists to stop an optimizer
+    leaking into random mode, not to protect a shipping defect (Daniel's ruling, 2026-08-11).
+  - The ~17% of the roll pool genuinely absent from the Foundry list under ANY spelling stays a
+    visible, gated data gap -- `gates/validate_item_names.py` holds a 20% ceiling, warns with
+    names, and proves the old normaliser would still strand 67%.
+- **The purse actually gets spent.** The item chooser made one uniform draw per slot and abandoned
+  the slot if that single draw was unaffordable -- a wealth-by-level character walked away with
+  hundreds of thousands unspent. A second pass now retries the slots that bought nothing (both ring
+  slots included), drawing uniformly from what is affordable and resolvable. *Which* item wins
+  stays uniform on purpose: preferring the powerful one is the optimizer's job, not random mode's.
+- **Items are no longer sold for pennies -- or free.** Un-masking the catalogue exposed a second,
+  older defect the first one had been hiding: both variant-price extractors were broken
+  (`find_number` was handed a whole list so its regex never matched; the variant-word regex carried
+  an empty alternative that matched everywhere, and `find_word`'s `(\d+)\D*` then captured the
+  "000" out of "12,000"), and every unpriceable item fell back to **0 gp**. The adversarial golden
+  review caught a Ring of Protection +5 (50,000 gp) bought for nothing and ~97,700 gp of gear
+  acquired for 110 gp. Prices now parse plain-`gp;` blobs, select multi-variant prices by the
+  parenthetical tag the item's own name carries (longest tag wins, so `(+1)` can never shadow
+  `(+10)`), and an item whose price cannot be determined is **refused, never free**.
+  `gates/validate_item_names.py` prices the whole pool and fails on any windfall shape; the ~2.5%
+  of blobs mangled at scrape time stay visibly unbuyable rather than guessed at.
+- **A magic weapon's flat bonus is no longer the leftovers.** The enhancement chooser bought
+  special qualities first and handed the flat +N whatever remained, so a +10 budget routinely
+  yielded a +3 weapon wearing +7 of qualities. The flat +N (capped +5) is now reserved first and
+  qualities spend the remainder without overshooting -- at wealth-by-level gold, weapons and armor
+  reach the +5 they were paying for.
+- **Blank-gold characters above level 20 are funded past level 20.** `assign_gold` froze at the
+  level-20 value (880k), ~1% of an L40 kit; `data.wealth_by_level` now owns the whole curve and
+  extends it linearly at the last published delta (+195k/level), flagged extrapolated.
+  - *Rejected: continuing the table's own accelerating tail* (~x1.26/level, ~96M at L40) --
+    unspent gold ships in the payload as sheet cash, and the flat tail keeps an L40 sheet at ~4.8M.
+
+### Changed
+- **The first power baseline is withdrawn: it measured the gear bug, not the generator.** The
+  "characters fall progressively behind the CR curve" headline (AC 1.73 → 0.37, DPR → 0.05) came
+  from a population that could not buy wondrous items, scored by a sweep that funded every level
+  1-40 with the same 10,000 gp (~7x wealth at L1, ~1% at L40), against a damage denominator that
+  double-counted misses. All three are fixed and the baseline re-measured.
+- **The damage axis is now two axes.** `dpr_raw` (every attack lands -- the Bestiary table's own
+  semantics) is the benchmarked one; `dpr_expected` (hit-chance-weighted) rides along
+  unbenchmarked. The gap between them is what accuracy costs; dividing the expected figure by the
+  raw benchmark had been penalising misses twice, since accuracy already has its own axis.
+- **The benchmark bar is a data lever.** `cr_benchmarks.json::_target_multipliers` (all 1.0 today)
+  multiplies each axis's denominator, so holding NPCs *above* the published row -- the house feat
+  surplus should beat a stock monster -- is a JSON edit, never an engine change.
+  `validate_power_metric.py` fails loudly on a missing or misspelled axis.
+- **The invariant sweep funds each level at Paizo wealth-by-level** (`data.wealth_by_level`, the
+  same table `assign_gold` uses), so the level bands of the power baseline are comparable to each
+  other for the first time.
+- **The seven golden fixtures are rebaselined** for the gear fixes above -- gear, gold and
+  everything downstream of the gear phase's RNG draws moved; race, class, stats, saves, BAB, HP
+  and weapons are byte-identical per fixture. This supersedes the previous entry's "nothing here
+  alters generated output": that was true of the measurement phase and is deliberately not true of
+  the repair.
+
+### Added
+- **A power metric, and the first number anyone has had for "how good are the characters we already
+  make".** The optimal-builder effort is large enough that its own charting note says to measure
+  before building, so this phase built the measurement and deliberately stopped: there is no
+  optimizer and none is designed. `Backend/scripts/power_metric.py` scores a payload against PF1e's
+  *Monster Statistics by CR* table at **CR = level - 1** (the published offset for PC-classed NPCs,
+  so a 1st-level NPC lands on CR 1/2 where the table starts), and emits a **per-axis profile, never
+  a scalar**.
+  - *Rejected: a single weighted score.* Collapsing the axes needs weights that belong to the
+    objective-function ticket, and a scalar hard-wires the tautology the map's gate ticket names --
+    an optimizer maximising X, gated by a check that X went up, only proves a maximiser maximises.
+  - *Rejected: an empirically calibrated CR offset* that would put the median generated character at
+    1.0. It reads more intuitively and it quietly makes us the benchmark; the published rule cannot
+    be tuned to flatter us.
+  - The tuning surface is data, not code: `Backend/json/cr_benchmarks.json` (CR 1/2-30 as published,
+    CR 31-39 extrapolated from the table's own linear tail and flagged) and
+    `Backend/json/power_adders.json` (feat allowlist, structural rules, the assumption set, and the
+    blind list printed on every profile).
+  - Path of War and Spheres are modelled as **rules, not name lists** -- 1,033 maneuvers across 59
+    disciplines carry no structured damage, only prose, so a readied strike adds the initiation
+    modifier and a destructive blast is 1d6 per 2 caster levels. *Rejected: hand-authoring 473
+    strike entries*, which is a curation project, not a measurement.
+- **Two gate layers over it, sharing no code**, per the standing rule that a table can never be its
+  own witness: `Backend/scripts/gates/validate_power_metric.py` checks the DATA against the CODE's
+  implemented-model vocabularies and the corpus (a curated feat name that matches nothing would
+  contribute zero forever and nothing else would say so), and `check_power_metric` in
+  `test_house_invariants.py` checks generated characters. Both were proven to fail: six sabotages --
+  a British-spelled feat, a typo'd model, a typo'd sphere, a deleted CR row, a broken band and a
+  transcription error -- were each caught.
+- **`--score` on `test_house_invariants.py`**, off by default so CI pays nothing. It hangs off the
+  per-character hook every generation already passes through, adding a whole measurement layer for
+  **zero new generations**.
+- **Per-phase RNG substreams**, one hook in `pipeline.py`'s `phase()` decorator, **off by default**
+  so the seven goldens stay byte-identical. One changed draw currently re-rolls the entire
+  downstream stream -- the coupling behind three separate golden re-seeds -- which makes a same-seed
+  A/B diff mostly noise. Reseeding from (seed, phase name) at each boundary contains divergence to
+  the phase that changed. Measured: perturbing the stat roll churns `weapon_name` in 11 of 12 pairs
+  with the global stream and **0 of 12** with substreams.
+  - *Rejected: substreams everywhere.* It would permanently fix the re-seed pain and it moves all
+    seven goldens, which is the one constraint this effort exists to respect.
+  - *Rejected: per-decision substreams* -- the cleanest deltas possible, and roughly as much
+    plumbing across ~20 choosers as the optimizer itself.
+- **Three reports** under `Backend/scripts/build/`: `report_power_baseline.py` (distribution by
+  axis, level and class, grouped by build archetype), `report_multiclass_delta.py` and
+  `report_ab_delta.py`. Plus `check_derive_parity.mjs`, which diffs the scorer against the web
+  sheet's `derive.js` over the seven goldens -- **local only**, because the web sheet is a separate
+  repo and CI has no Node step.
+
+- **Nothing here alters generated output.** The seven golden payloads are byte-identical, which is
+  the hard constraint the whole optimal-builder effort was scoped around, and it is why the RNG
+  substreams are opt-in rather than the obvious global fix.
+- **The measurement surfaced five defects and fixes none of them** -- each is recorded in
+  `docs/feature_spec_todo.md` §15 and owned elsewhere. Listing them here rather than in a commit
+  message is the central-changelog convention: a finding nobody wrote down gets rediscovered.
+- **The standalone web sheet renders every enhanced character's AC 1-5 points low.**
+  `armor_enhancement_bonus` / `shield_enhancement_bonus` are separate payload keys that emit no `ac`
+  change, and `derive.js` reads only `data.armor_ac`. All **1,637** scored characters are affected.
+  Foundry is unaffected -- the module builds real armour Items and pf1 does the maths. The metric
+  counts them and the parity harness asserts the gap equals exactly that sum, so it doubles as a
+  regression test for the sheet.
+- **Small races never receive their size bonus on the web sheet**: `sizeInfo` reads `data.race` /
+  `data.c_race` and the payload key is `chosen_race`, so every generated character renders Medium.
+- **`derive.js` applies no pf1 typed-bonus non-stacking** (`sumParts` is a plain sum). The metric
+  matches deliberately so the parity harness compares like with like.
+- **Every `Mind Blade` variant (16 names) is absent from `weapons_data.json`**, so soulknife and
+  psion mind blades score zero weapon damage.
+- **The invariant sweep fails at levels 25/30/40**, a band it had never run: 263 problems, of which
+  254 are L30 seed 2202 across all 68 classes -- one high-level luck bug (a seller whose E-Kat feats
+  push the score back up), not 254 separate ones. Owned by the luck section.
+
+### Added
+- **The negative Luck Traits now do on the sheet what they say on the page.** All ten shipped with
+  `effects: {}` — six of them already flagged `pf1_change_candidate` as the curator's own TODO — so
+  a player read the benefit text and applied it by hand. Eight carry real mechanics; each is now
+  routed to the place pf1 can actually express it, and three of them cannot be automated at all,
+  which is stated rather than fudged.
+  - **Four become real Changes:** Hardened Mind → `will`, Hardened Body → `fort`, Hardened Reflexes
+    → `ref`, Tough Skin → `nac`.
+  - **THE SIGN IS THE MAGNITUDE, and this is the load-bearing ruling.** A luck mod is *negative*, so
+    "add your luck mod to Will saves" read literally is a −9 **penalty** on a trait costing 25
+    E-Kats. These are compensation for being cursed — the names all connote resilience, and DR and
+    natural AC cannot be negative at all. The traits resolve positive, and the gate asserts no trait
+    bonus is ever a penalty at any score in range.
+  - **The formula negates the floor rather than flooring an absolute value**, because
+    `floor(abs(-44)/5)` is 8 where the true magnitude is 9. `-floor(@resources.personalLuck.value/5)`
+    is exact, uses only constructs already proven in `custom_buffs.json` (`floor()` and a leading
+    unary minus), and needs no `abs()`. Asserted numerically against `luck.luck_mod` for every score
+    from −50 to −1, which also pins `luck_mod`'s rounding: if it were ever "fixed" to truncate toward
+    zero, the sheet and the score would silently disagree by one.
+  - **Formulas are live, not baked**, so a GM editing the score mid-campaign moves every derived
+    bonus with it. That required giving the Personal Luck item an explicit `system.tag` — pool items
+    ship `tag: ''` and pf1 falls back to deriving a resource's key from the item NAME, which the
+    `(Negative)` prefix would have moved, silently zeroing every trait bonus.
+  - **Bonus type is `untyped`, not `luck`.** These represent hardening, not a luck bonus, and
+    `untyped` is on pf1's stacking list — so a seller holding *Luck God* (which emits `type: "luck"`)
+    gets both. Typing them `luck` would have suppressed the smaller bonus with nothing on the sheet
+    to explain why.
+  - **Trauma Survivor extends the Death HP Pool** rather than inventing a second number. That house
+    tracker already *is* the death threshold on this sheet, so a separate value would have disagreed
+    with it immediately.
+  - **Three cannot be automated, and say so.** pf1 has no DR change target (DR is
+    `system.traits.dr`, not a target), and no saving-throw conditional target at all — so *Tough
+    Luck* and *Seen it all* ride context notes on `ac` and `allSavingThrows`. *Never-Ending
+    Suffering* penalises an **enemy's** Perception, so there is nothing on this character's sheet to
+    attach it to; a note on `skill.per` would surface in the wrong actor's tooltip. Its
+    `no_change_reason` is recorded in the data so a later pass does not re-flag it.
+    *Rejected:* an always-on `+N` to `allSavingThrows` for *Seen it all*, which is simply wrong — it
+    would apply against poison and everything else the trait does not cover.
+- **A `Negative Luck Payout` item that DELIVERS the payout as pf1 changes**, at the bottom of Class
+  Features. Building an audit to prove the payout was applied turned up the reason it could not be
+  proved: **the luck hit points never reached the Foundry sheet at all.** The module builds actor HP
+  from `total_rolled_hp` — the raw dice — and never from `Total_HP`, so everything the backend added
+  there was invisible on the sheet the character is played from. Two sellers paid 18 and 8 HP both
+  shipped the same `hp.base`.
+  - The three budgets no longer apply the payout themselves. It arrives on pf1's own targets —
+    `mhp`, `bonusSkillRanks`, and the ability keys — so it is visible and attributable on the
+    Changes tab instead of folded silently into a total that one consumer then ignored.
+  - **Attribute points are now rolled per ability**, main-stat weighted: the character's main stat
+    takes half the draw and the other five split the rest (5/10 and 1/10 each, summing to exactly
+    1). They used to disappear into the uniform level-up bumps, where a bought point was
+    indistinguishable from an ordinary increase.
+  - Skill ranks land in the sheet's own bonus-rank pool rather than being pre-scattered across
+    skills, leaving them for the player to place — the honest shape for something the character
+    chose to buy.
+  - The item still shows the audit table (each pool's budget, what the sale paid, and where it
+    arrives), plus **`Luck cost` and a running `Total spent`** — each row priced at the Doc's own
+    rates, inverted in `luck.sell_cost` so the renderer never restates them. The four costs sum to
+    the luck actually sold, so the table **closes against the sale** instead of being four unrelated
+    numbers, and the total row says so in words. Compared against what was *sold* rather than the
+    final score, since a Luck Trait can move the score afterwards and only the sale bought the rows.
+    The table renders for sellers only; `record_audit` runs for every character, so without that
+    gate three-quarters of NPCs would carry an all-zero table. The sweep asserts every row balances, that no pool is on both sides
+    of the trade, that HP and skill-rank budgets still match `Total_HP` and `skill_rank_budget`, and
+    that **every route the sale bought arrives as a change carrying the promised number** — without
+    that last one the payout could stop being delivered and nothing would notice, because the
+    budgets no longer move.
+  - **Consumers that do not process pf1 changes will not see the payout.** The standalone web sheet
+    reads `Total_HP` and `skill_rank_budget` directly, and those now exclude it by design.
+- **"Force luck direction (dev)" module setting**, so negative luck can actually be seen. A
+  negative-luck character is roughly **1 in 13** by design (a quarter of characters take a stake, a
+  quarter of those sell — measured at 6 in 120 full generations). That is the right number for play
+  and a useless one for testing: ten characters in a row showing none is a coin flip. The backend's
+  `luck_direction` input existed for exactly this but no client sent it, so the only way to exercise
+  the negative side was still hand-editing `LUCK_PROPENSITY` / `LUCK_SELL_SHARE` — the footgun that
+  input was added to remove. Client-scoped and defaults to off, matching the other dev toggles, so
+  it never syncs to players and cannot ship enabled.
+- **The luck block's field roster is now asserted, not just printed.** `BLOCK_KEYS` in
+  `validate_luck.py` existed only to report a count; both renderers index the block by name, so a
+  renamed field is a blank panel rather than a crash. The behaviour sweep now compares a generated
+  block against an independently declared roster.
+
+### Fixed
+- **A character that sold luck for two feats only got one.** Reported from a real sheet: the
+  derivation read "2 feat(s)" and exactly one `(-5 Luck)` row appeared. Three separate faults, each
+  of which alone lost feats the character had paid a currency for.
+  - **The ledger was guessing.** It named the sale's feats by taking the tail of the general feat
+    list minus everything another subsystem had reserved. That worked while sellers held no E-Kat
+    feats; once they did, a 20th-level seller's entire normal track was E-Kat, profession and
+    Martial Training picks, and the guess had nothing left to name — **15% of sellers under-reported
+    silently**. The slots are now reserved and drawn up front, like every other subsystem's, so the
+    ledger names them by identity. Measured across 7 classes × 5 levels: **105 of 105 exact**.
+  - **The slots were being eaten before they could be spent.** `feat_amounts` is one shared pool, so
+    the E-Kat and profession reservations were free to consume the very slots the sale had just
+    added — the character sold luck for a feat and the feat became someone else's reservation. The
+    luck slots are now taken first and are not clamped by the remaining budget: they are additive,
+    because selling luck *gains* a feat rather than reallocating one.
+  - **The final feat-count cap was deleting them.** `feats[:normal_feat_amount]` keeps the head and
+    drops the tail, and the separately-paid-for picks are appended last — so the cap took exactly
+    the feats whose slots had been bought. Worse, `phase_luck_stake` raised `feat_amounts` without
+    raising `normal_feat_amount`, breaking their documented "move together" invariant, so the cap
+    never knew the slots existed; with the profession reservation *lowering* the target, a 1st-level
+    seller's target reached **zero and the cap wiped every general feat it had**. The cap now trims
+    in priority order — sphere tracking feats, then ordinary picks, then E-Kat, and luck-bought last
+    — because those are the only ones the character spent a currency for.
+  - Luck-bought feats are also held out of the story/flaw/flavour/class buckets (they were being
+    consumed as *story feats*) and pinned to the normal track, since the module lifts them out of
+    `feats` by name and a migrated one would render both as a class bonus feat and under Negative
+    Luck. The ledger invariant is now `==` rather than `<=`; the old tolerance was hiding the bug.
+
+- **Negative-luck characters were generated correctly and then shown almost nothing.** Selling luck
+  worked end to end — all four payout routes paid out — but the sheet gave a seller no score, no
+  derivation, and no way to tell luck had been traded away at all. Three separate causes, each of
+  which alone made the negative half of the subsystem look like it did nothing.
+  - **The score was gated on being positive.** The Personal Luck item is the only place the sheet
+    shows the numeric score and the `derivation` audit trail explaining it, and the module added it
+    only when `score > 0` — on the reasoning that a negative character has no DR pool to spend.
+    True, and it threw away the readout with the pool. A negative score now renders as negative
+    charges (`-8 / -8`) on an item named **(Negative) Personal Luck**, matching the module's
+    existing `(E-Kat Trait) X` / `(-5 Luck) Y` prefix convention.
+    *Rejected:* a 0/0 pool, which reads as a bug to anyone who did not write it; and dropping the
+    charges for a bare readout, which loses the number the player actually wants.
+  - **All ten NEGATIVE Luck Traits were unreachable by any character.** Sellers were excluded from
+    E-Kat feat slots to stop a free-money loop — a character sold 2 luck, drew *Ass Pull* and *It
+    Just Works*, and finished at +8. That closed the loop by denying sellers the feats, which also
+    denied them the E-Kat reserve, and Luck Traits may only be bought with E-Kats. The loop is now
+    closed at its source instead: **a seller's feats grant zero luck**, so the feats come back
+    without the free money. The feats stay on the sheet — *Defiant Luck* and the rest carry real
+    mechanics beyond the +1 — and the derivation says what was withheld
+    (`+12 from 6 luck feat(s) -- not applied (luck was sold)`) rather than silently not adding up.
+    *Rejected:* stripping the feats from a seller's draw, which denies abilities bought with the
+    character's own slots; and hard-flooring the score, which voids feats without explaining why.
+  - **A seller could finish positive.** The six ordinary Paizo luck feats grant +1 each and had no
+    seller exclusion, so a low-magnitude seller who drew two rendered as *lucky*. Same fix; the
+    house-invariant sweep now asserts a seller's score equals exactly what it sold.
+- **Feat acquisition levels ran off the end of the character.** The normal-feat schedule was walked
+  positionally as `2i+1`, but a character always holds more normal feats than the odd-level ladder
+  has rungs — two homebrew creation feats, a human racial bonus, and now up to ten sold for negative
+  luck. A 20th-level wizard with 12 normal feats produced slots at **levels 21 and 23**. Not merely
+  a bad label: those levels are the gate `assign_feats_to_levels` schedules against, so a phantom
+  level-23 slot would seat a feat whose BAB or class-level prerequisite the character never met —
+  the exact bug that module exists to prevent. One `normal_feat_slot_levels()` helper now caps the
+  ladder at the character's level and seats the surplus at level 1, where it was in fact granted,
+  and replaces the expression at all four call sites.
+  *Still open:* the sheet computes its own `(Feat N)` label from `start + index * step` and will
+  keep printing `(Feat 21)` until the real levels are exported and consumed.
+
+### Changed
+- **Sellers can sell all the way to the −50 floor, at any level.** The sell side shared the buy
+  side's magnitude formula, which capped a 20th-level seller at −12 — while the negative Luck Traits
+  are written against floors from −10 to −50, so nine of the ten could not have been bought even
+  after the exclusion above was lifted. The two sides are no longer symmetric, and deliberately so:
+  buying is bounded by what a character can afford, selling is bounded by nothing because it *pays*.
+  Depth is now drawn on its own scale whose mode rises with level, so the deep end is common at 20th
+  and rare but reachable at 1st.
+  *Rejected:* capping the payout to what the pools can bear. A character that sells −50 is entitled
+  to the whole of it; `_plan_payout` already spends the magnitude down across routes, so it is ten
+  feats *or* a hundred HP, never both. Also rejected: lowering the trait floors to match what
+  generation produced — those floors come from Sieg's Guide, and the Doc is the authority, not the
+  code.
+- **`luck_direction` is a new optional API input** (`'buy'` / `'sell'`, absent → the ordinary
+  weighted rolls). Exercising the negative side previously meant hand-editing `LUCK_PROPENSITY` and
+  `LUCK_SELL_SHARE` in `luck.py` — two live constants that then had to be remembered before
+  shipping, which is precisely how this subsystem went untested for so long.
+- The negative-luck feat ledger no longer bills E-Kat feats to the sale. Their slots are carved out
+  of the feat budget, so the sale did not pay for them — the same trap profession feats hit, newly
+  reachable the moment sellers gained E-Kat slots.
+- Seller derivations are itemised from the payout actually drawn (`Sold -45 luck for 22 HP, 38 skill
+  points, 1 attribute point(s), 2 feat(s)`) instead of naming all four routes on every seller.
+
+### Added
+- **Characters now carry inherent luck.** Sieg's Guide's luck subsystem is wired end to end on the
+  generator side: a **bought** luck score, one of three luck types, a luck mod, an earned-and-spent
+  E-Kat reserve, a Vault ceiling, the ten **E-Kat feats** and the 34 **Luck Traits** they pay for —
+  none of which a generated character could previously reach. It rides `misc_homebrew_rules`, which is now an exposed API input; with the flag off a
+  character carries no luck state at all.
+  - **The purchase is real.** Luck is bought, not rolled — about a quarter of characters take a
+    stake, paying from skill ranks (60%), HP (30%) or level-up attribute bumps (10%), with a
+    per-pool ceiling so no budget is gutted. Roughly one stake in four goes the other way and
+    **sells** luck, taking a negative score in exchange for HP, skill points, attribute points or
+    extra feat slots at the Doc's own rates.
+    *Rejected:* letting nobody buy and making luck purely feat-driven — the simplest option, and it
+    would have left luck invisible on 99% of characters. Also rejected: spending only level-up
+    bumps, the currency the Doc rates 1:1, because `floor(level/4)` caps it at +5 luck at 20th and
+    a permanent −1 to an ability score for +0.2 luck mod is the worst trade on the board.
+  - **Luck needed two phases.** A seller's bonus feat slots must exist *before* feat selection sizes
+    its draw, but the E-Kat feats feed luck *back* and which feats a character keeps is not final
+    until the feat-tax and swap pass. So `phase_luck_stake` records intent and each pool settles its
+    own share where the real budget is known, and `phase_luck_resolution` computes the final state
+    at the far end — the `phase_bloodline_resolution` shape.
+    *Rejected:* one phase. It cannot be both before feat counting and after feat swapping.
+  - **The E-Kat feats reach a character through a curated table**,
+    `Backend/json/feats/e_kat_feats.json`, with machine-readable effects and *corrected*
+    prerequisites. They are not Metzofitz feats — none of the ten is in `Metzofitz_Feats.csv`; they
+    sit in `data/feats_new.csv`, which **no runtime module reads**, with two prerequisite chains
+    that are unsatisfiable as data (`"Asspull"` glued, and `"All of the above"`, a summarising
+    phrase). They never join the generic pool, and their slots are carved **out of** the feat budget
+    the way Path of War and professions reserve theirs.
+    *Rejected:* wiring all ~3,300 rows of `feats_new.csv` into the runtime — that is the long-parked
+    unified-feat-pool spec, and it is a much larger problem than luck. Also rejected: retyping the
+    ten rows into `Metzofitz_Feats.csv`, which is cheapest and records them as something they are
+    not, destroying the only marker that lets the reserve formula count them.
+  - **Luck is not a pf1 `change`.** Default Luck applies to percentile rolls and the daily DR pool,
+    not to d20 rolls, so the score and mod stay displayed numbers. The one real modifier is **Luck
+    God's** +2 to saves, attacks, ability checks, skill checks, AC and caster-level checks, added to
+    `feat_changes.json` and typed `luck` so it does not stack with itself.
+  - **The E-Kat reserve is earned, then spent.** Each per-level term is gated on the feat that
+    produces that kind of E-Kat — *Sweet Dreams* for long rests, *Stream of Luck* for discoveries —
+    and *Double Down* doubles the rate of both but never the `feats × 5`; the whole thing doubles
+    if Dimorphic. So **a character with no E-Kat feats starts with none**. What it does earn is a
+    creation-time budget rather than an opening balance ("These points must be spent"): it buys
+    `floor(earned ÷ 25)` **Luck Traits** and carries the remainder. The 99 is a *storage* cap and
+    bounds only what is carried.
+    *Rejected:* the level-driven reserve for everybody, which handed a 20th-level character with no
+    involvement in the luck system 40 free E-Kats. Because the Doc never defines "Long Rest E-Kats"
+    or "Discovery E-Kats", the formula is a table ruling — so the gate asserts it against the
+    table's own worked examples rather than against a re-reading.
+  - **Hero point feats and luck feats grant +1 Luck too.** The rule is "every positive luck based
+    feat", not just the E-Kat ones, so **Blood of Heroes, Hero's Fortune, Luck of Heroes, Defiant
+    Luck, Fortunate One** and **Adaptive Fortune** — all already selectable from the ordinary pool —
+    now each contribute. They needed recognising rather than reaching, and nothing in
+    `data/feats.csv` marks a feat as luck-related, so the roster is curated and gated. One
+    consequence worth knowing: a character with no luck stake at all can now finish with a positive
+    score, and a seller's negative score can be partially offset.
+    *Not modelled:* **Aristeia** feats also qualify, and none exists anywhere in the repo's data.
+    *Rejected:* the level-driven reserve for everybody, which handed a 20th-level character with no
+    involvement in the luck system 40 free E-Kats — invisible while the reserve was inert, and worth
+    a free Luck Trait the moment it wasn't.
+  - **The E-Kat spend table reaches the sheet.** An **E-Kat Exchange** section at the top of class
+    features lists all nine exchange rows verbatim — the +1/-1 on any roll, the stabilize, the hero
+    point conversion both ways, the borrowed feat or mythic spell, the Luck Trait purchase and the
+    two 99-E-Kat capstones — led by the character's carried reserve, with a **Luck Traits** section
+    beneath showing what that reserve already bought. Only characters actually in the E-Kat economy
+    get them, so an NPC with no luck is unchanged.
+  - **All 34 Luck Traits**, in the Doc's three categories (19 standard / 10 negative / 5 Dimorphic),
+    bought at 25 E-Kats each with a variety-first picker. Category is an eligibility gate: Dimorphic
+    traits need the Dimorphic type, negative traits need a negative score. Five carry machine-
+    readable effects — Expanded Luck raises the luck cap, Increase Luck the score, Enhanced Luck
+    Storage the E-Kat cap, Extra Spin the Twist of Fate uses, Big Savings the Vault cap; the rest
+    are in-play actions and ride as text.
+    *Rejected:* treating them as ordinary character traits in `data/traits.csv`. The Doc is explicit
+    — *"Luck Traits may only be purchased with E-Kats"* — so a trait pool can never be the route,
+    and they also never collect the generic +1 Luck that the E-Kat feats do.
+  - **The ten Negative Luck traits are unreachable, by construction.** Negative luck comes only from
+    selling, sellers take no E-Kat feats, no feats means no reserve, and no reserve means no
+    purchase. They are curated anyway so the roster is complete and a player can hand-add one — and
+    the behaviour gate *asserts* the unreachability rather than assuming it, so if any of those
+    three rulings changes, the suite says so.
+  - Two gate layers that share no code: `Backend/scripts/gates/validate_luck.py` (data and
+    constants, no generation) and `check_luck` in `test_house_invariants.py` (generated behaviour,
+    hung on the existing sweep for zero extra generations). The behaviour layer restates the Doc's
+    numbers as literals on purpose — importing `LUCK_CAP_POSITIVE` would make the assertion
+    `25 == 25` whatever the constant became.
+- **Seven classes now make the choice they are built around.** Every gap class-choices ticket 02
+  found is built. Each was generating an **empty class-features dict** — the bard, hunter, shifter,
+  psion, vampire hunter, omdura, and the witch's patron.
+  - **bard** — three buckets (versatile performances, martial performances, expanded versatility).
+    The picker already worked; its results were returned in a tuple the call site discarded. Each
+    bucket now has its own schedule instead of the three sharing one budget split by a coin flip,
+    so a bard gains **more total picks than before** — intended, not incidental.
+  - **hunter** — Animal Focus, two frozen picks at 1st (one for herself, one for her companion).
+  - **shifter** — aspects at 1st, 9th, 14th and 20th.
+  - **psion** — the discipline that decides which of its powers are legal.
+  - **vampire hunter** — vampiric foci at 1st, 8th and 16th (the only gap that is not a single pick).
+  - **omdura** — an invocation, the first pick to use ticket 02's roll-once-and-freeze rule.
+  - **witch** — a patron, **and its spells**, level-gated: a patron grants nine spells at witch
+    levels 2–18, which are spell levels 1–9 in order, so the list is truncated at the witch's own
+    level. Closes the *"need to add patron spells to the witch spell list"* TODO that shipped with
+    the file. The patron is the gap that **hid inside a non-empty row** — the witch already had a
+    `hexes` row, so a sweep that only inspected empty rows would have missed it.
+  - **Archetype-gated options now work through the existing prerequisite engine.** 144 of the
+    hunter's aspects are gated on an archetype named in the option's own `prerequisites`, and the
+    engine could already check that — it just never had the archetype. Rolled archetype names are
+    seeded into `character.chooseable`, minus 18 that are also the name of a selectable option
+    (`brawler` is both an archetype and a rage power, and a prereq string cannot say which it
+    meant). This does **not** model archetype feature *swaps*; that ruling is unchanged.
+  - Two pools were harvested from `pf-content` by a new
+    `build_collab_class_options.py`. They needed different extractions: the vampire hunter's 10
+    foci are each their own Item, while the omdura's 9 invocations are **bolded headings inside one
+    item's description** — which is why a name search found nothing and ticket 02 recorded the
+    omdura as having no source at all.
+  - **Data repairs found on the way.** The hunter's pool was missing Snake: one aspect's name cell
+    was empty in the scrape, so the base list read as 11 plus a blank. Filtering blanks — the
+    obvious defensive move — would have shipped 11 aspects forever; the key is repaired and the
+    gate now pins the base list at RAW's twelve. One witch patron's key/value split mid-citation
+    because the scrape broke on a comma *inside* the sourcebook parenthetical.
+  - **A pool must MOVE, not be copied.** Extracting the shifter's aspects while leaving them in
+    `class_data.json` made all 27 silently unpickable and raised nothing:
+    `chooseable_list_class_features` seeds every feature key into `chooseable`, and
+    `no_prereq_loop` skips any option already there. The gate now fails on it, and immediately
+    found four pre-existing single-option cases, baselined as plausibly benign.
+  - Six of the seven leave all 7 goldens byte-identical. Only `manifester.json` moves, because it
+    carries a psion. The bard would have moved all seven — its picker draws from the RNG stream
+    before checking whether the character is a bard — so that draw is kept deliberately.
+
+### Added
+- **Class choices are gated on every push, in two layers that deliberately share no code.**
+  Class-choices ticket 05. Every class-specific pick — rogue talents, rage powers, aegis
+  customizations, bloodlines, orders and the other 51 buckets — now has something that fails when
+  it drifts.
+  - **`Backend/scripts/gates/validate_class_choices.py`** (new, 506 checks, generates nothing)
+    catches **config** drift: a rollable class with no schedule row, a row with no chooser call
+    site, a call site with no row, a bad `reason`/`source` token, an empty verdict note, a dataset
+    that resolves to no pool. Call sites are parsed with `ast` rather than a regex, because the
+    bucket is `dict_name` when present and the chooser's own default when not — and that default
+    differs per chooser. 51 call sites resolve against 51 rows, asserted in both directions.
+  - **`check_class_choices` in `test_house_invariants.py`** catches **behaviour** drift: every
+    rolled class holds `min(scheduled, |pool|, max_num)` picks per bucket, and every level stamp is
+    one the schedule actually grants. It **costs no new generations** — it rides the sweep the file
+    already runs, so the "coverage vs runtime" worry turned out to be free (3,637 → 3,724 checks).
+  - **Why two layers and not one:** perturbing the schedule table and re-running the behaviour
+    check *passes*, because the generator reads the same file — a table can never be its own
+    witness. Config drift is the gate's job; behaviour drift is the sweep's. Neither imports
+    `levels_for`; the gate re-reads the JSON and the check expands it a second time.
+  - **The most valuable assertion is the cheapest:** a class that joins the rollable pool without a
+    schedule row fails immediately, naming the class — so onboarding a new class cannot silently
+    skip deciding what it picks.
+  - The behaviour check skips 7 class/bucket pairs, each a named renderer-side defect, and
+    **prints the skip count every run**; the gate fails if a skip outlives its stated cause.
+  - **Two generations at 40th cover what 1,020 at 1–20 could not.** The first full sweep reported
+    `0 capped by pool/max_num` — no cap bites at or below 20th, so two of the three terms in
+    `min(scheduled, |pool|, max_num)` were never exercised. `check_choice_caps` generates a brawler
+    (held to 8 by its call site's `max_num`) and a tactician (12 strategies exist, 13 scheduled) at
+    40th, and a guard fails the run if nothing anywhere is capped. Adding levels 25 and 40 to the
+    whole 68-class matrix would have tripled the sweep's runtime to cover two rows.
+
+### Fixed
+- **The psionics sweep no longer passes by standing one point inside an excused branch.**
+  `test_psionics_sweep` skips its power checks when the manifesting stat is **below** 10 ("cannot
+  manifest at all"). It missed the boundary by one: a stat of **exactly 10** gives
+  `max_power_level` 0, so no power of level 1 or higher is legal and the chooser correctly returns
+  none — but the test still demanded the class table's full `powers_known`. The expectation is now
+  zero when `max_power_level` is zero.
+  Surfaced by the luck work, which shifted RNG consumption and moved a seed-4242 marksman from WIS 9
+  to WIS 10. **The generator never changed** — that character knew zero powers before and after;
+  only which side of the escape it landed on did. Two cells were affected (marksman and psychic
+  warrior at 5th).
+- **A gunslinger level no longer erases every other class's class features.**
+  `choose_gun_func` ended `phase_class_options` with
+  `data_dict.update({'class features': result})` — a straight assignment that replaced the whole
+  bucket dict. Because it ran last, any character with a gunslinger level shipped **only**
+  `gun training`: a dread/spiritualist/gunslinger lost its terrors and its emotional focus, a
+  gunslinger/ninja lost its ninja tricks. The `class feature owners` side-table went on naming
+  those buckets, so the payload advertised owners for buckets that no longer existed — the
+  "generated but invisible" failure in its worst form, with the picks not merely unreachable but
+  gone. Every other chooser carries a comment saying *merge, never assign*; this one did the
+  opposite. Found by class-choices ticket 02's sweep.
+  - `gun training` now records a bucket owner too, so it has a home on the Foundry sheet's Class
+    Features tab instead of landing under no class.
+  - A gunslinger 1–4 no longer emits an **empty** `gun training` bucket. Gun training starts at
+    5th, and an empty bucket with an owner draws its own empty divider.
+  - The category loop gained the pool-exhaustion break its siblings have. It filtered candidates
+    *inside* `while len(chosen) < x`, so a firearms list with fewer useable categories than the
+    count would spin forever — unreachable only while levels stopped at 20.
+- **A multiclass ranger's favoured enemies and terrains were sized off the wrong class.** The
+  counts came from `data.formulas`, whose strings read `character.c_class_level` — an alias of the
+  **primary** class's level, not the ranger's. A ranger 3 / skald 13 received 3 favoured enemies
+  and 3 favoured terrains where RAW grants 1 and 1. Now read per-class from the schedule table.
+
+### Changed
+- **The generator now states what it guarantees about a pick's legality — narrowly, and on
+  purpose.** Class-choices ticket 03. It enforces prerequisites the string engine can evaluate
+  (option names, class levels, ability/BAB/caster thresholds — 93.9% of the 4,883 comma-split
+  prerequisite parts), no duplicates within a bucket, and no cross-bucket bleed. It **knowingly
+  does not** enforce the other 6.1%: disjunctive prose (`"animal fury rage power or a natural bite
+  attack"`), `"any two X"` counting, mutual exclusion and once-only, or buckets an archetype trades
+  away. Measuring that tail at 6.1% is what settled the question — the choice looked like
+  best-effort-versus-a-rules-engine only while nobody knew whether it was 5% or 50%. *Rejected:*
+  structured prerequisites in the data, because the pools are **re-scraped**, so the parse and its
+  review would recur forever.
+  - **Under-delivery is legal exactly when the pool is provably dry** — the gate asserts
+    `min(scheduled, |pool|, max_num)`. Of the three live under-deliveries, only the tactician's is
+    real exhaustion; the brawler's is its own `max_num` cap and the oracle's is a bucket-naming
+    defect, so a simpler "under-delivered ⇒ pool dry" rule would have been wrong twice out of three.
+  - **A rage power cannot be unlocked by a rogue level.** `character.chooseable` stays shared
+    across classes, now on measured rather than assumed grounds: the only pools naming a foreign
+    class are ninja→rogue, slayer→rogue and skald→barbarian, and the gate fails if a fourth appears.
+  - Found on the way: the scraper's field-glue bug also corrupts `prerequisites`, not just
+    descriptions — one entry's prereq field has swallowed its benefit text.
+- **The pick-schedule table is the whole story: five conventions, not three.** Class-choices
+  ticket 01 migrated three count arithmetics into
+  `Backend/json/class_choice_schedule.json`; ticket 02's sweep — generating a character for all 68
+  rollable classes and asking which buckets actually landed — found **two more that no one had
+  counted**, and both are now rows:
+  - **The fourth**, `data.formulas` + `eval()` in `feats.formula_grabber`, read by
+    `simple_list_chooser` (ranger favoured terrains/enemies, brawler maneuvers). `data.formulas` is
+    **deleted**, not deprecated: a second schedule nobody reads is exactly the decay CLAUDE.md's
+    stale-`critical` story warns about.
+  - **The fifth**, an inline `floor((level - 1) / 4)` in `gunslinger.choose_gun_func`.
+  - *Why reading the code missed them:* neither was reachable from `data.amount` or from the three
+    known chooser call sites. Only generating characters found them. That is the sweep's real
+    lesson, and it is why the gate ticket 05 builds must assert against **behaviour**, not only
+    against config.
+- **Single-pick class features now read their level from the table instead of a hardcoded `1`.**
+  Bloodlines, orders, mysteries, curses, spirits, methods and the rest were stamped by a literal
+  `1` inside `generic_class_option_chooser`, which made every single-pick bucket invisible to the
+  schedule — so "a call site with no row" was silently correct rather than detectable. All 14 now
+  declare `levels: [1]`. Behaviour is unchanged (all 7 goldens byte-identical); what changes is
+  that the table is now the **complete inventory** of class choices, which is what lets ticket
+  05's gate assert that every chooser call site has a row.
+- **Per-use choices are rolled once and frozen.** A feature re-chosen at every use or every day has
+  no home in a static snapshot. The medium's daily seance already worked this way as a one-off
+  house ruling (§10); it is now the **general rule**, and the hunter's animal focus, the shifter's
+  aspect and the omdura's invocation will follow it. *Rejected:* emitting the whole pool as a
+  reference bucket — honest about the mechanic, but a new bucket kind both renderers would have to
+  learn, and it would mean re-doing the medium to match.
+
+### Removed
+- **`randomize_luck()`** (`class_func/luck_and_mythic.py`) — deleted rather than repaired, because
+  it did not implement a weakened version of the luck rule, it implemented a *different* one: a
+  5%/5% roll of ±1–40, where the house rule's luck is **bought** and caps at +25/−50. There was
+  nothing in it to keep. It was already unwired, so nothing changed behaviour when it went. The
+  real subsystem is `class_func/luck.py`. `randomize_mythic` in the same file is untouched — it
+  belongs to the Mythic effort.
+- **`gunslinger_deeds_dares.json` and `spirits.json`** — pools with no reader anywhere in
+  `Backend/`. Gunslinger deeds are granted by level in RAW rather than chosen, so the file was
+  never a missing chooser; `spirits.json` was superseded by `class_data/shaman.json`, which is
+  where the shaman actually reads its spirits. `witch_patrons.json` is the third orphan and is
+  **kept**: a witch's patron is a genuine 1st-level pick that nothing makes, so it is a logged gap
+  rather than dead weight.
+
+### Added
+- **The web sheet's Companions tab now pre-fills from the generated character** *(sibling repo:
+  `Pathfinder-Character-Sheet`)* — the last gate on the Companion Sheets map. A druid's rolled
+  companion arrives with its HP/AC/saves, abilities, skills, attack lines and notes already in place,
+  and stays fully hand-editable.
+  - **Generated rows are seeded ONCE into the user's own array, then left alone.** `seedCompanions()`
+    joins `seedBackendStatBonuses` / `seedRacialColumn` in `renderSheet`, guarded by its own
+    `_sheet.companionsSeeded` flag — its own, not theirs, so characters saved before this feature
+    still upgrade. It sits *above* the simple-view early return, so both view modes and
+    `loadCharacter()` fill, not just a fresh generation. After that first render a generated
+    companion is an *ordinary* companion: same model, same editors, same `×`.
+  - *Rejected:* live-deriving the rows with a per-field override layer. It keeps generated numbers
+    correct if the payload changes — but the payload never changes for a saved character, and the
+    price is rewiring every editor plus designing a "reset to generated" affordance nobody asked for.
+    *Rejected:* a read-only generated block above the editable list — cleanest provenance, but the
+    player could not tick their own companion's HP down without copying it first.
+  - **A player who hand-typed their bird may now see two rows.** That is correct and visible — both
+    are editable and either has a `×`. Silently reconciling them would mean guessing which fields
+    the player meant to keep.
+  - **Entries that explain an ABSENCE render as a dim line, not a row** (*"Samurai — no mount: traded
+    away by Warrior Poet."*). They are not creatures, so they must not become deletable rows, and
+    they render straight from the payload every time. Skipping them was rejected: an empty tab cannot
+    distinguish "the generator decided no companion" from "this is broken", which is the confusion
+    that opened this work. An unrecognised `outcome` prints the token itself rather than vanishing.
+  - **`merge_notes` is dropped and `unapplied` is kept**, deliberately: the first explains how a
+    number was built, the second names something the generator *could not do*, which the player needs
+    to know. `size_change` renders as a sentence and never as a modifier — its values are already
+    inside `ac` / `attacks[].atk` / `cmb` / `cmd` / `skills`, so re-applying it would double-count.
+  - Three widget changes came with it: **speed is free text** (the backend ships prose —
+    `"10 ft. , fly 80 ft. (average)"` — and the second number is the one a bird's player needs),
+    **CMB/CMD join the vitals strip**, and **a skills row** mirrors the abilities row with a 🎲 each.
+    All three are backward-compatible with rows already saved.
+  - The row takes the **bare** creature name, not Foundry's composed
+    `<Master>'s animal companion: <Name>`: the tab heading, the type dropdown and the HD badge
+    already say all three things. The two renderers differ here on purpose.
+- **The payload shape is a declared manifest.** `Backend/utils/payload.py` owns `build_payload()`
+  and `PAYLOAD_KEYS` — the exact 172-key order the FoundryVTT module and the web sheet read
+  **positionally** — and `validate_payload_shape.py` fails when the built payload stops matching it.
+  Previously that contract was the insertion order of a dict literal in the middle of a 2,700-line
+  file, where inserting a key in the wrong place breaks nothing locally and breaks a character sheet
+  in another repository.
+  - **It found a live contract violation on its first run.** `class feature owners` was inserted
+    only when some chooser happened to call `setdefault`, so a character with no class choices at
+    all (fighter 1) shipped a payload **one key shorter than everyone else**. It is now seeded
+    alongside its two siblings, so the shape never depends on the character.
+  - That is a bug the goldens structurally could not catch: a golden says *this character did not
+    change*, never *the contract is what we think it is*. The gate compares **two different**
+    characters for exactly that reason, and has no `--update`.
+  - `build_payload` **derives** rather than receives the ~15 values that are pure unpackings of
+    character state (`armor_name` and its five siblings out of `character.armor_dict`, `deity_name`,
+    `school`, `archetype_info`). Two pre-existing quirks are preserved deliberately and recorded in
+    the module docstring rather than silently fixed: `shield_max_dex_bonus` reads `armor_dict`, and
+    `armor_dict` is only bound on one branch. Fixing either is a behaviour change, not a move.
+- **The feat budget is no longer allowed to be over-committed in silence** — `test_feat_budget.py`
+  reports the arithmetic and names who over-drew. **It currently fails, deliberately**, on a real
+  bug it found.
+  - The `max(0, ...)` that reserves feat slots for Path of War, Spheres and professions was
+    clamping a negative result to zero, so an over-committed character quietly ended up with fewer
+    feats than the rules allow. The golden fixtures could never catch it: they record whatever the
+    clamp produced, so a clamped character is "correct" forever.
+  - **Instrumented before designing anything**, as ticket 08 asked: 70 classes x 5 levels x 2 seeds
+    = 700 generations. The clamp fires in **16 of 700 (2.3%)**, **every one of them at level 1**,
+    worst overdraft 2 feats. The sibling clamp on `normal_feat_amount` never fires at all.
+  - The cause is a sizing mismatch, not a structural over-commit: a 1st-level budget is 7, and the
+    homebrew subsystems ask for ~8 (typically 5 sphere feats + 3 profession feats). The subsystems
+    are sized as though the budget were a mid-level one.
+  - **That measurement is why there is no `FeatBudget` object.** A `reserve()`/`grant()` interface
+    that refuses to go negative is real leverage, but inventing an interface for one value to
+    prevent a bug confined to one level in 2.3% of runs costs more than it buys, and the map warns
+    against exactly that. The arithmetic stays; the silence goes. If over-commits ever appear
+    outside level 1, the gate says so in those words — and that is the evidence that promotes it.
+- **`validate_alias_invariants.py`** — an alias was dropped because its writer runs once; this keeps
+  that true. Two aliases had **identical shape and opposite verdicts**, and the discriminator is
+  invisible at the alias site: `full_domain` was safe to drop because `domain_chooser` runs *once*,
+  while `day_list`/`known_list` had to be kept because `sync_legacy_spell_fields` runs *twice*. The
+  gate pins both call counts and fails either way they move — including the harmless direction,
+  because a stale verdict is still a stale verdict.
+  - The failure it prevents is silent and remote. Add a second `domain_chooser(character)` call and
+    nothing breaks locally: the payload's `full_domain` just starts reporting the second roll
+    instead of the first, on a character sheet, in another repository. The key is still present and
+    still a list of domains, so no test, diff or exception would have said a word.
+- **`validate_phase_contracts.py`** — the phase rules are now a gate, not a paragraph. It catches a
+  `phase_*` function that lost its `@phase` decorator (it would keep working and stop checking
+  anything), a value declared in both `provides` and `returns`, a `requires` list grown past four,
+  and a phase that declares `returns` without building a `PhaseRecord`. The three phases that still
+  return bare tuples are listed as named debt and warn rather than fail — a gate that fails the day
+  it lands is a gate people disable.
+
+### Removed
+- **The dead `try/except NameError` handlers around the wizard school reads.** They were the
+  non-wizard path back when `school`/`opposing_school` were conditionally-bound locals; once
+  `phase_class_options` began seeding both attributes to `None`, an attribute lookup could only ever
+  raise `AttributeError`, so the handlers were unreachable. They were deliberately left standing
+  while that extraction was in flight — a pure move must not fold in a cleanup — and are removed now
+  in their own commit, with the `if ... else "N/A"` carrying the non-wizard path exactly as before.
+
+### Changed
+- **Sphere talents now scale with level instead of being a flat 8, and nothing is free.** The flat 8
+  was a testing convenience that handed a 1st-level character the same eight talents as a 20th —
+  which is *why* the feat budget was over-committed at level 1. `test_feat_budget.py` is now green:
+  **0 over-commits in 840 generations**, where it previously fired 16 times.
+  - **The roll** (`spheres.roll_talent_budget`): under 5th rolls 0–8, under 10th 0–12, under 20th
+    0–16, and 20th+ rolls 0–(level−4) so the curve keeps going instead of flattening. The low end is
+    a real 0 — a dabbler who rolls nothing is a legitimate character.
+  - **No freebies.** Every talent is paid for by a feat (HR1: one Extra-Talent feat = 2 talents; the
+    first magic talent rides Basic Magic Training for 1) or by a Spheres Mentor. What neither can
+    fund is **dropped, not granted**. Verified directly: 0 unpaid talents across 225 bundles.
+  - **The three levers, in order.** What is left of the feat budget after Path of War and professions
+    have taken their share; then, if that falls short and trainers are on, a **Spheres Mentor is
+    forced** to cover the gap; if trainers are off the roll **halves** (no mentor can be conjured),
+    and if feat taxing is off it halves **again** — both off quarters it. Measured at 20th level:
+    6.9 talents → 3.6 (no trainers) → 3.4 (no taxing) → 1.6 (neither).
+  - **The magic-side bonus feats are now rolled before the cap, not after.** They come out of the
+    same budget, so rolling them afterwards meant the budget was sized for the talents alone and
+    then quietly overspent. When the budget cannot carry both, the bonus feat goes and the talents
+    stay — talents are the point of taking a sphere.
+  - **Dropping a talent rebuilds the sheet items from the pick list**, not by filtering on name: the
+    item carries a display-cased name and the pick the raw one, so a name filter silently kept
+    talents nobody had paid for. That was caught by checking the invariant, not by reading.
+  - **"Feat taxing" is read from `homebrew_feat_amount`**, the flag that actually governs the
+    homebrew feat economy (creation/story/flavour feats). There is no separate feat-tax toggle in the
+    code; if a distinct one is wanted, that is the line to change.
+  - Golden fixtures re-baselined — a deliberate behaviour change, and the first on this map for which
+    `--update` is the correct response rather than a failure signal.
+- **A phase's outputs now have three declared homes, not one.** Extraction was heading toward
+  `build_payload(character)` — the payload built from the character alone — and a runtime census
+  priced it: the payload literal reads **98 function locals**, of which **88** would have to become
+  character attributes, on an object that already carries ~200.
+  - **Four of those names already exist on the character holding different values**, and three were
+    invisible to reading. `character.feats` is the *pre-*`separate_feats_func` list;
+  	`character.martial_disciplines` is the discipline data **table**, not the chosen list (the same
+    shape as the known `character.deity` trap); `character.class_features` is not the `data_dict`
+    slice the local holds; `character.archetype_info` is the dict whose `json.dumps` the local is.
+    Repointing any of them by name would have shipped a wrong character.
+  - So outputs sort three ways, by *who else needs this*: **character state** (`provides`),
+    **derivable at export** (stored nowhere — `armor_name` and its five siblings come straight out
+    of `character.armor_dict`), and **everything else** (a `PhaseRecord`, declared in `returns`).
+  - **This reopens ticket 06's "positional soup" ruling, and narrows it.** That objection was
+    against a 15-element *tuple*, and it was right about tuples. A record is not a tuple:
+    `gear.weapon_name` names itself at the call site, cannot be mis-ordered, and is checked on the
+    way out exactly as `provides` is. The rule is now positionality, not returning.
+- **`generate_random_char` is 934 lines, down from 1,904** — every ordering-sensitive block in it is
+  now a declared phase (15 of them), and the goldens stayed **byte-identical through every
+  extraction**. The later blocks landed as records: `phase_path_of_war_and_spheres` alone hands back
+  **32 values, not one of which is character state**, which is the clearest case the record rule
+  makes for itself.
+  - The two feat blocks are **not** adjacent (the class-features phase sits between them) and
+    `feats`/`teamwork_feats` are re-bound across them, so the records are **unpacked at the call
+    site** rather than repointed downstream — 97 references left untouched instead of rewritten.
+  - **`validate_phase_contracts.py` caught a modelling error in one of these extractions**:
+    `phase_feat_selection` had declared `feats` in *both* `provides` and `returns`. It is character
+    state (choosers and `no_prereq_loop` read `character.feats`), and the local is only an alias.
+    The gate written earlier in the same session is what found it.
+- **Three more blocks are declared pipeline phases**, golden payloads byte-identical throughout:
+  `phase_gear_and_equipment` (the kit and the purse — eleven outputs cross out of it and *every one*
+  is read only by the export, which is what proved the record), `phase_appearance_and_traits` (seven
+  flavour rolls, and the first phase that puts **nothing** on the character), and
+  `phase_class_bonus_feats` (the feats a class grants, before any are chosen).
+  - The appearance phase's hazard is one no attribute could express: `language_chooser` is *handed*
+    the skill ranks, so running it early picks languages against an empty rank sheet without raising.
+    Requiring `skill_rank_budget` — which only the professions phase sets — is what forces the order.
+  - The class-bonus-feats hazard hides itself: run before `character.bloodline` is resolved, the
+    bonus list comes back empty and the phase's own refund converts every unfilled slot into an
+    ordinary feat, so the character ends with the right feat **count** and the wrong feats.
+- **Every class-specific choice is now a declared pipeline phase.** `phase_class_options` covers
+  schools, archetypes, bloodlines, domains, bonded creatures and the thirty-odd option buckets.
+  Golden payloads unchanged.
+  - It was expected to be the twenty-plus-`requires` case and it needs **four**. The block reads a
+    great deal, but nearly all of it is state the block itself produced a few lines earlier; only
+    the prerequisite-seeding state (ability scores, BAB, caster level) and one write-after-write
+    genuinely cross in.
+  - **That write-after-write is the pipeline's only one, and it is now a contract.**
+    `favored_class_calculator` does `character.Total_HP += character.level`, so letting the HP phase
+    run afterwards would *overwrite* the favoured-class bonus rather than lose it loudly.
+  - **A local here was conditionally bound, and the export site knew it** — the wizard school is
+    only assigned for wizards, which is why the export reads it inside a `try/except NameError`. An
+    attribute cannot raise `NameError`, so it is seeded to `None` to keep the non-wizard path
+    landing on "N/A" exactly as before. Those handlers are now provably dead; they are left standing
+    because deleting them is a cleanup, not a move.
+  - **Three locals turned out to be dead**, including one — the favoured-class list — with no reader
+    anywhere in the repo.
+- **Hit points and the per-class spellbooks are now a declared pipeline phase.**
+  `phase_hp_and_spellbooks` declares that it needs the finished ability scores, because
+  `total_hp_calc` reads the *final* Con score — running it before the stats phase never raised, it
+  just gave every character the hit points of a Con-10 one. Golden payloads unchanged.
+  - Nothing crosses out of this block: all three names that used to leave it were already aliases of
+    character attributes. Zero new attributes; the export now names the attribute rather than the
+    alias.
+  - **Those aliases were only safe to drop because it was measured, not assumed.** The legacy spell
+    scalars are re-pointed a *second* time much later, after the spell lists are deduped — so an
+    alias captured early and an attribute read at export are two different reads, and a rebinding in
+    between would have made the substitution a silent payload change. Asserted equal at the export
+    site across 68 classes at three levels, with the probe first confirmed able to fire.
+- **The alignment / body / flaw / personality / level block is now a declared pipeline phase.**
+  `phase_alignment_and_level` covers everything rolled off a finished identity but before any levels
+  are spent, and it declares what it needs (`region`, `chosen_race`, `_class_picks`) and what it
+  produces. Nothing in that block would have *crashed* out of order — each mis-ordering produced a
+  quietly different NPC, which is exactly why the ordering had to become a contract rather than a
+  comment. The generated character is unchanged: all seven golden payloads are byte-identical with
+  no fixture edits.
+  - The level roll belongs to this phase rather than one of its own, because `flaw_amount` crosses
+    from the flaw roll straight into `update_level`'s feat economy and nowhere else. Splitting them
+    would have promoted a local into an exported attribute to serve exactly one reader.
+  - **Three near-misses, each of which would have been a silent wrong-character bug.** The two
+    alignment strings are *not* interchangeable — `choose_alignment` stores the lowercased form
+    because the deity table is keyed that way, while the payload exports the title-cased one, so
+    both now have their own name. `character.deity` was already taken by the deity *data table*
+    keyed by alignment, so the chosen deity keeps its existing home at `character.deity_choice`;
+    giving it an attribute named `deity` would have overwritten the table and broken domain
+    selection. And the block's `professions` roll was overwritten 240 lines later by
+    `phase_professions_and_skills`, which returns *trainer* professions — two unrelated things
+    sharing one name.
+  - **That third one turned out to be dead code that cannot be deleted.** Nothing had ever read the
+    personality-flavour profession list; every downstream reader was reading the trainer list that
+    replaced it. The call still has to run, because it draws from the shared RNG and removing it
+    would shift every later roll and change the character. Dropping the flavour list is a behaviour
+    change and belongs with the class-choices work, not with a pure move.
+- **The level-40 ceiling is now a named rule with a test behind it, instead of a bare `40` nobody
+  guarded.** The ceiling itself already worked — `randomize_level` has always clamped, and asking
+  for level 999 has always produced a level-40 character — but it was an unexplained literal in one
+  function, and *nothing anywhere asserted it*. Because the clamp is silent rather than an error, a
+  regression would have shipped level-60 characters rather than failing. It is now
+  `level_and_bab.MAX_CHARACTER_LEVEL`, imported by the sweep rather than restated in it.
+  - Every swept character is checked against it, plus the invariant that would actually rot: the
+    total is capped in `randomize_level` but divided across classes in `_split_levels`, so a
+    character whose class levels do not sum to its total would satisfy the cap and still be wrong.
+  - A dedicated check asks for levels 41, 60 and 999 and requires exactly 40 back, multiclassed so
+    the split is exercised. **Verified by breaking it:** with the clamp removed the suite reports
+    the over-ceiling total, the failed clamp, and a level-344 dread. The sweep's own levels all sit
+    under the ceiling, so without this the assertions would have passed vacuously forever.
+  - Requests above the ceiling are still **clamped, not rejected** — the caller is asking for a
+    random character, not a specific one.
+
+### Fixed
+- **A character above 20th level stopped gaining nine kinds of class option, while still gaining
+  the others.** Above 20th the game is homebrew, and the house ruling is that a level-30 character
+  goes on picking rogue talents, rage powers and aegis customizations at their class's own cadence —
+  only *spells* stop, because there is no 10th-level spell. The code already modelled that: spells
+  and maneuvers read `capped_level` (`min(level, 20)`), class choices read the uncapped class level.
+  But nine schedules had been scraped as finite lists that happened to stop at 19th or 20th, so an
+  aegis 30 quietly received 10 customizations instead of 15 while a rogue 30 correctly received 15
+  talents. The truncations were an artifact of how the tables were harvested, never a ruling, and
+  they are gone.
+  - Schedules whose gaps are **deliberate** keep them past 20th rather than filling them in: the
+    shaman's missing 6th and 14th levels are wandering hexes, a separate feature. Bounded features
+    do **not** continue, and are now distinguishable from truncated ones — the warpriest's two
+    blessings and the occultist's *"maximum of seven implement schools"* are caps the classes state,
+    not lists that ran out.
+- **Fixed a hang that could freeze character generation outright.** `generic_class_option_chooser`
+  advanced its loop only on a *distinct* pick, with no check for the option pool running dry — so a
+  class owed more picks than its pool holds would spin forever rather than take what exists. It was
+  unreachable only because every schedule stopped at 20th; removing those caps made it reachable
+  immediately (an occultist 40 is owed 12 implements and only eight schools of magic exist). The
+  loop now stops when the pool is exhausted, which is what its sibling `choosing_talents` has always
+  done. **Found by running the generator above 20th for the first time** — no fixture and no sweep
+  had ever gone past 18th, so the entire 21–40 band was unexercised.
+- **Magi were getting 10 arcana where the rules grant 6, and investigators 10 talents where the
+  rules grant 9 — with the wrong "gained at" level on every one of them.** Neither number was ever
+  chosen by anyone: both call sites omitted the `divisor` argument and inherited the default of 2,
+  so a magus picked one arcanum every 2 levels instead of every 3. A magus 4 shipped **two** arcana
+  stamped "gained at 2" and "gained at 4"; it now ships **one**, stamped 3, which is what a 4th-level
+  magus has. The investigator's talents now land on odd levels (3rd, 5th, 7th…) as the rules say,
+  instead of even.
+  - The stamps were wrong *because* the counts were: both were derived from the same divisor in two
+    separate places. Fixing the schedule fixes both at once — see the entry below, which made that
+    structurally true before this change was attempted.
+  - **Only these two.** Every other schedule that disagrees with the rulebook was authored by a
+    human on purpose or has not been checked against Sieg's Guide yet — the aegis's customization
+    approximation, the warpriest's and inquisitor's doubled 1st-level picks, the witch's missing
+    1st-level hex. Those are marked `unverified` in the table and deliberately left alone.
+    *Rejected alternative:* fixing everything that disagrees with RAW, which would have quietly
+    overwritten house rulings nobody wrote down.
+  - **One golden fixture moved, `companion.json`, and it was recording the bug.** 116 of its 172
+    keys are unchanged; the 56 that differ are everything drawn *after* the arcana chooser, because
+    one fewer random pick shifts the shared RNG stream. The class composition, stats, saves and HP
+    are identical.
+
+### Changed
+- **Every class's pick schedule — how many rogue talents, rage powers, arcana or hexes a character
+  gets, and at which levels — now lives in one place: `Backend/json/class_choice_schedule.json`.**
+  It used to live in three, and they disagreed. `data.amount` held explicit level lists for 13
+  classes; `get_data_without_prerequisites` computed `floor(level / divisor)`; `generic_multi_chooser`
+  computed `floor((level - start) / divisor) + 1`. A single resolver, `generic_func.levels_for()`,
+  now answers for all of them, and the arithmetic is deleted from the choosers. **No behaviour
+  changed** — this is the first of two steps, and the second one carries the fixes.
+  - **The three conventions were nested in generality, not redundant**, which is why this was a bug
+    factory rather than untidiness. The divisor form can only say "every N levels starting at N".
+    The investigator's schedule is *3rd, then every 2* — unreachable in that form — so it silently
+    delivered 10 talents instead of 9 **and** stamped them on even levels instead of odd. One
+    missing degree of freedom, two visible symptoms. A table entry now declares either a compact
+    `{start, every, until}` rule or an explicit `levels[]` list, so both are sayable.
+  - **The level stamp and the pick count now come from one source.** They were derived twice from
+    the same formula in two different functions, so a wrong count was always also a wrong "gained
+    at" on the sheet. The k-th pick's level is simply `levels[k-1]`, which makes that class of bug
+    unrepresentable rather than merely fixed. `_record_choice_level`'s docstring claimed it recorded
+    a *character* level; every caller has always passed a *class* level, and class level is correct
+    — it is what lets a rogue 4 / magus 6 draw on each class's own progression.
+  - **`until` is load-bearing, not tidiness.** Class levels reach 40 (`level_and_bab.py:19`) and
+    nine of these schedules stop at 19 or 20, so an unbounded `{start, every}` rule would have handed
+    a level-30 aegis 15 customizations instead of 10. Found by checking, not by reading.
+  - **`data.amount` is deleted, not left in place**, and its three remaining readers (the psionics
+    and occult invariants, the occult gate) now read the new table through `_harness.schedule_levels`
+    — a *second* implementation of the expansion, deliberately not `levels_for`, so a check cannot
+    confirm the generator against itself. A schedule table that nothing reads is how the original
+    one drifted. *Rejected alternative:* keeping `data.amount` and syncing the two.
+  - Dead knobs removed rather than ignored: `divisor`/`odd` on `get_data_without_prerequisites` and
+    `n2`/`start_level` on `generic_multi_chooser` no longer exist, because a parameter a caller can
+    still set while nothing reads it is how a schedule change silently does nothing.
+  - Verified by replaying the old arithmetic from git across **1,360 bucket × level pairs at levels
+    1–40** (count and stamps identical), 7/7 golden payloads byte-identical, and 30,553 house
+    invariants across all 68 classes.
+  - Decisions and rejected alternatives:
+    [class-choices ticket 01](https://github.com/The-Data-is-a-lie/tickets/blob/main/tks/pathfinder-char-creator/feature/class-choices/01-pick-schedule-authority.md).
+
+### Fixed
+- **Sorcerers, oracles, psychics and arcanists were shipping the text `null` where a spell-slot
+  count belongs — at roughly half of all class levels.** PF1e spontaneous full casters gain each new
+  spell level one class level *later* than a prepared caster of the same tier: a sorcerer reaches
+  2nd-level spells at 4, a wizard at 3. `caster_formula` modelled only the prepared progression, so
+  `spells_per_day_attr` looped one spell level too far and read a cell the scrape had correctly left
+  blank — and these tables spell "blank" as the **string** `'null'`, not JSON null. A level-3
+  sorcerer's spells-per-day row was literally `[0, 5, 'null']`, and that string reached the payload,
+  the Foundry sheet and the web sheet. `adept` was wrong for a different reason: an NPC class with
+  its own 1/4/8/12/16 ladder, mapped onto the closest tier that existed, wrong by up to three levels
+  and handed a 6th-level row it can never reach. Both progressions are now modelled.
+  - The rule lives in the **code**, as a named constant, not derived from the tables. *Rejected
+    alternative:* reading the unlock level straight out of `spells_per_day.json`, which needs no
+    hand-maintained list and was the tempting option. It would have made
+    `validate_progression_tables.py` compare the data against itself — a scraper error would silently
+    become the character's behaviour with no second opinion. The gate's whole value is that the data
+    and the code are two independent statements of one published table. Verified across all 30
+    tables: those four lag by exactly 1 at every spell level, and no other class does.
+  - **No golden fixture moved, and that is the finding.** None of the seven covers a spontaneous
+    full caster at a divergent level, so the bug was invisible to them. The invariant is asserted
+    over the whole swept roster in `test_house_invariants.py` instead — every `spells_per_day_list`
+    entry must be a number — which also catches the next class to acquire a bespoke progression.
+    Confirmed by reverting the fix: the sweep then fails for arcanist, oracle and psychic at both
+    levels 3 and 17.
+- **The magus 5th-level spells-per-day column was one row late at high levels.** It granted 4 slots
+  at level 20 while the magus's own 6th-level column granted 5 — which no PF1e caster does. Checked
+  against Archive of Nethys: the published row is 1/2/3/3/4/4/**5/5** at class levels 13–20, and the
+  scrape had 1/2/3/3/4/4/4/4 with the 5 pushed onto the unreachable 21st row. Two cells corrected.
+  - **Left unfixed on purpose:** the same source says the magus *4th-level* column should read 3 at
+    level 12 and 5 at 18, where the scrape has 2 and 4 — the same off-by-one, in a column no
+    structural rule catches because it never inverts against its neighbours. The evidence is one
+    LLM-extracted table, and hand-editing game data on that basis is how you introduce a silent
+    wrong-character bug while fixing another. It needs a re-scrape against the source.
+  - Both exemption blocks in `validate_progression_tables.py` are **deleted**, which is what the
+    gate demanded: it fails if an allowance outlives the bug it excused. It now reports 423 columns,
+    **30/30 classes aligned** with `caster_formula` and **30/30 per-day tables free of inversion**,
+    with nothing excused.
+
+- **One Path of War maneuver was called "Solar Flare maneuver" and never matched anything.** The
+  scrape recorded the Solar Wind strike's key as `Solar_Flare_maneuver`, so that suffix travelled all
+  the way into `maneuvers_choose_from` and `maneuvers_desc_dict` — the only name in the repo carrying
+  it, while its own siblings Solar Reflection and Dazzling Solar Flare were clean. The cost was not
+  cosmetic: the FoundryVTT module matches maneuvers against the `pf1-pow` compendium by that name,
+  folding case, apostrophes and whitespace but not a trailing word, so Solar Flare missed its
+  document and arrived synthesized — no automation, no discipline, no `(Strike)` prefix. The module's
+  curated conditional key had been hand-patched to the artifact to compensate; both sides now use the
+  real name. *Rejected:* teaching the module to strip a trailing `" maneuver"`, which would have made
+  the consumer absorb a defect in the producer's data and hidden the next one.
+- **FoundryVTT module — five defects the new golden harness found before anyone reported them.**
+  Recorded here because this changelog is the stack's decision log, not just the backend's. A
+  companion's AC was a point low whenever a feat granted one (feat automation is stripped because the
+  payload already counted it, and AC is the one folded stat pf1 gives no seed to write the difference
+  back into — so AC-targeted changes are now kept, and only those; *rejected:* keeping natural armour
+  too, which **does** have a seed and would double). Twelve `pf1-pow` maneuvers carry a
+  double-encoded apostrophe in their compendium names and silently arrived with no automation at all.
+  Seventeen stances were labelled `(Boost)` by the pack while their own buff said `(Stance)` — our
+  stance list now outranks the pack. Synthesized psionic powers were missing
+  `uses.autoDeductChargesCost` and so were free to manifest. And every character carried two token
+  effects both named "Inherent", because re-identifying a buff item never reached the ActiveEffect
+  inside it. *Rejected throughout:* re-recording a golden to accept a diff without reading it — which
+  is how the Solar Flare conditional above was nearly lost for a second time.
+- **Seven build and curation scripts had been dying with `ModuleNotFoundError`.** Filing the
+  validators and tests into `gates/` and `tests/` moved modules that seven other scripts import
+  (`build_companion_archetypes`, `build_talent_conditionals`, `enrich_conditional_riders`,
+  `promote_conditional_candidates`, `promote_talent_conditionals`, `prune_talent_conditionals`,
+  `sweep_buff_gaps`), and none of them imported `_harness` — the thing that puts the buckets on
+  `sys.path`. The check that closed that work was `compileall`, which proves a file parses and never
+  once imports it. All seven now route through `_harness` and run again.
+
+### Changed
+- **A Redis outage can no longer take the API down with it.** `flask-limiter`'s `swallow_errors`
+  defaults to **False**, and the Redis URL is resolved once at import by a single ping — so a Redis
+  that was reachable at boot and died later (a managed instance restarting, a network blip, free-tier
+  maintenance) would raise out of the storage layer on *every* rate-limited request, and
+  `/update_character_data` would return 500 until someone redeployed. The generator would have been
+  fine; the limiter would have been taking the API down with it. Now `swallow_errors=True` plus
+  `in_memory_fallback_enabled=True`, so a storage failure degrades to per-process counting and
+  characters keep generating. Verified by pointing the limiter at a dead Redis and confirming the
+  route still answers 200. This mattered only once a real Redis instance was configured — with
+  `memory://` there was nothing to fail.
+
+- **A third pipeline phase is extracted: `phase_bootstrap_identity`** — gender, region, race, name
+  and class selection now declare what they set instead of being 30 loose lines at the top of a
+  1,900-line function. Generated characters are byte-identical (7/7 goldens), and
+  `test_pipeline_phases.py` gained cases for it.
+  - Its `requires` is **empty**, and that is the correct declaration rather than a stub: it is the
+    first phase, so nothing can cross in. All its guard value is in `provides`, which is checked on
+    the way out — `region` is set *inside* `region_chooser` and `c_class` inside `chooseClass`,
+    never returned, and those invisible writes are exactly what goes missing unnoticed.
+  - **The seam is one line lower than it looked.** A phase takes the character as its first argument
+    and checks `requires` against it, so the phase cannot be the thing that *creates* the character.
+    Construction stays at the call site.
+  - **The second candidate block was measured and deliberately not extracted.** 15 locals cross out
+    of it (`flaw` alone has 14 later references), so returning them would be a 15-value tuple — the
+    same silent-miscount failure as the `export_list_dict` helpers already deleted from
+    `createACharacter.py`. The remaining phases must write to the character and declare via
+    `provides` instead; but only 5 of those 13 names are on the character today, so that work is
+    ~8 new attributes plus rewriting ~60 references, not a move. Recorded so the next pass is
+    scoped from a measurement rather than from a reading.
+
+- **`Backend/scripts/` has buckets: the 21 gates now live in `gates/`, the 11 tests in `tests/`.**
+  81 files sat under one name that told you nothing about what any of them was, and the prefix was
+  the only signal. The two runners stay at the top level because they are what you *run*, not what
+  gets run, and `golden/` did not move because `_harness.GOLDEN_DIR` owns that path. Both runners'
+  globs now point at their bucket; the counts are unchanged (21 gates, 11 tests), which is the check
+  that matters — a move that drops a script produces a *smaller passing run*, which reads as success.
+  - **Only half the split landed, deliberately.** The plan assumed the earlier harness work had made
+    this "a deletion, not a recalculation". That holds for gates and tests, which were migrated. It
+    is false for the other 43 files — the builders and one-off fixits never imported `_harness` and
+    still compute the repo root from their own nesting depth. One level down, `parents[2]` would
+    point at `Backend/` instead of the repo root and read the *wrong file* rather than raising, which
+    is precisely the silent failure the marker-based resolver exists to prevent. Moving them is
+    blocked on finishing that migration; *rejected alternative:* bumping each `parents[2]` to
+    `parents[3]`, which would have been quick and would have re-encoded directory depth in 37 files —
+    undoing the thing the resolver was written to achieve, and breaking them all again on the next move.
+  - Five gates and one test were still computing their own paths and would have broken silently:
+    four companion gates via `HERE.parents[1]`, three more via `os.path.join(HERE, '..', 'json')`,
+    and `test_golden_payload.py` — which computed its own `GOLDEN_DIR`, the very constant the harness
+    was supposed to own. All now take `REPO` / `JSON_DIR` / `BACKEND` / `GOLDEN_DIR` from `_harness`.
+  - `_harness` puts `gates/` and `tests/` on `sys.path` as well, because several gates are also
+    libraries imported across buckets (`validate_talent_conditionals.is_cost_only` has five callers,
+    one of them a test). Adding a bucket means adding it there and nowhere else.
+  - **The other half landed too, and the 43 files were converted first.** `build/` (34) holds
+    anything you run to *produce or maintain* generated or curated data — the builders and scrapers,
+    the `promote_*`/`prune_*`/`enrich_*` conditional-curation chain, the audits, and both
+    sub-toolkits; `attic/` (9) holds only the self-described one-offs. Ticket 03's prefix rule left
+    ten scripts in neither, and filing a maintained curation tool under *"kept for the record, not
+    maintained"* would have been a lie about it. *Rejected:* a third bucket, which would have reopened
+    a settled decision for ten files.
+  - **Verified by measurement, not by reading the diff.** Every module-level path constant of all 50
+    scripts was captured by importing each in a subprocess before the move and again after: 134
+    values identical, and every changed value accounted for by an intended move. That is what caught
+    the one real bug — `_pow_generator/` and `_spheres_generator/` went a level deeper too, so
+    `build_pow_template_actor`'s own `parents[2]` quietly became `Backend/` instead of the repo root
+    and doubled `Backend/Backend/` into fourteen data paths. Nothing in a code review would have
+    shown that.
+  - Two more of the plan's claims failed on contact. **`.gitignore` did need changing** — five of its
+    eight `Backend/scripts/` paths name things that move in this half. And **the buckets are not
+    independent**: `build/build_companion_archetypes.py` imports `attic/repair_animal_choices`, which
+    is the one edge saying the attic is not yet archaeology.
+
+### Added
+- **A gate for the shape of the scripts directory itself.** `gates/validate_scripts_layout.py` fails
+  on a `validate_*.py` outside `gates/` or a `test_*.py` outside `tests/`, and checks that both
+  runners' globs still match a non-empty set — a glob that silently matches nothing is the exact
+  failure `validate_all.py` exists to prevent, and a PASS over zero scripts looks like success. The
+  argument for it is this directory's own history: the naming convention was *also* only a
+  convention, and `check_racial_stats.py` went years without ever running because nothing checked
+  that it held.
+  - It reported the 43 unmoved scripts as **one counted line**, not 43 warnings. Forty-three
+    near-identical warnings about a known backlog is not information — it is the noise that teaches
+    people to stop reading a gate's output, which is the same failure as a gate nobody runs. Now that
+    the backlog is empty those two warnings are **errors**: the next runnable file to appear at the
+    top level is the pile reforming, not the tail of something already ticketed.
+  - It also fails on **anything at the top level that computes a path from its own nesting depth**.
+    That is the defect the second half of the split was blocked on, and it fails *silently* —
+    `parents[2]` one level down points at `Backend/` and reads the wrong file rather than raising —
+    so it earns a check rather than a sentence. Negative-tested against a file carrying both faults.
+
+### Removed
+- **The server-side session is gone.** Every request wrote the whole generated character to
+  `session['character_data']` and read it back on the very next line — a local variable wearing a
+  session's clothes, inherited from `app_Backup_Working.py`. None of the four routes ever read it
+  across requests, and both consumers (the FoundryVTT module and the standalone web sheet) keep the
+  payload themselves. The cost was a full serialisation of the payload to disk or Redis on every
+  request — 40 KB for a level-5 rogue, more at high level — for a 60-second lifetime nobody queried,
+  plus a `Secure; SameSite=None` cookie on every response. 87 stale session files had accumulated
+  locally. Responses now carry no `Set-Cookie` at all.
+  - **Redis stays**, and this is what it is for: rate limiting. `memory://` storage counts per
+    *worker*, so under `gunicorn -w 4` the declared 60/minute is really 240/minute. That — not
+    session storage — is the argument for provisioning an instance. *Rejected alternative:* keeping
+    the session because "sessions are standard for a Flask app". This backend is a stateless JSON
+    API; the payload's `generation_seed` already replays any character exactly, which is a cheaper
+    handle than storing the result.
+- **The production image no longer ships a Jupyter notebook stack.** `requirements-docker.txt` was a
+  byte-for-byte copy of `requirements.txt`, so the deployed container installed `ipython`,
+  `ipykernel`, `jupyter_client`, `jupyter_core`, `debugpy`, `pyzmq`, `tornado`, `traitlets`, `jedi`,
+  `parso`, `prompt-toolkit`, `stack-data`, `matplotlib-inline`, `nest-asyncio`, `comm` and `psutil`,
+  plus the scraper stack (`beautifulsoup4`, `requests` and their transitive deps) that only
+  `Backend/scripts/scrape_*.py` needs, plus four junk packages that do nothing at all (`ceiling`,
+  `floor`, `jsonify`, `flask_abort` — accidental installs, not the standard-library names they look
+  like). None of it is imported: after `import app; import main_test` and five full generations, the
+  only module that arrives lazily is pandas. **The image went from 714 MB to 602 MB.** On Render's
+  free tier the image is pulled on every cold start, which is the one place this actually costs
+  something. `requirements.txt` keeps the full set, because CI installs it to run the scrapers and
+  the gates.
+  - `waitress` is deliberately kept despite nothing importing it — `usage_counter.py`'s docstring
+    claims production serves under waitress via a `render.yaml` that does not exist in this repo,
+    and a Docker Command override in the Render dashboard isn't visible from the code. Dropping it
+    on that assumption would take the service down. The stale docstring is the bug; it is flagged in
+    `requirements-docker.txt` rather than guessed at.
+
+### Added
+- **A new gate checks what is actually inside the level progression tables, not just that they
+  exist.** Around 423 columns across four webscraped files answer "what do you get at class level
+  N?" — spells per day, spells known, power points, maneuvers. The existing caster gate only checked
+  that a class *had* a row. A single shifted cell inside one was invisible: it doesn't raise, and it
+  only reaches a golden fixture if that exact class at that exact level happens to be seeded. On a
+  character sheet it looks like someone who simply has one fewer spell slot than they should.
+  `validate_progression_tables.py` checks table length, gaps, direction, and that no caster has more
+  high-level slots than low-level ones — and cross-checks every column's unlock level against
+  `caster_formula` by *running* it, so the data and the code are two independent statements of one
+  published table rather than one number nobody recomputes.
+  - It found two real bugs on its first run, both recorded and neither fixed here, because fixing
+    either changes generated characters and this branch was a refactor: **spontaneous casters
+    (sorcerer, oracle, psychic, arcanist) ship the string `'null'` as a spells-per-day count** at
+    around half of all levels, because `caster_formula` only models the prepared-caster progression
+    and reads one spell level too far; and the **magus's 5th-level column looks shifted one row
+    late**. Both are carried as itemised exemptions that name their reason, and the gate fails if an
+    exemption is ever left behind after the bug it excuses is fixed — an allowance that can't be
+    retired is how "temporary" becomes documentation.
+- **Every regression test now runs in CI, including the golden-payload fixtures.** There were eleven
+  `test_*.py` scripts in `Backend/scripts/` and CI ran exactly one of them. The expensive omission
+  was `test_golden_payload.py` — seven seeded characters with every payload key diffed byte for byte,
+  which is the only thing that can prove a refactor didn't quietly change a character. A new
+  `test_all.py` discovers the family by glob, exactly as `validate_all.py` already did for the data
+  gates, and both now run on every push. The whole suite is about 25 seconds.
+  - **A trimmed run says it was trimmed.** The full-roster sweeps are slow (the unabridged invariant
+    sweep is 825 generations), so `test_all.py` trims them by default and prints a `NOTE:` naming
+    what it shortened. `--full` runs everything; do that before a release. A suite that quietly
+    tests less than it appears to is the same failure as a gate nobody runs.
+- **`check_racial_stats.py` was renamed to `validate_racial_stats.py` — and started running for the
+  first time.** It checks all 25 playable races against their stat entries, and it had never once
+  been executed by `validate_all.py`, purely because its name didn't match the `validate_*` glob. It
+  passes, and always would have; nobody was looking. The gate count went from 18 to 19. This is the
+  cost of glob discovery: it makes the naming convention load-bearing wiring rather than a style
+  preference.
+
 - **The class dropdown is grouped, and it finally lists every class you can roll.** The FoundryVTT
   generator dialog now shows five labelled sections with their sizes — Paizo base classes (40),
   Path of War (5), Psionics (12), Occult Adventures (6), NPC classes (5) — and each section opens
@@ -597,6 +2150,35 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     broke six weapons.
 
 ### Changed
+- **All 30 data gates and regression tests share one harness.** Each of them used to hand-roll an
+  error list, a warning list, a pass/fail print and an exit code — roughly a third of every file,
+  and already drifted: the same failing run printed `FAILED: N problem(s)`, `FAILED: N problem(s)
+  across N modifier(s)` or `FAILED -- N problems` depending on which gate tripped, so "did it fail?"
+  could not be answered from the shape of the output. `Backend/scripts/_harness.py` owns that now,
+  and a new gate opens with its first real rule instead of forty lines of ceremony.
+  - **Path resolution moved into the harness, which is the larger win.** About thirty scripts each
+    recomputed the repo root from their own nesting depth (`Path(__file__).resolve().parents[1]`),
+    so the directory layout was encoded thirty times over. The harness now finds the root by walking
+    up for a directory carrying both `CLAUDE.md` and `.git`, and *raises* rather than guessing when
+    there isn't one — a wrong-but-existing path reads the wrong file silently, which is the worse
+    failure. Depth is no longer a fact any script knows.
+  - **The three bare-`assert` tests now collect instead of stopping at the first failure.** When a
+    data change breaks nine things you want all nine, not the first one and a traceback. Verified by
+    deliberately breaking two fixtures and confirming both were reported. Converting the loop
+    assertions also showed how little was being counted — `test_spell_conditionals` went from 17
+    assertions to 762 checks.
+  - *Deliberately not done:* no pytest, and no shared argparse. The standalone-script convention here
+    is documented and intentional; the flags are genuinely per-gate (`--print`, `--module-root`,
+    `--verbose`), and a shared parser would either accept all of them everywhere or grow bigger than
+    the parsers it replaced.
+- **The wayfinder tracker moved out of this repo** into the standalone
+  [`tickets`](https://github.com/The-Data-is-a-lie/tickets) repo, restructured in the okf-bundles
+  format as `tks/pathfinder-char-creator/<problem-type>/<effort>/`. Five maps and 32 tickets moved;
+  links pointing back into this repo became absolute GitHub URLs so a ticket resolves when read from
+  anywhere. `docs/wayfinder.md` now points at it. *Why:* the maps increasingly span this repo, the
+  FoundryVTT module and the web sheet, and a tracker living inside one of the three repos it tracks
+  had become the wrong home.
+
 - **The module's class roster lives in one file instead of three.** It used to be hard-coded in the
   dropdown, in a dead byte-identical copy of the dialog, and in the item-collection boundary list,
   with nothing checking they agreed — which is exactly how the occult classes reached two of the
@@ -650,6 +2232,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     catch. `PF_FOUNDRY_DATA` overrides where it looks.
 
 ### Fixed
+- **`test_skill_ranks.py` checked a different number of things on every run — now it checks 4331,
+  every time.** The count moved between 3688 and 3696 because a conditional assertion fired a
+  varying number of times. The test never failed; what varied is how much it *checked*, which is why
+  nobody noticed. A regression hiding in the untaken branch would have passed most of the time.
+  - The cause was not where it was first recorded. The suspect was a local `random.Random(99)`
+    pinning only the test's own inputs — a red herring. The actual carrier was a bare `random.seed()`
+    at the end of a *different* test, which re-seeds from OS entropy in the middle of the run and
+    handed every test after it an uncontrolled stream. The global seed is now set before each test,
+    so the suite no longer depends on its own running order either.
+  - **The test now proves this itself** rather than relying on someone comparing consecutive runs:
+    two identically-seeded passes must produce identical characters and identical check counts.
+    Deliberately not a pinned expected total — a magic number would need editing every time a check
+    is added, so it would be updated reflexively and stop meaning anything.
+  - Separately, the conditional assertion now **declares its own coverage** and fails if the sample
+    never exercised it. Determinism made the coverage stable; that makes it non-zero. Two different
+    failures, both live here.
+  - The remaining architectural fix — threading a `random.Random` instance into
+    `profession_chooser.py` instead of seeding a global — still moves draw order and therefore the
+    golden fixtures, so it stays out of a refactor branch.
+
 - **The kineticist would have been handed a spellbook, and the medium two spell levels it never
   gets.** Both carried `"casting level": "mid"` in `class_data.json`, which `spells.py` branches on.
   The pf1 class Items disagree — the kineticist has no `casting` block at all (burn is
@@ -2306,7 +3908,7 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   (e.g. Orc +4 Str / −2 Int / −2 Wis / −2 Cha) are added to the rolled scores before ability mods,
   HP, skills, and spells are calculated; the floating "+2 to One Ability Score" races (Human,
   Half-Elf, Half-Orc) apply it to the class main stat. Values live in a new curated side-map
-  `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/check_racial_stats.py`,
+  `Backend/json/racial_stat_changes.json` (validated by `Backend/scripts/validate_racial_stats.py`,
   the old prose-key parser in `race_func.py` stays disabled), and the per-stat split is exported
   as `racial_stats` so the web sheet's ability-total breakdown shows `base X + racial ±N`.
 - **"Monkey Goblin" no longer crashes generation.** `race_chooser` title-cased the chosen race but

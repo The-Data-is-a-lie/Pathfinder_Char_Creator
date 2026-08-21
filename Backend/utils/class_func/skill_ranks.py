@@ -1,4 +1,5 @@
 from utils import data
+from utils.class_func import luck
 import random, re
 from math import floor
 # Start of major task: skills assignment
@@ -95,7 +96,26 @@ def skill_rank_budget(character, skill_ranks_level):
     for entry in character.classes:
         points = class_skill_points(character, entry['name'])
         budget += max(1, points + mental_mod) * entry['level']
-    return budget + skill_ranks_level
+    budget += skill_ranks_level
+    # Luck's workhorse currency (oks/pathfinder/house-rules/luck.md): 5 ranks buy +1 luck, and a
+    # seller gets "2 ... skill points for -1 luck". Applied to the BUDGET rather than to the
+    # allocation, so skills_selector still spends every rank it is given and the existing
+    # sum(skill_ranks) == skill_rank_budget invariant stays true -- the budget itself shrank, which
+    # is exactly the property ticket 06 asserts.
+    stake = luck.stake_of(character)
+    _before = budget
+    _spent = luck.settle(stake, luck.CURRENCY_SKILL_RANKS, budget)
+    budget -= _spent
+    # THE PAYOUT IS NO LONGER ADDED HERE. It rides a pf1 `bonusSkillRanks` change on the Negative
+    # Luck Payout item, which lands on system.details.skills.bonus -- the sheet's own "bonus ranks"
+    # pool. That leaves the ranks UNSPENT for the player to place rather than pre-scattered by
+    # skills_selector, which is the honest shape for a payout the character chose to buy.
+    #
+    # The buy side still settles here: it shrinks a budget this function owns, and the existing
+    # sum(skill_ranks) == skill_rank_budget invariant depends on that happening before allocation.
+    _received = luck.payout(stake, luck.PAYOUT_SKILL_POINTS)
+    luck.record_audit(character, 'skill_ranks', _before, _spent, _received, max(0, budget))
+    return max(0, budget)
 
 
 def skills_selector(character, skills, skill_rank_level):
@@ -201,6 +221,16 @@ def assign_skill_ranks(character, selectable_skills, not_selectable_skills, budg
     remaining = budget
     open_skills = list(dict.fromkeys(selectable_skills))   # dedupe, preserve order
 
+    # OPTIMIZED MODE (spec 15, wall pass): ac_combat-primary roles bank 3 Acrobatics ranks first
+    # -- the RAW fighting-defensively +3 unlock the metric's posture model scores. Random mode
+    # never has a role, and the draw below is untouched either way.
+    role = getattr(character, 'role', None)
+    if role and 'ac_combat' in (role.get('primaries') or []):
+        banked = min(3, max_skill_ranks, remaining)
+        if banked > 0:
+            skill_ranks['acrobatics'] = max(skill_ranks.get('acrobatics', 0), banked)
+            remaining -= banked
+
     while remaining > 0 and open_skills:
         skill = random.choice(open_skills)
         room = max_skill_ranks - skill_ranks.get(skill, 0)
@@ -215,8 +245,10 @@ def assign_skill_ranks(character, selectable_skills, not_selectable_skills, budg
 
 def assign_dummy_zeroes(not_selectable_skills, skill_ranks):
     for unassigned_skill in not_selectable_skills:
-        skill_ranks[unassigned_skill] = 0       
-        # print("breaking at unassigned") 
+        # setdefault, not assignment: the optimized wall pre-banks Acrobatics ranks before the
+        # walk, and an unconditional zero here silently erased them. Identical for random mode,
+        # where no key is ever pre-set.
+        skill_ranks.setdefault(unassigned_skill, 0)
 
     return skill_ranks
 

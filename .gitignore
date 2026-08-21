@@ -22,28 +22,33 @@ SESSION_PLAN.md
 # Spheres extractor scratch (unpacked pf1spheres packs) + ad-hoc verification scripts +
 # the harvest-workflow snapshot (transient input to merge_spheres_harvest.py)
 Backend/scripts/_spheres_scratch/
-Backend/scripts/_smoke_spheres.py
-Backend/scripts/_verify_spheres_integration.py
+Backend/scripts/attic/_smoke_spheres.py
+Backend/scripts/attic/_verify_spheres_integration.py
 Backend/scripts/_spheres_harvest_result.json
 
 # Throwaway spell-conditional smoke harness (durable checks live in test_spell_conditionals.py)
-Backend/scripts/_smoke_spell_conditionals.py
+Backend/scripts/attic/_smoke_spell_conditionals.py
 
 # Path of War palette generator: builder + promote-to-module script + LLM-generated maneuver/stance
 # data + intermediates + the importable palette actor. Personal tooling; the durable output lives in
 # the FoundryVTT module's curated maneuver_changes.json / stance_changes.json.
-Backend/scripts/_pow_generator/
+Backend/scripts/build/_pow_generator/
 
 # Spheres conditional generator: per-sphere curated {modifiers,rider} files + worklists + promote
 # script. Personal tooling; the durable output lives in the FoundryVTT module's curated
 # combat_talent_conditionals.json / magic_talent_conditionals.json (and the backend passives file).
-Backend/scripts/_spheres_generator/
+Backend/scripts/build/_spheres_generator/
 
 # Class-feature / feat conditional sweep: per-pool worklist batches sliced by
 # build_conditional_candidates.py. Regenerate on demand; the durable outputs are the committed
 # report (docs/conditional_candidates.md) and, once authored, the curated entries in
 # class_feature_effects_overrides.json / feats/feat_conditionals.json.
 Backend/scripts/_conditional_candidates/
+
+# Power-metric sweep output (written by test_house_invariants.py --score, read by
+# report_power_baseline.py / report_ab_delta.py). 5+ MB of regenerable measurement, not source;
+# the durable numbers live in power_roles.json margins and the changelog.
+Backend/scripts/_power_baseline.json
 
 # runtime artifacts: filesystem session fallback + backstory-API usage tally
 flask_session/

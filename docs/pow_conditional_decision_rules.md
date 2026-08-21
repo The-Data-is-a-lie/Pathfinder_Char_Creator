@@ -48,11 +48,11 @@ OKF `pathfinder` bundle (`oks/pathfinder/conditionals/`). The builder
   `4d6 + @INITMOD`) uses `critical:"nonCrit"` ("Non-multiplying Bonus Formula" — extra dice are not
   multiplied on a critical hit); a **flat / `@`-only** damage modifier (no dice) stays
   `critical:"normal"` and scales with the crit like static damage. Enforced in the data
-  (`maneuver_changes.json`, regenerable via `Backend/scripts/fix_maneuver_crit.py`) and at draft
-  build time by `_crit_for()` in `Backend/scripts/build_maneuver_changes.py`.
+  (`maneuver_changes.json`, regenerable via `Backend/scripts/attic/fix_maneuver_crit.py`) and at draft
+  build time by `_crit_for()` in `Backend/scripts/build/build_maneuver_changes.py`.
 - **Skill-based attack & combat-maneuver rolls** — when a maneuver resolves an attack or a combat
   maneuver with a **skill**, write the roll as a literal inline `[[ ]]` formula naming that skill
-  (authored in `maneuver_overrides.json` by `Backend/scripts/_pow_generator/apply_skill_rolls.py`):
+  (authored in `maneuver_overrides.json` by `Backend/scripts/build/_pow_generator/apply_skill_rolls.py`):
   - *skill as an attack roll* (vs AC) — include misc attack bonuses:
     `[[ d20 + @attributes.attack.general + @skills.<id>.mod ]]` (e.g. Piercing Thunder *Leaping
     Strike*; Surging Shark's charge "Rush" maneuvers).
@@ -63,7 +63,7 @@ OKF `pathfinder` bundle (`oks/pathfinder/conditionals/`). The builder
     Sense Motive **or AC**" count here too. Counters opposed vs a **non-attack-roll** defense
     (e.g. Veiled Moon vs the attacker's **Perception**, or a counter vs a fixed **DC**) do **not**.
     For discipline-skill checks the canonical source uses the `@SKILLCHECK` / `@ATTACKCHECK`
-    tokens; `Backend/scripts/_pow_generator/apply_attack_general.py` flips `@SKILLCHECK` →
+    tokens; `Backend/scripts/build/_pow_generator/apply_attack_general.py` flips `@SKILLCHECK` →
     `@ATTACKCHECK` (and bare `[[ d20 + @skills.<id>.mod ]]` literals → the `attack.general` form)
     for every attack/counter clause, idempotently.
   - *plain combat maneuver* (no skill — the actor's own CMB, plus any flat bonus the maneuver/spell
@@ -96,7 +96,7 @@ Stances are pf1 **buffs** (`changes` + `contextNotes`), not weapon conditionals 
   proxy; `@pow.initLevel` reads 0 on class-less/non-initiator actors). Examples:
   `(ifelse(gte(@attributes.hd.total,17),3,ifelse(gte(@attributes.hd.total,9),2,1)))d8` (Savage),
   `(1 + floor((@attributes.hd.total - 1) / 8))d6` (+1d6 / 8 IL). Authored by
-  `Backend/scripts/_pow_generator/apply_stance_damage.py` into `maneuver_overrides.json`; attached by
+  `Backend/scripts/build/_pow_generator/apply_stance_damage.py` into `maneuver_overrides.json`; attached by
   the module's `addManeuverConditionals` stance pass (and the palette weapon) for any known stance;
   the redundant `wdamage` `contextNote` is dropped from the buff. (Note: `(expr)dN` computed dice
   counts must be verified in Foundry; `default:true` assumes the NPC is in that stance.)

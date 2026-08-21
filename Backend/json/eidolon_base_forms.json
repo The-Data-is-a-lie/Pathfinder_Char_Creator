@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "source": "https://www.d20pfsrd.com/classes/base-classes/summoner/eidolons/",
+    "note": "Six chained base forms. The pack ships an Aberrant Baseform that these rules do not contain; it is intentionally unmapped. Small is a package applied to any form."
+  },
+  "small_package": {
+    "ability_scores": {
+      "str": -4,
+      "dex": 2,
+      "con": -2
+    },
+    "damage_steps_down": 1,
+    "geometry": "companion_stats.SIZE_GEOMETRY (do not re-apply here)",
+    "rules_text": "any one of these base forms can be used to make a Small eidolon. If the eidolon is Small, it gains a +2 bonus to its Dexterity score. It also takes a -4 penalty to its Strength and a -2 penalty to its Constitution . It also gains a +1 size bonus to its AC and attack rolls, a -1 penalty to its CMB and CMD scores, a +2 bonus on its Fly skill checks, and a +4 bonus on its Stealth skill checks. Reduce the damage of all of its attacks by one step (1d6 becomes 1d4, 1d4 becomes 1d3)."
+  },
+  "forms": {
+    "aquatic": {
+      "source": "PZO1117",
+      "starting statistics": {
+        "size": "medium",
+        "speed": "20 ft., swim 40 ft.",
+        "ac": "+4 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 16,
+          "dex": 12,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "good",
+        "ref": "good",
+        "will": "poor"
+      },
+      "free evolutions": {
+        "bite": 1,
+        "improved natural armor": 1,
+        "gills": 1,
+        "swim": 2
+      },
+      "notes": [
+        "can select the mount evolution"
+      ],
+      "default_size": "medium",
+      "pf_content": "Aquatic Baseform",
+      "pf_content_small": "Aquatic Baseform (Small)"
+    },
+    "avian": {
+      "source": "PZO9457",
+      "size_note": "When summoned, an avian eidolon is Small unless it spends 2 points from its evolution pool. At 5th level, a Medium or larger avian eidolon's flight speed increases by 40 feet, as if it had 2 more points in the flight evolution",
+      "starting statistics": {
+        "size": "small",
+        "speed": "30 ft., fly 30 ft. (good)",
+        "ac": "+2 natural armor",
+        "attack": "2 claws (1d3)",
+        "ability scores": {
+          "str": 12,
+          "dex": 16,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "poor",
+        "ref": "good",
+        "will": "good"
+      },
+      "free evolutions": {
+        "claws": 1,
+        "flight": 1,
+        "limbs (legs)": 1
+      },
+      "default_size": "small",
+      "medium_upgrade_cost": 2,
+      "pf_content": "Avian Baseform",
+      "pf_content_small": "Avian Baseform (Small)"
+    },
+    "biped": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "30 ft.",
+        "ac": "+2 natural armor",
+        "attack": "2 claws (1d4)",
+        "ability scores": {
+          "str": 16,
+          "dex": 12,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "good",
+        "ref": "poor",
+        "will": "good"
+      },
+      "free evolutions": {
+        "claws": 1,
+        "limbs (arms)": 1,
+        "limbs (legs)": 1
+      },
+      "default_size": "medium",
+      "pf_content": "Biped Baseform",
+      "pf_content_small": "Biped Baseform (Small)"
+    },
+    "quadruped": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "40 ft.",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6)",
+        "ability scores": {
+          "str": 14,
+          "dex": 14,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "good",
+        "ref": "good",
+        "will": "poor"
+      },
+      "free evolutions": {
+        "bite": 1,
+        "limbs (legs)": 2
+      },
+      "default_size": "medium",
+      "pf_content": "Quadruped Baseform",
+      "pf_content_small": "Quadruped Baseform (Small)"
+    },
+    "serpentine": {
+      "starting statistics": {
+        "size": "medium",
+        "speed": "20 ft., climb 20 ft.",
+        "ac": "+2 natural armor",
+        "attack": "bite (1d6), tail slap (1d6)",
+        "ability scores": {
+          "str": 12,
+          "dex": 16,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "poor",
+        "ref": "good",
+        "will": "good"
+      },
+      "free evolutions": {
+        "bite": 1,
+        "climb": 1,
+        "reach (bite)": 1,
+        "tail": 1,
+        "tail slap": 1
+      },
+      "default_size": "medium",
+      "pf_content": "Serpentine Baseform",
+      "pf_content_small": "Serpentine Baseform (Small)"
+    },
+    "tauric": {
+      "source": "PZO9457",
+      "size_note": "When summoned, a tauric eidolon is Small unless it spends 2 points from its evolution pool, in which case it is Medium",
+      "starting statistics": {
+        "size": "small",
+        "speed": "40 ft.",
+        "ac": "+2 natural armor",
+        "attack": "2 claws (1d4)",
+        "ability scores": {
+          "str": 14,
+          "dex": 14,
+          "con": 13,
+          "int": 7,
+          "wis": 10,
+          "cha": 11
+        }
+      },
+      "saves": {
+        "fort": "good",
+        "ref": "poor",
+        "will": "good"
+      },
+      "free evolutions": {
+        "claws": 1,
+        "limbs (arms)": 1,
+        "limbs (legs)": 2
+      },
+      "default_size": "small",
+      "medium_upgrade_cost": 2,
+      "pf_content": "Tauric Baseform",
+      "pf_content_small": "Tauric Baseform (Small)"
+    }
+  }
+}

@@ -1,0 +1,410 @@
+"""Scan the FoundryVTT spell compendium and emit a distributable BUFF for every spell that works as a
+buff, for the Multi-Buff Distributor pipeline (see the OKF pathfinder bundle: oks/pathfinder/buffs-and-changes/multi-buff-distributor.md).
+
+Reads every_spell.json (the module compendium; 3029 spells, names authoritative) and writes
+<module>/templates/character_sheet_folder/spell_buffs.json:
+    { "<Spell>": { "changes":[...], "contextNotes":[{"text","target"}], "unplaced":[...]?,
+                   "aura_range":int|null, "only_others": false, "description": "<full rules text>" } }
+consumed by the module's addSpellBuffs() (as (TAG) buffs).
+
+Descriptions are parsed with the SAME sentence classifier as items (imported from
+build_item_changes.py), so every spell lands in the item-style buckets:
+  changes           -- clean unconditional "+N <type> bonus to <target>" sentences
+  contextNotes      -- situational bonus sentences + one summarizing mechanical-effect note,
+                       each anchored to a valid pf1 note target ([[ ]] inline-roll style)
+  unplaced          -- effect text with no valid anchor (data-reference only; the Foundry module
+                       emits NO buff for spells that have nothing but unplaced text)
+Curated attack/damage changes from spell_changes.json are layered in on top. CL scaling is left in
+the description (the flat base is emitted; a distributed buff reads CL 0 on a non-caster ally anyway).
+
+Usage:
+    C:\\Python310\\python.exe Backend/scripts/build_spell_buffs.py [--out PATH] [--report]
+      --report prints the unparsed bonus sentences and unplaced-only spells instead of writing.
+"""
+import argparse
+import html
+import json
+import re
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from _harness import REPO   # noqa: E402
+import build_item_changes as ic  # noqa: E402  (shared sentence classifier)
+
+MODULE_DIR = Path(
+    r"C:\Users\Daniel\AppData\Local\FoundryVTT\Data\modules\pf1e_random_char_generator"
+    r"\templates\character_sheet_folder"
+)
+EVERY_SPELL = MODULE_DIR / "every_spell.json"
+CURATED_CHANGES = REPO / "Backend" / "json" / "spells" / "spell_changes.json"
+DEFAULT_OUT = MODULE_DIR / "spell_buffs.json"
+
+def _spell_phrase_targets(phrase):
+    """All pf1 change targets named inside a bonus phrase — spell flavor of ic.phrase_targets.
+    Items rarely name two targets in one phrase, so ic stops at the first non-skill match; spells
+    list several constantly ("+2 morale bonus on attack rolls, saves, and skill checks"), so this
+    collects ALL of them and adds the spell-common targets (skills / speed / spell resistance)."""
+    p = phrase.lower()
+    # Ability scores win exclusively ("+4 enhancement bonus to Dexterity, adding the usual
+    # benefits to AC, Reflex saves, ..." must be ONE dex change — pf1 derives the rest).
+    if "check" not in p:
+        abilities = [ab for word, ab in ic.ABILITIES.items()
+                     if re.search(rf"\b{word}\b(?!\s*[-–]based)", p)]
+        if abilities:
+            return abilities
+    targets = []
+    for name, sid in ic.SKILLS.items():
+        if re.search(rf"(?<!\w){re.escape(name)}(?!\w)", p):
+            targets.append(f"skill.{sid}")
+
+    def add(t):
+        if t not in targets:
+            targets.append(t)
+    if re.search(r"natural armor", p):
+        add("nac")
+    if re.search(r"armor class|\bac\b", p) and "natural armor" not in p:
+        add("ac")
+    if re.search(r"fortitude sav", p):
+        add("fort")
+    if re.search(r"reflex sav", p):
+        add("ref")
+    if re.search(r"will sav", p):
+        add("will")
+    if re.search(r"saving throws?|\bsaves\b", p) and not re.search(r"fortitude|reflex|will sav", p):
+        add("allSavingThrows")
+    if re.search(r"attack rolls?", p):
+        add("attack")
+    if re.search(r"weapon damage|damage rolls?", p):
+        add("damage")
+    if re.search(r"initiative", p):
+        add("init")
+    if re.search(r"combat maneuver defense|\bcmd\b", p):
+        add("cmd")
+    if re.search(r"combat maneuver (?:bonus|checks?)|combat maneuvers|grapple checks?|\bcmb\b", p):
+        add("cmb")
+    if re.search(r"skill checks|\bskills\b", p):
+        add("skills")
+    if re.search(r"\bspeed\b", p):
+        add("landSpeed")
+    if re.search(r"spell resistance", p):
+        add("sr")
+    if not targets:
+        m = re.search(r"\b(strength|dexterity|constitution|intelligence|wisdom|charisma)"
+                      r"(-based)?\s+(?:skill\s+)?checks\b", p)
+        if m:
+            targets.append(f"{ic.ABILITIES[m.group(1)]}Checks")
+        elif re.search(r"\bability checks\b", p):
+            targets.append("allChecks")
+    if not targets and "check" not in p:
+        for word, ab in ic.ABILITIES.items():
+            if re.search(rf"\b{word}\b(?!\s*[-–]based)", p):
+                add(ab)
+    return targets
+
+
+# parse_item resolves phrase_targets through its module globals; point it at the spell flavor.
+# build_item_changes.py itself is never regenerated by this process, so items are unaffected.
+ic.phrase_targets = _spell_phrase_targets
+
+# Spell-only pattern the item regexes miss: "+30-foot enhancement bonus to your speed".
+_FOOT_BONUS_RE = re.compile(
+    r"\+(\d+)[- ]?(?:foot|feet|ft\.?)\s+(?:(" + ic.TYPE_RE + r")\s+)?bonus\s+(?:to|on)\s+([^.;+]{1,80})",
+    re.IGNORECASE)
+
+# Description-only buff signals (no clean +N bonus, but clearly a beneficial ongoing effect).
+_BENEFIT_RE = re.compile(
+    r"energy resistance|resist(?:ance to)? (?:acid|cold|fire|electricity|sonic) \d|damage reduction|"
+    r"\bDR \d|fast healing|regeneration|fly speed|gain(?:s)? (?:a )?fly|blindsight|blindsense|"
+    r"darkvision|true seeing|see invisibility|freedom of movement|invisibl|\bhaste|\bblur\b|"
+    r"displacement|mirror image|protection from|temporary hit points|temporary hp|immunity to|"
+    r"immune to|concealment|conceal|\bblink\b|spider climb|water breathing|\bfly\b", re.IGNORECASE)
+
+
+def _strip(html):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(html or ""))).strip()
+
+
+def _speed_changes(text):
+    """Pre-pass for foot-denominated speed bonuses (Longstrider, Expeditious Retreat)."""
+    changes = []
+    for sentence in re.split(r"(?<=[.;])\s+", text):
+        if ic.CONDITIONAL_RE.search(sentence):
+            continue
+        for m in _FOOT_BONUS_RE.finditer(sentence):
+            num, btype, phrase = m.group(1), (m.group(2) or "untyped").lower(), m.group(3)
+            if re.search(r"\bspeed\b", phrase, re.IGNORECASE):
+                changes.append(ic.change(num, "landSpeed", ic.BONUS_TYPES.get(btype, "untyped")))
+    return changes
+
+
+def _duration_bucket(action):
+    """rounds | minutes | hours | other, from the spell's duration value string ('1 min./level' etc.).
+    The `units` field is often 'spec', so parse the human-readable value."""
+    val = str((action.get("duration") or {}).get("value") or "").lower()
+    if re.search(r"\bround", val):
+        return "rounds"
+    if re.search(r"\bmin", val):
+        return "minutes"
+    if re.search(r"\bhour", val):
+        return "hours"
+    return "other"
+
+
+def _range_value(rng):
+    """Numeric value on the range object (ft/mi), else None."""
+    v = str((rng or {}).get("value") or "").strip()
+    m = re.match(r"\d+", v)
+    return int(m.group()) if m else None
+
+
+def _aura_from_range(units, value, cl):
+    """The spell's range as a concrete number of feet at caster level `cl` (close/medium/long
+    conventions). The distributor's Aura Range = how far the caster can place this buff."""
+    if units == "personal":
+        return 0
+    if units == "touch":
+        return 5
+    if units == "close":
+        return 25 + 5 * (cl // 2)
+    if units == "medium":
+        return 100 + 10 * cl
+    if units == "long":
+        return 400 + 40 * cl
+    if units == "ft":
+        return value or 0
+    if units == "mi":
+        return (value or 1) * 5280
+    return 0   # seeText / spec / unlimited / unknown -> hand-distributed
+
+
+# --------------------------------------------------------------------------- #
+# spell stat-block formatting (School / Casting Time / Components / ... + Benefits)
+# --------------------------------------------------------------------------- #
+_SCHOOLS = {"abj": "Abjuration", "con": "Conjuration", "div": "Divination", "enc": "Enchantment",
+            "evo": "Evocation", "ill": "Illusion", "nec": "Necromancy", "trs": "Transmutation",
+            "uni": "Universal"}
+_RANGE = {"touch": "touch", "personal": "personal", "close": "close (25 ft. + 5 ft./2 levels)",
+          "medium": "medium (100 ft. + 10 ft./level)", "long": "long (400 ft. + 40 ft./level)",
+          "unlimited": "unlimited", "seeText": "see text", "spec": "see text"}
+_TARGET_READABLE = {"ac": "AC", "aac": "AC (armor)", "sac": "AC (shield)", "nac": "natural armor",
+    "attack": "attack rolls",
+    "wdamage": "weapon damage rolls", "damage": "damage rolls", "allSavingThrows": "all saving throws",
+    "fort": "Fortitude saves", "ref": "Reflex saves", "will": "Will saves", "skills": "skill checks",
+    "cmd": "CMD", "cmb": "CMB", "init": "initiative", "landSpeed": "speed", "sr": "spell resistance",
+    "str": "Strength", "dex": "Dexterity", "con": "Constitution", "int": "Intelligence",
+    "wis": "Wisdom", "cha": "Charisma", "allChecks": "ability checks"}
+_TARGET_READABLE.update({f"{ab}Checks": f"{full.capitalize()} checks"
+                         for full, ab in ic.ABILITIES.items()})
+_SKILL_READABLE = {sid: name.title() for name, sid in ic.SKILLS.items()}
+_ACT = {"standard": "1 standard action", "move": "1 move action", "swift": "1 swift action",
+        "immediate": "1 immediate action", "full": "1 full-round action", "free": "1 free action",
+        "round": "1 round"}
+
+
+def _esc(s):
+    return html.escape(str(s if s is not None else ""))
+
+
+def _component_str(sy):
+    c = sy.get("components") or {}
+    parts = [x for x, on in (("V", c.get("verbal")), ("S", c.get("somatic")),
+                             ("M", c.get("material")), ("F", c.get("focus")), ("DF", c.get("divineFocus")))
+             if on]
+    s = ", ".join(parts)
+    mat = (sy.get("materials") or {}).get("value")
+    if c.get("material") and mat:
+        s += f" ({_esc(mat)})"
+    return s or "&mdash;"
+
+
+def _range_str(action):
+    r = action.get("range") or {}
+    u = r.get("units") or ""
+    if u == "ft" and r.get("value"):
+        return f"{_esc(r['value'])} ft."
+    return _RANGE.get(u, _esc(u) if u else "&mdash;")
+
+
+def _save_str(action):
+    s = action.get("save") or {}
+    d = s.get("description") or s.get("type") or ""
+    if not d:
+        return "none"
+    return _esc(d) + (" (harmless)" if s.get("harmless") else "")
+
+
+def _level_str(sy):
+    cls = ((sy.get("learnedAt") or {}).get("class")) or {}
+    if cls:
+        return ", ".join(f"{_esc(k)} {v}" for k, v in sorted(cls.items()))
+    lvl = sy.get("level")
+    return f"any {lvl}" if lvl is not None else ""
+
+
+def _target_readable(target):
+    if target.startswith("skill."):
+        return _SKILL_READABLE.get(target[6:], target)
+    return _TARGET_READABLE.get(target, target)
+
+
+def _benefits_str(changes):
+    if not changes:
+        return "<em>see description (no numeric bonus auto-parsed)</em>"
+    groups, order = {}, []
+    for c in changes:
+        key = (str(c.get("formula")), c.get("type", "untyped"))
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(_target_readable(c.get("target", "")))
+    outs = []
+    for val, typ in order:
+        sign = "" if str(val).startswith("-") else "+"
+        typ_s = "" if typ == "untyped" else f" {_esc(typ)}"
+        outs.append(f"{sign}{_esc(val)}{typ_s} bonus to {_esc(', '.join(groups[(val, typ)]))}")
+    return "; ".join(outs)
+
+
+def _statblock_html(sy, action, level, changes):
+    school = _SCHOOLS.get(str(sy.get("school") or "").lower(), _esc(sy.get("school") or "&mdash;"))
+    sub = sy.get("subschool") or ""
+    head = f"<strong>School</strong> {school}" + (f" ({_esc(sub)})" if sub else "")
+    if level is not None:
+        head += f" &bull; <strong>(level {level})</strong>"
+    rows = [f"<p>{head}</p>"]
+    lvls = _level_str(sy)
+    if lvls:
+        rows.append(f"<p><strong>Level</strong> {lvls}</p>")
+    act = action.get("activation") or {}
+    rows.append(f"<p><strong>Casting Time</strong> {_ACT.get(act.get('type'), _esc(act.get('type') or '&mdash;'))}</p>")
+    rows.append(f"<p><strong>Components</strong> {_component_str(sy)}</p>")
+    tgt = (action.get("target") or {}).get("value")
+    rline = f"<strong>Range</strong> {_range_str(action)}"
+    if tgt:
+        rline += f"; <strong>Target</strong> {_esc(tgt)}"
+    rows.append(f"<p>{rline}</p>")
+    dur = (action.get("duration") or {}).get("value") or "&mdash;"
+    rows.append(f"<p><strong>Duration</strong> {_esc(dur)}; <strong>Saving Throw</strong> {_save_str(action)}; "
+                f"<strong>Spell Resistance</strong> {'yes' if sy.get('sr') else 'no'}</p>")
+    return "".join(rows)
+
+
+def build(out_path, report=False):
+    spells = json.loads(EVERY_SPELL.read_text(encoding="utf-8"))
+    try:
+        curated = json.loads(CURATED_CHANGES.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        curated = {}
+    cur_norm = {re.sub(r"\s+", " ", k).strip().lower(): v for k, v in curated.items()}
+    out = {}
+    all_unparsed = []
+    for s in spells:
+        if not isinstance(s, dict):
+            continue
+        name = s.get("name")
+        sy = s.get("system", {}) or {}
+        action = (sy.get("actions") or [{}])[0]
+        dur_units = (action.get("duration") or {}).get("units", "")
+        if dur_units == "inst":                      # instantaneous -> not a lasting buff
+            continue
+        raw_html = sy.get("description", {}).get("value", "") if isinstance(sy.get("description"), dict) else ""
+        text = _strip(raw_html)      # stripped plain text for parsing / detection
+        if not text:
+            continue
+        # Buff-detection gate (same semantics as before the bucket rework): the spell grants a
+        # "+N bonus" somewhere, reads as a beneficial ongoing effect, or is hand-curated. The
+        # summarizing mechanical-effect note must NOT pull utility/hostile spells in here.
+        cur = cur_norm.get(re.sub(r"\s+", " ", str(name)).strip().lower())
+        has_bonus = bool(ic.BONUS_RE.search(text) or ic.BONUS_REV_RE.search(text)
+                         or ic.BONUS_OF_RE.search(text))
+        if not (has_bonus or _BENEFIT_RE.search(text) or cur):
+            continue
+        parsed, unparsed, _flags = ic.parse_item(str(name), text)
+        changes, notes = parsed["changes"], parsed["contextNotes"]
+        unplaced = parsed.get("unplaced", [])
+        seen = {(c["target"], c.get("type", "untyped")) for c in changes}
+        for c in _speed_changes(text):               # spell-only foot-bonus pre-pass
+            if (c["target"], c.get("type", "untyped")) not in seen:
+                seen.add((c["target"], c.get("type", "untyped")))
+                changes.append(c)
+        all_unparsed += [f"{name}: {u}" for u in unparsed]
+        # Layer curated changes (hand-reviewed, accurate scaling). Curated WINS on a colliding
+        # target — a parsed change on the same target is a worse reading of the same sentence,
+        # never a separate bonus (damage/wdamage/sdamage count as one damage layer).
+        if cur and isinstance(cur.get("changes"), list) and cur["changes"]:
+            alias = {"wdamage": "damage", "sdamage": "damage"}
+            def _key(c):
+                return alias.get(c.get("target"), c.get("target"))
+            cur_changes = [{"formula": str(c.get("formula", "0")), "target": c.get("target", ""),
+                            "type": c.get("type", "untyped"), "operator": "add", "priority": 0}
+                           for c in cur["changes"]]
+            cur_keys = {_key(c) for c in cur_changes}
+            changes = [c for c in changes if _key(c) not in cur_keys] + cur_changes
+        rng = action.get("range") or {}
+        r_units = rng.get("units") or ""
+        r_value = _range_value(rng)
+        lvl = sy.get("level")
+        lvl_int = int(lvl) if isinstance(lvl, (int, float)) else None
+        # Full formatted description: spell stat block + the ORIGINAL description HTML + Benefits.
+        formatted = (_statblock_html(sy, action, lvl_int, changes) + "<hr>" + (raw_html or "")
+                     + f"<p><strong>Benefits:</strong> {_benefits_str(changes)}</p>")
+        if notes:
+            formatted += ("<p><strong>Situational:</strong> "
+                          + " &bull; ".join(_esc(n["text"]) for n in notes) + "</p>")
+        entry = {"changes": changes, "contextNotes": notes, "only_others": False,
+                 "level": lvl_int, "duration_bucket": _duration_bucket(action),
+                 "range_units": r_units, "range_value": r_value,
+                 # aura_range = the spell's range at a reference CL 10 (palette default; NPCs recompute).
+                 "aura_range": _aura_from_range(r_units, r_value, 10),
+                 "description": formatted}
+        if unplaced:
+            entry["unplaced"] = unplaced   # plain text, no anchor — data-reference only, no buff alone
+        out[name] = entry
+
+    bad_targets = [(name, n["target"]) for name, entry in out.items()
+                   for n in entry.get("contextNotes", []) if not ic.valid_note_target(n["target"])]
+    if bad_targets:
+        for name, target in bad_targets:
+            print(f"INVALID NOTE TARGET {target!r} on {name}")
+        sys.exit(1)
+
+    # The four placement buckets, same accounting as build_item_changes.py.
+    mech = sum(1 for e in out.values() if e["changes"])
+    ctx_skill = ctx_other = 0
+    for e in out.values():
+        for n in e["contextNotes"]:
+            if n["target"] == "skills" or n["target"].startswith("skill."):
+                ctx_skill += 1
+            else:
+                ctx_other += 1
+    unplaced_only = [(name, e["unplaced"]) for name, e in sorted(out.items())
+                     if e.get("unplaced") and not e["changes"] and not e["contextNotes"]]
+    buffed = sum(1 for e in out.values() if e["changes"] or e["contextNotes"])
+    print(f"spell buffs: {len(out)} spells covered: "
+          f"Mechanical {mech} spells | Context(skill) {ctx_skill} notes | "
+          f"Context(Other) {ctx_other} notes | Unplaced-only {len(unplaced_only)} spells")
+    print(f"{buffed} spells become Buffs-tab buffs; {len(all_unparsed)} unparsed bonus sentences")
+    if report:
+        for line in all_unparsed:
+            print(" ?", line[:220])
+        for name, texts in unplaced_only:
+            print(f" ~ [unplaced-only] {name}: {' | '.join(texts)[:200]}")
+        return
+
+    out = dict(sorted(out.items()))
+    out_path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"wrote -> {out_path}")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    ap.add_argument("--report", action="store_true",
+                    help="print unparsed sentences and unplaced-only spells instead of writing")
+    args = ap.parse_args()
+    build(args.out, report=args.report)
+
+
+if __name__ == "__main__":
+    main()

@@ -3,10 +3,71 @@ import random, re
 from math import floor, ceil
 import pandas as pd
 
+# NOTE: nothing in THIS module still uses `data`, `floor` or `ceil` -- the pick arithmetic they
+# served moved into class_choice_schedule.json (class-choices ticket 01). They stay because
+# `feats.py` does `from generic_func import *` and then uses a bare `data` (feats.py:360), so the
+# names are load-bearing by leak. Removing them belongs to the wildcard-import cleanup, which the
+# scripts map keeps deliberately separate; deleting them here fails three tests.
+
+
+def levels_for(character, class_name, bucket, class_level, schedule_attr='class_choice_schedule'):
+    """The class levels at which `class_name` gains a pick in `bucket`, up to `class_level`.
+
+    The one seam over Backend/json/class_choice_schedule.json (class-choices ticket 01). A bucket
+    declares EITHER a compact rule {start, every} OR an explicit {levels: []}; both expand to the
+    same thing here, so no caller needs to know which form it got. The count is len(...) and the
+    k-th pick's level stamp is [k-1], which is why the three choosers below no longer carry any
+    arithmetic of their own -- a wrong count used to mean a wrong stamp, because they were derived
+    twice from the same formula.
+
+    NOTHING IS CAPPED AT 20. Class levels reach 40 (level_and_bab.py:19), and above 20th the game
+    is homebrew: a level-30 character goes on gaining talents and rage powers at their class's own
+    cadence. That is this codebase's existing model rather than a new rule -- spells and maneuvers
+    read `capped_level` (min(level, 20)) because there is no 10th-level spell, while class choices
+    read the uncapped class level. An explicit list continues via `repeat` (tile the whole list
+    every N levels, so deliberate holes survive) or `then_every` (keep going at a cadence); a list
+    with neither is the whole story, like the warpriest's two 1st-level blessings.
+
+    Returns [] for a bucket with no row. That is a mistake rather than a state, and the thing that
+    catches it is validate_class_choices.py (ticket 05), not a guard here.
+
+    `schedule_attr` (mythic map, ticket 03): the mythic path-ability schedule is a PARALLEL table
+    with this same schema, keyed by TIER where a class schedule is keyed by level -- a second axis
+    file, not a sixth convention. Mythic calls pass schedule_attr='mythic_schedule' and the tier
+    where the class level would go; every other call site omits it and reads exactly the table it
+    always read. Its gate is validate_mythic.py, not validate_class_choices.py.
+    """
+    table = (getattr(character, schedule_attr, None) or {}).get('classes', {})
+    row = (table.get(class_name) or {}).get('buckets', {}).get(bucket)
+    if not row:
+        return []
+    if 'levels' in row:
+        listed = list(row['levels'])
+        out = [lvl for lvl in listed if lvl <= class_level]
+        period = row.get('repeat')
+        if period:
+            shift = period
+            while listed[0] + shift <= class_level:
+                out += [lvl + shift for lvl in listed if lvl + shift <= class_level]
+                shift += period
+            out.sort()   # stamps are levels[k-1]; an unsorted tile would mis-date every pick
+        elif row.get('then_every'):
+            nxt = listed[-1] + row['then_every']
+            while nxt <= class_level:
+                out.append(nxt)
+                nxt += row['then_every']
+        return out
+    return list(range(row['start'], class_level + 1, row['every']))
+
 
 def _record_choice_level(character, dict_name, choice, level):
-    """Record the character level at which a class choice (hex, talent, …) was picked,
-    keyed exactly like class features (bucket -> choice -> level), for export."""
+    """Record the CLASS level at which a class choice (hex, talent, …) was picked, keyed exactly
+    like class features (bucket -> choice -> level), for export.
+
+    Class level, not character level: the schedules are per-class, which is what lets a rogue 4 /
+    magus 6 draw on each class's own level. So a rogue talent on a 10th-level character can stamp
+    2, and that is correct. Ticket 01 ruling 3 -- this docstring used to say "character level",
+    which no writer has ever passed."""
     levels = character.data_dict.setdefault('class feature levels', {})
     levels.setdefault(dict_name, {})[choice] = level
 
@@ -55,8 +116,14 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
                 character.data_dict['class features'] = {dict_name: {choice: description}}
             else:
                 character.data_dict['class features'].setdefault(dict_name, {})[choice] = description
-            # Single-pick class features (bloodline, order, mystery, curse) are gained at 1st level.
-            _record_choice_level(character, dict_name, choice, 1)
+            # Single-pick class features (bloodline, order, mystery, curse) are gained at 1st
+            # level -- and that 1 used to be hardcoded right here, which made every single-pick
+            # bucket invisible to the schedule table and therefore to ticket 05's gate. The rows
+            # now exist (`levels: [1]`) and this reads them, so "a call site with no row" is a
+            # detectable state rather than a silently correct one. The fallback keeps a missing
+            # row from changing a stamp; catching it is validate_class_choices.py's job.
+            single = levels_for(character, class_1, dict_name, class_level)
+            _record_choice_level(character, dict_name, choice, single[0] if single else 1)
             record_bucket_owner(character, dict_name, class_entry['name'])
 
             chosen_desc = {choice: description}
@@ -65,8 +132,9 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             return chosen_desc
         
         else:
-            # Get amount
-            amount = getattr(data, 'amount', {}).get(class_1, {}).get(dataset_name, {})
+            # The schedule, already truncated to this class's level (ticket 01). Was
+            # data.amount[class][dataset], filtered inline by the loop condition below.
+            levels = levels_for(character, class_1, dict_name, class_level)
 
             # Start with base dataset
             dataset = getattr(character, class_1, {}).get(dataset_name, {})
@@ -89,16 +157,25 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
             dataset_2 = getattr(character, class_1, {}).get(dataset_name_2, {})
             dataset_2_list = list(dataset_2.keys())
 
-            while i < len(amount) and amount[i] <= class_level:
+            while i < len(levels):
                 if dataset_name_2 != None and class_level >= level and alternate_dataset == False:
                     dataset_list.extend(dataset_2_list)
                     dataset.update(dataset_2)
 
+                # The pool can run dry before the schedule does, and this loop only advances on a
+                # DISTINCT pick (`i = len(chosen_set)`) -- so without this it spins forever rather
+                # than under-delivering. Its sibling choosing_talents has always had the equivalent
+                # break; this one did not, and the bug was unreachable only because every schedule
+                # stopped at 20. It stopped being unreachable the moment picks continued past 20:
+                # an occultist 40 is owed 12 implements and only 8 schools exist.
+                if len(chosen_set) >= len(set(dataset_list)):
+                    break
+
                 chosen = random.choice(dataset_list)
                 if chosen not in chosen_set:
-                    # The k-th distinct pick is gated on amount[k-1]; that IS its level.
-                    idx = min(len(chosen_set), len(amount) - 1)
-                    _record_choice_level(character, dict_name, chosen, amount[idx])
+                    # The k-th distinct pick is gated on levels[k-1]; that IS its level.
+                    idx = min(len(chosen_set), len(levels) - 1)
+                    _record_choice_level(character, dict_name, chosen, levels[idx])
                     chosen_set.add(chosen)
                 i = len(chosen_set)
 
@@ -127,7 +204,7 @@ def generic_class_option_chooser(character, class_1,  dataset_name, dataset_name
 # End of Generic Class Option Chooser
 
 
-def get_data_without_prerequisites(character, class_1, dataset_name, level= None, dataset_name_2 = None, odd=None, divisor = 2, dict_name="Talents"):
+def get_data_without_prerequisites(character, class_1, dataset_name, level= None, dataset_name_2 = None, dict_name="Talents"):
     class_entry = class_entry_for(character, class_1)
     if class_entry is None:
         return None
@@ -135,10 +212,13 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
 
     dataset_no_prereq   = []
 
-    # Deciding if talents are every odd or even level
-    amount = floor(class_level / divisor)
-    if odd == True:
-        amount = ceil(class_level / divisor)
+    # The schedule owns both the count and the stamp (ticket 01). This used to be
+    # floor/ceil(class_level / divisor) here and a SECOND, independent k*divisor in
+    # choosing_talents -- which is why a wrong divisor produced a wrong count and a wrong
+    # "gained at" level together. The `divisor`/`odd` parameters are GONE rather than ignored:
+    # a dead knob that a caller can still turn is how a schedule change silently does nothing.
+    levels = levels_for(character, class_1, dict_name, class_level)
+    amount = len(levels)
 
     if amount == 0:
         return None
@@ -151,13 +231,13 @@ def get_data_without_prerequisites(character, class_1, dataset_name, level= None
         dataset.update( getattr(character, class_1, {}).get(dataset_name_2,{}) )
 
     # Need to loop through choosing talents (which loops through no_prereq_loop -> to properly select class talents)
-    chosen_dict = choosing_talents(character, amount, dataset, dict_name, divisor, odd, class_name=class_1)
+    chosen_dict = choosing_talents(character, amount, dataset, dict_name, levels, class_name=class_1)
     if chosen_dict is not None:  # None when amount is 0/None or the talent pool was empty
         update_class_features(character, chosen_dict, class_name=class_entry['name'])
 
     return
 
-def choosing_talents(character, amount, dataset, dict_name = "Talents", divisor = 2, odd_prog = False, class_name = None):
+def choosing_talents(character, amount, dataset, dict_name = "Talents", levels = None, class_name = None):
     # Choose from a list of talents that are selectable (decied by no_prereq_loop)
     if amount == None or amount == 0:
         return None
@@ -192,11 +272,10 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents", divisor 
         character.chooseable.update([even, odd, chosen])
 
         chosen_set.add(chosen)
-        # The k-th talent (1-based) is gained every `divisor` levels: k*divisor for even
-        # progressions, k*divisor-(divisor-1) for odd (mirrors the amount=level/divisor gate).
+        # The k-th talent (1-based) is gained at the schedule's k-th level. One source for the
+        # count and the stamp, so they cannot disagree (ticket 01 ruling 3).
         k = len(chosen_set)
-        pick_level = (k * divisor - (divisor - 1)) if odd_prog else (k * divisor)
-        _record_choice_level(character, dict_name, chosen, pick_level)
+        _record_choice_level(character, dict_name, chosen, (levels or [])[k - 1])
         # Adjusting the dataset we choose from (+ adding prereqs to character.chooseable)
         character.chooseable.add(chosen.lower())
         character.chooseable_talents.remove(chosen)
@@ -232,7 +311,19 @@ def no_prereq_loop(character, dataset):
 
 
         # Check if all prereqs are met
-        if not prereq_parts or set(prereq_parts).issubset(character.chooseable):
+        satisfied = not prereq_parts or set(prereq_parts).issubset(character.chooseable)
+        if not satisfied and getattr(character, 'role', None) is not None:
+            # OPTIMIZED MODE ONLY (spec 15, wall pass): an or-clause part -- "base attack bonus
+            # +2 or monk level 1st" -- can never be a chooseable member verbatim, which locked
+            # every style feat out of every pool, for everyone, forever. Satisfying ANY
+            # alternative is RAW. Random mode keeps the strict subset test so its pools (and the
+            # seven goldens) do not move; widening it there is a separate, golden-moving change.
+            satisfied = all(
+                part in character.chooseable
+                or (' or ' in part and any(alt.strip() in character.chooseable
+                                           for alt in part.split(' or ')))
+                for part in prereq_parts)
+        if satisfied:
             character.chooseable_talents.append(name_lower)
             seen.add(name_lower)
 
@@ -283,7 +374,7 @@ def remove_duplicates_list(character, input_list):
             result.append(item)
     return result
 
-def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_level = 1):
+def generic_multi_chooser(character, class_1, dataset_name):
     class_entry = class_entry_for(character, class_1)
     if class_entry is None:
         return None
@@ -292,15 +383,19 @@ def generic_multi_chooser(character, class_1, dataset_name,  n2=None, start_leve
     dataset_list = []
     level = class_entry['level']
 
-    divisor = n2 if isinstance(n2, int) else 3
-    selection_count = max(floor((level - start_level) / divisor) + 1, 0) 
+    # The schedule (ticket 01). This chooser's levels do double duty -- they count the picks AND
+    # key into the level-banded pool -- so both now come off the same list, and `n2`/`start_level`
+    # are gone rather than ignored. NOTE: unlike the other two choosers, this one records no level
+    # stamp at all, so mercies, cruelties and ki powers reach the sheet with no "gained at".
+    # Left as-is here; it is ticket 04's to rule on.
+    levels = levels_for(character, class_1, dataset_name, level)
     chosen_set = set()
 
     i = 0
-    while (i-1) < selection_count:
-        effective_level = start_level + (i*divisor)
-        if effective_level > level:
+    while (i-1) < len(levels):
+        if i >= len(levels):
             break
+        effective_level = levels[i]
 
         dataset_list += dataset.get(str(effective_level), [])
         # create weights to pick higher level abilities more:

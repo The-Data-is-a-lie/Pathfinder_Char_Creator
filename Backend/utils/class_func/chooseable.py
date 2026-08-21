@@ -36,6 +36,49 @@ def chooseable_list_class(character,i,class_1,attr,base,th = None):
 def chooseable_list_race(character):
     character.chooseable.add(character.chosen_race)
 
+
+# Archetype names that are ALSO the name of a selectable option somewhere in class_data/. Seeding
+# these would satisfy a prerequisite that meant the OPTION -- 'brawler, greater' requires the
+# `brawler` RAGE POWER, and 'spell sunder' requires the `witch hunter` rage power, neither of which
+# has anything to do with the same-named archetype. There is no way to tell the two apart from a
+# prereq string, so a colliding name is never seeded and the archetype-gated options behind it stay
+# unreachable -- the safe direction.
+#
+# This is a checked baseline, not the authority: gates/validate_class_choices.py recomputes the
+# intersection from archetypes.json and every pool, and FAILS if it stops matching this set. Kept as
+# a constant rather than computed here because computing it means reading ~73 pool files, and this
+# runs inside every generation. Measured 2026-08-07: 18 collisions out of 1,267 archetype names.
+# None of the seven hunter archetypes collide, which is why the 144 hunter aspects this exists for
+# are unaffected.
+ARCHETYPE_PREREQ_COLLISIONS = frozenset({
+    'brawler', 'chameleon', 'dreadnought', 'drill sergeant', 'exemplar', 'marauder',
+    'master of disguise', 'mastermind', 'opportunist', 'saboteur', 'scavenger', 'scout',
+    'shadow walker', 'snare setter', 'spellbreaker', 'survivalist', 'trapsmith', 'witch hunter',
+})
+
+
+def chooseable_list_archetypes(character, archetypes_per_class):
+    """Seed the rolled archetype names, so archetype-gated options can satisfy their prerequisites.
+
+    144 of the hunter's 155 aspects are gated on an archetype, and the gate is written as a bare
+    archetype name in the option's `prerequisites` ("Verminous Hunter"). The prerequisite engine
+    already knows how to check that -- it just never had the archetype to check against. So this is
+    a seeding change rather than a new filter: `no_prereq_loop` then admits an archetype's options
+    to exactly the characters who rolled that archetype, and refuses them to everyone else.
+
+    NOTE this does NOT model archetype feature SWAPS. An archetype that trades a bucket away still
+    leaves the bucket in place -- that ruling (bond-only) is unchanged, and is a different thing
+    from honouring an archetype prerequisite.
+
+    Takes `archetypes_per_class` as an argument rather than reading it off the character: this must
+    run before the choosers, and at that point the attribute has not been assigned yet.
+    """
+    for info in archetypes_per_class or []:
+        for name in (info or {}):
+            name = name.lower().strip()
+            if name and name not in ARCHETYPE_PREREQ_COLLISIONS:
+                character.chooseable.add(name)
+
 def chooseable_list_class_features(character):
     remove_list = ["aphorite", "aquatic elf", "boggard", "dhampir", "drow", "duergar", "duskwalker", "dwarf", "elf", "fetchling", "gillman", "gnome", "Half-Elf", "halfling", "Half-Orc", "human", "kitsune", "nagaji", "oread", "ratfolk", "strix", "tengu", "wayang", "aasimar", "aquatic elf", "catfolk", "dwarf", "elf", "gathlain", "gnome", "goblin", "Half-Elf", "halfling", "Half-Orc", "hobgoblin", "human", "kitsune", "kobold", "locathah", "nagaji", "orc", "vanara", "source", "role", "alignment", "hit die", "parent class(es)", "starting wealth", "skill points at each level" ]
     # every class contributes its feature keys to the prereq pool (multiclass-aware)

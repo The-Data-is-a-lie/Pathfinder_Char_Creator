@@ -26,8 +26,128 @@ rather than introducing a second place to look for state.
 Sealing: some ordering constraints aren't "is this attribute set" but "is this bucket finished".
 ``character.data_dict['class features']`` always exists; the question is whether the choosers have
 run. ``seal``/``require_sealed`` express that.
+
+HOW HONEST SHOULD `requires` BE?
+-------------------------------
+The rule, decided before the remaining phases were extracted so they would not each answer it
+differently. It matters because the blocks still to be split are not like the first two: the
+class-options block reads twenty-plus attributes, and writing all twenty into a decorator rebuilds
+the unreadable wall the decorator was meant to replace -- except now it fails at import time when it
+drifts, which is worse than a stale comment, not better.
+
+**`requires` names only what crosses IN from outside the phase.** Two to four attributes, the ones
+another phase had to produce first. Not everything the block reads: a value the block computes and
+then consumes is not a dependency, it is a local. The test for whether a name belongs is "could a
+reordering make this absent?", not "does this code touch it?".
+
+**`provides` is exhaustive.** The asymmetry is deliberate and it is free: `provides` is checked on
+the way OUT, so an over-declared name fails on the very first run, loudly, at the phase that owns
+it. There is no drift to accumulate. `requires` has to be curated because it fails on the way in,
+where a wrong entry blocks a legitimate order.
+
+**Bucket completion is a seal, not a `requires` entry.** `require_sealed` is for the state that
+always exists and is only meaningful once its producers have run.
+
+**A seal proves ordering. It does not prove completeness** -- and that gap is closed by a different
+mechanism rather than by a finer-grained seal. `seal('class options')` says the block ran; it says
+nothing about whether the psionic chooser inside it ran. Splitting into `seal('class options:
+psionics')` just reinvents the twenty-entry `requires` with worse ergonomics, and it still cannot
+catch a chooser nobody remembered to seal.
+
+So completeness is proved by census instead, in the sweep tests, where it belongs: over many
+generations, every chooser must fire at least once, and a count of zero fails the run and says so.
+`test_house_invariants.py` already does this for bonded creatures and occult choices ("no bonded
+creature was granted in N generations -- every companion check proved nothing"), and
+`test_skill_ranks.py` does it for the Multi Talented ordering branch. The two mechanisms answer
+different questions and neither substitutes for the other: the seal fails in-process the moment
+order is wrong, the census fails in CI when coverage silently drops to zero.
+
+WHERE A PHASE'S OUTPUTS GO
+--------------------------
+Decided before the gear/PoW/feat blocks were extracted, because they are the first phases whose
+outputs are mostly not character state.
+
+A runtime census answered it. At the moment the payload is built, its literal reads **98 function
+locals**. Making `build_payload(character)` work -- the payload built from the character alone --
+means promoting 88 of them to attributes, on an object that already carries ~200. It also collides
+with four existing attributes that hold DIFFERENT values under the same name: `character.feats` is
+the pre-`separate_feats_func` list, `character.martial_disciplines` and `character.deity` are data
+TABLES rather than choices, and `character.archetype_info` is the dict whose `json.dumps` the local
+holds. Three of those four were found by comparing values at runtime; none is visible by reading.
+A character object at ~290 attributes is the payload wearing a different name, and a manifest gate
+over it gates something nobody can reason about.
+
+So outputs are sorted three ways, and the test is *who else needs this*:
+
+1. **Character state** -- another phase reads it, or it is what the character IS.
+   Goes on the character; declared in `provides`. (`armor_dict`, `feats`, `spellbooks`.)
+2. **Derivable at export** -- a pure unpacking of state the character already has.
+   Stored NOWHERE; computed inside `build_payload`. (`armor_name` and its five siblings come out of
+   `character.armor_dict`; `deity_name` out of `deity_choice`; `school` out of `chosen_school`.)
+3. **Phase output that is neither** -- a real result of the phase that only the export reads.
+   Rides a `PhaseRecord` the phase returns, declared in `returns`. (`equipment_list`, `armor_ac`,
+   `weapon_enhancement_chosen_list`.)
+
+Ticket 06 ruled out return-threading as "positional soup", and it was right about a 15-element
+TUPLE. A record is not a tuple: `gear.weapon_name` names itself at the call site, cannot be
+mis-ordered, and is checked by `returns` on the way out exactly as `provides` is. The objection was
+to positionality, not to returning.
+
+**`returns` is exhaustive, like `provides`, and for the same reason** -- it is checked on the way
+out, so an over-declared field fails on the first run rather than drifting.
 """
 import functools
+import hashlib
+import random
+import types
+
+import numpy as np
+
+# ------------------------------------------------------------------------------------------------
+# PER-PHASE RNG SUBSTREAMS -- OFF BY DEFAULT (map: optimal-builder, ticket 04)
+#
+# The generator draws every decision from one global RNG stream, so ONE changed draw re-rolls
+# everything after it. That is why a same-seed A/B report is mostly incidental churn, and it is the
+# same coupling that has forced three golden re-seeds already: the 7275 companion stack, the
+# companion feat roll, and the occult pool.
+#
+# Reseeding from (seed, phase name) at each phase boundary contains divergence to the phase that
+# actually changed plus its consumers. This decorator is the single place every phase passes
+# through, so it is one hook rather than plumbing through ~20 choosers.
+#
+# IT IS OFF UNLESS EXPLICITLY ENABLED. The default path executes an `if _SUBSTREAM_SEED is None`
+# and nothing else, so the seven golden fixtures stay byte-identical -- the hard constraint the
+# whole optimal-builder map was built to respect. Only the A/B report turns it on, for BOTH sides
+# of a pair, and a character generated that way is a legitimate random character but NOT the same
+# one the default path produces from that seed.
+# ------------------------------------------------------------------------------------------------
+_SUBSTREAM_SEED = None
+
+
+def enable_phase_streams(seed):
+    """Reseed each phase from (seed, phase name). A/B mode only -- see the note above."""
+    global _SUBSTREAM_SEED
+    _SUBSTREAM_SEED = int(seed)
+
+
+def disable_phase_streams():
+    global _SUBSTREAM_SEED
+    _SUBSTREAM_SEED = None
+
+
+def phase_streams_enabled():
+    return _SUBSTREAM_SEED is not None
+
+
+def _substream_seed(phase_name):
+    """A stable 32-bit seed for one phase.
+
+    sha256 rather than `hash()`: Python randomises string hashing per process, which would make
+    every run of the report differ -- exactly the nondeterminism `choosing_feats`' `sorted()` call
+    exists to avoid.
+    """
+    digest = hashlib.sha256(f'{_SUBSTREAM_SEED}:{phase_name}'.encode('utf-8')).digest()
+    return int.from_bytes(digest[:4], 'big')
 
 # Attributes whose value is legitimately falsy when set (0, '', {}), so presence must be tested with
 # hasattr rather than truthiness. Everything else also accepts "set but empty" -- the check is about
@@ -39,16 +159,34 @@ class PhaseOrderError(RuntimeError):
     """A phase ran before something it depends on."""
 
 
-def phase(requires=(), provides=()):
+class PhaseRecord(types.SimpleNamespace):
+    """What a phase hands forward that is NOT character state.
+
+    Category 3 in the module docstring: a real output of the phase that only the export reads.
+    Deliberately not a dict -- attribute access means a typo raises here instead of arriving in the
+    payload as a missing key, which is the failure mode this whole map exists to close."""
+
+    def __repr__(self):
+        fields = ', '.join(sorted(vars(self)))
+        return f"PhaseRecord({fields})"
+
+
+def phase(requires=(), provides=(), returns=()):
     """Declare a pipeline phase's prerequisites and outputs.
 
     ``requires`` are attribute names that must exist on the character before the phase runs;
     ``provides`` are the ones it is expected to set, checked on the way out so a phase that silently
     stops setting something is caught at its own boundary rather than at a distant reader.
+    ``returns`` names the fields of the ``PhaseRecord`` the phase hands back, checked the same way --
+    for outputs that are not character state (see WHERE A PHASE'S OUTPUTS GO, above).
     """
     def decorate(func):
         @functools.wraps(func)
         def wrapper(character, *args, **kwargs):
+            if _SUBSTREAM_SEED is not None:
+                seed = _substream_seed(func.__name__)
+                random.seed(seed)
+                np.random.seed(seed)          # pandas .sample() draws from numpy's global RNG
             missing = [name for name in requires if not hasattr(character, name)]
             if missing:
                 plural = len(missing) > 1
@@ -62,10 +200,17 @@ def phase(requires=(), provides=()):
                 raise PhaseOrderError(
                     f"phase {func.__name__!r} declares it provides {', '.join(not_set)} "
                     f"but did not set {'them' if len(not_set) > 1 else 'it'}")
+            if returns:
+                absent = [name for name in returns if not hasattr(result, name)]
+                if absent:
+                    raise PhaseOrderError(
+                        f"phase {func.__name__!r} declares it returns {', '.join(absent)} "
+                        f"but its record does not carry {'them' if len(absent) > 1 else 'it'}")
             return result
 
         wrapper.requires = tuple(requires)
         wrapper.provides = tuple(provides)
+        wrapper.returns = tuple(returns)
         return wrapper
     return decorate
 

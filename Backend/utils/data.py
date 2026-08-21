@@ -139,18 +139,23 @@ lore = ["Goblin Lore",
 "Kuo-Toa Lore"
 ]
 
-formulas = {
-    'favored_terrains': 'ceil((character.c_class_level - 2) / 5)',
-    'favored_enemies': '1 + floor(character.c_class_level / 5)',
-    'manuevers': 'floor((character.c_class_level + 1)/4)'
-}
+# `formulas` lived here: three eval'd strings that were the FOURTH pick-count convention, read by
+# feats.simple_list_chooser. Ticket 02 moved ranger favored_terrains/favored_enemies and brawler
+# manuevers into Backend/json/class_choice_schedule.json, which is now the only place a pick count
+# is written down. Deleted rather than deprecated: a second schedule nobody reads is the failure
+# CLAUDE.md's stale-`critical` story is about.
 
-armor_type_mapping = {
-    ('monk', 'unchained_monk'): None,
-    ('rogue', 'bard', 'brawler'): 'L',
-    ('barbarian', 'unchained_barbarian', 'ranger'): 'M',
-    (): 'H'
-}
+# `armor_type_mapping` lived here and is gone. It mapped classes to armour bands, and it never
+# fired once in the life of this repo: its keys were TUPLES (`('rogue','bard','brawler'): 'L'`)
+# while `armor_chooser` looked up a plain string, so every character took the `(): 'H'` default.
+# That is why the committed goldens held a wizard in Full plate and a druid in Half-plate.
+#
+# The authority is now Backend/json/armor_proficiency.json -- DERIVED from class_data.json's own
+# proficiency prose by scripts/build/build_armor_proficiency.py, and gated by
+# scripts/gates/validate_gear_legality.py. Deleted rather than corrected: a hand-authored list of
+# 68 classes with nothing checking it against the rules is the arrangement that just failed, and
+# flattening the tuple keys would only have spelled it correctly. Same reasoning as `formulas`
+# above.
 
 enhancement_bonus_mapping = {
     2000: 1,
@@ -333,87 +338,10 @@ alignment_exclusion = {
         'evil': 'good'
     }
 
-amount = {
-  'arcanist':{
-    'basic': [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51]
-  },
-  'bloodrager':{
-    'feats': [7,10,13,16,19,22,25,28,31,34,37,40,43,46,49]
-  }
-  ,
-  'fighter': {
-    'armor_train': [7,11,15,19,23,27,31,35,39,43,47,51],
-    'weapon_train': [9,13,17,21,25,29,33,37,41,45,49,53]
-  },  
-  'oracle': {
-    'mysteries': [1,3,7,11,15,19,23,27],
-  },
-  'shaman':{
-    'hexes': [2, 4, 8, 10, 12, 16, 18, 20, 24, 26, 28, 32, 34, 36, 40, 42, 44, 48, 50, 52]
-  }, 
-  'warpriest': {
-    'blessing': [1,1]
-  },
-  'witch':{
-    'basic': [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52]
-  },
-  'sorcerer': {
-        'feats': [7,13,19,25,31,37,43,49]
-  },
-  'inquisitor': {
-        'inquisitions': [1,1]
-  },
-  # Psionics. Each list is the class levels at which one pick is granted, read off the class's own
-  # feature text (Backend/json/class_data/psionics/psionic_classes.json). The three single-pick
-  # subsystems -- marksman combat style, psychic warrior path, vitalist method -- need no entry.
-  'aegis': {
-        # The aegis is the odd one out: it spends *customization points* (3 at 1st rising to 26 at
-        # 20th), not a fixed number of picks. Modelled as one pick per ~2.5 points, which is what
-        # the published 1-to-4-point costs average out to. Tune this list, not the chooser.
-        'customizations': [1,3,5,7,9,11,13,15,17,19]
-  },
-  'cryptic': {
-        'insights': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'dread': {
-        'terrors': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'highlord': {
-        'decrees': [1,4,7,10,13,16,19]
-  },
-  'soulknife': {
-        'blade skills': [2,4,6,8,10,12,14,16,18,20]
-  },
-  'tactician': {
-        'strategies': [4,7,10,13,16,19]
-  },
-  # Occult Adventures. Same rule as the psionics block above: each list is the class levels at
-  # which one pick is granted, read off the class's own feature text in class_data.json. The three
-  # single-pick subsystems -- the kineticist's elemental focus, the medium's spirit and the
-  # psychic's discipline -- need no entry, and neither does the spiritualist's emotional focus.
-  'occultist': {
-        # "two implement schools" at 1st (hence the repeated 1), then 2nd and every 4 levels, to a
-        # maximum of seven at 18th -- the count the prose states, so the list is self-checking.
-        'implements': [1,1,2,6,10,14,18],
-        # One *selected* power at 1st; the two base powers come with the schools and are not picks.
-        # Then 3rd and every 2 levels.
-        'focus powers': [1,3,5,7,9,11,13,15,17,19]
-  },
-  'kineticist': {
-        'wild talents': [2,4,6,8,10,12,14,16,18,20],
-        'infusions': [1,3,5,9,11,13,17,19]
-  },
-  'mesmerist': {
-        # One at 1st, another at 2nd and every 2 levels: eleven at 20th, as the prose states.
-        'mesmerist tricks': [1,2,4,6,8,10,12,14,16,18,20],
-        'bold stare': [3,7,11,15,19]
-  },
-  'psychic': {
-        # 1st, then 3rd and every 4 levels. Major amplifications are taken *in place of* one of
-        # these from 11th, so they are the same pick, not an extra one -- no separate list.
-        'phrenic amplifications': [1,3,7,11,15,19]
-  }
-}
+# `amount` (the per-class pick schedules) lived here until class-choices ticket 01 moved it
+# to Backend/json/class_choice_schedule.json, where it is one table in two forms behind
+# generic_func.levels_for() rather than one of three competing conventions. Deleted rather
+# than left in place: a second schedule that nothing reads is how the first one drifted.
 
 hair_colors = ['Black', 'Brown', 'Blond', 'Red', 'White', 'Grey']
 hair_types = ['Curly',  'Bald', 'Wavy', 'Straight', 'Flowing', 'Frizzy', 'Spiky', 'Touseled', 'Unkempt','Bald']
@@ -662,6 +590,26 @@ appearance = [  "Athletic",
 
 
 gold = [1000,3000,6000,10500,16000,23500,33000,46000,62000,82000,108000,140000,185000,240000,315000,410000,530000,685000,880000]
+
+
+def wealth_by_level(level):
+    """Paizo PC wealth-by-level in gp -- the ONE owner of the whole curve.
+
+    Levels 2-20 are the published table (`gold` above, index level-2). Level 1 has no table row
+    (Paizo uses class starting wealth; 150 gp is the cross-class average this generator has always
+    used). Levels 21-40 are EXTRAPOLATED, never published: the last published delta (L19->L20 =
+    +195,000) continued linearly, by ruling (Daniel, 2026-08-11) -- the table's own tail actually
+    ACCELERATES ~x1.26/level, but unspent gold ships in the payload as sheet cash and the flat tail
+    keeps an L40 sheet at ~4.8M instead of ~96M. Consumed by `Character.assign_gold` (blank/random
+    gold input) and by the power-baseline sweep, so the sweep measures exactly the purse production
+    would grant.
+    """
+    level = int(level)
+    if level <= 1:
+        return 150
+    if level > 20:
+        return gold[-1] + 195_000 * (level - 20)
+    return gold[level - 2]
 
 mannerisms = ['Adjusts glasses', 'Bites fingernails', 'Bites lip', 'Blows bubbles', 'Brushes hair out of face', 'Bursts into laughter', 'Chews gum', 'Chuckles', 'Clicks pen', 'Clutches purse tightly', 'Combs hair with fingers', 'Covers mouth when speaking', 'Cracks knuckles', 'Crosses arms', 'Crosses legs', 'Curls up in a ball', 'Doodles', 'Drums fingers', 'Eyes dart around room', 'Fiddles with hair', 'Fidgets', 'Flexes muscles', 'Folds arms', 'Furrows brow', 'Gestures while talking', 'Glances at watch', 'Grins', 'Hides hands in pockets', 'Hugs oneself', 'Hums to oneself', 'Jingles keys', 'Jumps up and down', 'Laughs at own jokes', 'Leans back', 'Leans forward', 'Licks lips', 'Lifts eyebrows', 'Lifts chin', 'Licks teeth', 'Looks around nervously', 'Looks over glasses', 'Mumbles', 'Nervously clears throat', 'Nods often', 'Opens and closes mouth', 'Paces', 'Pats pockets', 'Peers over glasses', 'Plays with jewelry', 'Plays with sleeves', 'Pops knuckles', 'Puts hands in pockets', 'Raises eyebrows', 'Readjusts clothing', 'Rests chin in hand', 'Rests hand on hip', 'Rests head on hand', 'Rolls eyes', 'Rub hands together', 'Runs fingers through hair', 'Scratches head', 'Shakes head', 'Shifts weight from one foot to the other', 'Shrugs', 'Sighs', 'Smacks lips', 'Smiles', 'Smirks', 'Snaps fingers', 'Squints', 'Stares into space', 'Stares intensely', 'Stifles a yawn', 'Strokes chin', 'Sways back and forth', 'Sweats', 'Swings arms', 'Taps foot', 'Taps pencil', 'Thumbs through a book', 'Throws head back when laughing', 'Tilts head', 'Tucks hair behind ears', 'Twiddles thumbs', 'Twirls hair', 'Twists hair', 'Twitches', 'Winks', 'Wipes hands on pants', 'Wipes nose', 'Wipes sweat from forehead', 'Withdraws into oneself', 'Wring hands', 'Yawns', 'Yells when excited', 'Zones out', 'Bites lower lip', 'Bites upper lip', 'Blows nose', 'Brushes off clothes', 'Clenches fists', 'Clenches jaw', 'Combs mustache', 'Covers ears', 'Covers eyes', 'Crosses fingers', 'Crouches', 'Cups chin with hand', 'Dabs at eyes', 'Dons sunglasses', 'Drops head', 'Elevates eyebrows', 'Exhales audibly', 'Fans oneself', 'Fiddles with jewelry', 'Fingers lapel', 'Flips hair', 'Folds hands', 'Gathers hair into a ponytail', 'Glances away', 'Glances over shoulder', 'Gnaws on pencil', 'Grits teeth', 'Holds breath', 'Huffs', 'Jumps at sudden sounds', 'Kicks at the ground', 'Kneads fingers', 'Kneels', 'Lays head on desk', 'Leans on desk', 'Lift']
 
@@ -2463,7 +2411,7 @@ classes_pending_foundry = []
 # `base` is DERIVED -- everything in class_data.json that no other roster claims -- so adding a
 # Paizo class stays a one-key change to class_data.json and nothing here. Order is display order.
 # The module's own copy of the labels lives in scripts/class-roster.js and is kept honest by
-# Backend/scripts/validate_class_roster.py; the tokens are the contract between them.
+# Backend/scripts/gates/validate_class_roster.py; the tokens are the contract between them.
 CLASS_GROUPS = (
     ("base",    "Paizo base classes", None),
     ("pow",     "Path of War",        path_of_war_class),

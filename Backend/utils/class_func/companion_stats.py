@@ -36,7 +36,7 @@ by what the data can be shown to hold:
     contributed, purely so a sheet can explain the number. It is provenance, not a second
     application: the values are already inside `ac`, `attacks[].atk`, `cmb`, `cmd` and `skills`.
 
-`Backend/scripts/validate_companion_stats.py` is the gate that keeps this from drifting back.
+`Backend/scripts/gates/validate_companion_stats.py` is the gate that keeps this from drifting back.
 
 WHERE EVERY NUMBER COMES FROM (ticket 01, same grill)
 -----------------------------------------------------
@@ -818,6 +818,206 @@ def _starting_size(species_stats):
     return str(start.get('size') or '').strip().lower() or None
 
 
+# ---------------------------------------------------------------------------------------------
+# The eidolon stat block (spec section 8, "Eidolon (v1.1)"; companions ticket 07)
+# ---------------------------------------------------------------------------------------------
+#
+# Separate from `companion_stats` rather than a branch inside it, because almost nothing lines up:
+# an eidolon has no advancement merge (it has evolutions), its chassis is a different table with
+# different column names, its saves are good/poor PER FORM rather than fixed, and its attacks are
+# BOUGHT rather than parsed from one routine string. What IS shared is imported, not copied --
+# `SIZE_GEOMETRY`, `_mod`, `_hit_points`, `_skills`' allocator and `apply_modifiers`.
+#
+# THE PARTIAL FOLD. Only 8 of the 81 evolutions carry structured `changes` or `ability_scores`.
+# Every other one is real but unexpressible as a number in this block, so it is NAMED on
+# `stats.unapplied` with its own `numeric_holdback` text where it has one -- D12's discipline, the
+# same one `progression_override` rides. A block that quietly dropped 73 evolutions would look
+# finished and be wrong.
+
+EIDOLON_HIT_DIE = 10          # outsider
+
+
+def _eidolon_abilities(entry, form, forms, chassis, rng):
+    """Form scores, the Small package, the table's Str/Dex bonus, then everything bought.
+
+    The Str/Dex column is a CHOICE in RAW ("+1 to Strength or Dexterity"), so it is rolled on the
+    creature's own stream rather than always handed to Strength -- the same reason the shield and
+    armour choosers were wrong for years was a default nobody rolled.
+    """
+    scores = dict(((form.get('starting statistics') or {}).get('ability scores')) or {})
+    if entry.get('size') == 'small':
+        for stat, delta in ((forms.get('small_package') or {}).get('ability_scores') or {}).items():
+            scores[stat] = (scores.get(stat) or 0) + delta
+
+    bonus = int(chassis.get('str_dex_bonus') or 0)
+    picked = []
+    for _ in range(bonus):
+        stat = rng.choice(('str', 'dex'))
+        scores[stat] = (scores.get(stat) or 0) + 1
+        picked.append(stat)
+    return scores, picked
+
+
+def _eidolon_evolution_data(character, entry):
+    """(the pool, the held picks as {key: [choice, ...]}) -- the picks include the form's free ones,
+    because a free bite is as real as a bought one on the stat block."""
+    pool = ((getattr(character, 'eidolon_evolutions', None) or {}).get('evolutions')) or {}
+    held = {name: list(picks) for name, picks in (entry.get('free_evolutions') or {}).items()}
+    for pick in entry.get('evolutions') or []:
+        held.setdefault(pick['key'], []).append(pick.get('choice'))
+    return pool, held
+
+
+def _eidolon_attacks(held, pool, size, bab, str_mod, size_ac):
+    """One entry per natural attack the creature actually has, primaries at full BAB (D12).
+
+    Small takes the Medium die plus a `damage_steps_down` marker rather than a scaled die: the
+    published table stops at Medium/Large/Huge, and spec section 16 (D11) already ruled that the
+    backend emits the marker and leaves the ladder to the module and the sheet.
+    """
+    out = []
+    for name in sorted(held):
+        attack = (pool.get(name) or {}).get('attack')
+        if not attack:
+            continue
+        printed = size if size in attack['damage'] else 'medium'
+        for _ in range(len(held[name]) * attack['count']):
+            primary = attack['kind'] == 'primary'
+            entry = {
+                'name': (pool[name].get('name') or name),
+                'kind': attack['kind'],
+                # Secondary naturals are -5 to hit and half Strength on damage (RAW).
+                'atk': bab + str_mod + size_ac + (0 if primary else -5),
+                'damage': attack['damage'][printed],
+                'damage_bonus': str_mod if primary else str_mod // 2,
+            }
+            if size == 'small':
+                entry['damage_steps_down'] = 1
+            out.append(entry)
+    return out
+
+
+def _eidolon_unapplied(held, pool):
+    """Every held evolution this block cannot express, named. The holdback text when the curation
+    wrote one, the evolution's own name when it did not."""
+    out = []
+    for name in sorted(held):
+        evolution = pool.get(name) or {}
+        if evolution.get('changes') or evolution.get('ability_scores') or evolution.get('attack'):
+            continue
+        label = evolution.get('name') or name
+        for choice in held[name]:
+            shown = f'{label} ({choice})' if choice else label
+            holdback = evolution.get('numeric_holdback')
+            out.append(f'{shown}: {holdback}' if holdback else f'{shown}: rules text only')
+    return out
+
+
+def eidolon_abilities(character, entry):
+    """The eidolon's finished ability scores, for a caller that runs BEFORE the stat block.
+
+    `companion_feats` needs them to gate prerequisites, and it runs one line earlier in the pipeline
+    than `stat_bonded_creatures` (the feats have to be on the entry before the block folds them).
+    Both callers reach the same numbers because the Str/Dex choice is drawn from the creature's own
+    seeded generator: same entry, same salt, same picks. That is the whole reason it is not a global
+    roll -- a shared random stream would make these two answers differ.
+    """
+    forms = getattr(character, 'eidolon_base_forms', None) or {}
+    form = (forms.get('forms') or {}).get(entry.get('base_form'))
+    if not form or not entry.get('chassis'):
+        return {}
+    scores, _ = _eidolon_abilities(entry, form, forms, entry['chassis'],
+                                   _rng(entry, 'eidolon-stats'))
+    return scores
+
+
+def _eidolon_specials(character, entry):
+    """Every special the table grants at or below this level, in the order they were gained.
+
+    De-duplicated by name: `ability score increase` is named at 5th, 10th and 15th, and it is the
+    LABEL for the Str/Dex bonus column, which the stat block has already applied as a number. Listing
+    it three times would read as three unapplied features.
+    """
+    levels = ((getattr(character, 'eidolon_table', None) or {}).get('levels')) or {}
+    out = []
+    for step in range(1, int(entry.get('effective_level') or 0) + 1):
+        for special in (levels.get(str(step)) or {}).get('special') or []:
+            if special not in out:
+                out.append(special)
+    return out
+
+
+def eidolon_stats(character, entry):
+    """The finished `stats` block for one eidolon. `None` when there is nothing to stat -- which is
+    the degraded unchained entry, whose debt is named on `entry['holdback']` instead."""
+    chassis = entry.get('chassis') or {}
+    forms = getattr(character, 'eidolon_base_forms', None) or {}
+    form = (forms.get('forms') or {}).get(entry.get('base_form'))
+    if not chassis or not form:
+        return None
+
+    rng = _rng(entry, 'eidolon-stats')
+    pool, held = _eidolon_evolution_data(character, entry)
+    abilities, str_dex_picks = _eidolon_abilities(entry, form, forms, chassis, rng)
+    mods = {stat: _mod(score) for stat, score in abilities.items()}
+
+    size = str(entry.get('size') or 'medium').strip().lower()
+    geometry = SIZE_GEOMETRY.get(size, SIZE_GEOMETRY['medium'])
+    hd = int(chassis.get('hd') or 1)
+    bab = int(chassis.get('bab') or 0)
+    dex_mod, str_mod, con_mod = mods.get('dex') or 0, mods.get('str') or 0, mods.get('con') or 0
+    natural = _natural_armor((form.get('starting statistics') or {}).get('ac')) \
+        + int(chassis.get('armor_bonus') or 0)
+
+    good, poor = int(chassis.get('good_save') or 0), int(chassis.get('poor_save') or 0)
+    grades = form.get('saves') or {}
+    saves = {which: (good if grades.get(which) == 'good' else poor) for which in
+             ('fort', 'ref', 'will')}
+
+    stats = {
+        'size': size,
+        'space': geometry['space'],
+        'hd': hd,
+        'hit_die': f'd{EIDOLON_HIT_DIE}',
+        'hp': _hit_points(character, hd, EIDOLON_HIT_DIE, con_mod, rng),
+        'abilities': abilities,
+        'ability_modifiers': mods,
+        'ac': 10 + geometry['ac'] + dex_mod + natural,
+        'touch_ac': 10 + geometry['ac'] + dex_mod,
+        'flat_footed_ac': 10 + geometry['ac'] + natural,
+        'natural_armor': natural,
+        'saves': {'fort': saves['fort'] + con_mod, 'ref': saves['ref'] + dex_mod,
+                  'will': saves['will'] + (mods.get('wis') or 0)},
+        'bab': bab,
+        'initiative': dex_mod,
+        'cmb': bab + str_mod + geometry['special'],
+        'cmd': 10 + bab + str_mod + dex_mod + geometry['special'],
+        'speed': (form.get('starting statistics') or {}).get('speed'),
+        'attacks': _eidolon_attacks(held, pool, size, bab, str_mod, geometry['ac']),
+        # The allocator wants a merged-species shape; the only two fields it reads are speed (which
+        # movement skills the body can even take) and the racial-modifier keys an eidolon has none
+        # of. Every form is Int 7, so `_eligible_skills` widens past the animal list on its own.
+        'skills': _skills({'speed': (form.get('starting statistics') or {}).get('speed')},
+                          {'skills': chassis.get('skills')}, abilities, hd,
+                          geometry['stealth'], rng),
+        # CUMULATIVE, not the row's own list. The table names each special at the level it is
+        # GAINED, so reading one row gives a 12th-level eidolon whatever it learned at 12th and
+        # nothing else -- no darkvision, no link, no evasion. The companion chassis stores its
+        # `special` column pre-accumulated, which is exactly why this difference is easy to miss.
+        'special': ', '.join(_eidolon_specials(character, entry)) or None,
+        'str_dex_bonus_spent_on': str_dex_picks,
+        'size_change': _size_change(entry.get('base_size'), size),
+        'unapplied': _eidolon_unapplied(held, pool),
+    }
+
+    # The same fold every other bonded creature gets (D14): the evolutions that DO carry structured
+    # changes land here, on top of the chassis numbers, so `applied_changes` reads as a diff.
+    sources = [((pool[name].get('name') or name), pool[name])
+               for name in sorted(held) for _ in held[name] if pool.get(name, {}).get('changes')]
+    apply_modifiers(stats, sources + modifier_sources(entry), mods, hd)
+    return stats
+
+
 def stat_bonded_creatures(character):
     """Write `stats` onto every bonded creature the resolver produced.
 
@@ -826,5 +1026,17 @@ def stat_bonded_creatures(character):
     uniform key set with nulls ships a ghost a renderer will draw.
     """
     for entry in getattr(character, 'bonded_creatures', None) or []:
+        if entry.get('type') == 'eidolon':
+            # Its own block: a different chassis table, per-form saves, and bought attacks rather
+            # than a parsed routine. Returns None for the degraded unchained entry, which is D4's
+            # named base form and nothing more.
+            entry['stats'] = eidolon_stats(character, entry) if entry.get('species') else None
+            continue
+        if entry.get('type') == 'familiar' and entry.get('species'):
+            # A familiar's numbers key off the MASTER (half HP, master BAB/saves/ranks), none of
+            # which are final this early in the pipeline -- familiars.stat_familiars is the late
+            # pass that fills these in after phase_luck_resolution. Absence entries still fall
+            # through and get stats: None like everyone else's.
+            continue
         entry['stats'] = companion_stats(character, entry)
     return character.bonded_creatures if hasattr(character, 'bonded_creatures') else []

@@ -1,0 +1,59 @@
+{
+  "_readme": [
+    "PF1e Table: Familiar (the wizard Familiar class feature), expanded from the printed 2-level",
+    "brackets to one row per master level 1-20 for direct lookup by class_func/familiars.py.",
+    "natural_armor_adj and int_score are the CUMULATIVE values in effect AT that level (not deltas);",
+    "'special' lists abilities NEWLY gained at that exact level -- concatenate rows 1..level for the",
+    "full list. int_score REPLACES the species' own Int once bonded (RAW: the table's Int always",
+    "wins). spell_resistance, when gained, equals master level + 5 and is computed in code, not here.",
+    "species_perks: the master-facing bonus each species grants (the '+3 Fly' table) -- kept in this",
+    "file, not familiar_choices.json, so the species stat blocks stay pure creature data.",
+    "ability_notes: one-line rules text per special ability, shipped to the sheet via the entry's",
+    "master_abilities field. Source: d20pfsrd wizard Familiar page, fetched 2026-08-12."
+  ],
+  "levels": {
+    "1":  { "natural_armor_adj": 1,  "int_score": 6,  "special": ["alertness", "improved evasion", "share spells", "empathic link"] },
+    "2":  { "natural_armor_adj": 1,  "int_score": 6,  "special": [] },
+    "3":  { "natural_armor_adj": 2,  "int_score": 7,  "special": ["deliver touch spells"] },
+    "4":  { "natural_armor_adj": 2,  "int_score": 7,  "special": [] },
+    "5":  { "natural_armor_adj": 3,  "int_score": 8,  "special": ["speak with master"] },
+    "6":  { "natural_armor_adj": 3,  "int_score": 8,  "special": [] },
+    "7":  { "natural_armor_adj": 4,  "int_score": 9,  "special": ["speak with animals of its kind"] },
+    "8":  { "natural_armor_adj": 4,  "int_score": 9,  "special": [] },
+    "9":  { "natural_armor_adj": 5,  "int_score": 10, "special": [] },
+    "10": { "natural_armor_adj": 5,  "int_score": 10, "special": [] },
+    "11": { "natural_armor_adj": 6,  "int_score": 11, "special": ["spell resistance"] },
+    "12": { "natural_armor_adj": 6,  "int_score": 11, "special": [] },
+    "13": { "natural_armor_adj": 7,  "int_score": 12, "special": ["scry on familiar"] },
+    "14": { "natural_armor_adj": 7,  "int_score": 12, "special": [] },
+    "15": { "natural_armor_adj": 8,  "int_score": 13, "special": [] },
+    "16": { "natural_armor_adj": 8,  "int_score": 13, "special": [] },
+    "17": { "natural_armor_adj": 9,  "int_score": 14, "special": [] },
+    "18": { "natural_armor_adj": 9,  "int_score": 14, "special": [] },
+    "19": { "natural_armor_adj": 10, "int_score": 15, "special": [] },
+    "20": { "natural_armor_adj": 10, "int_score": 15, "special": [] }
+  },
+  "species_perks": {
+    "bat": "+3 bonus on Fly checks",
+    "cat": "+3 bonus on Climb checks",
+    "hawk": "+3 bonus on sight-based Perception checks in bright light",
+    "lizard": "+3 bonus on Climb checks",
+    "owl": "+3 bonus on sight-based Perception checks in shadows",
+    "rat": "+2 bonus on Fortitude saves",
+    "raven": "+3 bonus on Appraise checks",
+    "toad": "+3 hit points",
+    "viper": "+3 bonus on Bluff checks",
+    "weasel": "+2 bonus on Reflex saves"
+  },
+  "ability_notes": {
+    "alertness": "While the familiar is within arm's reach, the master gains the Alertness feat.",
+    "improved evasion": "On a Reflex save for half damage, the familiar takes no damage on a success and half damage on a failure.",
+    "share spells": "The master may cast a spell with a target of 'You' on the familiar (as a touch spell) instead of on himself.",
+    "empathic link": "The master and familiar share an empathic link to 1 mile; the master cannot see through its eyes.",
+    "deliver touch spells": "The familiar can deliver touch spells for the master if in contact with him when he casts.",
+    "speak with master": "The master and familiar can communicate verbally as if using a common language.",
+    "speak with animals of its kind": "The familiar can communicate with animals of approximately its own kind.",
+    "spell resistance": "The familiar gains spell resistance equal to the master's level + 5.",
+    "scry on familiar": "The master may scry on his familiar (as the scrying spell) once per day."
+  }
+}

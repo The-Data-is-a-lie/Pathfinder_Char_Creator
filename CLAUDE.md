@@ -20,7 +20,9 @@ randomization, gender, stat dice count/size, level range, starting gold) and ret
   `Backend/utils/class_func/feats.py`; **Path of War is wired in** (six base initiator classes in the
   random pool + "martial paths" via the Martial Training chain for everyone else —
   `Backend/utils/class_func/path_of_war.py`, spec in `docs/feature_spec_todo.md` §1; Metzofitz
-  initiator classes & PoW archetypes pending); Spheres / Mythic / homebrew races are in progress.
+  initiator classes & PoW archetypes pending); **Spheres is wired in** (opt-in `spheres_of_power`
+  flag); **Mythic is wired in** (opt-in `mythic` input — tier/path/abilities/feats/traditions,
+  spec §14; rendering on both sheets pending); homebrew races are in progress.
 
 ## Run / test
 ```

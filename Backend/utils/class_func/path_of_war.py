@@ -38,6 +38,64 @@ from utils.class_func.skill_ranks import final_ability_score
 # Paid Martial Training picks by chain depth (the even tiers are feat-tax freebies).
 _MT_FEATS = ["Martial Training I", "Martial Training II", "Martial Training III",
              "Martial Training IV", "Martial Training V", "Martial Training VI"]
+
+# The near-universal PoW bonus-dice phrasing. KEEP IN SYNC with power_metric._BONUS_DICE -- the
+# metric parses the same pattern when SCORING; this side parses it when CHOOSING, and the two
+# deliberately do not import each other (the metric must stay standalone over payloads).
+_BONUS_DICE_RE = re.compile(r'additional\s+(\d+)d(\d+)', re.I)
+
+
+def _bonus_dice_avg(entry):
+    """Average bonus dice stated in a maneuver/stance entry's prose (0.0 when none)."""
+    best = 0.0
+    for match in _BONUS_DICE_RE.finditer(str((entry or {}).get('Description') or '')):
+        best = max(best, int(match.group(1)) * (int(match.group(2)) + 1) / 2.0)
+    return best
+
+
+# Flat '+N ... bonus ... to AC' in stance prose. KEEP IN SYNC with power_metric._AC_BONUS_TEXT
+# (same two-sided contract as the bonus-dice regex above).
+_AC_TEXT_RE = re.compile(r'\+(\d+)[^.]{0,40}?bonus[^.]{0,30}?to (?:AC|Armor Class)', re.I)
+
+
+def _ac_value(display_name, entry):
+    """A stance's AC worth: parsed flat text, or the curated stance_ac base, whichever is higher."""
+    from utils.class_func.power_role import stance_ac_bases
+    flat = max((int(m.group(1)) for m in
+                _AC_TEXT_RE.finditer(str((entry or {}).get('Description') or ''))), default=0)
+    return max(flat, stance_ac_bases().get(str(display_name).lower(), 0))
+
+
+def _pick_objective(character):
+    """None (random mode / casting role), 'dice' (offense roles), or 'ac' (wall pass roles --
+    ac_combat is a primary, so STANCES are picked for AC while strikes stay dice-greedy)."""
+    role = getattr(character, 'role', None)
+    if not role or role.get('casting'):
+        return None
+    return 'ac' if 'ac_combat' in (role.get('primaries') or []) else 'dice'
+
+
+def _pick_score(m, objective):
+    """The greedy score for one pool tuple under the role's objective."""
+    if objective == 'ac' and m[2] == 'stance':
+        return _ac_value(m[0], m[3])
+    return _bonus_dice_avg(m[3])
+
+
+def _optimizing_martial(character):
+    """OPTIMIZED MODE (spec 15, the sweaty pass): martial roles pick maneuvers and stances
+    greedily instead of uniformly. Casting roles and random mode are untouched."""
+    return _pick_objective(character) is not None
+
+
+def _ready(chosen, readied_n, optimizing):
+    """The readied subset: biggest parsed dice first when optimizing (deterministic, no draw),
+    the existing highest-level-with-random-tiebreak otherwise."""
+    if optimizing:
+        ordered = sorted(chosen, key=lambda m: (-_bonus_dice_avg(m[3]), -m[1], m[0]))
+    else:
+        ordered = sorted(chosen, key=lambda m: (-m[1], random.random()))
+    return ordered[:min(readied_n, len(chosen))]
 _MT_PAID = ["Martial Training I", "Martial Training III", "Martial Training V"]
 _MT_FREE = ["Martial Training II", "Martial Training IV", "Martial Training VI"]
 
@@ -131,8 +189,9 @@ def choose_path_of_war_attr(character, max_chains=None):
             return bundle
         known_n, readied_n, stances_n, max_lvl, disciplines, _unused_mt, il = counts
         pool = _maneuver_pool(character, disciplines, max_lvl)
-        chosen, chosen_stances = _constrained_pick(pool, known_n, stances_n)
-        readied = sorted(chosen, key=lambda m: (-m[1], random.random()))[:min(readied_n, len(chosen))]
+        chosen, chosen_stances = _constrained_pick(pool, known_n, stances_n,
+                                                   objective=_pick_objective(character))
+        readied = _ready(chosen, readied_n, _optimizing_martial(character))
         mt_feats = []
     elif getattr(character, 'path_of_war_paths', 0) > 0:
         mt = _build_martial_training(character, max_chains=max_chains)
@@ -282,7 +341,7 @@ def _build_martial_training(character, max_chains=None):
     mt_feats, mt_feat_tax, mt_descs = [], {}, {}
     for disc in disciplines:
         chosen, stances = _pick_chain(character, disc, depth, known_delta, stance_delta, max_lvl)
-        readied = sorted(chosen, key=lambda m: (-m[1], random.random()))[:min(readied_n, len(chosen))]
+        readied = _ready(chosen, readied_n, _optimizing_martial(character))
         all_m += chosen
         all_s += stances
         all_r += readied
@@ -323,7 +382,14 @@ def _pick_chain(character, discipline, depth, known_delta, stance_delta, max_lvl
                 print(f"path of war: prereq bootstrap (gap {min_gap}) in {discipline}")
             best_dist = min(abs(m[1] - target_lvl) for m in eligible)
             tier = [m for m in eligible if abs(m[1] - target_lvl) == best_dist]
-            pick = random.choice(tier)
+            objective = _pick_objective(character)
+            if objective:
+                # Savage Stance (dice) or Snapping Turtle Stance (AC) ON PURPOSE, by the role's
+                # objective; alphabetical on ties -- deterministic, no draw consumed.
+                pick = max(sorted(tier, key=lambda m: m[0]),
+                           key=lambda m: _pick_score(m, objective))
+            else:
+                pick = random.choice(tier)
             remaining.remove(pick)
             picked[0] += 1
             (out_s if want_stance else out_m).append(pick)
@@ -463,7 +529,7 @@ def _desc_entry(m):
 # Selection
 # --------------------------------------------------------------------------- #
 
-def _constrained_pick(pool, known_n, stances_n):
+def _constrained_pick(pool, known_n, stances_n, objective=None):
     '''Prerequisite-legal selection in two phases. PHASE A (floor): guarantee a spread across the
     available maneuver levels -- >=2 of each present level (else >=1 when known_n can't afford 2x
     every level), filled low->high so same-discipline prereq currency builds before higher levels
@@ -505,7 +571,13 @@ def _constrained_pick(pool, known_n, stances_n):
             live = [m for m in candidates if m[2] != 'stance' and m[1] == lvl]
             if not live:
                 break
-            commit(random.choice(eligible(live)))
+            elig = eligible(live)
+            if objective:
+                # OPTIMIZED MODE: the role's objective picks; deterministic, no draw.
+                commit(max(sorted(elig, key=lambda m: m[0]),
+                           key=lambda m: _pick_score(m, objective)))
+            else:
+                commit(random.choice(elig))
 
     # PHASE B: fill the remaining known + all stances, weighted toward higher levels.
     while len(out_m) < known_n or len(out_s) < stances_n:
@@ -518,6 +590,10 @@ def _constrained_pick(pool, known_n, stances_n):
                       f"stances {len(out_s)}/{stances_n}")
             break
         elig = eligible(live)
+        if objective:
+            commit(max(sorted(elig, key=lambda m: m[0]),
+                       key=lambda m: _pick_score(m, objective)))
+            continue
         weights = [(i + 1) ** 2 for i in range(len(elig))]
         commit(random.choices(elig, weights=weights, k=1)[0])
     return out_m, out_s

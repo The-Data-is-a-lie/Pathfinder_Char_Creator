@@ -1,0 +1,264 @@
+{
+  "_why": "The power metric's tuning surface. Which feats and subsystem features contribute to a character's measured offense and defense, and by how much -- kept in data so the metric is tuned here rather than in power_metric.py. Follows the build_archetypes.json precedent: tune the JSON, not the engine. Every `model` names arithmetic the scorer implements; every `feats` key must match data/feats.csv exactly, which gates/validate_power_metric.py asserts. A curated name that matches nothing is this stack's most repeated bug (orphaned conditionals, the case-mismatch spell drop, 27 silently-unpickable shifter aspects), and here it would silently contribute zero forever.",
+
+  "_assumptions": {
+    "_why": "A DPR number is meaningless without the round it describes. These are the conditions the metric assumes; an adder whose `condition` is not satisfied here contributes nothing. Changing an assumption re-scores every character, so they live in data and the baseline report prints them.",
+    "round": "full attack, single target, round 2 (no charge, no nova, no pre-cast buffs)",
+    "nova_round": "burst_raw/burst_expected: the fully-juiced fight round (the sweaty pass, ruling 2026-08-11) -- the better of the full-attack routine and the vital-strike standard-action alpha, with limited-use class offense active (rage, smite, challenge, bard song, ki), COMBAT-tier spell buffs pre-cast with no action-economy cap (a declared upper bound), an activated haste item, the best readied strike's dice landing once, size steps applied to the weapon dice, and flanking granted so precision lands",
+    "sustained_round_buffs": "PERSISTENT-tier buffs (10+ min/level) count in the sustained round too -- they are up before every fight; spheres talent changes and stance dice likewise (martial focus and the stance are always on)",
+    "nova_flanking": true,
+    "power_attack_active": true,
+    "deadly_aim_active": true,
+    "piranha_strike_active": true,
+    "combat_expertise_active": false,
+    "flanking": false,
+    "within_30_ft": false,
+    "target_ac": "the cr_benchmarks.json `ac` for the character's CR (level - 1)"
+  },
+
+  "feats": {
+    "_why": "Keyed by the exact data/feats.csv `name`. `model` selects the arithmetic; `condition` gates it against _assumptions and the character's actual weapon.",
+
+    "Power Attack": {"model": "power_attack", "condition": "melee",
+      "note": "-1 attack and +2 damage per 4 BAB; +50% damage if two-handed. Held in code because the two-handed multiplier depends on the weapon, not on a constant."},
+    "Deadly Aim": {"model": "power_attack", "condition": "ranged",
+      "note": "The ranged analogue; same -1/+2 per 4 BAB, no two-handed multiplier."},
+    "Piranha Strike": {"model": "power_attack", "condition": "light_melee",
+      "note": "Light-weapon analogue, no two-handed multiplier."},
+    "Furious Focus": {"model": "negate_power_attack_penalty_first_attack", "condition": "melee_two_handed"},
+
+    "Weapon Focus": {"model": "flat_attack", "amount": 1, "condition": "always"},
+    "Greater Weapon Focus": {"model": "flat_attack", "amount": 1, "condition": "always"},
+    "Point-Blank Shot": {"model": "flat_attack", "amount": 1, "condition": "within_30_ft",
+      "note": "Also +1 damage; inactive under the default assumption set."},
+
+    "Weapon Specialization": {"model": "flat_damage", "amount": 2, "condition": "always"},
+    "Greater Weapon Specialization": {"model": "flat_damage", "amount": 2, "condition": "always"},
+    "Arcane Strike": {"model": "caster_level_scaled_damage", "per": 5, "minimum": 1, "condition": "always"},
+
+    "Improved Critical": {"model": "double_threat_range", "condition": "always"},
+
+    "Rapid Shot": {"model": "extra_attack", "attack_penalty": -2, "applies_to_all": true, "condition": "ranged"},
+    "Two-Weapon Fighting": {"model": "extra_attack", "attack_penalty": -2, "applies_to_all": true, "condition": "light_offhand",
+      "note": "Inactive by default -- the metric does not model a two-weapon routine (see _blind)."},
+
+    "Dodge": {"model": "flat_ac", "amount": 1, "condition": "always"},
+    "Toughness": {"model": "toughness_hp", "condition": "always",
+      "note": "+3 hp, or +1 per HD at 4 HD and above."},
+
+    "Vital Strike": {"model": "vital_strike", "extra_weapon_dice": 1, "condition": "standard_action_only"},
+    "Improved Vital Strike": {"model": "vital_strike", "extra_weapon_dice": 2, "condition": "standard_action_only"},
+    "Greater Vital Strike": {"model": "vital_strike", "extra_weapon_dice": 3, "condition": "standard_action_only"},
+
+    "Snapping Turtle Style": {"model": "flat_ac", "amount": 2, "condition": "always",
+      "note": "+2 shield bonus to AC with one hand free -- folded into ac_combat as an upper bound (the free-hand condition is not checked). flat_ac rows land in ac_combat ONLY, never the parity-locked base ac."},
+    "Crane Style": {"model": "flat_ac", "amount": 0, "condition": "always",
+      "note": "Amount 0 on purpose: Crane's +1 applies only while fighting defensively and is folded by the POSTURE model (which also halves FD's attack penalty when this feat is held). The row exists so the spine feat resolves against the corpus."}
+  },
+
+  "posture": {
+    "_why": "The defensive posture (wall pass, ruling 2026-08-12: RAW numbers; V4 amendment 2026-08-13: two HOUSE rows join them -- Two-Weapon Defense under the sword-and-board ruling and the Cautious Warrior trait -- each keyed to something the SHEET carries, so the metric needs no house flag: a character without the feat/trait simply scores neither). Folded into ac_combat and cmd for EVERY character that qualifies: fighting defensively is universal, Combat Expertise is house-ambient (Int 13). The declared trade -- the posture's attack penalties are NOT applied to the offense axes, because ac_combat and dpr describe different rounds (a wall fights defensively; a striker full-attacks).",
+    "combat_expertise": {"ac": "1 + bab // 4", "cmd": "1 + bab // 4", "requires": "ambient Combat Expertise (Int 13)"},
+    "fighting_defensively": {"ac": 2, "ac_with_acrobatics_3": 3, "cmd": 0,
+      "crane_style_bonus": 1},
+    "two_weapon_defense": {"ac_fighting_defensively": 2,
+      "requires": "the Two-Weapon Defense feat held. RAW it is +1 shield AC wielding two weapons, +2 while fighting defensively; the house ruling (2026-08-13) lets sword-and-board qualify, which is how the wall spine takes it. Only the +2 fight-state half is scored -- the always-on +1 is conditional prose the ledger never carries."},
+    "cautious_warrior_trait": {"ac_fighting_defensively": 1,
+      "requires": "the Cautious Warrior combat trait among selected_traits (+1 dodge while fighting defensively or total defense; house wall trait pick, ruling 2026-08-13)"}
+  },
+
+  "ac_class": {
+    "_why": "Class AC the ledger never carries (the dr-table pattern). Monk AC fires only UNARMORED (armor_ac and shield_ac both 0 -- armor_type_mapping gives monks None, so generated monks qualify).",
+    "monk_ac": {"model": "stat_to_ac", "stat": "wis", "level_per": 4,
+      "classes": {"monk": {}, "monk (unchained)": {}},
+      "note": "Wis modifier + level/4, unarmored and unencumbered."}
+  },
+
+  "sphere_defense": {
+    "_why": "Fight-state AC from Spheres of Might talents whose value is conditional prose the ledger never carries (V4 wall pass, ruling 2026-08-13: a full-house wall always dabbles a defensive sphere; values RAW from the talent text, the buff fold's always-available upper-bound stance). Keyed by talent name as combat_talent_items carries it, matched case-insensitively; requires_shield rows fire only when the payload wears a shield. Folded into ac_combat ONLY, like the posture rows. The other defensive spheres (guardian, dual wielding, open hand) contribute build variety and render as rules text -- their unscored values are a recorded blind spot, not a bug.",
+    "active defense": {"ac": 2, "per_bab": 4, "requires_shield": true,
+      "note": "Shield sphere base deflect: spend an AoO (or martial focus) to raise the shield bonus +2 against an attack, +1 more per 4 BAB. RAW quote verified 2026-08-13 from spheres_of_might_enriched.json."}
+  },
+
+  "stance_ac": {
+    "_why": "Curated AC values for PoW stances whose prose does not parse flat ('+N bonus to AC' parses for only 4 of the AC-granting stances). V4 wall pass (2026-08-13): ten more rows verified against Martial_Disciplines.json prose, clearing most of the backlog; still deliberately uncurated -- ally-only (Stance of the Eternal Guardian), AoO-only (Unfettered Movement, Mithral Lightning Stance), free-hand-required (Scarlet Einhander), and stat-scaled (Clever Cat Stance) wordings, plus every apostrophe-spelled stance the name-match would miss. per_hd approximates initiator-level steps as level//per_hd, the Silver Crane precedent. Names are the SPACED spellings the payload uses; the validator resolves them against the data file.",
+    "Silver Crane Waltz": {"base": 2, "per_hd": 8,
+      "note": "+2, +1 per 8 HD -- verified against Pascal's sheet and the discipline text."},
+    "Snapping Turtle Stance": {"base": 2,
+      "note": "+2 shield bonus with one hand free; upper bound, free hand unchecked."},
+    "Iron Hand Stance": {"base": 2, "per_hd": 6,
+      "note": "+2 shield bonus with a free hand, +1 at IL 6/12/18; free hand unchecked, the Snapping Turtle stance's declared looseness."},
+    "Stance of the Defending Shell": {"base": 1, "per_hd": 4,
+      "note": "+1 shield AC, +1 per 4 IL after taking it."},
+    "Malignant Punisher Stance": {"base": 1, "per_hd": 4,
+      "note": "+1 dodge, +1 at IL 5 and every 4 after (level//4 lags the RAW steps by one level -- the conservative side)."},
+    "Flowing Water Stance": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Stance of the Thunderbrand": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Riven Hourglass Stance": {"base": 4,
+      "note": "+4 dodge, flat."},
+    "Skirmishers Stance": {"base": 2,
+      "note": "+2 dodge, conditional on moving 10 ft that turn -- counted, a mobile wall moves."},
+    "Scarlet Duelist Attitude": {"base": 5,
+      "note": "+5 insight to AC (also CMD/Initiative, not folded here)."},
+    "Inner Sphere Stance": {"base": 2, "per_hd": 6,
+      "note": "+2 dodge wielding two weapons, +1 steps from IL 6; the sword-and-board house ruling is what qualifies a wall."},
+    "Leaping Spirit Dance": {"base": 2, "per_hd": 4,
+      "note": "+2 dodge if moved 10 ft, +2 at IL 9 and 17 (level//4 tracks those steps)."}
+  },
+
+  "wild_shape": {
+    "_why": "The wildshaped wall (defense side only, ruling 2026-08-12). Hours/level duration = persistent: natural armor folds into ac_combat, the Str shift into melee attack/damage in both rounds. Natural-attack ROUTINES stay on the blind list -- the wildshape mauler is a later slice. Bands are typical beast-shape packages by druid level.",
+    "druid": {"bands": {"4": {"na": 2, "str": 2}, "6": {"na": 4, "str": 4}, "12": {"na": 6, "str": 6}}}
+  },
+
+  "rules": {
+    "_why": "Structural rules, not name lists. Path of War ships 1,033 maneuvers across 59 disciplines (473 Strikes) and Spheres ships hundreds of talents -- neither carries a structured damage field, only prose. Authoring one entry per maneuver is not a measurement job, so the reducible slice is expressed as rules keyed on what the payload actually exposes.",
+
+    "spheres_destructive_blast": {
+      "model": "blast_dice",
+      "requires_sphere": "destruction",
+      "dice": "d6",
+      "per_caster_levels": 2,
+      "minimum_dice": 1,
+      "attack": "ranged_touch",
+      "note": "The base destructive blast: 1d6 per 2 caster levels, minimum 1d6, as a ranged touch attack. One rule replaces every blast-shaping talent; the talents that change damage TYPE or add riders are declared blind."
+    },
+
+    "pow_readied_strike": {
+      "model": "strike_damage",
+      "requires": "maneuvers_readied_names",
+      "adds": "initiation_modifier",
+      "note": "Deliberately conservative. The overwhelmingly common strike text adds the initiation modifier to the attack's damage, so that is all this models. Per-strike scaling dice and riders vary far too much to curve-fit and are declared blind rather than guessed at. Strike type and level ARE parseable from each maneuver's `Discipline` string (only 12 of 1,033 fail), so a later slice can refine this without new data."
+    }
+  },
+
+  "nova": {
+    "_why": "The nova round's limited-use class offense (burst_raw axis, ruling 2026-08-11). Keyed by model, then by EXACT class_data.json class name -- chained and unchained variants are separate keys there and separate rows here. Only always-available-when-it-matters abilities: things a character switches on for the fight it cares about. Per-strike PoW dice, kinetic blast and spell damage stay in _blind.",
+    "rage": {"model": "rage",
+      "classes": {
+        "barbarian": {"scale": {"1": 4, "11": 6, "20": 8}},
+        "barbarian (unchained)": {"scale": {"1": 4, "11": 6, "20": 8}},
+        "bloodrager": {"scale": {"1": 4, "11": 6, "20": 8}},
+        "skald": {"scale": {"1": 2, "8": 4, "16": 6}}},
+      "note": "Str-equivalent bonus while raging: attack +B/2, damage +B/2 (x1.5 two-handed), melee only. Unchained rage's flat +2/+3/+4 attack-and-damage is modelled with the chained scale -- a slight overstatement for two-handers, accepted and stated. Skald rows are inspired rage granted to self."},
+    "smite": {"model": "smite",
+      "classes": {"paladin": {}, "antipaladin": {}},
+      "note": "+Cha to hit and +class level damage on every attack against the smitten target; the benchmark target is assumed smiteable in the nova round."},
+    "challenge": {"model": "challenge",
+      "classes": {"cavalier": {}, "samurai": {}},
+      "note": "+class level damage against the challenged target."},
+    "sneak_attack": {"model": "sneak_attack",
+      "classes": {
+        "rogue": {"start": 1, "per": 2},
+        "rogue (unchained)": {"start": 1, "per": 2},
+        "ninja": {"start": 1, "per": 2},
+        "slayer": {"start": 3, "per": 3},
+        "investigator": {"start": 4, "per": 2}},
+      "note": "dice = (level - start) // per + 1, at d6 -- rogue (L+1)/2, slayer L/3, investigator's studied strike. Gated on nova_flanking; precision dice never multiply on a crit and the scorer honours that. The investigator row is studied strike, close enough to author here rather than model separately."},
+    "inspire_courage": {"model": "inspire_courage",
+      "classes": {"bard": {"scale": {"1": 1, "5": 2, "11": 3, "17": 4}}},
+      "note": "Competence bonus to attack and damage from the bard's own song. The skald's song is its rage row above, never both."},
+    "ki_extra_attack": {"model": "ki_extra_attack",
+      "classes": {"monk": {}, "monk (unchained)": {}, "ninja": {}},
+      "note": "One ki point buys one extra full-BAB attack on a full attack. Stacks with a haste effect (different source); the scorer adds both."}
+  },
+
+  "spell_buffs": {
+    "_why": "The sweaty-round buff fold (ruling 2026-08-11): every buff the character can CAST counts -- persistent tier (10+ min/level, up before every fight) in BOTH rounds, combat tier (min/level or rounds/level) in the nova round, no action-economy cap, a declared upper bound. Castability = list membership only; the casting-stat minimum (Wis 14 to cast 4th-level buffs) is NOT checked -- another stated upper-bound edge, though the striker stat priority keeps `primary` second precisely so built war-priests stay legal. Effects are MODELED here rather than read from spells/spell_changes.json: that file's formulas are sheet-variable-bound and it covers barely half this list. Every key must match a data/spells.csv name (case-insensitive) -- gates/validate_power_metric.py asserts it, the silent-nothing rule. Caster level = capped character level, the blast rule's own upper bound. Offensive effects fold into the real axes; ac/saves targets land in the buffed DIAGNOSTICS only (the base axes are parity-locked to derive.js).",
+    "Divine Favor": {"tier": "combat", "effects": [
+      {"model": "scaled_flat", "targets": ["attack", "damage"], "per": 3, "cap": 3, "min": 1}],
+      "note": "+1/3 CL luck to attack and damage, max +3."},
+    "Divine Power": {"tier": "combat", "effects": [
+      {"model": "scaled_flat", "targets": ["attack", "damage"], "per": 3, "cap": 6, "min": 1},
+      {"model": "extra_attack"}],
+      "note": "+1/3 CL luck, plus the haste-like extra attack. Does not stack with haste; the scorer takes one extra attack."},
+    "Righteous Might": {"tier": "combat", "effects": [
+      {"model": "size_step"}, {"model": "stat_bonus", "stat": "str", "amount": 4}],
+      "note": "Size step (dice up, -1 to hit) plus +4 Str. The Gorum special."},
+    "Enlarge Person": {"tier": "combat", "effects": [
+      {"model": "size_step"}, {"model": "stat_bonus", "stat": "str", "amount": 2}],
+      "note": "Dice step and +2 Str; the -2 Dex is folded as the size attack penalty only."},
+    "Haste": {"tier": "combat", "effects": [
+      {"model": "extra_attack"}, {"model": "flat", "targets": ["attack"], "amount": 1},
+      {"model": "flat", "targets": ["ac"], "amount": 1}],
+      "note": "The classic: one extra attack, +1 to hit, +1 dodge AC (AC lands in diagnostics)."},
+    "Bull's Strength": {"tier": "combat", "effects": [
+      {"model": "stat_bonus", "stat": "str", "amount": 4}]},
+    "Cat's Grace": {"tier": "combat", "effects": [
+      {"model": "stat_bonus", "stat": "dex", "amount": 4}]},
+    "Prayer": {"tier": "combat", "effects": [
+      {"model": "flat", "targets": ["attack", "damage"], "amount": 1}]},
+    "Bless": {"tier": "combat", "effects": [
+      {"model": "flat", "targets": ["attack"], "amount": 1}]},
+    "Shield of Faith": {"tier": "combat", "effects": [
+      {"model": "scaled_flat", "targets": ["ac"], "per": 6, "cap": 3, "min": 2}],
+      "note": "+2 deflection, +1 per 6 CL, max +5 total -- modeled as 2+cl/6 capped. Diagnostics only."},
+    "Heroism": {"tier": "persistent", "effects": [
+      {"model": "flat", "targets": ["attack"], "amount": 2},
+      {"model": "flat", "targets": ["saves"], "amount": 2}],
+      "note": "10 min/level: up before every fight that matters."},
+    "Magic Weapon, Greater": {"tier": "persistent", "effects": [
+      {"model": "scaled_flat", "targets": ["attack", "damage"], "per": 4, "cap": 5, "min": 1}],
+      "note": "Plain-summed over the weapon's own enhancement, per the metric's declared no-typed-stacking doctrine (TYPED_STACKING_NOTE)."},
+    "Magic Vestment": {"tier": "persistent", "effects": [
+      {"model": "scaled_flat", "targets": ["ac"], "per": 4, "cap": 5, "min": 1}],
+      "note": "Diagnostics only."},
+    "Stoneskin": {"tier": "persistent", "effects": [
+      {"model": "dr", "amount": 10}],
+      "note": "DR 10/adamantine while it lasts (10 min/level; the 150gp component is ignored, upper bound). The dr fold takes the max of class DR, text DR and buff DR."},
+    "Barkskin": {"tier": "persistent", "effects": [
+      {"model": "scaled_flat", "targets": ["ac"], "per": 3, "cap": 5, "min": 2}],
+      "note": "+2 +1/3 CL natural armor, max +5. Diagnostics only."}
+  },
+
+  "dr": {
+    "_why": "The curated class-DR table (dr axis, ruling 2026-08-11). DR never arrives through the change ledger -- the pf1 target vocabulary in this stack has no dr/eres key -- so the axis is this table plus a text harvest over the held buckets whose prose states the CURRENT value (professions, feats, traits). class_ability_desc is not harvested (no level filter -- an L16 fighter carries the 19th-level armor mastery text) and neither are chosen class options (their prose states scaling maxima and conditionals; the first baseline read DR 15 off a level-5 character that way -- choice-granted DR gets curated here instead, per source). DR does not stack; the axis is the max.",
+    "barbarian_dr": {"model": "scaling_dr",
+      "classes": {
+        "barbarian": {"start": 7, "per": 3, "cap": 5},
+        "barbarian (unchained)": {"start": 7, "per": 3, "cap": 5}},
+      "note": "DR 1/- at 7th, +1 every 3 levels, cap 5/-."},
+    "fighter_armor_mastery": {"model": "flat_dr_at",
+      "classes": {"fighter": {"level": 19, "amount": 5}},
+      "note": "DR 5/- at 19th while armored -- the metric's declared round has the fighter in its armor."}
+  },
+
+  "mythic": {
+    "_why": "Basic mythic chassis coverage (mythic map, ruled 2026-08-14): the ability-score bumps fold into ability_scores exactly like level_up_stats (no model row needed -- the code reads payload.mythic.ability_bumps directly), surge is an expected-value shift on the nova round, and the power pool / Amazing Initiative ride diagnostics. Per-path-ability adders are DEFERRED -- see _blind.mythic.",
+    "surge": {"model": "surge_nova_ev",
+      "note": "Surge adds its die to a d20 roll after the fact, so on the nova round it is hit probability, not damage dice: one surge on the nova attack is worth (die_avg/20) x dpr_raw in expectation, burst_expected only."}
+  },
+
+  "_blind": {
+    "_why": "Printed on every profile and in the baseline report. A metric that silently rates a warder at zero is worse than one that says it cannot see maneuvers yet.",
+    "mythic": [
+      "path abilities (597 pool rows carry unmodeled numerics -- a tier-10 profile understates knowingly; deferred by ruling 2026-08-14)",
+      "mythic feats (render as text like most feats; no change rows curated yet)",
+      "tradition drawbacks/boons/qualities (prose effects, both directions)"
+    ],
+    "offense": [
+      "two-weapon fighting routines",
+      "natural-attack routines",
+      "spell buffs OUTSIDE the curated spell_buffs table (the table is the sweaty core; curate more rows rather than widening the parser)",
+      "favoured enemy and studied target (target-typed bonuses)",
+      "kinetic blast (kineticist damage scores weapon-only until a blast rule is authored)",
+      "PoW boosts and counters (stance and strike bonus DICE now parse from prose; non-dice riders and the ~12 unparseable maneuvers stay blind)",
+      "Spheres talents without structured `changes` (talent prose is not parsed; the base destructive blast has its own rule)",
+      "psionic power effects (psionics scores on the caster axis only)",
+      "spell damage (casters score on DC and highest-spell-level, not on blast output -- so a Vancian blaster's burst_raw is its weapon, knowingly)"
+    ],
+    "defense": [
+      "the house-waived ambient Dodge (+1 AC for every Dex 13+ character; folding it would break derive.js parity, which asserts the AC delta is exactly the enhancement shortfall)",
+      "miss chance, concealment and displacement",
+      "DR from sources the dr table does not curate (class DR beyond barbarian/fighter, chosen class options, archetypes, special materials)",
+      "energy resistance as an axis (harvested text values ride in diagnostics only)",
+      "immunities and condition immunities",
+      "temporary hit points"
+    ],
+    "utility": [
+      "everything except skill breadth -- no benchmark column exists for utility"
+    ]
+  }
+}

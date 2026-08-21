@@ -24,7 +24,11 @@ SELF = Path(__file__).resolve().name
 
 
 def validators():
-    return sorted(p for p in HERE.glob("validate_*.py") if p.name != SELF)
+    # gates/ rather than HERE: the validators moved into their own bucket, and this runner stayed at
+    # the top level because it is one of the two things you RUN, not one of the things being run.
+    # `SELF` is still excluded even though validate_all.py no longer lives beside them -- cheap, and
+    # it keeps this from recursing if the runner is ever filed into the bucket it discovers.
+    return sorted(p for p in (HERE / "gates").glob("validate_*.py") if p.name != SELF)
 
 
 def main():

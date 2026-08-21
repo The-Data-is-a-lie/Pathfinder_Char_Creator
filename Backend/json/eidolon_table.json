@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "source": "https://www.d20pfsrd.com/classes/base-classes/summoner/eidolons/",
+    "note": "Eidolon Base Statistics; columns verified against ticket 07."
+  },
+  "levels": {
+    "1": {
+      "hd": 1,
+      "bab": 1,
+      "good_save": 2,
+      "poor_save": 0,
+      "skills": 4,
+      "feats": 1,
+      "armor_bonus": 0,
+      "str_dex_bonus": 0,
+      "evolution_pool": 3,
+      "max_attacks": 3,
+      "special": [
+        "darkvision",
+        "link",
+        "share spells"
+      ]
+    },
+    "2": {
+      "hd": 2,
+      "bab": 2,
+      "good_save": 3,
+      "poor_save": 0,
+      "skills": 8,
+      "feats": 1,
+      "armor_bonus": 2,
+      "str_dex_bonus": 1,
+      "evolution_pool": 4,
+      "max_attacks": 3,
+      "special": [
+        "evasion"
+      ]
+    },
+    "3": {
+      "hd": 3,
+      "bab": 3,
+      "good_save": 3,
+      "poor_save": 1,
+      "skills": 12,
+      "feats": 2,
+      "armor_bonus": 2,
+      "str_dex_bonus": 1,
+      "evolution_pool": 5,
+      "max_attacks": 3,
+      "special": []
+    },
+    "4": {
+      "hd": 3,
+      "bab": 3,
+      "good_save": 3,
+      "poor_save": 1,
+      "skills": 12,
+      "feats": 2,
+      "armor_bonus": 2,
+      "str_dex_bonus": 1,
+      "evolution_pool": 7,
+      "max_attacks": 4,
+      "special": []
+    },
+    "5": {
+      "hd": 4,
+      "bab": 4,
+      "good_save": 4,
+      "poor_save": 1,
+      "skills": 16,
+      "feats": 2,
+      "armor_bonus": 4,
+      "str_dex_bonus": 2,
+      "evolution_pool": 8,
+      "max_attacks": 4,
+      "special": [
+        "ability score increase"
+      ]
+    },
+    "6": {
+      "hd": 5,
+      "bab": 5,
+      "good_save": 4,
+      "poor_save": 1,
+      "skills": 20,
+      "feats": 3,
+      "armor_bonus": 4,
+      "str_dex_bonus": 2,
+      "evolution_pool": 9,
+      "max_attacks": 4,
+      "special": [
+        "devotion"
+      ]
+    },
+    "7": {
+      "hd": 6,
+      "bab": 6,
+      "good_save": 5,
+      "poor_save": 2,
+      "skills": 24,
+      "feats": 3,
+      "armor_bonus": 6,
+      "str_dex_bonus": 3,
+      "evolution_pool": 10,
+      "max_attacks": 4,
+      "special": []
+    },
+    "8": {
+      "hd": 6,
+      "bab": 6,
+      "good_save": 5,
+      "poor_save": 2,
+      "skills": 24,
+      "feats": 3,
+      "armor_bonus": 6,
+      "str_dex_bonus": 3,
+      "evolution_pool": 11,
+      "max_attacks": 4,
+      "special": []
+    },
+    "9": {
+      "hd": 7,
+      "bab": 7,
+      "good_save": 5,
+      "poor_save": 2,
+      "skills": 28,
+      "feats": 4,
+      "armor_bonus": 6,
+      "str_dex_bonus": 3,
+      "evolution_pool": 13,
+      "max_attacks": 5,
+      "special": [
+        "multiattack"
+      ]
+    },
+    "10": {
+      "hd": 8,
+      "bab": 8,
+      "good_save": 6,
+      "poor_save": 2,
+      "skills": 32,
+      "feats": 4,
+      "armor_bonus": 8,
+      "str_dex_bonus": 4,
+      "evolution_pool": 14,
+      "max_attacks": 5,
+      "special": [
+        "ability score increase"
+      ]
+    },
+    "11": {
+      "hd": 9,
+      "bab": 9,
+      "good_save": 6,
+      "poor_save": 3,
+      "skills": 36,
+      "feats": 5,
+      "armor_bonus": 8,
+      "str_dex_bonus": 4,
+      "evolution_pool": 15,
+      "max_attacks": 5,
+      "special": []
+    },
+    "12": {
+      "hd": 9,
+      "bab": 9,
+      "good_save": 6,
+      "poor_save": 3,
+      "skills": 36,
+      "feats": 5,
+      "armor_bonus": 10,
+      "str_dex_bonus": 5,
+      "evolution_pool": 16,
+      "max_attacks": 5,
+      "special": []
+    },
+    "13": {
+      "hd": 10,
+      "bab": 10,
+      "good_save": 7,
+      "poor_save": 3,
+      "skills": 40,
+      "feats": 5,
+      "armor_bonus": 10,
+      "str_dex_bonus": 5,
+      "evolution_pool": 17,
+      "max_attacks": 5,
+      "special": []
+    },
+    "14": {
+      "hd": 11,
+      "bab": 11,
+      "good_save": 7,
+      "poor_save": 3,
+      "skills": 44,
+      "feats": 6,
+      "armor_bonus": 10,
+      "str_dex_bonus": 5,
+      "evolution_pool": 19,
+      "max_attacks": 6,
+      "special": [
+        "improved evasion"
+      ]
+    },
+    "15": {
+      "hd": 12,
+      "bab": 12,
+      "good_save": 8,
+      "poor_save": 4,
+      "skills": 48,
+      "feats": 6,
+      "armor_bonus": 12,
+      "str_dex_bonus": 6,
+      "evolution_pool": 20,
+      "max_attacks": 6,
+      "special": [
+        "ability score increase"
+      ]
+    },
+    "16": {
+      "hd": 12,
+      "bab": 12,
+      "good_save": 8,
+      "poor_save": 4,
+      "skills": 48,
+      "feats": 6,
+      "armor_bonus": 12,
+      "str_dex_bonus": 6,
+      "evolution_pool": 21,
+      "max_attacks": 6,
+      "special": []
+    },
+    "17": {
+      "hd": 13,
+      "bab": 13,
+      "good_save": 8,
+      "poor_save": 4,
+      "skills": 52,
+      "feats": 7,
+      "armor_bonus": 14,
+      "str_dex_bonus": 7,
+      "evolution_pool": 22,
+      "max_attacks": 6,
+      "special": []
+    },
+    "18": {
+      "hd": 14,
+      "bab": 14,
+      "good_save": 9,
+      "poor_save": 4,
+      "skills": 56,
+      "feats": 7,
+      "armor_bonus": 14,
+      "str_dex_bonus": 7,
+      "evolution_pool": 23,
+      "max_attacks": 6,
+      "special": []
+    },
+    "19": {
+      "hd": 15,
+      "bab": 15,
+      "good_save": 9,
+      "poor_save": 5,
+      "skills": 60,
+      "feats": 8,
+      "armor_bonus": 14,
+      "str_dex_bonus": 7,
+      "evolution_pool": 25,
+      "max_attacks": 7,
+      "special": []
+    },
+    "20": {
+      "hd": 15,
+      "bab": 15,
+      "good_save": 9,
+      "poor_save": 5,
+      "skills": 60,
+      "feats": 8,
+      "armor_bonus": 16,
+      "str_dex_bonus": 8,
+      "evolution_pool": 26,
+      "max_attacks": 7,
+      "special": []
+    }
+  }
+}

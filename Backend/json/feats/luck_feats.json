@@ -1,0 +1,42 @@
+{
+  "_README": {
+    "what": "Positive luck-based feats that are NOT E-Kat feats but still grant the generic +1 Luck. These are ordinary Paizo feats already in data/feats.csv and already selectable by generic_feat_chooser, so a character can hold them today.",
+    "the_rule": "'Every positive luck based feat grants a +1 Luck as an added bonus; E-Kat Feats that grant luck do not gain an additional 1 on top of their current bonuses and Luck Traits do not grant any.' And: 'every e-kat and hero point feat grant an extra luck point.' So the luck-granting set is broader than the ten E-Kat feats: hero point feats count, and so do feats whose whole subject is luck.",
+    "why_a_curated_file": "There is no machine-readable marker for 'luck feat' anywhere in data/feats.csv -- the type column says General for all of them, and the only signal is the prose. So the roster is curated by hand and validate_luck.py asserts every name still resolves against the live pool; a feat that is renamed or dropped upstream fails loudly instead of silently ceasing to grant luck.",
+    "aristeia": "'Aristeia feats DO qualify as Luck Feats' -- but NO Aristeia feat exists anywhere in the repo's data. All three feat CSVs (feats.csv, feats_new.csv, Metzofitz_Feats.csv) return zero rows for aristeia/aristea. The rule is recorded here and has nothing to attach to; add the entries when the Aristeia content is scraped.",
+    "not_modelled": "Hero's Fortune also raises the hero point maximum to 5, and Blood of Heroes grants 2 hero points per level instead of 1. Neither is applied to the exported hero_points -- that is a hero-point rule, not a luck rule, and modelling it needs a ruling on the cap (the Luck doc states none, and optional-systems.md's 'max 3' is uncorroborated).",
+    "each_grants": 1
+  },
+
+  "Blood Of Heroes": {
+    "kind": "hero_point",
+    "benefit": "Whenever you gain a level, you gain 2 hero points instead of 1.",
+    "source": "Paizo (AoN)"
+  },
+  "Hero's Fortune": {
+    "kind": "hero_point",
+    "benefit": "You gain a hero point. The maximum number of hero points you can have at any one time is increased to 5.",
+    "source": "Paizo (AoN)"
+  },
+  "Luck Of Heroes": {
+    "kind": "hero_point",
+    "benefit": "Whenever you spend a hero point to reroll a die roll or to grant yourself a bonus before a die roll is made, there is a chance that the hero point is not spent.",
+    "source": "Paizo (AoN)"
+  },
+  "Defiant Luck": {
+    "kind": "luck",
+    "benefit": "Once per day, after you roll a natural 1 on a saving throw or a critical hit is confirmed against you, you can either reroll that saving throw, or force the creature that confirmed the critical hit against you to reroll the critical confirmation roll.",
+    "source": "Paizo (AoN)"
+  },
+  "Fortunate One": {
+    "kind": "luck",
+    "benefit": "The number of times per day you can use the adaptable luck racial trait increases.",
+    "source": "Paizo (AoN)",
+    "note": "The halfling adaptable-luck chain, and the prerequisite of Adaptive Fortune. Included for consistency with it -- the two are the same feat family and the same rule applies. Flagged at the time of the ruling so it can be removed if the table disagrees."
+  },
+  "Adaptive Fortune": {
+    "kind": "luck",
+    "benefit": "Increase the number of times per day you can use the adaptable luck racial trait by 1. Furthermore, when you use adaptable luck, increase the luck bonus for each type of use by 2.",
+    "source": "Paizo (AoN)"
+  }
+}

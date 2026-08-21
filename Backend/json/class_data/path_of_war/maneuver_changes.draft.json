@@ -4850,7 +4850,7 @@
       "inflicting 1d2 points of damage"
     ]
   },
-  "Solar Flare maneuver": {
+  "Solar Flare": {
     "modifiers": [
       {
         "formula": "2d6",

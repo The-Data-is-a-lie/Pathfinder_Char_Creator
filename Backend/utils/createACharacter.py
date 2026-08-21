@@ -30,7 +30,8 @@ class Character:
         self.weapons=None
         self.weaponz=None
         self.luck_score=None
-        self.mythic_rank=None
+        # mythic_rank is deliberately NOT declared here: phase_mythic_stake provides it, and the
+        # @phase contract's hasattr check is only honest if the phase is the first setter.
 
         # Sometimes this is a tuple, we'll need to update the code to handle that
         self.flaw=None
@@ -205,15 +206,12 @@ class Character:
         if isinstance(gold_input, int):
             self.gold = gold_input
         else:
-            gold = getattr(data,gold)
-            # data.gold covers levels 2-20 (19 entries); level 1 has no table row
-            # (Paizo uses class starting wealth, ~150 gp average), 21+ reuses level 20.
-            if self.level <= 1:
-                self.gold = 150
-            elif self.level > 20:
-                self.gold = gold[-1]
-            else:
-                self.gold = gold[self.level-2]
+            # data.wealth_by_level owns the whole curve, including the level-1 starting-wealth
+            # stand-in and the linear 21-40 extension. It used to be inlined here with the tail
+            # FROZEN at the level-20 value -- an L40 character on 880k was ~1% of what its gear
+            # should cost, which is how the power baseline mistook a fixed purse for a
+            # build-quality collapse.
+            self.gold = data.wealth_by_level(self.level)
         return self.gold
 
     def json_list_grabber(self, string_list, separator, output_list=None):

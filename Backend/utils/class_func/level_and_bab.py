@@ -9,6 +9,17 @@ _BAB_MULT = {'H': 1.0, 'M': 0.75, 'L': 0.5}
 # Presentation order for multiclass characters: strongest casters win level ties.
 _CASTER_TIER_RANK = {'high': 0, 'mid': 1, 'low': 2}
 
+# The hard ceiling on a character's TOTAL level, and the only one there is: a requested level above
+# this is clamped, not rejected, because the caller is asking for a random character rather than a
+# specific one. Named rather than left as a literal because three subsystems now reason about the
+# 20-to-40 band -- class-choice schedules keep granting up there while spells and maneuvers stop at
+# `capped_level` -- so "how high can a character go" is a question with more than one reader.
+#
+# 20 is where Paizo's tables stop; everything above it is house rules, and 40 is where the house
+# stops. Enforced by test_house_invariants, not by this line alone: the clamp is silent, so a
+# regression here would produce a level-60 character rather than an error.
+MAX_CHARACTER_LEVEL = 40
+
 
 def randomize_level(character, min_num, max_num, flaw_amount=0):
     if not isinstance(min_num, int) or min_num <= 0:
@@ -16,13 +27,19 @@ def randomize_level(character, min_num, max_num, flaw_amount=0):
     if not isinstance(max_num, int) or max_num <= 0:
         max_num = 20
     pre_level = random.randint(min_num, max(min_num, max_num))
-    level = min(pre_level, 40)
+    level = min(pre_level, MAX_CHARACTER_LEVEL)
 
     # select_classes stored the class names; every class needs at least 1 level, so a total level
     # below the rolled class count truncates the picks (a level-2 character caps at 2 classes).
     picks = getattr(character, '_class_picks', None) or [character.c_class]
     picks = picks[:max(1, min(len(picks), level))]
-    class_levels = _split_levels(level, len(picks))
+    # OPTIMIZED MODE (spec 15, ruling 8): a multiclass is a dip -- every extra class takes exactly
+    # 1 level and the primary keeps the rest. Random mode keeps the uniform scatter (and its
+    # draws). The role phase runs before the level phase, so `role` is authoritative here.
+    if getattr(character, 'role', None) and len(picks) > 1:
+        class_levels = [level - (len(picks) - 1)] + [1] * (len(picks) - 1)
+    else:
+        class_levels = _split_levels(level, len(picks))
     _build_classes(character, picks, class_levels)
 
     update_level(character, level, flaw_amount)

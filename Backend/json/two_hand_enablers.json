@@ -1,0 +1,244 @@
+{
+  "_readme": "Every source in this repo's pools that lets a character one-hand a two-handed weapon, wield an oversized one, or reduce the penalty for doing so. Hand-authored from a census of the pools (2026-08-17) and gated by Backend/scripts/gates/validate_gear_legality.py, which resolves every in_pool row against the file it names and PROVES every in_pool:false row really is absent -- so a gap that closes, or a name that gets respelled, fails loudly instead of turning into a silently dead branch. 'name' is the EXACT pool spelling, which is the field most likely to be wrong: the pool spells it 'Pikemans Training', not 'Pikeman's Training', and 'Titan Grip (Combat)', not 'Titan Grip'.",
+
+  "effects": {
+    "one_hand": "Wield a normally two-handed weapon in one hand, freeing the off hand for a shield.",
+    "oversize": "Wield a weapon built for a creature one or two size categories larger.",
+    "penalty_reduction": "Reduce the attack penalty an oversized weapon imposes."
+  },
+
+  "enablers": [
+    {
+      "name": "Pikemans Training",
+      "effect": "one_hand",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "Metzofitz"},
+      "visible_at_gear_time": false,
+      "requires_shield": true,
+      "weapon": "polearm_or_spear",
+      "size_steps": null,
+      "attack_penalty": 0,
+      "prerequisites": {"bab": 1},
+      "note": "The only feat in the whole pool that one-hands a two-hander for a shield user, and the cheapest rung on the D7 ladder: BAB +1 and nothing else. Wielded this way the weapon 'is treated in all ways as being a one-handed weapon'."
+    },
+    {
+      "name": "Quarterstaff Master",
+      "effect": "one_hand",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "AoN"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": "quarterstaff",
+      "size_steps": null,
+      "attack_penalty": 0,
+      "prerequisites": {"bab": 5, "feats": ["Weapon Focus (quarterstaff)"]},
+      "note": "Real, but a poor grant: it needs Weapon Focus in one specific weapon as well as BAB +5, so granting it free means granting two feats to arm one quarterstaff build."
+    },
+    {
+      "name": "jotungrip (ex)",
+      "effect": "one_hand",
+      "kind": "class_feature",
+      "in_pool": true,
+      "where": {"file": "Backend/json/archetypes.json", "class": "Barbarian",
+                "archetype": "Titan Mauler", "feature": "jotungrip (ex)"},
+      "visible_at_gear_time": true,
+      "requires_shield": false,
+      "weapon": "two_handed_melee",
+      "size_steps": null,
+      "attack_penalty": -2,
+      "prerequisites": {"class_level": 2},
+      "note": "One of only two enablers KNOWN at gear time, because archetypes are set in phase_class_options and gear runs after it. Costs -2 on attack rolls, and the weapon still counts as one-handed for Power Attack and Strength-to-damage."
+    },
+    {
+      "name": "Twin_Thunder_Stance",
+      "effect": "one_hand",
+      "kind": "stance",
+      "in_pool": true,
+      "where": {"file": "Backend/json/class_data/path_of_war/Martial_Disciplines.json",
+                "discipline": "Piercing_Thunder", "entry": "Twin_Thunder_Stance"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": "two_handed_melee",
+      "size_steps": null,
+      "attack_penalty": 0,
+      "prerequisites": {"stance_level": 3, "other": "one Piercing Thunder maneuver"},
+      "note": "General one-handing with no attack penalty, but a 3rd-level stance chosen in the Path of War phase, which runs AFTER gear."
+    },
+    {
+      "name": "Phalanx_Lancer",
+      "effect": "one_hand",
+      "kind": "stance",
+      "in_pool": true,
+      "where": {"file": "Backend/json/class_data/path_of_war/Martial_Disciplines.json",
+                "discipline": "Piercing_Thunder", "entry": "Phalanx_Lancer"},
+      "visible_at_gear_time": false,
+      "requires_shield": true,
+      "weapon": "polearm_or_spear",
+      "size_steps": null,
+      "attack_penalty": 0,
+      "prerequisites": {"stance_level": 1},
+      "note": "MISSED BY THE ORIGINAL CENSUS. A 1st-level Piercing Thunder stance that one-hands a two-handed discipline weapon specifically WHEN USING A SHIELD -- the shield-and-polearm case, with no prerequisite at all, and cheaper than Twin Thunder Stance."
+    },
+    {
+      "name": "Lighten Weapon",
+      "effect": "one_hand",
+      "kind": "feat",
+      "in_pool": false,
+      "where": null,
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": null,
+      "attack_penalty": null,
+      "prerequisites": {},
+      "note": "Kobold Press 3pp combat feat. NOT IN ANY POOL -- no row in feats_new.csv or Metzofitz_Feats.csv. Kept here so the gap is visible; sourcing it is a separate scrape and OGL job."
+    },
+
+    {
+      "name": "Titan Technique (Combat, Technique)",
+      "effect": "oversize",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "Metzofitz"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": 1,
+      "attack_penalty": -2,
+      "prerequisites": {"str": 15, "feats": ["Power Attack"]},
+      "note": "The +1 step, and the entry to the chain. Its own prerequisites are Power Attack and Str 15 -- NOT the Str 17 / BAB +4 the plan's census attributed to it, which belong to Titan Grip. Crucially it grants the same HANDEDNESS ('using the same handedness'), so it does not one-hand anything."
+    },
+    {
+      "name": "Titan Slayer (Combat)",
+      "effect": "oversize",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "Metzofitz"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": 2,
+      "attack_penalty": -2,
+      "prerequisites": {"str": 19, "bab": 8,
+                        "feats": ["Power Attack", "Titan Grip (Combat)",
+                                  "Titan Technique (Combat, Technique)"]},
+      "note": "The only +2 in the pool, and the reason weapon_size_damage.json's gap matters. Also grants +5 ft reach when the weapon is too large."
+    },
+    {
+      "name": "giant weapon wielder (ex)",
+      "effect": "oversize",
+      "kind": "class_feature",
+      "in_pool": true,
+      "where": {"file": "Backend/json/archetypes.json", "class": "Fighter",
+                "archetype": "Titan Fighter", "feature": "giant weapon wielder (ex)"},
+      "visible_at_gear_time": true,
+      "requires_shield": false,
+      "weapon": "two_handed_melee",
+      "size_steps": 1,
+      "attack_penalty": -2,
+      "prerequisites": {"class_level": 1},
+      "note": "The other enabler known at gear time, and the earliest: 1st level, replacing the fighter's 1st-level bonus feat."
+    },
+    {
+      "name": "massive weapons (ex)",
+      "effect": "oversize",
+      "kind": "class_feature",
+      "in_pool": true,
+      "where": {"file": "Backend/json/archetypes.json", "class": "Barbarian",
+                "archetype": "Titan Mauler", "feature": "massive weapons (ex)"},
+      "visible_at_gear_time": true,
+      "requires_shield": false,
+      "weapon": "two_handed_melee",
+      "size_steps": 1,
+      "attack_penalty": -4,
+      "prerequisites": {"class_level": 3},
+      "note": "MISSED BY THE ORIGINAL CENSUS. The Titan Mauler's own oversizing, at 3rd level -- so a Titan Mauler barbarian is BOTH a one-hander and an oversizer, and both facts are visible at gear time. Its penalty is 'increased by 4' rather than the usual 2."
+    },
+    {
+      "name": "Bigfolk Training",
+      "effect": "oversize",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "Metzofitz"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": 1,
+      "attack_penalty": 0,
+      "prerequisites": {"other": "natural size Small or smaller, and a racial Strength penalty"},
+      "note": "MISSED BY THE ORIGINAL CENSUS. The small-race oversizer, and the only one with no attack penalty -- a Small character with it wields Medium weapons, which weapons_data.json already prints, so it needs no size table at all."
+    },
+    {
+      "name": "Equipment sphere advanced talent",
+      "effect": "oversize",
+      "kind": "talent",
+      "in_pool": false,
+      "where": null,
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": null,
+      "attack_penalty": null,
+      "prerequisites": {},
+      "note": "Spheres of Might. NOT IN ANY POOL -- the 'Equipment' key in spheres_of_might_cleaned.json is a kit and gear list, not the talent tree. Kept visible; sourcing it is a separate scrape and OGL job."
+    },
+
+    {
+      "name": "Titan Grip (Combat)",
+      "effect": "penalty_reduction",
+      "kind": "feat",
+      "in_pool": true,
+      "where": {"file": "data/feats_new.csv", "dataset": "Metzofitz"},
+      "visible_at_gear_time": false,
+      "requires_shield": false,
+      "weapon": null,
+      "size_steps": null,
+      "attack_penalty": null,
+      "reduces_penalty_by": 1,
+      "prerequisites": {"str": 17, "bab": 4,
+                        "feats": ["Power Attack", "Titan Technique (Combat, Technique)"]},
+      "note": "Reduces the oversize penalty by 1, by another 1 at BAB +8 and every 4 thereafter, to a maximum reduction of 5. It is a PENALTY REDUCER and grants no size step of its own -- the census read it as a one-handing enabler, which it is not."
+    },
+    {
+      "name": "incredible heft (ex)",
+      "effect": "penalty_reduction",
+      "kind": "class_feature",
+      "in_pool": true,
+      "where": {"file": "Backend/json/archetypes.json", "class": "Fighter",
+                "archetype": "Titan Fighter", "feature": "incredible heft (ex)"},
+      "visible_at_gear_time": true,
+      "requires_shield": false,
+      "weapon": "two_handed_melee",
+      "size_steps": null,
+      "attack_penalty": null,
+      "reduces_penalty_by": 1,
+      "prerequisites": {"class_level": 3},
+      "note": "Reduces the penalty by 1 at 3rd level and by another 1 at 7th and every 4 levels thereafter, minimum 0. This is D10's named reduction."
+    }
+  ],
+
+  "false_positives": [
+    {
+      "name": "Effortless Lace",
+      "why": "Makes a one-handed weapon count as LIGHT. It does not touch two-handers, and in this repo it exists only as a name in Backend/json/foundry_item_names.json with no rules text attached."
+    },
+    {
+      "name": "Scarlet_Einhander",
+      "why": "Scarlet Throne stance. Reads as one-handing ('holding his weapon low and one-handed') but only grants a shield bonus and bonus damage while wielding a melee weapon in one hand -- it does not change any weapon's handedness."
+    },
+    {
+      "name": "Twin Thunders",
+      "why": "A real Ultimate Combat feat in feats_new.csv, and a near-miss for Twin Thunder Stance. It is a dwarf/gnome two-weapon-fighting feat about damage against giants, and enables nothing here."
+    },
+    {
+      "name": "Titan Strike",
+      "why": "In feats_new.csv, and the fourth 'Titan' hit. It is a MYTHIC unarmed-strike feat, unrelated to the Titan Technique chain."
+    },
+    {
+      "name": "armament shield",
+      "why": "Zweihander Sentinel warder archetype (Path of War). The INVERSE of an enabler -- it grants a shield bonus for wielding a two-hander, i.e. a reason to want no shield at all. Both Piercing Thunder stances above carry special notes about interacting with it."
+    }
+  ]
+}

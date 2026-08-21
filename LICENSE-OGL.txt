@@ -70,11 +70,25 @@ Mutants & Masterminds © 2002, Green Ronin Publishing.
 Swords of Our Fathers, Copyright 2003, The Game Mechanics.
 Modern System Reference Document, © 2002, Wizards of the Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman, Charles Ryan, based on material by Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker,Peter Adkison, Bruce R. Cordell, John Tynes, Andy Collins, and JD Wiker Psionics Unleashed.
 Copyright 2010, Dreamscarred Press.
+Path of War, © 2014, Dreamscarred Press.
+Path of War Expanded, © 2016, Dreamscarred Press.
+Divergent Paths: Fool's Errand, © 2017, Dreamscarred Press.
+Divergent Paths: Rajah, © 2018, Dreamscarred Press
 Ultimate Psionics. Copyright 2013, Dreamscarred Press; Authors: Jeremy Smith, Andreas Ronnqvist, Philip Leco II.
 Psionics Expanded: Advanced Psionics Guide. Copyright 2012, Dreamscarred Press; Authors: Jeremy Smith, Andreas Ronnqvist, Philip Leco II.
 Psionics Augmented: Compilation II. Copyright 2017, Dreamscarred Press.
 Arcforge: Technology Expanded. Copyright 2018, Dreamscarred Press.
 Arcforge: Psibertech. Copyright 2019, Dreamscarred Press.
+Pathfinder Roleplaying Game Mythic Adventures © 2013, Paizo Publishing, LLC; Authors: Jason Bulmahn, Stephen Radney-MacFarland, Sean K Reynolds, Dennis Baker, Jesse Benner, Ben Bruck, Jim Groves, Tim Hitchcock, Tracy Hurley, Jonathan Keith, Jason Nelson, Tom Phillips, Ryan Macklin, F. Wesley Schneider, Amber Scott, Tork Shaw, Russ Taylor, and Ray Vallese.
+Pathfinder Roleplaying Game Advanced Race Guide. © 2012, Paizo Publishing, LLC; Authors: Dennis Baker, Jesse Benner, Benjamin Bruck, Jason Bulmahn, Adam Daigle, Jim Groves, Tim Hitchcock, Hal MacLean, Jason Nelson, Stephen Radney-MacFarland, Owen K.C. Stephens, Todd Stewart, and Russ Taylor.
+Pathfinder Roleplaying Game Ultimate Campaign. © 2013, Paizo Publishing, LLC; Authors: Jesse Benner, Benjamin Bruck, Jason Bulmahn, Ryan Costello, Adam Daigle, Matt Goetz, Tim Hitchcock, James Jacobs, Ryan Macklin, Colin McComb, Jason Nelson, Richard Pett, Stephen Radney-MacFarland, Patrick Renie, Sean K Reynolds, F. Wesley Schneider, James L. Sutter, Russ Taylor, and Stephen Townshend.
+Pathfinder Roleplaying Game Advanced Class Guide © 2014, Paizo Inc.; Authors: Dennis Baker, Ross Byers, Jesse Benner, Savannah Broadway, Jason Bulmahn, Jim Groves, Tim Hitchcock, Tracy Hurley, Jonathan H. Keith, Will McCardell, Dale C. McCoy, Jr., Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, Sean K Reynolds, Tork Shaw, Owen K.C. Stephens, and Russ Taylor.
+Pathfinder Roleplaying Game Occult Adventures. © 2015, Paizo Inc.; Authors: John Bennett, Logan Bonner, Robert Brookes, Jason Bulmahn, Ross Byers, John Compton, Adam Daigle, Jim Groves, Thurston Hillman, Eric Hindley, Brandon Hodge, Ben McFarland, Erik Mona, Jason Nelson, Tom Phillips, Stephen Radney-MacFarland, Thomas M. Reid, Alex Riggs, Robert Schwalb, Mark Seifter, Russ Taylor, and Steve Townshend.
+Pathfinder Roleplaying Game Ultimate Intrigue. © 2016, Paizo Inc.
+Pathfinder Roleplaying Game Horror Adventures. © 2016, Paizo Inc.
+Spheres of Power. © 2014, Drop Dead Studios LLC; Author: Adam Meyers.
+Spheres of Might. © 2017, Drop Dead Studios LLC; Authors: Adam Meyers, Michael Sayre, Andrew Stoeckle, N. Jolly.
+Mythic Spheres. © Drop Dead Studios LLC.
 
 pf1-psionics (https://github.com/SoxMax/pf1-psionics) is credited as an intermediate
 compiled source of the psionics mechanics reconciled against in this project.

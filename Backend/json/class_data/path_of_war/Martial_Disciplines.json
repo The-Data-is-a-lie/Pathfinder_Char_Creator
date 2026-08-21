@@ -7359,7 +7359,7 @@
       "Duration": "Instantaneous",
       "Description": "Sometimes a good offense can be used as a good defense, so the Solar Wind discipline learns, as he uses his range to dissuade attacks by his sheer skill and exceptional aim. The initiator makes an opposed attack roll against his foes attack roll on an incoming attack such as an arrow or thrown weapon, a charging barbarian, or a skillful slash from a sword, but not a spell or similar attack targeting himself or an ally he can see within his weapons first range increment; if successful then the attack is negated."
     },
-    "Solar_Flare_maneuver": {
+    "Solar_Flare": {
       "Discipline": "Solar Wind Strike",
       "Level": "2",
       "Initiation Action": "1 standard action",
