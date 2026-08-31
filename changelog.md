@@ -19,6 +19,38 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **A mythic character now states the decisions that produced it, not just their results**
+  (2026-08-30). The band has always listed what the character *has* — a flaw here, a boon there,
+  path abilities in a row — and never what was *decided* to get there. The `Mythic` chassis entry
+  gains two keys beside `benefit` and `universal abilities`:
+  - **`choices`** — every pick under the tier it was gained at: the path feature, each path
+    ability, **the tradition's flaws, boons and quality**, each mythic feat, and the even-tier
+    ability increases. It is **read back out of the buckets and stamps just recorded** rather than
+    taken as arguments, because those side-tables are what both renderers draw the band from — a
+    roster built from them cannot name a row the sheet does not show. Mythic feats are the one
+    exception and are passed in; they leave through the feats list, not through class features.
+    Within a tier the order is path feature → path ability → flaw → boon → quality → mythic feat,
+    not alphabetical: the feature is the tier's headline, and the tradition reads as a transaction,
+    what was paid before what it bought. Tradition rows keep the order they were **rolled** in
+    (the order the trade summary lists them in); pool picks stay alphabetical.
+  - **`tradition`** — the flaws-for-boons *arithmetic*, which no reader could recover from the
+    rows: how many drawbacks were taken and what each one bought (a named boon, or +N mythic
+    power/day), plus the quality. A quality is rolled independently of the drawbacks, so a
+    quality-only tradition gets the same sentence the no-tradition case gets rather than the silly
+    "0 drawbacks taken, buying nothing". **A tradition-free character says so** instead of going
+    quiet — the drawback counts decay toward zero, so *none* is a roll outcome, not an omission.
+  - *The ledger and the band cannot drift.* `record_tradition` and the ledger now share one
+    `_tradition_entry_name`, so a granting boon is named for what it **granted** in both places —
+    the ledger's "Helpful Rebuke (via Mythic Exemplar)" points at the band's `Boon: Helpful
+    Rebuke`, same string, same fold.
+  - *And it reaches the OTHER surface a reader lands on.* The rendered ledger ships on the payload
+    as `mythic.ledger_html`, and `build/classes.js` appends it to the **pf1 mythic class item's**
+    description — that class row has carried the path's flavour text and said nothing about what
+    was chosen. Rendered once in the backend and reused, not re-derived, so the two surfaces
+    cannot disagree. Pre-formatted HTML for the same reason the chassis rows already are: both
+    renderers title-case dict keys on the way through, which mangles RAW nouns.
+  - *No web-sheet change was needed* — `archetypeDescHtml` title-cases the key and passes an HTML
+    string through untouched, so the two new keys render there as they stand.
 - **The Foundry module's Character Generator button can now appear in four places, each a
   per-user setting** (2026-08-20). It had exactly one home: a `position: fixed` button appended
   straight to `document.body` at load, floating over the canvas with nowhere else to go. It now

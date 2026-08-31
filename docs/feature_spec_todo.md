@@ -1381,6 +1381,19 @@ L40 and spheres-on, the tier axis via a same-tier-different-level twin, chassis 
 wiring at the unit; the tripwire runs over all 1,020 non-mythic generations; a sabotaged chooser
 trips 8 checks).
 
+**The ledger (2026-08-30, Daniel): a sheet that shows results must also show the decisions.** The
+band states what the character *has*; it never stated what was *decided*. The `Mythic` chassis
+entry carries two more keys — **`choices`**, every pick under the tier it was gained at (path
+feature, path abilities, the tradition's flaws/boons/quality, mythic feats, ability increases), and
+**`tradition`**, the flaws-for-boons arithmetic (drawbacks taken, what each bought, the quality).
+Two rules make it trustworthy rather than a second source of truth: the roster is **read back out
+of the buckets and stamps just written**, so it cannot name a row the band does not render (mythic
+feats excepted — they leave through the feats list); and `record_tradition` and the ledger share
+one `_tradition_entry_name`, so a granting boon is named for what it granted in both. The rendered
+string also ships as `mythic.ledger_html` and lands on the **pf1 mythic class item** via
+`build/classes.js` — one derivation, two surfaces. A tradition-free character says so: the
+drawback counts decay toward zero, so *none* is an outcome, not an omission.
+
 **Deferred (recorded, not silent):** rendering (ticket 06) · Dual/Hard Path · mythic archetypes,
 templates and monsters · mythic above 20th beyond what the tier cap already implies · the
 optimizer reaching for mythic · per-path-ability metric adders · archetype-traded features in the
