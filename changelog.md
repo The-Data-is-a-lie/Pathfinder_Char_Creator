@@ -210,6 +210,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Fixed
+- **The region-name drift check had stopped reading the Foundry module** (`validate_name_data.py`,
+  2026-08-31). The gate asserts that every region label a client offers resolves to a real region —
+  it exists because the module once sent "Grundykin Damplands", which matched no key, and an
+  unmatched region silently randomised. It read the module's list out of `scripts/button.js`, and
+  the generate dialog has since moved to `scripts/generator-launch.js` (`button.js` and
+  `button-locations.js` now only decide where the launch button sits). Because `_block()` treats a
+  parse miss as an error rather than a skip, the gate went red instead of passing with one client
+  quietly unchecked — which is the whole reason it was written that way. Repointed at the new file:
+  both clients are read again, and a machine that has neither checked out still reports a SKIP
+  rather than failing.
 - **A bonded creature's Foundry sheet is levelled at its master, not at its hit dice** (module
   `createCompanions.js`, ruled 2026-08-19). A druid 10's companion read `Animal Companion 9` and a
   summoner 10's eidolon read `Eidolon 8`: ticket 02's recipe had the class item driven at
