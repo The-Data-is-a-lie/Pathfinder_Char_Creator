@@ -55,7 +55,10 @@ SCHEDULE = choice_schedule()
 # The mythic tier-keyed table, same independent expansion (mythic map, ticket 07).
 MYTHIC_SCHEDULE = mythic_schedule()
 MYTHIC_PATHS = ('archmage', 'champion', 'guardian', 'hierophant', 'marshal', 'trickster')
-MYTHIC_BUCKETS = ('Mythic Path', 'Mythic Path Abilities', 'Mythic Tradition', 'Mythic Abilities')
+# Every bucket a mythic character can carry -- the leak check below asserts a NON-mythic one has
+# none of them, so a bucket missing from this tuple is a hole in that check. 'Mythic' is the
+# chassis entry that replaced the old 'Mythic Abilities' bucket (2026-08-29).
+MYTHIC_BUCKETS = ('Mythic', 'Mythic Path', 'Mythic Path Abilities', 'Mythic Tradition')
 
 from utils import data  # noqa: E402
 from utils.class_func import backstory as _bs  # noqa: E402
@@ -85,14 +88,20 @@ BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
 # The feat economy's own data, imported rather than restated -- the pool and the tax allowlist are
 # curated files and this test must fail when a creature strays outside them, not when a copy here
 # falls behind them. `TYPE_NOUNS` is the label vocabulary; only the chassis-driven types have feats.
-from utils.class_func.companion_feats import CHASSIS_TYPES as _CHASSIS_TYPES, TYPE_NOUNS as _NOUNS
+from utils.class_func.companion_feats import (CHASSIS_TYPES as _CHASSIS_TYPES,
+                                              TYPE_NOUNS as _NOUNS,
+                                              _has_hands as _eidolon_has_hands,
+                                              creature_feat_pool as _creature_feat_pool)
 # The ceiling itself, imported rather than restated -- a copy here could agree with a
 # drifted generator, which is the failure this whole file exists to prevent.
 from utils.class_func.level_and_bab import MAX_CHARACTER_LEVEL
 COMPANION_FEAT_TYPES = {kind: _NOUNS[kind] for kind in _CHASSIS_TYPES}
 with open(BACKEND / 'json' / 'animal_companion.json', encoding='utf-8') as _fh:
     _CHASSIS = json.load(_fh)
-COMPANION_POOL = _CHASSIS.get('feats') or []
+# The pool is DERIVED now, not an allowlist in the file -- so this imports the generator's own
+# function rather than a list, and takes the widest CHASSIS body there is (no hands, ever; Int read
+# rather than assumed). Any real companion's pool is a subset, so membership here is the ceiling.
+COMPANION_POOL = _creature_feat_pool(has_hands=False, can_speak=True)
 COMPANION_TAX_CHILDREN = _CHASSIS.get('tax_children') or []
 # The RAW familiar pool, read from the data file rather than restated, same rule as above.
 with open(BACKEND / 'json' / 'familiar_choices.json', encoding='utf-8') as _fh:
@@ -1482,9 +1491,14 @@ def check_companion_feats(tag, entry, stats):
         check(str(label).startswith(f'{noun} '),
               f"{tag}: label {label!r} does not read '{noun} <grant level>'")
 
+    # Inverted with the allowlist: membership in the derived pool already encodes the type
+    # filter, the teamwork and racial columns, the denylist, and the body gates. A stray is a feat
+    # that is denied, needs a body part this creature has not got, or is not creature-shaped at all.
     pool = set(COMPANION_POOL)
     strays = [f for f in feats + list(entry.get('flaw_feats') or []) if f not in pool]
-    check(not strays, f"{tag}: feats that are not in the bonded-creature pool: {strays[:5]}")
+    check(not strays,
+          f"{tag}: feats outside the derived creature pool -- denied, gated on a body part this "
+          f"creature does not have, or not a creature-type feat: {strays[:5]}")
 
     allowed = set(COMPANION_TAX_CHILDREN)
     for primary, children in (entry.get('feat_tax_dict') or {}).items():
@@ -1593,6 +1607,15 @@ def check_eidolon(tag, entry):
           f"{tag}: a feat label is not dated to the eidolon's own track: {labels}")
     check(not entry.get('feat_tax_dict'),
           f"{tag}: a taxed feat was granted, but the eidolon tax allowlist is empty by ruling")
+    # The acceptance test for the carve-down. An eidolon used to draw from the whole book behind a
+    # type filter and came back with Prone Slinger and Opening Volley -- a sling feat and a
+    # ranged-volley feat, on a creature with no gear. Hands are the only axis on which its pool is
+    # allowed to be wider than an animal's.
+    eidolon_pool = set(_creature_feat_pool(has_hands=_eidolon_has_hands(entry), can_speak=True))
+    outside = [f for f in feats if f not in eidolon_pool]
+    check(not outside,
+          f"{tag}: eidolon feats outside its own body's pool (hands="
+          f"{_eidolon_has_hands(entry)}): {outside[:5]}")
 
     attacks = stats.get('attacks') or []
     check(len(attacks) <= int(chassis.get('max_attacks') or 0),
@@ -1829,6 +1852,32 @@ def check_mythic():
             check(ability['name'] in (features.get('Mythic Path Abilities') or {}),
                   f"{cell}: granted ability {ability['name']!r} never reached class features -- "
                   f"generated but invisible")
+
+        # The chassis entry (2026-08-29). The universal abilities lost their own rows, so the ONE
+        # thing standing between that change and "generated but invisible" is that every name on
+        # the block appears inside this entry's text.
+        chassis_bucket = features.get('Mythic') or {}
+        check(len(chassis_bucket) == 1,
+              f"{cell}: the Mythic bucket holds {len(chassis_bucket)} entries, not the single "
+              f"per-character chassis entry")
+        chassis_text = json.dumps(chassis_bucket)
+        for ability in blk['base_abilities']:
+            check(ability['name'] in chassis_text,
+                  f"{cell}: universal ability {ability['name']!r} is on the block but nowhere in "
+                  f"the Mythic chassis entry -- generated but invisible")
+        check('Mythic Abilities' not in features,
+              f"{cell}: the retired 'Mythic Abilities' bucket is back -- the universals belong in "
+              f"the chassis entry, not in rows of their own")
+        path_display = blk['path_display']
+        check(path_display not in (features.get('Mythic Path') or {}),
+              f"{cell}: 'Mythic Path' carries a bare {path_display!r} row -- the path's own blurb "
+              f"is the chassis entry's job, and the name shadows the pf1 mythic class item")
+        # The drift this ticket came from: a granting boon shipping its generic promise AND its
+        # resolved answer as two rows. One row per boon, named for what was actually granted.
+        arrows = [k for k in (features.get('Mythic Tradition') or {}) if ' → ' in k]
+        check(not arrows,
+              f"{cell}: tradition rows {arrows} keep the parent → grant shape -- a granting boon "
+              f"is ONE row named for the ability it granted")
 
         # Mythic feats: the separate allowance, never ordinary slots.
         slots = schedule_levels(MYTHIC_SCHEDULE, 'mythic', 'mythic_feats', tier)

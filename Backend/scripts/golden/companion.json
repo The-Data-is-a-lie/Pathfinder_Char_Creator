@@ -17,9 +17,9 @@
    "will": 1
   },
   "feats": [
-   "Light Armor Proficiency",
-   "Skill Focus",
-   "Weapon Focus"
+   "Iron Will",
+   "Storm-Lashed",
+   "Weapon Finesse"
   ],
   "kind": "normal",
   "species": "snake, reef",
@@ -116,35 +116,15 @@
     "Animal Companion 5"
    ],
    "feat_notes": [
-    "Diehard: ineligible -- Endurance",
-    "Heavy Armor Proficiency: ineligible -- Light Armor Proficiency",
-    "Improved Bull Rush: ineligible -- Str 13 (has 11)",
-    "Improved Natural Armor: ineligible -- Con 13 (has 12)",
-    "Improved Natural Attack: ineligible -- base attack bonus +4 (has +3)",
-    "Improved Overrun: ineligible -- Str 13 (has 11)",
-    "Medium Armor Proficiency: ineligible -- Light Armor Proficiency",
-    "Mobility: ineligible -- Dodge",
-    "Power Attack: ineligible -- Str 13 (has 11)",
-    "Spring Attack: ineligible -- Dodge",
-    "feat tax dropped Arcane Armor Training (via Light Armor Proficiency): not on the bonded-creature tax allowlist",
-    "feat tax dropped Greater Weapon Focus (via Weapon Focus): not on the bonded-creature tax allowlist",
+    "feat pool: 816 feats after the creature exclusions, 6 taken, prerequisites fail closed",
+    "776 pool feats were ineligible for this body",
     "feat tax dropped Courage In Numbers (via Iron Will): not on the bonded-creature tax allowlist"
    ],
-   "feat_tax_dict": {
-    "Great Fortitude": [
-     "Improved Great Fortitude"
-    ],
-    "Iron Will": [
-     "Improved Iron Will"
-    ],
-    "Light Armor Proficiency": [
-     "Medium Armor Proficiency"
-    ]
-   },
+   "feat_tax_dict": {},
    "feats": [
-    "Light Armor Proficiency",
-    "Weapon Focus",
-    "Skill Focus"
+    "Weapon Finesse",
+    "Iron Will",
+    "Storm-Lashed"
    ],
    "flags": [],
    "flaw_effects": {
@@ -198,9 +178,9 @@
    },
    "flaw_feat_amount": 3,
    "flaw_feats": [
-    "Iron Will",
-    "Dodge",
-    "Great Fortitude"
+    "Reach Defense",
+    "Improved Unarmed Strike",
+    "Defensive Combat Training"
    ],
    "flaws": [
     "Picky Eater",
@@ -260,21 +240,16 @@
      "str": 0,
      "wis": 1
     },
-    "ac": 18,
+    "ac": 17,
     "applied_changes": [
+     {
+      "source": "Weapon Finesse",
+      "target": "attack",
+      "value": 3
+     },
      {
       "source": "Iron Will",
       "target": "will",
-      "value": 2
-     },
-     {
-      "source": "Dodge",
-      "target": "ac",
-      "value": 1
-     },
-     {
-      "source": "Great Fortitude",
-      "target": "fort",
       "value": 2
      },
      {
@@ -286,7 +261,7 @@
     "attacks": [
      {
       "alternative": false,
-      "atk": 3,
+      "atk": 6,
       "count": 1,
       "crit_multiplier": null,
       "damage": "1d4",
@@ -300,24 +275,14 @@
     "cmd": 16,
     "context_notes": [
      {
-      "source": "Light Armor Proficiency",
+      "source": "Weapon Finesse",
       "target": "attack",
-      "text": "Light Armor Proficiency: no armor check penalty on attack rolls while wearing light barding."
+      "text": "Weapon Finesse: natural attacks use Dexterity in place of Strength on attack rolls. Totalled in only when it helps -- a creature with Str above Dex keeps its Strength bonus."
      },
      {
-      "source": "Weapon Focus",
-      "target": "attack",
-      "text": "Weapon Focus: +1 on attack rolls with one chosen natural attack."
-     },
-     {
-      "source": "Skill Focus",
-      "target": "skills",
-      "text": "Skill Focus: +3 on one chosen skill, rising to +6 once the creature has 10 ranks in it."
-     },
-     {
-      "source": "Medium Armor Proficiency (via Light Armor Proficiency)",
-      "target": "attack",
-      "text": "Medium Armor Proficiency: no armor check penalty on attack rolls while wearing medium barding."
+      "source": "Defensive Combat Training",
+      "target": "misc",
+      "text": "Defensive Combat Training: the creature's CMD is figured from its total Hit Dice instead of its base attack bonus. The fold's mini-language has no BAB token, so the difference is not applied to the printed CMD."
      },
      {
       "source": "(Minor flaw) Picky Eater",
@@ -346,7 +311,7 @@
     "natural_armor": 4,
     "other": {},
     "saves": {
-     "fort": 7,
+     "fort": 5,
      "ref": 7,
      "will": 4
     },
@@ -383,11 +348,7 @@
     "special_attacks": "poison (frequency 1 round [6]; effect 1 str damage; cure 1 save; con-based dc)",
     "special_qualities": "low-light vision, hold breath, scent",
     "speed": "10 ft. , swim 40 ft. ",
-    "touch_ac": 14,
-    "unapplied": [
-     "Weapon Focus: +1 on ONE chosen natural attack; the generator names no attack, and adding it to every line of a multi-attack routine would overstate it.",
-     "Skill Focus: +3 on ONE chosen skill; the generator strips feat specialisations, so no skill is named and the bonus is not totalled in."
-    ]
+    "touch_ac": 13
    },
    "type": "companion"
   }

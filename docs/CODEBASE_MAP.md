@@ -190,8 +190,10 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
   quality_effects.json. `spells/` — spell_changes.json, spell_riders.json. `flaws/` —
   flaw_effects.json. `backstory_examples/` — few-shot examples for the backstory API.
 - **Bonded creatures** — `animal_companion.json` (`companion` = the level chassis, rows `"1"`–`"40"`
-  keyed by *effective* level, carrying that row's own `feats` count; `feats` = the 29-name legality
-  pool; `tax_children` = the 23 feat-tax children a creature may be granted free) and
+  keyed by *effective* level, carrying that row's own `feats` count; `denied_feats` /
+  `hands_required` / `language_required` = the hand-authored half of the feat exclusions, the
+  derived pool's residue (the old 29-name `feats` allowlist is gone — spec §8 D15 as amended);
+  `tax_children` = the 23 feat-tax children a creature may be granted free) and
   `animal_choices.json` (`normal` 157 / `plant` 14 / `vermin` 23 / `magical_beast` 2 species →
   `starting statistics` plus one or more `"<N>th-level advancement"` delta blocks, keys lowercase and
   comma-inverted: `"ant, giant"`). Read by `class_func/animal_companions.py` (every grantor since
@@ -209,11 +211,24 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     fails CLOSED on any prerequisite it cannot read), the chassis-dated slot levels behind
     `feat_labels`, feat tax via a four-attribute adapter over `feat_tax_func`, and the animal flaw
     roll. Spec §8 **D15/D16**. Gated by `scripts/gates/validate_companion_feats.py`.
+    - **`creature_feat_pool(has_hands, can_speak)` is where the pool comes from, for BOTH creature
+      kinds** — there is no allowlist any more. It carves `data/feats.csv` down by
+      `CREATURE_FEAT_TYPES`, the `teamwork` and `racial` columns, `denied_feats`, and then the
+      per-body `hands_required` / `language_required`. `creature_exclusions()` is the one owner of
+      those three lists and the gate imports it rather than re-reading the file. The gate's
+      **census** fails on any creature-type row that neither a rule nor a list classifies, which is
+      what keeps an open-by-default pool honest.
+    - **Read `data/feats.csv` through `_feat_rows()`, not pandas.** `on_bad_lines='skip'` drops the
+      five rows whose `prerequisite_feats` encodes "either of these" with a `|` — the same character
+      that delimits the columns. `_feat_rows()` re-joins the split cell, which also un-shifts the
+      `teamwork` and `racial` values on those rows.
   - **Two feat-effect files, and mixing them is a PC bug.** `feats/companion_feat_changes.json` is
-    the companion's; `feats/feat_changes.json` is the PC's. The pf1 compendium already automates 12
+    the companion's; `feats/feat_changes.json` is the PC's. The pf1 compendium already automates 20
     of the pool's feats and a PC *keeps* its compendium item's changes, so a companion effect added
     to the shared file double-applies on every PC sheet. `validate_companion_feats.py` fails on any
-    pool feat carrying numeric `changes` in both.
+    pool feat carrying numeric `changes` in both — and, since the pool became derived, on any pool
+    feat the **compendium** automates that has no companion entry. A pool feat the compendium does
+    not automate needs none; most of the ~850 are text.
   - **`companion_stats.apply_modifiers` folds feats and flaws into `stats` (§8 D14),** last, on top
     of the chassis numbers, and records `stats.applied_changes` / `stats.context_notes`; anything it
     cannot place joins `stats.unapplied`. `MODIFIER_TARGETS`, `SKILL_TARGET_PREFIX` and
@@ -293,8 +308,10 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
       `_stack`'s chassis re-read skips eidolons the way it already skips familiars.
     - The stat block is `companion_stats.eidolon_stats` (its own function, not a branch: different
       chassis columns, per-form saves, bought attacks); the feats are
-      `companion_feats.eidolon_feats` (the General/Combat feat list, `Eidolon N:` labels, no flaws
-      and an empty tax allowlist by ruling).
+      `companion_feats.eidolon_feats` (`Eidolon N:` labels, no flaws and an empty tax allowlist by
+      ruling). Its pool is `creature_feat_pool` like every other creature's, and the ONLY axis on
+      which it is wider than an animal's is the body: an eidolon that bought or was born with
+      `Limbs (Arms)` may hold a weapon (`_has_hands`), and Int 7 clears the language gate.
     - Pinned by the `summoner` golden and the invariant sweep's eidolon branch.
 - Loose files: races (races.json, PlayableRaces.json, racial_stat_changes.json), deity.json,
   archetypes.json, cleric/druid_domains.json, wizard_schools.json, bloodlines.json,

@@ -4,8 +4,17 @@ Spec section 8, D15/D16. Replaces the pick-loop that used to live in `animal_com
 -- `random.choice` over a bag of 27 lowercase strings, with no prerequisite check, no record of when
 a feat was gained, no feat tax and no flaws.
 
-FOUR THINGS THIS MODULE IS CAREFUL ABOUT
+FIVE THINGS THIS MODULE IS CAREFUL ABOUT
 ----------------------------------------
+0. THE POOL IS CARVED DOWN, NOT LISTED UP. `creature_feat_pool` derives it from `data/feats.csv`
+   and removes what a creature cannot use: the wrong type, teamwork feats (they need an ally
+   holding the same feat), racial feats, a hand-authored residue no column can reach, and then a
+   per-body layer for hands and language. It replaced a 29-name allowlist that capped a wolf at 29
+   of the 167 feats it could legally reach, while the eidolon -- the whole book behind a type
+   filter -- came back holding Prone Slinger and Opening Volley on a creature with no gear. Both
+   ends of one dial, one mechanism. `validate_companion_feats.py`'s census fails on any
+   creature-type row that no rule and no list classifies, so the denylist cannot rot in silence.
+
 1. IT DRAWS FROM THE CREATURE'S OWN GENERATOR. `companion_stats._rng`, salted, never the global
    `random`. A companion's feats must not churn its master's gear, feats and backstory -- the same
    ruling `companion_stats` records for skill ranks, now applied to the larger draw this module
@@ -27,6 +36,8 @@ FOUR THINGS THIS MODULE IS CAREFUL ABOUT
    `greater weapon focus` (fighter 8) and `martial focus` (a weapon group a wolf does not have)
    without needing a hand-written blocklist of either.
 """
+import csv
+import json
 import re
 
 import pandas as pd
@@ -64,15 +75,11 @@ def _prereq_table():
     """{normalised feat name: (canonical name, prerequisite string)} from data/feats.csv."""
     global _CSV_CACHE
     if _CSV_CACHE is None:
-        frame = pd.read_csv(repo_path('data/feats.csv'), sep='|', on_bad_lines='skip')
-        table = {}
-        for name, prereq in zip(frame['name'], frame.get('prerequisites')):
-            if not isinstance(name, str):
-                continue
-            key = _norm(name)
-            # First row wins; a Mythic duplicate must not overwrite the normal feat's prerequisites.
-            table.setdefault(key, (name, prereq if isinstance(prereq, str) else ''))
-        _CSV_CACHE = table
+        # Reads through `_feat_rows`, NOT pandas. `on_bad_lines='skip'` silently dropped the five
+        # disjunction rows, so the pool could hold a feat this table then called "not in
+        # data/feats.csv" and refused. One reader, one answer.
+        _CSV_CACHE = {key: (row.get('name'), row.get('prerequisites') or '')
+                      for key, row in _feat_rows().items()}
     return _CSV_CACHE
 
 
@@ -218,32 +225,121 @@ def _tax(character, entry, owned, levels, feats, abilities, bab, allowed, grante
     return out, dropped
 
 
-_EIDOLON_POOL_CACHE = None
+_POOL_CACHE = {}
+_ROWS_CACHE = None
+_EXCLUSIONS_CACHE = None
 
-# Which `data/feats.csv` types an eidolon may draw from. The same exact-type-match discipline
-# `feats.py::metzofitz_feat_frame` uses for the homebrew pool, and for the same reason: the excluded
-# types are SUBSYSTEM feats whose subsystem the creature does not have. Metamagic and Item Creation
-# need spellcasting, Story needs a story, Grit needs grit, Mythic needs a tier, Path of War needs an
-# initiator level, Achievement needs a campaign. Left in, they are legal-but-dead picks -- the first
-# smoke run handed a 15-HD eidolon `Intensified Spell`, which it can never use.
-EIDOLON_FEAT_TYPES = ('General', 'Combat', 'Monster', 'Monster, Combat')
+# Which `data/feats.csv` types ANY bonded creature may draw from. The same exact-type-match
+# discipline `feats.py::metzofitz_feat_frame` uses for the homebrew pool, and for the same reason:
+# the excluded types are SUBSYSTEM feats whose subsystem the creature does not have. Metamagic and
+# Item Creation need spellcasting, Story needs a story, Grit needs grit, Mythic needs a tier, Path
+# of War needs an initiator level, Achievement needs a campaign. Left in, they are legal-but-dead
+# picks -- the first smoke run handed a 15-HD eidolon `Intensified Spell`, which it can never use.
+#
+# This is the FIRST of four exclusion rules, not a special case for the eidolon. `creature_feat_pool`
+# below carries the other three, and `animal_companion.json`'s `feat_rules_readme` says why.
+CREATURE_FEAT_TYPES = ('General', 'Combat', 'Monster', 'Monster, Combat')
+# The name this tuple carried while only the eidolon drew from it.
+EIDOLON_FEAT_TYPES = CREATURE_FEAT_TYPES
+
+# RAW's line for a creature that can learn a language, and the line the language-dependent feats are
+# gated on: an eidolon clears it, an Int-2 animal companion never does.
+SPEAKING_INT = 3
+
+# `data/feats.csv` uses `|` as its column delimiter AND, inside `prerequisite_feats`, as the
+# "either of these" separator. Five rows carry a disjunction and so parse one field too wide, which
+# shifts `teamwork` and `racial` -- the two columns this module now reads -- off by one. Re-joining
+# the split cell on read makes those rows legible without touching the file, whose real repair
+# belongs to `fix/disjunctive-feat-prereqs`.
+_DISJUNCTION_AT = 4
 
 
-def _eidolon_pool():
-    """The feats an eidolon may draw from: `data/feats.csv`, filtered by type.
 
-    NOT the curated 27-name animal pool. An eidolon is an outsider a summoner BUILDS -- RAW puts no
-    list in its way, so the pool is the book and `legal_for_companion` is what makes it safe: it
-    fails CLOSED, so a prerequisite this reader cannot parse is a feat the creature does not get.
-    The animal pool exists because a wolf's options genuinely are a short list; borrowing it here
-    would cap a 15-HD outsider at what a wolf may take.
+def _feat_rows():
+    """{normalised name: row dict} from `data/feats.csv`, with the disjunction rows re-joined."""
+    global _ROWS_CACHE
+    if _ROWS_CACHE is None:
+        with open(repo_path('data/feats.csv'), encoding='utf-8', errors='replace',
+                  newline='') as handle:
+            reader = csv.reader(handle, delimiter='|')
+            columns = next(reader)
+            rows = {}
+            for fields in reader:
+                while len(fields) > len(columns):
+                    fields[_DISJUNCTION_AT:_DISJUNCTION_AT + 2] = [
+                        '|'.join(fields[_DISJUNCTION_AT:_DISJUNCTION_AT + 2])]
+                row = dict(zip(columns, fields))
+                # First row wins, exactly as `_prereq_table` does: a Mythic duplicate shares its
+                # namesake's name and must not overwrite it.
+                rows.setdefault(_norm(row.get('name')), row)
+        _ROWS_CACHE = rows
+    return _ROWS_CACHE
+
+
+def creature_exclusions():
+    """The three hand-authored lists in `animal_companion.json`, normalised for lookup.
+
+    ONE owner for the vocabulary. `validate_companion_feats.py` imports this rather than re-reading
+    the file, so the gate and the generator cannot disagree about what is denied.
     """
-    global _EIDOLON_POOL_CACHE
-    if _EIDOLON_POOL_CACHE is None:
-        frame = pd.read_csv(repo_path('data/feats.csv'), sep='|', on_bad_lines='skip')
-        wanted = frame[frame['type'].isin(EIDOLON_FEAT_TYPES)]['name'].dropna().astype(str)
-        _EIDOLON_POOL_CACHE = sorted({canonical_name(name) for name in wanted})
-    return _EIDOLON_POOL_CACHE
+    global _EXCLUSIONS_CACHE
+    if _EXCLUSIONS_CACHE is None:
+        with open(repo_path('Backend/json/animal_companion.json'), encoding='utf-8') as handle:
+            chassis = json.load(handle)
+        _EXCLUSIONS_CACHE = {
+            'denied': {_norm(name): reason
+                       for name, reason in (chassis.get('denied_feats') or {}).items()},
+            'hands': {_norm(name) for name in chassis.get('hands_required') or []},
+            'language': {_norm(name) for name in chassis.get('language_required') or []},
+        }
+    return _EXCLUSIONS_CACHE
+
+
+def creature_feat_pool(has_hands=False, can_speak=False):
+    """The feats a bonded creature with THIS BODY may draw from.
+
+    Carved down, never listed up. This replaced a 29-name allowlist that capped a wolf at 29 of the
+    167 feats it could legally reach, while the eidolon -- drawing from the whole book behind only a
+    type filter -- came back holding Prone Slinger and Opening Volley, a sling feat and a
+    ranged-volley feat, on a creature with no gear. One dial, one mechanism, both ends of it.
+
+    Prerequisites are NOT read here. `legal_for_companion` does that per pick, one at a time, so a
+    chain can build itself; this is the vocabulary, not the legality.
+    """
+    key = (bool(has_hands), bool(can_speak))
+    if key not in _POOL_CACHE:
+        rules = creature_exclusions()
+        pool = set()
+        for norm_name, row in _feat_rows().items():
+            if row.get('type') not in CREATURE_FEAT_TYPES:
+                continue
+            if str(row.get('teamwork') or '0').strip() != '0':
+                continue                      # needs an ally holding the same feat
+            if str(row.get('racial') or '0').strip() == '1':
+                continue                      # no race to qualify with
+            if norm_name in rules['denied']:
+                continue                      # the residue no column can reach
+            if not has_hands and norm_name in rules['hands']:
+                continue
+            if not can_speak and norm_name in rules['language']:
+                continue
+            pool.add(canonical_name(row['name']))
+        _POOL_CACHE[key] = sorted(pool)
+    return _POOL_CACHE[key]
+
+
+def _has_hands(entry):
+    """Arms: free with the base form, or bought as an evolution. A chassis creature never has them.
+
+    Biped and tauric are born with `limbs (arms)`; aquatic, avian, quadruped and serpentine have to
+    buy it, and most never do.
+    """
+    free = (entry.get('free_evolutions') or {}).get('limbs') or []
+    if any(str(choice).lower() == 'arms' for choice in free):
+        return True
+    return any(str(evolution.get('key')).lower() == 'limbs'
+               and str(evolution.get('choice')).lower() == 'arms'
+               for evolution in entry.get('evolutions') or [])
 
 
 def eidolon_feats(character):
@@ -263,7 +359,6 @@ def eidolon_feats(character):
     if not entries:
         return None
     table = ((getattr(character, 'eidolon_table', None) or {}).get('levels')) or {}
-    pool = _eidolon_pool()
 
     for entry in entries:
         chassis = entry.get('chassis') or {}
@@ -272,6 +367,10 @@ def eidolon_feats(character):
         rng = _rng(entry, salt='feats')
         abilities = eidolon_abilities(character, entry)
         bab = int(chassis.get('bab') or 0)
+        # The only place the wolf and the eidolon are allowed to differ. An eidolon that bought
+        # Limbs (Arms) may hold a weapon; one that did not is as handless as any animal.
+        pool = creature_feat_pool(has_hands=_has_hands(entry),
+                                  can_speak=int(abilities.get('int') or 0) >= SPEAKING_INT)
 
         owned, refusals = set(), {}
         levels = _slot_levels(table, entry.get('effective_level'))
@@ -285,8 +384,9 @@ def eidolon_feats(character):
         entry['flaw_feats'] = []
         # Only the refusals for feats it actually tried are worth carrying: the pool is the whole
         # book, and 1,300 "ineligible" lines would bury the entry rather than explain it.
-        entry['feat_notes'] = [f'feat pool: {len(pool)} feats from data/feats.csv, '
-                               f'{len(feats)} taken, prerequisites fail closed',
+        entry['feat_notes'] = [f'feat pool: {len(pool)} feats after the creature exclusions '
+                               f'(hands: {_has_hands(entry)}), {len(feats)} taken, '
+                               f'prerequisites fail closed',
                                'no flaws and no feat-tax children by ruling (see eidolon_feats)']
     return {feat for entry in entries for feat in entry.get('feats') or []}
 
@@ -307,9 +407,8 @@ def companion_feats(character):
         return None
     chassis = getattr(character, 'animal_companion', None) or {}
     chassis_table = chassis.get('companion') or {}
-    pool = sorted(chassis.get('feats') or [])
     allowed = {_norm(name) for name in chassis.get('tax_children') or []}
-    if not pool:
+    if not chassis_table:
         return None
 
     union = set()
@@ -320,6 +419,10 @@ def companion_feats(character):
         merged, _ = merge_advancement(entry.get('species_stats'),
                                       entry.get('effective_level') or 0)
         abilities = _abilities(merged, chassis)
+        # A chassis creature is an animal, a plant or vermin -- no hands, ever. Int is still READ
+        # rather than assumed, so a species that ever climbs past 2 is not silently mis-gated.
+        pool = creature_feat_pool(has_hands=False,
+                                  can_speak=int(abilities.get('int') or 0) >= SPEAKING_INT)
 
         # Flaws first: they buy feats, so the slot count depends on them.
         flaw_amount = randomize_flaw_amount(rng)
@@ -355,13 +458,20 @@ def companion_feats(character):
 
 
 def _notes(pool, feats, flaw_feats, refusals, dropped):
-    """Why the creature does not have the rest of the pool. Reported, never implied by absence."""
-    notes = []
-    unfilled = [name for name in pool if name not in set(feats) | set(flaw_feats)]
-    for name in unfilled:
-        reason = refusals.get(name)
-        if reason:
-            notes.append(f'{name}: ineligible -- {reason}')
+    """Why the creature does not have the rest of the pool. Reported, never implied by absence.
+
+    The pool is derived from the whole book now rather than a 29-name list, so this reports the
+    COUNT and stops. Naming them was worth it over 29 curated feats; over 800 it printed the
+    alphabetically-first dozen ("Ability Focus", "Abundant Revelations") and explained nothing --
+    the same judgement `eidolon_feats` already recorded for its own notes. What IS still named is
+    every feat-tax drop, because that is a curation decision rather than a body's arithmetic.
+    """
+    taken = set(feats) | set(flaw_feats)
+    notes = [f'feat pool: {len(pool)} feats after the creature exclusions, {len(taken)} taken, '
+             f'prerequisites fail closed']
+    unfilled = [name for name in pool if name not in taken and refusals.get(name)]
+    if unfilled:
+        notes.append(f'{len(unfilled)} pool feats were ineligible for this body')
     for line in dropped:
         notes.append(f'feat tax dropped {line}')
     return notes
