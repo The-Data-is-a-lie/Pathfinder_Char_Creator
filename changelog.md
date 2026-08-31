@@ -492,6 +492,119 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   deliberately low; the all-hits figure is exact.
 
 ### Changed
+- **A bonded creature's feat pool is now carved down from `data/feats.csv` instead of read off a
+  29-name allowlist** (spec §8 D14/D15 amended; argument in
+  `tickets: feature/companion-sheets/06`, 2026-08-26). Animal companions and eidolons sat at
+  opposite extremes of one dial and neither extreme had been measured. A wolf could legally reach
+  **167** feats and was handed **29**; the eidolon drew from the whole book behind a type filter and
+  the committed golden had it holding `Prone Slinger` and `Opening Volley` — a sling feat and a
+  ranged-volley feat — on a creature with no gear, plus `Deceitful` on Cha 11 with no ranks.
+  `creature_feat_pool()` replaces both with one mechanism: the shared type filter, then the
+  **`teamwork`** and **`racial`** columns of `data/feats.csv` (present all along, never read), then
+  a hand-authored **`denied_feats`** residue — casting, biography, downtime, campaign resources —
+  and then a **per-body layer**, `hands_required` (an eidolon with `Limbs (Arms)`; no chassis
+  species ever) and `language_required` (Int 3+). The golden eidolon now reads
+  `Run · Martial Weapon Proficiency · Improved Unarmed Strike · Rugged Northerner · Divine Defiance`.
+  - *A denylist, not an allowlist, and a census so it cannot rot.* Open by default was the point.
+    `validate_companion_feats.py` gained a check that **fails** on any creature-type row that
+    neither a rule nor a list classifies, so a new feat cannot enter the pool unnoticed — the one
+    real failure mode a denylist has.
+  - *Reversed on purpose.* D15 had explicitly rejected "the whole feat DB behind a derived
+    predicate". The residue is still curated, because animal legality genuinely is not derivable;
+    what changed is its direction and the gate behind it.
+  - *`remove_spell_caster_feats` was NOT reused,* though the plan called for it. It removes
+    **Weapon Focus**, whose description carries "(or ray, if you are a spellcaster)", and keeps out
+    `Divine Defiance` and `Necromantic Affinity`, which a creature uses perfectly well. The 18
+    caster rows are named by hand instead and the census guards additions.
+  - *Coverage inverted with the pool.* `companion_feat_changes.json` needed an entry per pool feat;
+    over ~850 that would be busywork hiding the real invariant. It is now required only where the
+    **pf1 compendium** automates the feat — the numbers that vanish when `createCompanions.js`
+    strips `system.changes` — which is 20 feats. Twelve new entries; `bonusFeats` is excluded,
+    being a feat *slot* rather than arithmetic.
+  - *Found by the new gate, not by reading:* `Leadership` was reachable by a wolf (a cohort and a
+    following of NPCs), and `Deflect Arrows` needs a free hand.
+  - *Feat tax deliberately untouched* (`tax_children` stays an allowlist, the eidolon stays
+    tax-free). Consequence on record: that allowlist was curated against the old 29-feat pool's
+    chains, so tax now fires less often. `eidolon_feats`' ruling parked its own tax list "until the
+    equivalent is curated here" — that condition is now met, and the defer is deliberate.
+  - *Rejected:* a curated eidolon allowlist (it would cap a 15-HD outsider at what a wolf may take,
+    the objection `eidolon_feats` recorded from the start); per-creature denylists (re-splits the
+    one dial); a `creature_ok` column authored into `feats.csv` (1,486 hand decisions against ~108).
+
+### Fixed
+- **Three `data/feats.csv` rows carried mangled names** (2026-08-26). `TORCH HANDLING`,
+  `Death Frombelow` and `Master ofYour Kind` reached sheets exactly as spelled; the pf1 compendium
+  confirms `Torch Handling`, `Death from Below` and `Master of Your Kind`. They normalise to the
+  same key, so nothing resolved differently — only the display was wrong. Moves `class_feats` on
+  the `martial` golden.
+- **`companion_feats` read `data/feats.csv` through pandas with `on_bad_lines='skip'`, which
+  silently dropped five rows** (2026-08-26). `prerequisite_feats` encodes "either of these" with a
+  `|`, the same character that delimits the columns, so those rows parse one field too wide and
+  pandas discarded them — `Demonic Possession`, `False Opening`, `Improvised Weapon Mastery`,
+  `Prone Shooter`, `Rapid Reload`. `_feat_rows()` re-joins the split cell on read, which also
+  repairs the `teamwork` and `racial` values those rows had shifted out of position. The file
+  itself is left alone: its real repair belongs to `fix/disjunctive-feat-prereqs`.
+- **A bonded creature's feats rendered as bare names, because the Foundry module was reading the
+  wrong compendium** (spec §8 D14 amended; argument in `tickets: feature/companion-sheets/07`,
+  2026-08-27). `createCompanions.js::featResolver` resolved rules text from **`pf1.feats`**, the pf1
+  *system's* SRD compendium. Under the old 29-name allowlist every feat was Core or APG and every
+  lookup hit; the moment the pool above was derived from the whole corpus, most stopped hitting. A
+  live summoner 12's eidolon came back with **four of its five feats carrying an empty description**
+  — `Divine Defiance` (Faiths & Philosophies), `Desert Dweller`, `Storm-Lashed` and
+  `Focused Discipline` (Inner Sea World Guide) are campaign-setting feats and are not in the SRD.
+  The module had the text all along: **`every_feat.json`, 8,816 rows**, shipped as the
+  `pf1e_random_char_generator.feats` pack and already what a **PC's own feats** resolve against. The
+  resolver reads it through `build/catalog.js` now, like every other stage, so a companion's Dodge is
+  its master's Dodge — same row, same `idx` order stamp. **848 of the 852** feats the pool can offer
+  either body resolve there, none with an empty description.
+  - *Nothing on the payload moved.* `entry['feats']` is still a bare list of names and the frozen
+    `animal_companion` alias still reads it; the web sheet renders `Feats: a, b, c` into composed
+    notes and is unaffected either way. The layer that was missing the text was the renderer.
+  - **Feat items now say what the fold did with them.** `companion_feat_changes.json` carries a
+    contextNote on 33 of its 42 feats and an `unapplied` holdback on four, and until now **none of
+    it reached a feat item** — only the flaw band called the helper, so a creature carrying Iron Will
+    showed a Will save two points high with nothing on the sheet naming the cause. `featItems`
+    attaches `stats.context_notes`, a *"Folded into this stat block: +2 will"* line from
+    `stats.applied_changes`, and a *"Not folded — apply at the table"* line from `stats.unapplied`,
+    the same three fields the Evolutions band already read. A tax child's rules text now rides under
+    the parent that paid for it, as `applyFeatTax` does on the PC side.
+  - *`system.changes` stays stripped, and D14 is not reopened.* A contextNote asserts nothing to pf1;
+    re-attaching the changes would double Toughness into `mhp` and Iron Will into `will`. Where the
+    backend has notes for a feat they replace the catalog's rather than joining them — five pool
+    feats have both, and both say the same sentence twice.
+  - *Rejected:* emitting rules text on the payload (a new shape past a frozen consumer, and
+    `data/feats.csv` has 151 duplicate names where a Mythic twin shares its namesake's spelling, so
+    a name-keyed lookup silently picks one of two different benefit texts); keeping `pf1.feats` as a
+    first preference (two catalogs cannot promise a companion and its master the same row).
+- **`validate_companion_feats.py` normalised harder than the renderer, so four pool feats passed the
+  gate and rendered bare** (2026-08-27). Its `--compendium` check has always read the module's
+  `every_feat.json` — the right file — but through a `norm()` that strips every non-alphanumeric
+  character, while `build/catalog.js` lowercases and cuts at the first `" ("`. `Potent HolySymbol`
+  and `Potent Holy Symbol` were one string to the gate and two to the renderer. The gate matches the
+  renderer's rule now, in all three places it looks a name up, and additionally fails on a row whose
+  description is **empty** — a miss by another route.
+- **Three more mangled `data/feats.csv` names, and these ones did resolve differently**
+  (2026-08-27). `Potent HolySymbol`, `SchooledResolve` and `Point Blank Master` are
+  `Potent Holy Symbol`, `Schooled Resolve` and `Point-Blank Master`; unlike the three repaired above
+  they do **not** normalise to the catalog's key, so every one of them rendered as a name with no
+  rules text. `Point-Blank Master` is granted to an **archery ranger at level 6**
+  (`Backend/json/class_data/ranger.json`, updated with it), so this was a PC defect as much as a
+  companion one. `In Harm's Way` is the fourth and is absent from `every_feat.json` altogether; it
+  is denied for now, and its row also reads `teamwork 0` where RAW makes it a teamwork feat.
+- **Two Mythic Adventures feats reached a creature that can never have a tier** (2026-08-27). 161
+  `data/feats.csv` rows are sourced *Mythic Adventures*; 158 are typed `Mythic` and one `Metamagic`,
+  all of which `CREATURE_FEAT_TYPES` already removes — but **`Marked For Glory` and
+  `Mythic Companion` are typed `General`** and sat in the pool. (`Mythic Companion`'s own
+  prerequisite reads *"you must be non-mythic"*.) Both are denied, and the census now **fails** on
+  any pool row sourced *Mythic Adventures*, so a third one typed the same way cannot arrive quietly.
+  The creature pool goes 852 → 849; no golden's picks changed, only the provenance line that reports
+  the pool size.
+- **`Combat Expertise` lost its arithmetic silently, found by the tightened gate** (2026-08-27). The
+  catalog resolves it to a `Combat Expertise (Buff)` row carrying `-1 mattack`, which
+  `createCompanions.js` strips under D14 with nothing in `companion_feat_changes.json` to re-supply
+  it. It is a per-round trade of attack for dodge AC — a choice a stat block cannot hold — so the new
+  entry is a **holdback**, not a fold, matching how the PC sheet models it as a default-off toggle.
+
 - **The optimal-builder design is ruled** (spec §15; argument in `tickets: feature/optimal-builder`,
   2026-08-11). The optimizer targets **levels 1–20** and is built around a small **power-role
   vocabulary** (~6–9 roles, floors + unbounded primaries, class→roles map) with a

@@ -512,6 +512,63 @@ What is **not** built, and what the remaining sheets wait on:
   list precisely because it cannot be derived); tax confined to the pool (only `endurance → diehard`
   would ever fire); labelling by HD or by species.
 
+  ⚠ **Amended 2026-08-26 — the pool is DERIVED, and this decision's first rejection is reversed.**
+  The 29-name allowlist is gone. Measurement moved it: a wolf could legally reach **167** feats and
+  was handed 29, while the eidolon — whose own economy took the opposite route, the whole book behind
+  a type filter — came back on the committed golden holding `Prone Slinger` and `Opening Volley`, a
+  sling feat and a ranged-volley feat, on a creature with no gear. Two ends of one dial, neither set
+  by measurement. `companion_feats.creature_feat_pool()` now **carves down**: `CREATURE_FEAT_TYPES`
+  (the old `EIDOLON_FEAT_TYPES`, promoted — both creatures use it), then the **`teamwork`** and
+  **`racial`** columns of `data/feats.csv`, both present since forever and never read, then a
+  hand-authored **`denied_feats`** residue no column can reach (casting, biography, downtime,
+  campaign resources), then a **per-body layer**: **`hands_required`** (open only for an eidolon
+  born with or having bought `Limbs (Arms)` — no chassis species ever has hands) and
+  **`language_required`** (Int 3+, RAW's own line for learning a language). `legal_for_companion` is
+  untouched and still fails CLOSED, one pick at a time.
+  *What replaces the rejection's reasoning:* legality for animals still is not derivable, so the
+  **residue** is still curated — but as a **denylist**, open by default, with
+  `validate_companion_feats.py`'s new **census** failing on any creature-type row that neither a
+  rule nor a list classifies. A denylist's one real failure mode is silence; the census removes it.
+  D14's coverage rule inverts with the pool: an entry in `companion_feat_changes.json` is required
+  only for a pool feat the **pf1 compendium** automates — the ones whose numbers vanish when
+  `createCompanions.js` strips `system.changes` — which is 20 feats, not 850. (`bonusFeats` does not
+  count: it is a feat *slot* the compendium hangs on class bonus feats, and a creature's slot count
+  comes off the chassis table.)
+  D15's other half stands: **`tax_children` stays an allowlist and the eidolon stays tax-free.**
+  Consequence on record — that allowlist was curated against the old 29-feat pool's chains, so feat
+  tax now fires **less often** against a derived pool. That is the accepted cost of leaving tax
+  alone in this pass, not an oversight.
+
+- **D14 amended 2026-08-27 — "the compendium" is the MODULE'S catalog, not `pf1.feats`, and the
+  fold now says so on the item** *(ticket `feature/companion-sheets/07`)*. D14 and its coverage rule
+  both say "the pf1 compendium", and `createCompanions.js::featResolver` read exactly that — the
+  pf1 SYSTEM pack, which carries the SRD. That was invisible under a 29-name pool of Core and APG
+  feats and stopped being invisible the moment D15's amendment derived the pool from the whole
+  corpus: a live summoner 12's eidolon rendered **four of its five feats as a name and an empty
+  body**, because Divine Defiance, Desert Dweller, Storm-Lashed and Focused Discipline are campaign
+  -setting feats and were never in that pack. The module has shipped the text all along —
+  `every_feat.json`, 8,816 rows, the `pf1e_random_char_generator.feats` pack, and what a **PC's own
+  feats** resolve against. Measured over the pool both bodies can draw from, **848 of 852 resolve
+  there with a non-empty description**; the four that do not were misspelled `data/feats.csv` names,
+  now repaired or denied. The resolver reads it through `build/catalog.js` like every other stage,
+  so a companion's Dodge is its master's Dodge — same row, same `idx` order stamp.
+  *No payload change:* `entry['feats']` stays a bare list of names, the frozen `animal_companion`
+  alias (D9) is untouched, and the web sheet — which renders `Feats: a, b, c` into composed notes —
+  is unaffected either way. The backend was never the layer that was missing anything.
+  **The second half is the fold explaining itself.** `stats.applied_changes`, `stats.context_notes`
+  and `stats.unapplied` had reached the Evolutions band and no feat item; a creature carrying Iron
+  Will showed a Will save two points high with nothing on the sheet saying which feat did it.
+  `featItems` now attaches all three, and a tax child's rules text rides under the parent that paid
+  for it. **`system.changes` stays stripped** — this is D14 becoming legible, not reversing: a
+  contextNote asserts nothing to pf1, and re-attaching the changes would still double Toughness into
+  `mhp` and Iron Will into `will`. Where the backend has notes for a feat they **replace** the
+  catalog's rather than joining them; five pool feats have both, and both say the same sentence.
+  *And the gate was checking the right file with the wrong rule.* `validate_companion_feats.py` has
+  always read the module's `every_feat.json` — but through a `norm()` that strips punctuation, while
+  the renderer lowercases and cuts at the first `" ("`. `Potent HolySymbol` and `Potent Holy Symbol`
+  were one string to the gate and two to the renderer. It matches the renderer's rule now, and also
+  fails on a row whose description is empty.
+
 - **D16 — parity sections, an animal flaw catalogue, and the per-creature RNG** *(same grill)*. A
   companion Actor gets the PC's furniture: a `Class Features (Animal Companion)` band with its
   species abilities promoted **out of the description into real items**, the `Variable Modifiers` /

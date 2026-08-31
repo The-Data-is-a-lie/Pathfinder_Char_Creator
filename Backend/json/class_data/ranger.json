@@ -2,7 +2,7 @@
 
     "archery": {
         "2": ["Far Shot", "Focused Shot", "Point Blank Shot", "Precise Shot", "Rapid Shot"],
-        "6": ["Crossbow Mastery", "Improved Precise Shot", "Parting Shot", "Point Blank Master",  "Manyshot" ],
+        "6": ["Crossbow Mastery", "Improved Precise Shot", "Parting Shot", "Point-Blank Master",  "Manyshot" ],
         "10": ["Pinpoint Targeting", "Shot on the Run"]
     }
     ,

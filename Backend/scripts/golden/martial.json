@@ -193,7 +193,7 @@
  ],
  "class_feat_tax_dict": {},
  "class_feats": [
-  "Death Frombelow",
+  "Death From Below",
   "Ensemble",
   "Bull Charge (combat)",
   "Ostentatious Display",
@@ -568,7 +568,7 @@
   "Bloody Assault": "Sacrificing accuracy, you can inflict bloody wounds that are slow to heal",
   "Bull Charge (combat)": "You rush into battle with a devastating attack. Normal Charging causes you to take a -2 penalty to your AC until the start of your next turn. you take no penalty to your ac when you make a charge attack. if you have the vital strike feat, you can use vital strike (or improved vital strike or greater vital strike, if you have them) in place of the attack at the end of a charge. the damage dice added by vital strike, improved vital strike, or greater vital strike are not doubled when charging with a lance while mounted.",
   "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
-  "Death Frombelow": "You have been trained to fight flying creatures",
+  "Death From Below": "You have been trained to fight flying creatures",
   "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
   "Double Down": "Double permanent E-Kat acquisition.",
   "Enduring Mind": "You are trained to resist mental damage. whenever you would suffer ability damage to a mental ability score, reduce that damage by 2 (to a minimum of 0). ability damage you deal to yourself (such as from one of your feats or powers) is not reduced in this fashion.",

@@ -1,11 +1,11 @@
 {
   "_readme": [
-    "Mechanical effects for the feats a BONDED CREATURE can take -- the pool in",
-    "animal_companion.json['feats']. Separate from feat_changes.json ON PURPOSE: the pf1 compendium",
-    "already automates 12 of these (Toughness -> mhp, Dodge -> ac, Iron Will -> will, ...), and a PC",
-    "keeps its compendium item's changes, so adding them to the shared file would double-apply on",
-    "every PC sheet. A companion never keeps them -- createCompanions.js strips system.changes per",
-    "spec section 8 D14 -- so the backend must own the arithmetic instead, and owns it here.",
+    "Mechanical effects for the feats a BONDED CREATURE can take. Separate from",
+    "feat_changes.json ON PURPOSE: the pf1 compendium already automates some of them (Toughness -> mhp,",
+    "Dodge -> ac, Iron Will -> will, ...), and a PC keeps its compendium item's changes, so adding",
+    "them to the shared file would double-apply on every PC sheet. A companion never keeps",
+    "them -- createCompanions.js strips system.changes per spec section 8 D14 -- so the backend must",
+    "own the arithmetic instead, and owns it here.",
     "",
     "SHAPE: {feat name: {changes: [...], contextNotes: [...], unapplied: [...]}}, the feat_changes.json",
     "house shape plus `unapplied`. Names are data/feats.csv spelling (the prerequisite and feat-tax",
@@ -22,7 +22,14 @@
     "",
     "`unapplied` is the D12 holdback discipline: an effect that is real but that this stat block",
     "cannot express (a die-size step, a choice the generator never made, a per-attack bonus on a",
-    "multi-attack routine). It is REPORTED on the creature, never silently discarded."
+    "multi-attack routine). It is REPORTED on the creature, never silently discarded.",
+    "",
+    "WHAT MUST BE HERE, since the 29-name allowlist became a derived pool (spec section 8 D14): every",
+    "pool feat whose pf1 COMPENDIUM item carries `changes`. Those are the ones whose numbers vanish",
+    "when the module strips them, and validate_companion_feats.py fails on any that is missing. A pool",
+    "feat the compendium does not automate needs no entry -- most of the ~850 are text, and always",
+    "were. `bonusFeats` does not count: it is a feat SLOT the compendium hangs on class bonus feats",
+    "(Deflect Arrows, Stunning Fist), and a creature's slot count comes off the chassis table."
   ],
 
   "Acrobatic": {
@@ -60,6 +67,14 @@
       {"text": "Blind-Fight: reroll a miss chance from concealment once per attack, and an invisible attacker gains no bonus to hit.", "target": "attack"},
       {"text": "Blind-Fight: no loss of Dexterity to AC from an unseen attacker, and full speed while blinded.", "target": "ac"}
     ]
+  },
+
+  "Combat Expertise": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Combat Expertise: as a standard action, trade up to -1 per 4 BAB on melee attacks for the same bonus to dodge AC until the start of your next turn.", "target": "attack"}
+    ],
+    "unapplied": ["Combat Expertise: a per-round trade of attack for dodge AC. A stat block holds one number per line and cannot hold a choice made each round, so neither half is folded -- the PC sheet models it as a default-off toggle for the same reason."]
   },
 
   "Combat Reflexes": {
@@ -247,5 +262,108 @@
       {"text": "Weapon Focus: +1 on attack rolls with one chosen natural attack.", "target": "attack"}
     ],
     "unapplied": ["Weapon Focus: +1 on ONE chosen natural attack; the generator names no attack, and adding it to every line of a multi-attack routine would overstate it."]
+  },
+
+  "Alertness": {
+    "changes": [
+      {"formula": "2", "target": "skill.per", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.sen", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Alertness: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Animal Affinity": {
+    "changes": [
+      {"formula": "2", "target": "skill.han", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.rid", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Animal Affinity: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Deceitful": {
+    "changes": [
+      {"formula": "2", "target": "skill.blf", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.dis", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Deceitful: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Deft Hands": {
+    "changes": [
+      {"formula": "2", "target": "skill.dev", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.slt", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Deft Hands: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Persuasive": {
+    "changes": [
+      {"formula": "2", "target": "skill.dip", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.int", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Persuasive: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Self-Sufficient": {
+    "changes": [
+      {"formula": "2", "target": "skill.hea", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "2", "target": "skill.sur", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": [
+      {"text": "Self-Sufficient: the bonus rises to +4 once the creature has 10 ranks in that skill.", "target": "skills"}
+    ]
+  },
+
+  "Uncanny Alertness": {
+    "changes": [
+      {"formula": "1", "target": "skill.per", "type": "untyped", "operator": "add", "priority": 0},
+      {"formula": "1", "target": "skill.sen", "type": "untyped", "operator": "add", "priority": 0}
+    ],
+    "contextNotes": []
+  },
+
+  "Critical Focus": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Critical Focus: +4 circumstance bonus on rolls to confirm a critical hit. The fold has no critConfirm target, so the sheet carries this as text.", "target": "attacks"}
+    ]
+  },
+
+  "Defensive Combat Training": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Defensive Combat Training: the creature's CMD is figured from its total Hit Dice instead of its base attack bonus. The fold's mini-language has no BAB token, so the difference is not applied to the printed CMD.", "target": "misc"}
+    ]
+  },
+
+  "Fleet": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Fleet: +5 ft. base speed while in light or no armour. Conditional on what the creature is wearing, so it is not folded into the printed speed.", "target": "misc"}
+    ]
+  },
+
+  "Shield Focus": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Shield Focus: +1 shield AC while actually using a shield.", "target": "ac"}
+    ]
+  },
+
+  "Greater Shield Focus": {
+    "changes": [],
+    "contextNotes": [
+      {"text": "Greater Shield Focus: a further +1 shield AC while actually using a shield.", "target": "ac"}
+    ]
   }
 }
