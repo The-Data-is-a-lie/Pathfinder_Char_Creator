@@ -349,7 +349,10 @@ spells.csv, traits.csv, class_ability.csv.
 ## `Backend/utils/class_func/` module index (grep the function, not the file)
 
 feats.py (feat selection + `bonus_searcher`, `no_prereq_loop` consumers) · generic_func.py
-(all generic choosers) · class_abilities.py (fixed per-level abilities + descriptions) ·
+(all generic choosers; **`prereq_part_satisfied` is the one owner of "is this prerequisite
+fragment met"** — `no_prereq_loop` and `feat_tax._resolve_chain` both call it, and an `A or B`
+fragment passes on any branch. `FILTER_WORDS` beside it is the auto-satisfied list, module-level so
+the analysis scripts gate on the same words the runtime does) · class_abilities.py (fixed per-level abilities + descriptions) ·
 spells.py / adding_bonus_spells.py · stats.py · hp_rolls.py · level_and_bab.py ·
 skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py (**gear legality lives here**:
 `armor_chooser` / `_legal_band` / `armor_allowlist` — heaviest band, multiclass union of bands and
@@ -428,7 +431,7 @@ Backend/scripts/
 | the curated buff list the spell chooser weights and the metric scores | `power_adders.json::spell_buffs`; reader on the generator side: `power_role.buff_spell_names` |
 | buffed defense (never in the parity-locked base axes) | `profile_for` diagnostics `ac_buffed` / `saves_buffed_bonus` |
 | **the `ac_combat` axis** (fight-state AC: posture + stance + class AC + styles + wild shape + buffs; benchmarked vs the same CR `ac` column) and the raw `cmd` axis | `power_metric._combat_defense`; tables in `power_adders.json::posture` / `::stance_ac` / `::ac_class` / `::wild_shape` |
-| the or-clause prereq relaxation and the half-purse ladder cap (both OPTIMIZED-ONLY) | `generic_func.no_prereq_loop` (role-gated branch) · `item_and_price.ladder_purchases` |
+| the half-purse ladder cap (OPTIMIZED-ONLY) | `item_and_price.ladder_purchases` |
 | the `dr` axis (raw-only, no CR column; curated class DR + held-text harvest — never `class_ability_desc`, which is not level-gated) | `power_metric.damage_reduction`, table in `power_adders.json::dr` |
 | feat allowlist, structural rules, nova/dr tables, assumptions, blind list | `Backend/json/power_adders.json` |
 | config gate (names/vocabularies/table resolve) | `Backend/scripts/gates/validate_power_metric.py` |
