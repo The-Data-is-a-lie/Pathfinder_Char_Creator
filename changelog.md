@@ -19,6 +19,28 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **A feature can now be dragged into a category the character has none of** *(sibling repo: the
+  standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
+  sheet and using the move dropdown, because a drag could only land in a list already on screen —
+  and a list with nothing in it was never rendered. Every group is built now, empty ones included,
+  as the drop target that takes the character's first Sphere Feat or Flaw; they stay invisible until
+  a drag is in flight, so a resting sheet does not grow ten empty labels. The drop also lands *where
+  you aimed it*: `moveToGroup` takes an insert index, where the dialog's dropdown still appends —
+  a gesture that ignored its own target would be worse than the dialog it shortcuts.
+  *The decision:* class abilities and profession abilities became two drag groups rather than one
+  guarded list. They are genuinely different shapes — `class_ability` holds `"name_class"` strings,
+  `profession_ability_items` holds objects with their own changes and uses — and `moveToGroup`
+  refuses to move the latter, so separate groups make a cross-drop impossible by construction.
+  *Rejected:* one shared list with a guard, which is what shipped before and is exactly why
+  reordering was dead on that card — the binding only attached when `class_ability.length` happened
+  to equal the combined row count, so any character with a profession ability (the shipped demo
+  included) silently lost drag for the whole card.
+- **The Mythic band's chip now names the tier** *(sibling repo: the web sheet, 2026-09-07)*.
+  `mythic.tier` and `mythic.path_display` ride on every mythic payload and nothing read either, so
+  the tier was implied by the highest "· tier N" stamp below — which reads a tier-8 character as a 6
+  when that is where its highest pick landed, while Amazing Initiative's text ("equal to your mythic
+  tier") names a number the sheet never printed. Now "Mythic 8 (Champion)", falling back to the bare
+  chip on a payload that carries neither field.
 - **A mythic character now states the decisions that produced it, not just their results**
   (2026-08-30). The band has always listed what the character *has* — a flaw here, a boon there,
   path abilities in a row — and never what was *decided* to get there. The `Mythic` chassis entry
@@ -227,6 +249,22 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **The web sheet moved under you on every repaint and every drag** *(sibling repo: the web sheet,
+  `scripts/sheet.js`, `scripts/ui.js`, 2026-09-07)*. Three separate causes, one symptom. A repaint —
+  a drop, an inline edit, a checkbox — rebuilds every pane, and the *document* is the scroller, so a
+  scroll position read while the tree is half-built clamps against a document momentarily a few
+  hundred px tall and is lost; the offset is now restored synchronously and again next frame, once
+  late layout (the portrait, wrapped tables) has settled. Starting a drag revealed the empty-group
+  strips and injected layout *above* the dragged row, so the page lurched under a stationary
+  finger; the row is measured across the change and the scroll given back what the reveal took.
+  Edge auto-scroll was 16px per *frame* — ~960px/s at 60Hz, ~2300px/s at 144Hz, the same gesture at
+  a speed that depended on the monitor — and is now 500px/s against the frame delta, capped at 50ms
+  so a hitched frame cannot teleport the page. *Deliberately exempt:* picking a different character
+  from the roster still jumps to the top, because that is a new sheet and not a repaint of this one.
+- **One filter pill on the Features tab hid all the others** *(sibling repo: the web sheet,
+  2026-09-07)*. The pill buttons carry the same `data-fgroup` attribute as the groups they filter,
+  and the selector that hid the groups matched the buttons too — leaving no way to select a second
+  group and no way back except the single pill still on screen. Scoped to `.feature-group[…]`.
 - **The region-name drift check had stopped reading the Foundry module** (`validate_name_data.py`,
   2026-08-31). The gate asserts that every region label a client offers resolves to a real region —
   it exists because the module once sent "Grundykin Damplands", which matched no key, and an
