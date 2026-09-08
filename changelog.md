@@ -209,6 +209,23 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   carries (the feat, the trait, the talent), so it needs no request flag and an organic RAW
   two-weapon character scores its TWD honestly too.
 
+### Changed
+- **The Foundry module's DEV notices now speak once per session, not once per character**
+  (`scripts/generator-launch.js`, 2026-09-02). Each enabled dev toggle — local backend, forced luck
+  direction, optimized builds, forced mythic — posted a blue notification on **every** generation,
+  so a GM testing a dozen characters read the same four banners a dozen times. That is worse than
+  silence: the notices exist so an enabled toggle is impossible to forget, and a banner you see on
+  every click is one you learn to read past. They are now deduplicated against the **finished
+  message text** for the life of the page.
+  Keying on the message rather than on the setting is the decision: a toggle that *changes* value
+  speaks again on its own — "tier 3" after "tier 7", the hosted-fallback line after the local
+  backend went down — while an unchanged one stays quiet. Rejected alternatives: persisting
+  "already shown" in a client setting (a reload is a fresh session and *should* re-warn you once
+  that generation is not running stock — persisting it means forgetting forever that optimized
+  mode is on), and keying on the setting name (a changed tier or a backend that died mid-session
+  would then go unannounced). The non-dev "contacting the backend…" notice is untouched: it is
+  per-run progress feedback for a request that can take a minute, not a standing warning.
+
 ### Fixed
 - **The region-name drift check had stopped reading the Foundry module** (`validate_name_data.py`,
   2026-08-31). The gate asserts that every region label a client offers resolves to a real region —
