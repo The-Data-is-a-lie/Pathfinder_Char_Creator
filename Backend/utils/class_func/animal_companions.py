@@ -61,23 +61,41 @@ GEAR_SOURCE_V1 = ('not modelled in v1; when added, funded from character.gold '
 # reusing it would make every companion match its master 100% of the time.
 SEXES = ('Male', 'Female')
 
-# Prerequisite phrases a bonded character satisfies, registered so feats gated on owning a
-# companion (Boon Companion) become reachable. Kept as a tuple so the feat parser's disjunction
-# split and a verbatim match both work.
-BONDED_CREATURE_PREREQS = (
-    'animal companion or familiar class feature',
-    'animal companion class feature',
-    'animal companion',
-)
+# Prerequisite phrases a bonded character satisfies, registered so feats gated on owning a creature
+# (Boon Companion, and the Animal Ally / Evolved Familiar chains) become reachable. Keyed by the
+# entry `type` the resolver writes, because the phrases are NOT interchangeable: a divine-bond mount
+# runs on the animal-companion rules and takes the companion phrases, while an eidolon is neither an
+# animal companion nor a familiar and registers nothing at all.
+BOND_PREREQS = {
+    'companion': ('animal companion', 'animal companion class feature'),
+    'mount':     ('animal companion', 'animal companion class feature'),
+    'familiar':  ('familiar', 'familiar class feature'),
+}
+
+# Registered whenever any of the above is held. generic_func.prereq_part_satisfied splits this on
+# " or " into 'animal companion' / 'familiar class feature' -- "class feature" attaches to the
+# SECOND branch only, which is why the familiar row above carries its own copy of it. The whole
+# phrase is registered as well, so a verbatim match still works if the split is ever narrowed.
+BOND_PREREQS_EITHER = ('animal companion or familiar class feature',)
 
 # The companion species ladder, on its own draw (see 3 above).
 SPECIES_TIERS = ((80, 'normal'), (90, 'plant'), (100, 'vermin'))
 
 
-def register_bonded_creature_prereqs(character):
-    """Teach the feat/talent prerequisite pool that this character has a bonded creature."""
-    if getattr(character, 'chooseable', None) is not None:
-        character.chooseable.update(BONDED_CREATURE_PREREQS)
+def register_bonded_creature_prereqs(character, types=()):
+    """Teach the feat/talent prerequisite pool which bonded creatures this character actually has.
+
+    `types` are the entry `type` values that produced a real creature. A type this table does not
+    know registers nothing, which is the eidolon's case and is deliberate.
+    """
+    if getattr(character, 'chooseable', None) is None:
+        return
+    phrases = set()
+    for kind in types:
+        phrases.update(BOND_PREREQS.get(kind, ()))
+    if phrases:
+        phrases.update(BOND_PREREQS_EITHER)
+    character.chooseable.update(phrases)
 
 
 def _rows(character):
@@ -306,9 +324,15 @@ def resolve_bonded_creatures(character):
     # AFTER the stack: the evolution pool is read at the creature's final effective level.
     spend_eidolon_evolutions(character)
 
+    # Prerequisites: every type that produced a real creature, not just companions. Boon Companion
+    # names "an animal companion or familiar", so a wizard's familiar and a paladin's mount qualify
+    # as much as a druid's wolf -- only companions were registered until 2026-09-08, which left the
+    # feat unreachable for every arcane caster in the game. An absence entry (`species: null`)
+    # registers nothing: a druid who took the domain instead has no creature to boon.
+    register_bonded_creature_prereqs(character, {e['type'] for e in entries if e['species']})
+
     companions = [e for e in entries if e['type'] == 'companion' and e['species']]
     if companions:
-        register_bonded_creature_prereqs(character)
         first = companions[0]
         # Back-compat: the existing payload and the `companion` flag read these.
         character.chosen_animal = first['species']

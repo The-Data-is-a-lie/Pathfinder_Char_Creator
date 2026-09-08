@@ -286,7 +286,14 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     - **It must run after the archetype pick and the sorcerer bloodline**, which is why the whole
       domain/companion block sits below the bloodline choosers in `main_test.py` rather than where
       `animal_chooser` used to be. Moving it back breaks archetype effects and Arcane-bloodline
-      familiars.
+      familiars. It must also run **after `chooseable_list()`** and before feat selection, which it
+      does — the registration below writes into a set that `chooseable_list` would otherwise reset.
+    - **A granted creature registers its own feat prerequisites.** `BOND_PREREQS` maps the entry
+      `type` to the phrases it puts in `character.chooseable` (mount takes the animal-companion
+      phrases, eidolon takes none, an absence entry takes none), which is what makes Boon Companion
+      reachable. A class-feature key cannot do this job: `nature bond` is present whether the druid
+      took the companion or the domain. Gated by `scripts/gates/validate_bond_prereqs.py`;
+      `build/sweep_disjunctive_prereqs.py` measures the wider prerequisite population.
     - The `summoner` row's `species_note` says its pool is `eidolon_base_forms.json` rather than an
       `animal_choices` tier, because the eidolon section below reads it directly.
   - **Familiars (2026-08-13)**: `familiar_choices.json` (the ten Core Rulebook species, shaped like
