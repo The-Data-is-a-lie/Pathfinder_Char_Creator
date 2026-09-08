@@ -420,20 +420,186 @@ def mythic_ability_bumps(character, tier):
     return bumps
 
 
-def record_base_abilities(character, chassis):
-    """The base tier abilities join class features (bucket 'Mythic Abilities', owner mythic,
-    tier stamps) -- automatic grants, not picks, so the bucket has no schedule row."""
+# Within one tier the roster orders by what the pick IS, not alphabetically by its label: the path
+# feature is the tier's headline, and the tradition reads as a transaction -- what was paid, then
+# what it bought -- so flaws sit above boons. `Mythic flaw` is the drawbacks' name on both sheets
+# already (the module tags them `(Mythic Flaw)`); the backend data calls the section `drawbacks`.
+_ROSTER_RANK = {'Path feature': 0, 'Path ability': 1, 'Mythic flaw': 2, 'Mythic boon': 3,
+                'Mythic quality': 4, 'Mythic feat': 5}
+_TRADITION_KINDS = {'Drawback': 'Mythic flaw', 'Boon': 'Mythic boon',
+                    'Quality': 'Mythic quality'}
+
+
+def _tradition_entry_name(prefix, item):
+    """The band row's display name for one tradition item. Shared by record_tradition and the
+    ledger below so the two cannot drift: a granting boon is named for what it GRANTED, not for
+    the generic promise that bought it (the 2026-08-29 fold), and a ledger line has to point at
+    the row a reader can actually see."""
+    grants = item.get('grants')
+    name = grants['name'] if grants else item['name']
+    return f"{prefix}: {name}" if prefix else name
+
+
+def _tradition_ledger_html(tradition):
+    """The flaws-versus-boons trade, stated. The band carries each row's rules text; this carries
+    the ARITHMETIC, which no reader could recover from the rows -- how many drawbacks were taken
+    and what each one bought. A tradition-free character says so rather than going quiet: 'none'
+    is a roll outcome (the counts decay toward zero), not a missing feature."""
+    if not tradition:
+        return ('<p><strong>Tradition.</strong> None rolled -- no drawbacks taken, so nothing '
+                'was bought.</p>')
+    units = len(tradition['drawbacks'])
+    bought = []
+    if tradition['boons']:
+        count = len(tradition['boons'])
+        bought.append(f"{count} boon" + ('s' if count != 1 else ''))
+    if tradition['extra_mythic_power']:
+        bought.append(f"+{tradition['extra_mythic_power']} mythic power/day")
+    # A quality is rolled independently of the drawbacks and buys nothing, so a quality-only
+    # tradition is a real outcome -- and "0 drawbacks taken, buying nothing" is a silly way to
+    # say it. Give that case the same sentence the no-tradition case gets.
+    trade = (f"{units} drawback{'s' if units != 1 else ''} taken, buying "
+             + (' and '.join(bought) if bought else 'nothing')
+             if units else 'No drawbacks taken, so nothing was bought')
+    rows = [f"<p><strong>Tradition -- the trade.</strong> {trade}.</p>"]
+    if tradition['drawbacks']:
+        rows.append('<p><strong>Drawbacks:</strong> '
+                    + ', '.join(d['name'] for d in tradition['drawbacks']) + '</p>')
+    if tradition['boons']:
+        named = []
+        for boon in tradition['boons']:
+            grants = boon.get('grants')
+            named.append(f"{grants['name']} (via {boon['name']})" if grants else boon['name'])
+        rows.append('<p><strong>Boons:</strong> ' + ', '.join(named) + '</p>')
+    if tradition['quality']:
+        rows.append(f"<p><strong>Quality:</strong> {tradition['quality']['name']}</p>")
+    return ''.join(rows)
+
+
+def _choice_roster_html(character, bumps=None, feats=None):
+    """Every mythic pick, under the tier it was gained at -- a table of contents for the band.
+
+    Read back out of the buckets and stamps just recorded rather than taken as arguments: those
+    side-tables ARE what both renderers draw the band from, so a roster built from them cannot
+    name a row the sheet does not show. Mythic feats are the one exception and are passed in --
+    they leave through the feats list, not through class features."""
     features = character.data_dict['class features']
-    bucket = features.setdefault('Mythic Abilities', {})
+    levels = character.data_dict.get('class feature levels', {})
+    # (tier, rank, order key, kind, name). The order key is the NAME for picks drawn from a pool,
+    # where alphabetical is as good an order as any, and the INSERTION INDEX for tradition rows,
+    # which have a meaningful order already -- the one they were rolled in, and the one the
+    # tradition block below lists them in. Ranks are unique per kind, so the two key types never
+    # meet in a comparison.
+    rows = []
+    for bucket, kind in (('Mythic Path', 'Path feature'),
+                         ('Mythic Path Abilities', 'Path ability')):
+        stamps = levels.get(bucket, {})
+        for name in features.get(bucket, {}):
+            rows.append((stamps.get(name) or 1, _ROSTER_RANK[kind], name, kind, name))
+    # The tradition's picks are decisions too, and the roster is the list of everything taken --
+    # leaving them to the trade summary alone made it the one place a flaw or a boon appeared.
+    # Names are split off the band's own `Drawback:`/`Boon:`/`Quality:` prefixes so the roster
+    # line and the band row are the same string.
+    stamps = levels.get('Mythic Tradition', {})
+    for index, entry in enumerate(features.get('Mythic Tradition', {})):
+        match = re.match(r'^(Drawback|Boon|Quality):\s*(.*)$', entry)
+        kind = _TRADITION_KINDS.get(match.group(1)) if match else 'Mythic boon'
+        name = match.group(2) if match else entry
+        rows.append((stamps.get(entry) or 1, _ROSTER_RANK[kind], index, kind, name))
+    for grant in (feats or []):
+        rows.append((grant.get('tier') or 1, _ROSTER_RANK['Mythic feat'],
+                     grant['name'], 'Mythic feat', grant['name']))
+    rows.sort(key=lambda row: row[:3])
+    html = [f"<p><strong>Tier {t} -- {kind}.</strong> {name}</p>"
+            for t, _rank, _order, kind, name in rows]
+    if bumps:
+        html.append('<p><strong>Even-tier ability increases.</strong> '
+                    + ', '.join(f"+{v} {k.upper()}" for k, v in sorted(bumps.items()))
+                    + '</p>')
+    if not html:
+        html.append('<p>Nothing chosen at this tier -- every grant so far is automatic.</p>')
+    return ''.join(html)
+
+
+def record_mythic_chassis(character, chassis, tier, path_key, bumps=None, tradition=None,
+                          feats=None):
+    """ONE entry (bucket 'Mythic', owner mythic) carrying everything a mythic character HAS by
+    virtue of being mythic: the tier-derived numbers, the grant schedule, and the universal
+    abilities' full text.
+
+    Daniel's ruling (2026-08-29): generic "how this works" text is not a class feature. The band
+    below this entry carries only what the character CHOSE or was DEALT. This replaced two kinds
+    of noise on the Foundry sheet -- a synthesized path row restating a schedule the pf1 mythic
+    class item already encodes (it carries the tier as its level), and nine 'Mythic Abilities'
+    rows that every mythic character of this tier holds identically.
+
+    Deliberately UNSTAMPED: no _record_choice_level call. The chassis is not gained at a tier, and
+    both renderers key their tier line off the stamp's presence -- the module only prints "Gained
+    at mythic tier N" when the level is finite, and the web sheet falls back to a bare `Mythic`
+    chip. The tier still reads off `mythic.tier`, which drives that chip.
+
+    Nothing is lost from the payload: chassis['base_abilities'] still ships on the `mythic` block
+    whether or not it reaches class features."""
+    features = character.data_dict['class features']
+    display = path_ability_data()[path_key]['display']
+
+    numbers = [f"Power pool {chassis['power_pool']}/day", f"surge {chassis['surge_die']}"]
+    if chassis['amazing_initiative_bonus']:
+        numbers.append(f"+{chassis['amazing_initiative_bonus']} on initiative checks")
+    if chassis['bonus_hp']:
+        numbers.append(f"+{chassis['bonus_hp']} bonus HP")
+    if bumps:
+        numbers.append(', '.join(f"+{v} {k.upper()}" for k, v in sorted(bumps.items()))
+                       + ' from the even-tier increases')
+    summary = (f"Mythic path {display}, tier {tier}. " + ', '.join(numbers) + ". "
+               "One path ability per tier; mythic feats at tiers 1/3/5/7/9.")
+
+    # An HTML string rather than a nested dict on purpose. Both renderers recurse into nested
+    # values, but each title-cases the keys on the way (`Hard To Kill`) -- mangling ability names
+    # that are RAW nouns. A pre-formatted string passes through both untouched.
+    rows = []
     for ability in chassis['base_abilities']:
         text = ability['description']
         if ability['name'] == 'Surge':
             text = f"Current surge die: {chassis['surge_die']}. " + text
         if ability['name'] == 'Mythic Power':
             text = f"Current pool: {chassis['power_pool']}/day. " + text
-        bucket[ability['name']] = {'benefit': text}
-        _record_choice_level(character, 'Mythic Abilities', ability['name'], ability['tier'])
-    record_bucket_owner(character, 'Mythic Abilities', 'mythic')
+        rows.append(f"<p><strong>Tier {ability['tier']} — {ability['name']}.</strong> {text}</p>")
+
+    # The LEDGER (Daniel, 2026-08-30): the band has always stated what the character HAS and never
+    # what was DECIDED to get there -- a flaw here and a boon there, with the trade between them
+    # left to be inferred. Key order is the reading order: what you are, what you picked, what you
+    # traded for it, then the rules every mythic character of this tier shares.
+    roster = _choice_roster_html(character, bumps, feats)
+    trade = _tradition_ledger_html(tradition)
+    features['Mythic'] = {f"{display}, Mythic Tier {tier}": {
+        'benefit': summary,
+        'choices': roster,
+        'tradition': trade,
+        'universal abilities': ''.join(rows),
+    }}
+    # The chassis is computed LAST (it needs the tradition's +MP/day and the ability bumps), so a
+    # plain insert would land it after the buckets it explains. That reads fine on the Foundry
+    # sheet, which sorts the band by its own ORDER array, and wrong on the web sheet, which walks
+    # class_features in insertion order -- the explainer would trail its own subject matter on one
+    # renderer and lead on the other. Move it to sit immediately before the first mythic bucket.
+    # Rebuilt IN PLACE rather than rebound: other phases hold this dict by reference.
+    first = next((k for k in features if k != 'Mythic' and k.startswith('Mythic')), None)
+    if first:
+        ordered = {}
+        for key in list(features):
+            if key == 'Mythic':
+                continue
+            if key == first:
+                ordered['Mythic'] = features['Mythic']
+            ordered[key] = features[key]
+        features.clear()
+        features.update(ordered)
+    record_bucket_owner(character, 'Mythic', 'mythic')
+    # Handed back so the payload can carry the same string: build/classes.js puts it on the pf1
+    # mythic class item, a different surface from the feature band, and must not re-derive it --
+    # two derivations of one ledger is how the sheet ends up disagreeing with itself.
+    return roster + trade
 
 
 def spell_annotations(character):
@@ -622,14 +788,23 @@ def record_tradition(character, tradition):
     bucket = features.setdefault('Mythic Tradition', {})
 
     def _add(prefix, item):
-        entry_name = f"{prefix}: {item['name']}" if prefix else item['name']
-        bucket[entry_name] = {'benefit': item['description']}
-        _record_choice_level(character, 'Mythic Tradition', entry_name, 1)
+        # ONE row per boon, naming what the character actually GOT. A granting boon used to ship
+        # both its own generic "...selected by the GM" promise AND the resolved answer beside it
+        # ("Mythic Exemplar" next to "Mythic Exemplar → Mythic Sustenance"), which read as a
+        # duplicate on the Foundry sheet. The module has assumed this fold since its first mythic
+        # commit -- its class-features.js has carried a branch labelled LEGACY for the arrow rows
+        # the backend never stopped emitting.
+        #
+        # The PREFIX is load-bearing and survives the fold: the module's tag comes off a
+        # ^(Drawback|Boon|Quality): regex, and without it the row rides a silent fallback.
+        # A boon with no grant is unchanged -- Mythic Exemplar with no eligible 1st-tier ability
+        # left keeps its generic row, which is the honest record of an unresolved boon.
         grants = item.get('grants')
-        if grants:
-            grant_name = f"{item['name']} → {grants['name']}"
-            bucket[grant_name] = {'benefit': f"({grants['via']}) {grants['description']}"}
-            _record_choice_level(character, 'Mythic Tradition', grant_name, 1)
+        benefit = (f"(via {grants['via']}) {grants['description']}" if grants
+                   else item['description'])
+        entry_name = _tradition_entry_name(prefix, item)
+        bucket[entry_name] = {'benefit': benefit}
+        _record_choice_level(character, 'Mythic Tradition', entry_name, 1)
 
     for drawback in tradition['drawbacks']:
         _add('Drawback', drawback)
@@ -660,9 +835,10 @@ def record_mythic_choices(character, path_key, feature_choice, abilities, tier):
     # (the sorcerer-bloodline precedent) -- a hardcoded 1 here would orphan the row.
     single = levels_for(character, 'mythic', 'Mythic Path', tier, schedule_attr='mythic_schedule')
     path_stamp = single[0] if single else 1
-    blurb = f"Mythic path ({display}); one path ability per tier, mythic feats at tiers 1/3/5/7/9."
-    path_bucket[display] = {'benefit': blurb}
-    _record_choice_level(character, 'Mythic Path', display, path_stamp)
+    # No row for the path ITSELF. It used to synthesize one restating the grant schedule, under a
+    # name that shadowed the real pf1 mythic class item build/classes.js appends -- the item that
+    # already carries the path, its flavour text and the tier as its own level. The schedule now
+    # lives once, in the 'Mythic' chassis entry; this bucket holds only picks.
     if feature_choice:
         entry_name = f"{feature_choice['feature']}: {feature_choice['name']}"
         path_bucket[entry_name] = {'benefit': feature_choice['description']}
@@ -671,8 +847,12 @@ def record_mythic_choices(character, path_key, feature_choice, abilities, tier):
     if capstone and tier >= 10:
         path_bucket[capstone['name']] = {'benefit': capstone['description']}
         _record_choice_level(character, 'Mythic Path', capstone['name'], 10)
-    features.setdefault('Mythic Path', {}).update(path_bucket)
-    record_bucket_owner(character, 'Mythic Path', 'mythic')
+    # Guarded because the bucket can now be legitimately empty: with the path's own row gone, a
+    # path whose tier-1 feature is a plain grant and whose capstone is out of reach contributes
+    # nothing, and an owner entry pointing at an empty bucket is the shape both renderers skip.
+    if path_bucket:
+        features.setdefault('Mythic Path', {}).update(path_bucket)
+        record_bucket_owner(character, 'Mythic Path', 'mythic')
 
     if abilities:
         bucket = features.setdefault('Mythic Path Abilities', {})

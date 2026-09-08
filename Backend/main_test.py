@@ -544,7 +544,13 @@ def phase_mythic_abilities(character, pw, ft):
 	chassis = mythic.mythic_chassis(character, tier, path_key, extra_power)
 	character.Total_HP = (getattr(character, 'Total_HP', 0) or 0) + chassis['bonus_hp']
 	character.mythic_ability_bumps = mythic.mythic_ability_bumps(character, tier)
-	mythic.record_base_abilities(character, chassis)
+	# The tradition and the granted feats are handed in so the chassis entry can state the trade
+	# and the pick roster; both are already resolved above, and the chassis is the last mythic
+	# writer, which is what makes it the one place able to see all of it.
+	ledger_html = mythic.record_mythic_chassis(character, chassis, tier, path_key,
+											   character.mythic_ability_bumps,
+											   tradition=tradition,
+											   feats=mythic_feats_granted)
 
 	return PhaseRecord(mythic={
 		'tier': tier,
@@ -560,6 +566,10 @@ def phase_mythic_abilities(character, pw, ft):
 		'path_abilities': abilities,
 		'tradition': tradition,
 		'mythic_feats': mythic_feats_granted,
+		# The rendered ledger, so the Foundry module can put it on the pf1 mythic CLASS item
+		# without re-deriving it from the parts above. Pre-formatted HTML for the same reason
+		# the chassis entry's rows are: both renderers title-case dict keys on the way through.
+		'ledger_html': ledger_html,
 		# Filled at export, once the spell lists have had their final dedupe pass.
 		'spell_annotations': {},
 	})

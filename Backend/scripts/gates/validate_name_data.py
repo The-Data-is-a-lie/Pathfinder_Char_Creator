@@ -84,8 +84,8 @@ FOUNDRY_DATA = os.environ.get(
     'PF_FOUNDRY_DATA',
     os.path.join(os.environ.get('LOCALAPPDATA', os.path.expanduser('~')), 'FoundryVTT', 'Data'))
 WEB_SHEET_DATA_JS = os.path.join(FOUNDRY_DATA, 'Pathfinder-Character-Sheet', 'scripts', 'data.js')
-MODULE_BUTTON_JS = os.path.join(FOUNDRY_DATA, 'modules', 'pf1e_random_char_generator',
-                                'scripts', 'button.js')
+MODULE_DIALOG_JS = os.path.join(FOUNDRY_DATA, 'modules', 'pf1e_random_char_generator',
+                                'scripts', 'generator-launch.js')
 
 # Sentinels a client legitimately offers for "surprise me"; they are not region names.
 SENTINELS = {'', 'random'}
@@ -160,14 +160,19 @@ def web_sheet_regions():
 def module_dialog_regions():
     """The option values of the region <select> in the Foundry module's generate dialog. This is
     the client the original bug was found in -- it sent "Grundykin Damplands" / "Dust Cairn",
-    which matched no key, and an unmatched region silently randomised."""
-    body = read(MODULE_BUTTON_JS)
-    block = _block(body, r'<select id="character-region">(.*?)</select>', 'module button.js')
+    which matched no key, and an unmatched region silently randomised.
+
+    The dialog lives in `generator-launch.js`, not `button.js` -- `button.js` and
+    `button-locations.js` are about where the launch button sits, not what it asks for. Pointing at
+    the old file is how this check spent a while not running at all."""
+    body = read(MODULE_DIALOG_JS)
+    block = _block(body, r'<select id="character-region">(.*?)</select>',
+                   'module generator-launch.js')
     if block is None:
         return []
     values = re.findall(r'<option value="([^"]*)"', block)
     if not values:
-        err('module button.js: the region <select> has no options')
+        err('module generator-launch.js: the region <select> has no options')
     return values
 
 
@@ -177,7 +182,7 @@ def client_region_lists():
     out = []
     for label, path, extract in (
             ('web sheet', WEB_SHEET_DATA_JS, web_sheet_regions),
-            ('Foundry module', MODULE_BUTTON_JS, module_dialog_regions)):
+            ('Foundry module', MODULE_DIALOG_JS, module_dialog_regions)):
         if not os.path.exists(path):
             # NOT folded into `warnings`: those are counted, not printed, and a check that quietly
             # stops running is the failure mode this whole script exists to prevent.

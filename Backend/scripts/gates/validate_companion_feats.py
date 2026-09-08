@@ -5,13 +5,20 @@
 
 Spec section 8, D14/D15. Two independent failure modes live here, and both are silent:
 
-1. A NAME THAT DOES NOT RESOLVE. The pool in `animal_companion.json['feats']` is read by two
-   vocabularies -- `data/feats.csv` (prerequisites and feat tax) and the pf1 compendium (the Foundry
-   item the module clones). The pool used to hold `"armor proficiency (light, medium, and heavy)"`,
-   which is not a feat in either, plus a dozen lowercase spellings. A miss does not raise; the module
-   just builds a bare item and the creature quietly loses the feat's text. Foundry inverts the comma
-   on the three armour proficiencies (`Light Armor Proficiency` / `Armor Proficiency, Light`), so the
-   check tries that inversion exactly as the module does.
+1. A NAME THAT DOES NOT RESOLVE. The pool is read by two vocabularies -- `data/feats.csv`
+   (prerequisites and feat tax) and the MODULE'S OWN feat catalog, `every_feat.json`, which is the
+   `pf1e_random_char_generator.feats` pack and the row a companion's item is built from. The pool
+   used to hold `"armor proficiency (light, medium, and heavy)"`, which is not a feat in either,
+   plus a dozen lowercase spellings. A miss does not raise; the module just builds a bare item and
+   the creature quietly loses the feat's text. Foundry inverts the comma on the three armour
+   proficiencies (`Light Armor Proficiency` / `Armor Proficiency, Light`), so the check tries that
+   inversion exactly as the module does.
+
+   IT MATCHES THE WAY `build/catalog.js` MATCHES, not the way this file's `norm()` does, and that
+   difference is ticket 07's residue. `norm()` strips every non-alphanumeric character, so
+   `"Potent HolySymbol"` and `"Potent Holy Symbol"` are one string to it -- four pool names passed
+   this gate while rendering bare on a real sheet. The renderer lowercases, cuts at the first
+   `" ("`, and compares. Nothing more. So does this now.
 
 2. A CHANGE THAT NEVER LANDS. `companion_feat_changes.json` is the ONLY source of a companion's feat
    arithmetic -- `createCompanions.js` strips `system.changes`, so nothing downstream would notice a
@@ -19,7 +26,7 @@ Spec section 8, D14/D15. Two independent failure modes live here, and both are s
    against a probe stat block here, and a feat that claims a change but moves nothing fails.
 
 It also holds the DOUBLE-APPLY TRIPWIRE that made `companion_feat_changes.json` a separate file in
-the first place: the pf1 compendium already automates 12 of these feats, and a PC keeps its
+the first place: the catalog already automates 12 of these feats, and a PC keeps its
 compendium item's changes. A pool feat carrying numeric `changes` in BOTH that file and the shared
 `feat_changes.json` therefore fails. Mere overlap does not -- three pool feats are text-only in the
 shared file already, which is correct curation, and is reported as a note.
@@ -81,6 +88,34 @@ def inversions(name):
     return [f"{' '.join(words[cut:])}, {' '.join(words[:cut])}" for cut in range(1, len(words))]
 
 
+def catalog_index(path):
+    """`{base key: row}` over the module's `every_feat.json`, built the way `build/catalog.js` does.
+
+    Its rule and nothing looser: lowercase, cut at the first `" ("`, skip `(Mythic)` rows, and the
+    LOWEST source position wins where a key has more than one candidate -- 445 feat keys do, and a
+    plain `Skill Focus` has 39. A gate that normalises harder than the renderer keeps passing names
+    the renderer cannot find, which is exactly what this one did until ticket 07.
+    """
+    index = {}
+    for row in json.loads(path.read_text(encoding="utf-8")):
+        if not isinstance(row, dict):
+            continue
+        name = row.get("name")
+        if not isinstance(name, str) or "(Mythic)" in name:
+            continue
+        index.setdefault(name.split(" (")[0].lower(), row)
+    return index
+
+
+def catalog_row(index, name):
+    """The row the module would resolve `name` to, trying the comma inversion as it does."""
+    for candidate in [name, *inversions(name)]:
+        row = index.get(str(candidate).split(" (")[0].lower())
+        if row is not None:
+            return row
+    return None
+
+
 def probe_stats():
     """A stat block with every field the fold can touch, so a no-op change is detectable."""
     return {
@@ -103,25 +138,27 @@ PROBE_HD = 6
 
 
 def check_names(pool, compendium_path):
-    csv_names = pd.read_csv(FEATS_CSV, sep="|", on_bad_lines="skip")["name"].dropna().astype(str)
-    by_norm = {norm(name) for name in csv_names}
+    # Through the module's own reader, not pandas: `on_bad_lines="skip"` drops the five
+    # disjunction rows, and a gate that cannot see a row cannot gate it.
+    from utils.class_func.companion_feats import _feat_rows
+    by_norm = set(_feat_rows())
     for name in pool:
         if norm(name) not in by_norm:
             fail(f"{name!r} is not a feat in data/feats.csv; prerequisites and feat tax read that "
                  "file, so the pick can never be validated or taxed")
 
     if not compendium_path.exists():
-        notes.append(f"compendium check SKIPPED -- {compendium_path} not present")
+        notes.append(f"catalog check SKIPPED -- {compendium_path} not present")
         return
-    items = json.loads(compendium_path.read_text(encoding="utf-8"))
-    compendium = {norm(item.get("name")) for item in items if isinstance(item, dict)}
+    index = catalog_index(compendium_path)
     for name in pool:
-        if norm(name) in compendium:
-            continue
-        if any(norm(alt) in compendium for alt in inversions(name)):
-            continue
-        fail(f"{name!r} has no pf1 compendium feat under that name or its comma inversion; the "
-             "module would attach a bare item with no rules text")
+        row = catalog_row(index, name)
+        if row is None:
+            fail(f"{name!r} has no every_feat.json row under that name or its comma inversion; the "
+                 "module would attach a bare item with no rules text")
+        elif not str(((row.get("system") or {}).get("description") or {}).get("value") or "").strip():
+            fail(f"{name!r} resolves to an every_feat.json row whose description is EMPTY; the item "
+                 "would carry a name and nothing else, which is a miss by another route")
 
 
 def check_tax_children(pool, allowed, compendium_path):
@@ -137,10 +174,7 @@ def check_tax_children(pool, allowed, compendium_path):
 
     table = pd.read_csv(FEATS_CSV, sep="|", on_bad_lines="skip")["name"].dropna().astype(str)
     csv_norm = {norm(name) for name in table}
-    compendium = set()
-    if compendium_path.exists():
-        items = json.loads(compendium_path.read_text(encoding="utf-8"))
-        compendium = {norm(item.get("name")) for item in items if isinstance(item, dict)}
+    index = catalog_index(compendium_path) if compendium_path.exists() else None
 
     config = json.loads((ROOT / "Backend/json/feat_tax.json").read_text(encoding="utf-8"))
     explicit = {tax_module._norm(k): v for k, v in config.get("feat_tax", {}).items()}
@@ -160,9 +194,11 @@ def check_tax_children(pool, allowed, compendium_path):
         if norm(name) not in csv_norm:
             fail(f"tax_children: {name!r} is not a feat in data/feats.csv")
             continue
-        if compendium and norm(name) not in compendium and not any(
-                norm(alt) in compendium for alt in inversions(name)):
-            fail(f"tax_children: {name!r} has no pf1 compendium feat under that name or its "
+        # A child is not an item of its own, but `featItems` appends its rules text under the
+        # parent that paid for it -- so a child the catalog cannot find is a bundled name and
+        # nothing else.
+        if index is not None and catalog_row(index, name) is None:
+            fail(f"tax_children: {name!r} has no every_feat.json row under that name or its "
                  "comma inversion")
         if norm(name) not in reachable:
             fail(f"tax_children: {name!r} is on no pool feat's derived tax chain, so feat tax can "
@@ -174,14 +210,36 @@ def check_tax_children(pool, allowed, compendium_path):
                  "out, or teach the reader that prerequisite.")
 
 
-def check_coverage(pool, changes):
-    missing = [name for name in pool if name not in changes]
-    orphans = [name for name in changes if name not in pool]
-    for name in missing:
-        fail(f"{name!r} is in the feat pool but has no companion_feat_changes.json entry; a "
-             "companion's feat arithmetic has no other source")
-    for name in orphans:
-        fail(f"{name!r} has companion_feat_changes.json data but is not in the feat pool")
+def check_coverage(pool, changes, compendium_path):
+    """Only a feat whose numbers WOULD OTHERWISE VANISH needs an entry here.
+
+    This used to read pool-subset-of-changes over a 29-name allowlist. The pool is derived now and
+    runs to ~850 names, most of which are text and always were, so demanding an entry for each would
+    be busywork that hides the real invariant. The real one is narrow: `createCompanions.js` strips
+    `system.changes` from every companion item (D14), so a pool feat whose pf1 COMPENDIUM item
+    carries changes loses its arithmetic unless this file re-supplies it. That set is 24 feats.
+    """
+    pool_set = set(pool)
+    for name in sorted(changes):
+        if name not in pool_set:
+            fail(f"{name!r} has companion_feat_changes.json data but is not in the creature feat "
+                 "pool; it is either denied, gated on a body part, or gone from data/feats.csv")
+    if not compendium_path.exists():
+        notes.append(f"coverage check SKIPPED -- {compendium_path} not present")
+        return
+    index = catalog_index(compendium_path)
+    # `bonusFeats` is not arithmetic. The catalog hangs it on feats a class grants as a bonus
+    # feat (Deflect Arrows, Stunning Fist, Throw Anything, Leadership), and a companion's slot count
+    # comes off the chassis table, so nothing is lost when the module strips it.
+    def automated(name):
+        row = catalog_row(index, name)
+        declared = ((row or {}).get("system") or {}).get("changes") or (row or {}).get("changes") or []
+        return any(str(change.get("target")) != "bonusFeats" for change in declared)
+    for name in sorted(pool):
+        if automated(name) and name not in changes:
+            fail(f"{name!r} is automated by the pf1 compendium but has no "
+                 "companion_feat_changes.json entry; the module strips a companion item's changes, "
+                 "so the bonus would reach no sheet at all")
 
 
 def check_no_shared_entry(pool, changes, shared):
@@ -205,6 +263,49 @@ def check_no_shared_entry(pool, changes, shared):
                  "shared file, and a companion from the companion file -- pick one owner")
         else:
             notes.append(f"{name!r} also has a shared feat_changes.json entry (text-only, allowed)")
+
+
+def check_census(rules):
+    """A denylist's one real failure mode is silence. This is what removes it.
+
+    Every `data/feats.csv` row of a creature type must be classified by SOMETHING -- a column the
+    pool reads, one of the three hand-authored lists, or membership of the pool itself. A new feat
+    that lands in the corpus and is absurd on a wolf cannot slip in unnoticed, because nothing here
+    classifies it and this check names it.
+    """
+    from utils.class_func.companion_feats import CREATURE_FEAT_TYPES, _feat_rows, creature_feat_pool
+    widest = {norm(name) for name in creature_feat_pool(has_hands=True, can_speak=True)}
+    classified = widest | set(rules["denied"]) | rules["hands"] | rules["language"]
+    stray = []
+    for key, row in _feat_rows().items():
+        if row.get("type") not in CREATURE_FEAT_TYPES:
+            continue
+        if str(row.get("teamwork") or "0").strip() != "0":
+            continue
+        if str(row.get("racial") or "0").strip() == "1":
+            continue
+        if key not in classified:
+            stray.append(row.get("name"))
+    for name in sorted(stray):
+        fail(f"{name!r} is a creature-type feat that no rule and no list classifies -- put it in "
+             "the pool deliberately, or name it in denied_feats / hands_required / "
+             "language_required")
+
+    # Mythic leaks through the TYPE filter, and only just. 161 `data/feats.csv` rows are sourced
+    # Mythic Adventures; 158 are typed `Mythic` and one `Metamagic`, all of which CREATURE_FEAT_TYPES
+    # already removes -- but two (`Marked For Glory`, `Mythic Companion`) are typed `General` and
+    # reached the pool of a creature that will never have a tier. The type column cannot see them;
+    # the source column can. This is the denylist-behind-a-census pattern rule 3 already uses: the
+    # two names are denied by hand, and a third row typed the same way fails here rather than
+    # arriving on a sheet.
+    mythic = [row.get("name") for key, row in _feat_rows().items()
+              if key in widest and str(row.get("source") or "").strip() == "Mythic Adventures"]
+    for name in sorted(mythic):
+        fail(f"{name!r} is a Mythic Adventures feat in the creature pool -- its data/feats.csv row "
+             "is typed something CREATURE_FEAT_TYPES admits, so the type filter cannot see it. A "
+             "bonded creature has no mythic tier; name it in denied_feats.")
+    notes.append(f"census: {len(widest)} feats in the widest pool, {len(rules['denied'])} denied, "
+                 f"{len(rules['hands'])} gated on hands, {len(rules['language'])} on language")
 
 
 def check_effects(changes):
@@ -249,18 +350,27 @@ def main():
                         help="the module's every_feat.json (skipped when absent)")
     args = parser.parse_args()
 
+    sys.path.insert(0, str(ROOT / "Backend"))
+    from utils.class_func.companion_feats import creature_exclusions, creature_feat_pool
+
     chassis = json.loads(CHASSIS.read_text(encoding="utf-8"))
-    pool = chassis.get("feats") or []
     allowed = chassis.get("tax_children") or []
+    rules = creature_exclusions()
     changes = feat_change_data()
     shared = json.loads(SHARED_CHANGES.read_text(encoding="utf-8"))
 
+    # The widest body there is: an eidolon with arms and a language. Every narrower creature's pool
+    # is a subset of it, so gating this one gates them all.
+    pool = creature_feat_pool(has_hands=True, can_speak=True)
+
     if not pool:
-        fail("animal_companion.json carries no 'feats' pool at all")
+        fail("the derived creature feat pool is empty; an exclusion rule is eating everything")
     if not allowed:
         fail("animal_companion.json carries no 'tax_children' allowlist; without it feat tax hands "
              "a wolf Drunken Brawler and Wand Dancer")
-    for label, names in (("feat pool", pool), ("tax_children", allowed)):
+    for label, names in (("hands_required", chassis.get("hands_required") or []),
+                         ("language_required", chassis.get("language_required") or []),
+                         ("tax_children", allowed)):
         if len(names) != len(set(names)):
             duplicates = sorted({name for name in names if names.count(name) > 1})
             fail(f"duplicate entries in the {label}: {duplicates}")
@@ -269,17 +379,19 @@ def main():
 
     check_names(pool, args.compendium)
     check_tax_children(pool, allowed, args.compendium)
-    check_coverage(pool, changes)
+    check_coverage(pool, changes, args.compendium)
     check_no_shared_entry(pool, changes, shared)
+    check_census(rules)
     check_effects(changes)
 
     folded = sum(1 for effect in changes.values() if effect.get("changes"))
     for note in notes:
         print(f"  note: {note}")
     return REPORT.finish(
-        f"{len(pool)} feats in the pool, {folded} with folded arithmetic, "
+        f"{len(pool)} feats in the widest creature pool, {folded} with folded arithmetic, "
         f"{len(changes) - folded} text-only; {len(allowed)} tax children allowed "
-        f"-- every pool name resolves and every declared effect lands",
+        f"-- every pool name resolves, every declared effect lands, and no creature-type feat "
+        f"is unclassified",
         max_errors=25)
 
 

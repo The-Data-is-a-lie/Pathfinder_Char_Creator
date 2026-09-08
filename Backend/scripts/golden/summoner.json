@@ -132,16 +132,16 @@
     "Eidolon 11"
    ],
    "feat_notes": [
-    "feat pool: 1207 feats from data/feats.csv, 5 taken, prerequisites fail closed",
+    "feat pool: 849 feats after the creature exclusions (hands: True), 5 taken, prerequisites fail closed",
     "no flaws and no feat-tax children by ruling (see eidolon_feats)"
    ],
    "feat_tax_dict": {},
    "feats": [
-    "Step Up",
-    "Prone Slinger",
-    "Opening Volley",
-    "Sure Grasp",
-    "Deceitful"
+    "Run",
+    "Martial Weapon Proficiency",
+    "Improved Unarmed Strike",
+    "Rugged Northerner",
+    "Divine Defiance"
    ],
    "flags": [],
    "flaw_feats": [],
@@ -236,7 +236,13 @@
     "bab": 9,
     "cmb": 14,
     "cmd": 26,
-    "context_notes": [],
+    "context_notes": [
+     {
+      "source": "Run",
+      "target": "effect",
+      "text": "Run: run at 5x normal speed (4x in medium or heavy barding), keep the Dexterity bonus to AC while running, and gain +4 on Acrobatics checks to jump after a running start."
+     }
+    ],
     "flat_footed_ac": 23,
     "hd": 9,
     "hit_die": "d10",
