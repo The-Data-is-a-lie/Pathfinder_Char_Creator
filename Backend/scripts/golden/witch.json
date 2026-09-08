@@ -636,18 +636,18 @@
  "feat_changes_dict": {},
  "feat_conditionals_dict": {},
  "feats": [
-  "Improved Counterspell",
-  "Fleet",
+  "Heighten Spell",
+  "First Aid Training",
   "Acrobatic",
-  "Shadowmorph Focus",
+  "Secret Backup Plan",
   "Black Market Dealings",
-  "Disruptive Spell",
   "Dispel Synergy",
+  "Discipline Mastery",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Improved Counterspell": [
-   "parry spell"
+  "Heighten Spell": [
+   "preferred spell"
   ]
  },
  "flavor_feat_tax_dict": {},
@@ -685,9 +685,9 @@
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
   "Biomech Pilot",
-  "Spell Bluff"
+  "Silent Spell"
  ],
- "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Hard to Fool, Spell Hex\n- Training: An excellent trainer who taught them Duck and Cover, Demonic Obedience, Dragoncrafting\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Unkempt Brown\n- Eyes: Amber\n- Build: Braided Hair",
+ "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Half-Hearted Charge, Spell Bluff\n- Training: An excellent trainer who taught them Dragoncrafting, Deft Hands, Disruptive Spell\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Unkempt Brown\n- Eyes: Amber\n- Build: Braided Hair",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 9101,
@@ -708,19 +708,19 @@
   "Animal Affinity": "You are skilled at working with animals and mounts",
   "Biomech Pilot": "Your mech incorporates many biological parts, offering it versatility not seen in other machines. The following mech enhancements can be selected by a mech pilot with this feat in addition to regular mech enhancements Special If you possess this feat as well as the ability to craft constructs, you may craft constructs with the biomech template and create mechs that use the mech enhancements listed above. your mech is at least partially biological, if not completely so, and as a result has access to many additional abilities. such entities are known as biomechs and possess the biomech template.",
   "Black Market Dealings": "You walk dark alleys and trade in secrets. in addition, you can use the diplomacy skill to locate merchants who have deeper pockets in a black market or settlement. if you are looking inside a black market, the dc is equal to the black markets access dc. if you are looking more widely in a settlement, use the black markets access dc + 5 (if a settlement has no black market, the dc is 30; pcs can apply the settlements crime modifier to their checks). if successful, you can treat the black market or settlement as one step larger for the purposes of base value, items available, and purchase limit. if the settlement was already a metropolis, nearly all minor and medium magic items are for sale, as well as 3d8 major magic items; the base value is 32,000 gp; and the purchase limit is 200,000 gp. if the black market was already an underworld, nearly all minor and medium magic items are for sale, as well as 4d8 major magic items; the base value is 64,000 gp; and the purchase limit is 300,000 gp. this does not stack with other ways to increase the effective size of a black market or settlement (such as the black market connections rogue talent). you can attempt this check only once per week.",
-  "Craft Wondrous Item": "You can create wondrous items, a type of magic item",
-  "Demonic Obedience": "You physically defile yourself, others, or holy objects in order to prove your blasphemous devotion to a demon lord and gain special boons",
+  "Craft Wand": "You can create magic wands",
+  "Deft Hands": "You have exceptional manual dexterity",
+  "Discipline Mastery": "Youve learned to use certain skills in reference to your martial ability with practiced ease. you may take 10 on skill checks made with any associated skill of a discipline you possess (with 8 or more ranks) without increasing the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so.",
   "Dispel Synergy": "By tearing away an opponent's magical defenses, you leave your enemy vulnerable, making it difficult for him to resist your spells",
   "Disruptive Spell": "Your magical energies cling to enemies, interfering with their spellcasting",
   "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
-  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
-  "Fleet": "You are faster than most",
-  "Hard to Fool": "You treat strange sights with healthy skepticism. Upon reaching 10 ranks in Perception, the distance you can see through illusions increases to 20 feet. At 15 ranks in Perception, it increases to 30 feet. Normal You only get a saving throw against many illusion effects if you directly interact with that effect. when you come within 10 feet of an active illusion effect that would require you to interact with it to disbelieve the effect, you automatically get a saving throw (as if you interacted with it). the gm should make your saving throw in secret.",
-  "Improved Counterspell": "You are skilled at countering the spells of others using similar spells",
+  "First Aid Training": "You have been trained to identify and patch up wounds in preparation for more serious treatment. Special If you use an ability score other than Wisdom to determine your bonus on Heal checks, you use that ability score in place of Wisdom for determining the number of temporary hit points the target gains. when you make a heal check to perform first aid on a creature, that creature gains temporary hit points equal to your wisdom modifier plus your ranks in the heal skill. these temporary hit points last for 1 minute or until lost.",
+  "Half-Hearted Charge": "You hedge your bets - charging in but not quite throwing your all into it. when you make a charge, if you miss your attack you do not suffer the penalty to your ac like you normally do. if you hit with any attack made during the charge, you still suffer the penalty. when making a half-hearted charge you may not from the power attack or spirited charge feats.",
+  "Heighten Spell": "You can cast spells as if they were a higher level",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Shadowmorph Focus": "Your shadowmorph spells are more difficult to resist. add +1 to the difficulty class for all saving throws against spells you cast with the shadowmorph descriptor.",
-  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment",
-  "Spell Hex": "You can transform a 1st-level spell into a hex"
+  "Secret Backup Plan": "\"Man, I never thought Id need to use this!\" you may, upon beating the dc to identify a monster by 10 or more, elect to spontaneously re-prepare a spell (or add a new spell to your list of spells known until it is used). you may use this ability a number of times per day equal to 1/2 your character level or 1/2 your intelligence modifier, whichever is greater.",
+  "Silent Spell": "You can cast your spells without making any sound",
+  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment"
  },
  "inherents": {
   "cha": 0,
@@ -1806,13 +1806,9 @@
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Craft Wondrous Item": [
-   "craft construct"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Craft Wondrous Item",
+  "Craft Wand",
   "Additional Traits",
   "Animal Affinity"
  ],
@@ -1832,13 +1828,17 @@
   "(Trainer 2)",
   "(Trainer 2)"
  ],
- "trainer_feat_tax_dict": {},
+ "trainer_feat_tax_dict": {
+  "Deft Hands": [
+   "close call"
+  ]
+ },
  "trainer_feats": [
-  "Hard to Fool",
-  "Spell Hex",
-  "Duck and Cover",
-  "Demonic Obedience",
-  "Dragoncrafting"
+  "Half-Hearted Charge",
+  "Spell Bluff",
+  "Dragoncrafting",
+  "Deft Hands",
+  "Disruptive Spell"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],

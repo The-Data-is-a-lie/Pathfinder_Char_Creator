@@ -697,7 +697,7 @@
   "Sea Legs",
   "Persuasive",
   "Celestial Obedience",
-  "Spell Focus",
+  "Spell Bluff",
   "Martial Training I (Veiled Moon)",
   "Multi Talented",
   "True Calling",
@@ -712,15 +712,11 @@
   ],
   "Persuasive": [
    "rhetorical flourish"
-  ],
-  "Spell Focus": [
-   "greater spell focus",
-   "spell specialization"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Urban Tracking"
+  "Unseen Terror"
  ],
  "flaw": [
   "Motion Sickness"
@@ -740,9 +736,9 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Wand Desperado"
+  "Versatile Spontaneity"
  ],
- "formatted_bio": "Léna Dubois\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 12 Summoner\n- Archetype: Eidolon Master\n- Tactics: Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.\n- Stat Focus: Int\n- Disciplines: Veiled Moon\n- Homeland: Tal-falko\n\nVocation\n- Profession: Crypt-Crawler (rank 15)\n- Profession: Apprentice Smith (rank 12)\n- Profession: Scribe (rank 2)\n- Profession: Animal Nutritionist (rank 3)\n- Known for: Brewing\n- Training: An average trainer who taught them Skilled Driver, Enhance Manifestation\n- Training: An excellent trainer who taught them Collective Recollection, Blighted Critical, Piercing Spell\n- Training: An average trainer who taught them Elemental Focus, Natural Ruler\n- Training: An excellent trainer who taught them Lightning Reflexes, Natural Telekinetic, Wild Talent\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 3 Older Sisters\n\nPersonality\n- Personality: Trusting, Dependable, Devoted, Elegant\n- Mannerisms: Withdraws into oneself, Taps foot, Leans forward\n- Flaws: Motion Sickness\n\nAppearance\n- Hair: Bald Brown\n- Eyes: Grey\n- Build: Protruding Ears",
+ "formatted_bio": "Léna Dubois\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 12 Summoner\n- Archetype: Eidolon Master\n- Tactics: Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.\n- Stat Focus: Int\n- Disciplines: Veiled Moon\n- Homeland: Tal-falko\n\nVocation\n- Profession: Crypt-Crawler (rank 15)\n- Profession: Apprentice Smith (rank 12)\n- Profession: Scribe (rank 2)\n- Profession: Animal Nutritionist (rank 3)\n- Known for: Brewing\n- Training: An average trainer who taught them Skilled Driver, Enhance Manifestation\n- Training: An excellent trainer who taught them Collective Recollection, Blighted Critical, Plague Doctor\n- Training: An average trainer who taught them Elemental Focus, Natural Telekinetic\n- Training: An excellent trainer who taught them Lingering Shadows, Nemesis, Undermine\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 3 Older Sisters\n\nPersonality\n- Personality: Trusting, Dependable, Devoted, Elegant\n- Mannerisms: Withdraws into oneself, Taps foot, Leans forward\n- Flaws: Motion Sickness\n\nAppearance\n- Hair: Bald Brown\n- Eyes: Grey\n- Build: Protruding Ears",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 8555,
@@ -764,25 +760,25 @@
   "Ectoplasmic Spell": "Your spells breach the gulf between dimensions, sending ghostly emanations into the ether",
   "Elemental Focus": "Your spells of a certain element are more difficult to resist",
   "Enhance Manifestation": "You pour additional psychic power into your attacks to assert your superiority in psychic combat When creating an offensive manifestation, you may spend additional MP to extend the duration of a condition you inflict on your foe by a number of rounds equal the amount of additional MP spent. When creating a defensive manifestation, you may increase or reduce a numerical alteration by the amount of additional MP spent. When creating a thought-form creature, increase the max MP limit on all of its augmentations by 2. while engaged in a psychic duel, you may enhance your manifestations by spending additional mp.",
-  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
   "Martial Training I (Veiled Moon)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Veiled Moon)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training III (Veiled Moon)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Veiled Moon)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Natural Ruler": "You have a special talent for ruling a nation, and take to the task with ease",
   "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
+  "Nemesis": "A past enemy seeks your ruin",
   "Persuasive": "You are skilled at swaying attitudes and intimidating others into your way of thinking",
-  "Piercing Spell": "Your studies have helped you develop methods to overcome spell resistance",
+  "Plague Doctor": "You know how to treat disease and prevent its spread if you have successfully treated someone for a disease using the heal skill, you can perform a heal check on healthy individuals to give them a bonus on saving throws against that disease for one month equal to your wisdom modifier. the dc of this heal check is the same as the dc to treat the disease.",
   "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
   "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
-  "Spell Focus": "Choose a school of magic Any spells you cast of that school are more difficult to resist",
+  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Unsanctioned Knowledge": "You have searched though forbidden texts and are privy to powerful but proscribed magic",
-  "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
-  "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch.",
-  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
+  "Undermine": "You and your allies take advantage of shifting terrain to unbalance enemies",
+  "Unknowable Fear": "Your terrifying presence precedes you. other creatures take a 2 penalty on intimidate checks against you, and you can perform the project hostility occult skill unlock even if you can't cast psychic spells. if you can cast psychic spells or have the psychic sensitivity feat, then creatures do not become immune to your project hostility for 24 hours after being targeted with it.",
+  "Unseen Terror": "Creatures are naturally afraid of what they cannot see. Normal You can only make an Intimidate check to demoralize an opponent if it is within 30 feet and can clearly see and hear you. you can make intimidate checks to demoralize a creature even if it cannot see you. you must still influence it in some other way, such as by taunting, making sounds, or using visual effects such as silent image or light from a torch. you gain a +2 bonus on intimidate checks made while in dim light or darkness.",
+  "Versatile Spontaneity": "You made a good name for yourself in the Pathf inder Society in part because you knew how to prepare for the challenges before you, even if your natural magical abilities lend themselves less to preparation and more to spontaneity"
  },
  "inherents": {
   "cha": 0,
@@ -1692,7 +1688,7 @@
  "story_feats": [
   "Mind Trick",
   "Ectoplasmic Spell",
-  "Unsanctioned Knowledge"
+  "Unknowable Fear"
  ],
  "str": 9,
  "teamwork_feat_labels": [],
@@ -1720,9 +1716,6 @@
  "trainer_feat_tax_dict": {
   "Elemental Focus": [
    "greater elemental focus"
-  ],
-  "Lightning Reflexes": [
-   "improved lightning reflexes"
   ]
  },
  "trainer_feats": [
@@ -1730,12 +1723,12 @@
   "Enhance Manifestation",
   "Collective Recollection",
   "Blighted Critical",
-  "Piercing Spell",
+  "Plague Doctor",
   "Elemental Focus",
-  "Natural Ruler",
-  "Lightning Reflexes",
   "Natural Telekinetic",
-  "Wild Talent"
+  "Lingering Shadows",
+  "Nemesis",
+  "Undermine"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],

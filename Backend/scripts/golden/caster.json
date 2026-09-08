@@ -440,12 +440,25 @@
    ],
    "contextNotes": []
   },
-  "Swarm Scatter": {
+  "Storm-Lashed": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "ac",
-     "text": "+1 circumstance bonus to AC for each adjacent ally who also has this feat."
+     "target": "allSavingThrows",
+     "text": "+2 on all saving throws against electrical effects."
+    }
+   ]
+  },
+  "Weather Eye": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+4 on Survival checks made to predict the weather."
+    },
+    {
+     "target": "allSavingThrows",
+     "text": "+1 on saving throws to avoid the effects of extreme weather."
     }
    ]
   }
@@ -454,10 +467,10 @@
  "feats": [
   "Field Repair",
   "Discipline Mastery",
-  "Wild Talent",
+  "Weather Eye",
   "Ancestral Scorn",
-  "Totem Spirit",
-  "Silent Spell",
+  "Torch Handling",
+  "Sickening Spell",
   "Cosmopolitan",
   "Nemesis",
   "Extend Spell",
@@ -502,7 +515,7 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Strong Comeback",
+  "Storm-Lashed",
   "Conviction"
  ],
  "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Javelineer (rank 1)\n- Profession: Page of the Court (rank 9)\n- Profession: Diplomat (rank 10)\n- Profession: Shadow Diabolist (rank 10)\n- Known for: Papermaking\n- Training: An average (Path of War) trainer who taught them Martial Training I (Primal Fury), Martial Training III (Primal Fury)\n- Training: A terrible (Spheres) trainer who taught them Ascetic Control\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Sister\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Straight Blond\n- Eyes: Grey\n- Build: Self-assured",
@@ -539,12 +552,12 @@
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Nemesis": "A past enemy seeks your ruin",
   "Prodigy (Profession (Diplomat), Profession (Shadow Diabolist))": "",
-  "Silent Spell": "You can cast your spells without making any sound",
+  "Sickening Spell": "You can sicken creatures with your spells",
   "Spheres Mentor": "<strong>Spheres funded:</strong> Enhancement (Power)<br><br>Extra Magic Talent<br><br>Ascetic Control (Enhancement)",
-  "Strong Comeback": "You learn quickly from past mistakes",
-  "Swarm Scatter": "You have studied the habits of swarming rats for defensive tactics",
-  "Totem Spirit": "You are mystically tied to your tribe's sacred totem",
-  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
+  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
+  "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
+  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
+  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
  },
  "inherents": {
   "cha": 4,
@@ -1556,7 +1569,7 @@
  "story_feats": [
   "Firesight",
   "Focused Worker",
-  "Swarm Scatter",
+  "Sure Grasp",
   "Prodigy (Profession (Diplomat), Profession (Shadow Diabolist))"
  ],
  "str": 10,

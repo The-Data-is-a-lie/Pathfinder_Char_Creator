@@ -187,7 +187,7 @@
  "class_feats": [
   "Extend the Bulwark",
   "Exploit Schema",
-  "Swap Places"
+  "Sure Grasp"
  ],
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
@@ -307,21 +307,40 @@
   "teamwork": 0,
   "trainer": 9
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Necromantic Affinity": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties."
+    }
+   ]
+  },
+  "Storm-Lashed": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 on all saving throws against electrical effects."
+    }
+   ]
+  }
+ },
  "feat_conditionals_dict": {},
  "feats": [
-  "Strong Comeback",
+  "Storm-Lashed",
   "Right of Deferment",
   "Lucky Boy",
   "Very Lucky Boy",
-  "Natural Telekinetic",
+  "Natural Ruler",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Nemesis"
+  "Necromantic Affinity"
  ],
  "flaw": [
   "Beady Eyes"
@@ -346,7 +365,7 @@
  "flaw_feats": [
   "Athletic"
  ],
- "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Cha\n- Disciplines: Thrashing Dragon, Primal Fury, Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Distance Thrower, Malevolence, Tandem Trip\n- Training: An average trainer who taught them Skilled Driver, Opening Volley\n- Training: An average trainer who taught them Bloodletting, Defensive Combat Training\n- Training: An average (Path of War) trainer who taught them Primal Fury Style, Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Bald Red\n- Eyes: Grey\n- Build: Old-fashioned",
+ "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Cha\n- Disciplines: Thrashing Dragon, Primal Fury, Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Distance Thrower, Lunge, Swarm Strike\n- Training: An average trainer who taught them Siphon Poison, Nimble Moves\n- Training: An average trainer who taught them Bloodletting, Defensive Combat Training\n- Training: An average (Path of War) trainer who taught them Primal Fury Style, Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Bald Red\n- Eyes: Grey\n- Build: Old-fashioned",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,
@@ -371,19 +390,19 @@
   "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
   "Extend the Bulwark": "You can bolster a trained ally's defenses by interposing your own armored body",
   "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
-  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
+  "Lunge": "You can strike foes that would normally be out of reach",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
-  "Nemesis": "A past enemy seeks your ruin",
-  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Natural Ruler": "You have a special talent for ruling a nation, and take to the task with ease",
+  "Necromantic Affinity": "Long exposure to necromantic energies has granted you a small measure of resistance against them",
+  "Nimble Moves": "You can move across a single obstacle with ease",
   "Primal Fury Leap": "Not even the sky is safe from your wrath. you can make charge attacks against opponents in the air. if you do, you are treated as having a fly speed equal to your land speed during the charge, with good maneuverability. if you do not normally have a fly speed, you fall after this charge. you reduce the effective distance of this fall by 10 feet per initiator level.",
   "Primal Fury Slash": "Your swift movements and skill allow you to strike enemies as you close with your target. when you charge a creature, you can make a single melee attack against another creature that is adjacent to you at any point during your movement.",
   "Primal Fury Style": "Your fury drives you to close with your foes so that you can tear into them more easily. you can make survival checks in place of acrobatics checks to move through threatened squares. in addition, you can charge through difficult terrain and spaces containing opponents. you do not provoke attacks of opportunity for entering an opponents space when charging, although you provoke attacks of opportunity as normal for moving through an opponents threatened area.",
   "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
-  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
-  "Strong Comeback": "You learn quickly from past mistakes",
-  "Swap Places": "You are skilled at changing places with your ally during a chaotic melee",
-  "Tandem Trip": "You know how to work together to trip your foes",
+  "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
+  "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
+  "Swarm Strike": "You and your allies have trained to overwhelm foes like a swarm of rodents",
   "Thrashing Dragon Pounce": "Your swift movements allow you to close the gap and strike quickly against your foe. whenever you initiate a strike that requires you to make only a single melee attack, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal. this attack does not gain any of the of the strike you initiated.",
   "Thrashing Dragon Style": "Your skill with two weapons makes you as dangerous as foes who wield one larger weapon. once per round, when you make an attack as a standard action or attack action, you can make an additional attack with another weapon as a free action. this attack is made at your highest base attack bonus, although you take the penalties for fighting with two weapons as normal.",
   "Thrashing Dragon Whirlwind": "Your fury strikes out at all enemies around you. as a full-round action, you can make one melee attack with a weapon in your main hand and a weapon in your off hand against each opponent within reach. this attack is made at your highest base attack bonus, and you do not take the penalties for fighting with two weapons on these attacks.",
@@ -1208,6 +1227,12 @@
   "(Trainer 4 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
+  "Lunge": [
+   "monkey lunge"
+  ],
+  "Nimble Moves": [
+   "acrobatic steps"
+  ],
   "Primal Fury Style": [
    "Primal Fury Slash",
    "Primal Fury Leap"
@@ -1219,10 +1244,10 @@
  },
  "trainer_feats": [
   "Distance Thrower",
-  "Malevolence",
-  "Tandem Trip",
-  "Skilled Driver",
-  "Opening Volley",
+  "Lunge",
+  "Swarm Strike",
+  "Siphon Poison",
+  "Nimble Moves",
   "Bloodletting",
   "Defensive Combat Training",
   "Primal Fury Style",
