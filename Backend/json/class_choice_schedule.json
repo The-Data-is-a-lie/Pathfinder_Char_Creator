@@ -185,7 +185,7 @@
           "bucket": "manuevers",
           "start": 3,
           "every": 4,
-          "stamps": false,
+          "stamps": true,
           "source": "raw",
           "note": "Was 'floor((character.c_class_level + 1)/4)'. BUCKET NAME IS A TYPO -- 'manuevers', spelled that way in data.py, in the call site and therefore on both sheets; renaming it moves a shipped payload, so ticket 04 owns it. VERIFIED CORRECT by Daniel 2026-08-07: start=3/every=4 (3, 7, 11, 15, 19) is the house-correct progression, so this row is `raw` rather than the `unverified` ticket 02's sweep filed it as. The sweep had read RAW as 5th-and-every-4 and flagged the 5th maneuver at 19th as suspect; that reading was wrong, and it is recorded here because ticket 01 ruling 5's whole point is that a number a human authored gets checked by a human, not edited on a sweep's suspicion. The call site also passes max_num=8, declared here as a `max_num` field because ticket 03 ruled the gate must read all three terms of min(scheduled, pool, max_num) -- at 40th this cap, not the pool, is what holds the count to 8. Martial flexibility is a per-use feat loan, not an option bucket.",
           "max_num": 8
@@ -274,7 +274,7 @@
           "bucket": "gun training",
           "start": 5,
           "every": 4,
-          "stamps": false,
+          "stamps": true,
           "source": "unverified",
           "note": "Was floor((level - 1) / 4), inline in gunslinger.choose_gun_func -- a FIFTH convention. start=5/every=4 reproduces it exactly. Picks firearm CATEGORIES, not deeds: deeds are granted by level in RAW and gunslinger_deeds_dares.json had no reader, so that file was deleted rather than wired. Believed RAW (5th, then every 4), unverified."
         }
@@ -625,7 +625,7 @@
           "bucket": "favored_terrains",
           "start": 3,
           "every": 5,
-          "stamps": false,
+          "stamps": true,
           "source": "unverified",
           "note": "Was data.formulas['favored_terrains'], the eval'd string 'ceil((character.c_class_level - 2) / 5)' -- a FOURTH pick-count convention ticket 01 never saw, read by simple_list_chooser via formula_grabber. start=3/every=5 reproduces it exactly at every level. Believed RAW (3rd, then every 5), unverified against Sieg's Guide."
         },
@@ -640,7 +640,7 @@
             20
           ],
           "then_every": 5,
-          "stamps": false,
+          "stamps": true,
           "source": "unverified",
           "note": "Was '1 + floor(character.c_class_level / 5)'. The opening 1st-level pick is why this is a list rather than a compact rule. Believed RAW (1st, then every 5), unverified."
         }

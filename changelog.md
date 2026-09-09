@@ -232,6 +232,19 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Changed
+- **The four list-shaped class-choice buckets are dicts now, stamped like every other pick**
+  (`favored_enemies`, `favored_terrains`, the brawler's `manuevers`, the gunslinger's
+  `gun training`; class-choices ticket 04, build slice 1). They were the whole failure set of the
+  53-bucket audit: a bare list where every other bucket holds `{choice: description}`, with no
+  level stamp. Both renderers broke on it in their own way — the web sheet iterated the list's
+  index keys, so a level-16 ranger's favored enemies rendered as four expandable rows titled
+  **0, 1, 2, 3**, and the Foundry module lumped the picks into one item. Each pick now maps to one
+  rules sentence for its bucket (these picks have no text of their own; a bare name said nothing
+  about what the pick does) and `class_feature_levels` carries the class level of each — the k-th
+  pick at the k-th scheduled level, exactly as the hex and talent choosers stamp. The schedule's
+  four `stamps: false` rows are `true`. *Not done:* the `manuevers` typo is kept — it is a shipped
+  contract across `data.py`, this call site and both sheets, and renaming it is a separate decision.
+  No front-end change is needed for either sheet to show named rows.
 - **The Foundry module's DEV notices now speak once per session, not once per character**
   (`scripts/generator-launch.js`, 2026-09-02). Each enabled dev toggle — local backend, forced luck
   direction, optimized builds, forced mythic — posted a blue notification on **every** generation,

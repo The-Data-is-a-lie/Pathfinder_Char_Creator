@@ -5,6 +5,7 @@ from math import ceil, floor
 
 # Importing custom functions
 from utils.class_func.generic_func import *
+from utils.class_func.generic_func import _record_choice_level
 from utils.class_func.chooseable import *
 from utils.class_func.skill_ranks import homebrew_enabled
 from utils.class_func.power_role import role_feat_spine
@@ -879,6 +880,25 @@ def bloodline_feat_chooser(character, c_class, bloodline_name, feat_amount):
     return random.sample(feats, k=min(feat_amount, len(feats)))
 
 
+# One rules sentence per list bucket, applied to every pick: favoured enemies and terrains and the
+# brawler's maneuver training are picks from a flat list with no text of their own, and an empty
+# description renders as a bare name on both sheets -- true, but it says nothing about what the
+# pick does. Keyed by the DATASET name, which is also the bucket name for all three.
+LIST_BUCKET_TEXT = {
+    'favored_enemies': ("Favored enemy: +2 bonus on Bluff, Knowledge, Perception, Sense Motive and "
+                        "Survival checks against creatures of this type, and +2 on weapon attack and "
+                        "damage rolls against them. Each time a new favored enemy is gained, the "
+                        "bonus against one existing favored enemy rises by +2."),
+    'favored_terrains': ("Favored terrain: +2 initiative and +2 on Knowledge (geography), Perception, "
+                         "Stealth and Survival checks in this terrain, and the ranger leaves no trail "
+                         "there. Each time a new favored terrain is gained, the bonus in one existing "
+                         "favored terrain rises by +2."),
+    'manuevers': ("Maneuver training: +1 bonus on combat maneuver checks of this type and +1 to CMD "
+                  "against it. Each earlier pick's bonus rises by +1 as later ones are added, so the "
+                  "first maneuver chosen ends up the best trained."),
+}
+
+
 def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf'), **kwargs):
     """Ranger favoured terrains/enemies and brawler maneuvers: pick N from a flat data.py list.
 
@@ -892,8 +912,13 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
     enemies off the rogue's 16. The schedule is per-class and reads this class's own entry, which is
     the property ticket 01 ruling 3 exists to protect.
 
-    These buckets hold a LIST, not the {choice: description} dict every other bucket holds, and they
-    record no level stamp (hence `stamps: false` on their rows). Both are ticket 04's to rule on.
+    These buckets used to hold a LIST, not the {choice: description} dict every other bucket holds,
+    and recorded no level stamp. Ticket 04 found that shape was the whole failure set -- exactly
+    four of 53 buckets -- and that it broke both renderers: the web sheet iterated the list's
+    index keys, so a level-16 ranger's favoured enemies rendered as rows titled 0, 1, 2, 3, and
+    the module lumped the picks into one item. They are dicts now, stamped like every other pick
+    (levels[k] for the k-th pick, class level), with one rules sentence per bucket as the
+    description -- these picks have no per-choice text of their own.
     """
     class_entry = class_entry_for(character, class_1.lower())
     if class_entry is not None:
@@ -907,8 +932,11 @@ def simple_list_chooser(character, class_1, *dataset_names, max_num=float('inf')
                 dataset = list(dataset.keys())
             # min() against the pool too: random.sample raises when k exceeds the population, and
             # nothing caps these counts at 20th any more.
-            chosen_dict[dataset_name] = random.sample(
-                dataset, k=min(len(levels), max_num, len(dataset)))
+            picks = random.sample(dataset, k=min(len(levels), max_num, len(dataset)))
+            text = LIST_BUCKET_TEXT.get(dataset_name, '')
+            chosen_dict[dataset_name] = {str(pick): text for pick in picks}
+            for idx, pick in enumerate(picks):
+                _record_choice_level(character, dataset_name, str(pick), levels[idx])
             # Merge like the other choosers (generic_func.py) — a straight assignment clobbers the
             # buckets earlier classes wrote (bloodline/hexes/...) on a multiclass roll.
             if character.data_dict['class features'] in ([], {}):
