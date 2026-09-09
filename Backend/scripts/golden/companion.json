@@ -419,6 +419,12 @@
   },
   "arcana": {
    "protected assault": 3
+  },
+  "favored_enemies": {
+   "Ooze": 1
+  },
+  "favored_terrains": {
+   "Planes [choose]": 3
   }
  },
  "class feature owners": {
@@ -450,12 +456,12 @@
     "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
-  "favored_enemies": [
-   "Ooze"
-  ],
-  "favored_terrains": [
-   "Planes [choose]"
-  ]
+  "favored_enemies": {
+   "Ooze": "Favored enemy: +2 bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks against creatures of this type, and +2 on weapon attack and damage rolls against them. Each time a new favored enemy is gained, the bonus against one existing favored enemy rises by +2."
+  },
+  "favored_terrains": {
+   "Planes [choose]": "Favored terrain: +2 initiative and +2 on Knowledge (geography), Perception, Stealth and Survival checks in this terrain, and the ranger leaves no trail there. Each time a new favored terrain is gained, the bonus in one existing favored terrain rises by +2."
+  }
  },
  "class_ability": [
   "spells_druid",
@@ -598,6 +604,12 @@
   },
   "arcana": {
    "protected assault": 3
+  },
+  "favored_enemies": {
+   "Ooze": 1
+  },
+  "favored_terrains": {
+   "Planes [choose]": 3
   }
  },
  "class_feature_owners": {
@@ -629,12 +641,12 @@
     "benefits": "The magus can expend 1 point from his arcane pool as a swift action to protect himself from an opposing alignment."
    }
   },
-  "favored_enemies": [
-   "Ooze"
-  ],
-  "favored_terrains": [
-   "Planes [choose]"
-  ]
+  "favored_enemies": {
+   "Ooze": "Favored enemy: +2 bonus on Bluff, Knowledge, Perception, Sense Motive and Survival checks against creatures of this type, and +2 on weapon attack and damage rolls against them. Each time a new favored enemy is gained, the bonus against one existing favored enemy rises by +2."
+  },
+  "favored_terrains": {
+   "Planes [choose]": "Favored terrain: +2 initiative and +2 on Knowledge (geography), Perception, Stealth and Survival checks in this terrain, and the ranger leaves no trail there. Each time a new favored terrain is gained, the bonus in one existing favored terrain rises by +2."
+  }
  },
  "classes": [
   {
