@@ -746,13 +746,49 @@
   "teamwork": 1,
   "trainer": 10
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Improved Reposition": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "+2 on combat maneuver checks made to reposition a foe."
+    },
+    {
+     "target": "cmd",
+     "text": "+2 to CMD when an opponent tries to reposition you."
+    }
+   ]
+  },
+  "Stone Read": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
+    }
+   ]
+  },
+  "Weather Eye": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+4 on Survival checks made to predict the weather."
+    },
+    {
+     "target": "allSavingThrows",
+     "text": "+1 on saving throws to avoid the effects of extreme weather."
+    }
+   ]
+  }
+ },
  "feat_conditionals_dict": {},
  "feats": [
   "Field Repair",
-  "Run",
-  "Vermin Heart",
-  "Rapid Emplacement",
+  "Rugged Northerner",
+  "Urban Tracking",
+  "Racial Heritage",
   "Double Slice",
   "Multi Talented",
   "True Calling",
@@ -769,7 +805,7 @@
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Martial Charge"
+  "Maneuver Mastery"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -801,10 +837,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Silent Magic",
+  "Siege Commander",
   "Expert Driver"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Toys\n- Training: An average trainer who taught them Tenebrous Spell, Spell Shield\n- Training: An average trainer who taught them Shield Wall, Minor Spell Expertise\n- Training: An average trainer who taught them Improved Shield Bash, Shadowmorph Focus\n- Training: An excellent trainer who taught them Rod Mastery, Major Spell Expertise, Wild Talent\n- Training: A terrible (Path of War) trainer who taught them Martial Training V (Golden Lion)\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Bald White\n- Eyes: Hazel\n- Build: Hunched",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Toys\n- Training: An average trainer who taught them Tandem Trip, Spell Bluff\n- Training: An average trainer who taught them Shaping Focus, Mind Trick\n- Training: An average trainer who taught them Improved Reposition, Shadow Dodge\n- Training: An excellent trainer who taught them Rod Wielder, Malevolence, Weather Eye\n- Training: A terrible (Path of War) trainer who taught them Martial Training V (Golden Lion)\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Bald White\n- Eyes: Hazel\n- Build: Hunched",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
@@ -823,33 +859,33 @@
   "Double Slice": "Your off-hand weapon while dual-wielding strikes with greater power",
   "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
   "Field Repair": "You can repair your broken weapon or armor to serviceability even without the benefits of artisan tools",
-  "Hellcat Stealth": "You are difficult to see in the light",
-  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Major Spell Expertise": "You can cast a single low-level spell as a spell-like ability",
-  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Hero's Fortune": "Even at the start of your career, it was clear that you had a chance at greatness, and your legend continues to grow with every adventure",
+  "Improved Reposition": "You have learned how to force your enemies to move around the battlefield",
+  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
+  "Maneuver Mastery": "",
   "Martial Training I (Golden Lion)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Golden Lion)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training III (Golden Lion)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Golden Lion)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training V (Golden Lion)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training VI (Golden Lion)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Master of the Staff": "You have whipped your servants into shape - they are the best in the business. Note This is not a metamagic feat and does not modify the level of the spell. unseen servants, whether conjured by the spell or the battle butler class feature, have improved statistics. they have a strength score of 6 (about 60 pounds of lift, 300 lbs dragging), its base speed is 30 feet, and they can take 20 points of damage before they disappear.",
-  "Minor Spell Expertise": "You are able to cast a 1st-level spell as a spell-like ability",
+  "Master Craftsman": "Your superior crafting skills allow you to create simple magic items",
+  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Rapid Emplacement": "Constant use, training, and reflexes has allowed you to more rapidly apply cover with your shield. you may use your tower shield to provide cover as a move action rather than a standard action. you still suffer the penalty to attack rolls imposed by a tower shield while using it for cover.",
-  "Rime Spell": "Creatures damaged by your spells with the cold descriptor become entangled",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
   "Rod Mastery": "",
-  "Run": "You are swift of foot",
-  "Shadowmorph Focus": "Your shadowmorph spells are more difficult to resist. add +1 to the difficulty class for all saving throws against spells you cast with the shadowmorph descriptor.",
-  "Shield Wall": "You form a unified defense with those around you",
-  "Silent Magic": "",
-  "Spell Shield": "",
-  "Strike Back": "You can strike at foes that attack you using their superior reach, by targeting their limbs or weapons as they come at you",
-  "Tenebrous Spell": "You blend shadow into your spells, increasing their efficacy at the price of susceptibility to light",
+  "Rod Wielder": "",
+  "Rugged Northerner": "You live a hard life in a cold climate and gain some benefit from it",
+  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
+  "Shaping Focus": "Your powers of shapeshifting outstrip your dabbling in the druidic faith",
+  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
+  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Tandem Trip": "You know how to work together to trip your foes",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
-  "Vermin Heart": "You have a special bond with things that creep, crawl, skitter, and sting",
-  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
+  "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
+  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
  },
  "inherents": {
   "cha": 0,
@@ -1855,16 +1891,16 @@
   ]
  },
  "story_feats": [
-  "Strike Back",
-  "Master of the Staff",
-  "Rime Spell"
+  "Stone Read",
+  "Master Craftsman",
+  "Rod Mastery"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Hellcat Stealth"
+  "Hero's Fortune"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
@@ -1887,27 +1923,27 @@
   "(Trainer 5 - Path of War)"
  ],
  "trainer_feat_tax_dict": {
+  "Improved Reposition": [
+   "greater reposition",
+   "quick reposition",
+   "repositioning strike",
+   "tactical reposition",
+   "wings of the androsphinx"
+  ],
   "Martial Training V (Golden Lion)": [
    "Martial Training VI (Golden Lion)"
-  ],
-  "Minor Spell Expertise": [
-   "major spell expertise"
-  ],
-  "Tenebrous Spell": [
-   "umbral spell",
-   "shadow grasp"
   ]
  },
  "trainer_feats": [
-  "Tenebrous Spell",
-  "Spell Shield",
-  "Shield Wall",
-  "Minor Spell Expertise",
-  "Improved Shield Bash",
-  "Shadowmorph Focus",
-  "Rod Mastery",
-  "Major Spell Expertise",
-  "Wild Talent",
+  "Tandem Trip",
+  "Spell Bluff",
+  "Shaping Focus",
+  "Mind Trick",
+  "Improved Reposition",
+  "Shadow Dodge",
+  "Rod Wielder",
+  "Malevolence",
+  "Weather Eye",
   "Martial Training V (Golden Lion)"
  ],
  "weapon_enhancement_bonus": 1,

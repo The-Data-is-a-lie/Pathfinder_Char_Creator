@@ -448,41 +448,81 @@
   "trainer": 9
  },
  "feat_changes_dict": {
-  "Sea Legs": {
+  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))": {
    "changes": [
     {
-     "formula": "2",
+     "formula": "4",
      "operator": "add",
      "priority": 0,
-     "target": "skill.acr",
+     "target": "skill.pro",
      "type": "untyped"
     },
     {
-     "formula": "2",
+     "formula": "4",
      "operator": "add",
      "priority": 0,
-     "target": "skill.clm",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.swm",
+     "target": "skill.pro",
      "type": "untyped"
     }
    ],
    "contextNotes": []
+  },
+  "Scorching Weapons": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 bonus on saving throws against fire attacks and spells with the fire or light descriptor"
+    }
+   ]
   }
  },
- "feat_conditionals_dict": {},
+ "feat_conditionals_dict": {
+  "Charging Hurler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Charging Hurler: When making a thrown-weapon attack as a charge (end movement within 30 ft of the target): +2 on the attack roll and -2 to AC until the start of your next turn."
+  },
+  "Point-Blank Shot": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "tier": "A"
+  }
+ },
  "feats": [
   "Dreadforger",
-  "Prone Slinger",
-  "Improved Initiative",
+  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))",
+  "Improved Implantation",
   "Additional Traits",
   "Coordinated Distraction",
-  "Life's Blood",
+  "Lesser Spirits (invoker)",
   "Arcane Weaponry (combat)",
   "Cleave",
   "Extra Combat Talent (Elixir Of Immortality)",
@@ -498,9 +538,6 @@
   ],
   "Extra Combat Talent (Elixir Of Immortality)": [
    "Extra Combat Talent"
-  ],
-  "Improved Initiative": [
-   "surprising combatant"
   ]
  },
  "flavor_feat_tax_dict": {},
@@ -545,10 +582,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Mechanical Magician",
+  "Measured Response",
   "Cosmopolitan"
  ],
- "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An excellent trainer who taught them Focused Worker, Dragonslayer, Killing Madness\n- Training: An excellent trainer who taught them Jaguar Pounce, Flash of Insight, Precise Strike\n- Training: An excellent trainer who taught them Shapeshifter Foil, Demonologist, Blind Warrior\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Bald Grey\n- Eyes: Grey\n- Build: Ponytail",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An excellent trainer who taught them Focused Worker, Dragonslayer, Ki Stand\n- Training: An excellent trainer who taught them Iron Will, Flanking Specialist (combat), Point-Blank Shot\n- Training: An excellent trainer who taught them Impact Critical Shot, Charging Hurler, Tower Shield Proficiency\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Bald Grey\n- Eyes: Grey\n- Build: Ponytail",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
@@ -565,31 +602,31 @@
  "homebrew_feat_desc_dict": {
   "Additional Traits": "You have more traits than normal",
   "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",
-  "Blind Warrior": "Without sight, youve learned to perceive the environment through heightened senses and dedicated training. Special Upon selecting this feat, you are permanently blinded (if you werent previously blind). If you would somehow regain your sight, you immediately lose this feat, and must retrain it instantly. If a player has chosen to play a blind character via either backstory or taking the Blind Warrior feat, the GM should allow players to stop playing a blind character during the campaign if a player already is or becomes uncomfortable with the concept. Flavour it as magic, a miracle, a result of training, or any other suitable excuse that seems fitting. On the other hand, dont force a cure on the players if they dont want one, whether through in-game actions or out-of-game decrees. If a player is uncomfortable with another persons depiction of a blind character, err on the side of deferring to them and asking the player of the blind character to stop. Blind people are the authorities on how to respect blindness. As a team with disabled members, we encourage you to play blind characters with maturity and to explore the realities of living with blindness. When treated with respect towards blind people, exploring blind characters can be a rewarding learning experience and add gravity to your roleplaying. If you yourself are blind, we hope that we made representing disability positively at the table easier for you. you gain blindsense 30 feet and blindsight 5 feet as long as you are unable to see. for every three hit dice you possess, your blindsense increases by 5 feet. for every six hit dice you possess, your blindsight increases by 5 feet.",
+  "Charging Hurler": "You know how to use your momentum to enhance your thrown weapon attacks",
   "Cleave": "You can strike two adjacent foes with a single swing",
   "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
   "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
-  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
   "Dragonslayer": "You have been trained to fight dragons",
   "Dreadforger": "With a little extra effort, you can make your concoctions a lot more deadly when creating a non-magical trap, item, or other device, you may increase the craft dc to up to twice your character level. for every two points by which you increase the craft dc, the save dc of your creation increases by 1. using this ability does not increase the cost of your creation.",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
   "Extra Combat Talent (Elixir Of Immortality)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Elixir Of Immortality (Alchemy): You may create a special elixir that restores a creature to its starting age as a young adult. All penalties to Strength, Dexterity, and Constitution the drinker may have suffered as a result of advanced age are removed, but all bonuses to Intelligence, Wisdom, and Charisma that result from advanced",
   "Fast Crawl": "You are skilled at moving while prone",
-  "Flash of Insight": "Discipline Sleeping Goddess (Boost); Level 1 Initiation Action 1 swift action Range 30 ft. Target One or two allies (see text) Duration Instantaneous You turn a sudden burst of inspiration into strength for your allies, sharing your power to give them an edge in battle and help them shrug of their wounds. You can activate this boost after making a successful attack or combat maneuver check. One ally within 30 feet gains another saving throw against a non-instantaneous effect that allows a saving throw affecting them. This saving throw has the same DC as the original save. If your ally succeeds, the effect ends. The ally does not suffer any additional effects for failing the save (such as a poisons damage). You cannot grant an ally more than one additional save against a given effect. Augment You can augment this maneuver in one or more of the following ways",
+  "Flanking Specialist (combat)": "You are more adept at flanking with allies. you count as occupying both your current space and any space adjacent to you for the purpose of flanking an opponent (including allowing your allies to flank as if you were in any of those spaces). the space must be open; you cannot use this ability to flank from a space that contains an object, creature, or barrier.",
   "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
-  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
-  "Jaguar Pounce": "Your ambushes are especially lethal",
-  "Killing Madness": "Creatures cannot live with the effects your powers place upon their mind whenever you reduce a creature to 0 sanity or deal enough damage to a mental ability score that the damage exceeds that ability score, the creature dies rather than suffering from the normal effects. creatures killed in this way cannot be raised by any effect save for reality revision or similarly powerful magic.",
-  "Life's Blood": "Your blood flows with eternal life, and its healing powers allow you use your blood to heal others",
-  "Master Alchemist": "Your mastery of alchemy is nearly supernatural",
-  "Mechanical Magician": "You understand magic much as you would science. you may make knowledge (engineering) checks in place of use magic device checks.",
+  "Impact Critical Shot": "With a series of ranged attacks, you bring your foes to their knees or force them to move",
+  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
+  "Iron Will": "You are more resistant to mental effects",
+  "Ki Stand": "If an opponent knocks you down, you swiftly rebound with an attack",
+  "Lesser Spirits (invoker)": "The following eighteen lesser spirits are those most commonly contacted by invokers, though others may exist. While an invoker can bond with any lesser spirit, he may only invoke one whose listed type matches the dominion or oath of his spirit companion (or both). Lesser spirits are not listed alphabetically; instead, they are organized below in a table showing their dominion and oath, below. The DC to save against primal powers or invocations is equal to 10 + 1/2 the invokers level + his Charisma modifier, unless otherwise noted.",
+  "Masked Identity": "Special You cannot select this feat if you have the dual identity class feature or a feature that grants you a second identity. you gain the dual identity class feature of a vigilante of your character level.",
+  "Measured Response": "You believe that a conservative but consistent response guarantees success",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Precise Strike": "You are skilled at striking where it counts, as long as an ally distracts your foe",
-  "Prone Slinger": "Your sideways sling release allows you to launch bullets and stones even while prone",
-  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
-  "Shapeshifter Foil": "Your command of shapeshifting magic can disrupt similar effects in others",
-  "Siege Engineer": "You are proficient with all siege weaponry",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))": "",
+  "Scorching Weapons": "Elemental fire stirs within your body, boiling your blood and rendering you resistant to flame",
+  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
   "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Tower Shield Proficiency": "You are trained in how to properly use a tower shield",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -1036,6 +1073,12 @@
     }
    ],
    "ranks": 15,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 4,
+     "feat": "Prodigy"
+    }
+   ],
    "skill_label": "Profession (Ranger)"
   },
   {
@@ -1087,6 +1130,12 @@
     }
    ],
    "ranks": 10,
+   "skill_focus_bonuses": [
+    {
+     "bonus": 4,
+     "feat": "Prodigy"
+    }
+   ],
    "skill_label": "Profession (Centaur Cavalier)"
   },
   {
@@ -1312,14 +1361,15 @@
  ],
  "stances_chosen": [],
  "story_feat_tax_dict": {
-  "Siege Engineer": [
-   "siege gunner"
+  "Scorching Weapons": [
+   "inner flame",
+   "blazing aura"
   ]
  },
  "story_feats": [
-  "Sea Legs",
-  "Master Alchemist",
-  "Siege Engineer",
+  "Scorching Weapons",
+  "Masked Identity",
+  "Siege Commander",
   "Fast Crawl"
  ],
  "str": 13,
@@ -1344,23 +1394,38 @@
   "(Trainer 3)"
  ],
  "trainer_feat_tax_dict": {
-  "Demonologist": [
-   "demon grafter"
-  ],
   "Focused Worker": [
    "focused overseer"
+  ],
+  "Iron Will": [
+   "courage in numbers",
+   "improved iron will",
+   "stoic",
+   "witchbreaker",
+   "exorcist's rebuttal"
+  ],
+  "Point-Blank Shot": [
+   "charging hurler",
+   "disrupting shot",
+   "far shot",
+   "improved charging hurler",
+   "precise shot",
+   "rapid shot",
+   "reckless aim",
+   "target of opportunity",
+   "bullseye shot"
   ]
  },
  "trainer_feats": [
   "Focused Worker",
   "Dragonslayer",
-  "Killing Madness",
-  "Jaguar Pounce",
-  "Flash of Insight",
-  "Precise Strike",
-  "Shapeshifter Foil",
-  "Demonologist",
-  "Blind Warrior"
+  "Ki Stand",
+  "Iron Will",
+  "Flanking Specialist (combat)",
+  "Point-Blank Shot",
+  "Impact Critical Shot",
+  "Charging Hurler",
+  "Tower Shield Proficiency"
  ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [

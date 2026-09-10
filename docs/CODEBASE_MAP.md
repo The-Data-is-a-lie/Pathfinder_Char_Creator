@@ -286,7 +286,14 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     - **It must run after the archetype pick and the sorcerer bloodline**, which is why the whole
       domain/companion block sits below the bloodline choosers in `main_test.py` rather than where
       `animal_chooser` used to be. Moving it back breaks archetype effects and Arcane-bloodline
-      familiars.
+      familiars. It must also run **after `chooseable_list()`** and before feat selection, which it
+      does — the registration below writes into a set that `chooseable_list` would otherwise reset.
+    - **A granted creature registers its own feat prerequisites.** `BOND_PREREQS` maps the entry
+      `type` to the phrases it puts in `character.chooseable` (mount takes the animal-companion
+      phrases, eidolon takes none, an absence entry takes none), which is what makes Boon Companion
+      reachable. A class-feature key cannot do this job: `nature bond` is present whether the druid
+      took the companion or the domain. Gated by `scripts/gates/validate_bond_prereqs.py`;
+      `build/sweep_disjunctive_prereqs.py` measures the wider prerequisite population.
     - The `summoner` row's `species_note` says its pool is `eidolon_base_forms.json` rather than an
       `animal_choices` tier, because the eidolon section below reads it directly.
   - **Familiars (2026-08-13)**: `familiar_choices.json` (the ten Core Rulebook species, shaped like
@@ -349,7 +356,10 @@ spells.csv, traits.csv, class_ability.csv.
 ## `Backend/utils/class_func/` module index (grep the function, not the file)
 
 feats.py (feat selection + `bonus_searcher`, `no_prereq_loop` consumers) · generic_func.py
-(all generic choosers) · class_abilities.py (fixed per-level abilities + descriptions) ·
+(all generic choosers; **`prereq_part_satisfied` is the one owner of "is this prerequisite
+fragment met"** — `no_prereq_loop` and `feat_tax._resolve_chain` both call it, and an `A or B`
+fragment passes on any branch. `FILTER_WORDS` beside it is the auto-satisfied list, module-level so
+the analysis scripts gate on the same words the runtime does) · class_abilities.py (fixed per-level abilities + descriptions) ·
 spells.py / adding_bonus_spells.py · stats.py · hp_rolls.py · level_and_bab.py ·
 skill_ranks.py / skill_unlocks.py · armor_and_weapon_chooser.py (**gear legality lives here**:
 `armor_chooser` / `_legal_band` / `armor_allowlist` — heaviest band, multiclass union of bands and
@@ -428,7 +438,7 @@ Backend/scripts/
 | the curated buff list the spell chooser weights and the metric scores | `power_adders.json::spell_buffs`; reader on the generator side: `power_role.buff_spell_names` |
 | buffed defense (never in the parity-locked base axes) | `profile_for` diagnostics `ac_buffed` / `saves_buffed_bonus` |
 | **the `ac_combat` axis** (fight-state AC: posture + stance + class AC + styles + wild shape + buffs; benchmarked vs the same CR `ac` column) and the raw `cmd` axis | `power_metric._combat_defense`; tables in `power_adders.json::posture` / `::stance_ac` / `::ac_class` / `::wild_shape` |
-| the or-clause prereq relaxation and the half-purse ladder cap (both OPTIMIZED-ONLY) | `generic_func.no_prereq_loop` (role-gated branch) · `item_and_price.ladder_purchases` |
+| the half-purse ladder cap (OPTIMIZED-ONLY) | `item_and_price.ladder_purchases` |
 | the `dr` axis (raw-only, no CR column; curated class DR + held-text harvest — never `class_ability_desc`, which is not level-gated) | `power_metric.damage_reduction`, table in `power_adders.json::dr` |
 | feat allowlist, structural rules, nova/dr tables, assumptions, blind list | `Backend/json/power_adders.json` |
 | config gate (names/vocabularies/table resolve) | `Backend/scripts/gates/validate_power_metric.py` |

@@ -2,6 +2,7 @@ import pandas as pd
 import re
 from collections import deque
 from utils.paths import repo_path
+from utils.class_func.generic_func import prereq_part_satisfied
 # from utils.class_func.feats import feat_spell_searcher
 
 
@@ -298,7 +299,10 @@ def _resolve_chain(character, chain, free_budget, exclude_grants=frozenset(), al
             and not character.filter_pattern.search(part.strip())
             and not _TAX_EXTRA_FILTER.search(part.strip())
         ]
-        if not prereq_parts or {_norm(p) for p in prereq_parts} <= obtained_n:
+        # Disjunctions ("half-orc or orc") pass on any branch -- same helper the talent/feat pool
+        # gates on, so the two prerequisite readers cannot drift apart.
+        if not prereq_parts or all(prereq_part_satisfied(p, obtained_n, _norm)
+                                   for p in prereq_parts):
             out.append(feat_l)
             obtained_n.add(feat_n)
             already_granted.add(feat_l)

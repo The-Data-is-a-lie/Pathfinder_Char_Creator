@@ -295,105 +295,61 @@
   "teamwork": 0,
   "trainer": 5
  },
- "feat_changes_dict": {
-  "Focused Discipline": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "+2 on all saving throws against fear effects."
-    }
-   ]
-  },
-  "Sea Legs": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.acr",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.clm",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.swm",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  }
- },
+ "feat_changes_dict": {},
  "feat_conditionals_dict": {
-  "Focused Discipline": {
+  "Dazing Assault": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "2",
+     "formula": "-5",
      "subTarget": "allAttack",
      "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "2",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
+     "type": "untyped"
     }
    ],
-   "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round)."
+   "name": "Dazing Assault: Save: Fortitude DC [[ 10 + @attributes.bab.total ]] negates; Effect: melee attacks also daze the target for [[1]] round",
+   "tier": "A"
   },
-  "Point-Blank Shot": {
+  "Patient Strike": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "1",
+     "formula": "2",
      "subTarget": "allAttack",
      "target": "attack",
      "type": "untyped"
-    },
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allDamage",
-     "target": "damage",
-     "type": "untyped"
     }
    ],
-   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "name": "Patient Strike: Activation: ready this attack as a full-round action instead of a standard action; Effect: gain a bonus on the attack roll when the readied action triggers",
    "tier": "A"
   }
  },
  "feats": [
-  "Performance Weapon Mastery",
-  "Lesser Hurling",
-  "Dark Allure",
-  "Liquid Courage",
-  "Lesser Spirit Totem",
-  "Improved Unarmed Strike",
-  "Natural Ruler",
-  "Focused Discipline",
+  "Patient Strike",
+  "Lesser Spire Totem",
+  "Dark Authority",
+  "Low-Light Vision",
+  "Light Armor Proficiency",
+  "Intimidating Glare",
+  "Noble Scion",
+  "Good for What Ails You",
   "Multi Talented"
  ],
- "feats_feat_tax_dict": {},
+ "feats_feat_tax_dict": {
+  "Light Armor Proficiency": [
+   "arcane armor training",
+   "medium armor proficiency",
+   "arcane armor mastery",
+   "heavy armor proficiency"
+  ]
+ },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Rapid Emplacement"
+  "Raging Swimmer"
  ],
  "flaw": [
   "Motion Sickness",
@@ -445,10 +401,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Lesser Fiend Totem",
-  "Diving Strike"
+  "Lesser Moon Totem",
+  "Dodge"
  ],
- "formatted_bio": "Émilie Daviau\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 5 Psion / Aegis And Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Coin-Picker (rank 10)\n- Profession: Squire-at-Arms (rank 10)\n- Profession: Trader (rank 9)\n- Known for: Bricklaying\n- Training: An excellent trainer who taught them Sea Legs, Collective Recollection, Dark Embrace\n- Training: An average trainer who taught them Improved Steal, Black Market Dealings\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 1 Younger Brother\n\nPersonality\n- Personality: Lazy, Realistic, Guarded, Polite, Relaxed, Controlling\n- Mannerisms: Laughs at own jokes, Furrows brow, Plays with sleeves, Drops head\n- Flaws: Motion Sickness, Shattered Psyche, Illiterate\n\nAppearance\n- Hair: Spiky White\n- Eyes: Hazel\n- Build: Rough Hands",
+ "formatted_bio": "Émilie Daviau\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 5 Psion / Aegis And Barbarian\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Coin-Picker (rank 10)\n- Profession: Squire-at-Arms (rank 10)\n- Profession: Trader (rank 9)\n- Known for: Bricklaying\n- Training: An excellent trainer who taught them Shield Wall, Cooperative Crafting, Dazing Assault\n- Training: An average trainer who taught them Jaguar Pounce, Blade of Terror\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 2 Older Brothers\n- 1 Younger Brother\n\nPersonality\n- Personality: Lazy, Realistic, Guarded, Polite, Relaxed, Controlling\n- Mannerisms: Laughs at own jokes, Furrows brow, Plays with sleeves, Drops head\n- Flaws: Motion Sickness, Shattered Psyche, Illiterate\n\nAppearance\n- Hair: Spiky White\n- Eyes: Hazel\n- Build: Rough Hands",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 8194,
@@ -463,26 +419,26 @@
  "height_number": "5'0\"",
  "hero_points": 2,
  "homebrew_feat_desc_dict": {
-  "Black Market Dealings": "You walk dark alleys and trade in secrets. in addition, you can use the diplomacy skill to locate merchants who have deeper pockets in a black market or settlement. if you are looking inside a black market, the dc is equal to the black markets access dc. if you are looking more widely in a settlement, use the black markets access dc + 5 (if a settlement has no black market, the dc is 30; pcs can apply the settlements crime modifier to their checks). if successful, you can treat the black market or settlement as one step larger for the purposes of base value, items available, and purchase limit. if the settlement was already a metropolis, nearly all minor and medium magic items are for sale, as well as 3d8 major magic items; the base value is 32,000 gp; and the purchase limit is 200,000 gp. if the black market was already an underworld, nearly all minor and medium magic items are for sale, as well as 4d8 major magic items; the base value is 64,000 gp; and the purchase limit is 300,000 gp. this does not stack with other ways to increase the effective size of a black market or settlement (such as the black market connections rogue talent). you can attempt this check only once per week.",
-  "Collective Recollection": "You and your allies can quickly jog each other's memories to remember essential facts",
-  "Dark Allure": "Those you have Claimed by become distracted by your presence. Special Characters with the Dark Authority feat cannot take this feat. creatures claimed by you take a penalty on attack rolls against creatures other than you equal to the number of creatures you currently have claimed.",
-  "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
-  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
-  "Diving Strike": "With a tremendous dive, you can both move and attack your foe. when you charge, you may make both a bull rush and a basic melee attack, in that order.",
-  "Focused Discipline": "Familiarity with the military traditions of your homeland inspires uncommon valor in you",
-  "Improved Steal": "You have a knack for snatching items from your opponents",
-  "Improved Unarmed Strike": "You are skilled at fighting while unarmed",
-  "Lesser Fiend Totem": "",
-  "Lesser Hurling": "",
-  "Lesser Spirit Totem": "",
-  "Liquid Courage": "",
+  "Blade of Terror": "You have learned to blend the fearsome arts of the dread with your mind blade. you may use your mind blade to deliver your terrors as if you had used your devastating touch, and you may add half your soulknife level (rounded down) to your dread level to determine saving throws for your terrors. additionally, anytime you successfully use a fear effect (either through a terror or a manifested power) you may regain your psychic strike as a free action once per round.",
+  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
+  "Dark Authority": "Those you have Claimed tremble at the mere thought of defying you. Special Characters with the Dark Allure feat cannot take this feat. creatures claimed by you take a penalty on attack rolls against you equal to the number of creatures you currently have claimed.",
+  "Dazing Assault": "You can daze foes with wild attacks",
+  "Discipline Expertise": "You are quite adept at the use of your available disciplines associated skills. choose a class you have at least one level in. you gain a +2 competence bonus on checks with the associated skills of your available disciplines in that class.",
+  "Dodge": "Your training and ref lexes allow you to react swiftly to avoid an opponents' attacks",
+  "Good for What Ails You": "",
+  "Intimidating Glare": "",
+  "Jaguar Pounce": "Your ambushes are especially lethal",
+  "Lesser Moon Totem": "",
+  "Lesser Spire Totem": "",
+  "Light Armor Proficiency": "You are skilled at wearing light armor",
+  "Low-Light Vision": "",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Natural Ruler": "You have a special talent for ruling a nation, and take to the task with ease",
-  "Overwhelm": "You can overwhelm large foes with sheer numbers",
-  "Performance Weapon Mastery": "You wield all your weapons with the flair of a performer",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Rapid Emplacement": "Constant use, training, and reflexes has allowed you to more rapidly apply cover with your shield. you may use your tower shield to provide cover as a move action rather than a standard action. you still suffer the penalty to attack rolls imposed by a tower shield while using it for cover.",
-  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels"
+  "Noble Scion": "You are a member of a proud noble family, whether or not you remain in good standing with your family",
+  "Paired Opportunists": "You know how to make an enemy pay for lax defenses",
+  "Patient Strike": "Your training under the Master of Swords has taught you that a well-timed strike is worth waiting for and that patience will serve you well in the long run",
+  "Plague Doctor": "You know how to treat disease and prevent its spread if you have successfully treated someone for a disease using the heal skill, you can perform a heal check on healthy individuals to give them a bonus on saving throws against that disease for one month equal to your wisdom modifier. the dc of this heal check is the same as the dc to treat the disease.",
+  "Raging Swimmer": "",
+  "Shield Wall": "You form a unified defense with those around you"
  },
  "inherents": {
   "cha": 4,
@@ -1270,20 +1226,11 @@
  ],
  "spheres_chosen": [],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot",
-   "rapid shot"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Point-Blank Shot",
-  "Dirgesinger",
-  "Overwhelm"
+  "Plague Doctor",
+  "Discipline Expertise",
+  "Paired Opportunists"
  ],
  "str": 16,
  "teamwork_feat_labels": [],
@@ -1301,18 +1248,13 @@
   "(Trainer 2)",
   "(Trainer 2)"
  ],
- "trainer_feat_tax_dict": {
-  "Improved Steal": [
-   "greater steal",
-   "quick steal"
-  ]
- },
+ "trainer_feat_tax_dict": {},
  "trainer_feats": [
-  "Sea Legs",
-  "Collective Recollection",
-  "Dark Embrace",
-  "Improved Steal",
-  "Black Market Dealings"
+  "Shield Wall",
+  "Cooperative Crafting",
+  "Dazing Assault",
+  "Jaguar Pounce",
+  "Blade of Terror"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],

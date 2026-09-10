@@ -265,6 +265,51 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   2026-09-07)*. The pill buttons carry the same `data-fgroup` attribute as the groups they filter,
   and the selector that hid the groups matched the buttons too — leaving no way to select a second
   group and no way back except the single pill still on screen. Scoped to `.feature-group[…]`.
+- **154 feats were in the book, in the data, and could never be rolled** (`generic_func.py`,
+  `feat_tax.py`, 2026-09-08). A prerequisite was split on commas alone and every surviving fragment
+  had to appear verbatim in the character's satisfied set — so `"half-orc or orc"`,
+  `"size large or larger"`, `"base attack bonus +6 or monk level 6th"` each survived as one opaque
+  token that nothing ever writes, and a single such fragment made the whole feat permanently
+  unselectable. Measured over `data/feats.csv`: **165 of the 1,256 prerequisite-bearing rows
+  (154 distinct feats, 13%)**, including Amplified Rage, Awesome Blow, Arc Slinger, Animal Ally and
+  the entire Archon Style chain. Nothing ever errored — the data was present, the pool built
+  cleanly, and those feats simply never appeared on a character.
+  A fragment now passes when **any** of its branches is satisfied, which is what the rules mean.
+  Measured after: of the 154, **17 became eligible** for at least one of a 68-character sweep (one
+  per class at 20th) and two — Horn of the Criosphinx and Versatile Spontaneity — for every single
+  one; the rest gate on races, sizes and weapon proficiencies that character did not have.
+  *The decision:* one owner. `generic_func.prereq_part_satisfied` is now the single answer to "is
+  this fragment met", called by both readers — the talent/feat pool and the feat-tax chain resolver
+  — which had already begun to drift apart; the tax resolver had never handled a disjunction at all,
+  so a chain parent gated on "A or B" silently blocked its children.
+  *Rejected:* keeping the split for optimized builds only, which is where it has quietly run since
+  the spec §15 wall pass — on the reasoning that widening random mode would move the goldens. It
+  does move them (twelve re-recorded here), and running two different prerequisite rules meant every
+  measurement of the random pool was a measurement of a pool no player rolls. Also rejected:
+  detecting prose that merely contains " or " (*"a curse that can be lifted only by a quest or
+  similar great effort"*). Both branches of such a fragment are nonsense, match nothing, and the
+  feat stays exactly as unreachable as it was.
+  *Recorded, not fixed:* 31 of the disjunctive branches ask for a class level (`"monk level 6th"`).
+  `chooseable_list_class` builds those strings and is called from nowhere, so they are dead whatever
+  the parser does — a separate defect, and its own ticket.
+- **Boon Companion could not be taken by anyone with a familiar or a mount**
+  (`animal_companions.py`, 2026-09-08). The feat raises a bonded creature's effective level and its
+  prerequisite reads *"Animal companion **or familiar** class feature"*, but only an animal
+  companion registered that fact — so every wizard, witch and sorcerer with a familiar, and every
+  paladin and cavalier with a mount, was refused a feat written for them. (A divine-bond mount runs
+  on the animal-companion rules; it is the same creature with a different name.)
+  *The decision:* the phrases are keyed by creature type and registered **at the grant**, not
+  derived from a class feature. A druid's `nature bond` is present whether that druid took the
+  companion or the domain, so a prerequisite satisfied by the class-feature key would hand the feat
+  to a druid with no creature to spend it on. An eidolon registers nothing — it is neither an animal
+  companion nor a familiar — and neither does an absence entry.
+  *Rejected:* asserting the fix through the take-rate. Reachability and what a random draw lands on
+  are different questions, and across a full one-per-class sweep the draw landed on this feat zero
+  times, so that assertion would fail for no reason. `gates/validate_bond_prereqs.py` runs the real
+  parser over the real prerequisite text from `data/feats.csv` instead, and fails if the
+  registration is narrowed, the disjunction split reverted, or the CSV text re-scraped into
+  something the phrases no longer match. The invariant sweep keeps the half only a generated
+  character can show: nobody holds Boon Companion without a creature to boon.
 - **The region-name drift check had stopped reading the Foundry module** (`validate_name_data.py`,
   2026-08-31). The gate asserts that every region label a client offers resolves to a real region —
   it exists because the module once sent "Grundykin Damplands", which matched no key, and an

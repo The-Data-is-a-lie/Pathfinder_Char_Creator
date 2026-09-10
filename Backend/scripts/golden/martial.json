@@ -196,12 +196,12 @@
   "Death From Below",
   "Ensemble",
   "Bull Charge (combat)",
-  "Ostentatious Display",
-  "Miniature Reach",
+  "Opening Volley",
+  "Mind Trick",
   "Enduring Mind",
-  "Toughness",
-  "Powerful Throwing (combat)",
-  "Siege Commander"
+  "Torch Handling",
+  "Polearm Expertise (combat)",
+  "Shield Wall"
  ],
  "class_feature_changes_dict": {
   "adaptable training (ex)": {
@@ -456,7 +456,34 @@
   "teamwork": 0,
   "trainer": 0
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Sea Legs": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
  "feat_conditionals_dict": {
   "Bloody Assault": {
    "default": false,
@@ -511,7 +538,7 @@
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Self-Sufficient"
+  "Sea Legs"
  ],
  "flaw": [
   "Motion Sickness",
@@ -541,9 +568,13 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Siege Engineer": [
+   "siege gunner"
+  ]
+ },
  "flaw_feats": [
-  "Simple Weapon Proficiency",
+  "Siege Engineer",
   "Desperate Battler"
  ],
  "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: AC Tank\n- Tactics: Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Spectacled",
@@ -575,17 +606,17 @@
   "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
   "It Just Works": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
   "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
-  "Miniature Reach": "No matter how small you are, you are always a threat. whenever you are under the effects of a polymorph effect which would reduce your size to tiny or smaller, your natural reach is always treated as 5 feet, regardless of your size.",
+  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Ostentatious Display": "Your extravagant jewelry and accessories give you an air of importance you can use to your advantage in many social situations",
-  "Powerful Throwing (combat)": "Your thrown weapons are as strong as they are accurate. Special Starting at 2nd level, a ranger with the thrown weaponACG combat style may select Powerful Throwing as a combat style feat. you can use your strength modifier for both your attack and damage rolls with thrown weapons.",
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Polearm Expertise (combat)": "Your expertise with reach weapons lets you strike foes that are adjacent to you. Normal You cannot strike an enemy that is adjacent to you while wielding a reach weapon. as a free action, you can shorten your grip on a reach weapon that you are proficient with to use it against adjacent targets. while doing so, the weapon does not have reach, instead threatening the area for a normal melee weapon. you have a 2 penalty on attack rolls while using this feat. you can use another free action to return to the normal grip and reach.",
   "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
+  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
   "Self-Sufficient": "You know how to get along in the wild and how to effectively treat wounds",
-  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
-  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
-  "Simple Weapon Proficiency": "You are trained in the use of basic weapons",
-  "Toughness": "You have enhanced physical stamina",
+  "Shield Wall": "You form a unified defense with those around you",
+  "Siege Engineer": "You are proficient with all siege weaponry",
+  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -1300,7 +1331,7 @@
  "stances_chosen": [],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Shadow Dodge",
+  "Self-Sufficient",
   "Dark Embrace",
   "Bloody Assault",
   "Animal Affinity"

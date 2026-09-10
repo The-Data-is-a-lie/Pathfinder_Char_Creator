@@ -289,6 +289,37 @@ def choosing_talents(character, amount, dataset, dict_name = "Talents", levels =
     return chosen_dict
 
  
+def prereq_part_satisfied(part, satisfied, normalize=None):
+    """True if `part` -- one comma-separated prerequisite fragment -- is met by `satisfied`.
+
+    PF1e writes alternatives inline: "half-orc or orc", "base attack bonus +6 or monk level 6th",
+    "animal companion or familiar class feature". Splitting prerequisites on commas alone leaves the
+    whole phrase as one opaque token, and nothing ever puts that literal string into
+    character.chooseable -- so a single disjunctive fragment made the entire feat permanently
+    unselectable. Split on " or " and pass when ANY branch is satisfied, which is the semantics the
+    rules actually intend.
+
+    A fragment with no " or " yields a single branch, so non-disjunctive gating is unchanged.
+
+    " or " also occurs INSIDE a single requirement -- "a curse that can be lifted only by a quest
+    or similar great effort". Splitting those yields two branches that are both nonsense, which is
+    harmless: neither matches, so the feat stays unreachable exactly as it was. Detecting the
+    difference is not worth the false positives.
+
+    The whole fragment is still tested verbatim first, so a caller that registers a complete
+    disjunctive phrase into chooseable -- animal_companions.BOND_PREREQS does exactly that -- keeps
+    working without knowing this function exists.
+
+    `normalize` is applied per branch when the caller compares on a canonical key rather than the
+    raw string (feat_tax._norm).
+    """
+    candidates = [part] + part.split(" or ")
+    candidates = [c.strip() for c in candidates if c.strip()]
+    if normalize is not None:
+        candidates = [normalize(c) for c in candidates]
+    return any(candidate in satisfied for candidate in candidates)
+
+
 def no_prereq_loop(character, dataset):
     # Dedupe in a single O(n) pass via a `seen` set seeded from the already-accumulated list,
     # instead of calling remove_duplicates_list on every iteration (which made this O(n^2) and
@@ -303,26 +334,23 @@ def no_prereq_loop(character, dataset):
 
         prerequisites_clean = determine_prerequisite_name(info)
 
-        # Split by comma and strip each part
+        # Split by comma and strip each part. filter_pattern runs BEFORE the disjunction split in
+        # prereq_part_satisfied, so a fragment already treated as auto-satisfied is dropped whole
+        # rather than resurrected as two branches.
         prereq_parts = [
             part.strip() for part in prerequisites_clean.split(",")
             if part.strip() and not character.filter_pattern.search(part.strip())
         ]
 
 
-        # Check if all prereqs are met
-        satisfied = not prereq_parts or set(prereq_parts).issubset(character.chooseable)
-        if not satisfied and getattr(character, 'role', None) is not None:
-            # OPTIMIZED MODE ONLY (spec 15, wall pass): an or-clause part -- "base attack bonus
-            # +2 or monk level 1st" -- can never be a chooseable member verbatim, which locked
-            # every style feat out of every pool, for everyone, forever. Satisfying ANY
-            # alternative is RAW. Random mode keeps the strict subset test so its pools (and the
-            # seven goldens) do not move; widening it there is a separate, golden-moving change.
-            satisfied = all(
-                part in character.chooseable
-                or (' or ' in part and any(alt.strip() in character.chooseable
-                                           for alt in part.split(' or ')))
-                for part in prereq_parts)
+        # Every part must be met, but a part with alternatives needs only one of them. This ran in
+        # OPTIMIZED MODE ONLY until 2026-09-08, on the reasoning that widening random mode would
+        # move the goldens. It does, and it was worth it: measured over data/feats.csv, 163 of the
+        # 1,254 prerequisite-bearing rows carry an "A or B" fragment, and every one of them was
+        # unreachable for every randomly generated character -- silently, since the data is present
+        # and the pool builds without error.
+        satisfied = not prereq_parts or all(prereq_part_satisfied(part, character.chooseable)
+                                            for part in prereq_parts)
         if satisfied:
             character.chooseable_talents.append(name_lower)
             seen.add(name_lower)
@@ -447,11 +475,15 @@ def get_description(character, key, dataset):
 
 
 
+# Prerequisite fragments the generator does not model and therefore treats as auto-satisfied.
+# Module-level so the analysis scripts gate on the same list the runtime does instead of copying it.
+FILTER_WORDS = ["ranks", "worship", "craft", "profession", "rank",
+                "ability to", "skill", "cast", "proficiency", "member",
+                "combat expertise", "power attack", "piranha strike",
+                "attuned"]
+
+
 def no_prereq_prep(character):
         # Compile regex pattern once
-    filter_words = ["ranks", "worship", "craft", "profession", "rank",
-                    "ability to", "skill", "cast", "proficiency", "member",
-                    "combat expertise", "power attack", "piranha strike",
-                    "attuned"]
-    character.filter_pattern = re.compile(r'|'.join(map(re.escape, filter_words)))
+    character.filter_pattern = re.compile(r'|'.join(map(re.escape, FILTER_WORDS)))
     return []

@@ -83,7 +83,14 @@ BOND = {'granted': 0, 'absent': 0, 'both': 0, 'neither': 0, 'druid_flip': 0,
         'feats': 0, 'tax': 0, 'flaws': 0, 'applied': 0, 'familiar': 0,
         # The eidolon branches (v1.1). `degraded` is the unchained summoner's base-form-only entry,
         # `chained` the fully spent one; `aspect` and `grew` are the two conditional paths inside it.
-        'eidolon': 0, 'degraded': 0, 'aspect': 0, 'grew': 0}
+        'eidolon': 0, 'degraded': 0, 'aspect': 0, 'grew': 0,
+        # Boon Companion: how many characters COULD take it, and how many did.
+        'boon_eligible': 0, 'boon_taken': 0}
+
+# The bonded-creature types Boon Companion can boost. A mount granted by divine bond runs on the
+# animal-companion rules; an eidolon is neither an animal companion nor a familiar. Mirrors
+# animal_companions.BOND_PREREQS, which is the runtime's own answer to the same question.
+BOON_COMPANION_TYPES = {'companion', 'mount', 'familiar'}
 
 # The feat economy's own data, imported rather than restated -- the pool and the tax allowlist are
 # curated files and this test must fail when a creature strays outside them, not when a copy here
@@ -1741,6 +1748,29 @@ def check_bonded_creatures(cell, payload):
 
         check_companion_feats(tag, entry, stats)
 
+    # ---- Boon Companion lands only on someone with a creature to boon ----
+    # The POSITIVE half is deliberately NOT asserted here. Whether the feat is REACHABLE and whether
+    # a random draw lands on it are different questions, and over a full one-per-class sweep the
+    # draw landed on it zero times -- an assertion on the take-rate would be a coin flip that fails
+    # for no reason. `gates/validate_bond_prereqs.py` owns reachability and settles it
+    # deterministically, against the real prerequisite text.
+    #
+    # What only a generated character can show is the negative, and it is the one that says the
+    # registration is keyed on the GRANT: a druid's `nature bond` is in `chooseable` whether the
+    # druid took the companion or the domain, so a prerequisite satisfied by the class-feature key
+    # would hand Boon Companion to a druid with no creature and nothing here would notice.
+    boonable = {e.get('type') for e in entries if e.get('species')} & BOON_COMPANION_TYPES
+    if boonable:
+        BOND['boon_eligible'] += 1
+    if any(str(f).strip().lower() == 'boon companion'
+           for bucket in ('feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats')
+           for f in (payload.get(bucket) or [])):
+        BOND['boon_taken'] += 1
+        check(bool(boonable),
+              f"{cell}: took Boon Companion while holding "
+              f"{sorted({e.get('type') for e in entries if e.get('species')}) or 'no creature'} -- "
+              f"the feat boosts an animal companion or familiar, and there is none to boost")
+
     # ---- the druid flip (F's rewire) ----
     # Only meaningful on a character whose ONLY domain source is the druid bond; clerics and
     # inquisitors get domains from their own subsystem and would read as a false "both".
@@ -2241,6 +2271,10 @@ def main():
           f"{BOND['flaws']} flaws, {BOND['applied']} folded changes")
     print(f"  eidolons: {BOND['eidolon']} ({BOND['degraded']} degraded unchained), "
           f"{BOND['aspect']} diverted EP to Aspect, {BOND['grew']} grew to Large")
+    # Reported, never asserted: see the note beside the check. Reachability is the gate's job; this
+    # line is here so a take-rate that goes to zero AND STAYS there is at least visible.
+    print(f"  Boon Companion: taken {BOND['boon_taken']}x by the "
+          f"{BOND['boon_eligible']} characters that could")
 
     # Same guard, same reason: every occult check is conditional on rolling one of the six.
     if total >= 100:

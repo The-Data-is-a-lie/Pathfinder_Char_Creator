@@ -170,10 +170,11 @@
   "Fighter 14"
  ],
  "class_feat_tax_dict": {
-  "Combat Reflexes": [
-   "bodyguard",
-   "in harm's way",
-   "pin down"
+  "Lunge": [
+   "monkey lunge"
+  ],
+  "Martial Training I (Tempest Gale)": [
+   "Martial Training II (Tempest Gale)"
   ],
   "Martial Training III (Tempest Gale)": [
    "Martial Training IV (Tempest Gale)"
@@ -183,14 +184,14 @@
   ]
  },
  "class_feats": [
-  "Martial Training III (Tempest Gale)",
-  "Scholar",
-  "Combat Reflexes",
-  "Racial Heritage",
+  "Martial Training I (Tempest Gale)",
   "Martial Training V (Tempest Gale)",
-  "Swift Crafting",
-  "Quillbreaker Defense",
-  "Jaguar Pounce"
+  "Pushing Assault",
+  "Necromantic Affinity",
+  "Martial Training III (Tempest Gale)",
+  "Lightning Recovery",
+  "Iron Will",
+  "Lunge"
  ],
  "class_feature_changes_dict": {
   "armored confidence (ex)": {
@@ -394,72 +395,81 @@
   "profession": 4,
   "story": 4,
   "teamwork": 0,
-  "trainer": 9
+  "trainer": 0
  },
  "feat_changes_dict": {
-  "Coordinated Maneuvers": {
+  "Necromantic Affinity": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "cmb",
-     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+     "target": "allSavingThrows",
+     "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties."
     }
    ]
   },
-  "Nature Soul": {
-   "changes": [
-    {
-     "formula": "ifelse(gte(@skills.kna.rank,10),4,2)",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.kna",
-     "type": "untyped"
-    },
-    {
-     "formula": "ifelse(gte(@skills.sur.rank,10),4,2)",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.sur",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Stone Read": {
+  "Secret Signs": {
    "changes": [],
    "contextNotes": [
     {
      "target": "skills",
-     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
-    }
-   ]
-  },
-  "Tribal Scars": {
-   "changes": [
-    {
-     "formula": "6",
-     "operator": "add",
-     "priority": 0,
-     "target": "mhp",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "effect",
-     "text": "Also grants one Mammoth Lords tribe sub-benefit (Bearpelt, Greattusk, Ice Chasm, Night Hunt, Raptorscale, or Slothjaw) chosen at selection — a small save/skill/speed bonus that varies by tribe."
+     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
     }
    ]
   }
  },
- "feat_conditionals_dict": {},
+ "feat_conditionals_dict": {
+  "Footslasher": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "-2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Footslasher: Activation: standard action only, requires a piercing or slashing weapon against a larger foe; Effect: on a hit dealing at least [[1]] point of damage, halve the target's speed for [[24]] hours until treated with a DC [[15]] Heal check or magical healing",
+   "tier": "A"
+  },
+  "Point-Blank Shot": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "tier": "A"
+  },
+  "Pushing Assault": {
+   "default": false,
+   "modifiers": [],
+   "name": "Pushing Assault: Activation: choose after the attack roll, before damage is rolled; Effect: on a hit against a creature your size or smaller with a two-handed Power Attack-modified attack, forgo the Power Attack damage bonus to instead push the target [[5]] feet directly away ([[10]] feet on a critical hit) into a safe space, without provoking",
+   "tier": "A"
+  }
+ },
  "feats": [
-  "Opening Volley",
-  "Malevolence",
-  "Lightning Reflexes",
-  "Martial Training I (Tempest Gale)",
-  "Cooperative Crafting",
+  "Heavy Armor Proficiency",
   "Hone Weapon",
+  "Quick Draw",
+  "Footslasher",
+  "Discipline Mastery",
+  "Night Dweller",
   "Multi Talented",
   "True Calling",
   "Always Improving",
@@ -468,21 +478,11 @@
  "feats_feat_tax_dict": {
   "Extra Combat Talent (Cohort Attack / Friends In High Places)": [
    "Extra Combat Talent"
-  ],
-  "Lightning Reflexes": [
-   "improved lightning reflexes"
-  ],
-  "Martial Training I (Tempest Gale)": [
-   "Martial Training II (Tempest Gale)"
   ]
  },
- "flavor_feat_tax_dict": {
-  "Gang Up": [
-   "team up"
-  ]
- },
+ "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Gang Up"
+  "Distance Thrower"
  ],
  "flaw": [
   "Illiterate",
@@ -512,16 +512,12 @@
    "tier": "minor"
   }
  },
- "flaw_feat_tax_dict": {
-  "Nature Soul": [
-   "friend to animals"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
   "Ability Focus (malefactions)",
-  "Nature Soul"
+  "Secret Signs"
  ],
- "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Tempest Gale\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Deadly Finish, Stone Read, Improved Shield Bash\n- Training: An average trainer who taught them Coordinated Maneuvers, Tribe Mentality\n- Training: A terrible trainer who taught them Meditation Master\n- Training: An excellent trainer who taught them Back to Back, Tribal Scars, Blade of Terror\n\nFamily\n- Loving Mother\n- Absent Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Flowing Grey\n- Eyes: Grey\n- Build: Muscular",
+ "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Tempest Gale\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Flowing Grey\n- Eyes: Grey\n- Build: Muscular",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 6009,
@@ -538,42 +534,33 @@
  "homebrew_feat_desc_dict": {
   "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Back to Back": "Your ally's eyes are your own, and yours are his",
-  "Blade of Terror": "You have learned to blend the fearsome arts of the dread with your mind blade. you may use your mind blade to deliver your terrors as if you had used your devastating touch, and you may add half your soulknife level (rounded down) to your dread level to determine saving throws for your terrors. additionally, anytime you successfully use a fear effect (either through a terror or a manifested power) you may regain your psychic strike as a free action once per round.",
-  "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",
-  "Combat Reflexes": "You can make additional attacks of opportunity",
-  "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
-  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
-  "Deadly Finish": "Your attacks don't just fell your opponents-they kill them outright",
-  "Discipline Expertise": "You are quite adept at the use of your available disciplines associated skills. choose a class you have at least one level in. you gain a +2 competence bonus on checks with the associated skills of your available disciplines in that class.",
-  "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
+  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
+  "Discipline Mastery": "Youve learned to use certain skills in reference to your martial ability with practiced ease. you may take 10 on skill checks made with any associated skill of a discipline you possess (with 8 or more ranks) without increasing the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so.",
+  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
   "Extra Combat Talent (Cohort Attack / Friends In High Places)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Cohort Attack (Leadership): When you use the attack action to attack, one of your cohorts may also attack your target with a single weapon it possesses as a joint swift action. If both you and the cohort successfully deal damage with these attacks, the cohort may immediately move 5 feet as a free action. This movement does not\n- Friends In High Places (Leadership): You can recruit cohorts from the outer planes themselves. Such cohorts are built like a normal cohort, but are Small or Medium creatures with the outsider (extraplanar) type, and benefits from the Conjuration sphere Planar Creature (type) talent as if it were a Conjuration companion. As you recruit ",
-  "Gang Up": "You are adept at using greater numbers against foes",
+  "Footslasher": "You are trained to strike at a large foe's feet to impede its movement and cause great pain",
+  "Heavy Armor Proficiency": "You are skilled at wearing heavy armor",
   "Hone Weapon": "Youve learned the art of bringing a fine cutting edge to your weapons. you can spend ten minutes using a whetstone to sharpen a piercing or slashing weapon or up to 20 pieces of piercing or slashing ammunition to a fine point or edge. the newly-honed weapon gains a +1 bonus on damage rolls for one day. this bonus increases by +1 at character level 4th and at every four levels thereafter. honing a weapon has no effect on its hardness or hit points, and you may hone both magical and nonmagical weapons. you can only hone manufactured weapons with this feat.",
   "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Jaguar Pounce": "Your ambushes are especially lethal",
-  "Lightning Reflexes": "You have faster ref lexes than normal",
-  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
+  "Iron Will": "You are more resistant to mental effects",
+  "Lightning Recovery": "With a flash of insight, you retain the knowledge of a martial maneuver youve just used. Special You may select this feat multiple times, gaining multiple uses per day. as a free action, after youve use a martial strike, counter, or boost, you may instantly recover that maneuver. you may do this once per day.",
+  "Lunge": "You can strike foes that would normally be out of reach",
   "Martial Training I (Tempest Gale)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
   "Martial Training II (Tempest Gale)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training III (Tempest Gale)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training IV (Tempest Gale)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training V (Tempest Gale)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
   "Martial Training VI (Tempest Gale)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Meditation Master": "When fully focused on your inner self, you can enter a deep meditative state that allows you a more perfect control over your mind and body",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Nature Soul": "You are innately in tune with nature and venerate the power and mystery of the natural world",
-  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
-  "Polearm Expertise (combat)": "Your expertise with reach weapons lets you strike foes that are adjacent to you. Normal You cannot strike an enemy that is adjacent to you while wielding a reach weapon. as a free action, you can shorten your grip on a reach weapon that you are proficient with to use it against adjacent targets. while doing so, the weapon does not have reach, instead threatening the area for a normal melee weapon. you have a 2 penalty on attack rolls while using this feat. you can use another free action to return to the normal grip and reach.",
-  "Quillbreaker Defense": "You know how to put armor spikes to defensive use by thrusting them into the path of an oncoming attack just in time",
-  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
-  "Scholar": "You have graduated from one of the many colleges, universities, and specialty schools of higher learning scattered throughout the Inner Sea region",
-  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
-  "Swift Crafting": "You can create items faster than most artisans. it takes you half as long to make non-magical items using craft skills, and you treat magic items as being 20% cheaper for the purpose of determining how long it will take to create. apply this reduction before any other reduction in crafting time, such as a vanguards rapid construction ability.",
-  "Tribal Scars": "You endured the grueling coming-of-age rituals of your tribe or following, and proudly bear the scars that grant you the blessings of your tribe's ancestors or totem",
-  "Tribe Mentality": "You and your tribemates grant each other mental strength",
+  "Necromantic Affinity": "Long exposure to necromantic energies has granted you a small measure of resistance against them",
+  "Net Adept": "You have trained to use the net as a melee weapon",
+  "Night Dweller": "Your long time spent in darkness has made you accustomed to its terrors. you gain a +4 bonus on saving throws against fear, phantasm, darkness, shadow, and shadowmorph effects. the dc of intimidate checks made to demoralize you increases by 5.",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Pushing Assault": "A strike made with a two-handed weapon can push a similar sized opponent backward",
+  "Quick Draw": "You can draw weapons faster than most",
+  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -985,10 +972,10 @@
  ],
  "mythic": null,
  "normal_feat_amount": 6,
- "older_brothers": " you have 0 older brothers",
+ "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, absent father, raised in a poor household",
+ "parents": "dead mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Reverent",
   "Analytical",
@@ -1611,60 +1598,36 @@
   "Winds of Vengeance Stance",
   "Snipers Eye Stance"
  ],
- "story_feat_tax_dict": {},
+ "story_feat_tax_dict": {
+  "Net Adept": [
+   "net maneuvering",
+   "net trickery"
+  ],
+  "Point-Blank Shot": [
+   "charging hurler",
+   "disrupting shot",
+   "far shot",
+   "improved charging hurler",
+   "precise shot",
+   "rapid shot",
+   "reckless aim"
+  ]
+ },
  "story_feats": [
-  "Polearm Expertise (combat)",
-  "Discipline Expertise",
-  "Exploit Schema",
-  "Bloodletting"
+  "Point-Blank Shot",
+  "Improved Shield Bash",
+  "Net Adept",
+  "Combat Medic"
  ],
  "str": 23,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 15,
  "total_rolled_hp": 140,
- "trainer_calibers": [
-  3,
-  2,
-  1,
-  3
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 3)",
-  "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 4)"
- ],
- "trainer_feat_tax_dict": {
-  "Back to Back": [
-   "improved back to back"
-  ],
-  "Meditation Master": [
-   "body control",
-   "body mastery",
-   "combat meditation",
-   "meditative concentration",
-   "perfect awareness",
-   "perfect center",
-   "slow time"
-  ]
- },
- "trainer_feats": [
-  "Deadly Finish",
-  "Stone Read",
-  "Improved Shield Bash",
-  "Coordinated Maneuvers",
-  "Tribe Mentality",
-  "Meditation Master",
-  "Back to Back",
-  "Tribal Scars",
-  "Blade of Terror"
- ],
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [],
  "weapon_name": "Mattock",
