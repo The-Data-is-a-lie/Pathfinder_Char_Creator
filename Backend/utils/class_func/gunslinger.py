@@ -1,7 +1,12 @@
 from math import floor, ceil
 import random
 from utils import data
-from utils.class_func.generic_func import class_entry_for, levels_for, record_bucket_owner
+from utils.class_func.generic_func import class_entry_for, levels_for, record_bucket_owner, _record_choice_level
+
+GUN_TRAINING_TEXT = ("Gun training: add the Dexterity modifier to damage rolls with this type of "
+                     "firearm, and its misfire value drops by 1 (minimum 1). The bonus damage and the "
+                     "misfire reduction improve as further gun training is gained.")
+
 
 def choose_gun_func(character, c_class):
     gunslinger_entry = class_entry_for(character, 'gunslinger')
@@ -11,7 +16,8 @@ def choose_gun_func(character, c_class):
     # Was an inline floor((level - 1) / 4) -- the FIFTH pick-count convention, found by ticket 02's
     # sweep rather than by reading call sites, because nothing linked it to the other four.
     # start=5/every=4 in the schedule reproduces it exactly at every level.
-    x = len(levels_for(character, 'gunslinger', 'gun training', gunslinger_entry['level']))
+    levels = levels_for(character, 'gunslinger', 'gun training', gunslinger_entry['level'])
+    x = len(levels)
     firearms = {**character.firearms.get('Siege', {}), **character.firearms.get('Firearm', {}) }
     sections = list(firearms.keys())
     chosen_weapons = set()
@@ -28,7 +34,13 @@ def choose_gun_func(character, c_class):
     while len(chosen_weapons) < x:
         chosen_weapons.add(random.choice(pickable))
 
-    result = {"gun training": list(chosen_weapons)}
+    # A {category: description} dict stamped with the class level of each pick, like every other
+    # bucket (ticket 04): a list rendered as rows titled 0, 1, 2 on the web sheet and as one lumped
+    # item on the module. The set has no order, so sort for a stable stamp per category.
+    picked = sorted(chosen_weapons)
+    result = {"gun training": {w: GUN_TRAINING_TEXT for w in picked}}
+    for idx, w in enumerate(picked):
+        _record_choice_level(character, "gun training", w, levels[idx])
 
     # Gun training starts at 5th, so `x` is 0 for a gunslinger 1-4 and there is nothing to file.
     # Writing the key anyway put an empty bucket on the sheet, and now that this chooser records an
