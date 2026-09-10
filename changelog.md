@@ -879,6 +879,16 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   push the score back up), not 254 separate ones. Owned by the luck section.
 
 ### Added
+- **The payload now ships `enhancement_desc_dict`** (web-sheet ticket #69, from the payload gap
+  audit #64): a flat `{ "<enhancement name, lowercase>": "<rules text>" }` covering every chosen
+  weapon/armor/shield enhancement, scraped quality lists first with the curated
+  `quality_effects.json` description as fallback. The web sheet already reads this field as its
+  top-priority enhancement-description source (it fell back to its local compendium until now),
+  and the FoundryVTT module can consume the same field. Plain `+N` tiers ship no text on purpose —
+  the sheet words numeric bonuses itself. Appended after `mythic` (the current tail) per the
+  append-at-the-tail rule so no existing content key shifts position; `PAYLOAD_KEYS` and
+  `validate_luck`'s tail check both name it, and the seven goldens are regenerated in the same
+  commit.
 - **The negative Luck Traits now do on the sheet what they say on the page.** All ten shipped with
   `effects: {}` — six of them already flagged `pf1_change_candidate` as the curator's own TODO — so
   a player read the benefit text and applied it by hand. Eight carry real mechanics; each is now

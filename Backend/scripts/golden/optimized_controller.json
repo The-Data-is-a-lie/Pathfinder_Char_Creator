@@ -474,6 +474,10 @@
  ],
  "deity_name": "Ragathiel",
  "dex": 13,
+ "enhancement_desc_dict": {
+  "terrain-striding": "Armor with the terrain-striding special ability is attuned to a specific terrain when the armor is created, selected from rangers' favored terrains. The wearer of armor gains a 10-foot enhancement bonus to her speed while in the associated terrain, and the armor's armor check penalty does not apply to Acrobatics, Climb, and Stealth checks attempted in that terrain. The terrain-striding special ability can be applied only to medium armor.",
+  "withstanding": "A suit of withstanding armor is inscribed with eldritch runes across its surface and decorated with the snarling countenances of specific creatures. Each suit of withstanding armor is tailored to a specific type of creature, chosen from the same list as the options for bane weapons. The wearer of this armor gains a +2 enhancement bonus on Knowledge checks related to the chosen type of creature, and when the wearer is struck by a sneak attack or a confirmed critical hit by creatures of the chosen type, there is a 50% chance that the critical hit or sneak attack is negated and damage is instead rolled normally. This does not stack with any other form of critical hit negation, such as that imposed by the fortification special ability. Only medium armor can be enchanted with the withstanding special ability."
+ },
  "enhancement_effects_dict": {
   "armor": {
    "Terrain-striding": {

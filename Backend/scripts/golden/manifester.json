@@ -271,6 +271,7 @@
  "day_list": [],
  "deity_name": "Shelyn",
  "dex": 15,
+ "enhancement_desc_dict": {},
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "body": {

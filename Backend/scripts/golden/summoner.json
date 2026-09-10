@@ -610,6 +610,7 @@
  ],
  "deity_name": "Sarenrae",
  "dex": 16,
+ "enhancement_desc_dict": {},
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {

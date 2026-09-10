@@ -239,6 +239,9 @@ PAYLOAD_KEYS = (
 	# tier, path, chassis numbers, path abilities, tradition, mythic feats, spell annotations.
 	# None for a non-mythic character; the block's own shape is validate_mythic.py's to assert.
 	'mythic',
+	# Sheet issue #69: flat { "<enhancement, lowercase>": "<rules text>" } for the gear's chosen
+	# enhancements, appended after `mythic` (the current tail) so no existing key shifts position.
+	'enhancement_desc_dict',
 	'buff_gaps',
 	# Oversized weapons (gear-legality plan, D11). A MARKER, never scaled damage dice: three things
 	# downstream already know how to scale and a fourth here could only disagree with them. The

@@ -301,6 +301,12 @@
  "day_list": [],
  "deity_name": "Calistria",
  "dex": 19,
+ "enhancement_desc_dict": {
+  "corrosive burst": "A corrosive burst weapon functions as a corrosive weapon that explodes with searing acid upon striking a successful critical hit. The acid does not harm the wielder. In addition to the extra acid damage from the corrosive special ability, a corrosive burst weapon deals an extra 1d10 points of acid damage on a successful critical hit. If the weapon's critical modifier is 3, add an extra 2d10 points of acid damage instead, and if the modifier is 4, add an extra 3d10 points. Even if the corrosive ability is not active, the weapon still deals its extra acid damage on a successful critical hit.",
+  "designating (lesser)": "This special ability can only be placed on ranged weapons or ammunition. Each time a ranged weapon or ammunition with this ability hits a creature, its magic designates the target. Allies gain a +2 morale bonus on melee attack and melee damage rolls against the designated target for 1 round. Multiple successful shots fired at the same target do not increase the bonuses or their duration.",
+  "lucky": "This special ability can only be placed on one-handed or two-handed firearms. A lucky firearm has its own magical reservoir of grit (see Ultimate Combat ). Usually this grit is stored within the marks of an engraving or in a trinket that hangs from the firearm. Often these marks take the form of holy symbols or fetishes, but such a reservoir can take just about any form. This reservoir holds 1 grit point, which is refreshed at the start of each day. Whether or not the wielder of a lucky firearm has any deeds (see Ultimate Combat ), she can always spend 1 grit point from the lucky firearm to reroll an attack from it that would result in a misfire. When the wielder does so, she must take the second result, even if that attack roll also results in a misfire.",
+  "vigilant": "Armor with this special ability is often engraved or enameled with lawful religious symbols. Once per day on command, the wearer can invoke an effect, as per the spell righteous might , except the wearer gains DR 5/chaotic instead of DR/evil or DR/good. This lasts for 10 rounds. Vigilant armor bestows one permanent negative level on any chaotic creature attempting to wear it. The negative level remains as long as the armor is worn and disappears when it is removed. This negative level cannot be overcome in any way (including by restoration spells) while the armor is worn."
+ },
  "enhancement_effects_dict": {
   "armor": {
    "Vigilant": {
