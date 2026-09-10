@@ -150,6 +150,35 @@ def license_text():
         abort(500, description="LICENSE-OGL.txt is missing; run Backend/scripts/build_ogl_license.py")
     return Response(licence.read_text(encoding='utf-8'), mimetype='text/plain; charset=utf-8')
 
+@app.route('/generate_loot', methods=['GET'])
+@limiter.exempt
+def generate_loot_caps():
+    # The web sheet's feature-detect probe (sheet #81). Its "Roll treasure" button hides itself
+    # when this 404s, which is exactly what lets the sheet half of that ticket ship before this
+    # backend is deployed. Exempt from the limiter and free of generation cost, so probing is
+    # cheaper than asking; POST to the same path is the real thing.
+    from utils.loot import capabilities
+    return jsonify(capabilities())
+
+@app.route('/generate_loot', methods=['POST'])
+@limiter.limit("60 per minute")
+def generate_loot_route():
+    # {cr, speed, seed?} -> one encounter's treasure parcel. Deliberately standalone: it takes no
+    # character and touches none of the generation pipeline, so the sheet's encounter flow can call
+    # it once per encounter without paying for a character build.
+    from utils.loot import generate_loot
+    data = request.json or {}
+    try:
+        cr = int(data.get('cr', 1))
+    except (TypeError, ValueError):
+        return jsonify({"error": "cr must be a number"}), 400
+    if cr < 1:
+        return jsonify({"error": "cr must be 1 or greater"}), 400
+    try:
+        return jsonify(generate_loot(cr, str(data.get('speed', 'medium')).lower(), data.get('seed')))
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/backstory-stats', methods=['GET'])
 @limiter.exempt
 def backstory_stats():
