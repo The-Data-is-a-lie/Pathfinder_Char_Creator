@@ -733,6 +733,13 @@
  },
  "initiation_stat": "int",
  "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 21,
  "item_changes_dict": {
   "Equestrian Belt": {
@@ -901,6 +908,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "dead mother, loving father, raised in a poor household",
  "personality_traits": [
   "Compassionate",

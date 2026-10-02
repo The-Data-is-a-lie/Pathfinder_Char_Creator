@@ -645,6 +645,13 @@
  },
  "initiation_stat": "wis",
  "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 11,
  "item_changes_dict": {
   "Animal Mask": {
@@ -891,6 +898,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "loving mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Punctual",

@@ -633,6 +633,13 @@
  },
  "initiation_stat": "cha",
  "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 10,
  "item_changes_dict": {
   "Daredevil Softpaws": {
@@ -844,6 +851,7 @@
  "older_brothers": " you have 2 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "absent mother, loving father, raised in a poor household",
  "personality_traits": [
   "Fervent",

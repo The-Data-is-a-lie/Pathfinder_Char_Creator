@@ -767,6 +767,13 @@
  },
  "initiation_stat": "int",
  "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 16,
  "item_changes_dict": {
   "Amulet of Natural Armor +3": {
@@ -1062,6 +1069,17 @@
   "transmutation",
   "evocation"
  ],
+ "optimize": {
+  "description": "Save-or-lose casting. Maximum DC on the highest spell or power level reachable.",
+  "gear_ladder": "dc_stack",
+  "house_rules": false,
+  "primaries": [
+   "dc",
+   "caster_tier"
+  ],
+  "role": "controller",
+  "role_forced": true
+ },
  "parents": "dead mother, loving father, raised in a poor household",
  "personality_traits": [
   "Enthusiastic",

@@ -41,6 +41,26 @@ def slug(value):
 _RANDOM_SENTINELS = {'', 'random', '0', 'none'}
 
 
+def note_unmatched(character, field, value, outcome='rolled randomly'):
+    """Record an explicit, non-empty input the generator could not match.
+
+    Optimal-builder ticket 06's truth table (Daniel, 2026-10-01): an UNMATCHED input is a request
+    the generator cannot satisfy, so it is treated exactly like a blank one -- rolled, or the
+    optimizer's to pick -- AND it is said out loud. Before this, "Dwarf", "Dwrf" and "" all
+    silently became some race and only one of them had been a request. The list ships as the
+    payload's `input_warnings`, always present, empty when every input resolved.
+    """
+    warnings = getattr(character, 'input_warnings', None)
+    if warnings is None:
+        warnings = character.input_warnings = []
+    warnings.append({'input': field, 'value': value, 'outcome': outcome})
+
+
+def is_unset(value):
+    """True for "surprise me": None, a non-string, or one of the clients' random sentinels."""
+    return not isinstance(value, str) or slug(value) in _RANDOM_SENTINELS
+
+
 def region_chooser(character, userInput_region):
     """Resolve a requested region to its CANONICAL key, or roll one.
 
@@ -72,6 +92,7 @@ def region_chooser(character, userInput_region):
         if chosen is None:
             print(f"region_chooser: unknown region {userInput_region!r}; rolling randomly "
                   f"(known: {', '.join(regions)})")
+            note_unmatched(character, 'region', userInput_region)
 
     character.region = chosen or random.choice(regions)
     return character.region
@@ -89,6 +110,8 @@ def race_chooser(character, userInput_race):
     # 'Random') falls through to a random race. `slug` is shared with region_chooser.
     canonical = {slug(r): r for r in race_data}
     chosen = canonical.get(slug(userInput_race)) if isinstance(userInput_race, str) else None
+    if chosen is None and not is_unset(userInput_race):
+        note_unmatched(character, 'race', userInput_race)
     character.chosen_race = chosen or random.choice(list(race_data.keys()))
     return character.chosen_race
         
@@ -99,9 +122,12 @@ def gender_chooser(character, userInput_gender):
     - userInput_gender
     """
     genders = ("Male", "Female")
+    requested = userInput_gender
     if isinstance(userInput_gender, str):
         userInput_gender = userInput_gender.capitalize()
     if userInput_gender not in genders:
+        if not is_unset(requested):
+            note_unmatched(character, 'gender', requested)
         userInput_gender = random.choice(genders).capitalize()
     character.chosen_gender = userInput_gender
     return character.chosen_gender
@@ -225,6 +251,7 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     """
     occult_classes = [x.lower() for x in getattr(data, 'occult_classes')]
     available_classes = _available_class_pool(character)
+    requested = class_choice
 
     if isinstance(class_choice, str):
         # Lower-case for case-insensitivity, and turn the frontend's slug form (spaces -> hyphens,
@@ -244,6 +271,12 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
         grouped = _group_pool(character, group)
         if grouped:
             available_classes = grouped
+
+    # Unmatched = a real string that is neither a class anywhere in class_data nor a group token.
+    # A real class that is merely not rollable (outside the pool) is not a typo, so it stays quiet.
+    if (not is_unset(class_choice) and group is None
+            and class_choice not in character.class_data):
+        note_unmatched(character, 'class_choice', requested)
 
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)

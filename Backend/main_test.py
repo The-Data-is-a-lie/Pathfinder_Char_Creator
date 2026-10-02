@@ -3380,7 +3380,37 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# is not confined to psionics, and a field that appears only for some characters would read
 		# as "this one needs a licence and that one doesn't".
 		character.data_dict['license_url'] = LICENSE_PATH
+		# Optimal-builder ticket 06: the two outward faces of optimized mode, appended AFTER the
+		# stamps so no existing key moves. Both are always present -- validate_payload_shape's rule
+		# is that a conditionally-inserted key is not a contract -- so `optimize` is None in random
+		# mode and `input_warnings` is [] whenever every explicit input resolved.
+		character.data_dict['optimize'] = _optimize_block(character)
+		character.data_dict['input_warnings'] = list(getattr(character, 'input_warnings', None) or [])
 		return character.data_dict
+
+
+def _optimize_block(character):
+	"""What optimized mode decided, for the sheets: None when the mode is off.
+
+	The role, whether the caller forced it, the gear ladder drawn for it and whether the house
+	kickers were on. Deliberately WITHOUT the per-axis ratios and the floors verdict the ticket
+	sketched: those come from scripts/power_metric.py, which imports the gate harness, and the
+	harness exits when it cannot find the repo's .git -- which the Docker image excludes. Scoring at
+	request time needs the metric moved under utils/ first; until then the gates own the numbers.
+	"""
+	role = getattr(character, 'role', None)
+	if not role:
+		return None
+	from utils.class_func.power_role import optimize_requested
+	_enabled, forced = optimize_requested(getattr(character, 'optimize_request', None))
+	return {
+		'role': character.role_name,
+		'role_forced': forced is not None,
+		'description': role.get('description'),
+		'primaries': list(role.get('primaries') or []),
+		'gear_ladder': role.get('_chosen_ladder'),
+		'house_rules': bool(role.get('_house')),
+	}
 
 # CLI smoke test only: importing this module (e.g. app.py does `from main_test import ...`) must NOT
 # run a full generation -- it just defines generate_random_char for the Flask request handler to call.

@@ -570,6 +570,13 @@
  },
  "initiation_stat": "cha",
  "initiator_level": 7,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 17,
  "item_changes_dict": {
   "Anaconda's Coils": {
@@ -875,6 +882,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 1 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "dead mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Enthusiastic",

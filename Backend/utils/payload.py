@@ -254,6 +254,10 @@ PAYLOAD_KEYS = (
 	'weapon_size_attack_penalty',
 	'generator_version',
 	'license_url',
+	# Optimal-builder ticket 06, stamped after the two above for the same reason they sit last:
+	# `optimize` is None in random mode, `input_warnings` lists explicit inputs that matched nothing.
+	'optimize',
+	'input_warnings',
 )
 
 

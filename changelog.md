@@ -19,6 +19,22 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The payload now says what optimized mode decided, and which inputs it could not match**
+  (optimal-builder ticket 06). Two keys join the tail, after `license_url`, so nothing moves:
+  - `optimize` — `null` in random mode; otherwise `{role, role_forced, description, primaries,
+    gear_ladder, house_rules}`. Before this the block the ticket ruled on was never emitted, which is
+    why the web sheet saw `optimize: null` from a server that *had* optimized the character.
+  - `input_warnings` — one `{input, value, outcome}` per explicit, non-empty input that matched
+    nothing (region, race, gender, class, alignment, deity). "Dwrf", "Fightr" or "QQ" used to become
+    a random pick in silence; they still do — Daniel's ruling is *warn and treat as blank* — but the
+    caller is now told. `random`, blank and the `random <group>` class tokens never warn.
+  *The decision:* both keys are always present (`null` / `[]`) rather than appended only when the
+  mode is on, because `validate_payload_shape` holds that a conditionally inserted key is not a
+  contract; every golden gains the two lines. *Rejected:* an HTTP 400 on an unmatched input (a typo
+  would break a roll from the Foundry dialog). *Deferred:* the per-axis ratios and floors verdict
+  the ticket sketched for the block — `power_metric` imports the gate harness, which exits without
+  a `.git`, and the Docker image has none, so scoring at request time needs the metric moved under
+  `utils/` first.
 - **A feature can now be dragged into a category the character has none of** *(sibling repo: the
   standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
   sheet and using the move dropdown, because a drag could only land in a list already on screen —

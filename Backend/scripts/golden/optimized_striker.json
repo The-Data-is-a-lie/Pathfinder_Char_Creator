@@ -679,6 +679,13 @@
  },
  "initiation_stat": "wis",
  "initiator_level": 8,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 11,
  "item_changes_dict": {
   "Amulet of Natural Armor +3": {
@@ -1141,6 +1148,17 @@
  "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": {
+  "description": "Sustained weapon damage. The classic full-attack martial: hit hard every round.",
+  "gear_ladder": "steady",
+  "house_rules": false,
+  "primaries": [
+   "dpr_raw",
+   "to_hit"
+  ],
+  "role": "striker",
+  "role_forced": true
+ },
  "parents": "loving mother, dead father, raised in a poor household",
  "personality_traits": [
   "Fervent",
