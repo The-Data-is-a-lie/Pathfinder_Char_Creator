@@ -19,6 +19,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Mythic spell modes now show on the Foundry sheet** *(sibling repo: the FoundryVTT module,
+  `scripts/build/spells.js`, branch `feat/named-choice-buckets`, 2026-10-01; mythic ticket 06)*.
+  `mythic.spell_annotations` was generated and rendered by the web sheet but read by nothing in the
+  module, so a mythic caster's Foundry spells looked ordinary. Each annotated spell now opens its
+  description with **Mythic:** (and **Augmented:** when present) above a rule, matched on the
+  trimmed, lower-cased name. *The decision:* the text goes in the description and the item keeps
+  its name. *Rejected:* a `(Mythic)` name suffix, which would orphan every conditional and spell
+  rider that attaches by spell name.
 - **A feature can now be dragged into a category the character has none of** *(sibling repo: the
   standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
   sheet and using the move dropdown, because a drag could only land in a list already on screen —
@@ -282,6 +290,19 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **Bloodlines, orders, blessings, inquisitions and the oracle's mystery now land in their own
+  class-feature buckets** (class-choices ticket 04, slice 2). Six chooser calls omitted
+  `dict_name=`, so all four kinds of pick were filed under a generic `Talents` bucket — a
+  warpriest/inquisitor multiclass merged them, and both sheets labelled them "Talents". The oracle
+  was worse: its revelations call wrote the same `mysteries` key and **overwrote the mystery pick**,
+  so an oracle's sheet never showed its mystery at all. Buckets are now `bloodline`, `orders`,
+  `blessings`, `inquisitions`, `mysteries` (the mystery only) and `revelations`. This is a payload
+  contract change: the web sheet already had registrations waiting for exactly these names; the
+  Foundry module registers them on branch `feat/named-choice-buckets`, and the web sheet relabels
+  `mysteries` as *Oracle Mystery* on `fix/oracle-mystery-label`. The behaviour gate's skip list is
+  now empty. *The decision:* a sorcerer/bloodrager (or cavalier/samurai) multiclass shares one
+  bucket under a first-writer-wins owner — accepted, the same ruling as the barbarian/skald
+  `rage_powers` divider (slice 4), rather than splitting buckets per class across both renderers.
 - **The web sheet moved under you on every repaint and every drag** *(sibling repo: the web sheet,
   `scripts/sheet.js`, `scripts/ui.js`, 2026-09-07)*. Three separate causes, one symptom. A repaint —
   a drop, an inline edit, a checkbox — rebuilds every pane, and the *document* is the scroller, so a

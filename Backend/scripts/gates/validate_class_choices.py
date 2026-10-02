@@ -90,11 +90,7 @@ FOREIGN_CLASS_REFS = {("ninja", "rogue"), ("slayer", "rogue"), ("skald", "barbar
 
 # Buckets the behaviour check cannot attribute, each a known ticket-04 defect. Kept in sync here so
 # that fixing the defect FORCES the skip to be deleted: a skip that outlives its cause is a hole.
-EXPECTED_SKIPS = {
-    ("oracle", "mysteries"),
-    ("sorcerer", "Talents"), ("bloodrager", "Talents"), ("cavalier", "Talents"),
-    ("samurai", "Talents"), ("warpriest", "Talents"), ("inquisitor", "Talents"),
-}
+EXPECTED_SKIPS = set()  # emptied by ticket 04 slice 2 (2026-10-01)
 
 REPORT = Report("validate_class_choices")
 

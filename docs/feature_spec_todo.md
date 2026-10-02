@@ -1094,12 +1094,11 @@ witness, which the build demonstrated: perturbing the table and re-running the b
 **Open, and owned by ticket 04 (rendering).** Four defects are known, documented per row, and
 deliberately unfixed here because each moves a shipped payload:
 
-- **Six call sites omit `dict_name=`**, so sorcerer and bloodrager bloodlines and cavalier and
-  samurai orders land in the default bucket `Talents`, shared with warpriest blessings and
-  inquisitor inquisitions. A warpriest/inquisitor multiclass merges them.
+- ~~**Six call sites omit `dict_name=`**~~ — fixed 2026-10-01 (ticket 04 slice 2): `bloodline`,
+  `orders`, `blessings`, `inquisitions`.
 - **`manuevers` is a typo** — spelled that way in `data.py`, at the call site, and on both sheets.
-- **The oracle's mystery shares the `mysteries` bucket with its revelations**, so neither count can
-  be read alone.
+- ~~**The oracle's mystery shares the `mysteries` bucket with its revelations**~~ — fixed
+  2026-10-01: `mysteries` (the mystery) and `revelations`.
 - **Three buckets hold a list, not a `{choice: description}` dict** (ranger favoured
   terrains/enemies, brawler maneuvers), and mercies, cruelties and ki powers carry no level stamp
   at all.
