@@ -574,6 +574,13 @@
  },
  "initiation_stat": "cha",
  "initiator_level": 7,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 13,
  "item_changes_dict": {
   "Amulet of Euphoric Healing": {
@@ -976,6 +983,7 @@
  "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "dead mother, loving father, raised in a wealthy household",
  "personality_traits": [
   "Reverent",

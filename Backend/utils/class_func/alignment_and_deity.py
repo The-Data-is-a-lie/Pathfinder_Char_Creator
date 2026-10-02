@@ -8,6 +8,9 @@ def choose_alignment(self, alignments, alignment_input):
     print()
 
     if self.alignment is None:
+        from utils.util import is_unset, note_unmatched
+        if not is_unset(alignment_input):
+            note_unmatched(self, 'alignment', alignment_input)
         random_alignment_code = random.choice(list(alignment_data.keys()))
         self.alignment = alignment_data[random_alignment_code].lower()
         mini_alignment = random_alignment_code.lower()
@@ -51,6 +54,10 @@ def randomize_deity(self, random_flag=True, deity_choice=None):
                 break
 
         if not found:
+            if not random_flag:
+                from utils.util import is_unset, note_unmatched
+                if not is_unset(deity_choice):
+                    note_unmatched(self, 'deity', deity_choice)
             pool = self.deity[self.alignment]
             self.deity_choice = (_region_affinity_deity(pool, getattr(self, "region", None))
                                  or random.choice(pool))

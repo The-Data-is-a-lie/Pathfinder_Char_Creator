@@ -791,6 +791,13 @@
  },
  "initiation_stat": "int",
  "initiator_level": 6,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 22,
  "item_changes_dict": {
   "Armbands of the Brawler": {
@@ -1099,6 +1106,7 @@
  "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 3 older sisters",
  "opposing_school": "N/A",
+ "optimize": null,
  "parents": "loving mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Trusting",

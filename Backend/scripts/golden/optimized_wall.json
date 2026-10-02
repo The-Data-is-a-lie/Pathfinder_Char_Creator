@@ -671,6 +671,13 @@
  },
  "initiation_stat": "int",
  "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
  "int": 9,
  "item_changes_dict": {
   "Amulet of Natural Armor +2": {
@@ -908,6 +915,17 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
+ "optimize": {
+  "description": "The AC tank -- fight-state AC (ac_combat: posture, stance, styles, class AC, buffs) plus hit points. dr rejoins the primaries when the measured sweep shows a purchasable floor.",
+  "gear_ladder": "deflector",
+  "house_rules": true,
+  "primaries": [
+   "ac_combat",
+   "hp"
+  ],
+  "role": "wall",
+  "role_forced": true
+ },
  "parents": "dead mother, loving father, raised in a poor household",
  "personality_traits": [
   "Genuine",
