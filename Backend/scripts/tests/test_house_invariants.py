@@ -173,26 +173,11 @@ def check(condition, message):
 
 
 # ---------------------------------------------------------------- class choices (ticket 05)
-# Buckets this check cannot attribute, and why. Each is a KNOWN defect owned by class-choices
-# ticket 04, not an excuse: asserting on them would fail on characters that are behaving exactly
-# as the (wrong) code intends, which trains people to ignore the gate.
-CHOICE_SKIP = {
-    ('oracle', 'mysteries'):
-        "the mystery and the revelations share one bucket -- both call sites pass "
-        "dict_name='mysteries' -- so neither count can be read alone (ticket 02 -> 04)",
-    ('sorcerer', 'Talents'): "default bucket name; see below",
-    ('bloodrager', 'Talents'): "default bucket name; see below",
-    ('cavalier', 'Talents'): "default bucket name; see below",
-    ('samurai', 'Talents'): "default bucket name; see below",
-    ('warpriest', 'Talents'): "default bucket name; see below",
-    ('inquisitor', 'Talents'): "default bucket name; see below",
-}
-# The 'Talents' entries above share one cause: six call sites omit dict_name=, so bloodlines,
-# orders, blessings and inquisitions all land in generic_class_option_chooser's DEFAULT bucket.
-# On a single-class sweep character the count would in fact be readable -- but the moment two of
-# those classes are rolled together the bucket merges and the count is meaningless, so this check
-# refuses to assert on a bucket whose name is known not to identify its contents. Deleting these
-# entries is part of ticket 04's fix, and the gate below fails if the list stops matching the table.
+# Buckets this check cannot attribute, and why. Empty since class-choices 04 slice 2 (2026-10-01):
+# the six dict_name=-omitting call sites now name their buckets and the oracle's mystery and
+# revelations are split, so every bucket's key count is readable alone. A new entry needs a
+# matching EXPECTED_SKIPS row in validate_class_choices.py, which keeps the two honest.
+CHOICE_SKIP = {}
 CHOICE_COVERAGE = {'chars': 0, 'buckets': 0, 'picks': 0, 'stamps': 0, 'skipped': 0, 'capped': 0}
 
 # ---- Inherent luck (map: inherent-luck, ticket 06) -------------------------------------------- #

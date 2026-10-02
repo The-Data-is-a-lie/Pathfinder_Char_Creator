@@ -750,8 +750,8 @@ def phase_class_options(character):
 	chooseable_list_archetypes(character, archetypes_per_class)
 
 	# generic single choices (the choosers gate themselves on any matching class entry)
-	character.bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline")
-	character.bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline")
+	character.bloodline_sorc = generic_class_option_chooser(character, "sorcerer", "bloodline", dict_name = 'bloodline')
+	character.bloodline_rager = generic_class_option_chooser(character, "bloodrager", "bloodline", dict_name = 'bloodline')
 	character.chosen_bloodline = (next(iter(character.bloodline_sorc), '')
 								  if character.bloodline_sorc else '')
 
@@ -772,11 +772,10 @@ def phase_class_options(character):
 	# stat block FOLDS the feats and flaws chosen on the line above, so it cannot run first.
 	stat_bonded_creatures(character)
 
-	generic_class_option_chooser(character,"cavalier", "orders")
-	generic_class_option_chooser(character,"samurai", "orders")
-	generic_class_option_chooser(character,"warpriest", "blessing", multiple='yes', alternate_dataset=True)
-	generic_class_option_chooser(character,"inquisitor", "inquisitions", multiple='yes', alternate_dataset=True)
-	# Need to add revelations to oracle
+	generic_class_option_chooser(character,"cavalier", "orders", dict_name = 'orders')
+	generic_class_option_chooser(character,"samurai", "orders", dict_name = 'orders')
+	generic_class_option_chooser(character,"warpriest", "blessing", multiple='yes', alternate_dataset=True, dict_name = 'blessings')
+	generic_class_option_chooser(character,"inquisitor", "inquisitions", multiple='yes', alternate_dataset=True, dict_name = 'inquisitions')
 
 	# Make this populate like how you want it to *********
 	
@@ -784,7 +783,7 @@ def phase_class_options(character):
 	if any(c['name'] == 'oracle' for c in character.classes):
 		pre_oracle_mystery = generic_class_option_chooser(character, "oracle", "mysteries", dict_name = 'mysteries')
 		oracle_mystery = list(pre_oracle_mystery.keys())[0]
-		generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'mysteries')
+		generic_class_option_chooser(character,"oracle", dataset_name="mysteries", dataset_name_2=oracle_mystery, dataset_name_3="revelations", multiple='yes', alternate_dataset = True, level = 99, level_2 = 99, dict_name = 'revelations')
 
 	generic_class_option_chooser(character, "oracle", "curses", dict_name = "curses")
 
@@ -1553,7 +1552,7 @@ def phase_class_features_and_bonus_spells(character, casting_level_str):
 # Bloodlines
 	_bloodline_book = _book_for('sorcerer', 'bloodrager')
 	if _bloodline_book is not None and character.bloodline != "N/A":
-		bonus_spells = character.data_dict['class features'].get("Talents", {}).get(character.bloodline, {}).get("bonus spells", [])
+		bonus_spells = character.data_dict['class features'].get("bloodline", {}).get(character.bloodline, {}).get("bonus spells", [])
 		add_bonus_spells(character, bonus_spells, _bloodline_book['spell_list_choose_from'])
 # Patrons
 	# LEVEL-GATED, unlike the bloodline above. A patron grants its nine spells at witch levels 2,

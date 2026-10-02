@@ -167,14 +167,14 @@
     },
     "bloodrager": {
       "buckets": {
-        "Talents": {
+        "bloodline": {
           "dataset": "bloodline",
-          "bucket": "Talents",
+          "bucket": "bloodline",
           "levels": [
             1
           ],
           "source": "raw",
-          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row."
+          "note": "Single pick, gained at 1st level. Shares the 'bloodline' bucket with the sorcerer."
         }
       }
     },
@@ -194,14 +194,14 @@
     },
     "cavalier": {
       "buckets": {
-        "Talents": {
+        "orders": {
           "dataset": "orders",
-          "bucket": "Talents",
+          "bucket": "orders",
           "levels": [
             1
           ],
           "source": "raw",
-          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row."
+          "note": "Single pick, gained at 1st level. Shares the 'orders' bucket with the samurai."
         }
       }
     },
@@ -312,9 +312,9 @@
     },
     "inquisitor": {
       "buckets": {
-        "Talents": {
+        "inquisitions": {
           "dataset": "inquisitions",
-          "bucket": "Talents",
+          "bucket": "inquisitions",
           "levels": [
             1,
             1
@@ -527,6 +527,15 @@
           "dataset": "mysteries",
           "bucket": "mysteries",
           "levels": [
+            1
+          ],
+          "source": "raw",
+          "note": "The mystery itself: a single pick at 1st level. Split from the revelations (class-choices 04 slice 2) -- the shared bucket made neither count readable, and the revelations call's dict update overwrote the mystery pick outright."
+        },
+        "revelations": {
+          "dataset": "mysteries",
+          "bucket": "revelations",
+          "levels": [
             1,
             3,
             7,
@@ -547,7 +556,7 @@
             1
           ],
           "source": "raw",
-          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. NOTE the oracle's mystery shares the `mysteries` bucket with its revelations: the single-pick call and the multi-pick call both pass dict_name='mysteries', so the bucket's key count is the mystery plus the revelations and neither can be counted alone. Recorded for ticket 04; not changed here, because renaming a bucket moves a shipped payload."
+          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here."
         }
       }
     },
@@ -665,14 +674,14 @@
     },
     "samurai": {
       "buckets": {
-        "Talents": {
+        "orders": {
           "dataset": "orders",
-          "bucket": "Talents",
+          "bucket": "orders",
           "levels": [
             1
           ],
           "source": "raw",
-          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here. Lands in the default 'Talents' bucket -- see the sorcerer row. companion.json records this one live: its class_feature_owners reads {'Talents': 'samurai'}."
+          "note": "Single pick, gained at 1st level. Shares the 'orders' bucket with the cavalier."
         }
       }
     },
@@ -759,14 +768,14 @@
     },
     "sorcerer": {
       "buckets": {
-        "Talents": {
+        "bloodline": {
           "dataset": "bloodline",
-          "bucket": "Talents",
+          "bucket": "bloodline",
           "levels": [
             1
           ],
           "source": "raw",
-          "note": "Single pick, gained at 1st level. The level was a hardcoded 1 inside the chooser; it is declared here so the table is the complete inventory of class choices. BUCKET NAME IS WRONG: the call site omits dict_name=, so the bloodline lands in generic_class_option_chooser's default bucket 'Talents' -- shared with the bloodrager, cavalier and samurai. Ticket 04's to fix; recorded here under the name the code actually writes."
+          "note": "Single pick, gained at 1st level. Bucket 'bloodline' -- shared with the bloodrager by design (class-choices 04 slice 2; first-writer-wins owner accepted, same ruling as rage_powers)."
         }
       }
     },
@@ -885,9 +894,9 @@
     },
     "warpriest": {
       "buckets": {
-        "Talents": {
+        "blessings": {
           "dataset": "blessing",
-          "bucket": "Talents",
+          "bucket": "blessings",
           "levels": [
             1,
             1

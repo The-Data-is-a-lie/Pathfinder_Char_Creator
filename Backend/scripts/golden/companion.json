@@ -414,9 +414,6 @@
   "water"
  ],
  "class feature levels": {
-  "Talents": {
-   "Order of the Eclipse": 1
-  },
   "arcana": {
    "protected assault": 3
   },
@@ -425,13 +422,16 @@
   },
   "favored_terrains": {
    "Planes [choose]": 3
+  },
+  "orders": {
+   "Order of the Eclipse": 1
   }
  },
  "class feature owners": {
-  "Talents": "samurai",
   "arcana": "magus",
   "favored_enemies": "ranger",
-  "favored_terrains": "ranger"
+  "favored_terrains": "ranger",
+  "orders": "samurai"
  },
  "class features": {
   "Skill Unlock: Ride": {
@@ -439,17 +439,6 @@
    "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
    "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
    "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
-  },
-  "Talents": {
-   "Order of the Eclipse": {
-    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
-    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
-    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
-    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
-    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
-    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
-    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
-   }
   },
   "arcana": {
    "protected assault": {
@@ -461,6 +450,17 @@
   },
   "favored_terrains": {
    "Planes [choose]": "Favored terrain: +2 initiative and +2 on Knowledge (geography), Perception, Stealth and Survival checks in this terrain, and the ranger leaves no trail there. Each time a new favored terrain is gained, the bonus in one existing favored terrain rises by +2."
+  },
+  "orders": {
+   "Order of the Eclipse": {
+    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
+    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
+    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
+    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
+    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
+    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
+    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
+   }
   }
  },
  "class_ability": [
@@ -599,9 +599,6 @@
  "class_feature_changes_dict": {},
  "class_feature_conditionals_dict": {},
  "class_feature_levels": {
-  "Talents": {
-   "Order of the Eclipse": 1
-  },
   "arcana": {
    "protected assault": 3
   },
@@ -610,13 +607,16 @@
   },
   "favored_terrains": {
    "Planes [choose]": 3
+  },
+  "orders": {
+   "Order of the Eclipse": 1
   }
  },
  "class_feature_owners": {
-  "Talents": "samurai",
   "arcana": "magus",
   "favored_enemies": "ranger",
-  "favored_terrains": "ranger"
+  "favored_terrains": "ranger",
+  "orders": "samurai"
  },
  "class_features": {
   "Skill Unlock: Ride": {
@@ -624,17 +624,6 @@
    "15 Ranks": "While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.",
    "20 Ranks": "Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.",
    "5 Ranks": "Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted."
-  },
-  "Talents": {
-   "Order of the Eclipse": {
-    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
-    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
-    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
-    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
-    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
-    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
-    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
-   }
   },
   "arcana": {
    "protected assault": {
@@ -646,6 +635,17 @@
   },
   "favored_terrains": {
    "Planes [choose]": "Favored terrain: +2 initiative and +2 on Knowledge (geography), Perception, Stealth and Survival checks in this terrain, and the ranger leaves no trail there. Each time a new favored terrain is gained, the bonus in one existing favored terrain rises by +2."
+  },
+  "orders": {
+   "Order of the Eclipse": {
+    "Challenge": " The order of the eclipse samurai gains a +1 bonus on all Intimidate checks made against the target of his challenge. This bonus increases by 1 for every four levels the samurai possesses.",
+    "Dark Rider (Su)": " At 2nd level, whenever the samurai is on his mount, both he and his mount share any of the following senses if either of them possesses it: darkvision, low-light vision, scent, and see in darkness. This applies regardless of the source of the sense (including senses gained from spells or magic items), but only while the samurai is mounted. If the samurai and mount both have a sense but one has an improved version (such as a samurai with darkvision with a range of 60 feet riding a mount that has darkvision with a range of 90 feet), both receive the improved version of the sense.",
+    "Eclipsing Blade (Sp)": " At 8th level, the samurai can cast on a weapon he is holding. The does not affect the vision of any order of the eclipse samurai, or that of their mounts. The spell immediately ends if the weapon leaves the samurai's hand. He may do this once per day, plus one additional time per day for every four levels he possesses above 8th (to a maximum of four times per day at 20th level).",
+    "Edicts": " The samurai cannot create light where it is not necessary—anything that can be done in darkness should be. The samurai must belong to a military organization (within Kaoling this is likely to be a warband commanded by a senior samurai, who in turn answers to Warlord Tsung-cha Kavangaki or one of the Council of Nine). The samurai must enforce his place within this order and societies that recognize its authority, obeying those senior to him without question and demanding total obedience from those beneath him. The samurai must take every opportunity to extinguish the lights of his foes.",
+    "Order Abilities": " A samurai that belongs to the order of the eclipse gains the following abilities as he increases in level.",
+    "See in Darkness (Ex)": " At 15th level the samurai can see perfectly in darkness, even magical darkness, as the universal monster ability of the same name.",
+    "Skills": " An order of the eclipse samurai adds Perception (Wis) and Survival (Wis) to his list of class skills. In addition, whenever he makes a Perception check to notice an invisible creature or object, he receives a bonus on the check equal to 1/2 his samurai level (minimum +1)."
+   }
   }
  },
  "classes": [

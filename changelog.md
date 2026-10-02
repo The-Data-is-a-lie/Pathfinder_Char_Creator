@@ -282,6 +282,19 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **Bloodlines, orders, blessings, inquisitions and the oracle's mystery now land in their own
+  class-feature buckets** (class-choices ticket 04, slice 2). Six chooser calls omitted
+  `dict_name=`, so all four kinds of pick were filed under a generic `Talents` bucket — a
+  warpriest/inquisitor multiclass merged them, and both sheets labelled them "Talents". The oracle
+  was worse: its revelations call wrote the same `mysteries` key and **overwrote the mystery pick**,
+  so an oracle's sheet never showed its mystery at all. Buckets are now `bloodline`, `orders`,
+  `blessings`, `inquisitions`, `mysteries` (the mystery only) and `revelations`. This is a payload
+  contract change: the web sheet already had registrations waiting for exactly these names; the
+  Foundry module registers them on branch `feat/named-choice-buckets`, and the web sheet relabels
+  `mysteries` as *Oracle Mystery* on `fix/oracle-mystery-label`. The behaviour gate's skip list is
+  now empty. *The decision:* a sorcerer/bloodrager (or cavalier/samurai) multiclass shares one
+  bucket under a first-writer-wins owner — accepted, the same ruling as the barbarian/skald
+  `rage_powers` divider (slice 4), rather than splitting buckets per class across both renderers.
 - **The web sheet moved under you on every repaint and every drag** *(sibling repo: the web sheet,
   `scripts/sheet.js`, `scripts/ui.js`, 2026-09-07)*. Three separate causes, one symptom. A repaint —
   a drop, an inline edit, a checkbox — rebuilds every pane, and the *document* is the scroller, so a
