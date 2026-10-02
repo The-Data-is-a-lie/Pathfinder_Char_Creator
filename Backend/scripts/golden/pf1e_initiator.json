@@ -1,0 +1,711 @@
+{
+ "Total_HP": 85,
+ "age_number": 39,
+ "alignment": "Lawful Neutral",
+ "animal_companion": null,
+ "appearance": [
+  "Overweight"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Bannerman\": {\n        \"parent class:\": \"Warlord\",\n        \"courageous defense \": \"The bannerman is a combatant of grace and skill, and his faith in both himself as a symbol as well as in his allies assists his defense. When fighting with a ranged weapon (such as with a bow or a crossbow), or with a one-handed or light weapon in one hand and nothing in the other (or with a buckler and/or an inspiring banner, see below) and wearing medium or lighter armor, the bannerman gains a +1 dodge bonus to his Armor Class per four warlord levels. This replaces the bonus feat gained at 1st level.\",\n        \"tactical presence \": \"This class feature functions as normal, but the bannerman gains additional presence choices. Diplomat's Presence:  At 2nd level, the bannerman adds a +4 competence bonus to Bluff, Diplomacy, Intimidate and Sense Motive rolls while in this presence.      Fearsome Presence:  At 13th level, the bannerman's reputation in battle precedes him and an aura of his many victories inspires dread in his foes. Enemies of the bannerman within 30-ft. of his position are filled with dread as if under a  fear  spell (use the bannerman's Charisma modifier for the Will save DC and his initiator level as his caster level). Foes that succeed the saving throw are unaffected by the bannerman's fearsome presence for 24 hours.      Commander's Presence:  At 17th level, the bannerman is a true commander amongst warlords, allowing him to lend a readied maneuver to an ally within 30-ft. as a swift action. When he lends this maneuver, the maneuver is expended until the recipient initiates this maneuver (using the recipient's initiator level and Charisma modifier to determine the saving throw DC; if the recipient's initiator level is too low to initiate the maneuver, then the bannerman cannot lend the maneuver). He can only lend one maneuver at a time when using this presence, and if the bannerman stops using this presence, then the effect ends immediately (but the maneuver remains expended until recovered).      Inspiring Banner (Ex) [ ]   At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler.  This replaces the warlord's battle prowess class feature.        The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.      Share Boost (Ex) [ ]   At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level.  This replaces the dual boost class feature.\",\n        \"inspiring banner \": \"At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler. This replaces the warlord's battle prowess class feature. The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.\",\n        \"share boost \": \"At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level. This replaces the dual boost class feature.\"\n    }\n}",
+ "armor_ac": "5",
+ "armor_armor_check_penalty": "-4",
+ "armor_enhancement_bonus": 1,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "3",
+ "armor_name": "Horn lamellar",
+ "armor_spell_failure": "25%",
+ "armor_weight": "30 lbs.",
+ "bab_total": 10,
+ "background_traits": [
+  "Blood of Pharaohs",
+  "Vigilant Battler"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [],
+ "buff_gaps": [],
+ "build_archetype": "Team Buffer",
+ "build_tactics": "Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.",
+ "c_class": "warlord",
+ "c_class_2": "",
+ "c_class_display": "Warlord",
+ "casting_level_str_foundry": "None",
+ "casting_tradition": {
+  "bonus_spell_points": 0,
+  "boons": [
+   "Overcharge",
+   "Fortified Casting"
+  ],
+  "boons_detail": [
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   }
+  ],
+  "casting_ability_modifier": "Charisma",
+  "drawbacks": [
+   "Addictive Casting",
+   "Painful Magic",
+   "Draining Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   }
+  ]
+ },
+ "cha": 19,
+ "character_full_name": "Pascal Bertin",
+ "chosen_race": "Half-Orc",
+ "chosen_spell_descriptor": [
+  "air",
+  "evil"
+ ],
+ "class feature levels": {},
+ "class feature owners": {},
+ "class features": {},
+ "class_ability": [
+  "warlords gambit_warlord",
+  "bonus feat_warlord",
+  "tactical presence_warlord",
+  "warleader_warlord",
+  "force of personality_warlord",
+  "tactical flanker_warlord",
+  "battle prowess_warlord",
+  "dual boost_warlord",
+  "tactical assistance_warlord",
+  "dual tactical presence_warlord",
+  "improved warleader_warlord",
+  "warlords presence_warlord",
+  "master warleader_warlord",
+  "dual stance_warlord"
+ ],
+ "class_ability_desc": {
+  "battle prowess": "The warlord is a skilled combatant, mixing traditional fighting skills with the skill of his martial discipline training. Choose a discipline, and when the warlord is in a martial stance from this chosen discipline, the character gets the listed bonus (+1 at 5th level, +2 at 12th level, +3 at 19th level) as acompetence bonusto attack and damage rolls,CMBrolls, and to hisCMD. He may select another discipline at 12th level, and third discipline at 19th level.",
+  "bonus feat": "At 1st level and at 6th level, and then every four levels after, the warlord gains a bonuscombatfeat orteamworkfeat of his choosing. The warlord must qualify for the feat before selecting it.",
+  "dual boost": "Knowledgeable in the ways of making the best of any situation through pluck and verve, the warlord is capable of applying multiple martial principles simultaneously. At 6th level, once per day the warlord may initiate two boost type maneuvers as part of the sameswift action. He may use this an additional time per day at 12th level, and three times per day at 18th level.",
+  "dual stance": "At 20th level, the warlords ability to use his stances improves, allowing him to gain the benefits of two known stances simultaneously. He must still adopt each stance individually, requiring him to expend oneswift actionfor each stance.",
+  "dual tactical presence": "At 11th level, the sight of the warlord on a field of combat inspires multiple feelings in those around him. He may select and use two presences, activating them together as afree action.",
+  "force of personality": "At 3rd level, the warlords forceful personality and bold, headstrong nature assist him in resisting the influence of others. Where others use personal serenity, awareness of the world around them, or plain old sensibility, the warlord gets by with endless nerve. The warlord may add hiswarlord initiation modifier in addition to hisWisdommodifier to determine hisWillsave bonus. If the character is ever able to add hiswarlord initiation modifier to hisWillsave through use of another ability (for example. thepaladinsdivine grace) he may only add hiswarlord initiation modifier once to hisWillsave.",
+  "improved warleader": "At 13th level, the warlords excellence in battle has enabled him to utilize the tactical skills of his allies as well as his own with greater speed. The warlord may now use his warleader class feature as amove action.",
+  "master warleader": "At 17th level, the warlords peerless ability in the theater of war has enabled him to utilize the tactical skills of his allies as well as his own with the greatest of speed. The warlord may now use his warleader class feature as aswift action.",
+  "tactical assistance": "At 8th level, the warlords gift for helping his allies in combat improves. The character may use the aid another action for any single ally within 30-ft. of his position as amove action, and when he successfully uses the aid another action, it affects all allies within 30 feet.",
+  "tactical flanker": "At 4th level, the warlord is exceptionally gifted at working with his allies to bring down opponents and his skills assist any who ally with him. At the start of the warlords turn, he chooses a single square adjacent to him. Until the start of his next turn, he and his allies can treat that square as if it was occupied by him for the purposes offlankingopponents.",
+  "tactical presence": "At 2nd level, the warlords innate charisma allows his very presence to aid and assist not only himself but his allies as well, just by his being around. Adopting a presence is a move-equivalent action, and only one presence may be maintained at any given time. At 7th level, the warlord is capable of adopting a presence as afree action.",
+  "warleader": "The warlord excels in the theater of war because he knows how best to work with his allies. At 3rd level, the warlord becomes an ever more capable commander and may share tactics with his allies. First, the warlord gains a teamwork feat as a bonus feat (he must meet the prerequisites for this feat to select it). As astandard actionthat the warlord performs, the warlord and allies within 30- ft. of him can share teamwork feats that they possess with each other, acting as if they both possessed the teamwork feat that they are sharing. The warlord can only share one teamwork feat at a time, either one of his own (with all allies within 30-ft. of him) or an allys (in which case only the warlord receives the ability to use the teamwork feat he does not possess). The warlord and allies retain the use of this feat for 3 +his warlord initiation modifier in rounds. The warlord can use this ability a number of times per day equal to 1 + his warlord initiation modifier, plus one additional time per day at 7th level and four warlord levels thereafter.",
+  "warlords gambit": "At his core, the warlord is a warrior who relies on both skill and daring; without this he is but any other combatant. By setting himself to danger, does his true skill shine, or so the motto of the warlord goes. At 1st level, a warlord selects two gambits from the gambits available to warlords. At 4th level and every four levels thereafter, a warlord selects an additional gambit to learn. Any gambit that would normally use the warlords Charisma modifier to determine its effects instead uses his warlord initiation modifier, if it is a different ability. These gambits allow the warlord to recover maneuvers. Due to their reliance on the stresses of combat to bring out the best of the warlord, gambits cannot be used outside combat.",
+  "warlords presence": "At 15th level, the warlord is capable using three of his presences together at the same time, activating them together as afree action."
+ },
+ "class_feat_labels": [
+  "Warlord 1",
+  "Warlord 6",
+  "Warlord 10"
+ ],
+ "class_feat_tax_dict": {},
+ "class_feats": [
+  "Out of the Sun",
+  "Exotic Weapon Proficiency",
+  "Demon Hunter"
+ ],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {},
+ "class_feature_owners": {},
+ "class_features": {},
+ "classes": [
+  {
+   "archetype": {
+    "Bannerman": {
+     "courageous defense ": "The bannerman is a combatant of grace and skill, and his faith in both himself as a symbol as well as in his allies assists his defense. When fighting with a ranged weapon (such as with a bow or a crossbow), or with a one-handed or light weapon in one hand and nothing in the other (or with a buckler and/or an inspiring banner, see below) and wearing medium or lighter armor, the bannerman gains a +1 dodge bonus to his Armor Class per four warlord levels. This replaces the bonus feat gained at 1st level.",
+     "inspiring banner ": "At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler. This replaces the warlord's battle prowess class feature. The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.",
+     "parent class:": "Warlord",
+     "share boost ": "At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level. This replaces the dual boost class feature.",
+     "tactical presence ": "This class feature functions as normal, but the bannerman gains additional presence choices. Diplomat's Presence:  At 2nd level, the bannerman adds a +4 competence bonus to Bluff, Diplomacy, Intimidate and Sense Motive rolls while in this presence.      Fearsome Presence:  At 13th level, the bannerman's reputation in battle precedes him and an aura of his many victories inspires dread in his foes. Enemies of the bannerman within 30-ft. of his position are filled with dread as if under a  fear  spell (use the bannerman's Charisma modifier for the Will save DC and his initiator level as his caster level). Foes that succeed the saving throw are unaffected by the bannerman's fearsome presence for 24 hours.      Commander's Presence:  At 17th level, the bannerman is a true commander amongst warlords, allowing him to lend a readied maneuver to an ally within 30-ft. as a swift action. When he lends this maneuver, the maneuver is expended until the recipient initiates this maneuver (using the recipient's initiator level and Charisma modifier to determine the saving throw DC; if the recipient's initiator level is too low to initiate the maneuver, then the bannerman cannot lend the maneuver). He can only lend one maneuver at a time when using this presence, and if the bannerman stops using this presence, then the effect ends immediately (but the maneuver remains expended until recovered).      Inspiring Banner (Ex) [ ]   At 5th level, a bannerman's banner becomes a symbol of inspiration to his allies and companions. As long as the bannerman's banner is clearly visible and he is in a Golden Lion stance, all allies within 60 feet receive a +2 morale bonus on saving throws against fear and fatigue and a +2 morale bonus on attack and damage rolls. At 12th level, and at 19th level, these bonuses increase by +1. If the Golden Lion stance he is using grants a similarly typed bonus to attack, damage, or saving throws, then increase that bonus by the amount of the inspiring banner's bonus. The banner must be at least Small or larger and must be carried or displayed by the bannerman or his mount to function, and can be held while using a buckler.  This replaces the warlord's battle prowess class feature.        The Bannerman and his Banner  While trying to leave it to the player and GM to determine if a banner is acceptable for the character in the method of how it is carried, we wanted to be more easy and unrestricted with it. A bannerman's banner is intended to be able to be placed on any manner of item so long as it is displayed. Some official ideas for how a bannerman may carry a banner: as heraldry on a shield, on a small pole mounted to either his mount's saddle or to the back of his armor, a tabard that they wear prominently, or a standard that hangs from a polearm or spear. So long as that standard is carried upon his person where people can see it, he can inspire these allies.      Share Boost (Ex) [ ]   At 6th level, the bannerman's ability to inspire his troops allows him to share some of his martial prowess with an ally on occasion. Once per day he is able to initiate a boost as an immediate action to utilize a boost for an ally who is initiating a maneuver or making an attack that qualifies for the use of that boost. The boost shared uses the bannerman's initiator level and saving throw DC (if applicable). He can use this ability one additional time per day at 12th level and again at 18th level.  This replaces the dual boost class feature."
+    }
+   },
+   "display": "Warlord",
+   "level": 10,
+   "name": "warlord"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 14,
+ "counter_schools": [
+  "evocation"
+ ],
+ "counter_spell_descriptor": [
+  "force",
+  "curse"
+ ],
+ "craft_type": "Locksmithing",
+ "day_list": [],
+ "deity_name": "Ragathiel",
+ "dex": 15,
+ "enhancement_desc_dict": {},
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "body": {
+   "description": " when the wearer enters a stance from a style feat while wearing a dhoti of style mastery , he gains 1d8+3 temporary hit points plus an additional 1d8 temporary hit points for each feat he has that lists that style feat as a prerequisite (maximum 3d8+3 temporary hit points). These temporary hit points last as long as the wearer maintains the stance during that combat, but vanish when the combat concludes. The wearer cannot gain temporary hit points in this way more than once per day. ",
+   "item_name": "Dhoti of Style Mastery"
+  },
+  "chest": {
+   "description": " these linen bandages have the same\r color and softness as the feathers of a\r dove, but their antiseptic smell suggests\r a less natural origin. Any creature\r wrapped in these bandages recovers\r from wounds and ability damage each\r day as if receiving complete bed rest, regardless of activity\r (core rulebook 191). A creature actually receiving long-term\r care (from the heal skill) or complete bed rest while wearing\r the bandages gains a +4 bonus to its effective level or hit\r dice when determining how many hit points it recovers each\r day. The bandages are destroyed once removed or when the\r wearer recovers all hit points and ability damage, whichever\r comes first. ",
+   "item_name": "Bandages of Rapid Recovery"
+  },
+  "hands": {
+   "description": " the wearer of these simple gloves can\r speak a command word create a glowing\r disembodied hand. As a swift action, the\r wearer can have the hand assist him with\r a task as if using the aid another action. \r the hand uses the wearer's base attack\r bonus or skill ranks when making the check to see if aid another is\r successful (it does not gain the benefit of the wearer's ability scores\r or other bonuses). The hand remains until it has attempted one\r action or until 1 minute passes, whichever comes first, at which\r time the gloves become nonmagical. ",
+   "item_name": "Assisting Gloves"
+  },
+  "shoulders": {
+   "description": " this silvery cape furls and ripples\r like a flag with every step its\r owner takes. As a swift action, \r the wearer can order the cape to\r transform into a faint sphere of\r force that surrounds him on all\r sides. The field grants the wearer\r concealment (20% miss chance)\r against ranged attacks and lasts for 1 minute or until the\r wearer is missed by a ranged attack due to the power of the\r cloak, whichever comes first. When the field is used, all magic\r is lost from the cloak, leaving only a mundane silvery garment. ",
+   "item_name": "Catching Cape"
+  }
+ },
+ "equipment_list": [
+  "Dhoti of Style Mastery",
+  "Bandages of Rapid Recovery",
+  "Assisting Gloves",
+  "Catching Cape"
+ ],
+ "eye_color": [
+  "Blue"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 3,
+  "flavor": 0,
+  "flaw": 0,
+  "normal": 5,
+  "profession": 0,
+  "story": 0,
+  "teamwork": 0,
+  "trainer": 0
+ },
+ "feat_changes_dict": {
+  "Demon Hunter": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.kpl",
+     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Demon Hunter": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
+  }
+ },
+ "feats": [
+  "Shield Proficiency",
+  "Improved Feint",
+  "Athletic",
+  "Siege Engineer",
+  "Master Alchemist"
+ ],
+ "feats_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [],
+ "flaw": [],
+ "flaw_effects_dict": {},
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [],
+ "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Team Buffer\n- Tactics: Opens with its best party-wide amplifier -- haste or its song, nearly always -- then keeps layering and maintaining buffs while allies convert them into damage. Treats its own attacks as filler; the party's action economy is its weapon.\n- Stat Focus: Cha\n- Disciplines: Primal Fury, Golden Lion, Scarlet Throne\n- Homeland: Tal-falko\n\nVocation\n- Known for: Locksmithing\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Middle Income Household\n- 2 Younger Brothers\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n\nAppearance\n- Hair: Straight Red\n- Eyes: Blue\n- Build: Overweight",
+ "full_domain": [],
+ "gender": "Male",
+ "generation_seed": 1004,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 20,
+ "hair_color": [
+  "Red"
+ ],
+ "hair_type": [
+  "Straight"
+ ],
+ "height_number": "6'10\"",
+ "hero_points": 0,
+ "homebrew": false,
+ "homebrew_feat_desc_dict": {
+  "Athletic": "You possess inherent physical prowess",
+  "Demon Hunter": "You are well-versed in demonic lore",
+  "Exotic Weapon Proficiency": "Choose one type of exotic weapon, such as the spiked chain or whip You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow",
+  "Improved Feint": "You are skilled at fooling your opponents in combat",
+  "Master Alchemist": "Your mastery of alchemy is nearly supernatural",
+  "Out of the Sun": "Your allies use the sun's glare to their advantage",
+  "Shield Proficiency": "You are trained in how to properly use a shield",
+  "Siege Engineer": "You are proficient with all siege weaponry"
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "cha",
+ "initiator_level": 10,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
+ "int": 14,
+ "item_changes_dict": {
+  "Assisting Gloves": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of these simple gloves can speak a command word create a glowing disembodied hand. As a swift action, the wearer can have the hand assist him with a task as if using the aid another action. The hand remains until it has attempted one action or until 1 minute passes, whichever comes first, at which time the gloves become nonmagical."
+   ]
+  },
+  "Bandages of Rapid Recovery": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "Any creature wrapped in these bandages recovers from wounds and ability damage each day as if receiving complete bed rest, regardless of activity (core rulebook 191). A creature actually receiving long-term care (from the heal skill) or complete bed rest while wearing the bandages gains a +[[4]] bonus to its effective level or hit dice when determining how many hit points it recovers each day."
+    }
+   ]
+  },
+  "Catching Cape": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "As a swift action, the wearer can order the cape to transform into a faint sphere of force that surrounds him on all sides. The field grants the wearer concealment (20% miss chance) against ranged attacks and lasts for [[1]] minute or until the wearer is missed by a ranged attack due to the power of the cloak, whichever comes first."
+    }
+   ]
+  },
+  "Dhoti of Style Mastery": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "When the wearer enters a stance from a style feat while wearing a dhoti of style mastery , he gains 1d8+3 temporary hit points plus an additional 1d8 temporary hit points for each feat he has that lists that style feat as a prerequisite (maximum 3d8+3 temporary hit points). These temporary hit points last as long as the wearer maintains the stance during that combat, but vanish when the combat concludes. The wearer cannot gain temporary hit points in this way more than once per day."
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Orc",
+  "Gnoll",
+  "Abyssal"
+ ],
+ "level": 10,
+ "level_up_stats": {
+  "cha": 1,
+  "con": 0,
+  "dex": 0,
+  "int": 1,
+  "str": 0,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "luck": null,
+ "magic_talent_items": [],
+ "main_stat": "cha",
+ "maneuvers_choose_from": [
+  [
+   "Shoulder Rush",
+   "Pride Movement"
+  ],
+  [
+   "Crippling Strike",
+   "Regal Blade"
+  ],
+  [
+   "Kill the Wounded",
+   "Circling the Prey"
+  ],
+  [
+   "Golden Swipe",
+   "Sanguine Perseverance",
+   "Red Zephyrs Dance"
+  ],
+  [
+   "Ruby Zenith Strike",
+   "Roar of Battle"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Circling the Prey": {
+   "action": "1 swift action",
+   "description": "With practiced precision and a quick shout, the disciple and his allies move in unison for better strategic advantage. The initiators shout grants himself and his allies a free 5-ft. step that must be taken when this boost is used.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 3,
+   "range": "60-ft.",
+   "type": "boost"
+  },
+  "Crippling Strike": {
+   "action": "1 standard action",
+   "description": "By specifically targeting a victims most vulnerable areas, the disciple is capable of rending arterial injuries into his foe. The initiator initiating this maneuver inflicts an additional 2d6 points of damage upon a successful melee attack, and his victim gains the bleeding condition suffering 1d3 points of damage per round until the application of any spell or effect that cures hit point damage or someone staunches the blood with a DC 15 Heal check.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Golden Commander Stance": {
+   "action": "1 swift action",
+   "description": "AuraRange: 30\nonlyOthers;\n\nThrough the use of the Golden Lion disciples superior tactical ability, he is able to direct his allies in combat for maximum effectiveness. As long as his allies within 30-ft. of him can clearly hear his shouts and understand his language, he grants his allies the ability to gain flanking with all adjacent allies that are fighting in melee against the same opponent i.e. if two allies of the initiator are 20-ft. away fighting a target together, and the initiator has another ally assisting him in combat against a different target, both pairs gain flanking bonuses against their foes even if they are not normally in flanking position.",
+   "discipline": "Golden Lion",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Golden Lion Charger": {
+   "action": "1 swift action",
+   "description": "A student of the art of war and of the Golden Lion, a disciple who has training in the art of engaging an enemy knows that sometimes a powerful opening charge can be the edge the warrior needs. While in this stance and performing a charge, the initiator gains an additional +2 bonus to hit making the bonus received from the charge attack a total of +4 and when charging through a threatened square, the initiator does not provoke attacks of opportunity.",
+   "discipline": "Golden Lion",
+   "duration": "Stance",
+   "level": 4,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Golden Swipe": {
+   "action": "1 standard action",
+   "description": "With a series of furious blows against his foe, the Golden Lion disciple batters his opponent into the waiting blades of his allies. The initiator makes a melee attack, inflicting an additional 6d6 points of damage and forcing his foe to make a 10-ft. movement if the target is capable of moving from the square he is currently occupying in a direction of his choosing. If the target is incapable of movement, then the target simply takes the damage as normal. This movement provokes attacks of opportunity to all those capable of making them against the target except for the initiator of this maneuver.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Kill the Wounded": {
+   "action": "1 standard action",
+   "description": "The Golden Lion disciple makes a ferocious assault on his foe, opening the enemys defenses to the attacks of his allies. The initiator makes a melee attack against a foe and if successful, subsequent attacks made by the initiators allies inflict an additional 2d6 points of damage per successful attack until the initiators next turn.",
+   "discipline": "Golden Lion",
+   "duration": "One round",
+   "level": 3,
+   "range": "Any attack",
+   "type": "strike"
+  },
+  "Pride Movement": {
+   "action": "1 swift action",
+   "description": "By having a watchful eye on the flow of combat, the disciple knows when to spur an ally into a better position. As a swift action, the initiator may grant a move action to an adjacent ally. This ally may then use this move action immediately to move up to his base speed, as if it were a free action taken on the initiators turn.",
+   "discipline": "Golden Lion",
+   "duration": "Instant",
+   "level": 1,
+   "range": "",
+   "type": "boost"
+  },
+  "Red Zephyrs Dance": {
+   "action": "1 full round action",
+   "description": "The Red Zephyrs Dance allows the disciple to step confidently through a battlefield, his blade leading the way in decisive sweeps as a graceful as a ballroom dance. The disciple makes a melee attack at his full attack bonus against a target, and if successful, the disciple moves 10-ft. no more or no less and may make another attack at his next highest attack bonus. He may not make more attacks in a round than his maximum main-hand number of attacks, nor may he move farther than his normal maximum speed. For example, if a warlord with a base attack bonus of +13 initiated this maneuver, he would make one attack at +13, move 10-ft., make his second attack at +8, then move 10-ft. again, and make a final attack at +3.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Regal Blade": {
+   "action": "1 swift action",
+   "description": "A disciple of the Scarlet Throne learns that in moments of precise focus, a single stroke of the blade can fell a potent enemy. The disciple may add a +2 insight bonus to his attack roll and +1d8 insight bonus to his damage roll on a single melee attack made during this turn.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Roar of Battle": {
+   "action": "1 standard action",
+   "description": "The Golden Lion disciple delivers a telling blow, shattering bones and piercing defenses alike as he presses the foe into opening vital places for his allies to gain purchase. The initiator makes an attack inflicting an additional 6d6 points of damage. Allies who attack the target of this maneuver inflict an additional 3d6 points of damage on successful attacks for one round.",
+   "discipline": "Golden Lion",
+   "duration": "One round",
+   "level": 5,
+   "range": "Any attack",
+   "type": "strike"
+  },
+  "Ruby Zenith Strike": {
+   "action": "1 standard action",
+   "description": "The focus of battle teaches that in a single hairs breadth of time, a warrior may strike down a foe in a single blow. The disciple makes a Sense Motive check in place of his normal attack roll he may add any enhancement bonus from his weapon or feats that apply from the use of his weapon to this Sense Motive check as well, and if this Sense Motive check equals or exceeds the targets armor class, the attack deals triple damage. If this check does not meet or exceed the targets armor class, then the attack fails and the disciple misses.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 5,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Running Hunters Stance": {
+   "action": "1 swift action",
+   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Sanguine Perseverance": {
+   "action": "1 immediate action",
+   "description": "The focus of battle that a disciple of Scarlet Throne has allows him to react to danger before he actively knows it is present, his senses acknowledging peril before his mind would know of it. A disciple may initiate this counter when required to make a saving throw. The disciple makes a Sense Motive check and uses the result of this check in place of his normal saving throw.",
+   "discipline": "Scarlet Throne",
+   "duration": "Instantaneous",
+   "level": 4,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Shoulder Rush": {
+   "action": "1 standard action",
+   "description": "The disciple of Primal Fury uses his aggression to take opportunities whenever possible, and a solid shoulder into a foe at an opportune moment can tip the scales of war in the disciples favor. As a standard action, the initiator may make a bull rush or overrun attempt with a +4 circumstance bonus, and this attempt does not provoke attacks of opportunity.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Unfettered Movement": {
+   "action": "1 swift action",
+   "description": "The Scarlet Throne disciple is swift in battle and in his ability to go from one skirmish to the next to choose his next foe. By assuming this stance, the disciple gains a +10-ft. bonus to his base speed and gains a +4 dodge bonus to his armor class against attacks of opportunity.",
+   "discipline": "Scarlet Throne",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  3,
+  2
+ ],
+ "maneuvers_readied_list": [
+  0,
+  0,
+  2,
+  3,
+  2
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [],
+  [
+   "Circling the Prey",
+   "Kill the Wounded"
+  ],
+  [
+   "Red Zephyrs Dance",
+   "Sanguine Perseverance",
+   "Golden Swipe"
+  ],
+  [
+   "Roar of Battle",
+   "Ruby Zenith Strike"
+  ]
+ ],
+ "manifesters": [],
+ "mannerisms": [
+  "Grits teeth",
+  "Leans back"
+ ],
+ "martial_disciplines": [
+  "Primal Fury",
+  "Golden Lion",
+  "Scarlet Throne"
+ ],
+ "mini_alignment": "ln",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "mythic": null,
+ "normal_feat_amount": 5,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "optimize": null,
+ "parents": "loving mother, dead father, raised in a middle income household",
+ "personality_traits": [
+  "Wise",
+  "Egotistic",
+  "Assertive",
+  "Just",
+  "Disruptive",
+  "Self-sufficient"
+ ],
+ "platnium": 2.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [],
+ "profession_feat_desc": {},
+ "profession_feats": [],
+ "profession_pool": 0,
+ "profession_ranks": [],
+ "professions": [],
+ "racial_stats": {
+  "cha": 2,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 7,
+  "ref": 3,
+  "will": 3
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Spirit Guide",
+  "Vindictive"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +2 trait bonus on Knowledge (religion) checks, and Knowledge (religion) becomes class skill for you.",
+   "name": "Spirit Guide"
+  },
+  {
+   "description": "You gain a +1 trait bonus on damage rolls against a single adjacent opponent who damaged you in the previous round of combat.",
+   "name": "Vindictive"
+  }
+ ],
+ "sheet_health": 55,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 90,
+ "skill_ranks": {
+  "acrobatics": 0,
+  "appraise": 0,
+  "bluff": 3,
+  "climb": 3,
+  "craft": 6,
+  "diplomacy": 0,
+  "disable device": 4,
+  "disguise": 0,
+  "escape artist": 6,
+  "fly": 4,
+  "handle animal": 10,
+  "heal": 7,
+  "intimidate": 6,
+  "knowledge arcana": 5,
+  "knowledge dungeoneering": 2,
+  "knowledge engineering": 3,
+  "knowledge geography": 2,
+  "knowledge history": 6,
+  "knowledge local": 0,
+  "knowledge nature": 0,
+  "knowledge nobility": 0,
+  "knowledge planes": 0,
+  "knowledge religion": 7,
+  "linguistics": 0,
+  "perception": 1,
+  "perform": 0,
+  "profession": 0,
+  "ride": 0,
+  "sense motive": 3,
+  "sleight of hand": 5,
+  "spellcraft": 3,
+  "survival": 4,
+  "swim": 0,
+  "use magic device": 0
+ },
+ "skill_unlock": null,
+ "specialty_schools": [
+  "necromancy"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [],
+ "spell_list_choose_from_dict": [],
+ "spell_riders_dict": {},
+ "spellbooks": [],
+ "spells_prepared_per_level": [],
+ "sphere_boons": [
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Addictive Casting",
+  "Painful Magic",
+  "Draining Casting"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Addictive Casting",
+  "Painful Magic",
+  "Draining Casting",
+  "Overcharge",
+  "Fortified Casting"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [
+  "Unfettered Movement",
+  "Golden Commander Stance",
+  "Golden Lion Charger",
+  "Running Hunters Stance"
+ ],
+ "story_feat_tax_dict": {},
+ "story_feats": [],
+ "str": 5,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 10,
+ "total_rolled_hp": 45,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 1,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Jolting dart",
+ "weapon_size": "Medium",
+ "weapon_size_attack_penalty": 0,
+ "weapon_size_source": null,
+ "weapon_size_steps": 0,
+ "weight_number": 272,
+ "wis": 14,
+ "younger_brothers": " you have 2 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}

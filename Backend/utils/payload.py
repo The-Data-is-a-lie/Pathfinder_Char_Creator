@@ -258,6 +258,9 @@ PAYLOAD_KEYS = (
 	# `optimize` is None in random mode, `input_warnings` lists explicit inputs that matched nothing.
 	'optimize',
 	'input_warnings',
+	# The master house-rule switch as resolved (utils/house_rules.py): renderers read it for the
+	# house rules that live on their side, chiefly the combined caster level.
+	'homebrew',
 )
 
 

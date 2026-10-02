@@ -632,6 +632,7 @@
  ],
  "height_number": "7'2\"",
  "hero_points": 2,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Animal Affinity": "You are skilled at working with animals and mounts",
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",

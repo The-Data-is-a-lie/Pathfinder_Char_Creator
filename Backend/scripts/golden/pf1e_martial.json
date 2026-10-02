@@ -1,0 +1,788 @@
+{
+ "Total_HP": 72,
+ "age_number": 51,
+ "alignment": "Lawful Good",
+ "animal_companion": null,
+ "appearance": [
+  "Ponytail"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Qadira  Dawnflower Dervish\": {\n        \"source\": \"Inner Sea Primer pg. 25 In Qadira, home of the whirlwind, the scorpion, and the djinni, no enemy is as feared as the dervishes of Sarenrae. While dervishes can be clerics, paladins, or rangers, zealous fighters join their ranks as well. These spinning warriors prefer light or no armor and wield scimitars with devastating consequences, moving swiftly over the treacherous desert sands to attack with lightning-fast strikes. They maneuver quickly among their enemies, relying on their speed and their skill to see them through the battle.\",\n        \"suggested feats\": \" Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack.\",\n        \"burst of speed (ex)\": \" At 3rd level, a Dawnflower dervish takes only a -1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1.\",\n        \"desert stride (ex)\": \" At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2.\",\n        \"rapid attack (ex)\": \" At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.\",\n        \"lightning strike (ex)\": \" At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish's highest base attack bonus, but each attack in the round (including the extra one) takes a -2 penalty. This ability replaces armor training 4.\"\n    }\n}",
+ "armor_ac": "7",
+ "armor_armor_check_penalty": "-6",
+ "armor_enhancement_bonus": 5,
+ "armor_enhancement_chosen_list": [
+  "Impervious"
+ ],
+ "armor_max_dex_bonus": "1",
+ "armor_name": "Banded mail",
+ "armor_spell_failure": "35%",
+ "armor_weight": "35 lbs.",
+ "bab_total": 16,
+ "background_traits": [
+  "Precocious Spellcaster",
+  "Arbiter",
+  "Aspiring Bard",
+  "Mummy-Cursed"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [],
+ "buff_gaps": [],
+ "build_archetype": "Archer",
+ "build_tactics": "Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.",
+ "c_class": "fighter",
+ "c_class_2": "",
+ "c_class_display": "Fighter",
+ "casting_level_str_foundry": "None",
+ "casting_tradition": {
+  "bonus_spell_points": 1,
+  "boons": [
+   "Fortified Casting"
+  ],
+  "boons_detail": [
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   }
+  ],
+  "casting_ability_modifier": "Wisdom",
+  "drawbacks": [
+   "Wild Magic",
+   "Skilled Casting",
+   "Somatic Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
+    "name": "Wild Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   }
+  ]
+ },
+ "cha": 12,
+ "character_full_name": "Sébastien Dupuy",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "emotion"
+ ],
+ "class feature levels": {
+  "armor_training": {
+   "armored master": 15,
+   "armored sprint (ex)": 7,
+   "quick donning (ex)": 11
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": 9,
+   "item mastery": 13
+  }
+ },
+ "class feature owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class features": {
+  "armor_training": {
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sprint (ex)": {
+    "description": "the fighter gains run as a bonus feat. If the fighter is proficient with heavy armor, he treats heavy armor as if it were one category lighter for the purpose of determining how fast he can move while running in armor. "
+   },
+   "quick donning (ex)": {
+    "description": "the fighter can don armor in a hurry without reducing its effectiveness, and remove it quickly when it becomes a hindrance. When the fighter dons or removes his armor or dons it hastily, the amount of time needed to do so is reduced. The fighter can also remove sections of armor to escape grapples and similar hindrances. Whenever the fighter attempts a combat maneuver check, an escape artist check, or a strength check to escape from an effect that reduces or restricts his ability to move or act, he can reduce the armor bonus of any armor that he is wearing by up to half his armors base armor bonus. If he does so, he gains a bonus on his check equal to the amount by which he reduced his armors armor bonus. Multiple uses of this ability cannot reduce the armors armor bonus below half its base armor bonus, and the reduction to the armors armor bonus lasts until the fighter recovers and dons the removed pieces of armor. "
+   }
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": {
+    "description": "the fighter gains the benefits of the weapon finesse feat with all melee weapons that belong to the associated fighter weapon group (even if they cannot normally be used with weapon finesse). The fighter must have the weapon finesse feat before choosing this option. "
+   },
+   "item mastery": {
+    "description": "the fighter gains an item mastery feat as a bonus feat, which functions with any magic weapon he wields, even if the magic weapon does not meet the feats normal requirements. "
+   }
+  }
+ },
+ "class_ability": [
+  "bonus feats_fighter",
+  "bravery_fighter",
+  "armor training_fighter",
+  "weapon training_fighter",
+  "armor mastery_fighter",
+  "weapon mastery_fighter"
+ ],
+ "class_ability_desc": {
+  "armor mastery": "At 19th level, a fighter gains DR 5/- whenever he is wearing armor or using a shield.",
+  "armor training": "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th, and 15th), these bonuses increase by +1 each time, to a maximum -4 reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus allowed. In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at his normal speed while wearing heavy armor.",
+  "bonus feats": "At 1st level, and at every even level thereafter, a fighter gains a bonus feat in addition to those gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called \"fighter bonus feats.\"Upon reaching 4th level, and every four levels thereafter (8th, 12th, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he has already learned. In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestige class, or other ability. A fighter can only change one feat at any given level and must choose whether or not to swap the feat at the time he gains a new bonus feat for the level.",
+  "bravery": "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 for every four levels beyond 2nd.",
+  "weapon mastery": "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critical threats and have their damage multiplier increased by 1 (×2 becomes ×3, for example). In addition, he cannot be disarmed while wielding a weapon of this type. Alternate Capstones",
+  "weapon training": "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from this group, he gains a +1 bonus on attack and damage rolls. Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he receives a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. Weapon groups are defined as follows (GMs may add other weapons to these groups, or add entirely new groups): Note from Nethys : A consolidated list of fighter weapon groups is provided here"
+ },
+ "class_feat_labels": [
+  "Fighter 1",
+  "Fighter 2",
+  "Fighter 4",
+  "Fighter 6",
+  "Fighter 8",
+  "Fighter 10",
+  "Fighter 12",
+  "Fighter 14",
+  "Fighter 16"
+ ],
+ "class_feat_tax_dict": {},
+ "class_feats": [
+  "Coordinated Distraction",
+  "Racial Heritage",
+  "Bludgeoner",
+  "Swarm Strike",
+  "Antagonize",
+  "Dragoncrafting",
+  "Stone Read",
+  "Blind-Fight",
+  "Dazing Assault"
+ ],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {
+  "armor_training": {
+   "armored master": 15,
+   "armored sprint (ex)": 7,
+   "quick donning (ex)": 11
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": 9,
+   "item mastery": 13
+  }
+ },
+ "class_feature_owners": {
+  "armor_training": "fighter",
+  "weapon_training": "fighter"
+ },
+ "class_features": {
+  "armor_training": {
+   "armored master": {
+    "description": "the fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feats prerequisites. "
+   },
+   "armored sprint (ex)": {
+    "description": "the fighter gains run as a bonus feat. If the fighter is proficient with heavy armor, he treats heavy armor as if it were one category lighter for the purpose of determining how fast he can move while running in armor. "
+   },
+   "quick donning (ex)": {
+    "description": "the fighter can don armor in a hurry without reducing its effectiveness, and remove it quickly when it becomes a hindrance. When the fighter dons or removes his armor or dons it hastily, the amount of time needed to do so is reduced. The fighter can also remove sections of armor to escape grapples and similar hindrances. Whenever the fighter attempts a combat maneuver check, an escape artist check, or a strength check to escape from an effect that reduces or restricts his ability to move or act, he can reduce the armor bonus of any armor that he is wearing by up to half his armors base armor bonus. If he does so, he gains a bonus on his check equal to the amount by which he reduced his armors armor bonus. Multiple uses of this ability cannot reduce the armors armor bonus below half its base armor bonus, and the reduction to the armors armor bonus lasts until the fighter recovers and dons the removed pieces of armor. "
+   }
+  },
+  "weapon_training": {
+   "fighters finesse (ex)": {
+    "description": "the fighter gains the benefits of the weapon finesse feat with all melee weapons that belong to the associated fighter weapon group (even if they cannot normally be used with weapon finesse). The fighter must have the weapon finesse feat before choosing this option. "
+   },
+   "item mastery": {
+    "description": "the fighter gains an item mastery feat as a bonus feat, which functions with any magic weapon he wields, even if the magic weapon does not meet the feats normal requirements. "
+   }
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Qadira  Dawnflower Dervish": {
+     "burst of speed (ex)": " At 3rd level, a Dawnflower dervish takes only a -1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1.",
+     "desert stride (ex)": " At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2.",
+     "lightning strike (ex)": " At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish's highest base attack bonus, but each attack in the round (including the extra one) takes a -2 penalty. This ability replaces armor training 4.",
+     "rapid attack (ex)": " At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3.",
+     "source": "Inner Sea Primer pg. 25 In Qadira, home of the whirlwind, the scorpion, and the djinni, no enemy is as feared as the dervishes of Sarenrae. While dervishes can be clerics, paladins, or rangers, zealous fighters join their ranks as well. These spinning warriors prefer light or no armor and wield scimitars with devastating consequences, moving swiftly over the treacherous desert sands to attack with lightning-fast strikes. They maneuver quickly among their enemies, relying on their speed and their skill to see them through the battle.",
+     "suggested feats": " Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack."
+    }
+   },
+   "display": "Fighter",
+   "level": 16,
+   "name": "fighter"
+  }
+ ],
+ "combat_talent_items": [],
+ "con": 8,
+ "counter_schools": [
+  "abjuration",
+  "evocation"
+ ],
+ "counter_spell_descriptor": [
+  "good"
+ ],
+ "craft_type": "Cooking",
+ "day_list": [],
+ "deity_name": "Erastil",
+ "dex": 12,
+ "enhancement_desc_dict": {
+  "cunning": "This special ability allows a weapon to find chinks in a foe's defenses using the wielder's knowledge of the target. Whenever the weapon's attack is a critical threat, the wielder gains a +4 bonus on the confirmation roll if she has 5 or more ranks in a Knowledge skill that would be used to identify the creature's type, or a +6 bonus instead if she has 15 or more ranks.",
+  "distance": "This special ability can only be placed on a ranged weapon. A distance weapon has double the range increment of other weapons of its kind.",
+  "impervious": "A shield or suit of armor with this special ability is especially hardy. It gains double its enhancement bonus to hardness and hit points (instead of just the enhancement bonus), its break DC increases by double its enhancement bonus, and it gains a bonus on saving throws against direct attacks (such as a rust monster's rust ability) equal to its enhancement bonus."
+ },
+ "enhancement_effects_dict": {
+  "armor": {
+   "Impervious": {
+    "changes": [],
+    "contextNotes": [
+     {
+      "target": "ac",
+      "text": "Impervious: the item gains double its enhancement bonus to hardness, HP, and break DC, and a bonus equal to its enhancement bonus on saves vs direct attacks (e.g. rust)."
+     }
+    ],
+    "description": "A shield or suit of armor with this special ability is especially hardy. It gains double its enhancement bonus to hardness and hit points (instead of just the enhancement bonus), its break DC increases by double its enhancement bonus, and it gains a bonus on saving throws against direct attacks (such as a rust monster's rust ability) equal to its enhancement bonus."
+   }
+  },
+  "weapon": {
+   "Cunning": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [],
+      "name": "Cunning: on a critical threat, +[[4]] on the confirmation roll if the wielder has [[5]]+ ranks in the Knowledge skill identifying the target ( +[[6]] with [[15]]+ ranks)"
+     }
+    ],
+    "description": "This special ability allows a weapon to find chinks in a foe's defenses using the wielder's knowledge of the target. Whenever the weapon's attack is a critical threat, the wielder gains a +4 bonus on the confirmation roll if she has 5 or more ranks in a Knowledge skill that would be used to identify the creature's type, or a +6 bonus instead if she has 15 or more ranks."
+   },
+   "Distance": {
+    "conditionals": [
+     {
+      "default": true,
+      "modifiers": [],
+      "name": "Distance: doubles the weapon's range increment"
+     }
+    ],
+    "description": "This special ability can only be placed on a ranged weapon. A distance weapon has double the range increment of other weapons of its kind."
+   }
+  }
+ },
+ "equip_descrip": {
+  "belts": {
+   "description": " this surprisingly soft belt has an\r absurdly large buckle, made even\r more absurd by the fact that it's\r crafted in the shape of a smiling\r weasel's face. It grants its wearer a +2 enhancement bonus\r to dexterity, and the ability to move at half normal speed\r while prone. Treat the enhancement bonus to dexterity as a\r temporary ability bonus for the first 24 hours the belt is worn. \r the wearer does not take a penalty on melee attack rolls or to\r ac against melee attacks while prone. Additionally, the wearer\r gains the compression ability (bestiary 2 295). ",
+   "item_name": "Belt of the Weasel"
+  },
+  "body": {
+   "description": " this long cloth is wrapped around the chest multiple times\r like a bandage. Once per round, the wearer may add an\r enhancement bonus of +1 to +5 on one attack and damage\r roll for an unarmed strike or natural attack (for one specific\r attack, not all attacks made with an unarmed strike that\r round). The wearer may use this item an additional time per\r round when his bab reaches +6, +11, and +16. Choosing to enhance an unarmed strike is not an action\r and may occur when it is not the wearer's turn (such as when\r making an attack of opportunity). The wearer must decide\r to use the item before the attack roll is made, but does not\r have to expend all uses at the same time. For example, if the\r wearer can use the item twice per round, he can use it once\r on his turn when making an attack and save the second for\r the possibility of making an attack of opportunity. Additionally, the bodywrap can grant melee weapon\r special abilities to a creature's unarmed attacks, so long\r as those special abilities to be added apply to unarmed\r attacks. See table 38: melee weapon special abilities\r (page 137) for a list of abilities. Special abilities count as\r additional bonuses for determining the market value of\r the item, but do not modify attack or damage bonuses. \r any special abilities are set at the time of creation. A bodywrap of mighty strikes cannot have a modified\r bonus (enhancement bonus plus special ability bonus\r equivalents) higher than +7. Unlike an amulet of mighty\r fists , a bodywrap needs to have a +1 enhancement bonus\r to grant a melee weapon special ability. ",
+   "item_name": "Bodywrap of Mighty Strikes +6"
+  },
+  "chest": {
+   "description": " this well-made leather vest bears\r numerous shiny metal buttons, which\r stud a number of bulging pockets. \r once per day, as a standard action, the\r wearer can speak the vest's command\r word and order it to bring forth all\r the standard tools required to make\r checks for any one craft skill. These\r tools appear in the countless pockets\r of the vest or, if too heavy, on the floor, on a nearby shelf, on\r a workbench, or in a toolbox or cupboard that appears nearby. \r once summoned, they remain for 24 hours or until another\r creature touches them, whichever comes first. ",
+   "item_name": "All Tools Vest"
+  },
+  "eyes": {
+   "description": " when worn, these innocent-looking spectacles convert\r any written language to one known by the wearer, as the comprehend languages spell. The glasses are also good at\r detecting falsified documents, granting their wearer a +5\r bonus to linguistics checks to identify forgeries and the\r ability make such checks untrained. ",
+   "item_name": "Spectacles of Understanding"
+  },
+  "feet": {
+   "description": " the wearer of these suede boots ignores an additional 10 feet of falling distance when she successfully uses acrobatics to soften a fall. Once per round as a free action, the wearer can use the boots to gain a +10 competence bonus on an acrobatics check to jump, treating such jump as though she had a running start. The wearer also receives this +10 competence bonus on acrobatics checks to avoid attacks of opportunity during the jump or to balance after landing. Using the boots in this fashion strains the lower body. If the wearer attempts a second such jump before at least 1 minute has passed, she must succeed at a fortitude save with a dc equal to the dc of her second jump attempt or injure her legs. This injury reduces her speed by half for 24 hours, or until she is successfully treated with a dc 15 heal check or at least 1 point of magical healing. The dc of the fortitude save increases by 5 for each additional jump attempted until at least 1 minute passes between jumps. ",
+   "item_name": "Boots of Vaulting"
+  },
+  "hands": {
+   "description": " this thin disk of woven material is 2-1/2 inches in diameter. From its edges protrude fine, hair-like fibers about half an inch long. A touch of avolition is in fact an example of migo technologyas much fungus as anything else. Creatures like mi-go can handle a touch of avolition with ease, but humanoids and other fleshy users must wear gloves to avoid becoming the target of the item's effect. Applying a touch of avolition requires a successful touch attack. When placed against flesh (any living, corporeal, non-plant or non-ooze creature), a touch of avolition's fibers swiftly merge with the target unless the creature succeeds at a dc 15 fortitude save. On a failed save, the victim becomes paralyzed for 7 rounds. It can attempt a new fortitude as a standard action after the first round to end the effect early. Once a victim recovers from the paralysis effect, the touch of avolition saps the user's willpower and dulls the senses, making creatures under these effects easier to mentally manipulate. The victim's wisdom is reduced by 6 (minimum 1) as long as the touch of avolition remains attached. The fungal filaments of a touch of avolition dig deep, and merely ripping the patch free from the skin doesn't remove this wisdom penalty, though the removal itself deals 1d4 points of damage to the victim. The effect is a curse effect, and it (and the paralysis) can be removed as such via remove curse or similar spells. A touch of avolition works best when damp. The save dc to resist a dry touch of avolition is 10, its paralysis effect lasts for only 2 rounds, and its wisdom penalty is reduced to 2. The effects of multiple touches of avolition do not stack. ",
+   "item_name": "Touch of Avolition"
+  },
+  "head": {
+   "description": " this fine silken veil can change color or alter its appearance to a highwayman's mask or similar cloth face covering. Once per day, the wearer can use disguise self , though the veil remains visible as some kind of garment on the wearer's head or face. If sivanah is the wearer's patron, once per day the wearer can use blur . In addition, the wearer gains a +2 competence bonus on bluff checks. ",
+   "item_name": "Veil of Veils"
+  },
+  "headband": {
+   "description": " this strange metal headband of vast intellect +2 is crafted in the shape of intertwined tentacles and adorned with runes in the aboleth language. When a creature dons the headpiece, the tentacles seem almost alive, changing their size and shape to fit the contours of the wearer's head. The headband has two special indentations for ioun stones similar to those found in a wayfinder . When an ioun stone is inserted into one of the slots, the tentacles animate for a moment, adjusting themselves around the slot to accommodate the shape of the ioun stone . The wearer benefits from the ioun stone's effect as though the stone were orbiting her head. The headband uses a more refined version of the same technology that powers a wayfinder . First, it coaxes two ioun stones to manifest their resonant powers simultaneously. Furthermore, the slotted ioun stones do not suppress the headband's own magical abilities. However, if the wearer is also carrying, wearing, or wielding a wayfinder or any similar item into which ioun stones can be inserted, the two items suppress one another's abilities, but both return to normal when one is set aside. ",
+   "item_name": "Headband of Twisted Intellect"
+  },
+  "neck": {
+   "description": " this red maggot constantly writhes and distends, snapping a small pair of pincers. A combination of hellwasp and worm, the hivebrain symbiote grants an echo of a hive mind when attached to an intelligent creature. When placed on the back of a host's neck as a standard action, the hivebrain symbiote attaches painlessly and immediately boosts the host's mental faculties. While having a hivebrain symbiote attached, as an immediate action the host can reroll a concentration check or an intelligence-based check. The host must take the second roll, even if it is worse. An attached hivebrain symbiote continues to function for a number of hours equal to the host's intelligence modifier (minimum 1 hour) before falling off and dying. A hivebrain symbiote dies immediately if removed before this time elapses. ",
+   "item_name": "Hivebrain Symbiote"
+  },
+  "rings": {
+   "description": "As a ring of swimming , except it grants a +10 competence bonus on its wearer's Swim checks.",
+   "item_name": "Ring of Swimming (Improved)"
+  },
+  "shoulders": {
+   "description": " the wearer of this light, short cloak gains a bonus on all saving throws, as with a cloak of resistance , but the resistance bonus on reflex saves is one greater. Furthermore, if the wearer fails a reflex saving throw, she can expend one use of mythic power as an immediate action to reroll that saving throw. If the wearer fails the saving throw on the reroll, she can't use this ability again for 24 hours. ",
+   "item_name": "Cloak of Quick Reflexes +5"
+  },
+  "wrist": {
+   "description": " these decorative bracers are stippled\r with vibrant colors and have various\r tiny bells sewn onto their surface. \r while wearing them, the wearer gains\r a +5 competence bonus on perform\r checks. Once per day on command, \r the user can gain the benefit of the glibness spell. ",
+   "item_name": "Bracers of the Glib Entertainer"
+  }
+ },
+ "equipment_list": [
+  "Belt of the Weasel",
+  "Bodywrap of Mighty Strikes +6",
+  "All Tools Vest",
+  "Spectacles of Understanding",
+  "Boots of Vaulting",
+  "Touch of Avolition",
+  "Veil of Veils",
+  "Headband of Twisted Intellect",
+  "Cloak of Quick Reflexes +5",
+  "Bracers of the Glib Entertainer",
+  "Red Hound Ring",
+  "Ring of Swimming (Improved)",
+  "Hivebrain Symbiote"
+ ],
+ "eye_color": [
+  "Blue"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 9,
+  "flavor": 0,
+  "flaw": 0,
+  "normal": 9,
+  "profession": 0,
+  "story": 0,
+  "teamwork": 0,
+  "trainer": 0
+ },
+ "feat_changes_dict": {
+  "Stone Read": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Bludgeoner": {
+   "default": false,
+   "modifiers": [],
+   "name": "Bludgeoner: Effect: deal nonlethal damage with a bludgeoning weapon at no [[-4]] penalty",
+   "tier": "A"
+  },
+  "Dazing Assault": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "-5",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Dazing Assault: Save: Fortitude DC [[ 10 + @attributes.bab.total ]] negates; Effect: melee attacks also daze the target for [[1]] round",
+   "tier": "A"
+  },
+  "Pushing Assault": {
+   "default": false,
+   "modifiers": [],
+   "name": "Pushing Assault: Activation: choose after the attack roll, before damage is rolled; Effect: on a hit against a creature your size or smaller with a two-handed Power Attack-modified attack, forgo the Power Attack damage bonus to instead push the target [[5]] feet directly away ([[10]] feet on a critical hit) into a safe space, without provoking",
+   "tier": "A"
+  }
+ },
+ "feats": [
+  "Renown",
+  "Duck and Cover",
+  "Lightning Reflexes",
+  "Quillbreaker Defense",
+  "Quick Draw",
+  "Skilled Driver",
+  "Shapeshifter Foil",
+  "Pushing Assault"
+ ],
+ "feats_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [],
+ "flaw": [],
+ "flaw_effects_dict": {},
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [],
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: Archer\n- Tactics: Full-attacks from range every round, focusing fire on whatever its party marks. Keeps thirty feet of buffer at all times and shoots the ones who try to take it away.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Known for: Cooking\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n\nAppearance\n- Hair: Frizzy Brown\n- Eyes: Blue\n- Build: Ponytail",
+ "full_domain": [],
+ "gender": "Male",
+ "generation_seed": 3002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 28800,
+ "hair_color": [
+  "Brown"
+ ],
+ "hair_type": [
+  "Frizzy"
+ ],
+ "height_number": "5'3\"",
+ "hero_points": 2,
+ "homebrew": false,
+ "homebrew_feat_desc_dict": {
+  "Antagonize": "Whether with biting remarks or hurtful words, you are adept at making creatures angry with you",
+  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
+  "Bludgeoner": "You can knock foes out cold with just about any blunt instrument",
+  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
+  "Dazing Assault": "You can daze foes with wild attacks",
+  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
+  "Duck and Cover": "Your allies assist you in avoiding certain attacks",
+  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Pushing Assault": "A strike made with a two-handed weapon can push a similar sized opponent backward",
+  "Quick Draw": "You can draw weapons faster than most",
+  "Quillbreaker Defense": "You know how to put armor spikes to defensive use by thrusting them into the path of an oncoming attack just in time",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
+  "Renown": "Word of your pre-Pathf inder accomplishments precedes you, and you know how to make the most of your previous reputation",
+  "Shapeshifter Foil": "Your command of shapeshifting magic can disrupt similar effects in others",
+  "Skilled Driver": "Choose a type a type of vehicle (either air, land, or water) You are more skilled when driving that vehicle",
+  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
+  "Swarm Strike": "You and your allies have trained to overwhelm foes like a swarm of rodents"
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "wis",
+ "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
+ "int": 9,
+ "item_changes_dict": {
+  "All Tools Vest": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skills",
+     "text": "Once per day, as a standard action, the wearer can speak the vest's command word and order it to bring forth all the standard tools required to make checks for any one craft skill. Once summoned, they remain for [[24]] hours or until another creature touches them, whichever comes first."
+    }
+   ]
+  },
+  "Belt of the Weasel": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "dexChecks",
+     "text": "It grants its wearer a +[[2]] enhancement bonus to dexterity, and the ability to move at half normal speed while prone. Treat the enhancement bonus to dexterity as a temporary ability bonus for the first [[24]] hours the belt is worn. Additionally, the wearer gains the compression ability (bestiary 2 295)."
+    }
+   ]
+  },
+  "Bodywrap of Mighty Strikes +6": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "attack",
+     "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[6]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]]."
+    }
+   ]
+  },
+  "Boots of Vaulting": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "Once per round as a free action, the wearer can use the boots to gain a +[[10]] competence bonus on an acrobatics check to jump, treating such jump as though she had a running start."
+    },
+    {
+     "target": "skill.acr",
+     "text": "The wearer also receives this +[[10]] competence bonus on acrobatics checks to avoid attacks of opportunity during the jump or to balance after landing."
+    },
+    {
+     "target": "allSavingThrows",
+     "text": "The wearer of these suede boots ignores an additional [[10]] feet of falling distance when she successfully uses acrobatics to soften a fall. If the wearer attempts a second such jump before at least [[1]] minute has passed, she must succeed at a fortitude save with a dc equal to the dc of her second jump attempt or injure her legs. This injury reduces her speed by half for [[24]] hours, or until she is successfully treated with a dc [[15]] heal check or at least 1 point of magical healing."
+    }
+   ]
+  },
+  "Bracers of the Glib Entertainer": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.prf",
+     "text": "While wearing them, the wearer gains a +[[5]] competence bonus on perform checks. Once per day on command, the user can gain the benefit of the glibness spell."
+    }
+   ]
+  },
+  "Cloak of Quick Reflexes +5": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "allSavingThrows",
+     "type": "resist"
+    },
+    {
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "ref",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "ref",
+     "text": "On a failed Reflex save, the wearer can expend one use of mythic power as an immediate action to reroll it; if the reroll also fails, this cannot be used again for [[24]] hours."
+    }
+   ]
+  },
+  "Headband of Twisted Intellect": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This strange metal headband of vast intellect +2 is crafted in the shape of intertwined tentacles and adorned with runes in the aboleth language."
+   ]
+  },
+  "Hivebrain Symbiote": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "concentration",
+     "text": "While having a hivebrain symbiote attached, as an immediate action the host can reroll a concentration check or an intelligence-based check. An attached hivebrain symbiote continues to function for a number of hours equal to the host's intelligence modifier (minimum [[1]] hour) before falling off and dying."
+    }
+   ]
+  },
+  "Red Hound Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "It functions as a ring of protection +1 . In addition, once per day, the wearer may use summon monster i to summon a red mastiff (use statistics for a celestial dog). Additionally, once per day the wearer may use beast shape i to transform into a small red mastiff."
+   ]
+  },
+  "Ring of Swimming (Improved)": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.swm",
+     "text": "As a ring of swimming , except it grants a +[[10]] competence bonus on its wearer's swim checks."
+    }
+   ]
+  },
+  "Spectacles of Understanding": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Touch of Avolition": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "This thin disk of woven material is 2-1/2 inches in diameter. Corporeal, non-plant or non-ooze creature), a touch of avolition's fibers swiftly merge with the target unless the creature succeeds at a dc [[15]] fortitude save. On a failed save, the victim becomes paralyzed for [[7]] rounds. It can attempt a new fortitude as a standard action after the first round to end the effect early. The victim's wisdom is reduced by 6 (minimum 1) as long as the touch of avolition remains attached."
+    }
+   ]
+  },
+  "Veil of Veils": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.blf",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.blf",
+     "text": "Once per day, the wearer can use disguise self , though the veil remains visible as some kind of garment on the wearer's head or face. If sivanah is the wearer's patron, once per day the wearer can use blur ."
+    }
+   ]
+  }
+ },
+ "known_list": [],
+ "land_speed": 30,
+ "language_text": [
+  "Common"
+ ],
+ "level": 16,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 1,
+  "int": 2,
+  "str": 0,
+  "wis": 1
+ },
+ "license_url": "/license",
+ "luck": null,
+ "magic_talent_items": [],
+ "main_stat": "str",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "manifesters": [],
+ "mannerisms": [
+  "Drums fingers",
+  "Yawns",
+  "Clenches fists"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "lg",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "mythic": null,
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 0 older sisters",
+ "opposing_school": "N/A",
+ "optimize": null,
+ "parents": "loving mother, dead father, raised in a poor household",
+ "personality_traits": [
+  "Fervent",
+  "Rebellious",
+  "Selfish",
+  "Fearsome"
+ ],
+ "platnium": 2880.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [],
+ "profession_feat_desc": {},
+ "profession_feats": [],
+ "profession_pool": 0,
+ "profession_ranks": [],
+ "professions": [],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 2,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 10,
+  "ref": 5,
+  "will": 5
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Talented",
+  "Seasoned Climber"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 trait bonus on checks with a single Perform skill (your choice), and all Perform skills are always class skills for you.",
+   "name": "Talented"
+  },
+  {
+   "description": "You gain a +1 trait bonus on Climb checks, and Climb becomes a class skill for you.",
+   "name": "Seasoned Climber"
+  }
+ ],
+ "sheet_health": 72,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 96,
+ "skill_ranks": {
+  "acrobatics": 16,
+  "appraise": 10,
+  "bluff": 0,
+  "climb": 10,
+  "craft": 0,
+  "diplomacy": 0,
+  "disable device": 16,
+  "disguise": 0,
+  "escape artist": 0,
+  "fly": 0,
+  "handle animal": 0,
+  "heal": 0,
+  "intimidate": 10,
+  "knowledge arcana": 6,
+  "knowledge dungeoneering": 12,
+  "knowledge engineering": 0,
+  "knowledge geography": 0,
+  "knowledge history": 0,
+  "knowledge local": 0,
+  "knowledge nature": 0,
+  "knowledge nobility": 0,
+  "knowledge planes": 0,
+  "knowledge religion": 0,
+  "linguistics": 0,
+  "perception": 0,
+  "perform": 16,
+  "profession": 0,
+  "ride": 0,
+  "sense motive": 0,
+  "sleight of hand": 0,
+  "spellcraft": 0,
+  "stealth": 0,
+  "survival": 0,
+  "swim": 0,
+  "use magic device": 0
+ },
+ "skill_unlock": null,
+ "specialty_schools": [
+  "enchantment",
+  "illusion"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [],
+ "spell_list_choose_from_dict": [],
+ "spell_riders_dict": {},
+ "spellbooks": [],
+ "spells_prepared_per_level": [],
+ "sphere_boons": [
+  "Fortified Casting"
+ ],
+ "sphere_counts": {},
+ "sphere_drawbacks": [
+  "Wild Magic",
+  "Skilled Casting",
+  "Somatic Casting"
+ ],
+ "sphere_feat_tax": {},
+ "sphere_feats": [],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Wild Magic",
+  "Skilled Casting",
+  "Somatic Casting",
+  "Fortified Casting"
+ ],
+ "spheres_chosen": [],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {},
+ "story_feats": [],
+ "str": 21,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 16,
+ "total_rolled_hp": 62,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 5,
+ "weapon_enhancement_chosen_list": [
+  "Distance",
+  "Cunning"
+ ],
+ "weapon_name": "Hurlbat",
+ "weapon_size": "Medium",
+ "weapon_size_attack_penalty": 0,
+ "weapon_size_source": null,
+ "weapon_size_steps": 0,
+ "weight_number": 210,
+ "wis": 15,
+ "younger_brothers": " you have 0 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}

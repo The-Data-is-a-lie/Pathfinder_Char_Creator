@@ -184,7 +184,7 @@ def run_generations(classes, levels, seeds, capture=False):
                     biggest['set'] = set()
                     try:
                         with redirect_stdout(io.StringIO()):
-                            payload = invariants.main_test.generate_random_char(
+                            payload = invariants.main_test.generate_random_char(homebrew=True,
                                 class_choice=name, chosen_BAB='high', multi_class='N',
                                 userInput_race='random', userInput_region='Tal-Falko',
                                 alignment_input='random', userInput_gender='random',

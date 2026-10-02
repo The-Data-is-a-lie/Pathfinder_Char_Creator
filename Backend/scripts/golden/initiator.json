@@ -380,6 +380,7 @@
  ],
  "height_number": "6'10\"",
  "hero_points": 1,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Athletic": "You possess inherent physical prowess",
   "Bloodletting": "When you attack with a piercing or slashing weapon, the wounds you cause bleed profusely",

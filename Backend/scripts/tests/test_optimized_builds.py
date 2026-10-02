@@ -56,7 +56,7 @@ TWIN_TOLERANCE = 0.15
 
 def generate(cls, level, seed, optimize, house_rules=None):
     with redirect_stdout(io.StringIO()):
-        return main_test.generate_random_char(
+        return main_test.generate_random_char(homebrew=True,
             class_choice=cls, chosen_BAB='random', multi_class='N',
             userInput_race='random', userInput_region='Tal-Falko', alignment_input='random',
             userInput_gender='random', high_level=level, low_level=level, gold_num="",

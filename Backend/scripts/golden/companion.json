@@ -867,6 +867,7 @@
  ],
  "height_number": "5'1\"",
  "hero_points": 0,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
   "Double Slice": "Your off-hand weapon while dual-wielding strikes with greater power",

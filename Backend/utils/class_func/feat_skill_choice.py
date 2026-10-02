@@ -24,9 +24,12 @@ def _feat_base_name(name):
     return str(name).split(" (")[0].strip().lower()
 
 
-def filter_free_feats(feat_list):
+def filter_free_feats(feat_list, homebrew=True):
     """Drop the free-at-BAB>=1 feats from an already-selected list (catches bonus-feat sources that
-    bypass the chooseable pool). Matches on base name so any '(choice)' variant is caught too."""
+    bypass the chooseable pool). Matches on base name so any '(choice)' variant is caught too.
+    With homebrew off the feats are not free, so a pick of one is a real pick and is kept."""
+    if not homebrew:
+        return list(feat_list)
     return [f for f in feat_list if _feat_base_name(f) not in _FREE_AT_BAB1_NORM]
 
 

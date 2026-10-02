@@ -536,6 +536,7 @@
  ],
  "height_number": "5'8\"",
  "hero_points": 1,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Ancestral Scorn": "The fury you harbor for your fiendish ancestors gives evil outsiders great reason to fear you",
   "Conviction": "Your actions are bolstered by divine determination",

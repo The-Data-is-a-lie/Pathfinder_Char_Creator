@@ -1,0 +1,1097 @@
+{
+ "Total_HP": 122,
+ "age_number": 48,
+ "alignment": "Neutral Good",
+ "animal_companion": null,
+ "appearance": [
+  "Large forehead"
+ ],
+ "archetype1": null,
+ "archetype_info": "{\n    \"Morphic Savant\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 A morphic savant is an agent of change who draws power from the Abyss, Elysium, or the Maelstrom to fulfill whatever goals strike his fancy. Chaotic evil and chaotic neutral morphic savants often train with Blackfire Adepts in the hopes of learning greater powers of chaotic unmaking, and chaotic good morphic savants are most common as agents of the Bellflower Network.\",\n        \"alignment\": \"  Any chaotic.\",\n        \"eidolon of chaos\": \"  A morphic savant's eidolon must be of a chaotic alignment (if using the summoner from Pathfinder Unchained , the eidolon must have the azata, demon, or protean subtype). The morphic savant's eidolon has three base forms: biped, quadruped, and serpentine. Each form has the same feats and skills, but has its own set of evolutions. When the summoner meditates and regains his spell slots for the day, he can select any of the three base forms of his eidolon. The eidolon has 1 fewer evolution point than normal for an eidolon of the morphic savant's summoner level, and has 1 fewer skill point per Hit Die. This ability alters eidolon.\",\n        \"morphic monsters\": \"  Since a morphic savant's power is drawn from planar energies aligned with chaos, all the creatures he summons must be of a chaotic alignment. If a creature would normally be celestial or fiendish, it is instead an entropic creature ( Pathfinder RPG Bestiary 2 292). This also causes the morphic savant's summoning power to be less reliable than a standard summoner's. Each time he uses his summon monster spell-like ability to summon multiple creatures, there is a 50% chance he summons one more monster than normal for the summon monster spell he uses, in which case the creatures remain for only 1 round per level (instead of 1 minute per level). Also, starting at 2nd level, the morphic savant can grant one 1-point evolution to all the creatures he summons with his summon monster spell-like ability. He can't grant an evolution that duplicates the function of, or has the same name as, any ability the summoned creatures already possess (for example, he can't grant a creature with a bite attack another bite attack), nor can he add an evolution that causes the summoned monsters to have more attacks than his eidolon's maximum number of attacks. The creatures do not have to be of the correct subtype to gain an evolution, but do have to meet any other prerequisites. This ability alters summon monster\",\n        \"chaos magic\": \"  A morphic savant gains the following bonus spells known at the listed spell level: 1st- protection from law , 2nd- shard of chaos UM , 3rd- magic circle against law , 4th- chaos hammer , 5th- dispel law , 6th- word of chaos . The morphic savant gains one fewer spell known per spell level for spell levels 1-6. This ability alters the summoner's spells known.\"\n    }\n}",
+ "armor_ac": "3",
+ "armor_armor_check_penalty": "-1",
+ "armor_enhancement_bonus": 2,
+ "armor_enhancement_chosen_list": [],
+ "armor_max_dex_bonus": "5",
+ "armor_name": "Parade",
+ "armor_spell_failure": "15%",
+ "armor_weight": "20 lbs.",
+ "bab_total": 10,
+ "background_traits": [
+  "Commercial Savvy",
+  "Friend in Every Town"
+ ],
+ "backstory": "",
+ "bloodline": "N/A",
+ "bloodline_feat_labels": [],
+ "bloodline_feats": [],
+ "bonded_creatures": [
+  {
+   "archetype": null,
+   "base_form": "serpentine",
+   "base_form_notes": [],
+   "base_size": "medium",
+   "chassis": null,
+   "contributors": [
+    "summoner"
+   ],
+   "effective_level": 9,
+   "ep": {
+    "diverted": 0,
+    "pool": 0,
+    "spent": 0
+   },
+   "evolutions": [],
+   "feats": [],
+   "flags": [
+    "unchained_degraded"
+   ],
+   "gear": [],
+   "gear_source": "not modelled in v1; when added, funded from character.gold (PF1e: companions have no wealth-by-level)",
+   "grantor": "summoner",
+   "holdback": "unchained summoner: subtype-granted evolutions, alignment locks and the unchained evolution-point table are not sourced, so this eidolon carries its base form and no evolutions (companions ticket 07, ruling 1)",
+   "kind": null,
+   "name": "Yasmine",
+   "outcome": "granted",
+   "pf_content": "Serpentine Baseform",
+   "sex": "Female",
+   "size": "medium",
+   "species": "serpentine",
+   "species_stats": {
+    "ability scores": {
+     "cha": 11,
+     "con": 13,
+     "dex": 16,
+     "int": 7,
+     "str": 12,
+     "wis": 10
+    },
+    "ac": "+2 natural armor",
+    "attack": "bite (1d6), tail slap (1d6)",
+    "size": "medium",
+    "speed": "20 ft., climb 20 ft."
+   },
+   "stats": null,
+   "type": "eidolon"
+  }
+ ],
+ "buff_gaps": [],
+ "build_archetype": "Generalist",
+ "build_tactics": "Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.",
+ "c_class": "summoner",
+ "c_class_2": "cleric",
+ "c_class_display": "Summoner (Unchained)",
+ "casting_level_str_foundry": "med",
+ "casting_tradition": {
+  "bonus_spell_points": 0,
+  "boons": [
+   "Overcharge",
+   "Fortified Casting",
+   "Empowered Abilities",
+   "Easy Focus"
+  ],
+  "boons_detail": [
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
+   },
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
+   },
+   {
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
+   }
+  ],
+  "casting_ability_modifier": "Intelligence",
+  "drawbacks": [
+   "Skilled Casting",
+   "Magical Signs",
+   "Somatic Casting",
+   "Prepared Caster",
+   "Extended Casting",
+   "Addictive Casting"
+  ],
+  "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
+    "name": "Addictive Casting"
+   }
+  ]
+ },
+ "cha": 12,
+ "character_full_name": "Pauline Dupont",
+ "chosen_race": "Human",
+ "chosen_spell_descriptor": [
+  "earth"
+ ],
+ "class feature levels": {},
+ "class feature owners": {
+  "Luck": "cleric",
+  "Strength": "cleric"
+ },
+ "class features": {
+  "Luck": {
+   "Bit of Luck (Sp)": [
+    "You can touch a willing creature as a standard action, giving it a bit of luck. For the next round, any time the target rolls a d20, he may roll twice and take the more favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Good Fortune (Ex)": [
+    "At 6th level, as an immediate action, you can reroll any one d20 roll you have just made before the results of the roll are revealed. You must take the result of the reroll, even if its worse than the original roll. You can use this ability once per day at 6th level, and one additional time per day for every six cleric levels beyond 6th."
+   ],
+   "bonus spells": [
+    "true strike",
+    "aid",
+    "protection from energy",
+    "freedom of movement",
+    "break enchantment",
+    "mislead",
+    "spell turning",
+    "moment of prescience",
+    "miracle"
+   ],
+   "subdomains": [
+    "Curse",
+    "Fate",
+    "Imagination"
+   ]
+  },
+  "Strength": {
+   "Might of the Gods (Su)": [
+    "At 8th level, you can add your cleric level as an enhancement bonus to your Strength score for a number of rounds per day equal to your cleric level. This bonus only applies on Strength checks and Strength-based skill checks. These rounds do not need to be consecutive."
+   ],
+   "Strength Surge (Sp)": [
+    "As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your cleric level (minimum +1) to melee attacks, combat maneuver checks that rely on Strength, Strength-based skills, and Strength checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "enlarge person",
+    "bulls strength",
+    "magic vestment",
+    "spell immunity",
+    "righteous might",
+    "stoneskin",
+    "grasping hand",
+    "clenched fist",
+    "crushing hand"
+   ],
+   "subdomains": [
+    "Competition",
+    "Ferocity",
+    "Fist",
+    "Resolve",
+    "Self-Realization"
+   ]
+  }
+ },
+ "class_ability": [
+  "spells_summoner (unchained)",
+  "cantrips_summoner (unchained)",
+  "eidolon_summoner (unchained)",
+  "life link_summoner (unchained)",
+  "summon monster i (sp)_summoner (unchained)",
+  "bond senses_summoner (unchained)",
+  "shield ally_summoner (unchained)",
+  "maker's call_summoner (unchained)",
+  "transposition_summoner (unchained)",
+  "aspect_summoner (unchained)",
+  "greater shield ally_summoner (unchained)",
+  "life bond_summoner (unchained)",
+  "merge forms_summoner (unchained)",
+  "greater aspect_summoner (unchained)",
+  "twin eidolon_summoner (unchained)",
+  "aura_cleric",
+  "spells_cleric",
+  "channel energy_cleric",
+  "domains_cleric",
+  "orisons_cleric",
+  "spontaneous casting_cleric",
+  "chaotic, evil, good, and lawful spells_cleric",
+  "bonus languages_cleric"
+ ],
+ "class_ability_desc": {
+  "aspect": "At 10th level, a summoner can divert up to 2 points from his eidolon's evolution pool to add evolutions to himself. He cannot select any evolution that the eidolon could not possess, and he must be able to meet the requirements as well (except for subtype requirements, so long as his eidolon meets the subtype requirement). He cannot select the ability increase evolution through this ability. Any points spent in this way are taken from the eidolon's evolution pool (reducing the total number available to the eidolon). The summoner can change the evolutions granted by these points anytime he can change the eidolon's evolutions.",
+  "aura": "A cleric of a chaotic, evil, good, or lawful deity has a particularly powerful aura corresponding to the deity's alignment (see the detect evil spell for details).",
+  "bond senses": "At 2nd level, a summoner can, as a standard action, share the senses of his eidolon, hearing, seeing, smelling, tasting, and touching everything the eidolon does. He can use this ability a number of rounds per day equal to his summoner level. There is no maximum range to this effect, but the eidolon and the summoner must be on the same plane. The summoner can end this effect as a free action.",
+  "bonus languages": "A cleric's bonus language options include Celestial, Abyssal, and Infernal (the languages of good, chaotic evil, and lawful evil outsiders, respectively). These choices are in addition to the bonus languages available to the character because of her race. Ex-Clerics A cleric who grossly violates the code of conduct required by her god loses all spells and class features, except for armor and shield proficiencies and proficiency with simple weapons. She cannot thereafter gain levels as a cleric of that god until she atones for her deeds (see the atonement spell description). Alternate Capstones",
+  "cantrips": "A summoner learns a number of cantrips, or 0-level spells, as noted on Table 1-5. These spells are cast like any other spell, but they do not consume any slots and may be used again. Cantrips prepared using other spell slots (due to metamagic feats, for example) consume spell slots as normal.",
+  "channel energy": "Regardless of alignment, any cleric can release a wave of energy by channeling the power of her faith through her holy (or unholy) symbol. This energy can be used to cause or heal damage, depending on the type of energy channeled and the creatures targeted. A good cleric (or one who worships a good deity) channels positive energy and can choose to deal damage to undead creatures or to heal living creatures. An evil cleric (or one who worships an evil deity) channels negative energy and can choose to deal damage to living creatures or to heal undead creatures. A neutral cleric who worships a neutral deity (or one who is not devoted to a particular deity) must choose whether she channels positive or negative energy. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric casts spontaneous cure or inflict spells (see spontaneous casting). Channeling energy causes a burst that affects all creatures of one type (either undead or living) in a 30-foot radius centered on the cleric. The amount of damage dealt or healed is equal to 1d6 points of damage plus 1d6 points of damage for every two cleric levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the cleric's level + the cleric's Charisma modifier. Creatures healed by channeled energy cannot exceed their maximum hit point total-all excess healing is lost. A cleric may channel energy a number of times per day equal to 3 + her Charisma modifier. This is a standard action that does not provoke an attack of opportunity. A cleric can choose whether or not to include herself in this effect. A cleric must be able to present her holy symbol to use this ability.",
+  "chaotic, evil, good, and lawful spells": "A cleric can't cast spells of an alignment opposed to her own or her deity's (if she has one). Spells associated with particular alignments are indicated by the chaotic, evil, good, and lawful descriptors in their spell descriptions.",
+  "domains": "A cleric's deity influences her alignment, what magic she can perform, her values, and how others see her. A cleric chooses two domains from among those belonging to her deity. A cleric can select an alignment domain (Chaos, Evil, Good, or Law) only if her alignment matches that domain. If a cleric is not devoted to a particular deity, she still selects two domains to represent her spiritual inclinations and abilities (subject to GM approval). The restriction on alignment domains still applies. Each domain grants a number of domain powers, dependent upon the level of the cleric, as well as a number of bonus spells. A cleric gains one domain spell slot for each level of cleric spell she can cast, from 1st on up. Each day, a cleric can prepare one of the spells from her two domains in that slot. If a domain spell is not on the cleric spell list, a cleric can prepare it only in her domain spell slot. Domain spells cannot be used to cast spells spontaneously. In addition, a cleric gains the listed powers from both of her domains, if she is of a high enough level. Unless otherwise noted, using a domain power is a standard action. A full list of Cleric Domains can be found",
+  "eidolon": "A summoner begins play with the ability to summon to his side a powerful outsider called an eidolon. The eidolon forms a link with the summoner, who forever after summons an aspect of the same creature. Each eidolon has a subtype, chosen when the eidolon is first summoned, that determines its origin and many of its abilities. An eidolon must be within one alignment step of the summoner who calls it (so a neutral good summoner can call a neutral, lawful good, or chaotic good eidolon) and can speak all of his languages. An eidolon is treated as a summoned creature, except it is not sent back to its home plane until reduced to a number of negative hit points equal to or greater than its Constitution score. In addition, due to its tie to its summoner, an eidolon can touch and attack creatures warded by protection from evil and similar effects that prevent contact with summoned creatures. A summoner can summon his eidolon in a ritual that takes 1 minute to perform. When summoned in this way, the eidolon's hit points are unchanged from the last time it was summoned. The only exception to this is if the eidolon was slain, in which case it returns with half its normal hit points. The eidolon does not heal naturally. The eidolon remains until dismissed by the summoner (a standard action). If the eidolon is sent back to its home plane due to death, it cannot be summoned again until the following day. The eidolon cannot be sent back to its home plane by means of dispel magic , but spells such as dismissal and banishment function normally. If the summoner is unconscious, asleep, or killed, his eidolon is immediately banished. The eidolon takes a form shaped by the summoner's desires. The eidolon's Hit Dice, saving throws, skills, feats, and abilities are tied to the summoner's class level and increase as the summoner gains levels. In addition, each eidolon gains a pool of evolution points based on the summoner's class level that can be used to give the eidolon different abilities and powers. Whenever the summoner gains a level, he must decide how these points are spent, and they are set until he gains another level of summoner. The eidolon's physical appearance is up to the summoner, but it always appears as some sort of fantastical creature appropriate to its subtype. This control is not fine enough to make the eidolon appear like a specific creature. The eidolon also bears a glowing rune that is identical to a rune that appears on the summoner's forehead as long as the eidolon is summoned. While this rune can be hidden through mundane means, it cannot be concealed through magic that changes appearance, such as alter self or polymorph (although invisibility does conceal it as long as the spell lasts).",
+  "greater aspect": "At 18th level, a summoner can divert more of his eidolon's evolutions to himself. This ability functions as the aspect ability, but the maximum number of evolution points the summoner can divert increases to 6. In addition, the eidolon loses 1 point from its evolution pool for every 2 points (or fraction thereof ) diverted to the summoner instead of losing 1 point from the evolution pool for each point diverted.",
+  "greater shield ally": "At 12th level, whenever an ally is within reach of the summoner's eidolon, the ally gains a +2 shield bonus to its Armor Class and a +2 circumstance bonus on its saving throws. If this ally is the summoner, these bonuses increase to +4. This bonus does not apply if the eidolon is grappled, helpless, paralyzed, stunned, or unconscious.",
+  "life bond": "At 14th level, the summoner's life becomes linked to his eidolon's. As long as the eidolon has 1 or more hit points, the summoner is protected from harm. Damage in excess of that which would reduce the summoner to 0 hit points is instead transferred to the eidolon. This damage is transferred 1 point at a time, meaning that as soon as the eidolon is reduced to a number of negative hit points equal to its Constitution score, all excess damage remains with the summoner. Effects that cause death but don't deal damage are unaffected by this ability. This ability does not affect spells such as baleful polymorph , flesh to stone , imprisonment , or other spells that don't deal damage.",
+  "life link": "At 1st level, a summoner forms a close bond with his eidolon. Whenever the eidolon takes enough damage to send it back to its home plane, as a reaction to the damage, the summoner can sacrifice any number of hit points he has without using an action. Each hit point sacrificed in this way prevents 1 point of damage dealt to the eidolon. This can prevent the eidolon from being sent back to its home plane. In addition, the eidolon and the summoner must remain within 100 feet of one another for the eidolon to remain at full strength. If the eidolon is beyond 100 feet but closer than 1,000 feet, its current and maximum hit point totals are reduced by 50%. If the eidolon is more than 1,000 feet away but closer than 10,000 feet, its current and maximum hit point totals are reduced by 75%. If the eidolon is more than 10,000 feet away, it is immediately returned to its home plane. Current hit points lost in this way are not restored when the eidolon gets closer to its summoner, but its maximum hit point total does climb to the levels indicated and eventually returns to normal.",
+  "maker's call": "At 6th level, as a standard action, a summoner can call his eidolon to his side. This functions as dimension door , using the summoner's caster level. When this ability is used, the eidolon appears adjacent to the summoner (or as close as possible if all adjacent spaces are occupied). If the eidolon is out of range, the ability is wasted. The summoner can use this ability once per day at 6th level, plus one additional time per day for every four levels beyond 6th.",
+  "merge forms": "At 16th level, as a full-round action, a summoner can touch his eidolon and the two can merge forms. This transformation includes all of the summoner's gear. While merged in this way, the summoner is protected from harm and cannot be the target of spells or effects. All effects and spells currently targeting the summoner are suspended until the summoner emerges from the eidolon (although durations continue to expire). The summoner can cast spells while inside the eidolon by taking control of the eidolon for the duration of the casting. Any material components used for these spells are taken from the summoner's gear, even though they are otherwise inaccessible. The summoner can direct all of the eidolon's actions while merged, can perceive through its senses, and can speak through its voice. The summoner can use this ability for a number of rounds per day equal to his summoner level. He can end this effect at any time as a swift action. The summoner emerges in a square adjacent to the eidolon if able. If the eidolon is returned to its home plane while the summoner is merged with it, the summoner is immediately ejected, takes 4d6 points of damage, and is stunned for 1 round.",
+  "orisons": "Clerics can prepare a number of orisons, or 0-level spells, each day, as noted on Table: Cleric under \"Spells per Day.\"These spells are cast like any other spell, but they are not expended when cast and may be used again.",
+  "shield ally": "At 4th level, whenever a summoner is within his eidolon's reach, the summoner gains a +2 shield bonus to his Armor Class and a +2 circumstance bonus on his saving throws. This bonus does not apply if the eidolon is grappled, helpless, paralyzed, stunned, or unconscious.",
+  "spells": "A cleric casts divine spells which are drawn from the cleric spell list presented in Spell Lists. Her alignment, however, may restrict her from casting certain spells opposed to her moral or ethical beliefs; see chaotic, evil, good, and lawful spells. A cleric must choose and prepare her spells in advance. To prepare or cast a spell, a cleric must have a Wisdom score equal to at least 10 + the spell level. The Difficulty Class for a saving throw against a cleric's spell is 10 + the spell level + the cleric's Wisdom modifier. Like other spellcasters, a cleric can cast only a certain number of spells of each spell level per day. Her base daily spell allotment is given on Table: Cleric. In addition, she receives bonus spells per day if she has a high Wisdom score (see Table: Ability Modifiers and Bonus Spells). Clerics meditate or pray for their spells. Each cleric must choose a time when she must spend 1 hour each day in quiet contemplation or supplication to regain her daily allotment of spells. A cleric may prepare and cast any spell on the cleric spell list, provided that she can cast spells of that level, but she must choose which spells to prepare during her daily meditation.",
+  "spontaneous casting": "A good cleric (or a neutral cleric of a good deity) can channel stored spell energy into healing spells that she did not prepare ahead of time. The cleric can \"lose\"any prepared spell that is not an orison or domain spell in order to cast any cure spell of the same spell level or lower (a cure spell is any spell with \"cure\"in its name). An evil cleric (or a neutral cleric who worships an evil deity) can't convert prepared spells to cure spells but can convert them to inflict spells (an inflict spell is one with \"inflict\"in its name). A cleric who is neither good nor evil and whose deity is neither good nor evil can convert spells to either cure spells or inflict spells (player's choice). Once the player makes this choice, it cannot be reversed. This choice also determines whether the cleric channels positive or negative energy (see Channel Energy).",
+  "summon monster i (sp)": "At 1st level, a summoner can cast summon monster I as a spell-like ability a number of times per day equal to 3 + his Charisma modifier. Drawing on this ability uses up the same power that the summoner uses to call his eidolon. As a result, he can use this ability only when his eidolon is not summoned. He can cast this spell as a standard action, and the creatures remain for 1 minute per level (instead of 1 round per level). At 3rd level, and every 2 levels thereafter, the power of this ability increases by 1 spell level, allowing him to summon more powerful creatures (to a maximum of summon monster IX at 17th level). At 19th level, this ability can be used as gate or summon monster IX . If used as gate , the summoner must pay any required material components. A summoner cannot have more than one summon monster or gate spell active in this way at one time. If this ability is used again, any existing summon monster or gate from this spell-like ability immediately ends. These summon spells are considered to be part of the summoner's spell list for the purposes of spell trigger and spell completion items. In addition, the summoner can expend uses of this ability to fulfill the construction requirements of any magic item he creates, so long as he can use this ability to cast the required spell.",
+  "transposition": "At 8th level, a summoner can use his maker's call ability to swap locations with his eidolon. If the eidolon occupies more squares than the summoner, the summoner can appear in any square occupied by the eidolon. The eidolon must occupy the square that was occupied by the summoner if able, or as close as possible if it is not able.",
+  "twin eidolon": "At 20th level, a summoner and his eidolon share a true connection. As a standard action, the summoner can assume the shape of his eidolon, copying all of its evolutions, form, and abilities. His Strength, Dexterity, and Constitution scores change to match the base scores of his eidolon. He can choose to have any gear that he carries become absorbed by his new form, as with spells from the polymorph subschool. Items with continuous effects continue to function while absorbed in this way. The summoner loses his natural attacks and all racial traits (except bonus feats, skills, and languages) in favor of the abilities granted by his eidolon's evolutions. The summoner retains all of his class features. The summoner can keep this form for a number of minutes per day equal to his summoner level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. The summoner can end this effect as a free action. Alternate Capstones"
+ },
+ "class_feat_labels": [],
+ "class_feat_tax_dict": {},
+ "class_feats": [],
+ "class_feature_changes_dict": {},
+ "class_feature_conditionals_dict": {},
+ "class_feature_levels": {},
+ "class_feature_owners": {
+  "Luck": "cleric",
+  "Strength": "cleric"
+ },
+ "class_features": {
+  "Luck": {
+   "Bit of Luck (Sp)": [
+    "You can touch a willing creature as a standard action, giving it a bit of luck. For the next round, any time the target rolls a d20, he may roll twice and take the more favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "Good Fortune (Ex)": [
+    "At 6th level, as an immediate action, you can reroll any one d20 roll you have just made before the results of the roll are revealed. You must take the result of the reroll, even if its worse than the original roll. You can use this ability once per day at 6th level, and one additional time per day for every six cleric levels beyond 6th."
+   ],
+   "bonus spells": [
+    "true strike",
+    "aid",
+    "protection from energy",
+    "freedom of movement",
+    "break enchantment",
+    "mislead",
+    "spell turning",
+    "moment of prescience",
+    "miracle"
+   ],
+   "subdomains": [
+    "Curse",
+    "Fate",
+    "Imagination"
+   ]
+  },
+  "Strength": {
+   "Might of the Gods (Su)": [
+    "At 8th level, you can add your cleric level as an enhancement bonus to your Strength score for a number of rounds per day equal to your cleric level. This bonus only applies on Strength checks and Strength-based skill checks. These rounds do not need to be consecutive."
+   ],
+   "Strength Surge (Sp)": [
+    "As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your cleric level (minimum +1) to melee attacks, combat maneuver checks that rely on Strength, Strength-based skills, and Strength checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+   ],
+   "bonus spells": [
+    "enlarge person",
+    "bulls strength",
+    "magic vestment",
+    "spell immunity",
+    "righteous might",
+    "stoneskin",
+    "grasping hand",
+    "clenched fist",
+    "crushing hand"
+   ],
+   "subdomains": [
+    "Competition",
+    "Ferocity",
+    "Fist",
+    "Resolve",
+    "Self-Realization"
+   ]
+  }
+ },
+ "classes": [
+  {
+   "archetype": {
+    "Morphic Savant": {
+     "alignment": "  Any chaotic.",
+     "chaos magic": "  A morphic savant gains the following bonus spells known at the listed spell level: 1st- protection from law , 2nd- shard of chaos UM , 3rd- magic circle against law , 4th- chaos hammer , 5th- dispel law , 6th- word of chaos . The morphic savant gains one fewer spell known per spell level for spell levels 1-6. This ability alters the summoner's spells known.",
+     "eidolon of chaos": "  A morphic savant's eidolon must be of a chaotic alignment (if using the summoner from Pathfinder Unchained , the eidolon must have the azata, demon, or protean subtype). The morphic savant's eidolon has three base forms: biped, quadruped, and serpentine. Each form has the same feats and skills, but has its own set of evolutions. When the summoner meditates and regains his spell slots for the day, he can select any of the three base forms of his eidolon. The eidolon has 1 fewer evolution point than normal for an eidolon of the morphic savant's summoner level, and has 1 fewer skill point per Hit Die. This ability alters eidolon.",
+     "morphic monsters": "  Since a morphic savant's power is drawn from planar energies aligned with chaos, all the creatures he summons must be of a chaotic alignment. If a creature would normally be celestial or fiendish, it is instead an entropic creature ( Pathfinder RPG Bestiary 2 292). This also causes the morphic savant's summoning power to be less reliable than a standard summoner's. Each time he uses his summon monster spell-like ability to summon multiple creatures, there is a 50% chance he summons one more monster than normal for the summon monster spell he uses, in which case the creatures remain for only 1 round per level (instead of 1 minute per level). Also, starting at 2nd level, the morphic savant can grant one 1-point evolution to all the creatures he summons with his summon monster spell-like ability. He can't grant an evolution that duplicates the function of, or has the same name as, any ability the summoned creatures already possess (for example, he can't grant a creature with a bite attack another bite attack), nor can he add an evolution that causes the summoned monsters to have more attacks than his eidolon's maximum number of attacks. The creatures do not have to be of the correct subtype to gain an evolution, but do have to meet any other prerequisites. This ability alters summon monster",
+     "source": "Monster Summoner's Handbook pg. 16 A morphic savant is an agent of change who draws power from the Abyss, Elysium, or the Maelstrom to fulfill whatever goals strike his fancy. Chaotic evil and chaotic neutral morphic savants often train with Blackfire Adepts in the hopes of learning greater powers of chaotic unmaking, and chaotic good morphic savants are most common as agents of the Bellflower Network."
+    }
+   },
+   "display": "Summoner (Unchained)",
+   "level": 9,
+   "name": "summoner (unchained)"
+  },
+  {
+   "archetype": {
+    "Theologian": {
+     "domain secret (ex)": "  At 5th level, the theologian chooses one domain spell. That spell becomes permanently modified with one of the following metamagic feats: Bouncing Spell, Disruptive Spell, Ectoplasmic Spell, Enlarge Spell, Extend Spell, Focused Spell, Intensified Spell, Silent Spell, Still Spell. This metamagic feat does not increase the level of the spell. Once chosen, this modification cannot be changed. The domain specialist need not have the metamagic feat to apply it to a spell using this ability. At every 5 levels after 5th, the domain specialist may choose an additional domain spell to modify in this way. She cannot modify the same spell more than once.",
+     "focused domain": "  A theologian chooses only one domain from her deity's portfolio rather than the normal two domains. All level-dependent effects of the granted powers from the theologian's domain function as if she were two cleric levels higher than her actual cleric level. This does not allow her to gain domain-granted powers earlier than normal. A theologian can prepare domain spells using her non-domain slots. She cannot use her spontaneous casting ability on domain spells, even if they are prepared in non-domain slots. In all other respects, this works like and replaces the standard cleric domain ability.",
+     "source": "Ultimate Magic pg. 32 A theologian is an expert on one particular area of her religion. She is so focused on that area that she eschews the broader sweep of her deity's dogma and focuses intensely upon that aspect of it, embodying its power in all she does. Theologians tend to be more zealous than other clerics, and many crusades are started by theologians. A theologian has the following class features."
+    }
+   },
+   "display": "Cleric",
+   "level": 6,
+   "name": "cleric"
+  }
+ ],
+ "combat_talent_items": [
+  {
+   "advanced": true,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may attempt to sunder an ongoing spell effect by succeeding at a special sunder combat maneuver attempt. For any effect that is not already on a creature, you must make a sunder combat maneuver attempt against a CMD of 15 plus the effect's caster level. To sunder an effect on a creature, you must succeed at a normal sunder combat maneuver against the creature's CMD +5, ignoring any miss chance caused by a spell or spell-like ability. If successful, you suppress the effect for 1 round, or 2 rounds if you exceeded the CMD by 5 to 9. If you exceed the CMD by 10 or more, the effect is dispelled.",
+   "name": "Spell Sunder",
+   "sphere": "Berserker",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  }
+ ],
+ "con": 12,
+ "counter_schools": [
+  "divination"
+ ],
+ "counter_spell_descriptor": [
+  "fire"
+ ],
+ "craft_type": "Upholstery",
+ "day_list": [
+  1,
+  6,
+  4,
+  3
+ ],
+ "deity_name": "Kurgess",
+ "dex": 10,
+ "enhancement_desc_dict": {},
+ "enhancement_effects_dict": {},
+ "equip_descrip": {
+  "belts": {
+   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
+   "item_name": "Belt of Tumbling"
+  },
+  "chest": {
+   "description": " whenever the wearer is grappling (whether on the offense\r or defense), this shirt automatically bursts into flame, dealing\r 1d6+10 points of fire damage every round to anyone grappling\r the wearer. The flames do not harm the wearer and last one\r round (though it continues to burn if the wearer is still grappling\r after one round). The shirt burns for a maximum of 10 rounds per\r day. These rounds do not need to be consecutive. ",
+   "item_name": "Shirt of Immolation"
+  },
+  "eyes": {
+   "description": " when worn, these innocent-looking spectacles convert\r any written language to one known by the wearer, as the comprehend languages spell. The glasses are also good at\r detecting falsified documents, granting their wearer a +5\r bonus to linguistics checks to identify forgeries and the\r ability make such checks untrained. ",
+   "item_name": "Spectacles of Understanding"
+  },
+  "feet": {
+   "description": " these soft leather boots grant the wearer the ability to move through normal undergrowth without hindrance as if she had the woodland stride ability. ",
+   "item_name": "Jungle Boots"
+  },
+  "hands": {
+   "description": " the wearer of these simple gloves can\r speak a command word create a glowing\r disembodied hand. As a swift action, the\r wearer can have the hand assist him with\r a task as if using the aid another action. \r the hand uses the wearer's base attack\r bonus or skill ranks when making the check to see if aid another is\r successful (it does not gain the benefit of the wearer's ability scores\r or other bonuses). The hand remains until it has attempted one\r action or until 1 minute passes, whichever comes first, at which\r time the gloves become nonmagical. ",
+   "item_name": "Assisting Gloves"
+  },
+  "shoulders": {
+   "description": " the wearer of this rough, gray cloak can, as a move action, \r grasp the garment's edge and cause it to harden. The wearer\r can use the hardened edge it as if it were a masterwork light\r wooden shield. Using the cloak in this fashion imposes no\r armor check penalty, but does impose a 5% arcane spell\r failure chance. The edge of the cloak can be dropped and\r made pliant again as a free action. Shield enhancement\r bonuses and special abilities can be added to the cloak as if it\r were a masterwork shield. ",
+   "item_name": "Shield Cloak"
+  },
+  "wrist": {
+   "description": " this small sheath attaches to the wrist with a leather strap. The sheath can accommodate any single light weapon, wand, or piece of ammunition weighing no more than 5 pounds. While sheathed, the weapon is hidden in an extradimensional space and is weightless. As a swift action, the wearer can flex her wrist, ejecting the weapon into her hand. If her hand is not empty, the weapon remains sheathed. Stowing a weapon in the sheath requires a move action. The wearer gains a +4 bonus on any sleight of hand check to oppose the perception check of someone observing or frisking the wearer in search of a weapon in the sheath. Vanishing sheaths can be worn in pairsone on each arm. A person wearing two vanishing sheaths can eject either or both weapons with a single swift action. ",
+   "item_name": "Vanishing Sheath"
+  }
+ },
+ "equipment_list": [
+  "Shirt of Immolation",
+  "Spectacles of Understanding",
+  "Jungle Boots",
+  "Shield Cloak",
+  "Vanishing Sheath",
+  "Belt of Tumbling",
+  "Assisting Gloves"
+ ],
+ "eye_color": [
+  "Amber"
+ ],
+ "feat_budget": {
+  "bloodline": 0,
+  "class": 0,
+  "flavor": 0,
+  "flaw": 0,
+  "normal": 8,
+  "profession": 0,
+  "story": 0,
+  "teamwork": 0,
+  "trainer": 0
+ },
+ "feat_changes_dict": {
+  "Coordinated Maneuvers": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "cmb",
+     "text": "While adjacent to an ally who also has this feat: +2 competence bonus on all combat maneuver checks (+4 to break free from a grapple)."
+    }
+   ]
+  },
+  "Demon Hunter": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.kpl",
+     "text": "+2 on Knowledge (planes) checks to identify demons' powers, and +2 morale on caster level checks to overcome the spell resistance of creatures you recognize as demons."
+    }
+   ]
+  }
+ },
+ "feat_conditionals_dict": {
+  "Charging Hurler": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Charging Hurler: When making a thrown-weapon attack as a charge (end movement within 30 ft of the target): +2 on the attack roll and -2 to AC until the start of your next turn."
+  },
+  "Demon Hunter": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    },
+    {
+     "critical": "crit",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "morale"
+    }
+   ],
+   "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
+  },
+  "Point-Blank Shot": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    },
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "1",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "tier": "A"
+  }
+ },
+ "feats": [
+  "Demon Hunter",
+  "Point-Blank Shot",
+  "Throw Anything",
+  "Charging Hurler",
+  "Cornugon Smash",
+  "Run",
+  "Quick Preparation",
+  "Coordinated Maneuvers"
+ ],
+ "feats_feat_tax_dict": {
+  "Extra Combat Talent (Spell Sunder)": [
+   "Extra Combat Talent"
+  ]
+ },
+ "flavor_feat_tax_dict": {},
+ "flavor_feats": [],
+ "flaw": [],
+ "flaw_effects_dict": {},
+ "flaw_feat_tax_dict": {},
+ "flaw_feats": [],
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Generalist\n- Tactics: Reads the fight and slots in wherever the line is thinnest -- second rank one round, flank the next. Beats specialists only when the fight refuses to stay in anyone's lane.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Known for: Upholstery\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Younger Brothers\n- 1 Older Sister\n\nPersonality\n- Personality: Cowardly, Self-sufficient, Altruistic, Enterprising, Determined\n- Mannerisms: Dabs at eyes, Wipes hands on pants\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Amber\n- Build: Large Forehead",
+ "full_domain": [
+  "Luck",
+  "Strength"
+ ],
+ "gender": "Female",
+ "generation_seed": 5002,
+ "generator_version": "2026-07-15 racial-stats",
+ "gold": 20,
+ "hair_color": [
+  "Grey"
+ ],
+ "hair_type": [
+  "Spiky"
+ ],
+ "height_number": "5'8\"",
+ "hero_points": 3,
+ "homebrew": false,
+ "homebrew_feat_desc_dict": {
+  "Charging Hurler": "You know how to use your momentum to enhance your thrown weapon attacks",
+  "Coordinated Maneuvers": "You are skilled at working with your allies to perform dangerous combat maneuvers",
+  "Cornugon Smash": "Your terrible attacks strike fear into your enemies",
+  "Demon Hunter": "You are well-versed in demonic lore",
+  "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
+  "Extra Combat Talent (Spell Sunder)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Spell Sunder (Berserker): You may attempt to sunder an ongoing spell effect by succeeding at a special sunder combat maneuver attempt. For any effect that is not already on a creature, you must make a sunder combat maneuver attempt against a CMD of 15 plus the effect's caster level. To sunder an effect on a creature, you mus",
+  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
+  "Quick Preparation": "Early on in your adventuring career, you learned (perhaps the hard way) how to prepare your spells even when put under extreme time constraints",
+  "Run": "You are swift of foot",
+  "Throw Anything": "You are used to throwing things you have on hand"
+ },
+ "inherents": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "initiation_stat": "int",
+ "initiator_level": 0,
+ "input_warnings": [
+  {
+   "input": "deity",
+   "outcome": "rolled randomly",
+   "value": "asdfasd"
+  }
+ ],
+ "int": 17,
+ "item_changes_dict": {
+  "Assisting Gloves": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of these simple gloves can speak a command word create a glowing disembodied hand. As a swift action, the wearer can have the hand assist him with a task as if using the aid another action. The hand remains until it has attempted one action or until 1 minute passes, whichever comes first, at which time the gloves become nonmagical."
+   ]
+  },
+  "Belt of Tumbling": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
+    }
+   ]
+  },
+  "Shield Cloak": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of this rough, gray cloak can, as a move action, grasp the garment's edge and cause it to harden. The wearer can use the hardened edge it as if it were a masterwork light wooden shield. Using the cloak in this fashion imposes no armor check penalty, but does impose a 5% arcane spell failure chance. The edge of the cloak can be dropped and made pliant again as a free action."
+   ]
+  },
+  "Shirt of Immolation": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Whenever the wearer is grappling (whether on the offense or defense), this shirt automatically bursts into flame, dealing 1d6+10 points of fire damage every round to anyone grappling the wearer. The shirt burns for a maximum of 10 rounds per day."
+   ]
+  },
+  "Spectacles of Understanding": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.lin",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Vanishing Sheath": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.per",
+     "type": "untyped"
+    },
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.slt",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.per",
+     "text": "The sheath can accommodate any single light weapon, wand, or piece of ammunition weighing no more than 5 pounds. As a swift action, the wearer can flex her wrist, ejecting the weapon into her hand."
+    }
+   ]
+  }
+ },
+ "known_list": [
+  6,
+  5,
+  4,
+  4
+ ],
+ "land_speed": 30,
+ "language_text": [
+  "Common",
+  "Halfling",
+  "Abyssal",
+  "Ignan",
+  "Celestial",
+  "Auran",
+  "Giant",
+  "Aquan",
+  "Gnoll",
+  "Drow Sign Language",
+  "Goblin",
+  "Aklo",
+  "Tengu",
+  "Dwarven",
+  "Orc",
+  "Draconic"
+ ],
+ "level": 9,
+ "level_up_stats": {
+  "cha": 0,
+  "con": 3,
+  "dex": 0,
+  "int": 0,
+  "str": 0,
+  "wis": 0
+ },
+ "license_url": "/license",
+ "luck": null,
+ "magic_talent_items": [],
+ "main_stat": "int",
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
+ "manifesters": [],
+ "mannerisms": [
+  "Dabs at eyes",
+  "Wipes hands on pants"
+ ],
+ "martial_disciplines": [],
+ "mini_alignment": "ng",
+ "mod_char_sheet_var": false,
+ "mt_feats": [],
+ "mythic": null,
+ "normal_feat_amount": 8,
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 1 older sisters",
+ "opposing_school": "N/A",
+ "optimize": null,
+ "parents": "loving mother, loving father, raised in a poor household",
+ "personality_traits": [
+  "Cowardly",
+  "Self-sufficient",
+  "Altruistic",
+  "Enterprising",
+  "Determined"
+ ],
+ "platnium": 2.0,
+ "powers_desc_dict": {},
+ "profession_ability_items": [],
+ "profession_feat_desc": {},
+ "profession_feats": [],
+ "profession_pool": 0,
+ "profession_ranks": [],
+ "professions": [],
+ "racial_stats": {
+  "cha": 0,
+  "con": 0,
+  "dex": 0,
+  "int": 2,
+  "str": 0,
+  "wis": 0
+ },
+ "region": "Tal-falko",
+ "save_bases": {
+  "fort": 8,
+  "ref": 5,
+  "will": 11
+ },
+ "school": "N/A",
+ "selected_traits": [
+  "Dangerously Curious",
+  "Vengeful"
+ ],
+ "selected_traits_desc": [
+  {
+   "description": "You gain a +1 bonus on Use Magic Device checks, and Use Magic Device is always a class skill for you.",
+   "name": "Dangerously Curious"
+  },
+  {
+   "description": "Whenever you strike the last creature that damaged you in the past 24 hours, you gain a +1 trait bonus on damage rolls against that creature.",
+   "name": "Vengeful"
+  }
+ ],
+ "sheet_health": 77,
+ "shield_ac": 0,
+ "shield_armor_check_penalty": " ",
+ "shield_enhancement_bonus": 0,
+ "shield_enhancement_chosen_list": [],
+ "shield_max_dex_bonus": " ",
+ "shield_name": " ",
+ "shield_spell_failure": " ",
+ "shield_weight": " ",
+ "skill_rank_budget": 90,
+ "skill_ranks": {
+  "acrobatics": 0,
+  "appraise": 0,
+  "bluff": 6,
+  "climb": 0,
+  "craft": 6,
+  "diplomacy": 10,
+  "disable device": 13,
+  "disguise": 6,
+  "escape artist": 0,
+  "fly": 5,
+  "handle animal": 0,
+  "heal": 0,
+  "intimidate": 0,
+  "knowledge arcana": 0,
+  "knowledge dungeoneering": 0,
+  "knowledge engineering": 0,
+  "knowledge geography": 0,
+  "knowledge history": 3,
+  "knowledge local": 0,
+  "knowledge nature": 0,
+  "knowledge nobility": 5,
+  "knowledge planes": 9,
+  "knowledge religion": 0,
+  "linguistics": 12,
+  "perception": 0,
+  "perform": 0,
+  "profession": 0,
+  "ride": 0,
+  "sense motive": 2,
+  "sleight of hand": 0,
+  "spellcraft": 13,
+  "stealth": 0,
+  "survival": 0,
+  "swim": 0,
+  "use magic device": 0
+ },
+ "skill_unlock": null,
+ "specialty_schools": [
+  "illusion"
+ ],
+ "spell_changes_dict": {},
+ "spell_list_choose_from": [
+  [
+   "Acid Splash",
+   "Daze",
+   "Mage Hand",
+   "Mending",
+   "Open/Close",
+   "Resistance"
+  ],
+  [
+   "Blend with Surroundings",
+   "Blurred Movement",
+   "Shadowfade",
+   "Stone Shield",
+   "Ventriloquism"
+  ],
+  [
+   "Dark Whispers",
+   "Invisibility",
+   "Invisibility Bubble",
+   "Planetarium"
+  ],
+  [
+   "Invisibility Bubble, Giant",
+   "Invisibility, Greater",
+   "Rejuvenate Eidolon",
+   "Selective Invisibility"
+  ]
+ ],
+ "spell_list_choose_from_dict": [
+  [
+   "Acid Splash",
+   "Daze",
+   "Mage Hand",
+   "Mending",
+   "Open/Close",
+   "Resistance"
+  ],
+  [
+   "Blend with Surroundings",
+   "Blurred Movement",
+   "Shadowfade",
+   "Stone Shield",
+   "Ventriloquism"
+  ],
+  [
+   "Dark Whispers",
+   "Invisibility",
+   "Invisibility Bubble",
+   "Planetarium"
+  ],
+  [
+   "Invisibility Bubble, Giant",
+   "Invisibility, Greater",
+   "Rejuvenate Eidolon",
+   "Selective Invisibility"
+  ]
+ ],
+ "spell_riders_dict": {
+  "Daze": {
+   "attack": null,
+   "riders": [
+    "Range: [[25 + 5*floor(@spells.primary.cl.total/2)]] ft; Save: Will DC [[ 10 + @slvl + @castMod ]] negates; affects one humanoid of [[4]] or fewer HD (humanoids with [[5]] or more HD are not affected); the target is dazed and takes no actions for [[1]] round; a dazed subject is not stunned, so attackers get no special advantage against it; after being dazed by this spell, the creature is immune to it for [[1]] minute; spell resistance: yes"
+   ],
+   "save": {
+    "dc": "",
+    "description": "negates",
+    "harmless": false,
+    "type": "will"
+   }
+  },
+  "Rejuvenate Eidolon": {
+   "attack": null,
+   "riders": [
+    "Range: touch; cures [[3d10 + min(10, @spells.primary.cl.total)]] points of damage to the touched eidolon; spell resistance: no"
+   ],
+   "save": null
+  }
+ },
+ "spellbooks": [
+  {
+   "capped_level": 9,
+   "casting_level_num": 9,
+   "casting_level_string": "mid",
+   "casting_stat": "cha",
+   "display": "Summoner (Unchained)",
+   "divine": false,
+   "highest_spell_known": 3,
+   "level": 9,
+   "name": "summoner (unchained)",
+   "spell_list_choose_from": [
+    [
+     "Acid Splash",
+     "Daze",
+     "Mage Hand",
+     "Mending",
+     "Open/Close",
+     "Resistance"
+    ],
+    [
+     "Blend with Surroundings",
+     "Blurred Movement",
+     "Shadowfade",
+     "Stone Shield",
+     "Ventriloquism"
+    ],
+    [
+     "Dark Whispers",
+     "Invisibility",
+     "Invisibility Bubble",
+     "Planetarium"
+    ],
+    [
+     "Invisibility Bubble, Giant",
+     "Invisibility, Greater",
+     "Rejuvenate Eidolon",
+     "Selective Invisibility"
+    ]
+   ],
+   "spells_known_list": [
+    6,
+    5,
+    4,
+    4
+   ],
+   "spells_per_day_list": [
+    1,
+    6,
+    4,
+    3
+   ],
+   "spells_prepared_per_level": [
+    1,
+    5,
+    4,
+    3
+   ]
+  },
+  {
+   "capped_level": 6,
+   "casting_level_num": 6,
+   "casting_level_string": "high",
+   "casting_stat": "wis",
+   "display": "Cleric",
+   "divine": true,
+   "highest_spell_known": 3,
+   "level": 6,
+   "name": "cleric",
+   "spell_list_choose_from": [
+    [
+     "Mending",
+     "Purify Food and Drink",
+     "Scrivener's Chant",
+     "Sotto Voce",
+     "Spark"
+    ],
+    [
+     "Blend with Surroundings",
+     "Enlarge Person",
+     "Face of the Devourer",
+     "Hairline Fractures",
+     "Mighty Fist of the Earth",
+     "Mirror Mantis",
+     "Murderous Crow",
+     "Shadow Trap",
+     "Stone Shield",
+     "True Strike"
+    ],
+    [
+     "Aid",
+     "Bull's Strength",
+     "Burst of Radiance",
+     "Ironskin",
+     "Magic Boulder",
+     "Muffle Sound",
+     "Semblance of Flesh",
+     "Silence",
+     "Silent Table"
+    ],
+    [
+     "Agonizing Rebuke",
+     "Delay Poison, Communal",
+     "Horrifying Visage",
+     "Magic Vestment",
+     "Meld into Stone",
+     "Protection from Energy",
+     "Raging Rubble",
+     "Shadowmind",
+     "Share Glory",
+     "Speak with Dead",
+     "Stone Shape"
+    ]
+   ],
+   "spells_known_list": [],
+   "spells_per_day_list": [
+    5,
+    8,
+    7,
+    9
+   ],
+   "spells_prepared_per_level": [
+    5,
+    10,
+    9,
+    11
+   ]
+  }
+ ],
+ "spells_prepared_per_level": [
+  1,
+  5,
+  4,
+  3
+ ],
+ "sphere_boons": [
+  "Overcharge",
+  "Fortified Casting",
+  "Empowered Abilities",
+  "Easy Focus"
+ ],
+ "sphere_counts": {
+  "Berserker": {
+   "advanced": 1,
+   "feats": 0,
+   "normal": 0
+  }
+ },
+ "sphere_drawbacks": [
+  "Skilled Casting",
+  "Magical Signs",
+  "Somatic Casting",
+  "Prepared Caster",
+  "Extended Casting",
+  "Addictive Casting"
+ ],
+ "sphere_feat_tax": {
+  "Extra Combat Talent (Spell Sunder)": [
+   "Extra Combat Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Extra Combat Talent (Spell Sunder)"
+ ],
+ "sphere_mana_pool": 0,
+ "sphere_traits": [
+  "Skilled Casting",
+  "Magical Signs",
+  "Somatic Casting",
+  "Prepared Caster",
+  "Extended Casting",
+  "Addictive Casting",
+  "Overcharge",
+  "Fortified Casting",
+  "Empowered Abilities",
+  "Easy Focus"
+ ],
+ "spheres_chosen": [
+  {
+   "sphere": "Berserker",
+   "system": "might"
+  }
+ ],
+ "stances_chosen": [],
+ "story_feat_tax_dict": {},
+ "story_feats": [],
+ "str": 11,
+ "teamwork_feat_labels": [],
+ "teamwork_feats": 0,
+ "total_level": 15,
+ "total_rolled_hp": 69,
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
+ "weapon_enhancement_bonus": 2,
+ "weapon_enhancement_chosen_list": [],
+ "weapon_name": "Boar spear",
+ "weapon_size": "Medium",
+ "weapon_size_attack_penalty": 0,
+ "weapon_size_source": null,
+ "weapon_size_steps": 0,
+ "weight_number": 217,
+ "wis": 11,
+ "younger_brothers": " you have 2 younger brothers",
+ "younger_sisters": " you have 0 younger sisters"
+}

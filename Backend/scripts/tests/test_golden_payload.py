@@ -55,6 +55,10 @@ _BASE = dict(
     deity_flag='asdfasd', truly_random_feats='Y', inherents='Y', modded_char_sheet='n',
     homebrew_feat_amount='Y', num_dice='4', num_sides='6', gold_num=10000,
     use_backstory_api='N', spheres_flag='N',
+    # Every fixture above this line was recorded under Sieg's Guide house rules, which became
+    # opt-in on 2026-10-02 (utils/house_rules.py). Pinning the switch ON is what keeps them
+    # byte-identical; the pf1e_* fixtures below are the new default's witnesses.
+    homebrew=True,
 )
 
 # The four configs below were chosen so that their UNION populates every buff side-map the export
@@ -226,6 +230,15 @@ CONFIGS = {
                            userInput_gender='female', high_level=11, low_level=11,
                            gold_num=100000, optimize='wall', house_rules=True),
 }
+
+# THE DEFAULT'S WITNESSES. Plain Pathfinder 1e -- the master `homebrew` switch absent, which is what
+# a client that never asks gets. Same seeds and inputs as the three homebrew fixtures they shadow,
+# so a diff between a pair is exactly what the house rules add: a martial (free feats, feat tax,
+# flaws, martial paths), a two-book caster (combined CL is renderer-side; flaws, skill unlock) and
+# an initiator (style chains, Martial Training). `homebrew` is POPPED rather than set False, so the
+# fixture exercises the absent-key path the clients actually take.
+for _shadowed in ('martial', 'caster', 'initiator'):
+    CONFIGS['pf1e_' + _shadowed] = {k: v for k, v in CONFIGS[_shadowed].items() if k != 'homebrew'}
 
 
 # --------------------------------------------------------------------------------------------- #

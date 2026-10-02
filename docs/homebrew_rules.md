@@ -11,6 +11,17 @@
 > Numbers were originally extracted with an automated summarizer — **verify against the live docs
 > before implementing.**
 
+## The master switch — every rule here is OFF by default
+
+Since 2026-10-02 (Daniel's ruling) the generator's default is plain Pathfinder 1e plus its real
+subsystems; **every row below runs only when the request carries `homebrew: true`**.
+`Backend/utils/house_rules.py` owns both layers: `fold_legacy_flags` forces the old per-rule
+flags off at the top of `generate_random_char`, and `homebrew_on(character)` gates the rules that
+never had a flag. The combined caster level is the renderers' (module `build/spells.js::homebrewOn`,
+web sheet `derive.js::casterLevelValue`), driven by the payload's `homebrew` key.
+`gates/validate_homebrew_off.py` asserts each rule's footprint is empty with the switch absent —
+**a new house rule must add its footprint there.**
+
 ## Rule → code map
 
 Where each area of the house rules lands in the generator. Read the rule text in the bundle; read

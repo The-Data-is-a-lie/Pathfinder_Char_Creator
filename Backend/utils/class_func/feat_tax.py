@@ -30,6 +30,10 @@ def feat_tax_func(character, feats, feat_levels=None, already_granted=None):
     riptide attack under both Improved Drag and Improved Trip) bundle a child exactly once; grants
     made here are added to it, and count as owned for later links' prerequisites.
     '''
+    # The feat tax is a Sieg's Guide house rule: off -> nothing is bundled free (utils/house_rules.py).
+    from utils.house_rules import homebrew_on
+    if not homebrew_on(character):
+        return {}
     cfg = getattr(character, "feat_tax", None) or {}
     # Keys/list entries are matched through _norm(), so feat_tax.json spellings ("point blank
     # shot") fire for the CSV-spelled selected feat ("Point-Blank Shot") and vice versa.

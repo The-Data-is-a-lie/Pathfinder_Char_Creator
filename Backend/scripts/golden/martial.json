@@ -595,6 +595,7 @@
  ],
  "height_number": "5'3\"",
  "hero_points": 3,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
   "Animal Affinity": "You are skilled at working with animals and mounts",

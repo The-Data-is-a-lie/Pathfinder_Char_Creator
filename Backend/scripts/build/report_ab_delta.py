@@ -58,7 +58,7 @@ SCORE_AXES = ('to_hit', 'dpr_raw', 'burst_raw', 'ac', 'ac_combat', 'hp', 'fort',
 
 def generate(seed, level, sides='6', optimize=None, house_rules=None, cls='random'):
     with redirect_stdout(io.StringIO()):
-        return main_test.generate_random_char(
+        return main_test.generate_random_char(homebrew=True,
             class_choice=cls, chosen_BAB='random', multi_class='N',
             userInput_race='random', userInput_region='Tal-Falko', alignment_input='random',
             userInput_gender='random', high_level=level, low_level=level, gold_num="",

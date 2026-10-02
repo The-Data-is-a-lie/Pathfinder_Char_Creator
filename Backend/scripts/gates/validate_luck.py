@@ -495,7 +495,7 @@ def check_payload_contract():
     REPORT.check(tail <= {'mythic', 'enhancement_desc_dict', 'buff_gaps', 'generator_version',
                           'license_url', 'weapon_size', 'weapon_size_steps',
                           'weapon_size_source', 'weapon_size_attack_penalty',
-                          'optimize', 'input_warnings'},
+                          'optimize', 'input_warnings', 'homebrew'},
                  f"'luck' must sit at the tail of the content keys so no existing key shifts "
                  f"position; keys after it: {sorted(tail)}")
 

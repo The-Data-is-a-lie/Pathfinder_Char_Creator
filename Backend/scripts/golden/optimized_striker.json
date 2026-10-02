@@ -630,6 +630,7 @@
  ],
  "height_number": "5'10\"",
  "hero_points": 3,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
   "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",

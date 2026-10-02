@@ -228,7 +228,7 @@ def run(classes, levels, quiet):
             cell = f"{name} L{level} seed {SEED}"
             try:
                 with redirect_stdout(io.StringIO()):
-                    payload = main_test.generate_random_char(
+                    payload = main_test.generate_random_char(homebrew=True,
                         class_choice=name, chosen_BAB='high', multi_class='N',
                         userInput_race='random', userInput_region='Tal-Falko',
                         alignment_input='random', userInput_gender='random',

@@ -5,7 +5,9 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 
 ## Pipeline (one character, end to end)
 
-`Backend/main_test.py :: generate_random_char()` — the whole pipeline in one function, in order:
+`Backend/main_test.py :: generate_random_char()` — the whole pipeline in one function, in order.
+**First, the master `homebrew` switch** (`utils/house_rules.py`): absent → plain PF1e, the legacy
+house-rule flags folded off; `homebrew_on(character)` is the gate for every unflagged house rule.
 1. `CreateNewCharacter` (state object: `Backend/utils/createACharacter.py`; export via
    `export_list_dict` / `export_list_non_dict` into `character.data_dict`).
 2. gender → region → race → name → `select_classes` (multiclass) → alignment → deity → body →
@@ -354,6 +356,8 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
 spells.csv, traits.csv, class_ability.csv.
 
 ## `Backend/utils/class_func/` module index (grep the function, not the file)
+
+(Outside `class_func/`: `Backend/utils/house_rules.py` — the master homebrew switch; see Pipeline.)
 
 feats.py (feat selection + `bonus_searcher`, `no_prereq_loop` consumers) · generic_func.py
 (all generic choosers; **`prereq_part_satisfied` is the one owner of "is this prerequisite
