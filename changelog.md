@@ -19,6 +19,14 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Mythic spell modes now show on the Foundry sheet** *(sibling repo: the FoundryVTT module,
+  `scripts/build/spells.js`, branch `feat/named-choice-buckets`, 2026-10-01; mythic ticket 06)*.
+  `mythic.spell_annotations` was generated and rendered by the web sheet but read by nothing in the
+  module, so a mythic caster's Foundry spells looked ordinary. Each annotated spell now opens its
+  description with **Mythic:** (and **Augmented:** when present) above a rule, matched on the
+  trimmed, lower-cased name. *The decision:* the text goes in the description and the item keeps
+  its name. *Rejected:* a `(Mythic)` name suffix, which would orphan every conditional and spell
+  rider that attaches by spell name.
 - **A feature can now be dragged into a category the character has none of** *(sibling repo: the
   standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
   sheet and using the move dropdown, because a drag could only land in a list already on screen —
