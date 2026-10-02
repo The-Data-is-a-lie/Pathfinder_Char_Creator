@@ -702,6 +702,7 @@
  ],
  "height_number": "5'7\"",
  "hero_points": 2,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
   "Acrobatic": "You are skilled at leaping, jumping, and flying",

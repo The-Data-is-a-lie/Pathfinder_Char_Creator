@@ -946,8 +946,10 @@ def offence(payload, mods=None):
     target_ac = _int(row.get('ac'), 10)
 
     bab = _int(payload.get('bab_total'))
-    # The table's waived (ambient) feats -- held by rule, absent from every payload bucket.
-    feats |= ambient_feats(mods, bab)
+    # The table's waived (ambient) feats -- held by rule, absent from every payload bucket. Only
+    # under house rules: a payload from before the `homebrew` key existed WAS homebrew, hence True.
+    if payload.get('homebrew', True):
+        feats |= ambient_feats(mods, bab)
     enh = _int(payload.get('weapon_enhancement_bonus'))
     ranged = _is_ranged(entry)
     two_handed = _is_two_handed(entry)

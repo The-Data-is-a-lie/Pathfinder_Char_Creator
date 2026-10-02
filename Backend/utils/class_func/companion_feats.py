@@ -47,6 +47,7 @@ from utils.class_func.companion_stats import (_abilities, _rng, eidolon_abilitie
                                               merge_advancement)
 from utils.class_func.feat_tax import feat_tax_func
 from utils.class_func.flaws import ANIMAL_FLAWS, pick_flaws
+from utils.house_rules import homebrew_on
 from utils.class_func.level_and_bab import misc_homebrew_enabled
 from utils.class_func.randomize_flaw import randomize_flaw_amount
 
@@ -171,6 +172,9 @@ class _TaxAdapter:
         self.filter_pattern = getattr(character, 'filter_pattern', None) or re.compile(r'(?!x)x')
         self.c_class = self.C_CLASS
         self.classes = [{'name': self.C_CLASS, 'level': self.level}]
+        # The master house-rule switch: the feat tax is itself a house rule, so the creature's
+        # chain resolves only when its master's does (utils.house_rules.homebrew_on).
+        self.homebrew = getattr(character, 'homebrew', False)
 
 
 def _pick(pool, owned, abilities, bab, rng, wanted, refusals):
@@ -426,6 +430,9 @@ def companion_feats(character):
 
         # Flaws first: they buy feats, so the slot count depends on them.
         flaw_amount = randomize_flaw_amount(rng)
+        # Mechanical flaws are a house rule (utils/house_rules.py): drawn, but granted only under it.
+        if not homebrew_on(character):
+            flaw_amount = 0
         flaw_names, flaw_effects = pick_flaws(flaw_amount, ANIMAL_FLAWS, rng)
         flaw_feat_amount = (min(len(flaw_names) // 2 + 1, 3)
                             if flaw_names and misc_homebrew_enabled(character) else 0)

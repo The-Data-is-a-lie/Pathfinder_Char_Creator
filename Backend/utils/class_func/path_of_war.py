@@ -125,6 +125,11 @@ def randomize_path_of_war_num(character):
     if initiator_entry(character) is not None:
         character.path_of_war_paths = 0
         return 0
+    # Martial paths for non-initiators are the house rule, not Path of War itself (utils/house_rules).
+    from utils.house_rules import homebrew_on
+    if not homebrew_on(character):
+        character.path_of_war_paths = 0
+        return 0
     low, high = (0, 1) if character.bab == 'L' else (0, 2)
     if character.level >= 20:
         low, high = low + 1, high + 1
@@ -688,6 +693,10 @@ def _choose_style_chains(character, specialized):
                         tax dict because Metzofitz feats are absent from data/feats.csv
       desc_dict      -- {display name: description} for every base + child picked.'''
     if not specialized:
+        return [], {}, {}
+    # The style chains come from the Metzofitz homebrew catalogue, granted in full: a house rule.
+    from utils.house_rules import homebrew_on
+    if not homebrew_on(character):
         return [], {}, {}
     chains = _style_chains(character)
     eligible = [d for d in specialized if _dnorm(d) in chains]

@@ -532,6 +532,7 @@
  ],
  "height_number": "5'7\"",
  "hero_points": 2,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",

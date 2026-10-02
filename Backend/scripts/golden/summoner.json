@@ -753,6 +753,7 @@
  ],
  "height_number": "6'3\"",
  "hero_points": 0,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
   "Blighted Critical": "With a critical hit from a spell or spell-like ability, you give the target a minor spellblight",

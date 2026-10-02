@@ -605,6 +605,7 @@
  ],
  "height_number": "3'4\"",
  "hero_points": 1,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Additional Traits": "You have more traits than normal",
   "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",

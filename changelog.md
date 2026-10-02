@@ -268,6 +268,39 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Changed
+- **The default character is now plain Pathfinder 1e; Sieg's Guide house rules are opt-in**
+  behind one named input, `homebrew: true` (Daniel, 2026-10-02). Real subsystems (Path of War,
+  Spheres, psionics, mythic, occult) stay on as before. With `homebrew` absent, the generator
+  turns off all of the following:
+  - creation, story, flavour and flaw feats
+  - the feat tax and the free Power Attack, Deadly Aim, Combat Expertise and Piranha Strike
+  - trainers and professions
+  - mechanical flaws, on characters and companions
+  - the luck subsystem
+  - inherent stats and max-die HP
+  - the 2→4 skill-rank floor, the 3×-level cap and background ranks
+  - the free Skill Unlock
+  - martial paths for non-initiators and the Metzofitz style chains
+  - eight traits (back to RAW's two)
+
+  The optimizer's `house_rules` kickers also need `homebrew`. With it on, behaviour is unchanged,
+  and the legacy per-rule fields still switch single rules off. The payload gains a tail key,
+  `homebrew`. **Both renderers** apply the combined caster level only when `homebrew` is true;
+  otherwise each spell uses its own book's caster level (a payload without the key is treated as
+  homebrew). The Foundry dialog (`feat/homebrew-opt-in`) and the web sheet (`feat/homebrew-opt-in`)
+  gain an unchecked **House rules** option, and the web sheet adds a *House rules* preset.
+
+  **Breaking for existing clients:** a Foundry module release that predates the option sends no
+  `homebrew`, so after the backend deploy it gets plain-PF1e characters. The module must not ship
+  before the backend, because an older backend would read the new key positionally.
+
+  *The decision:* one master switch, folded at the entry point so the ~40 readers of the old flags
+  are untouched. *Rejected:* flipping each legacy flag's default, which leaves the six unflagged
+  rules on and three inconsistent "absent" readings in place. *Rejected:* re-recording the goldens
+  as PF1e, which would leave homebrew with no regression cover; instead the twelve are pinned
+  `homebrew=True` and three `pf1e_*` goldens witness the new default. The new gate
+  `validate_homebrew_off.py` sweeps ten plain characters for any house-rule footprint, and proves
+  it can fail on three homebrew controls.
 - **The four list-shaped class-choice buckets are dicts now, stamped like every other pick**
   (`favored_enemies`, `favored_terrains`, the brawler's `manuevers`, the gunslinger's
   `gun training`; class-choices ticket 04, build slice 1). They were the whole failure set of the
@@ -296,6 +329,12 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   mode is on), and keying on the setting name (a changed tier or a backend that died mid-session
   would then go unannounced). The non-dev "contacting the backend…" notice is untouched: it is
   per-run progress feedback for a request that can take a minute, not a standing warning.
+
+
+### Removed
+- **The in-play luck table will not be built** (inherent-luck ticket 05, won't-do). This means no
+  Foundry roll macro and no web-sheet luck panel. *The decision:* the generator models Pathfinder
+  and its subsystems, not homebrew table procedures (Daniel). The prototypes were deleted unreviewed.
 
 ### Fixed
 - **The web sheet moved under you on every repaint and every drag** *(sibling repo: the web sheet,

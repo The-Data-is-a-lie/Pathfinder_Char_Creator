@@ -419,6 +419,7 @@
  ],
  "height_number": "5'0\"",
  "hero_points": 2,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Blade of Terror": "You have learned to blend the fearsome arts of the dread with your mind blade. you may use your mind blade to deliver your terrors as if you had used your devastating touch, and you may add half your soulknife level (rounded down) to your dread level to determine saving throws for your terrors. additionally, anytime you successfully use a fear effect (either through a terror or a manifested power) you may regain your psychic strike as a free action once per round.",
   "Cooperative Crafting": "Your assistance makes item crafting far more efficient",

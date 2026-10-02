@@ -69,6 +69,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                             e_kat_exchange_rows)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
+from utils.house_rules import homebrew_requested, fold_legacy_flags, homebrew_on
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
 from utils.class_func.buff_match					import match as match_buffs, sections as buff_sections, format_gaps, keep_tier_a
@@ -377,6 +378,11 @@ def phase_alignment_and_level(character, alignment_input, deity_flag, low_level,
 	# Mechanical flaws replace the old personality-flaw strings: same 0-4 roll, but the
 	# flaws now come from json/flaws/flaw_effects.json with pf1 changes/contextNotes
 	# (1st flaw minor, 2nd major, extras 80% minor / 20% major).
+	# Mechanical flaws are a house rule. The amount is still drawn either way, but with homebrew off
+	# no flaw is picked, so the later stream differs between the two modes -- harmless, because the
+	# homebrew-on goldens are unaffected and the PF1e goldens are recorded in their own mode.
+	if not homebrew_on(character):
+		flaw_amount = 0
 	flaw_chooser(character, flaw_amount)		# sets character.flaw and character.flaw_effects
 	character.background_traits = randomize_personality_attr(character, "background_traits",1,4)
 	# TRAP 3 -- this roll's RESULT IS DEAD, and it is kept for its dice, not its value. The local it
@@ -1063,7 +1069,9 @@ def phase_appearance_and_traits(character, skill_ranks):
 
 	requires `chosen_race`: the appearance tables and the racial language list are keyed by race.
 	'''
-	selected_traits = trait_selector(character, 8)
+	# Two traits is the PF1e rule; eight is Sieg's Guide (house-rules/flaws-and-traits.md). The
+	# sampler shuffles the whole pool either way, so the count changes no other roll.
+	selected_traits = trait_selector(character, 8 if homebrew_on(character) else 2)
 	# pre export data manip start
 	hero_points = hero_point_generator()
 
@@ -1168,14 +1176,14 @@ def phase_class_bonus_feats(character):
 	# Piranha Strike are FREE for anyone with BAB >= 1, so they're never spent as a chosen feat.
 	# Seeding them into chooseable BEFORE any feat selection makes every chooser skip them, while
 	# feats that list them as a prerequisite still qualify (no_prereq_loop treats chooseable as owned).
-	if getattr(character, 'bab_total', 0) >= 1:
+	if homebrew_on(character) and getattr(character, 'bab_total', 0) >= 1:
 		add_feats_to_chooseable(character, FREE_AT_BAB1)
 	# Bloodline bonus feats (Sorcerer & Bloodrager): drawn from this bloodline's own list and
 	# labeled by granting class + level (e.g. "Sorcerer 7", "Bloodrager 6"); levels extend past 20.
 	# Non-bloodline classes -> empty schedule -> empty lists, so the export stays well-formed.
 	_bl_levels = bloodline_bonus_feat_levels(character.c_class, character.c_class_level)
 	bloodline_feats = bloodline_feat_chooser(character, character.c_class, character.bloodline, len(_bl_levels))
-	bloodline_feats = filter_free_feats(bloodline_feats)  # safety net (bonus lists may bypass chooseable)
+	bloodline_feats = filter_free_feats(bloodline_feats, homebrew_on(character))  # safety net (bonus lists may bypass chooseable)
 	bloodline_feat_labels = [f"{character.c_class.title()} {lvl}" for lvl in _bl_levels][:len(bloodline_feats)]
 	# If the bloodline list is too short to fill every granted slot (e.g. a high-level
 	# Bloodrager whose ~7-feat list runs out), reallocate the unfilled slots to normal feats
@@ -1688,9 +1696,11 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 		# The ambient-prereq unlock (wall pass): the house-waived feats are held by rule but
 		# invisible to the prereq vocabulary, so a spine could never chain through Dodge /
 		# Improved Unarmed Strike / Combat Expertise (Crane Style was legal and unpoolable).
-		# Optimize-gated, so random mode's prereq world is untouched.
-		from utils.class_func.power_role import ambient_feat_names
-		character.chooseable.update(ambient_feat_names())
+		# Optimize-gated, so random mode's prereq world is untouched -- and homebrew-gated, because
+		# the waiver itself is a house rule: under plain PF1e these feats cost a slot like any other.
+		if homebrew_on(character):
+			from utils.class_func.power_role import ambient_feat_names
+			character.chooseable.update(ambient_feat_names())
 	if truly_random_feats.upper() == "Y":
 	# Truly Random Feats
 	# full casters + mid casters with low BAB
@@ -1746,7 +1756,7 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	# Free combat feats (homebrew §4) are seeded into chooseable above so no chooser picks them;
 	# this is a belt-and-braces filter for class bonus-feat lists (ranger/monk) merged in that may
 	# have bypassed the pool.
-	character.feats = filter_free_feats(character.feats)
+	character.feats = filter_free_feats(character.feats, homebrew_on(character))
 	# Skill-choosing feats (Skill Focus / Prodigy) -> point them at the character's professions
 	# (highest rank first); their numeric bonus is recorded on the chosen profession.
 	specialize_skill_choice_feats(character, character.feats, skill_ranks)
@@ -2510,7 +2520,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, ):
+						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None,
+						 homebrew=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2547,6 +2558,22 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		np.random.seed(seed)
 		print("generation seed:", seed)
 
+		# THE MASTER HOMEBREW SWITCH (Daniel, 2026-10-02): Sieg's Guide house rules are opt-in, so
+		# with `homebrew` absent the legacy per-rule flags are forced off here, before anything reads
+		# them. utils/house_rules.py owns the fold and the gate for the rules that had no flag.
+		homebrew = homebrew_requested(homebrew)
+		_folded = fold_legacy_flags(homebrew, homebrew_feat_amount=homebrew_feat_amount,
+									inherents=inherents, professions_flag=professions_flag,
+									trainers_flag=trainers_flag,
+									misc_homebrew_rules=misc_homebrew_rules,
+									house_rules=house_rules)
+		homebrew_feat_amount = _folded['homebrew_feat_amount']
+		inherents = _folded['inherents']
+		professions_flag = _folded['professions_flag']
+		trainers_flag = _folded['trainers_flag']
+		misc_homebrew_rules = _folded['misc_homebrew_rules']
+		house_rules = _folded['house_rules']
+
 		# Professions and trainers are opt-OUTS: every character got both until the client could say
 		# otherwise, so anything that isn't an explicit "no" keeps the old behaviour. Same string
 		# shape as spheres_flag (see spheres.randomize_spheres_num), inverted because that one is
@@ -2567,6 +2594,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# exists precisely because a golden fixture can only say "this character didn't change".
 		character.data_dict['class feature owners'] = {}
 
+		# The master switch itself, read by utils.house_rules.homebrew_on for the house rules that
+		# never had a flag of their own (feat tax, skill unlock, flaws, martial paths, style chains).
+		character.homebrew = homebrew
 		# Flag that allows for homebrew feats to be added
 		character.homebrew_feat_amount = homebrew_feat_amount
 		# Catch-all flag for homebrew rules too small for their own input question (2->4 rank
@@ -2647,7 +2677,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		professions, skill_ranks = phase_professions_and_skills(character, truly_random_feats,
 																character.skill_rank_level, professions_enabled)
 		# Every character gets exactly one skill unlock, drawn from a skill they have ranks in.
-		skill_unlock = choose_skill_unlock(character, skill_ranks)
+		# A house rule: Unchained skill unlocks exist, but a free one for everybody is Sieg's Guide.
+		skill_unlock = choose_skill_unlock(character, skill_ranks) if homebrew_on(character) else None
 
 		simple_list_chooser(character, 'ranger','favored_terrains', 'favored_enemies')
 		simple_list_chooser(character, 'brawler','manuevers',max_num=8)
@@ -3386,6 +3417,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# mode and `input_warnings` is [] whenever every explicit input resolved.
 		character.data_dict['optimize'] = _optimize_block(character)
 		character.data_dict['input_warnings'] = list(getattr(character, 'input_warnings', None) or [])
+		# The master house-rule switch as resolved, so both renderers know whether to apply the
+		# house rules that live on their side (combined caster level). Tail-appended, always present.
+		character.data_dict['homebrew'] = homebrew
 		return character.data_dict
 
 

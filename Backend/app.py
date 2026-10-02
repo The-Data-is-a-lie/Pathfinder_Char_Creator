@@ -189,7 +189,7 @@ def backstory_stats():
 
 def process_input_values(input_values, spheres_flag="N", seed=None, professions_flag="Y", trainers_flag="Y",
                          misc_homebrew_rules="Y", luck_direction=None, optimize=None,
-                         house_rules=None, mythic=None):
+                         house_rules=None, mythic=None, homebrew=None):
     try:
         if len(input_values) < 19:
             raise IndexError("Not enough elements in input_values")
@@ -228,7 +228,7 @@ def process_input_values(input_values, spheres_flag="N", seed=None, professions_
             return generate_random_char(
             create_new_char, userInput_region, userInput_race, class_choice, chosen_BAB, chosen_caster_level, multi_class, alignment_input, deity_choice, userInput_gender, truly_random_feats, inherents, modded_char_sheet, homebrew_feat_amount, num_dice, num_sides, high_level, low_level, gold_num, use_backstory_api, spheres_flag, backstory_focus,
             seed, professions_flag, trainers_flag, misc_homebrew_rules, luck_direction, optimize,
-            house_rules, mythic
+            house_rules, mythic, homebrew
             )
 
     except ValueError as ve:
@@ -281,6 +281,11 @@ def update_character_data():
     # that decays toward the low end (weights 11 - tier, mythic.py owns the constant). No level
     # gate -- the GM asking for a mythic character is the gate.
     mythic = data.pop('mythic', None)
+    # THE MASTER HOMEBREW SWITCH (Daniel, 2026-10-02), read by NAME and popped before `items` like
+    # the flags above. Absent -> None -> plain PF1e: every Sieg's Guide house rule is off, whatever
+    # the legacy per-rule fields say (utils/house_rules.py). `true`/`y` -> today's behaviour, with
+    # those fields still able to switch individual rules off.
+    homebrew = data.pop('homebrew', None)
     non_input_data = []
     # Calculate last 5 keys dynamically
     items = list(data.items())
@@ -297,7 +302,8 @@ def update_character_data():
         non_input_data.append(value)
 
     results = process_input_values(non_input_data, spheres_flag, seed, professions_flag, trainers_flag,
-                                   misc_homebrew_rules, luck_direction, optimize, house_rules, mythic)
+                                   misc_homebrew_rules, luck_direction, optimize, house_rules, mythic,
+                                   homebrew)
     # Promote the generator's bare '/license' path to an absolute URL. The Foundry module stores this
     # payload on an Actor and may surface the pointer long after the request, in a context that has no
     # idea which backend produced it -- a relative path would resolve against Foundry's own host.

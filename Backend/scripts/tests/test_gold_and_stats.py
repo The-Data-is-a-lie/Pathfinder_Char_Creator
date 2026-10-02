@@ -224,7 +224,7 @@ def test_fresh_character_has_stat_dicts():
 # --------------------------------------------------------------------------------------------
 def test_end_to_end():
     from main_test import generate_random_char
-    payload = generate_random_char(class_choice='fighter', multi_class='N', high_level=5, low_level=5,
+    payload = generate_random_char(homebrew=True, class_choice='fighter', multi_class='N', high_level=5, low_level=5,
                                    userInput_race='Human', truly_random_feats="Y",
                                    use_backstory_api="N", inherents="N", gold_num=300)
     check(payload is not None, "generate_random_char returned nothing with inherents='N'")

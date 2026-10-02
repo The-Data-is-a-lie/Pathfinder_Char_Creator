@@ -47,11 +47,16 @@ import main_test  # noqa: E402
 
 REPORT = Report('validate_payload_shape')
 
-# Two deliberately different characters: a full caster and a martial, at opposite ends of the level
-# range. If the payload's SHAPE depends on what was generated, these two disagree.
+# Deliberately different characters: a full caster and a martial, at opposite ends of the level
+# range, in plain PF1e (the default) -- plus the caster again under Sieg's Guide house rules, because
+# the master `homebrew` switch empties whole blocks (luck, flaws, skill unlock) and a block that
+# vanished instead of going empty would shift every key after it. If the payload's SHAPE depends on
+# what was generated, or on the switch, these disagree.
 SAMPLES = (
     dict(label='wizard L15', class_choice='wizard', high_level=15, low_level=15, seed=12345),
     dict(label='fighter L1', class_choice='fighter', high_level=1, low_level=1, seed=999),
+    dict(label='wizard L15 homebrew', class_choice='wizard', high_level=15, low_level=15, seed=12345,
+         homebrew=True),
 )
 
 
@@ -120,8 +125,8 @@ def main():
         compare(label, keys)
 
     # (3) the shape must not depend on the character
-    if len(shapes) == 2:
-        (la, ka), (lb, kb) = shapes.items()
+    (la, ka), *others = list(shapes.items()) or [(None, None)]
+    for lb, kb in others:
         if ka != kb:
             only_a = [k for k in ka if k not in kb]
             only_b = [k for k in kb if k not in ka]
@@ -132,7 +137,7 @@ def main():
                           'with an empty value.')
             REPORT.error(f'{la} and {lb} produced DIFFERENT payload shapes.{detail}')
         else:
-            print(f'  ok    both sample characters produced the same {len(ka)}-key shape')
+            print(f'  ok    {la} and {lb} produced the same {len(ka)}-key shape')
 
     return REPORT.finish(f'{len(PAYLOAD_KEYS)} declared payload keys')
 

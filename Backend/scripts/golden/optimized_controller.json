@@ -735,6 +735,7 @@
  ],
  "height_number": "6'1\"",
  "hero_points": 1,
+ "homebrew": true,
  "homebrew_feat_desc_dict": {
   "Alertness": "You often notice things that others might miss",
   "Craft Staff": "You can create magic staves",

@@ -87,7 +87,7 @@ def main():
         buf = io.StringIO()
         try:
             with contextlib.redirect_stdout(buf):
-                payload = main_test.generate_random_char(**cfg)
+                payload = main_test.generate_random_char(homebrew=True, **cfg)
         except Exception as exc:                      # noqa: BLE001 - a crash is data, keep sweeping
             failures += 1
             print(f'  run {i} ({cfg["class_choice"]} {cfg["high_level"]}, seed {cfg["seed"]}) '

@@ -152,7 +152,7 @@ def measure(name, level, seed):
     with redirect_stdout(io.StringIO()):
         sys.settrace(_tracer_for(bucket))
         try:
-            main_test.generate_random_char(
+            main_test.generate_random_char(homebrew=True,
                 class_choice=name, chosen_BAB='high', multi_class='N',
                 userInput_race='random', userInput_region='Tal-Falko',
                 alignment_input='random', userInput_gender='random',

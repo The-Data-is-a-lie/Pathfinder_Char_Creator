@@ -79,7 +79,7 @@ def old_band(payload, class_data):
 def generate(name, level, seed):
     sink = io.StringIO()
     with redirect_stdout(sink):
-        return main_test.generate_random_char(
+        return main_test.generate_random_char(homebrew=True,
             class_choice=name, chosen_BAB='high', multi_class='N',
             userInput_race='random', userInput_region='Tal-Falko',
             alignment_input='random', userInput_gender='random',

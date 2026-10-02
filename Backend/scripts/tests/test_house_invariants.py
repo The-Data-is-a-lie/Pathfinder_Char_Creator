@@ -1815,7 +1815,7 @@ def check_choice_caps():
         cell = f"cap {name} L40"
         try:
             with redirect_stdout(io.StringIO()):
-                payload = main_test.generate_random_char(
+                payload = main_test.generate_random_char(homebrew=True,
                     class_choice=name, chosen_BAB='high', multi_class='N',
                     userInput_race='random', userInput_region='Tal-Falko',
                     alignment_input='random', userInput_gender='random',
@@ -1954,7 +1954,7 @@ def check_mythic():
         cell = f"mythic {name} T{tier} L{level}" + (" spheres" if spheres == 'Y' else "")
         try:
             with redirect_stdout(io.StringIO()):
-                payload = main_test.generate_random_char(
+                payload = main_test.generate_random_char(homebrew=True,
                     class_choice=name, chosen_BAB='high', multi_class='N',
                     userInput_race='random', userInput_region='Tal-Falko',
                     alignment_input='random', userInput_gender='random',
@@ -1974,7 +1974,7 @@ def check_mythic():
     cell = "mythic cleric T5 L4 (axis twin)"
     try:
         with redirect_stdout(io.StringIO()):
-            twin = main_test.generate_random_char(
+            twin = main_test.generate_random_char(homebrew=True,
                 class_choice='cleric', chosen_BAB='high', multi_class='N',
                 userInput_race='random', userInput_region='Tal-Falko',
                 alignment_input='random', userInput_gender='random',
@@ -2037,7 +2037,7 @@ def check_level_ceiling():
         cell = f"ceiling L{requested}"
         try:
             with redirect_stdout(io.StringIO()):
-                payload = main_test.generate_random_char(
+                payload = main_test.generate_random_char(homebrew=True,
                     class_choice='random', chosen_BAB='high', multi_class='Y',
                     userInput_race='random', userInput_region='Tal-Falko',
                     alignment_input='random', userInput_gender='random',
@@ -2127,7 +2127,7 @@ def check_luck_branches():
     for offset in range(LUCK_BRANCH_SEEDS):
         try:
             with redirect_stdout(io.StringIO()):
-                payload = main_test.generate_random_char(
+                payload = main_test.generate_random_char(homebrew=True,
                     class_choice='fighter', chosen_BAB='high', multi_class='N',
                     userInput_race='random', userInput_region='Tal-Falko',
                     alignment_input='random', userInput_gender='random',
@@ -2175,7 +2175,7 @@ def run(classes, levels, seeds):
                 done += 1
                 try:
                     with redirect_stdout(io.StringIO()):
-                        payload = main_test.generate_random_char(
+                        payload = main_test.generate_random_char(homebrew=True,
                             class_choice=name, chosen_BAB='high', multi_class='N',
                             userInput_race='random', userInput_region='Tal-Falko',
                             alignment_input='random', userInput_gender='random',
