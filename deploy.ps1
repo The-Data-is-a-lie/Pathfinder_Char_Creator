@@ -15,11 +15,18 @@
       ./deploy.ps1            # build + push + trigger Render
       ./deploy.ps1 -NoDeploy  # build + push only (skip the Render trigger)
       ./deploy.ps1 -NoCache   # force a clean rebuild
+      ./deploy.ps1 -EnvFile C:\path\.env   # read the tokens from another checkout's .env
+
+    BUILD FROM A CLEAN CHECKOUT OF main. The Dockerfile does `COPY . .`, so the image is whatever
+    this directory holds -- another branch, or uncommitted work, ships exactly as it sits. A git
+    worktree on `main` is the clean way to get one, and a worktree has no .env of its own: that is
+    what -EnvFile is for.
 #>
 [CmdletBinding()]
 param(
     [switch]$NoDeploy,
-    [switch]$NoCache
+    [switch]$NoCache,
+    [string]$EnvFile
 )
 
 $ErrorActionPreference = 'Stop'
@@ -28,6 +35,7 @@ $PSNativeCommandUseErrorActionPreference = $false   # we check $LASTEXITCODE our
 $Image = 'tabletopsoftware/pathfinder_char_creator-web'
 $Root  = $PSScriptRoot
 $Svc   = 'srv-d2r7kqh5pdvs738v18s0'
+$EnvPath = if ($EnvFile) { $EnvFile } else { "$Root\.env" }
 Set-Location $Root
 
 function Fail($msg) { Write-Host "ERROR: $msg" -ForegroundColor Red; exit 1 }
@@ -38,9 +46,9 @@ if ($LASTEXITCODE -ne 0) { Fail "Docker isn't running. Start Docker Desktop and 
 
 # 1b. Docker Hub auth - non-interactive login if a token is in .env (keeps deploys hands-free even
 #     when the Docker Desktop GUI session expires). Skipped if no token -> relies on existing creds.
-$dtLine = Get-Content "$Root\.env" -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_TOKEN=*' } | Select-Object -First 1
+$dtLine = Get-Content $EnvPath -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_TOKEN=*' } | Select-Object -First 1
 if ($dtLine) {
-    $duLine = Get-Content "$Root\.env" -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_USER=*' } | Select-Object -First 1
+    $duLine = Get-Content $EnvPath -ErrorAction SilentlyContinue | Where-Object { $_ -like 'DOCKERHUB_USER=*' } | Select-Object -First 1
     $du = if ($duLine) { $duLine.Substring('DOCKERHUB_USER='.Length).Trim() } else { 'tabletopsoftware' }
     $dt = $dtLine.Substring('DOCKERHUB_TOKEN='.Length).Trim()
     Write-Host "==> Logging in to Docker Hub as $du" -ForegroundColor Cyan
@@ -75,8 +83,8 @@ Write-Host "==> Pushing to Docker Hub" -ForegroundColor Cyan
 
 # 6. Trigger Render
 if ($NoDeploy) { Write-Host "==> -NoDeploy set; image pushed, Render NOT triggered." -ForegroundColor Yellow; exit 0 }
-$line = Get-Content "$Root\.env" -ErrorAction SilentlyContinue | Where-Object { $_ -like 'RENDER_DEPLOY_HOOK_URL=*' } | Select-Object -First 1
-if (-not $line) { Fail "RENDER_DEPLOY_HOOK_URL missing from .env - image is pushed, but Render was not triggered." }
+$line = Get-Content $EnvPath -ErrorAction SilentlyContinue | Where-Object { $_ -like 'RENDER_DEPLOY_HOOK_URL=*' } | Select-Object -First 1
+if (-not $line) { Fail "RENDER_DEPLOY_HOOK_URL missing from $EnvPath - image is pushed, but Render was not triggered." }
 $hookUrl = $line.Substring('RENDER_DEPLOY_HOOK_URL='.Length).Trim()
 
 Write-Host "==> Triggering Render redeploy" -ForegroundColor Cyan

@@ -19,6 +19,11 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **`deploy.ps1 -EnvFile <path>`** *(2026-11-16)* reads the Docker Hub and Render tokens from
+  another checkout's `.env`. The image is whatever the directory holds (`COPY . .`), so it has to
+  be built from a clean checkout of `main`; a git worktree is the clean way to get one and has no
+  `.env` of its own. *Rejected:* copying `.env` into the worktree (a second copy of the tokens),
+  and switching the main checkout to `main` (it held another branch's uncommitted work).
 - **Blank mode: a sheet with nothing rolled and a slot for everything owed** *(2026-11-15;
   backend `utils/class_func/blank.py`, with the Blank Character Generator in the FoundryVTT
   module)*. A request may now carry the named key `blank`. With it, the request's
