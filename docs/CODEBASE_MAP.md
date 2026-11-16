@@ -8,6 +8,10 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 `Backend/main_test.py :: generate_random_char()` — the whole pipeline in one function, in order:
 1. `CreateNewCharacter` (state object: `Backend/utils/createACharacter.py`; export via
    `export_list_dict` / `export_list_non_dict` into `character.data_dict`).
+1b. **`phase_selection`** (`class_func/selection.py`) — resolves the optional `selection` request
+   (a pinned build concept) onto `character.selection` before any class is picked. Absent → `None`
+   and every chooser below takes its usual path; it draws nothing from the RNG either way. See
+   "Where do I find selection mode?" below.
 2. gender → region → race → name → `select_classes` (multiclass) → alignment → deity → body →
    mechanical flaws (`flaw_chooser`) → personality → `randomize_level`.
    **Region and race resolve client input through `util.py::slug`** (alphanumerics only, lowercased)
@@ -78,7 +82,8 @@ numbers. **Keep this file updated whenever files, pools, or pipelines move.**
 9. Foundry buff export: feat/equipment/class-feature `*_changes_dict` + `*_conditionals_dict`
    built from the `effects`/`changes` JSONs (grep `_load_buffmap`).
 
-Flask: `Backend/app.py` (`POST /update_character_data`, `GET /license` — the OGL
+Flask: `Backend/app.py` (`POST /update_character_data`, `GET /selection_options` — what a
+selection-mode picker may offer, `GET /license` — the OGL
 text payloads point at via `license_url`, required because serving extracted 3pp mechanics is
 Distribution under OGL §10 — plus `/backstory-stats` and a signpost `/`. The in-repo character
 sheet and `/sheet` were deleted; the standalone sheet is the only web front end); factory
@@ -674,6 +679,21 @@ move and diffing them — not by reading the diff.
 - `audit_class_choice_descriptions.py` → flags choice-pool entries with empty/trivial text.
 - `fix_*.py`, `scrape_*.py`, `_smoke_*.py`, `compile_feats_new.py` — one-off converters,
   scrapers, smoke tests.
+
+### Where do I find selection mode?
+
+| Looking for | Where |
+|---|---|
+| the `selection` input (named key, an OBJECT — it must be popped before the positional list is built) | `app.py::update_character_data` pop → `process_input_values` → `main_test.generate_random_char(selection_request=…)` |
+| the resolver, the request vocabulary, the report, every ruling | `utils/class_func/selection.py` (`phase_selection`, `REQUEST_KEYS`, `unmet`) — runs BEFORE `phase_bootstrap_identity`, because `select_classes` is its first reader |
+| what may be pinned (the pickers' lists) | `GET /selection_options` in `app.py` → `selection.options()`; reads `class_data`, `wizard_schools`, `spells.csv`, `spheres._available_spheres`, `data.disciplines` |
+| the level arithmetic (all / some / none levelled, the ceiling trim) | `selection.resolve_levels`, `selection.cap_total`; the character-side half is `level_and_bab._pinned_levels` |
+| where each pin is honoured | classes → `util.select_classes` · levels + primary → `level_and_bab.randomize_level` / `_build_classes` · stat priority → `power_role.stat_order` (read by `stats.py`) · schools → `spells.spell_theme_func` / `limit_school_func` + `wizard_school.py` · Path of War → `path_of_war.randomize_path_of_war_num` / `_roll_disciplines` / `_specialize_disciplines` · Spheres → `spheres.randomize_spheres_num` / `choose_spheres_attr` |
+| the two guarantees that live in the feat-budget phase (pinned chains realized in full; a talent floor per pinned sphere) and the post-build audits | `main_test.phase_path_of_war_and_spheres` → `selection.audit_disciplines` / `selection.audit_spheres` |
+| the unmet-pin report on the payload | `selection_report` in `payload.py::PAYLOAD_KEYS`, written at the end of `generate_random_char` |
+| the contract gate (options round-trip as pins, level cases, a POST through Flask) | `gates/validate_selection.py` |
+| the behaviour test (pins honoured, unmet pins reported, no pin no change; sabotage-proven) | `tests/test_selection.py` |
+| the Foundry side (per-player named concepts, the editor, the old-backend guard) | module repo: `scripts/selection-concepts.js`, wired in `scripts/generator-launch.js`; test `tools/selection_concepts.test.mjs` |
 
 ## Consumers / deploys (details in auto-memory + skills)
 

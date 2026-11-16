@@ -19,6 +19,83 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Selection mode: pin a build concept and let the generator roll the rest** *(2026-11-15;
+  backend `utils/class_func/selection.py`, with the FoundryVTT module's build-concept editor)*.
+  Until now only the first class could be asked for; multiclass partners, the level split, wizard
+  schools, spheres, Path of War disciplines and where the rolled scores land were plain draws. A
+  request may now carry one named key, `selection`, holding any of five pins:
+  - **`classes`** -- an ordered list of one to four, each with an optional level. The first is
+    the primary. Every pinned level given: the total is their sum and the level range is ignored.
+    Some given: the range is rolled, the levelled classes take theirs first and the rest share
+    what is left, at least one each (so the total rises rather than a class being cut).
+  - **`stat_priority`** -- a ranked list of abilities. Rolled scores are placed down it and
+    inherent bonuses pour down it; abilities left out follow in the usual order.
+  - **`schools`** -- `specialty`, `preferred`, `opposition`. A wizard's school and opposition
+    schools are set from them, and every caster's spell picks follow them: specialty and preferred
+    are favoured, opposition schools are not picked from at all.
+  - **`spheres`** -- sphere names from either system. A pin turns Spheres on for that character
+    and raises the count to at least the number pinned.
+  - **`path_of_war`** -- `disciplines` and a `paths` count. Each pinned discipline is its own
+    Martial Training chain, or part of an initiator's set.
+  Two additions carry it: **`GET /selection_options`** lists everything that may be pinned, read
+  from the same data the generator resolves a pin against, and the payload gains
+  **`selection_report`** -- one `{pin, reason}` row per pin that could not be honoured, `[]`
+  otherwise, present on every payload.
+  - *The decisions (grilled 2026-11-14/15, A1-A13 in the plan of record).* Pins are guarantees
+    and everything unpinned stays random. A pin switches on what the generator controls (Spheres,
+    a class outside the random pool, a path count outside the house roll's bounds). A pin that is
+    still impossible is dropped and reported, and the character still generates. With `optimize`
+    on, pins win and the optimizer fills what is unpinned. Lists come from the backend, never
+    restated in a client.
+  - *Decided while building, with what was rejected:*
+    - Two or more pinned classes are the **whole** class list; one pinned class still honours
+      `multi_class` and rolls its partners. *Rejected:* rolling extra classes on top of a pinned
+      pair, which would make "warder 8 / wizard 3" unreachable whenever multiclass was on.
+    - The first pinned class is the primary **whatever the levels say** (unpinned, the primary is
+      the class with the most levels). *Rejected:* keeping most-levels, which would make the pin
+      order meaningless.
+    - A fourth casting class is dropped and reported. pf1 has three spellbook slots, and the
+      random pool already refuses a fourth caster for the same reason. *Rejected:* honouring it
+      and losing its spellbook on the sheet silently.
+    - An initiator's pinned discipline is added even when its class does not list it; a pinned
+      `paths` count on an initiator is reported, since its disciplines come from the class.
+    - The spell ban is on what is **picked**. Bloodline, patron, domain and school bonus spells
+      are granted, and are not removed for belonging to an opposition school. *Rejected:*
+      stripping grants, which would take a sorcerer's bloodline spells away for a theme choice.
+    - A pinned sphere must arrive with a talent, so the talent roll is floored at one per sphere
+      plus the advanced slot, and under pins the picks are ordered round by round so an
+      unaffordable talent comes out of a sphere that keeps another. Talents are still paid for
+      (no freebies): a sphere nothing could fund is reported, not granted.
+    - Pinned martial paths are realized in full, where the unpinned rule realizes half. The cost
+      comes out of the feat budget like any other chain.
+    - A stat priority places rolled scores and inherents; **level-up bumps stay random** unless
+      the build is also optimized, because the ruling named only those two.
+    - `wizard_opposing_school` still returns a string for an elemental school and a list
+      otherwise. The plan called for normalising it; that moves every elemental wizard's payload,
+      so it is left for its own change.
+  - *What changed for existing output:* nothing but the new key. All twelve goldens moved by
+    exactly `"selection_report": []`, and `test_selection.py` checks that `None`, `{}` and a
+    selection of empty lists produce the same payload as each other.
+  - *Gates:* `validate_selection.py` (every option the endpoint offers resolves as a pin with no
+    report row; the three level cases; a real POST through Flask with a `selection` object) and
+    `test_selection.py` (208 generated characters: each pin honoured, each unmet pin reported,
+    and six sabotage proofs -- the accessors are made to forget their pins and each check must
+    fail).
+  - *Known limits:* not yet checked in a live Foundry; the standalone web sheet has no picker and
+    does not show `selection_report`; talents, maneuvers, stances and special materials cannot be
+    pinned. The branch is stacked on `feat/gear-materials-durability` rather than cut from
+    `main` as planned, because that branch is not merged yet and both append payload keys and
+    re-record the goldens.
+- **The Foundry module has a build-concept editor** *(sibling repo: the FoundryVTT module,
+  `scripts/selection-concepts.js` + `scripts/generator-launch.js`, branch `feat/selection-mode`,
+  2026-11-15)*. The generator dialog gains a **Build concept** dropdown and an **Edit concepts**
+  button; the editor's lists come from `GET /selection_options`. Concepts are named and saved
+  **per player, as a flag on that player's own User document**. *Rejected:* `localStorage` (per
+  browser, lost on another machine) and a world setting (GM-only to write, shared by everyone).
+  After generation, any unmet pins are shown in a dialog. *The decision that protects existing
+  installs:* the `selection` key is only sent to a backend that answers `/selection_options`,
+  because a backend from before this change fails the whole request on an unknown object key. On
+  such a backend the concept is skipped with a warning and a fully random character is generated.
 - **Weapons, armor and shields can now be made of a special material, and carry a hardness /
   hit point breakdown** *(2026-11-15; backend `utils/class_func/item_materials.py` +
   `Backend/json/item_materials.json`, with the FoundryVTT module rendering it)*. Two changes that
