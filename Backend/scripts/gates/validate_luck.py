@@ -492,13 +492,15 @@ def check_payload_contract():
     # a new marker at the very end, so nothing above them moves, which is the property this
     # check exists to protect. The special-material keys and `item_durability`
     # (utils/class_func/item_materials.py) follow the same rule, appended after the size marker
-    # they read. This list is meant to be short and to be extended DELIBERATELY --
+    # they read, and `selection_report` (utils/class_func/selection.py) after those.
+    # This list is meant to be short and to be extended DELIBERATELY --
     # a key turning up here that nobody added on purpose is a key that shifted somebody's sheet.
     REPORT.check(tail <= {'mythic', 'enhancement_desc_dict', 'buff_gaps', 'generator_version',
                           'license_url', 'weapon_size', 'weapon_size_steps',
                           'weapon_size_source', 'weapon_size_attack_penalty',
                           'weapon_material', 'armor_material', 'shield_material',
-                          'armor_material_dr', 'weapon_material_damage', 'item_durability'},
+                          'armor_material_dr', 'weapon_material_damage', 'item_durability',
+                          'selection_report'},
                  f"'luck' must sit at the tail of the content keys so no existing key shifts "
                  f"position; keys after it: {sorted(tail)}")
 

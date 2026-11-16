@@ -3,6 +3,7 @@ import random
 
 from utils import data
 from utils.class_func.skill_ranks import misc_homebrew_enabled
+from utils.class_func import selection
 
 _BAB_MULT = {'H': 1.0, 'M': 0.75, 'L': 0.5}
 
@@ -26,6 +27,9 @@ def randomize_level(character, min_num, max_num, flaw_amount=0):
         min_num = 1
     if not isinstance(max_num, int) or max_num <= 0:
         max_num = 20
+    if selection.pinned_class_levels(character) is not None:
+        _pinned_levels(character, min_num, max_num, flaw_amount)
+        return
     pre_level = random.randint(min_num, max(min_num, max_num))
     level = min(pre_level, MAX_CHARACTER_LEVEL)
 
@@ -45,6 +49,45 @@ def randomize_level(character, min_num, max_num, flaw_amount=0):
     update_level(character, level, flaw_amount)
 
 
+def _pinned_levels(character, min_num, max_num, flaw_amount):
+    """SELECTION MODE (A3/A4): the level phase for a character whose classes are pinned.
+
+    The arithmetic is selection.resolve_levels (the gate pins its three cases); this is the part
+    that needs the character: the roll, the optimizer's dip shape, the ceiling, and the primary.
+
+    * The level range is rolled ONLY when some pick is unlevelled -- a fully levelled list ignores
+      the range, so it makes no draw for it.
+    * A pinned class is never truncated away by a low roll; the total rises to fit instead.
+    * The FIRST pinned class is the primary, whatever the levels say. Unpinned, the primary is
+      the class with the most levels; a pin list is ordered precisely so the caller can say
+      otherwise.
+    """
+    picks = list(getattr(character, '_class_picks', None) or [character.c_class])
+    pins = selection.pinned_class_levels(character)
+    wanted = [pins.get(name) for name in picks]
+    rolled = 0
+    if any(level is None for level in wanted):
+        rolled = min(random.randint(min_num, max(min_num, max_num)), MAX_CHARACTER_LEVEL)
+
+    def split(total, count):
+        # OPTIMIZED MODE (ruling 8) fills what is unpinned with its own shape: an unlevelled
+        # primary keeps everything and every other unlevelled class is a one-level dip.
+        if getattr(character, 'role', None):
+            if wanted[0] is None:
+                return [total - (count - 1)] + [1] * (count - 1)
+            return [1] * count
+        return _split_levels(total, count)
+
+    class_levels = selection.resolve_levels(wanted, rolled, split)
+    if sum(class_levels) > MAX_CHARACTER_LEVEL:
+        selection.unmet(character, f'classes: total level {sum(class_levels)}',
+                        f'a character stops at level {MAX_CHARACTER_LEVEL}; '
+                        f'levels were taken from the last class first')
+        class_levels = selection.cap_total(class_levels, MAX_CHARACTER_LEVEL)
+    _build_classes(character, picks, class_levels, primary=picks[0])
+    update_level(character, sum(class_levels), flaw_amount)
+
+
 def _split_levels(total, count):
     """Split total levels across count classes: everyone starts at 1, each remaining level lands
     on a uniformly random class."""
@@ -54,7 +97,7 @@ def _split_levels(total, count):
     return levels
 
 
-def _build_classes(character, picks, class_levels):
+def _build_classes(character, picks, class_levels, primary=None):
     character.classes = []
     for i, (name, lvl) in enumerate(zip(picks, class_levels)):
         character.classes.append({
@@ -82,6 +125,11 @@ def _build_classes(character, picks, class_levels):
     character.primary_class_index = min(
         range(len(character.classes)),
         key=lambda i: (-character.classes[i]['level'], character.classes[i]['roll_order']))
+    # SELECTION MODE (A3): the first pinned class is the primary by the caller's say-so.
+    if primary is not None:
+        character.primary_class_index = next(
+            (i for i, c in enumerate(character.classes) if c['name'] == primary),
+            character.primary_class_index)
 
     _sync_legacy_class_aliases(character)
 

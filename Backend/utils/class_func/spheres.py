@@ -47,6 +47,7 @@ from utils.class_func.generic_func import no_prereq_loop
 from utils.class_func.skill_ranks import highest_mental_mod, final_ability_mod
 from utils.class_func.buff_match import match as match_buffs
 import utils.data as data
+from utils.class_func import selection
 
 # --------------------------------------------------------------------------- #
 # Tunables (named so the curve is easy to retune)
@@ -259,6 +260,15 @@ def randomize_spheres_num(character):
     rather than a roll, so the flag-off branch consumes no RNG it did not before.
     """
     flag = str(getattr(character, "spheres_flag", "N") or "N").upper()
+    # SELECTION MODE (A6): a pinned sphere turns Spheres on for this character and raises the count
+    # to at least the number pinned -- past three, and past SINGLE_SPHERE_TESTING's clamp, which is
+    # left alone for everyone else. With the flag off the count is exactly the pins, and no roll is
+    # made; with it on, the roll below happens as always and the pins are its floor.
+    pinned = len(selection.pinned_spheres(character))
+    if pinned and flag not in ("Y", "YES", "TRUE", "1"):
+        character.spheres_flag = "Y"
+        character.sphere_count = pinned
+        return pinned
     if flag not in ("Y", "YES", "TRUE", "1"):
         if _house_wall(character):
             character.sphere_count = 1
@@ -273,6 +283,7 @@ def randomize_spheres_num(character):
         n = 1                            # TEMP: concentrate the flat-8 talents into one sphere for testing
     if _house_wall(character):
         n = max(1, n)                    # the wall's defensive sphere is by design, never a 0 roll
+    n = max(n, pinned)                   # selection mode: the pins are the floor (see above)
     character.sphere_count = n
     return n
 
@@ -679,6 +690,12 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
             sphere = random.choices(defensive, weights=weights, k=1)[0]
             used.add(("might", sphere))
             chosen.append((sphere, "might"))
+    # SELECTION MODE (A6): pinned spheres are chosen outright, each in the system it was found
+    # in, before any is rolled; the loop below then fills whatever count is left.
+    for sphere, system in selection.pinned_spheres(character):
+        if (system, sphere) not in used:
+            used.add((system, sphere))
+            chosen.append((sphere, system))
     for _ in range(n - len(chosen)):
         system = _system_for_sphere(character, casting_level)
         if system == "power" and not pool_p:
@@ -718,6 +735,15 @@ def choose_spheres_attr(character, max_feats=None, trainer_backed=False, mentor_
     # for -- both for tracking and to avoid the duplicate-name collapse in the feat-tax/desc dicts.
     magic_picks = [p for s, _sy in chosen for p in picks_by_sphere.get(s, []) if p[1] == "power"]
     combat_picks = [p for s, _sy in chosen for p in picks_by_sphere.get(s, []) if p[1] == "might"]
+    # SELECTION MODE (A6): when spheres are pinned, order each system's picks by ROUND -- every
+    # sphere's first talent ahead of any sphere's second -- instead of sphere by sphere. The budget
+    # cap further down drops from the tail, so this is what makes an unaffordable talent come out
+    # of a sphere that keeps another, rather than emptying the last pinned sphere outright. Stable,
+    # and skipped entirely when nothing is pinned, so an unpinned character's order is untouched.
+    if selection.pinned_spheres(character):
+        _round = {id(p): i for picks in picks_by_sphere.values() for i, p in enumerate(picks)}
+        magic_picks.sort(key=lambda p: _round[id(p)])
+        combat_picks.sort(key=lambda p: _round[id(p)])
     all_picks = magic_picks + combat_picks            # magic first -> Basic Magic Training stays budget-paid
     n_total = len(all_picks)
 

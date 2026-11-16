@@ -1,6 +1,7 @@
 import random
 
 from utils.class_func.generic_func import record_bucket_owner
+from utils.class_func import selection
 
 def wizard_opposing_school(character, random_school):
     """
@@ -18,7 +19,18 @@ def wizard_opposing_school(character, random_school):
     else:
         school_list = (list(character.wizard_schools["schools"].keys()))
         school_list.remove('universalist')
-        opposing_school = random.sample(school_list, k=2)
+        # SELECTION MODE (A7): pinned opposition schools ARE the wizard's opposition schools. A
+        # wizard has two, so the first two pins take the slots and a single pin leaves the other
+        # to the roll; the specialty itself (or its parent school) can never be one of them.
+        pins = selection.school_pins(character)
+        pinned = [s for s in ((pins or {}).get('opposition') or []) if s in school_list]
+        if pinned:
+            own = (pins or {}).get('specialty_school')
+            pinned = [s for s in pinned if s != own][:2]
+            spare = [s for s in school_list if s not in pinned and s != own]
+            opposing_school = pinned + random.sample(spare, k=2 - len(pinned))
+        else:
+            opposing_school = random.sample(school_list, k=2)
 
     return opposing_school
 
@@ -36,25 +48,32 @@ def wizard_school_chooser(character):
         associated_school = []
         associated = None
 
-        random_choice = random.randint(1,4)
+        # SELECTION MODE (A7): a pinned specialty names both the table and the school, so neither
+        # is rolled. Unpinned, the two draws below are exactly the ones this has always made.
+        pins = selection.school_pins(character)
+        random_school = None
+        if pins and pins['specialty']:
+            random_choice, random_school = pins['specialty_table'], pins['specialty']
+        else:
+            random_choice = random.randint(1,4)
 
 
         if random_choice == 1:
-            random_school = random.choice(list(elemental_data.keys()))
+            random_school = random_school or random.choice(list(elemental_data.keys()))
             description = elemental_data[random_school]
 
-        elif random_choice == 2:            
-            random_school = random.choice(list(elemental_subschools_data.keys()))
+        elif random_choice == 2:
+            random_school = random_school or random.choice(list(elemental_subschools_data.keys()))
             description = elemental_subschools_data[random_school]
             associated = elemental_subschools_data[random_school]["associated school"][1]
             associated_school = elemental_data[associated]
 
         elif random_choice == 3:
-            random_school = random.choice(list(schools_data.keys()))
+            random_school = random_school or random.choice(list(schools_data.keys()))
             description = schools_data[random_school]
 
         else:
-            random_school = random.choice(list(subschools_data.keys()))
+            random_school = random_school or random.choice(list(subschools_data.keys()))
             description = subschools_data[random_school]
             associated = subschools_data[random_school]["associated school"]
             associated_school = schools_data[associated]            

@@ -262,6 +262,10 @@ PAYLOAD_KEYS = (
 	'armor_material_dr',
 	'weapon_material_damage',
 	'item_durability',
+	# Selection mode (utils/class_func/selection.py): one row per pin that could not be honoured,
+	# `{pin, reason}`. Always present and always a list -- `[]` for a request that pinned nothing
+	# and for one whose every pin held -- so a client can render it without asking whether it exists.
+	'selection_report',
 	'generator_version',
 	'license_url',
 )

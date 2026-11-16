@@ -51,6 +51,7 @@ from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_c
                                                                  shield_flag_func, ac_bonus_calculator, weapon_type_flag_func,
                                                                  weapon_size_marker, _wielder_size, SIZES)
 from utils.class_func 								import item_materials
+from utils.class_func 								import selection
 from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race, chooseable_list_archetypes#, chooseable_list_class
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
@@ -1311,10 +1312,17 @@ def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
 				realize_style = min(desired_style, realize_style + _pow_mentor_cal)
 			elif _paid_per_chain:
 				realize_pow = min(desired_pow, realize_pow + (_pow_mentor_cal // _paid_per_chain) * _paid_per_chain)
+	# SELECTION MODE (A5): pinned martial paths are guarantees, so the half-share above may not
+	# realize fewer whole chains than were pinned. Whatever that costs comes out of the feat budget
+	# through the reservation below, the same as any other realized chain.
+	_pinned_paths = selection.pinned_paths(character) or 0
+	if _pinned_paths and not _is_initiator and _paid_per_chain:
+		realize_pow = max(realize_pow, min(desired_pow, _pinned_paths * _paid_per_chain))
 	if not _is_initiator:
 		pow_data = choose_path_of_war_attr(
 			character, max_chains=((realize_pow // _paid_per_chain) if _paid_per_chain else 0))
 	martial_disciplines     = pow_data['martial_disciplines']
+	selection.audit_disciplines(character, martial_disciplines)
 	initiator_level         = pow_data['initiator_level']
 	maneuvers_known_list    = pow_data['maneuvers_known_list']
 	maneuvers_readied_list  = pow_data['maneuvers_readied_list']
@@ -1386,6 +1394,11 @@ def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
 	# A mentor is forced only to cover a shortfall the budget genuinely cannot meet. `_sphere_mentor_cal`
 	# may already be set by the 25% trainer-backed branch above; forcing raises it rather than replacing
 	# it, and it stays inside the 1-4 caliber range a mentor can roll.
+	# SELECTION MODE (A6): a pinned sphere has to arrive with a talent in it, so the roll is
+	# floored at one normal talent per sphere plus the one advanced slot the picker reserves. They
+	# are still paid for -- by the budget, or by the mentor the next block forces for a shortfall.
+	if selection.pinned_spheres(character):
+		_talent_roll = max(_talent_roll, int(getattr(character, 'sphere_count', 0) or 0) + 1)
 	_talents_from_budget = 2 * _sphere_affordable - 1 if _sphere_affordable else 0
 	if _talent_roll > _talents_from_budget and trainers_enabled:
 		_needed = _talent_roll - max(0, _talents_from_budget)
@@ -1407,6 +1420,7 @@ def phase_path_of_war_and_spheres(character, spheres_flag, trainers_enabled):
 	sphere_boons         = sphere_data['sphere_boons']
 	sphere_traits        = sphere_data['sphere_traits']
 	homebrew_feat_desc_dict.update(sphere_data['homebrew_feat_desc_dict'])
+	selection.audit_spheres(character, sphere_data)
 	# 25% "trainer-backed" branch: the dedicated mentors, rendered in the Trainers block. The Spheres
 	# Mentor needs a NAMED row of its own because the talents it funded render elsewhere (the magic /
 	# combat talent sections), so this row is the only record of who paid for them. The PoW mentor
@@ -2518,7 +2532,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, ):
+						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, selection_request=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2596,6 +2610,11 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		teamwork_feats = 0
 		# insantiate character.deity_choice
 		character.deity_choice = deity_flag
+
+		# Selection mode: resolve the pinned build concept BEFORE any class is picked -- select_classes
+		# (inside the bootstrap phase below) is its first reader. Absent -> `character.selection` is
+		# None and every chooser takes the path it always has; the phase draws nothing either way.
+		selection.phase_selection(character, selection_request)
 
 		f_name, l_name = phase_bootstrap_identity(
 			character, userInput_gender, userInput_region, userInput_race,
@@ -3323,6 +3342,10 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			wearer_size=_wielder_size(character),
 			sizes=SIZES,
 			melee=weapon_type_flag_func(character, character.weapon_dict) == 'Melee')
+		# SELECTION MODE: every pin that could not be honoured, with its reason. Read here, at the
+		# very end, because choosers all the way down the pipeline can still add a row.
+		payload["selection_report"] = [dict(row) for row in
+									   (getattr(character, 'selection_report', None) or [])]
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
 			for _gap_line in format_gaps(_buff_gaps):

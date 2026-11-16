@@ -22,6 +22,7 @@ import json
 import os
 import random
 
+from . import selection
 from .pipeline import phase
 
 # Tokens a gear ladder may use. The Phase C gear chooser resolves them onto concrete purchases
@@ -202,7 +203,14 @@ def stat_order(character):
     'primary'/'secondary' resolve through the class's own casting/main stats, so one role row
     serves a wizard (int first) and a cleric (wis first) alike; unmentioned abilities append in
     _STAT_FILL order and are thereby the dumps. Returns None when not optimizing.
+
+    SELECTION MODE (A9/A10): a pinned stat priority is the order, with or without a role -- pins
+    win, and the optimizer fills only what is unpinned. So a non-None return no longer implies
+    optimized mode; a caller that means "is this an optimized build" must read `character.role`.
     """
+    pinned = selection.pinned_stat_priority(character)
+    if pinned:
+        return pinned
     role = getattr(character, 'role', None)
     if not role:
         return None

@@ -345,11 +345,25 @@ def select_classes(character, class_choice, chosen_BAB, chosen_caster_level=None
     Returns
     - _class_picks (list of class-name strings, pick order preserved)
     """
-    chooseClass(character, class_choice, chosen_BAB, chosen_caster_level)
-    picks = [character.c_class]
+    # SELECTION MODE (A3): pinned classes ARE the pick list, in the order pinned, and they skip
+    # both chooseClass (so its BAB / caster-level filters and its draws) and the pool's pruning
+    # rules -- a pin may name a class the random pool is not rolling yet, or a second Path of War
+    # class. One pinned class still honours `multi_class`, with the extra slots rolled as always;
+    # two or more pinned classes are the whole list. The plan was resolved before this ran
+    # (selection.phase_selection), so every name here is already a class_data key.
+    from utils.class_func import selection
+    pinned = selection.pinned_classes(character)
+    if pinned:
+        character.c_class = pinned[0]
+        character.c_class_2 = ''
+        character.c_class_display = pinned[0].title()
+        picks = list(pinned)
+    else:
+        chooseClass(character, class_choice, chosen_BAB, chosen_caster_level)
+        picks = [character.c_class]
 
     want_multi = isinstance(multi_class, str) and multi_class.lower() in ('y', 'yes')
-    if want_multi:
+    if want_multi and len(pinned) < 2:
         # OPTIMIZED MODE (spec 15, ruling 8): an explicit multi_class='Y' is honoured as the
         # least-hurt shape -- single class plus ONE dip, and when the first pick casts, the dip
         # draws from non-casters only, protecting caster level (the one measured multiclass

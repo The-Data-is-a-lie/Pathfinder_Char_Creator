@@ -3,6 +3,7 @@ from math import ceil, floor
 from utils import data
 from utils.paths import repo_path
 from utils.class_func.buff_match import match as match_buffs
+from utils.class_func import selection
 import pandas as pd
 
 def class_for_spells_attr(character):
@@ -198,9 +199,14 @@ def alignment_spell_limits(character, spell_data, i, alignment_exclusion, spells
 
     return query_i
 
+# A school needs more than this many spells to carry a theme. Named because selection mode reads
+# the same threshold (selection.spell_schools), so a pin can only name a school this roll could draw.
+THEME_SCHOOL_MIN_SPELLS = 30
+
+
 def spell_theme_func(character, spell_data):
     character.available_schools = spell_data['school'].value_counts()
-    character.available_schools = character.available_schools[character.available_schools > 30].index.tolist()    
+    character.available_schools = character.available_schools[character.available_schools > THEME_SCHOOL_MIN_SPELLS].index.tolist()
     # grab a list of chooseable spell schools
     num_of_schools = random.randint(1,2)
     specialty_schools = random.sample(character.available_schools, num_of_schools)
@@ -208,6 +214,24 @@ def spell_theme_func(character, spell_data):
         character.available_schools.remove(school)
     remaining_schools = character.available_schools
     counter_schools = random.sample(remaining_schools, num_of_schools)
+
+    # SELECTION MODE (A7/A8): pinned schools replace the rolled theme, slot by slot. The roll above
+    # still happens -- an unpinned slot keeps its rolled value -- and the three lists are kept
+    # disjoint with the pin outranking the roll. `preferred_schools` is weighted like the specialty;
+    # `banned_schools` is what limit_school_func removes outright rather than down-weighting.
+    character.preferred_schools = []
+    character.banned_schools = []
+    pins = selection.school_pins(character)
+    if pins:
+        if pins['specialty_school']:
+            specialty_schools = [pins['specialty_school']]
+        if pins['opposition']:
+            counter_schools = list(pins['opposition'])
+        favoured = set(pins['preferred']) | ({pins['specialty_school']} if pins['specialty_school'] else set())
+        counter_schools = [s for s in counter_schools if s not in favoured]
+        specialty_schools = [s for s in specialty_schools if s not in pins['opposition']]
+        character.preferred_schools = list(pins['preferred'])
+        character.banned_schools = list(pins['opposition'])
 
     character.specialty_schools = specialty_schools
     character.counter_schools = counter_schools
@@ -219,7 +243,18 @@ def limit_school_func(character, query_i):
     # intialize with a float (1.0) so we don;'t encounter a pandas issue later (since intialize as int64 but uses float later)
     query_i['weight'] = 1.0
     query_i.loc[query_i['school'].isin(character.specialty_schools), 'weight'] = 100
+    preferred = getattr(character, 'preferred_schools', None)
+    if preferred:
+        query_i.loc[query_i['school'].isin(preferred), 'weight'] = 100
     query_i.loc[query_i['school'].isin(character.counter_schools), 'weight'] = .1
+    # SELECTION MODE (A8): a PINNED opposition school is banned, not merely unlikely. The x0.1
+    # weight above is the fallback, and it only survives when the ban would leave this spell level
+    # with nothing to pick from at all.
+    banned = getattr(character, 'banned_schools', None)
+    if banned:
+        allowed = query_i[~query_i['school'].isin(banned)]
+        if len(allowed):
+            query_i = allowed.copy()
     return query_i.sort_values(by='weight', ascending=False)
 
 def limit_descriptor_func(character, query_i):

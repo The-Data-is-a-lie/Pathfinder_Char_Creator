@@ -34,6 +34,7 @@ from utils.class_func.buff_match import match as match_buffs
 from utils.class_func.feats import grab_and_clean_feats
 from utils.class_func.path_of_war_funcs import select_disciplines
 from utils.class_func.skill_ranks import final_ability_score
+from utils.class_func import selection
 
 # Paid Martial Training picks by chain depth (the even tiers are feat-tax freebies).
 _MT_FEATS = ["Martial Training I", "Martial Training II", "Martial Training III",
@@ -122,13 +123,24 @@ def randomize_path_of_war_num(character):
     classes return 0 (their disciplines come from the class). House rule: BAB L -> 0-1,
     M/H -> 0-2; at level 20+ both bounds gain +1. A character whose bab_total can't reach
     Martial Training I (BAB +3) has no way into the system -> forced 0.'''
+    pinned = selection.pinned_paths(character)
     if initiator_entry(character) is not None:
+        # A pinned COUNT means nothing to an initiator -- its disciplines come from the class, not
+        # from Martial Training chains. Pinned disciplines still apply (_specialize_disciplines).
+        if pinned and (getattr(character, 'selection', None) or {}).get('path_of_war', {}).get('paths'):
+            selection.unmet(character, 'path_of_war.paths',
+                            'an initiator class takes its disciplines from the class, '
+                            'not from Martial Training paths')
         character.path_of_war_paths = 0
         return 0
     low, high = (0, 1) if character.bab == 'L' else (0, 2)
     if character.level >= 20:
         low, high = low + 1, high + 1
     n = random.randint(low, high)
+    # SELECTION MODE (A5): a pinned path count is the count, outside the house bounds if it has
+    # to be. The roll above still happens so the rest of the character follows the same stream.
+    if pinned is not None:
+        n = pinned
     if martial_training_depth(character) == 0:
         n = 0
     character.path_of_war_paths = n
@@ -256,6 +268,15 @@ def _specialize_disciplines(character, disciplines):
     and style chains draw only from this set.'''
     key_map = _discipline_key_map(character)
     resolvable = [d for d in disciplines if _dnorm(d) in key_map]
+    # SELECTION MODE (A5): pinned disciplines are kept, and lead the set. A pinned discipline the
+    # class does not offer is added anyway -- the pin is the guarantee, and the maneuver pool reads
+    # Martial_Disciplines.json by name, so nothing downstream needs the class to have listed it.
+    pinned = selection.pinned_disciplines(character)
+    if pinned:
+        n = max(random.randint(2, 3), len(pinned)) if resolvable else len(pinned)
+        taken = {_dnorm(d) for d in pinned}
+        spare = [d for d in resolvable if _dnorm(d) not in taken]
+        return pinned + random.sample(spare, min(max(0, n - len(pinned)), len(spare)))
     if not resolvable:
         return []
     n = min(random.randint(2, 3), len(resolvable))
@@ -408,6 +429,12 @@ def _roll_disciplines(character, n_paths):
     if not pool:
         print("path of war: no disciplines resolve against Martial_Disciplines.json")
         return []
+    # SELECTION MODE (A5): pinned disciplines first, so they are the chains that survive when the
+    # caller realizes fewer chains than were rolled; the rest of the count is rolled as always.
+    pinned = [d for d in selection.pinned_disciplines(character) if d in pool][:n_paths]
+    if pinned:
+        spare = [d for d in pool if d not in pinned]
+        return pinned + random.sample(spare, k=min(max(0, n_paths - len(pinned)), len(spare)))
     return random.sample(pool, k=min(n_paths, len(pool)))
 
 

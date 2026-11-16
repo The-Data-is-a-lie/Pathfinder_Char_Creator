@@ -182,7 +182,10 @@ def level_up_stats(stats, character, main_stat=None):
     luck.record_audit(character, 'attribute_points', _before, _spent, _received, max(0, num_of_stats))
     # OPTIMIZED MODE (spec 15): every level-up bump lands on the role's first-priority ability --
     # the classic optimal play. Random mode keeps the uniform scatter and its draw pattern.
-    placement = stat_order(character)
+    # Gated on the ROLE, not on stat_order alone: a selection-mode stat priority (A9) places the
+    # rolled scores and the inherent bonuses, and leaves the level-up bumps to the dice unless the
+    # build is also optimized.
+    placement = stat_order(character) if getattr(character, 'role', None) else None
     if placement:
         level_up_stats[placement[0]] += max(0, num_of_stats)
         character.level_up_stats = level_up_stats
