@@ -699,6 +699,18 @@ move and diffing them — not by reading the diff.
 | the behaviour test (pins honoured, unmet pins reported, no pin no change; sabotage-proven) | `tests/test_selection.py` |
 | the Foundry side (per-player named concepts, the editor, the old-backend guard) | module repo: `scripts/selection-concepts.js`, wired in `scripts/generator-launch.js`; test `tools/selection_concepts.test.mjs` |
 
+### Where do I find blank mode (the Blank Character Generator)?
+
+| Looking for | Where |
+|---|---|
+| the `blank` input (named key, popped like `selection`) | `app.py::update_character_data` pop → `process_input_values` → `main_test.generate_random_char(blank_request=…)`; classes and levels arrive as `selection.classes` |
+| how a blank sheet is made (generate, then empty by type), what is kept, what is rebuilt | `utils/class_func/blank.py` -- `apply`, `KEEP`, `NEUTRAL`; called last in `generate_random_char` |
+| the slot rows and where each count comes from | `blank.slots` (its docstring names every owner) |
+| the `slots` payload key | `payload.py::PAYLOAD_KEYS`; `[]` on every generated character |
+| the capability flag a client checks first | `blank: true` in `selection.options()` (`GET /selection_options`) |
+| the contract gate / the behaviour test (two seeds, one sheet) | `gates/validate_blank.py` / `tests/test_blank.py` |
+| the Foundry side (dialog, request, placeholders, the second button) | module repo: `scripts/blank-character.js`, `scripts/build/slots.js`, `scripts/button-locations.js` + `button.js`; test `tools/blank_character.test.mjs` |
+
 ## Consumers / deploys (details in auto-memory + skills)
 
 - **The blessed table workflow is two-step**: (1) generate + inject an NPC with the

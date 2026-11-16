@@ -19,6 +19,65 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Blank mode: a sheet with nothing rolled and a slot for everything owed** *(2026-11-15;
+  backend `utils/class_func/blank.py`, with the Blank Character Generator in the FoundryVTT
+  module)*. A request may now carry the named key `blank`. With it, the request's
+  `selection.classes` (classes and levels) and its race are the character, and the answer is a
+  payload with every ability at 10, no feats, traits, spells or gear -- and a new key, **`slots`**:
+  one `{section, kind, label, class, level, bucket}` row per thing the character is owed and has
+  not chosen. `slots` is on every payload, `[]` for a generated character.
+  - *What gets a slot:* each general feat (labelled with the level it is gained at), class bonus,
+    teamwork, bloodline and monk bonus feats, every class choice (rogue talents, rage powers,
+    weapon training, ...), two traits, each ability score increase, spells known per spell level
+    for the classes that choose them, and the skill ranks per class. With the house rules on:
+    story, flavor and flaw feats, the two creation feats, and a minor and a major flaw.
+  - *Decided with Daniel 2026-11-15:* the inputs are classes (multiclass allowed), a level each
+    and a race; a slot is one placeholder each; class choices get slots; the extras are ability
+    increases, two traits, spells known and a skill-ranks reminder.
+  - *How it is made, and what was rejected.* The request runs the ordinary pipeline with the
+    classes pinned, and `blank.apply` then empties the finished payload BY TYPE (a list becomes
+    `[]`, a dict `{}`), keeps the few keys the classes, levels and race decide, and rebuilds a
+    handful. So the payload keeps the exact keys, order and shapes the module and the web sheet
+    parse. *Rejected:* building the payload from scratch (some 190 keys' neutral values restated
+    by hand, forever in step with `PAYLOAD_KEYS`), and a guard in every chooser to switch it off.
+  - *The counts are not restated.* Every slot count is read from the function that owns it --
+    `update_level`, `normal_feat_slot_levels`, `class_bonus_feat_slots`, `teamwork_feat_slots`,
+    `class_choice_schedule.json` via `levels_for`, `update_level_ability_score`,
+    `class_skill_points` -- so a house-rule or schedule change moves the blank sheet with it.
+  - *Decided while building:*
+    - Hit points are the full hit die at the first level and the PF1 average after, from each
+      class's own hit die. *Rejected:* leaving 0, which makes a sheet nobody can use, and keeping
+      the rolled value, which is a roll.
+    - Spells known are one slot per spell LEVEL with the count in its label, not one per spell.
+      *Rejected:* one per spell, which is seventy placeholders on a mid-level wizard.
+    - A blank request honours the class pins and nothing else in `selection`: an active build
+      concept must not turn Spheres on or spend feats behind a sheet that shows none of it.
+    - Racial ability modifiers are not applied to the scores (they stay 10); the race item the
+      module adds carries the race. Several races choose where a bonus goes, and that is a choice.
+    - `GET /selection_options` gains `blank: true`. A client must check it before sending the
+      key: a backend from before this would read the flag as one of its positional inputs.
+  - *What changed for existing output:* the new key only. All twelve goldens moved by exactly
+    `"slots": []`.
+  - *Gates:* `validate_blank.py` (the manifest, the request vocabulary, a POST through Flask) and
+    `test_blank.py` -- 1,235 sheets. Its main check is that the SAME request under two seeds
+    gives the SAME sheet for every rollable class at four levels: whatever differs was rolled.
+    Its first runs found four leaks (a shield value typed two ways, a companion name, the armor
+    fields, a wizard's rolled spellbook size), which is what it is for. Slot counts are
+    checked against a generated character of the same class and level.
+  - *Known limits:* not yet checked in a live Foundry; the standalone web sheet does not draw
+    `slots`; archetypes cannot be chosen, so a blank sheet is always the base class; a class
+    whose choices are points rather than picks (the aegis's customizations) gets the schedule's
+    approximation.
+- **The Foundry module has a Blank Character Generator** *(sibling repo: the FoundryVTT module,
+  `scripts/blank-character.js` + `scripts/build/slots.js`, branch `feat/blank-character`,
+  2026-11-15)*. A second button beside the Character Generator in all four button locations
+  opens a small dialog -- up to four classes with a level each, and a race -- and creates the
+  actor through the same build pipeline as a generated character. Each `slots` row becomes one
+  placeholder item under the heading a real pick would sit under; class choices are written into
+  the fields the class-features stage already lays out, so they land in their class's band under
+  their own divider. *Rejected:* computing the slots in the module, which has never carried the
+  feat or class-choice arithmetic and would be a second copy of it. A blank sheet skips the gear
+  stages: their "Longsword" / "Leather Armor" fallbacks would arm an empty sheet.
 - **Build concepts can pin a build** *(2026-11-15; backend `utils/class_func/build_steer.py`,
   with a Build section in the FoundryVTT module's concept editor)*. A `selection` may now carry
   `build`, the name of one of the generic build archetypes ("Bruiser", "AC Tank", "Archer", ...).
