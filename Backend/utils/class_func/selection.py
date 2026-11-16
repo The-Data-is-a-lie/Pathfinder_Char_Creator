@@ -595,6 +595,10 @@ def options(character):
     tables = character.wizard_schools
     resolvable = pow_module._discipline_key_map(character)
     return {
+        # Whether this backend answers a `blank` request (the Blank Character Generator). A client
+        # must check before sending the key: a backend from before it would treat the flag as one
+        # of the positional inputs.
+        'blank': True,
         'keys': list(REQUEST_KEYS),
         'limits': {'max_classes': MAX_PINNED_CLASSES, 'max_caster_classes': MAX_CASTER_CLASSES,
                    'max_level': MAX_CHARACTER_LEVEL},

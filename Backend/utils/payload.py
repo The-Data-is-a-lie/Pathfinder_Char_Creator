@@ -266,6 +266,10 @@ PAYLOAD_KEYS = (
 	# `{pin, reason}`. Always present and always a list -- `[]` for a request that pinned nothing
 	# and for one whose every pin held -- so a client can render it without asking whether it exists.
 	'selection_report',
+	# Blank mode (utils/class_func/blank.py): one row per thing a blank character is owed and has
+	# not chosen -- `{section, kind, label, class, level, bucket}`. Always present and always a
+	# list; `[]` on every generated character, so a client draws placeholders only for a blank one.
+	'slots',
 	'generator_version',
 	'license_url',
 )

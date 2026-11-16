@@ -71,6 +71,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                             e_kat_exchange_rows)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feats						import pinned_feat_chooser
+from utils.class_func								import blank
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
@@ -2560,7 +2561,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 						 alignment_input = 'LG' , deity_flag = 'asdfasd', userInput_gender='female', truly_random_feats = "Y", inherents = "Y", modded_char_sheet = 'n', 
 						 homebrew_feat_amount="Y",num_dice="8", num_sides="8", high_level=15, low_level=15, gold_num=1000000, use_backstory_api="Y", spheres_flag="N", backstory_focus=None,
 						 seed=None, professions_flag="Y", trainers_flag="Y", misc_homebrew_rules="Y",
-						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, selection_request=None, ):
+						 luck_direction=None, optimize=None, house_rules=None, mythic_request=None, selection_request=None,
+						 blank_request=None, ):
 
 		print(create_new_char)
 		print(userInput_region)
@@ -2642,6 +2644,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# Selection mode: resolve the pinned build concept BEFORE any class is picked -- select_classes
 		# (inside the bootstrap phase below) is its first reader. Absent -> `character.selection` is
 		# None and every chooser takes the path it always has; the phase draws nothing either way.
+		# BLANK MODE (the Blank Character Generator): the request's classes and levels are pinned
+		# exactly as selection mode pins them, and nothing else it may carry is honoured -- a blank
+		# sheet shows no feats or spheres, so a concept must not spend slots behind it. The sheet
+		# itself is made at the very end (blank.apply), once the payload exists to be emptied.
+		blank_mode = blank.requested(blank_request)
+		if blank_mode:
+			selection_request = blank.selection_for(selection_request)
 		selection.phase_selection(character, selection_request)
 
 		f_name, l_name = phase_bootstrap_identity(
@@ -3392,6 +3401,9 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# very end, because choosers all the way down the pipeline can still add a row.
 		payload["selection_report"] = [dict(row) for row in
 									   (getattr(character, 'selection_report', None) or [])]
+		# BLANK MODE: what a blank sheet is owed and has not chosen. Always present and always a
+		# list -- `[]` for every generated character, filled only by blank.apply below.
+		payload["slots"] = []
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
 			for _gap_line in format_gaps(_buff_gaps):
@@ -3485,6 +3497,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# is not confined to psionics, and a field that appears only for some characters would read
 		# as "this one needs a licence and that one doesn't".
 		character.data_dict['license_url'] = LICENSE_PATH
+		if blank_mode:
+			blank.apply(character)
 		return character.data_dict
 
 # CLI smoke test only: importing this module (e.g. app.py does `from main_test import ...`) must NOT
