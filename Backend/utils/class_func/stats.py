@@ -3,6 +3,7 @@ from math import floor
 from utils.util import roll_dice
 from utils.class_func import luck
 from utils.class_func.power_role import stat_order
+from utils.class_func import selection
 
 def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     if not isinstance(num_dice, int) or num_dice <= 0:
@@ -50,6 +51,15 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
             main_stat_2 = random.choice(main_stat_parts_2)
             orig_stats = swap_stats(character, main_stat_2, orig_stats, new=True)
 
+    # SELECTION MODE: a pinned feat that needs an ability score gets a rolled score that meets it,
+    # when the dice produced one -- see meet_ability_floors. A pinned stat priority is the caller's
+    # own answer to where the scores go, so it is left alone. No pinned feat -> {} -> no change.
+    if not selection.pinned_stat_priority(character):
+        from utils.class_func.feats import pinned_feat_ability_floors
+        floors = pinned_feat_ability_floors(character)
+        if floors:
+            orig_stats = meet_ability_floors(orig_stats, floors, keep=(main_stat, main_stat_2))
+
     stats = orig_stats.copy()
 
     inherent_flag = inherent_flag.lower()
@@ -67,6 +77,30 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
 
     level_up_stats(stats, character)
     return stats
+
+def meet_ability_floors(stats, floors, keep=()):
+    """Swap rolled scores so each ability in ``floors`` reaches its score, where a swap can.
+
+    Only what was rolled is placed -- nothing is raised. An ability below its floor trades places
+    with the LOWEST score that is high enough, so the trade costs the donor as little as possible.
+    The class's own main stats (``keep``) never give theirs up, and an ability that has a floor of
+    its own only trades when it still meets it afterwards. Highest floor first; no RNG draw.
+    An ability no rolled score can lift stays short, and the feat that needed it is reported.
+    """
+    stats = dict(stats)
+    kept = {ability for ability in keep if ability}
+    for ability in sorted(floors, key=lambda name: (-floors[name], name)):
+        need = floors[ability]
+        if ability not in stats or stats[ability] >= need:
+            continue
+        donors = [other for other in stats
+                  if other != ability and other not in kept and stats[other] >= need
+                  and stats[ability] >= floors.get(other, 0)]
+        if donors:
+            donor = min(donors, key=lambda other: (stats[other], other))
+            stats[ability], stats[donor] = stats[donor], stats[ability]
+    return stats
+
 
 def assign_stats(character, stats):
     for attr, value in stats.items():

@@ -17,6 +17,9 @@ shows an option that silently does nothing -- the unmatched-string trap again, w
                                the resolver lower-cases differently.
   3. THE LEVEL ARITHMETIC   -- ruling A4's three cases (every class levelled / some / none), plus
                                the level ceiling's trim order.
+  3b. THE ABILITY FLOORS    -- `stats.meet_ability_floors`, which places a rolled score where a
+                               pinned feat needs one: it only swaps, takes the cheapest donor,
+                               never robs a main stat, and leaves an impossible floor alone.
   4. THE PAYLOAD KEY        -- `selection_report` is declared, and sits before `generator_version`.
   5. THE REQUEST PATH       -- through Flask: `GET /selection_options` serves exactly
                                `selection.options()`, and a POST carrying a `selection` OBJECT
@@ -41,7 +44,8 @@ _bs.OLLAMA_AVAILABLE = False
 _bs._try_ollama = lambda *a, **k: ''
 import main_test                                                                    # noqa: E402
 from utils import data                                                              # noqa: E402
-from utils.class_func import selection, spells                                      # noqa: E402
+from utils.class_func import selection, spells, stats                               # noqa: E402
+from utils.class_func.feats import pinnable_feat_index                              # noqa: E402
 from utils.class_func import spheres as spheres_module                              # noqa: E402
 from utils.class_func.level_and_bab import MAX_CHARACTER_LEVEL, _split_levels       # noqa: E402
 from utils.createACharacter import CreateNewCharacter                               # noqa: E402
@@ -93,6 +97,14 @@ def check_options_are_the_data(options):
                                        'max_caster_classes': selection.MAX_CASTER_CLASSES,
                                        'max_level': MAX_CHARACTER_LEVEL},
                  f'options.limits {options["limits"]} is not the constants the resolver enforces')
+    index = pinnable_feat_index()
+    REPORT.check([row['name'] for row in options['feats']] == [index[key]['name'] for key in sorted(index)],
+                 'options.feats is not feats.pinnable_feat_index(), the index the resolver reads')
+    REPORT.check(options['feats'] and not any('mythic' in row['type'].lower() for row in options['feats']),
+                 'options.feats is empty or offers a Mythic row (mythic feats belong to the mythic phase)')
+    REPORT.check(any(row['homebrew'] for row in options['feats'])
+                 and not all(row['homebrew'] for row in options['feats']),
+                 'options.feats should carry both printed and homebrew rows, told apart by `homebrew`')
     REPORT.check(options['keys'] == list(selection.REQUEST_KEYS),
                  'options.keys is not selection.REQUEST_KEYS')
 
@@ -130,6 +142,41 @@ def check_options_round_trip(options):
     for name in options['disciplines']:
         expect({'path_of_war': {'disciplines': [name]}},
                lambda plan, n=name: plan['path_of_war']['disciplines'] == [n], f'discipline {name!r}')
+    # Feats in ONE request: there are well over a thousand, and resolution is per name, so pinning
+    # them together asks the same question of each without building a character apiece.
+    names = [row['name'] for row in options['feats']]
+    expect({'feats': names}, lambda plan: plan['feats'] == names, f'the {len(names)} offered feats')
+    # Other spellings of three feats whose own names carry no parenthetical (a few do -- "Ability
+    # Focus (Malefactions)" -- and for those the parenthetical IS the name).
+    plain = [name for name in names if '(' not in name][:3]
+    expect({'feats': [plain[0].upper(), plain[1].lower(), f'{plain[2]} (anything)']},
+           lambda plan: plan['feats'] == plain, 'a feat in other casing / with a parenthetical')
+
+
+def check_ability_floors():
+    rolled = {'str': 16, 'dex': 9, 'con': 14, 'int': 8, 'wis': 13, 'cha': 11}
+    meet = stats.meet_ability_floors
+    # Nothing asked, or already met: the scores are returned as rolled.
+    REPORT.check(meet(rolled, {}) == rolled, 'ability floors: no floor must change nothing')
+    REPORT.check(meet(rolled, {'str': 13}, keep=('str',)) == rolled,
+                 'ability floors: a floor already met must change nothing')
+    # A short ability trades with the LOWEST score that is high enough (wis 13, not con 14).
+    placed = meet(rolled, {'dex': 13}, keep=('str',))
+    REPORT.check(placed['dex'] == 13 and placed['wis'] == 9 and placed['con'] == 14,
+                 f'ability floors: dex 13 should take the 13 off wis and leave con alone: {placed}')
+    # Only what was rolled is placed -- the six scores are the same six.
+    REPORT.check(sorted(placed.values()) == sorted(rolled.values()),
+                 'ability floors: a floor must swap scores, never raise one')
+    # A main stat never gives its score up, even when it is the only one high enough.
+    REPORT.check(meet(rolled, {'int': 15}, keep=('str',)) == rolled,
+                 'ability floors: the class main stat must not be traded away')
+    # Two floors: both are met, and neither undoes the other.
+    both = meet(rolled, {'dex': 13, 'int': 13}, keep=('str',))
+    REPORT.check(both['dex'] >= 13 and both['int'] >= 13,
+                 f'ability floors: dex 13 and int 13 are both reachable here: {both}')
+    # No score is high enough: nothing moves (the feat that needed it is reported downstream).
+    REPORT.check(meet(rolled, {'cha': 18}, keep=('str',)) == rolled,
+                 'ability floors: an unreachable floor must leave the scores alone')
 
 
 def check_level_arithmetic():
@@ -227,13 +274,15 @@ def main():
     check_options_are_the_data(options)
     check_options_round_trip(options)
     check_level_arithmetic()
+    check_ability_floors()
     check_payload_key()
     check_request_path(options)
     return REPORT.finish(
         f'{len(options["classes"])} classes, '
         f'{sum(len(v) for v in options["schools"]["specialty"].values())} arcane schools, '
         f'{sum(len(v) for v in options["spheres"].values())} spheres and '
-        f'{len(options["disciplines"])} disciplines round-trip; A4 level arithmetic; request path')
+        f'{len(options["disciplines"])} disciplines and {len(options["feats"])} feats round-trip; '
+        f'A4 level arithmetic; ability floors; request path')
 
 
 if __name__ == '__main__':

@@ -33,7 +33,8 @@ The choosers that honour a pin, each at its own site (grep the accessor):
 ``util.select_classes`` (``pinned_classes``), ``level_and_bab.randomize_level``
 (``pinned_class_levels``), ``power_role.stat_order`` (``pinned_stat_priority``),
 ``spells.spell_theme_func`` / ``limit_school_func`` and ``wizard_school`` (``school_pins``),
-``path_of_war`` (``pinned_disciplines`` / ``pinned_paths``), ``spheres`` (``pinned_spheres``).
+``path_of_war`` (``pinned_disciplines`` / ``pinned_paths``), ``spheres`` (``pinned_spheres``),
+``feats.pinned_feat_chooser`` (``pinned_feats``).
 """
 import re
 
@@ -43,7 +44,7 @@ from .pipeline import phase
 
 # The keys a `selection` object may carry. Anything else is reported rather than ignored: an
 # unrecognised key is almost always a misspelled one, and silence would read as "honoured".
-REQUEST_KEYS = ('classes', 'stat_priority', 'schools', 'spheres', 'path_of_war')
+REQUEST_KEYS = ('classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats')
 
 # A3: an ordered list of one to four classes, the first being the primary.
 MAX_PINNED_CLASSES = 4
@@ -289,6 +290,33 @@ def _resolve_path_of_war(character, raw):
     return plan
 
 
+def _resolve_feats(character, raw):
+    """Pinned feats, spelled as the feat data spells them.
+
+    Resolution is by name only, against EVERY feat a pin may name (``feats.pinnable_feat_index``:
+    the printed feats and the homebrew library). Whether the character can take one is not known
+    yet -- its class, level and scores are not rolled -- so prerequisites, the homebrew flag and
+    the feat budget are judged where the feat is taken, in ``feats.pinned_feat_chooser``.
+
+    The generator holds a feat by its base name ("Weapon Focus", never "Weapon Focus (longsword)"),
+    so a parenthetical the data does not carry is read as the base feat.
+    """
+    names = _as_list(raw)
+    if not names:
+        return []
+    from .feats import pinnable_feat_index
+    index = pinnable_feat_index()
+    known = {_norm(key): key for key in index}
+    out = []
+    for name in names:
+        key = known.get(_norm(name)) or known.get(_norm(str(name).split(' (')[0]))
+        if key is None:
+            unmet(character, f'feats: {name}', 'no feat by that name')
+        elif index[key]['name'] not in out:
+            out.append(index[key]['name'])
+    return out
+
+
 @phase(requires=[], provides=['selection', 'selection_report'])
 def phase_selection(character, request):
     """Resolve the `selection` request onto the character, before any class is picked.
@@ -314,9 +342,10 @@ def phase_selection(character, request):
         'schools': _resolve_schools(character, request.get('schools')),
         'spheres': _resolve_spheres(character, request.get('spheres')),
         'path_of_war': _resolve_path_of_war(character, request.get('path_of_war')),
+        'feats': _resolve_feats(character, request.get('feats')),
     }
     schools, martial = plan['schools'], plan['path_of_war']
-    pinned_anything = (plan['classes'] or plan['stat_priority'] or plan['spheres']
+    pinned_anything = (plan['classes'] or plan['stat_priority'] or plan['spheres'] or plan['feats']
                        or schools['specialty'] or schools['preferred'] or schools['opposition']
                        or martial['disciplines'] or martial['paths'] is not None)
     if pinned_anything:
@@ -371,6 +400,12 @@ def pinned_disciplines(character):
     """Pinned discipline names, spelled as data.disciplines spells them."""
     plan = _plan(character)
     return list(plan['path_of_war']['disciplines']) if plan else []
+
+
+def pinned_feats(character):
+    """Pinned feat names in pin order, spelled as the feat data spells them."""
+    plan = _plan(character)
+    return list(plan['feats']) if plan else []
 
 
 def pinned_paths(character):
@@ -458,6 +493,30 @@ def audit_disciplines(character, disciplines):
                   if not have else 'its Martial Training chain could not be realized')
 
 
+def audit_feats(character, held, tax_dicts=()):
+    """Report every pinned feat the finished character does not hold.
+
+    ``held`` is every feat list the sheet shows; ``tax_dicts`` are the feat-tax bundles, whose
+    children are held too (a pinned Great Cleave bundled free onto Cleave is on the sheet, just
+    not in a slot). A feat the character already held by rule or by class when the pin was read
+    (``character.pinned_feats_held``) is honoured without a slot. What remains was taken and then
+    lost to the feat track's count guarantee -- the budget was oversubscribed.
+    """
+    def base(name):
+        return _norm(str(name).split(' (')[0])
+
+    have = {base(name) for name in (held or [])}
+    for bundle in tax_dicts or ():
+        for children in (bundle or {}).values():
+            have.update(base(child) for child in (children or []))
+    have.update(base(name) for name in (getattr(character, 'pinned_feats_held', None) or []))
+    reported = {row['pin'] for row in getattr(character, 'selection_report', None) or []}
+    for name in pinned_feats(character):
+        pin = f'feats: {name}'
+        if base(name) not in have and pin not in reported:
+            unmet(character, pin, 'no feat slot left')
+
+
 # --------------------------------------------------------------------------- #
 # GET /selection_options: the pickers' lists, straight from the data
 # --------------------------------------------------------------------------- #
@@ -469,6 +528,7 @@ def options(character):
     from . import spheres as spheres_module
     from . import path_of_war as pow_module
     from .level_and_bab import MAX_CHARACTER_LEVEL
+    from .feats import pinnable_feat_index
 
     groups = {}
     for token, label, roster in data.CLASS_GROUPS:
@@ -501,4 +561,6 @@ def options(character):
                     for system in ('power', 'might')},
         'disciplines': [name for name in data.disciplines
                         if pow_module._dnorm(name) in resolvable],
+        'feats': [{'name': info['name'], 'type': info['type'], 'homebrew': info['homebrew']}
+                  for _key, info in sorted(pinnable_feat_index().items())],
     }

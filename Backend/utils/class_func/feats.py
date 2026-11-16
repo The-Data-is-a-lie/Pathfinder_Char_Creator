@@ -350,6 +350,153 @@ def metzofitz_feat_frame():
     return metz[['name', 'type', 'prerequisites', 'description']]
 
 
+# SELECTION MODE: the feats a build concept may pin, and the chooser that takes them.
+_PINNABLE_FEATS = None
+
+
+def pinnable_feat_index():
+    """``{lower-cased name: {'name', 'type', 'prerequisites', 'homebrew'}}`` for every feat a pin
+    may name: the rows of data/feats.csv, then the poolable Metzofitz rows (flagged ``homebrew``;
+    the printed feat wins a name collision, as it does in the generic pool).
+
+    Mythic rows are left out -- a mythic feat is bought by the mythic phase, and its row shares its
+    name with the ordinary feat. E-Kat, luck and Martial Training feats are not here either: each
+    belongs to a subsystem with its own currency and its own pin.
+    """
+    global _PINNABLE_FEATS
+    if _PINNABLE_FEATS is None:
+        index = {}
+        for homebrew, frame in ((False, grab_and_clean_feats('data/feats.csv')),
+                                (True, metzofitz_feat_frame())):
+            for name, kind, prerequisites in zip(frame['name'], frame['type'], frame['prerequisites']):
+                name = '' if pd.isna(name) else str(name).strip()
+                kind = '' if pd.isna(kind) else str(kind).strip()
+                if not name or 'mythic' in kind.lower():
+                    continue
+                index.setdefault(name.lower(), {
+                    'name': name, 'type': kind, 'homebrew': homebrew,
+                    'prerequisites': '' if pd.isna(prerequisites) else str(prerequisites),
+                })
+        _PINNABLE_FEATS = index
+    return _PINNABLE_FEATS
+
+
+def _feat_named(index, fragment):
+    """The feat a prerequisite fragment names, as an index key, or None: "cleave",
+    "spell focus (conjuration)" (held by its base name) and "dodge or mobility" (the first
+    alternative that is a feat) all resolve."""
+    for candidate in [fragment] + fragment.split(' or '):
+        key = candidate.strip()
+        if key in index:
+            return key
+        if key.split(' (')[0].strip() in index:
+            return key.split(' (')[0].strip()
+    return None
+
+
+_ABILITY_FLOOR = re.compile(r'^(str|dex|con|int|wis|cha) (\d+)$')
+
+
+def pinned_feat_ability_floors(character):
+    """``{ability: score}`` the pinned feats ask for, their feat prerequisites included.
+
+    Read from the same prerequisite fragments ``pinned_feat_chooser`` tests ("str 13",
+    "dex 13"), so the two cannot disagree about what a feat needs. ``stats.roll_stats`` uses it
+    to place a rolled score that is already high enough where a pinned feat needs it -- part of
+    working toward a pin. {} when no feat is pinned.
+    """
+    from utils.class_func import selection
+    pins = selection.pinned_feats(character)
+    if not pins:
+        return {}
+    index = pinnable_feat_index()
+    floors, seen = {}, set()
+
+    def walk(key):
+        if key in seen or key not in index:
+            return
+        seen.add(key)
+        for fragment in determine_prerequisite_name(index[key]).split(','):
+            fragment = fragment.strip()
+            score = _ABILITY_FLOOR.match(fragment)
+            if score:
+                floors[score.group(1)] = max(floors.get(score.group(1), 0), int(score.group(2)))
+            elif fragment:
+                parent = _feat_named(index, fragment)
+                if parent:
+                    walk(parent)
+
+    for name in pins:
+        walk(name.lower())
+    return floors
+
+
+def pinned_feat_chooser(character, budget):
+    """Take the feats a build concept pinned, working toward each one, within ``budget`` slots.
+
+    Modelled on the luck-bought and E-Kat reservations beside it in phase_feat_selection: the picks
+    are carved OUT of the feat budget by the caller (a pin spends the character's own feats -- no
+    freebies, the same ruling pinned spheres got), register in ``character.chooseable`` so no later
+    pass re-picks one, and never touch ``chooseable_talents``, so nothing leaks into the generic
+    pool. No pin, no work and no RNG draw: random mode is untouched.
+
+    "Working toward" a feat (ruled 2026-11-15): a prerequisite that is itself a feat is taken
+    first, parents before children, each costing a slot like any other feat. Legality is the
+    generator's own prerequisite test -- the same fragments ``no_prereq_loop`` reads, against the
+    same ``character.chooseable`` -- so a pin can never be taken on terms a random pick could not.
+    What still fails (a base attack bonus, an ability score, a class level, or simply no slot left)
+    is dropped and reported with the fragment that failed.
+
+    A feat the character already holds -- free at base attack bonus +1, or granted by a class --
+    costs nothing and is recorded on ``character.pinned_feats_held`` for the audit.
+
+    Returns the feats taken, in the order taken, spelled as the data spells them.
+    """
+    from utils.class_func import selection
+    character.pinned_feats_held = []
+    pins = selection.pinned_feats(character)
+    if not pins:
+        return []
+    index = pinnable_feat_index()
+    homebrew = homebrew_enabled(character)
+    picked = []
+
+    def take(key, trail):
+        """None when `key` is held on return, else the reason it is not."""
+        info = index[key]
+        if key in character.chooseable:
+            return None
+        if info['homebrew'] and not homebrew:
+            return 'a homebrew feat, and homebrew feats are off'
+        fragments = [part.strip() for part in determine_prerequisite_name(info).split(',')]
+        for fragment in fragments:
+            if not fragment or character.filter_pattern.search(fragment):
+                continue
+            if prereq_part_satisfied(fragment, character.chooseable):
+                continue
+            parent = _feat_named(index, fragment)
+            if parent is None or parent in trail:
+                return f'needs {fragment}'
+            reason = take(parent, trail | {key})
+            if reason:
+                return f'needs {index[parent]["name"]}, which {reason}'
+        if len(picked) >= budget:
+            return 'no feat slot left'
+        picked.append(info['name'])
+        character.chooseable.add(key)
+        return None
+
+    for name in pins:
+        key = name.lower()
+        if key in character.chooseable:
+            character.pinned_feats_held.append(name)
+            continue
+        reason = take(key, frozenset())
+        if reason:
+            selection.unmet(character, f'feats: {name}', reason)
+    return picked
+
+
 def metzofitz_description(name):
     """Rules text for a poolable Metzofitz feat (case-insensitive); '' when unknown. Lets the
     main_test render fallback describe Metzofitz picks -- they are absent from data/feats.csv, and

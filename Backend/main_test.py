@@ -70,6 +70,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
                                                             held_luck_feats, luck_sheet_sections,
                                                             e_kat_exchange_rows)
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
+from utils.class_func.feats						import pinned_feat_chooser
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
@@ -1657,6 +1658,19 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 		character.feat_amounts += max(character.teamwork_feats - teamwork_pool_size(character, casting_level_str), 0)
 	# print("character.chooseable", character.chooseable)
 	character.feat_amounts += character.class_feats_amount
+	# SELECTION MODE: pinned feats claim their slots FIRST, ahead of every other reservation --
+	# a pin is a guarantee, so nothing below may spend the slot it needs. Carved OUT of the budget
+	# like the reservations that follow (no free feats), and bounded by the two tracks a pin can
+	# sit in: the ordinary feats and the class bonus slots (separate_feats_func spills into the
+	# latter). Story, flaw and flavor slots stay what the house formula made them.
+	# No pin -> an empty list, no draw, and the budget unchanged.
+	_pin_budget = max(0, min(character.feat_amounts,
+							 character.normal_feat_amount + character.class_feats_amount))
+	pinned_feats_chosen = pinned_feat_chooser(character, _pin_budget)
+	character.feat_amounts = max(0, character.feat_amounts - len(pinned_feats_chosen))
+	# Recorded on the character so separate_feats_func keeps them under the ordinary heading and
+	# the count guarantee trims them last.
+	character.pinned_feats_chosen = list(pinned_feats_chosen)
 	# Reserved E-Kat slots (homebrew luck). Carved OUT of the budget, exactly as path_of_war /
 	# spheres / professions reserve theirs above -- never added on top, so a lucky character spends
 	# its OWN feats on luck. Taken before the chooser because feat_amount=character.feat_amounts is
@@ -1752,6 +1766,15 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 	# swap passes as everything else -- which is why phase_luck_resolution intersects this list with
 	# the FINAL feats before billing it, rather than trusting what was drawn here.
 	character.feats.extend(luck_bought_feats)
+	# Pinned feats join the same list, in the data's own casing (the pool's spelling, which is
+	# what the Foundry module matches on). Both feat paths above assign or extend before this
+	# line, so the pins survive either.
+	character.feats.extend(pinned_feats_chosen)
+	# ...and their slots go back into the budget now that the draw has been sized without them.
+	# A pinned feat is an ordinary feat sitting in an ordinary slot, so every reader downstream --
+	# the shortfall top-up just below, the exported feat_budget, the count guarantee -- must see
+	# the budget WITH those slots, or the ordinary track reads as oversubscribed by its own rows.
+	character.feat_amounts += len(pinned_feats_chosen)
 	# Belt-and-braces: same feat arriving from two sources with different casing would
 	# otherwise survive to the sheet as a duplicate entry.
 	character.feats = dedupe_feats_case_insensitive(character.feats)
@@ -2147,9 +2170,14 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 			return list(reversed(kept))
 
 		feats = _trim_by(lambda f: f in _sphere_lower)
-		feats = _trim_by(lambda f: f not in _ekat_lower and f not in _luck_lower)
-		feats = _trim_by(lambda f: f in _ekat_lower)
-		feats = _trim_by(lambda f: f in _luck_lower)
+		# SELECTION MODE: a pinned feat is trimmed after everything else, luck-bought feats
+		# included -- it is the one row the caller asked for by name. Empty without pins, so the
+		# order above is unchanged for every unpinned character.
+		_pin_lower = {str(n).lower() for n in (getattr(character, 'pinned_feats_chosen', None) or [])}
+		feats = _trim_by(lambda f: f not in _ekat_lower and f not in _luck_lower and f not in _pin_lower)
+		feats = _trim_by(lambda f: f in _ekat_lower and f not in _pin_lower)
+		feats = _trim_by(lambda f: f in _luck_lower and f not in _pin_lower)
+		feats = _trim_by(lambda f: f in _pin_lower)
 	elif len(feats) < _feat_target:                      # defensive guarantee against any future regression
 		_fill = topup_feat_chooser(character, casting_level_str, _feat_target - len(feats))
 		add_feats_to_chooseable(character, _fill)
@@ -2801,6 +2829,13 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		profession_feat_desc = ft.profession_feat_desc
 		profession_ranks = ft.profession_ranks
 		profession_pool = ft.profession_pool
+		# SELECTION MODE: the feat lists are final here (tax chains, child strip, backfill and the
+		# count guarantee have all run), so this is where a pinned feat's fate is known.
+		selection.audit_feats(
+			character,
+			[*feats, *story_feats, *flaw_feats, *flavor_feats, *class_feats, *trainer_feats],
+			(story_feat_tax_dict, flaw_feat_tax_dict, flavor_feat_tax_dict, class_feat_tax_dict,
+			 feats_feat_tax_dict, trainer_feat_tax_dict))
 		teamwork_feats = ft.teamwork_feats
 		teamwork_feat_labels = ft.teamwork_feat_labels
 

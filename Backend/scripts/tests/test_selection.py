@@ -21,6 +21,9 @@ claims about generated characters, so both are checked on generated characters:
 6. **Optimize + pins** -- the pins survive optimized mode (A10).
 7. **Unmet pins** -- a pin that cannot be honoured is dropped, the character still generates,
    and `selection_report` names the pin (A2).
+7b. **Feats** -- a pinned feat is on the sheet, its feat prerequisites are taken with it, it
+   costs a slot like any other feat (the feat rows do not grow), and a pin that cannot be met --
+   a base attack bonus the class does not have, more pins than slots -- is reported.
 8. **Nothing pinned** -- `selection=None`, `{}` and a selection of empty lists all produce the
    same payload as each other, with an empty report. (That this payload is also the one the
    generator produced BEFORE selection mode existed is test_golden_payload's job: the goldens
@@ -340,6 +343,9 @@ UNMET_CASES = (
      {}, ['Primal Fury']),
     ('path count on an initiator',
      {'classes': [{'name': 'warder', 'level': 6}], 'path_of_war': {'paths': 2}}, {}, ['path_of_war.paths']),
+    ('unknown feat', {'feats': ['Totally Fake Feat', 'Toughness']}, {}, ['Totally Fake Feat']),
+    ('a feat past the class', {'classes': [{'name': 'wizard', 'level': 3}], 'feats': ['Improved Critical']},
+     {}, ['Improved Critical']),
     ('unknown key', {'clases': ['fighter']}, {}, ['clases']),
     ('not an object', ['fighter'], {}, ['selection']),
 )
@@ -367,6 +373,80 @@ def check_unmet(report):
                  'unmet [levels past the ceiling]: levels must come off the LAST class first')
 
 
+FEAT_LIST_KEYS = ('feats', 'story_feats', 'flaw_feats', 'flavor_feats', 'class_feats', 'trainer_feats')
+FEAT_TAX_KEYS = ('feats_feat_tax_dict', 'story_feat_tax_dict', 'flaw_feat_tax_dict',
+                 'flavor_feat_tax_dict', 'class_feat_tax_dict', 'trainer_feat_tax_dict')
+
+
+def held_feats(payload):
+    """Every feat on the sheet, lower-cased base names: the feat rows and the feat-tax children
+    bundled onto them (a child is held, it just does not occupy a slot)."""
+    held = set()
+    for key in FEAT_LIST_KEYS:
+        held.update(str(name).lower().split(' (')[0] for name in payload.get(key) or [])
+    for key in FEAT_TAX_KEYS:
+        for children in (payload.get(key) or {}).values():
+            held.update(str(name).lower().split(' (')[0] for name in children or [])
+    return held
+
+
+FEAT_CASES = (
+    # (label, class pins, feat pins, also held when the last pin is, overrides, every pin must land)
+    ('one feat', [{'name': 'fighter', 'level': 10}], ['Toughness'], [], {}, True),
+    ('three feats', [{'name': 'rogue', 'level': 8}], ['Iron Will', 'Great Fortitude', 'Alertness'], [], {}, True),
+    ('a chain is pulled in', [{'name': 'fighter', 'level': 10}], ['Great Cleave'], ['cleave'], {}, False),
+    ('a longer chain', [{'name': 'fighter', 'level': 12}], ['Spring Attack'], ['dodge', 'mobility'], {}, False),
+    ('past the ordinary slots', [{'name': 'fighter', 'level': 10}],
+     ['Toughness', 'Iron Will', 'Great Fortitude', 'Lightning Reflexes', 'Improved Initiative',
+      'Alertness', 'Run', 'Athletic'], [], {}, True),
+    ('a caster', [{'name': 'wizard', 'level': 9}], ['Spell Penetration', 'Toughness'], [], {}, True),
+    ('without the house feats', [{'name': 'fighter', 'level': 6}], ['Toughness', 'Iron Will'], [],
+     {'homebrew_feat_amount': 'N'}, True),
+    ('with optimize', [{'name': 'fighter', 'level': 10}], ['Toughness', 'Iron Will'], [],
+     {'optimize': 'y'}, True),
+)
+
+
+def check_feats(report):
+    for label, classes, feats, parents, overrides, must_land in FEAT_CASES:
+        for seed in SEEDS:
+            payload = generate(seed, {'classes': classes, 'feats': feats}, **overrides)
+            where = f'feats [{label}] seed {seed}'
+            if not report.check('error' not in payload, f'{where}: generation failed: {payload.get("error")}'):
+                continue
+            held = held_feats(payload)
+            for name in feats:
+                if reported(payload, f'feats: {name}'):
+                    report.check(not must_land, f'{where}: {name} has no prerequisite the class lacks, '
+                                                f'yet it was dropped: {payload.get("selection_report")}')
+                    continue                      # dropped AND said so: that is A2 working
+                report.check(name.lower() in held, f'{where}: {name} is not on the sheet and not reported')
+            if not reported(payload, f'feats: {feats[-1]}'):
+                for parent in parents:
+                    report.check(parent in held, f'{where}: {feats[-1]} is held without its prerequisite {parent}')
+            # No free feats: the pins sit IN the feat rows the character was owed, so pinning must
+            # not lengthen them. Same seed and classes, nothing pinned but the classes.
+            if must_land:
+                plain = generate(seed, {'classes': classes}, **overrides)
+                for key in ('feats', 'class_feats', 'story_feats', 'flaw_feats', 'flavor_feats'):
+                    report.check(len(payload.get(key) or []) == len(plain.get(key) or []),
+                                 f'{where}: {key} has {len(payload.get(key) or [])} rows pinned and '
+                                 f'{len(plain.get(key) or [])} unpinned -- a pin must cost a slot')
+    # More pins than a 1st-level commoner has slots: some land, and every one that does not is named.
+    many = ['Toughness', 'Iron Will', 'Great Fortitude', 'Lightning Reflexes', 'Improved Initiative',
+            'Alertness', 'Run', 'Athletic', 'Acrobatic', 'Endurance', 'Deceitful', 'Persuasive']
+    crowded = generate(SEEDS[0], {'classes': [{'name': 'commoner', 'level': 1}], 'feats': many})
+    if report.check('error' not in crowded, f'feats [more pins than slots]: {crowded.get("error")}'):
+        held = held_feats(crowded)
+        dropped = [name for name in many if name.lower() not in held]
+        report.check(dropped, 'feats [more pins than slots]: a 1st-level commoner held all twelve pinned feats')
+        report.check(any(name.lower() in held for name in many),
+                     'feats [more pins than slots]: not one pinned feat landed')
+        for name in dropped:
+            report.check(reported(crowded, f'feats: {name}'),
+                         f'feats [more pins than slots]: {name} was dropped without a report row')
+
+
 def check_nothing_pinned(report):
     for seed in SEEDS:
         for overrides in ({}, {'multi_class': 'Y', 'spheres_flag': 'Y'}, {'optimize': 'y'}):
@@ -375,7 +455,8 @@ def check_nothing_pinned(report):
             report.check(baseline.get('selection_report') == [],
                          f'{where}: selection_report is {baseline.get("selection_report")!r}, expected []')
             text = json.dumps(baseline, sort_keys=True, default=str)
-            for empty in ({}, {'classes': [], 'spheres': [], 'schools': {}, 'path_of_war': {}}):
+            for empty in ({}, {'classes': [], 'spheres': [], 'schools': {}, 'path_of_war': {},
+                               'feats': []}):
                 other = json.dumps(generate(seed, empty, **overrides), sort_keys=True, default=str)
                 report.check(other == text,
                              f'{where}: selection={empty!r} changed the character -- an empty '
@@ -391,6 +472,7 @@ def sabotage():
         ('disciplines', 'pinned_disciplines', lambda character: [], check_paths),
         ('path count', 'pinned_paths', lambda character: None, check_paths),
         ('schools', 'school_pins', lambda character: None, check_schools),
+        ('feats', 'pinned_feats', lambda character: [], check_feats),
     )
     for label, accessor, broken, check in proofs:
         original = getattr(selection, accessor)
@@ -412,11 +494,12 @@ def main():
     check_paths(REPORT)
     check_stat_priority(REPORT)
     check_optimize(REPORT)
+    check_feats(REPORT)
     check_unmet(REPORT)
     check_nothing_pinned(REPORT)
     sabotage()
     return REPORT.finish(f'{GENERATED[0]} generations; pins honoured, unmet pins reported, '
-                         f'no pin no change, six sabotage proofs', max_errors=40)
+                         f'no pin no change, seven sabotage proofs', max_errors=40)
 
 
 if __name__ == '__main__':

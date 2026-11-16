@@ -32,6 +32,10 @@ def separate_feats_func(character, feats):
    # they must reach the ordinary heading, and the negative-luck ledger names them by identity.
    protected = {str(n).lower() for n in (getattr(character, 'e_kat_feats_chosen', None) or [])}
    protected |= {str(n).lower() for n in (getattr(character, 'luck_bought_feats', None) or [])}
+   # SELECTION MODE: pinned feats are held back the same way, for the same reason -- a feat the
+   # player asked for by name is an ordinary feat, not a story or flaw feat. Empty without pins.
+   pinned = {str(n).lower() for n in (getattr(character, 'pinned_feats_chosen', None) or [])}
+   protected |= pinned
    held_back = []
    if protected:
       remaining = []
@@ -42,7 +46,18 @@ def separate_feats_func(character, feats):
    story_feats  = take(character.story_feat_amount)
    flaw_feats   = take(character.flaw_feat_amount)
    flavor_feats = take(character.flavor_feat_amount)
-   class_feats  = take(character.class_feats_amount)
+   # Pins that do not fit the ordinary track spill into the class bonus slots, ahead of the
+   # random picks those slots would have taken: a fighter who pinned eight combat feats has the
+   # slots for them, and the count guarantee would otherwise trim the overflow. The ordinary track
+   # holds normal_feat_amount rows, so that is where the spill starts.
+   spill = []
+   if pinned:
+      kept_pins = [f for f in held_back if str(f).lower() in pinned]
+      room = max(int(getattr(character, 'normal_feat_amount', 0) or 0), 0)
+      spill = kept_pins[room:][:max(character.class_feats_amount, 0)]
+      for f in spill:
+         held_back.remove(f)
+   class_feats  = spill + take(character.class_feats_amount - len(spill))
 
    print("character.class_feats_amount: ", character.class_feats_amount)
 
