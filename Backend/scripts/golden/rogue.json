@@ -4,7 +4,7 @@
  "alignment": "Chaotic Neutral",
  "animal_companion": null,
  "appearance": [
-  "Ponytail"
+  "Beautiful"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Shadow Scion\": {\n        \"source\": \"Legacy of the First World pg. 15 Count Ranalc's worshipers congregate in the places between dark and light, searching for secrets that might one day free their patron from his mysterious exile. Shadow scions have learned some of these secrets and draw power from the shadows themselves. Many shadow scions are dedicated fetchling ( Pathfinder RPG Bestiary 2 123) or wayang ( Pathfinder RPG Bestiary 4 274) devotees of Count Ranalc.\",\n        \"shadow dweller (ex)\": \" A shadow scion gains darkvision with a range of 30 feet and a +1 competence bonus on Stealth checks in dim light and darkness. If she already has darkvision, the range of her darkvision increases by 10 feet. At 3rd level, and every 2 levels thereafter, the range of her darkvision increases by 10 feet and her bonus on Stealth checks increases by 1. This ability replaces trapfinding.\",\n        \"shadow strike\": \" At 2nd level, a shadow scion gains Shadow Strike APG as a bonus feat. A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains Blind-Fight as a bonus feat. This ability replaces the rogue talent gained at 2nd level.\",\n        \"shadow step (sp)\": \" At 8th level, a shadow scion can walk through the Shadow Plane and reappear elsewhere on the Material Plane as a standard action. The shadow scion can travel up to 30 feet per rogue level per day in this fashion, either in a single round or broken up across multiple shadow steps. This movement must be used in increments of at least 5 feet and does not provoke attacks of opportunity. Travel through the Shadow Plane is imprecise; when the shadow scion arrives back on the Material Plane, she reenters 1 square off target, as per the rules for thrown splash weapons. If this would place her in an occupied square, she instead arrives in the nearest safe location. When the shadow scion arrives on the Material Plane, she is cloaked in shadow and gains concealment as per the blur spell for 1 round. This ability replaces the rogue talent gained at 8th level.\",\n        \"shadow speaker (sp)\": \" At 14th level, a shadow scion can spend 1 minute meditating within a patch of dim light or darkness; at the end of the time, she can draw information from the shadows. This functions as commune with nature , except that it functions in any terrain to a radius of 100 feet per rogue level, and it cannot reveal information about any object or subject that is not currently in dim light or darkness. The shadow scion can use this ability once per day at 14th level and twice per day at 19th level. This ability replaces the rogue talent gained at 14th level.\",\n        \"shadow master (su)\": \" At 20th level, whenever a shadow scion is in an area of dim light, she gains DR 10/cold iron and a +2 luck bonus on all saving throws. In addition, whenever she confirms a critical hit against a foe that is in an area of dim light, that foe is blinded for 1d6 rounds. This ability replaces master strike.\",\n        \"rogue talents\": \" The following rogue talents complement the shadow scion archetype: false friend ARG , fast stealth, slow reactions, surprise attack, and underhanded UC\",\n        \"advanced talents\": \" The following advanced rogue talents complement the shadow walker archetype: hide in plain sight UC , improved evasion, slippery mind, and unwitting ally UC\"\n    }\n}",
@@ -12,12 +12,14 @@
  "armor_armor_check_penalty": "0",
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [
-  "Vigilant"
+  "Determination"
  ],
+ "armor_material": "darkwood",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "6",
  "armor_name": "Rosewood armor",
  "armor_spell_failure": "10%",
- "armor_weight": "15 lbs.",
+ "armor_weight": "7.5 lbs.",
  "bab_total": 13,
  "background_traits": [
   "Caravan Guard"
@@ -37,20 +39,37 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Easy Focus"
+   "Easy Focus",
+   "Empowered Abilities"
   ],
   "boons_detail": [
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
+   },
+   {
+    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
+    "name": "Empowered Abilities"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
+   "Skilled Casting",
+   "Painful Magic",
    "Extended Casting",
-   "Skilled Casting"
+   "Magical Signs"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
+    "name": "Skilled Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
    {
     "counts_as": 2,
     "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
@@ -58,8 +77,8 @@
    },
    {
     "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
    }
   ]
  },
@@ -278,12 +297,133 @@
  ],
  "combat_talent_items": [
   {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You can fluidly mount and dismount, transitioning from mounted to unmounted combat with ease.\n\nYou gain the following abilities:\n\nLeaping Charge: You may use the leaping dismount ability granted by this talent during a mounted charge attack. If you move at least 10 feet towards the target of your charge attack using leaping dismount, the bonus on attack rolls made at the end of a charge and the penalty to your AC after performing a charge attack both increase by +1 + 1 per 5 ranks of Ride you possess. You are still considered mounted for this charge attack for the purposes of lance damage, mounted combat feats, and other abilities or effects. You may use leaping dismount to move into any unoccupied space within reach of the target of your charge, even if it would not be the closest square for a charge.\n\nLeaping Dismount: Whenever you dismount your mount (normally a move action, or as a free action with a successful fast dismount), instead of dismounting into a square adjacent to your mount, you may spend an immediate action to jump, moving in any direction up to 10 feet + 5 feet for every 5 ranks in Ride you possess (without needing to attempt an Acrobatics check to jump). Leaping dismount's movement provokes attacks of opportunity as normal.\n\nSkilled Mount and Dismount: You can attempt Ride checks to fast mount or fast dismount your mount even if your mount is more than one size category larger than you. You may take 10 on Ride checks to fast mount or fast dismount, even if rushed or threatened.\n\nNote: The leaping charge ability granted by this talent allows you to perform a charge attack against a target further than your mount's movement provided you move into an empty space within reach of your target with leaping dismount.",
+   "name": "Leaping Rider",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While in this stance, you may occupy the same square(s) as your animal allies at no penalty. Whenever you occupy the same square as an animal ally during this stance, you may expend an attack of opportunity to change the target of an attack targeting that animal ally to you as a free action that can be taken even outside your normal turn. Additionally, animal allies who occupy the same square as you in this manner may substitute your base attack bonus for their own, up to their number of Hit Dice, as long as the stance lasts.",
+   "name": "Two As One",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Any creature serving as your mount counts as tame and an animal ally and as having been combat trained per the Handle Animal skill. This does not allow you to handle or push a creature of greater than animal Intelligence (Intelligence 3 or higher), but does allow them to benefit from some talents, such as Lookout or Pack Attack, though not from any that grant additional tricks, purposes, or Hit Dice. The creature no longer counts as tame or an animal ally once you dismount. Additionally, you may add half your base attack bonus (minimum +1) as a competence bonus on all checks to stay mounted and never fall off your mount when you become unconscious unless you choose to at the time you fall unconscious. You never take a penalty on ride checks for lacking a saddle, bit, or bridle.",
+   "name": "Wild Rider",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever you use the aid another action to assist an animal ally or an animal ally uses the aid another action to assist you, the aid another bonus increases by +1 + 1 per 5 ranks in Handle Animal or Ride you possess.",
+   "name": "Faithful Friend",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While within the threatened area of an animal ally, when you or the animal ally performs a combat maneuver, the other may make an aid another check to boost the combat maneuver check as an immediate action.",
+   "name": "Accomplice",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Any creature you are mounted on gains a competence bonus to armor class and combat maneuver defense equal to 1/2 your ranks in Ride (rounded down, minimum +1). In addition, your mount gains a pool of temporary hit points that regenerate at a rate of 1 per minute up to a maximum amount equal to your ranks in Ride; your mount starts at 1 temporary hit point when you mount and these hit points disappear immediately if you begin your turn not mounted on that creature.",
+   "name": "Armored Mount",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may tame creatures with the swarm subtype that are otherwise of a creature type that you can affect. When taming a creature in this way, they count as twice their Hit Dice against the total amount you may have tame at once. This increase does not stack with the increase for creatures not of the animal type from the Broad Skills talent. Additionally, you are immune to swarm damage from swarms that have a friendly or better disposition towards you.",
+   "name": "Bee Keeper",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When your mount is targeted by an attack or subject to a Reflex save, you may spend an attack of opportunity to make a Ride check and use the result in place of your mount's AC or Reflex save result, if higher. Associated Feat: Mounted Combat.",
+   "name": "Defensive Rider",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "While mounted, you may substitute a Ride skill check in place of an Acrobatics skill check for you and your mount when moving through a threatened square.",
+   "name": "Acrobatic Mount",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Any creature you are mounted on is considered proficient with all armors you are proficient with. If you fail the Ride check granted by the Defensive Rider talent by 5 or less while your mount is wearing barding that it is proficient with, the attack damages your mount's barding instead of your mount. Any damage in excess of the barding's hit points is dealt to the mount.\n\nIn addition, your mount may fly in medium or heavy barding.\n\nNormal: A mount wearing medium or heavy barding cannot fly.",
+   "name": "Barding Expertise",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Whenever you take an action that is similar to a Handle Animal trick, the next time you handle or push your animal allies to perform that trick before the end of your next turn, reduce the time required to handle or push those animal allies by 1 step. This reduction stacks with the Rapid Handle talent.\n\nWhenever you handle or push an animal ally to perform a trick, that animal ally gains a +1 circumstance bonus on all attack rolls, skill checks, and ability checks made to perform that trick for a number of rounds equal to your practitioner modifier (minimum 1). For every 10 ranks in Handle Animal you possess, the circumstance bonus on rolls granted by this talent increases by +1.\n\nThe action reduction and bonuses granted by Hands-On Handler do not stack with itself; if two handlers would grant an animal ally a bonus using this talent, only the highest bonus applies.\n\nExample: You attack an enemy. Until the end of your next turn, if you would handle or push your tamed wolf to use the attack trick or another similar trick (such as bombard, demolish, feint, flank, etc.), the time required to handle or push your tamed wolf is reduced by 1 step.\n\nGMs should determine if an action taken by a character is reasonably similar to tricks available through Handle Animal. Distracting a target with bubbles created by an Illusion effect is not similar enough to the attack trick.",
+   "name": "Hands-on Handler",
+   "sphere": "Beastmastery",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "You may create a special elixir that restores a creature to its starting age as a young adult. All penalties to Strength, Dexterity, and Constitution the drinker may have suffered as a result of advanced age are removed, but all bonuses to Intelligence, Wisdom, and Charisma that result from advanced age remain (although as the character ages again into middle age and beyond, he does not gain any of these bonuses a second time). Unlike a standard formulae, it takes 1 month to brew an elixir of immortality, and it costs an additional 50,000 gp in materials to create.",
-   "name": "Elixir Of Immortality",
-   "sphere": "Alchemy",
+   "description": "As a swift action, you may call all of your animal allies to your side. They must be within 1 mile per rank in Handle Animal and come at their best speed, avoiding apparent hazards and danger to the best of their ability. This movement takes place using the creature's normal actions on its turn. At 10 ranks in Handle Animal, the animal allies need only be on the same plane.",
+   "name": "Call Beast",
+   "sphere": "Beastmastery",
    "system": "Spheres of Might",
    "type": "base",
    "uses": null
@@ -302,26 +442,26 @@
  "deity_name": "Calistria",
  "dex": 19,
  "enhancement_desc_dict": {
-  "corrosive burst": "A corrosive burst weapon functions as a corrosive weapon that explodes with searing acid upon striking a successful critical hit. The acid does not harm the wielder. In addition to the extra acid damage from the corrosive special ability, a corrosive burst weapon deals an extra 1d10 points of acid damage on a successful critical hit. If the weapon's critical modifier is 3, add an extra 2d10 points of acid damage instead, and if the modifier is 4, add an extra 3d10 points. Even if the corrosive ability is not active, the weapon still deals its extra acid damage on a successful critical hit.",
-  "designating (lesser)": "This special ability can only be placed on ranged weapons or ammunition. Each time a ranged weapon or ammunition with this ability hits a creature, its magic designates the target. Allies gain a +2 morale bonus on melee attack and melee damage rolls against the designated target for 1 round. Multiple successful shots fired at the same target do not increase the bonuses or their duration.",
-  "lucky": "This special ability can only be placed on one-handed or two-handed firearms. A lucky firearm has its own magical reservoir of grit (see Ultimate Combat ). Usually this grit is stored within the marks of an engraving or in a trinket that hangs from the firearm. Often these marks take the form of holy symbols or fetishes, but such a reservoir can take just about any form. This reservoir holds 1 grit point, which is refreshed at the start of each day. Whether or not the wielder of a lucky firearm has any deeds (see Ultimate Combat ), she can always spend 1 grit point from the lucky firearm to reroll an attack from it that would result in a misfire. When the wielder does so, she must take the second result, even if that attack roll also results in a misfire.",
-  "vigilant": "Armor with this special ability is often engraved or enameled with lawful religious symbols. Once per day on command, the wearer can invoke an effect, as per the spell righteous might , except the wearer gains DR 5/chaotic instead of DR/evil or DR/good. This lasts for 10 rounds. Vigilant armor bestows one permanent negative level on any chaotic creature attempting to wear it. The negative level remains as long as the armor is worn and disappears when it is removed. This negative level cannot be overcome in any way (including by restoration spells) while the armor is worn."
+  "determination": "A shield or armor with the determination special ability provides the ability to fight on even in the face of seemingly impossible odds. Once per day, when the owner reaches 0 or fewer hit points, the item automatically provides a breath of life spell.",
+  "flaming": "Upon command, a flaming weapon is sheathed in fire that deals an extra 1d6 points of fire damage on a successful hit. The fire does not harm the wielder. The effect remains until another command is given.",
+  "holy": "A holy weapon is imbued with holy power. This power makes the weapon good-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of evil alignment. It bestows one permanent negative level on any evil creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including by restoration spells) while the weapon is wielded.",
+  "icy burst": "An icy burst weapon functions as a frost weapon that also explodes with frost upon striking a successful critical hit. The frost does not harm the wielder. In addition to the extra damage from the frost ability, an icy burst weapon deals an extra 1d10 points of cold damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d10 points of cold damage instead, and if the multiplier is ×4, add an extra 3d10 points. Even if the frost ability is not active, the weapon still deals its extra cold damage on a successful critical hit."
  },
  "enhancement_effects_dict": {
   "armor": {
-   "Vigilant": {
+   "Determination": {
     "changes": [],
     "contextNotes": [
      {
       "target": "ac",
-      "text": "Vigilant: [[1]]/day on command, righteous might with DR 5/chaotic for [[10]] rounds; a chaotic creature wearing it gains [[1]] permanent negative level while worn."
+      "text": "Determination: 1/day, when reduced to negative hit points, the wearer is automatically affected by breath of life."
      }
     ],
-    "description": "Armor with this special ability is often engraved or enameled with lawful religious symbols. Once per day on command, the wearer can invoke an effect, as per the spell righteous might , except the wearer gains DR 5/chaotic instead of DR/evil or DR/good. This lasts for 10 rounds. Vigilant armor bestows one permanent negative level on any chaotic creature attempting to wear it. The negative level remains as long as the armor is worn and disappears when it is removed. This negative level cannot be overcome in any way (including by restoration spells) while the armor is worn."
+    "description": "A shield or armor with the determination special ability provides the ability to fight on even in the face of seemingly impossible odds. Once per day, when the owner reaches 0 or fewer hit points, the item automatically provides a breath of life spell."
    }
   },
   "weapon": {
-   "Corrosive Burst": {
+   "Flaming": {
     "conditionals": [
      {
       "default": true,
@@ -329,7 +469,49 @@
        {
         "critical": "nonCrit",
         "damageType": [
-         "acid"
+         "fire"
+        ],
+        "formula": "1d6",
+        "subTarget": "allDamage",
+        "target": "damage",
+        "type": "untyped"
+       }
+      ],
+      "name": "Flaming"
+     }
+    ],
+    "description": "Upon command, a flaming weapon is sheathed in fire that deals an extra 1d6 points of fire damage on a successful hit. The fire does not harm the wielder. The effect remains until another command is given."
+   },
+   "Holy": {
+    "conditionals": [
+     {
+      "default": false,
+      "modifiers": [
+       {
+        "critical": "nonCrit",
+        "damageType": [
+         "good"
+        ],
+        "formula": "2d6",
+        "subTarget": "allDamage",
+        "target": "damage",
+        "type": "untyped"
+       }
+      ],
+      "name": "Holy: only vs evil creatures; an evil wielder gains [[1]] negative level while wielding"
+     }
+    ],
+    "description": "A holy weapon is imbued with holy power. This power makes the weapon good-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of evil alignment. It bestows one permanent negative level on any evil creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including by restoration spells) while the weapon is wielded."
+   },
+   "Icy Burst": {
+    "conditionals": [
+     {
+      "default": true,
+      "modifiers": [
+       {
+        "critical": "nonCrit",
+        "damageType": [
+         "cold"
         ],
         "formula": "1d6",
         "subTarget": "allDamage",
@@ -339,7 +521,7 @@
        {
         "critical": "crit",
         "damageType": [
-         "acid"
+         "cold"
         ],
         "formula": "1d10",
         "subTarget": "allDamage",
@@ -347,144 +529,105 @@
         "type": "untyped"
        }
       ],
-      "name": "Corrosive Burst: crit rider assumes a x2 weapon — on a x3 crit the extra acid is [[2d10]], on a x4 crit [[3d10]]"
+      "name": "Icy Burst: crit rider assumes a x2 weapon — on a x3 crit the extra cold is [[2d10]], on a x4 crit [[3d10]]"
      }
     ],
-    "description": "A corrosive burst weapon functions as a corrosive weapon that explodes with searing acid upon striking a successful critical hit. The acid does not harm the wielder. In addition to the extra acid damage from the corrosive special ability, a corrosive burst weapon deals an extra 1d10 points of acid damage on a successful critical hit. If the weapon's critical modifier is 3, add an extra 2d10 points of acid damage instead, and if the modifier is 4, add an extra 3d10 points. Even if the corrosive ability is not active, the weapon still deals its extra acid damage on a successful critical hit."
-   },
-   "Designating (lesser)": {
-    "conditionals": [
-     {
-      "default": false,
-      "modifiers": [],
-      "name": "Designating (lesser): (ranged) on hit, allies gain +[[2]] morale on melee attack and damage rolls vs the target for [[1]] round (multiple hits don't stack)"
-     }
-    ],
-    "description": "This special ability can only be placed on ranged weapons or ammunition. Each time a ranged weapon or ammunition with this ability hits a creature, its magic designates the target. Allies gain a +2 morale bonus on melee attack and melee damage rolls against the designated target for 1 round. Multiple successful shots fired at the same target do not increase the bonuses or their duration."
-   },
-   "Lucky": {
-    "conditionals": [
-     {
-      "default": false,
-      "modifiers": [],
-      "name": "Lucky: (firearm) holds [[1]] grit point (refreshes daily); spend it to reroll an attack that would misfire (keep the second result)"
-     }
-    ],
-    "description": "This special ability can only be placed on one-handed or two-handed firearms. A lucky firearm has its own magical reservoir of grit (see Ultimate Combat ). Usually this grit is stored within the marks of an engraving or in a trinket that hangs from the firearm. Often these marks take the form of holy symbols or fetishes, but such a reservoir can take just about any form. This reservoir holds 1 grit point, which is refreshed at the start of each day. Whether or not the wielder of a lucky firearm has any deeds (see Ultimate Combat ), she can always spend 1 grit point from the lucky firearm to reroll an attack from it that would result in a misfire. When the wielder does so, she must take the second result, even if that attack roll also results in a misfire."
+    "description": "An icy burst weapon functions as a frost weapon that also explodes with frost upon striking a successful critical hit. The frost does not harm the wielder. In addition to the extra damage from the frost ability, an icy burst weapon deals an extra 1d10 points of cold damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d10 points of cold damage instead, and if the multiplier is ×4, add an extra 3d10 points. Even if the frost ability is not active, the weapon still deals its extra cold damage on a successful critical hit."
    }
   }
  },
  "equip_descrip": {
   "belts": {
-   "description": " an engraving of a charging rhinoceros\r decorates this thick leather belt. The\r belt grants its wearer a +2 enhancement\r bonus to strength. Treat this as a\r temporary ability bonus for the first 24 hours the belt is worn. The belt magnifies the wearer's momentum whenever she\r charges, granting her a +2 bonus on bull rush and overrun\r maneuvers. Furthermore, when the wearer makes a charge\r attack, her melee weapons and natural weapons deal\r damage as if they were one size category larger than they\r actually are. ",
-   "item_name": "Belt of Thunderous Charging"
+   "description": " rather than being made of one continuous line\r of material, this belt consists of many bits of\r tanned leather joined together by thick metal\r studs. On command, the belt's wearer can\r transform the belt into a single masterwork\r slashing and/or piercing melee weapon of her\r choice. As long as she is holding the weapon, she can also revert it back to belt form with a command. Furthermore, the belt\r can be enchanted like a piercing and slashing melee weapon, \r using the cost of the belt as the cost of the masterwork item. ",
+   "item_name": "Bladed Belt"
   },
   "body": {
-   "description": " the pockets of this simple blue robe\r always seem to carry just what the\r wearer needs whenever she casts a spell. \r the robe functions as a spell component\r pouch, providing any spell components or\r focuses that are necessary for the wearer's\r spellcasting. The robe can even produce\r spell components or focuses with a specific\r cost, though it provides no more than 50worth of such\r materials in any single day. The materials supplied by the robe\r are suitable only for spellcasting, and disappear if they leave\r the wearer's person or when the spell requiring them is cast. ",
-   "item_name": "Robe of Components"
+   "description": " this long cloth is wrapped around the chest multiple times\r like a bandage. Once per round, the wearer may add an\r enhancement bonus of +1 to +5 on one attack and damage\r roll for an unarmed strike or natural attack (for one specific\r attack, not all attacks made with an unarmed strike that\r round). The wearer may use this item an additional time per\r round when his bab reaches +6, +11, and +16. Choosing to enhance an unarmed strike is not an action\r and may occur when it is not the wearer's turn (such as when\r making an attack of opportunity). The wearer must decide\r to use the item before the attack roll is made, but does not\r have to expend all uses at the same time. For example, if the\r wearer can use the item twice per round, he can use it once\r on his turn when making an attack and save the second for\r the possibility of making an attack of opportunity. Additionally, the bodywrap can grant melee weapon\r special abilities to a creature's unarmed attacks, so long\r as those special abilities to be added apply to unarmed\r attacks. See table 38: melee weapon special abilities\r (page 137) for a list of abilities. Special abilities count as\r additional bonuses for determining the market value of\r the item, but do not modify attack or damage bonuses. \r any special abilities are set at the time of creation. A bodywrap of mighty strikes cannot have a modified\r bonus (enhancement bonus plus special ability bonus\r equivalents) higher than +7. Unlike an amulet of mighty\r fists , a bodywrap needs to have a +1 enhancement bonus\r to grant a melee weapon special ability. ",
+   "item_name": "Bodywrap of Mighty Strikes +1"
   },
   "chest": {
-   "description": " this bright red strip of cloth, stitched with images of a cheering\r crowd throwing garlands toward a chariot, fits across the\r wearer's shoulders and then diagonally down his chest to reach\r his opposite hip. The wearer treats his fighter level as 4 higher\r than normal for the purpose of the armor training and bravery\r class features. ",
-   "item_name": "Sash of the War Champion"
+   "description": " a vest of the deep creates a constant shell of magical energy that protects the wearer from extreme environmental pressure, such as that inflicted by water at a depth of over 100 feet. It does not provide any protection from constriction or other forms of direct crushing damage, nor does it grant water breathing. ",
+   "item_name": "Vest of the Deep"
   },
   "eyes": {
-   "description": " a solid gold band encircles this intricate convex glass lens. Three times per day as a standard action, the wearer can attempt an appraise check against a creature within 60 feet (dc = 10 + target's hit dice + target's wisdom bonus). With a successful check, the wearer knows the amount of currency the creature is carrying, as well as the number of valuable objects (with a price greater than 20) the target carries (though the wearer doesn't know which items qualify, or the exact value of the objects). In addition, once per day, the wearer of a marker's monocle can mark one creature with a melee touch attack, allowing up to 3 allies within 30 feet to track the marked creature for 30 minutes, as if the wearer's allies had the scent ability. ",
-   "item_name": "Marker's Monocle"
+   "description": " the wearer of this crystal monocle gains the ability to use detect chaos , detect evil , detect good , detect magic , or detect law , each at will for as long as he concentrates, but only one at a time. Any caster level checks to penetrate magical protections receive a +5 bonus, and use the higher of the item's caster level or the wearer's character level. The wearer can expend one use of mythic power to gain the benefits of arcane sight and see invisibility for 1 hour, or until the monocle is removed. ",
+   "item_name": "Monocle of Unveiled Auras"
   },
   "feet": {
-   "description": " these boots look and act as the minor burglar boots , but grant\r a +10 competence bonus on perception checks and to ac and on\r reflex saves. Also, once per day on command, these boots grant\r the wearer the ability to use find traps as the spell. ",
-   "item_name": "Burglar Boots, Major"
+   "description": " these sandals are made of cloth and animal hide stitched to wood blocks that elevate them an inch off the ground. Monks often wear them as they roam across the deserts of northern g arund, traveling with no food or water to perfect their physical forms. The wearer of sandstorm sandals leaves no trace while traveling in desert environments. If the wearer possesses the flurry of blows class feature, anytime he makes an unarmed flurry of blows while standing on sand or dirt, a minor storm appears around him for 1 round. Any creature that ends its movement within 5 feet of the wearer during this time takes 1 point of nonlethal damage. While the storm is active, the sandals' wearer gains concealment (20% miss chance). ",
+   "item_name": "Sandstorm Sandals"
   },
   "hands": {
-   "description": " these nondescript white gloves are a boon to minor\r spellcasters and fakes who are limited or lacking in magical\r ability or versatility. The wearer of these gloves can employ mage hand and prestidigitation at will. ",
-   "item_name": "Apprentice's Cheating Gloves"
+   "description": " each of these fingerless worked\r leather gloves look as though they\r have seen heavy use, and often bear\r the stains or scent of grass or wet mud. \r on command, the wearer can use the\r gloves to see and hear though solid\r material no more than 5 feet thick by placing both hands on\r that material. The wearer can use the gloves once per day for up to 1 minute. The wearer must wear the gloves continuously for 24 hours before activating his ability. ",
+   "item_name": "Gloves of Reconnaissance"
   },
   "head": {
-   "description": " this finely constructed mask of colored cloth and carved bone incorporates parts of the animal it represents, such as its hair, hide, horn, fur, and teeth. Depicting the head of an ape, bear, boar, cat, fox, horse, pig, rat, or wolf, the mask completely covers the wearer's face, but the wearer can see through the mask's eyes as though they were her own. As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to 5 minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. While so transformed, the wearer retains the ability to speak normally and can complete verbal spell components, utter command words, and activate spell-completion and spell-trigger items. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals 1d4 points of damage for a medium wearer (1d3 if small). This duration does not need to be consecutive, but it must be used in 1-minute increments. ",
-   "item_name": "Animal Mask"
+   "description": " this linen hood is simply decorated with the colors of the forest and designed to cast a dramatic shadow upon the wearer's face, obscuring identifiable features. A vagrant's hood grants the wearer a +4 competence bonus on disguise checks and makes the wearer's voice sound deep and throaty, as per vocal alteration ",
+   "item_name": "Vagrant's Hood"
   },
   "headband": {
-   "description": " this ornate headband is decorated\r with numerous clusters of small\r gemstones. The headband grants\r the wearer an enhancement bonus\r to all mental ability scores (intelligence, wisdom, and charisma)\r of +2, +4, or +6. Treat this as a temporary ability bonus for the\r first 24 hours the headband is worn. The headband also grants\r skill ranks as a headband of vast intelligence ",
-   "item_name": "Headband of Mental Superiority +6"
+   "description": " uncomfortably sharp protrusions bristle on the inner edge of this heavy, bronze headband. It grants its wearer a +4 enhancement bonus to intelligence. Treat this as a temporary ability bonus for the first 24 hours the headband is worn. It also grants skill ranks as a headband of vast intelligence +4 . The wearer is protected from all effects that gather information about her via divination, and gains a bonus equal to her mythic tier on saving throws against mind-affecting effects. This protection otherwise functions as mind blank , except the headband provides no protection against limited wish , miracle , and wish , and it doesn't grant a resistance bonus on saving throws. When the wearer succeeds at a saving throw against a mind-affecting effect, she can rebound the effect onto the caster as an immediate action by expending one use of mythic power. Treat this as the original spell or effect, except the wearer is treated as the caster and the original caster as the target. The rebounded spell affects only the original caster, and rebounding doesn't prevent the original spell from affecting targets other than the wearer of the headband of sealed thoughts ",
+   "item_name": "Headband of Sealed Thoughts"
   },
   "neck": {
-   "description": " this small iron locket contains some tokena scale, a shaving of a horn or claw, or lock of burning hairfrom a fiend. When worn by a tiefling, if he has cold, electricity, or fire resistance, this amulet increases that resistance by 5. Furthermore, it provides a +4 insight bonus on diplomacy skill checks made to influence evil outsiders. ",
-   "item_name": "Darksire Amulet"
+   "description": " this mummified dwarf hand hangs on a steel chain around a\r character's neck, bringing the wearer more in tune with the\r earth beneath her feet. If the wearer spends a standard action\r concentrating on the hand, she gains tremorsense out to a\r range of 30 feet until the start of her next turn. This ability only\r allows her to sense creatures and objects that are in contact\r with earth or stone. ",
+   "item_name": "Hand of Stone"
   },
   "rings": {
-   "description": "This bone ring is the shape of an elongated rat biting its own tail. The wearer gains a bite attack as a primary natural attack. This attack deals 1d4 points of piercing damage for a Medium wearer or 1d3 points of damage for a Small wearer. After about a week of wearing the ring, the wearer's appearance becomes more ratlike, though she still looks like a member of her original race (for example, a human might gain prominent teeth).",
-   "item_name": "Ring of Rat Fangs"
+   "description": "This steel ring is inlaid with adamantine swords and shields. The wearer gains a +5 competence bonus on Profession (soldier) checks, and anytime the wearer gives or receives a numeric bonus from a teamwork feat or the aid another action, that bonus increase by +1. By wearing the ring for 1 hour, a creature may imbue it with a teamwork feat he knows for 24 hours. During this time, any creature wearing the ring may use that feat when cooperating with the creature that imbued it, but not with other creatures even if they possess the same teamwork feat. If the ring is imbued with a new teamwork feat, it replaces the previous feat.",
+   "item_name": "Ring of Tactical Precision"
   },
   "shoulders": {
-   "description": " this garish cloak of red velvet is embroidered with gold-threaded\r patterns, typically in shapes of sinisterly masked\r harlequins or other imagery of sinister revelry. The cloak\r acts like a cloak of the mountebank , but its dimension door power can be used three times per day. Furthermore, once\r per day the wearer of the cloak can use ethereal jaunt , as\r per the spell. ",
-   "item_name": "Charlatan's Cape"
+   "description": " the wearer can spend a full-round action concentrating to change the color of this short, silken cape to match any attire or mood. When using the derring-do 1st-level swashbuckler deed, the wearer adds an additional die when rolling either a natural 5 or 6 rather than just a natural 6. Additionally, the cape grants a +2 resistance bonus on saving throws. This bonus increases to +4 for 1 round each time the wearer uses the charmed life swashbuckler class feature. ",
+   "item_name": "Cape of Daring Deeds"
   },
   "wrist": {
-   "description": " these tortoise-shell bracers fit so snuggly against their wearer's\r skin that they almost seem part of him. The wearer of these\r bracers becomes exceptionally calm and composed if she takes\r her time to accomplish particular tasks. Whenever she takes 20\r on a skill check for a skill that primarily depends on her arms and\r hands, she gains a +5 competence bonus on the check. ",
-   "item_name": "Bracers of Steadiness"
+   "description": " these tight-fitting mithral bracers are used throughout the inner sea region in nations where dueling is prominent. The wearer of dueling cuffs gains a +1 deflection bonus to ac. This bonus increases to +2 if the wearer is wielding one or more weapons that benefit from the weapon finesse feat. In a duel (ultimate combat 150), the wielder doesn't take the normal 5 penalty when using the dueling parry action. In addition, the wielder can attempt to deflect ranged attacks from firearms with a dueling parry, but takes a 5 penalty on such attempts. ",
+   "item_name": "Dueling Cuffs"
   }
  },
  "equipment_list": [
-  "Belt of Thunderous Charging",
-  "Robe of Components",
-  "Sash of the War Champion",
-  "Marker's Monocle",
-  "Burglar Boots, Major",
-  "Apprentice's Cheating Gloves",
-  "Animal Mask",
-  "Headband of Mental Superiority +6",
-  "Darksire Amulet",
-  "Charlatan's Cape",
-  "Bracers of Steadiness",
-  "Rings of Alien Geometries",
-  "Ring of Rat Fangs"
+  "Bladed Belt",
+  "Bodywrap of Mighty Strikes +1",
+  "Vest of the Deep",
+  "Monocle of Unveiled Auras",
+  "Sandstorm Sandals",
+  "Gloves of Reconnaissance",
+  "Vagrant's Hood",
+  "Headband of Sealed Thoughts",
+  "Hand of Stone",
+  "Cape of Daring Deeds",
+  "Dueling Cuffs",
+  "Droskar's Guiding Ring",
+  "Ring of Tactical Precision"
  ],
  "eye_color": [
-  "Grey"
+  "Blue"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 8,
+  "normal": 3,
   "profession": 2,
   "story": 4,
   "teamwork": 0,
   "trainer": 9
  },
  "feat_changes_dict": {
-  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))": {
-   "changes": [
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    },
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Scorching Weapons": {
+  "Harrowed": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "+2 bonus on saving throws against fire attacks and spells with the fire or light descriptor"
+     "target": "will",
+     "text": "+1 on all Will saves made to resist enchantment effects."
     }
    ]
   }
  },
  "feat_conditionals_dict": {
-  "Charging Hurler": {
+  "Harrowed": {
    "default": false,
    "modifiers": [
     {
@@ -496,59 +639,46 @@
      "type": "untyped"
     }
    ],
-   "name": "Charging Hurler: When making a thrown-weapon attack as a charge (end movement within 30 ft of the target): +2 on the attack roll and -2 to AC until the start of your next turn."
-  },
-  "Point-Blank Shot": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
-    },
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allDamage",
-     "target": "damage",
-     "type": "untyped"
-    }
-   ],
-   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
+   "name": "Harrowed: Cost: [[1]]/day (Harrow card draw); Activation: applied after the roll but before the result is known; Effect: +[[2]] bonus to the attack roll if the drawn card's suit matches",
    "tier": "A"
   }
  },
  "feats": [
-  "Dreadforger",
-  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))",
-  "Improved Implantation",
-  "Additional Traits",
-  "Coordinated Distraction",
-  "Lesser Spirits (invoker)",
-  "Arcane Weaponry (combat)",
-  "Cleave",
-  "Extra Combat Talent (Elixir Of Immortality)",
+  "Saving Shield",
+  "Life's Blood",
+  "Voice of the Sibyl",
+  "Extra Combat Talent (Leaping Rider / Two As One)",
+  "Extra Combat Talent (Wild Rider / Faithful Friend)",
+  "Extra Combat Talent (Accomplice / Armored Mount)",
+  "Extra Combat Talent (Bee Keeper / Defensive Rider)",
+  "Extra Combat Talent (Acrobatic Mount / Barding Expertise)",
+  "Extra Combat Talent (Hands-on Handler / Call Beast)",
   "Multi Talented",
   "True Calling"
  ],
  "feats_feat_tax_dict": {
-  "Cleave": [
-   "cleaving finish",
-   "great cleave",
-   "improved cleaving finish",
-   "surprise follow-through"
+  "Extra Combat Talent (Accomplice / Armored Mount)": [
+   "Extra Combat Talent"
   ],
-  "Extra Combat Talent (Elixir Of Immortality)": [
+  "Extra Combat Talent (Acrobatic Mount / Barding Expertise)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Bee Keeper / Defensive Rider)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Hands-on Handler / Call Beast)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Leaping Rider / Two As One)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Wild Rider / Faithful Friend)": [
    "Extra Combat Talent"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Siphon Poison"
+  "Firebrand"
  ],
  "flaw": [
   "Fussy Eater",
@@ -586,54 +716,63 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Combat Reflexes": [
+   "bodyguard",
+   "in harm's way",
+   "pin down",
+   "porcupine defense",
+   "stand still",
+   "steady engagement"
+  ]
+ },
  "flaw_feats": [
-  "Measured Response",
-  "Cosmopolitan"
+  "Combat Reflexes",
+  "Enforcer"
  ],
- "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An excellent trainer who taught them Focused Worker, Dragonslayer, Ki Stand\n- Training: An excellent trainer who taught them Iron Will, Flanking Specialist (combat), Point-Blank Shot\n- Training: An excellent trainer who taught them Impact Critical Shot, Charging Hurler, Tower Shield Proficiency\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Bald Grey\n- Eyes: Grey\n- Build: Ponytail",
+ "formatted_bio": "Caroline Landry\n- Alignment: Chaotic Neutral\n- Deity: Calistria\n- Race: Halfling\n- Class: Level 18 Rogue\n- Archetype: Trickster\n- Tactics: Fights only on its own terms: opens from hiding or a flank, lands precision damage into a flat-footed target, then repositions before the enemy orients. Denied its setup, it feints, hides, or withdraws until the window reopens.\n- Stat Focus: Dex\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ranger (rank 15)\n- Profession: Centaur Cavalier (rank 10)\n- Profession: Kraken Wrangler (rank 8)\n- Known for: Clockwork\n- Training: An average trainer who taught them Dark Embrace, Equipment Trick\n- Training: An excellent trainer who taught them Harrowed, Martial Training I, Uncanny Activation\n- Training: An average trainer who taught them Discipline Expertise, Dreadforger\n- Training: An average trainer who taught them Hellcat Stealth, Iron Will\n\nFamily\n- Dead Mother\n- Dead Father\n- Raised In An Orphanage\n- 3 Younger Brothers\n\nPersonality\n- Personality: Punctual, Prudent, Enchanted, Intentional, Joyful\n- Mannerisms: Glances at watch, Crosses arms, Thumbs through a book\n- Flaws: Fussy Eater, Pranked\n\nAppearance\n- Hair: Bald Blond\n- Eyes: Blue\n- Build: Beautiful",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 4003,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 2289500,
+ "gold": 2349060,
  "hair_color": [
-  "Grey"
+  "Blond"
  ],
  "hair_type": [
   "Bald"
  ],
  "height_number": "3'4\"",
- "hero_points": 1,
+ "hero_points": 0,
  "homebrew_feat_desc_dict": {
-  "Additional Traits": "You have more traits than normal",
-  "Arcane Weaponry (combat)": "You force additional power from your magical weapons. increase the dc of any weapon special properties that require a saving throw by +1. this bonus increases by +1 upon reaching a base attack bonus of +8 and for every four base attack bonus gained thereafter. this cannot cause the dc of any effect to exceed 10 + your base attack bonus. this only applies to weapons you are wielding (and applies for up to 1 round after leaving your grip or being fired, in the case of thrown weapons or ammunition, respectively).",
-  "Charging Hurler": "You know how to use your momentum to enhance your thrown weapon attacks",
-  "Cleave": "You can strike two adjacent foes with a single swing",
-  "Coordinated Distraction": "When working in tandem, you can make it difficult for foes to use their magical abilities",
-  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
-  "Dragonslayer": "You have been trained to fight dragons",
+  "Ancestral Scorn": "The fury you harbor for your fiendish ancestors gives evil outsiders great reason to fear you",
+  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
+  "Death From Below": "You have been trained to fight flying creatures",
+  "Discipline Expertise": "You are quite adept at the use of your available disciplines associated skills. choose a class you have at least one level in. you gain a +2 competence bonus on checks with the associated skills of your available disciplines in that class.",
+  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
   "Dreadforger": "With a little extra effort, you can make your concoctions a lot more deadly when creating a non-magical trap, item, or other device, you may increase the craft dc to up to twice your character level. for every two points by which you increase the craft dc, the save dc of your creation increases by 1. using this ability does not increase the cost of your creation.",
+  "Enforcer": "You are skilled at causing fear in those you brutalize",
+  "Equipment Trick": "Choose one piece of equipment, such as boots, a cloak, rope, a shield, or a heavy blade scabbard You understand how to use that item in combat",
+  "Exploit Schema": "You can act in such a way that you seem so out of place that people just fail to notice you. as a standard action, you may adjust your personage to become so outlandish that those who witness your actions are convinced they are seeing things. creatures must make a will save (dc = 10 + 1/2 ranks in perform or bluff + charisma modifier), or fail to notice you, treating you as invisible. you must spend a standard action each round to maintain the personage, and creatures receive a new save each round to recognize your presence. if you attempt any overtly hostile action (draw a weapon, attack someone) the effect immediately ends. creatures with an intelligence score of 3 or less, without an intelligence score, or with the animal type are immune to this effect, and any interaction between you and the subject ends the effect. this is a mind-affecting supernatural effect.",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Elixir Of Immortality)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Elixir Of Immortality (Alchemy): You may create a special elixir that restores a creature to its starting age as a young adult. All penalties to Strength, Dexterity, and Constitution the drinker may have suffered as a result of advanced age are removed, but all bonuses to Intelligence, Wisdom, and Charisma that result from advanced",
-  "Fast Crawl": "You are skilled at moving while prone",
-  "Flanking Specialist (combat)": "You are more adept at flanking with allies. you count as occupying both your current space and any space adjacent to you for the purpose of flanking an opponent (including allowing your allies to flank as if you were in any of those spaces). the space must be open; you cannot use this ability to flank from a space that contains an object, creature, or barrier.",
-  "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
-  "Impact Critical Shot": "With a series of ranged attacks, you bring your foes to their knees or force them to move",
-  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
+  "Extra Combat Talent (Accomplice / Armored Mount)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Accomplice (Beastmastery): While within the threatened area of an animal ally, when you or the animal ally performs a combat maneuver, the other may make an aid another check to boost the combat maneuver check as an immediate action.\n- Armored Mount (Beastmastery): Any creature you are mounted on gains a competence bonus to armor class and combat maneuver defense equal to 1/2 your ranks in Ride (rounded down, minimum +1). In addition, your mount gains a pool of temporary hit points that regenerate at a rate of 1 per minute up to a maximum amount equal to your ",
+  "Extra Combat Talent (Acrobatic Mount / Barding Expertise)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Acrobatic Mount (Beastmastery): While mounted, you may substitute a Ride skill check in place of an Acrobatics skill check for you and your mount when moving through a threatened square.\n- Barding Expertise (Beastmastery): Any creature you are mounted on is considered proficient with all armors you are proficient with. If you fail the Ride check granted by the Defensive Rider talent by 5 or less while your mount is wearing barding that it is proficient with, the attack damages your mount's barding instead of your moun",
+  "Extra Combat Talent (Bee Keeper / Defensive Rider)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Bee Keeper (Beastmastery): You may tame creatures with the swarm subtype that are otherwise of a creature type that you can affect. When taming a creature in this way, they count as twice their Hit Dice against the total amount you may have tame at once. This increase does not stack with the increase for creatures not of the \n- Defensive Rider (Beastmastery): When your mount is targeted by an attack or subject to a Reflex save, you may spend an attack of opportunity to make a Ride check and use the result in place of your mount's AC or Reflex save result, if higher. Associated Feat: Mounted Combat.",
+  "Extra Combat Talent (Hands-on Handler / Call Beast)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Hands-on Handler (Beastmastery): Whenever you take an action that is similar to a Handle Animal trick, the next time you handle or push your animal allies to perform that trick before the end of your next turn, reduce the time required to handle or push those animal allies by 1 step. This reduction stacks with the Rapid Handle tale\n- Call Beast (Beastmastery): As a swift action, you may call all of your animal allies to your side. They must be within 1 mile per rank in Handle Animal and come at their best speed, avoiding apparent hazards and danger to the best of their ability. This movement takes place using the creature's normal actions on its turn. At ",
+  "Extra Combat Talent (Leaping Rider / Two As One)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Leaping Rider (Beastmastery): You can fluidly mount and dismount, transitioning from mounted to unmounted combat with ease.  You gain the following abilities:  Leaping Charge: You may use the leaping dismount ability granted by this talent during a mounted charge attack. If you move at least 10 feet towards the target of your ch\n- Two As One (Beastmastery): While in this stance, you may occupy the same square(s) as your animal allies at no penalty. Whenever you occupy the same square as an animal ally during this stance, you may expend an attack of opportunity to change the target of an attack targeting that animal ally to you as a free action that can",
+  "Extra Combat Talent (Wild Rider / Faithful Friend)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Wild Rider (Beastmastery): Any creature serving as your mount counts as tame and an animal ally and as having been combat trained per the Handle Animal skill. This does not allow you to handle or push a creature of greater than animal Intelligence (Intelligence 3 or higher), but does allow them to benefit from some talents, s\n- Faithful Friend (Beastmastery): Whenever you use the aid another action to assist an animal ally or an animal ally uses the aid another action to assist you, the aid another bonus increases by +1 + 1 per 5 ranks in Handle Animal or Ride you possess.",
+  "Firebrand": "You can make use of a torch as a deadly, macelike weapon",
+  "Harrowed": "Numerous Harrow readings early in your life seem to have hit the mark precisely, increasing your belief that you are destined for a specific purpose in life",
+  "Hellcat Stealth": "You are difficult to see in the light",
   "Iron Will": "You are more resistant to mental effects",
-  "Ki Stand": "If an opponent knocks you down, you swiftly rebound with an attack",
-  "Lesser Spirits (invoker)": "The following eighteen lesser spirits are those most commonly contacted by invokers, though others may exist. While an invoker can bond with any lesser spirit, he may only invoke one whose listed type matches the dominion or oath of his spirit companion (or both). Lesser spirits are not listed alphabetically; instead, they are organized below in a table showing their dominion and oath, below. The DC to save against primal powers or invocations is equal to 10 + 1/2 the invokers level + his Charisma modifier, unless otherwise noted.",
-  "Masked Identity": "Special You cannot select this feat if you have the dual identity class feature or a feature that grants you a second identity. you gain the dual identity class feature of a vigilante of your character level.",
-  "Measured Response": "You believe that a conservative but consistent response guarantees success",
+  "Life's Blood": "Your blood flows with eternal life, and its healing powers allow you use your blood to heal others",
+  "Martial Training I": "Youve learned the basics in a martial discipline Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Prodigy (Profession (Ranger), Profession (Centaur Cavalier))": "",
-  "Scorching Weapons": "Elemental fire stirs within your body, boiling your blood and rendering you resistant to flame",
-  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
-  "Siphon Poison": "You can remove poison from afflicted creatures",
-  "Tower Shield Proficiency": "You are trained in how to properly use a tower shield",
-  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
+  "Saving Shield": "You deflect attacks that could mean your ally's death",
+  "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
+  "Uncanny Activation": "You can coax greater power out of magical devices",
+  "Voice of the Sibyl": "Your voice is strangely compelling"
  },
  "inherents": {
   "cha": 3,
@@ -647,92 +786,81 @@
  "initiator_level": 0,
  "int": 11,
  "item_changes_dict": {
-  "Animal Mask": {
+  "Bladed Belt": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "On command, the belt's wearer can transform the belt into a single masterwork slashing and/or piercing melee weapon of her choice."
+   ]
+  },
+  "Bodywrap of Mighty Strikes +1": {
    "changes": [],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "As a swift action, the wearer can transform her head into the form of the animal depicted by the mask for up to [[5]] minutes per day, absorbing the mask into her body in the process but leaving in place any other item she wears on her head. She also gains low-light vision, scent, and either a bite or gore attack (as appropriate to the animal) that deals [[1d4]] points of damage for a medium wearer ([[1d3]] if small). This duration does not need to be consecutive, but it must be used in 1-minute increments."
+     "text": "Once per round (chosen before the roll, even off-turn e.g. on an AoO), add a +[[1]] enhancement bonus on one attack and damage roll for an unarmed strike or natural attack. Extra uses per round at BAB +[[6]], +[[11]], and +[[16]]."
     }
    ]
   },
-  "Apprentice's Cheating Gloves": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer of these gloves can employ mage hand and prestidigitation at will."
-   ]
-  },
-  "Belt of Thunderous Charging": {
+  "Cape of Daring Deeds": {
    "changes": [
     {
      "formula": "2",
      "operator": "add",
      "priority": 0,
-     "target": "str",
-     "type": "enh"
+     "target": "allSavingThrows",
+     "type": "resist"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "When using the derring-do 1st-level swashbuckler deed, the wearer adds an additional die when rolling either a natural 5 or 6 rather than just a natural 6. This bonus increases to +[[4]] for [[1]] round each time the wearer uses the charmed life swashbuckler class feature."
+    }
+   ]
+  },
+  "Droskar's Guiding Ring": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Once per day, the wearer may use charm person . The wearer spends time working on the item normally, but at the time of completion there is a 50% chance that the item turns out nonmagical and worthless. For example, if creating a magic bracer that normally costs 1,000 gp to craft, the wearer may craft it for only 500 gp, but there is a 50% chance the wearer's shortcuts and cheap materials result in a valueless, nonfunctional item."
+   ]
+  },
+  "Dueling Cuffs": {
+   "changes": [
+    {
+     "formula": "1",
+     "operator": "add",
+     "priority": 0,
+     "target": "ac",
+     "type": "deflection"
     }
    ],
    "contextNotes": [
     {
      "target": "attack",
-     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn. Furthermore, when the wearer makes a charge attack, her melee weapons and natural weapons deal damage as if they were one size category larger than they actually are. The belt magnifies the wearer's momentum whenever she charges, granting her a +[[2]] bonus on bull rush and overrun maneuvers."
+     "text": "This bonus increases to +[[2]] if the wearer is wielding one or more weapons that benefit from the weapon finesse feat. In a duel (ultimate combat 150), the wielder doesn't take the normal 5 penalty when using the dueling parry action. In addition, the wielder can attempt to deflect ranged attacks from firearms with a dueling parry, but takes a 5 penalty on such attempts."
     }
    ]
   },
-  "Bracers of Steadiness": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "Whenever she takes 20 on a skill check for a skill that primarily depends on her arms and hands, she gains a +[[5]] competence bonus on the check."
-    }
-   ]
-  },
-  "Burglar Boots, Major": {
-   "changes": [
-    {
-     "formula": "10",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.per",
-     "type": "competence"
-    },
-    {
-     "formula": "10",
-     "operator": "add",
-     "priority": 0,
-     "target": "ac",
-     "type": "competence"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.per",
-     "text": "Also, once per day on command, these boots grant the wearer the ability to use find traps as the spell."
-    }
-   ]
-  },
-  "Charlatan's Cape": {
+  "Gloves of Reconnaissance": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Furthermore, once per day the wearer of the cloak can use ethereal jaunt , as per the spell."
+    "On command, the wearer can use the gloves to see and hear though solid material no more than 5 feet thick by placing both hands on that material. The wearer can use the gloves once per day for up to 1 minute. The wearer must wear the gloves continuously for 24 hours before activating his ability."
    ]
   },
-  "Darksire Amulet": {
+  "Hand of Stone": {
    "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.dip",
-     "text": "If he has cold, electricity, or fire resistance, this amulet increases that resistance by 5. Furthermore, it provides a +[[4]] insight bonus on diplomacy skill checks made to influence evil outsiders."
-    }
+   "contextNotes": [],
+   "unplaced": [
+    "If the wearer spends a standard action concentrating on the hand, she gains tremorsense out to a range of 30 feet until the start of her next turn."
    ]
   },
-  "Headband of Mental Superiority +6": {
+  "Headband of Sealed Thoughts": {
    "changes": [
     {
-     "formula": "6",
+     "formula": "4",
      "operator": "add",
      "priority": 0,
      "target": "int",
@@ -741,47 +869,146 @@
    ],
    "contextNotes": [
     {
-     "target": "intChecks",
-     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn."
+     "target": "allSavingThrows",
+     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn. It also grants skill ranks as a headband of vast intelligence +[[4]] . This protection otherwise functions as mind blank , except the headband provides no protection against limited wish , miracle , and wish , and it doesn't grant a resistance bonus on saving throws. When the wearer succeeds at a saving throw against a mind-affecting effect, she can rebound the effect onto the caster as an immediate action by expending one use of mythic power."
     }
    ]
   },
-  "Marker's Monocle": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Three times per day as a standard action, the wearer can attempt an appraise check against a creature within 60 feet (dc = 10 + target's hit dice + target's wisdom bonus). With a successful check, the wearer knows the amount of currency the creature is carrying, as well as the number of valuable objects (with a price greater than 20) the target carries (though the wearer doesn't know which items qualify, or the exact value of the objects)."
-   ]
-  },
-  "Ring of Rat Fangs": {
+  "Monocle of Unveiled Auras": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "attack",
-     "text": "This attack deals [[1d4]] points of piercing damage for a medium wearer or [[1d3]] points of damage for a small wearer."
+     "target": "skills",
+     "text": "The wearer of this crystal monocle gains the ability to use detect chaos , detect evil , detect good , detect magic , or detect law , each at will for as long as he concentrates, but only one at a time. Any caster level checks to penetrate magical protections receive a +[[5]] bonus, and use the higher of the item's caster level or the wearer's character level. The wearer can expend one use of mythic power to gain the benefits of arcane sight and see invisibility for [[1]] hour, or until the monocle is removed."
     }
    ]
   },
-  "Rings of Alien Geometries": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day as a standard action, the wearer of a pair of rings of alien geometries can create two shimmering portals, each 5 feet in diameter and surrounded by a 4-inch-thick ring of force. Only one side of each portal functions as a gateway; Each portal must be oriented vertically and be within 30 feet of the wearer at the time of creation."
+  "Ring of Tactical Precision": {
+   "changes": [
+    {
+     "formula": "5",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.pro",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.pro",
+     "text": "By wearing the ring for [[1]] hour, a creature may imbue it with a teamwork feat he knows for [[24]] hours."
+    }
    ]
   },
-  "Robe of Components": {
+  "Sandstorm Sandals": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The robe functions as a spell component pouch, providing any spell components or focuses that are necessary for the wearer's spellcasting. The robe can even produce spell components or focuses with a specific cost, though it provides no more than 50worth of such materials in any single day."
+    "If the wearer possesses the flurry of blows class feature, anytime he makes an unarmed flurry of blows while standing on sand or dirt, a minor storm appears around him for 1 round. Any creature that ends its movement within 5 feet of the wearer during this time takes 1 point of nonlethal damage. While the storm is active, the sandals' wearer gains concealment (20% miss chance)."
    ]
   },
-  "Sash of the War Champion": {
+  "Vagrant's Hood": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dis",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Vest of the Deep": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The wearer treats his fighter level as 4 higher than normal for the purpose of the armor training and bravery class features."
+    "A vest of the deep creates a constant shell of magical energy that protects the wearer from extreme environmental pressure, such as that inflicted by water at a depth of over 100 feet."
    ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 25,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Darkwood",
+     5
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "hp": 35,
+   "hp_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Darkwood",
+     10
+    ],
+    [
+     "Enhancement",
+     50
+    ]
+   ],
+   "material": "darkwood",
+   "material_label": "Darkwood",
+   "size_lines": [
+    [
+     "Small",
+     "/2"
+    ]
+   ],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 38,
+   "hardness_lines": [
+    [
+     "Light Blade",
+     10
+    ],
+    [
+     "Alchemical Silver",
+     8
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "hp": 56,
+   "hp_lines": [
+    [
+     "Light Blade",
+     2
+    ],
+    [
+     "Alchemical Silver",
+     10
+    ],
+    [
+     "Enhancement",
+     100
+    ]
+   ],
+   "material": "alchemicalSilver",
+   "material_label": "Alchemical Silver",
+   "size_lines": [
+    [
+     "Small",
+     "/2"
+    ]
+   ],
+   "size_sources": []
   }
  },
  "known_list": [],
@@ -790,9 +1017,9 @@
   "Common",
   "Halfling",
   "Dwarven",
-  "Elven",
+  "Goblin",
   "Gnome",
-  "Goblin"
+  "Elven"
  ],
  "level": 18,
  "level_up_stats": {
@@ -891,7 +1118,7 @@
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a wealthy household",
+ "parents": "dead mother, dead father, raised in an orphanage",
  "personality_traits": [
   "Punctual",
   "Prudent",
@@ -899,7 +1126,7 @@
   "Intentional",
   "Joyful"
  ],
- "platnium": 228950.0,
+ "platnium": 234906.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1079,12 +1306,6 @@
     }
    ],
    "ranks": 15,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Ranger)"
   },
   {
@@ -1136,12 +1357,6 @@
     }
    ],
    "ranks": 10,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Centaur Cavalier)"
   },
   {
@@ -1267,6 +1482,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1332,51 +1548,72 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Easy Focus"
+  "Easy Focus",
+  "Empowered Abilities"
  ],
  "sphere_counts": {
-  "Alchemy": {
+  "Beastmastery": {
    "advanced": 1,
    "feats": 0,
-   "normal": 0
+   "normal": 11
   }
  },
  "sphere_drawbacks": [
+  "Skilled Casting",
+  "Painful Magic",
   "Extended Casting",
-  "Skilled Casting"
+  "Magical Signs"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Elixir Of Immortality)": [
+  "Extra Combat Talent (Accomplice / Armored Mount)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Acrobatic Mount / Barding Expertise)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Bee Keeper / Defensive Rider)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Hands-on Handler / Call Beast)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Leaping Rider / Two As One)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Wild Rider / Faithful Friend)": [
    "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Elixir Of Immortality)"
+  "Extra Combat Talent (Leaping Rider / Two As One)",
+  "Extra Combat Talent (Wild Rider / Faithful Friend)",
+  "Extra Combat Talent (Accomplice / Armored Mount)",
+  "Extra Combat Talent (Bee Keeper / Defensive Rider)",
+  "Extra Combat Talent (Acrobatic Mount / Barding Expertise)",
+  "Extra Combat Talent (Hands-on Handler / Call Beast)"
  ],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Extended Casting",
   "Skilled Casting",
-  "Easy Focus"
+  "Painful Magic",
+  "Extended Casting",
+  "Magical Signs",
+  "Easy Focus",
+  "Empowered Abilities"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Alchemy",
+   "sphere": "Beastmastery",
    "system": "might"
   }
  ],
  "stances_chosen": [],
- "story_feat_tax_dict": {
-  "Scorching Weapons": [
-   "inner flame",
-   "blazing aura"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Scorching Weapons",
-  "Masked Identity",
-  "Siege Commander",
-  "Fast Crawl"
+  "Death From Below",
+  "Exploit Schema",
+  "Distance Thrower",
+  "Ancestral Scorn"
  ],
  "str": 13,
  "teamwork_feat_labels": [],
@@ -1384,25 +1621,23 @@
  "total_level": 18,
  "total_rolled_hp": 136,
  "trainer_calibers": [
+  2,
   3,
-  3,
-  3
+  2,
+  2
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
-  "(Trainer 1)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 3)",
   "(Trainer 3)",
-  "(Trainer 3)"
+  "(Trainer 4)",
+  "(Trainer 4)"
  ],
  "trainer_feat_tax_dict": {
-  "Focused Worker": [
-   "focused overseer"
-  ],
   "Iron Will": [
    "courage in numbers",
    "improved iron will",
@@ -1410,35 +1645,29 @@
    "witchbreaker",
    "exorcist's rebuttal"
   ],
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot",
-   "rapid shot",
-   "reckless aim",
-   "target of opportunity",
-   "bullseye shot"
+  "Martial Training I": [
+   "martial training ii"
   ]
  },
  "trainer_feats": [
-  "Focused Worker",
-  "Dragonslayer",
-  "Ki Stand",
-  "Iron Will",
-  "Flanking Specialist (combat)",
-  "Point-Blank Shot",
-  "Impact Critical Shot",
-  "Charging Hurler",
-  "Tower Shield Proficiency"
+  "Dark Embrace",
+  "Equipment Trick",
+  "Harrowed",
+  "Martial Training I",
+  "Uncanny Activation",
+  "Discipline Expertise",
+  "Dreadforger",
+  "Hellcat Stealth",
+  "Iron Will"
  ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Designating (lesser)",
-  "Lucky",
-  "Corrosive Burst"
+  "Holy",
+  "Flaming",
+  "Icy Burst"
  ],
+ "weapon_material": "alchemicalSilver",
+ "weapon_material_damage": -1,
  "weapon_name": "Dart",
  "weapon_size": "Small",
  "weapon_size_attack_penalty": 0,
@@ -1446,6 +1675,6 @@
  "weapon_size_steps": 0,
  "weight_number": 30,
  "wis": 17,
- "younger_brothers": " you have 0 younger brothers",
+ "younger_brothers": " you have 3 younger brothers",
  "younger_sisters": " you have 0 younger sisters"
 }

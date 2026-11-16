@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "-6",
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "1",
  "armor_name": "Full plate",
  "armor_spell_failure": "35%",
@@ -806,6 +808,80 @@
    "contextNotes": []
   }
  },
+ "item_durability": {
+  "armor": {
+   "hardness": 30,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "hp": 125,
+   "hp_lines": [
+    [
+     "Armor",
+     45
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     50
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 34,
+   "hardness_lines": [
+    [
+     "Two-Handed Blade",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     14
+    ]
+   ],
+   "hp": 110,
+   "hp_lines": [
+    [
+     "Two-Handed Blade",
+     10
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     70
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  }
+ },
  "known_list": [],
  "land_speed": 30,
  "language_text": [
@@ -1433,6 +1509,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1589,6 +1666,8 @@
   "Spell Storing",
   "Seaborne"
  ],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Greatsword",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

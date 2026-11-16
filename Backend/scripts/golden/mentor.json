@@ -4,7 +4,7 @@
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
-  "Muscular"
+  "Defined cheekbones"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Eldritch Guardian\": {\n        \"source\": \"Familiar Folio pg. 7 Eldritch guardians are trained to detect and give warning about magic threats to the people and places they protect.\",\n        \"class skills\": \"  The eldritch guardian adds Perception, Spellcraft, and Use Magic Device to his list of class skills, but does not gain Intimidate, Ride, or Swim as class skills.\",\n        \"familiar (ex)\": \"  At 1st level, an eldritch guardian gains a familiar, treating his fighter level as his effective wizard level for the purpose of this ability. This ability replaces the bonus feat gained at 1st level.\",\n        \"share training (ex)\": \"  At 2nd level, when the familiar can see and hear its master, it can use any combat feat possessed by the eldritch guardian. The familiar doesn't have to meet the feat's prerequisites, but at the GM's discretion may be precluded from using certain combat feats due to its physical form. For example, an eldritch guardian's pig familiar with access to Exotic Weapon Proficiency (spiked chain) would not gain the ability to use spiked chains, since it doesn't have any limbs capable of properly handling them. This ability replaces the bonus feat gained at 2nd level.\",\n        \"steel will (ex)\": \"  At 2nd level, the eldritch guardian gains a +1 bonus on Will saves against fear and mind-affecting effects. This bonus increases by 1 for every 4 levels beyond 2nd. This ability replaces bravery.\"\n    }\n}",
@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 4,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "0",
  "armor_name": "Iron lamellar",
  "armor_spell_failure": "40%",
@@ -33,20 +35,15 @@
  "c_class_display": "Fighter",
  "casting_level_str_foundry": "None",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Empowered Abilities",
-   "Overcharge",
+   "Easy Focus",
    "Fortified Casting"
   ],
   "boons_detail": [
    {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
-   },
-   {
-    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
-    "name": "Overcharge"
+    "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
+    "name": "Easy Focus"
    },
    {
     "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
@@ -55,33 +52,16 @@
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Prepared Caster",
-   "Extended Casting",
-   "Draining Casting",
-   "Skilled Casting",
+   "Somatic Casting",
    "Material Casting",
-   "Focus Casting"
+   "Painful Magic",
+   "Prepared Caster"
   ],
   "drawbacks_detail": [
    {
     "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
-   },
-   {
-    "counts_as": 2,
-    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
-    "name": "Extended Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
    },
    {
     "counts_as": 1,
@@ -90,8 +70,13 @@
    },
    {
     "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
+    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
+    "name": "Painful Magic"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
    }
   ]
  },
@@ -170,28 +155,22 @@
   "Fighter 14"
  ],
  "class_feat_tax_dict": {
-  "Lunge": [
-   "monkey lunge"
+  "Gang Up": [
+   "team up"
   ],
-  "Martial Training I (Tempest Gale)": [
-   "Martial Training II (Tempest Gale)"
-  ],
-  "Martial Training III (Tempest Gale)": [
-   "Martial Training IV (Tempest Gale)"
-  ],
-  "Martial Training V (Tempest Gale)": [
-   "Martial Training VI (Tempest Gale)"
+  "Martial Training V (Radiant Dawn)": [
+   "Martial Training VI (Radiant Dawn)"
   ]
  },
  "class_feats": [
-  "Martial Training I (Tempest Gale)",
-  "Martial Training V (Tempest Gale)",
-  "Pushing Assault",
-  "Necromantic Affinity",
-  "Martial Training III (Tempest Gale)",
-  "Lightning Recovery",
-  "Iron Will",
-  "Lunge"
+  "Opening Volley",
+  "Hellcat Stealth",
+  "Martial Training V (Radiant Dawn)",
+  "Gang Up",
+  "Death From Below",
+  "Flanking Foil",
+  "Tribal Scars",
+  "Jaguar Pounce"
  ],
  "class_feature_changes_dict": {
   "armored confidence (ex)": {
@@ -286,9 +265,64 @@
    "advanced": false,
    "changes": [],
    "contextNotes": [],
-   "description": "When you use the attack action to attack, one of your cohorts may also attack your target with a single weapon it possesses as a joint swift action. If both you and the cohort successfully deal damage with these attacks, the cohort may immediately move 5 feet as a free action. This movement does not provoke attacks of opportunity.",
-   "name": "Cohort Attack",
-   "sphere": "Leadership",
+   "description": "Allies within range of this tactic are granted a +1 morale bonus on Fortitude saving throws, +1 for every 4 ranks in Diplomacy you possess, as long as they are within the natural reach of at least one other ally affected by this tactic. Once per round when an ally affected by this tactic fails a Fortitude saving throw, you may spend an immediate action to allow them to reroll the save.",
+   "name": "Fortifying Phalanx",
+   "sphere": "Warleader",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You can spur your allies into action to react faster to imminent threats. For the duration of this shout, you and your allies are immune to sleep and fascinated. In addition, when first affected by this shout, any sleeping allies immediately wake up, fascinated allies automatically break free of the fascinate effect, flat-footed allies no longer count as flat-footed even if they have not acted yet, and allies lying prone may stand up as an immediate action, provoking attacks of opportunity as normal.",
+   "name": "Invigorating Call",
+   "sphere": "Warleader",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you use this shout, your opponents' attention is drawn to you for its duration, making it hard for them to focus on your allies. Allies within the shout's affected area may make a Stealth check to hide even if they do not have cover or concealment for the duration of the shout, but you automatically fail any Stealth checks for the shout's duration.",
+   "name": "Call Attention",
+   "sphere": "Warleader",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You warn your allies easier and quicker before shouting, preventing your enemies from reacting. You may warn your allies as part of a shout, rather than spending a move action. Nearby enemies do not receive a bonus on their save against your shouts when you warn your allies.",
+   "name": "Advanced Notice",
+   "sphere": "Warleader",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When using a shout, you may center your shout inside any square of an ongoing tactic you are maintaining, treating that square as the point of origin for that shout. If you have Breath Support or another talent or effect which would allow you to change the shape of your shout (such as into a line or cone), you choose the direction of your shout as normal from that square.",
+   "name": "Projecting Voice",
+   "sphere": "Warleader",
+   "system": "Spheres of Might",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may expend your martial focus to cause all affected enemies to attempt a Will saving throw. On a failed save, the creature loses their martial focus. This is an instantaneous effect.",
+   "name": "Disarming Roar",
+   "sphere": "Warleader",
    "system": "Spheres of Might",
    "type": "base",
    "uses": null
@@ -297,9 +331,9 @@
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "You can recruit cohorts from the outer planes themselves. Such cohorts are built like a normal cohort, but are Small or Medium creatures with the outsider (extraplanar) type, and benefits from the Conjuration sphere Planar Creature (type) talent as if it were a Conjuration companion. As you recruit by calling on creatures from other planes, you don't actually have to be at a settlement in order to recruit cohorts this way. You treat this as if recruiting from a metropolis and the population is always at least 50% of the particular race you are seeking.",
-   "name": "Friends In High Places",
-   "sphere": "Leadership",
+   "description": "Whenever you would be affected by a magic effect that would make you unable to speak (such as the silence option of the Suppression Illusion talent), the caster must first attempt a magic skill check against a DC equal to 10 + 1/2 your Diplomacy ranks + your practitioner modifier (minimum 1). If the caster fails, your voice is not affected by the magic effect, allowing you to speak, use shouts, tactics with verbal components, etc. If the caster succeeds, your voice is completely silenced and affected by the effect normally. If the effect would suppress other forms of noise (such as moving), they still remain suppressed even if the caster fails.\n\nAdditionally, whenever the effects of your shouts would be either reduced in range or completely negated with a solid barrier or wall, they instead carry through the obstruction without interruption.",
+   "name": "Piercing Voice",
+   "sphere": "Warleader",
    "system": "Spheres of Might",
    "type": "base",
    "uses": null
@@ -321,68 +355,42 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
-   "item_name": "Belt of Tumbling"
+   "description": " this belt grants the wearer an\r enhancement bonus to two physical\r ability scores (strength, dexterity, or\r constitution) of +2, +4, or +6. Treat\r this as a temporary ability bonus for\r the first 24 hours the belt is worn. These bonuses are chosen\r when the belt is created and cannot be changed. ",
+   "item_name": "Belt of Physical Might +4 (Dex & Con)"
   },
   "body": {
-   "description": " this sinister item functions much like\r a robe of useful items , but specifically\r for the serious necromancer. It\r appears to be an unremarkable\r robe, but a character who dons it\r notes that it is adorned with small\r embroidered figures representing\r undead creatures. Only the wearer\r of the robe can see the embroidery, \r recognize them as the creatures\r they become, and detach them. One\r figure can be detached each round. Detaching a figure causes\r it to become an actual undead creature (see the list below). \r the skeleton or zombie is not under the control of the wearer\r of the robe, but may be subsequently commanded, rebuked, \r turned, or destroyed. A newly created robe of bones always\r has two embroidered figures of each of the following undead: human skeleton\r wolf skeleton\r heavy horse skeleton\r fast goblin zombie\r tough human zombie\r plague ogre zombie ",
-   "item_name": "Robe of Bones"
+   "description": " this dark, hooded robe has six long, \r silvery, razor-sharp needles protruding\r from the bottom of its loose sleeves, \r three on each side. The wearer can launch\r one needle as a ranged touch attack. The\r needle counts as a thrown weapon with a\r range increment of 10 feet. If the needle\r hits, it embeds itself in the target's flesh, \r dealing 1 point of piercing damage and 1\r point of bleed damage. A creature can pull out the needle as\r a full-round action, which ends the bleed effect. The needle\r is destroyed if an attack with it misses or when it is removed\r from a creature it was embedded in. The robe regrows all\r spent needles each morning. ",
+   "item_name": "Robe of Needles"
   },
   "chest": {
-   "description": " this padded and slightly bulky vest, made from red-brown cloth, \r causes its wearer to feel vaguely uncomfortable whenever she\r is lying prone. If the wearer is a rogue, she gains the resiliency\r rogue talent. If she already has this talent, activating the talent\r grants her 2 hit points per rogue level instead of 1. ",
-   "item_name": "Vest of the Cockroach"
-  },
-  "eyes": {
-   "description": " this set of goggles is engraved with geometric patterns and arcane runes. The wearer can immediately see and discern magical auras within 60 feet, as arcane sight . In addition, the wearer is more clearly able to see the animating forces of incorporeal creatures and can therefore harm incorporeal creatures with nonmagical attacks, though these attacks deal only half damage. If the wearer uses a magic weapon to attack an incorporeal creature, the attack deals full damage instead. The goggles have no effect on attacks made with ghost touch weapons. Once per day on command, the wearer can amplify the goggles' ability to sense animating forces for 1 hour. This amplification allows the wearer the ability to notice, locate, and distinguish between living and undead creatures within 30 feet, just as if she had a psychopomp's spiritsense ability . The goggles do not grant the wearer the ability to discern magical auras while amplified. ",
-   "item_name": "Soulsight Goggles"
+   "description": " the praenomen is a two-part amulet, comprising an oval plate that covers the wearer's chest and a counterweight that hangs down the wearer's back, joined by chains. The front plate is inscribed with the cartouche of the pharaoh who is the praenomen's master; the counterweight is shaped like a cobra to honor wadjet, protector of osirion and osirion's pharaohs. The praenomen was traditionally worn by a pharaoh's royal envoy to signify that the envoy acted in the pharaoh's name and was under her protection. It grants its benefits only to loyal subjects of its masterthe pharaoh whose cartouche is inscribed upon it. The praenomen grants its wearer a +4 bonus on diplomacy and intimidate checks. Once per day, the wearer can impose a geas on another creature, compelling the target to undertake a mission for the praenomen's master. The praenomen also shields its wearer and other faithful subjects of the pharaoh from the pharaoh's enemies. Its wearer gains a +2 deflection bonus to armor class, and three times per day, the wearer can activate the praenomen to grant the benefits of heroism to all loyal subjects of its master within 30 feet. The praenomen can be rededicated to a new master by replacing the front plate and engraving the name of its new master on the cartouche, requiring a successful dc 21 craft (jewelry) check. ",
+   "item_name": "Praenomen"
   },
   "feet": {
-   "description": " horseshoes of crushing blows grant an enhancement bonus\r on attack and damage rolls made with hoof attacks; this bonus\r varies based on the item's price. Alternatively, as described\r for the amulet of mighty fists , they can grant hooves melee\r weapon special abilities so long as they can be applied to\r unarmed attacks. Horseshoes of crushing blows cannot have a\r modified bonus (enhancement bonus plus special ability bonus\r equivalents) higher than +5. Horseshoes of crushing blows are\r crafted as sets of four, with each shoe in the set bearing the\r same enhancements. All four shoes must be worn by the same\r animal to be effective. Horseshoes of crushing blows may be crafted out of special\r materials, gaining the usual benefits. For purposes of pricing, \r they count as a single one-handed weapon weighing 4\r pounds (for example, adamantine horseshoes of crushing\r blows would cost an additional 3,000). The materials\r needed to make cold iron horseshoes of crushing blows add\r no extra costs in and of themselves, but enhancing cold iron\r horseshoes of crushing blows increases the price by the usual\r 2,000. ",
-   "item_name": "Horseshoes of Crushing Blows +2"
+   "description": " slippers of scampering function in almost every way like slippers of spider climbing , except the slippers can be used for 10 rounds per day, split up as the wearer chooses (minimum 1 round per use). ",
+   "item_name": "Slippers of Scampering"
   },
   "hands": {
-   "description": " three times per day, the wearer can use these thick leather gloves to make a melee touch attack against an undead creature, a construct, or a nonmagical object and deal 3d4 points of damage to it. When the wearer deals damage in this way, the gloves absorb part of the matter that makes up the target. This creates dust that is stored within the gloves for 24 hours. The next time the wearer attempts a dirty trick combat maneuver, the dust flies from the gloves, providing a +2 bonus on that attempt. If the wearer does not attempt a dirty trick combat maneuver before 24 hours elapses, the dust disappears. ",
-   "item_name": "Gloves of Pulverizing Disruption"
+   "description": " these rough leather gloves grant an enhancement bonus of +1 to +5 on attack and damage rolls with improvised weapons. Alternatively, the gloves can grant melee weapon special abilities, so long as they can be applied to melee or thrown weapons (see pages 136 137 of pathfinder rpg ultimate equipment for a list of abilities). Special abilities count as additional bonuses for determining the market value of the item, but do not modify attack or damage bonuses. Gloves of improvised might cannot have a modified bonus (enhancement bonus plus special ability bonus equivalents) higher than +5. Unlike an amulet of mighty fists , gloves of improvised might must have a +1 enhancement bonus to grant a melee weapon special ability. Normal weapons are unaffected by gloves of improvised might except when used as an improvised weapon in a way specifically permitted by the weapon such as using an arrow or bolt as a melee weapon (or if the user has an ability that allows the use of normal weapons as improvised weapons). The wearer still takes a 4 nonproficiency penalty on attack rolls with improvised weapons, as normal, unless he has the catch off-guard feat or a similar ability. ",
+   "item_name": "Gloves of Improvised Might +1"
   },
   "head": {
-   "description": " this small cloth skullcap resembles\r those some priests wear, but is\r topped with a small silver statue in\r the shape of a lit candle. The wearer\r can command the statue to radiate light (as the spell). The light can also\r be turned off on command. ",
-   "item_name": "Cap of Light"
+   "description": " this black leather cord has a red wooden ball attached at its center. When the cord is tied around a creature's head and the wooden ball is placed in the creature's mouth, the creature cannot speak or make any vocal sounds, including verbal components of spells. When removed from the creature, the ball breaks off from the leather cord, ending the effect. A creature that is not otherwise restrained can easily untie the gag and remove it. ",
+   "item_name": "Gag of Silence"
   },
   "headband": {
-   "description": " this strange metal headband of vast intellect +2 is crafted in the shape of intertwined tentacles and adorned with runes in the aboleth language. When a creature dons the headpiece, the tentacles seem almost alive, changing their size and shape to fit the contours of the wearer's head. The headband has two special indentations for ioun stones similar to those found in a wayfinder . When an ioun stone is inserted into one of the slots, the tentacles animate for a moment, adjusting themselves around the slot to accommodate the shape of the ioun stone . The wearer benefits from the ioun stone's effect as though the stone were orbiting her head. The headband uses a more refined version of the same technology that powers a wayfinder . First, it coaxes two ioun stones to manifest their resonant powers simultaneously. Furthermore, the slotted ioun stones do not suppress the headband's own magical abilities. However, if the wearer is also carrying, wearing, or wielding a wayfinder or any similar item into which ioun stones can be inserted, the two items suppress one another's abilities, but both return to normal when one is set aside. ",
-   "item_name": "Headband of Twisted Intellect"
-  },
-  "neck": {
-   "description": " these glass amulets hold bubbling red liquid and often feature a religion's or deity's holy symbol, most commonly that of asmodeus or zon-kuthon. While worn, the amulet tinges the user's healing magic with a wash of ecstasy that acts as a magical drug, making the recipient of the magical healing susceptible to mental manipulation by the wearer. Anytime the wearer casts a healing spell or uses a spell-like ability on a single target, the recipient of the magical healing additionally must succeed at a dc 13 fortitude save or become addicted to the wearer's healing spells. The wearer can suppress this effect by shielding the amulet from view with a hand or held item as a free action. The drug has the following statistics. Euphoric healing",
-   "item_name": "Amulet of Euphoric Healing"
-  },
-  "rings": {
-   "description": "Mortal blacksmiths residing in the Gebbite city of Graydirge created the first dark life rings . Too often had these living unfortunates suffered collateral damage from the negative energy effects used daily in the streets of the undead-ruled city, so they forged these rings in hopes of mitigating at least some of the harm their unliving rulers carelessly inflicted upon them. Before the Blood Lords at Mechitar could punish the insolent smiths of Graydirge, the dark life rings and their imitators made their way into the wider world. A dark life ring grants its wearer a +2 profane bonus on Will saving throws against channeled negative energy and inflict spells (any spell with inflict in its name). In addition, anytime the wearer takes damage from channeled negative energy or an inflict spell, she subtracts 5 from the damage taken (calculated after the wearer has rolled her Will save against the effect), to a minimum of 0 points of damage.",
-   "item_name": "Dark Life Ring"
-  },
-  "shoulders": {
-   "description": " this cloak comes in eight varietiesone for each school of\r magic. The cloak grants its wearer the ability to use a certain\r number of spells on command (caster level 1st) based on its\r school of magic. It also grants the wearer the ability to use prestidigitation on command and at will. Abjuration : at will resistance ; 1/day endure elements , shield conjuration : at will acid splash ; 1/day mage armor , unseen servant divination : at will detect magic ; 1/day detect secret doors , true strike enchantment : at will daze ; 1/day charm person , sleep evocation : at will light ; 1/day floating disk , magic missile illusion : at will ghost sound ; 1/day color spray , silent image necromancy : at will touch of fatigue ; 1/day cause fear , ray\r of enfeeblement transmutation : at will mage hand ; 1/day enlarge person , expeditious retreat ",
-   "item_name": "Cloak of the Hedge Wizard"
-  },
-  "wrist": {
-   "description": " these delicate sliver bracers are decorated with blue butterflies. While worn, swallowtail bracers grant the wearer a +1 luck bonus on all saving throws, ability checks, and skill checks. If the wearer worships desna, the bracers grant an additional boon: once per day, by speaking a command word and the name and/or title of the intended recipient, the wearer may cast dream . Such a wearer is also immune to nightmare , and when the wearer is targeted by that spell, the effects reflect back upon the caster. ",
-   "item_name": "Swallowtail Bracers"
+   "description": " adorned with stylized bronze feathers, these headbands are prized by treacherous nobles who fear an assassin's dagger in the back. While worn, an imperious headband grants its wearer a +4 deflection bonus to his ac against any attack made by a hireling, a slave, a servant, or any other sentient creature in his employ. In addition, such creatures must succeed at a dc 13 will save or treat their master as if he were affected by a sanctuary spell. If such creatures are subject to magical compulsion to attack the wearer, they must roll all attack rolls and checks to overcome spell resistance against the wearer twice and take the lower result. ",
+   "item_name": "Imperious Headband"
   }
  },
  "equipment_list": [
-  "Belt of Tumbling",
-  "Robe of Bones",
-  "Vest of the Cockroach",
-  "Soulsight Goggles",
-  "Horseshoes of Crushing Blows +2",
-  "Gloves of Pulverizing Disruption",
-  "Cap of Light",
-  "Headband of Twisted Intellect",
-  "Amulet of Euphoric Healing",
-  "Cloak of the Hedge Wizard",
-  "Swallowtail Bracers",
-  "Ring of Swarming Stabs",
-  "Dark Life Ring"
+  "Belt of Physical Might +4 (Dex & Con)",
+  "Praenomen",
+  "Slippers of Scampering",
+  "Gloves of Improvised Might +1",
+  "Imperious Headband",
+  "Robe of Needles",
+  "Gag of Silence"
  ],
  "eye_color": [
   "Grey"
@@ -392,98 +400,88 @@
   "class": 8,
   "flavor": 1,
   "flaw": 2,
-  "normal": 6,
+  "normal": 3,
   "profession": 4,
   "story": 4,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 8
  },
  "feat_changes_dict": {
-  "Necromantic Affinity": {
-   "changes": [],
-   "contextNotes": [
+  "Tribal Scars": {
+   "changes": [
     {
-     "target": "allSavingThrows",
-     "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties."
+     "formula": "6",
+     "operator": "add",
+     "priority": 0,
+     "target": "mhp",
+     "type": "untyped"
     }
-   ]
-  },
-  "Secret Signs": {
-   "changes": [],
+   ],
    "contextNotes": [
     {
-     "target": "skills",
-     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
+     "target": "effect",
+     "text": "Also grants one Mammoth Lords tribe sub-benefit (Bearpelt, Greattusk, Ice Chasm, Night Hunt, Raptorscale, or Slothjaw) chosen at selection — a small save/skill/speed bonus that varies by tribe."
     }
    ]
   }
  },
  "feat_conditionals_dict": {
-  "Footslasher": {
+  "Bloody Assault": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "-2",
+     "formula": "-5",
      "subTarget": "allAttack",
      "target": "attack",
      "type": "untyped"
     }
    ],
-   "name": "Footslasher: Activation: standard action only, requires a piercing or slashing weapon against a larger foe; Effect: on a hit dealing at least [[1]] point of damage, halve the target's speed for [[24]] hours until treated with a DC [[15]] Heal check or magical healing",
+   "name": "Bloody Assault: Effect: melee attacks and combat maneuver checks also deal [[1d4]] bleed damage",
    "tier": "A"
   },
-  "Point-Blank Shot": {
-   "default": false,
-   "modifiers": [
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "untyped"
-    },
-    {
-     "critical": "normal",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allDamage",
-     "target": "damage",
-     "type": "untyped"
-    }
-   ],
-   "name": "Point-Blank Shot: +1 attack and damage with ranged weapons within 30 ft",
-   "tier": "A"
-  },
-  "Pushing Assault": {
+  "Shield of Swings": {
    "default": false,
    "modifiers": [],
-   "name": "Pushing Assault: Activation: choose after the attack roll, before damage is rolled; Effect: on a hit against a creature your size or smaller with a two-handed Power Attack-modified attack, forgo the Power Attack damage bonus to instead push the target [[5]] feet directly away ([[10]] feet on a critical hit) into a safe space, without provoking",
-   "tier": "A"
+   "name": "Shield of Swings: full-attack with a two-handed weapon, reduce your weapon damage by [[1/2]] to gain a +[[4]] shield bonus to AC and a +[[4]] shield bonus to CMD until your next turn"
   }
  },
  "feats": [
-  "Heavy Armor Proficiency",
-  "Hone Weapon",
-  "Quick Draw",
-  "Footslasher",
-  "Discipline Mastery",
-  "Night Dweller",
+  "Martial Training I (Radiant Dawn)",
+  "Martial Training III (Radiant Dawn)",
+  "Reckless Offense",
+  "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)",
+  "Extra Combat Talent (Call Attention / Advanced Notice)",
+  "Extra Combat Talent (Projecting Voice / Disarming Roar)",
   "Multi Talented",
   "True Calling",
   "Always Improving",
   "Multi Talented (2nd)"
  ],
  "feats_feat_tax_dict": {
-  "Extra Combat Talent (Cohort Attack / Friends In High Places)": [
+  "Extra Combat Talent (Call Attention / Advanced Notice)": [
    "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Piercing Voice)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Projecting Voice / Disarming Roar)": [
+   "Extra Combat Talent"
+  ],
+  "Martial Training I (Radiant Dawn)": [
+   "Martial Training II (Radiant Dawn)"
+  ],
+  "Martial Training III (Radiant Dawn)": [
+   "Martial Training IV (Radiant Dawn)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Distance Thrower"
+  "Racial Heritage"
  ],
  "flaw": [
   "Illiterate",
@@ -513,55 +511,67 @@
    "tier": "minor"
   }
  },
- "flaw_feat_tax_dict": {},
+ "flaw_feat_tax_dict": {
+  "Lightning Reflexes": [
+   "improved lightning reflexes"
+  ]
+ },
  "flaw_feats": [
-  "Ability Focus (malefactions)",
-  "Secret Signs"
+  "Horn of the Criosphinx",
+  "Lightning Reflexes"
  ],
- "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Tempest Gale\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Flowing Grey\n- Eyes: Grey\n- Build: Muscular",
+ "formatted_bio": "Charles Coulombe\n- Alignment: Lawful Good\n- Deity: Apsu\n- Race: Human\n- Class: Level 15 Fighter\n- Archetype: Bruiser\n- Tactics: Closes once, plants, and full-attacks with a two-hander every round until something dies -- usually whatever it swung at. Eats hits rather than reposition; moving costs damage and damage is the whole plan.\n- Stat Focus: Str\n- Disciplines: Radiant Dawn\n- Homeland: Tal-falko\n\nVocation\n- Profession: Legend of the Uncharted (rank 15)\n- Profession: Dentist (rank 10)\n- Profession: Master-at-Arms (rank 5)\n- Profession: Upholsterer (rank 10)\n- Known for: Basketweaving\n- Training: An average trainer who taught them Improved Lightning Reflexes, Pikemans Training\n- Training: An average trainer who taught them Powerful Throwing (combat), Darting Viper\n- Training: An average trainer who taught them Flanking Specialist (combat), Bloody Assault\n- Training: An average trainer who taught them Simple Weapon Proficiency, Shield of Swings\n\nFamily\n- Loving Mother\n- Dead Father\n- Raised In A Wealthy Household\n- No Siblings\n\nPersonality\n- Personality: Reverent, Analytical, Doubtful\n- Mannerisms: Combs mustache, Bites lower lip\n- Flaws: Illiterate, Alcoholic\n\nAppearance\n- Hair: Unkempt Red\n- Eyes: Grey\n- Build: Defined Cheekbones",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 6009,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 750,
+ "gold": 100,
  "hair_color": [
-  "Grey"
+  "Red"
  ],
  "hair_type": [
-  "Flowing"
+  "Unkempt"
  ],
  "height_number": "5'7\"",
  "hero_points": 2,
  "homebrew_feat_desc_dict": {
-  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
-  "Discipline Mastery": "Youve learned to use certain skills in reference to your martial ability with practiced ease. you may take 10 on skill checks made with any associated skill of a discipline you possess (with 8 or more ranks) without increasing the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so.",
-  "Distance Thrower": "You are accurate with thrown weapons at longer ranges than normal",
+  "Bloody Assault": "Sacrificing accuracy, you can inflict bloody wounds that are slow to heal",
+  "Combat Reflexes": "You can make additional attacks of opportunity",
+  "Darting Viper": "When using a dorn-dergar, you can quickly attack both near and distant foes",
+  "Death From Below": "You have been trained to fight flying creatures",
   "Extra Combat Talent": "Your knowledge of combat is easily expanded.\n\nBenefit: Gain an additional sphere or a talent from a combat sphere you possess.\n\nSpecial: You may take this feat multiple times. The effects stack.",
-  "Extra Combat Talent (Cohort Attack / Friends In High Places)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Cohort Attack (Leadership): When you use the attack action to attack, one of your cohorts may also attack your target with a single weapon it possesses as a joint swift action. If both you and the cohort successfully deal damage with these attacks, the cohort may immediately move 5 feet as a free action. This movement does not\n- Friends In High Places (Leadership): You can recruit cohorts from the outer planes themselves. Such cohorts are built like a normal cohort, but are Small or Medium creatures with the outsider (extraplanar) type, and benefits from the Conjuration sphere Planar Creature (type) talent as if it were a Conjuration companion. As you recruit ",
-  "Footslasher": "You are trained to strike at a large foe's feet to impede its movement and cause great pain",
-  "Heavy Armor Proficiency": "You are skilled at wearing heavy armor",
-  "Hone Weapon": "Youve learned the art of bringing a fine cutting edge to your weapons. you can spend ten minutes using a whetstone to sharpen a piercing or slashing weapon or up to 20 pieces of piercing or slashing ammunition to a fine point or edge. the newly-honed weapon gains a +1 bonus on damage rolls for one day. this bonus increases by +1 at character level 4th and at every four levels thereafter. honing a weapon has no effect on its hardness or hit points, and you may hone both magical and nonmagical weapons. you can only hone manufactured weapons with this feat.",
-  "Improved Shield Bash": "You can protect yourself with your shield, even if you use it to attack",
-  "Iron Will": "You are more resistant to mental effects",
-  "Lightning Recovery": "With a flash of insight, you retain the knowledge of a martial maneuver youve just used. Special You may select this feat multiple times, gaining multiple uses per day. as a free action, after youve use a martial strike, counter, or boost, you may instantly recover that maneuver. you may do this once per day.",
-  "Lunge": "You can strike foes that would normally be out of reach",
-  "Martial Training I (Tempest Gale)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Tempest Gale)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Tempest Gale)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Tempest Gale)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Tempest Gale)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Tempest Gale)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Extra Combat Talent (Call Attention / Advanced Notice)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Call Attention (Warleader): When you use this shout, your opponents' attention is drawn to you for its duration, making it hard for them to focus on your allies. Allies within the shout's affected area may make a Stealth check to hide even if they do not have cover or concealment for the duration of the shout, but you automati\n- Advanced Notice (Warleader): You warn your allies easier and quicker before shouting, preventing your enemies from reacting. You may warn your allies as part of a shout, rather than spending a move action. Nearby enemies do not receive a bonus on their save against your shouts when you warn your allies.",
+  "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Fortifying Phalanx (Warleader): Allies within range of this tactic are granted a +1 morale bonus on Fortitude saving throws, +1 for every 4 ranks in Diplomacy you possess, as long as they are within the natural reach of at least one other ally affected by this tactic. Once per round when an ally affected by this tactic fails a For\n- Invigorating Call (Warleader): You can spur your allies into action to react faster to imminent threats. For the duration of this shout, you and your allies are immune to sleep and fascinated. In addition, when first affected by this shout, any sleeping allies immediately wake up, fascinated allies automatically break free of the",
+  "Extra Combat Talent (Piercing Voice)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Piercing Voice (Warleader): Whenever you would be affected by a magic effect that would make you unable to speak (such as the silence option of the Suppression Illusion talent), the caster must first attempt a magic skill check against a DC equal to 10 + 1/2 your Diplomacy ranks + your practitioner modifier (minimum 1). If the",
+  "Extra Combat Talent (Projecting Voice / Disarming Roar)": "Extra Combat Talent > Extra Combat Talent (house rule: one slot, two talents).\nTalents gained:\n- Projecting Voice (Warleader): When using a shout, you may center your shout inside any square of an ongoing tactic you are maintaining, treating that square as the point of origin for that shout. If you have Breath Support or another talent or effect which would allow you to change the shape of your shout (such as into a line or\n- Disarming Roar (Warleader): You may expend your martial focus to cause all affected enemies to attempt a Will saving throw. On a failed save, the creature loses their martial focus. This is an instantaneous effect.",
+  "Flanking Foil": "Fighting multiple foes is easy for you",
+  "Flanking Specialist (combat)": "You are more adept at flanking with allies. you count as occupying both your current space and any space adjacent to you for the purpose of flanking an opponent (including allowing your allies to flank as if you were in any of those spaces). the space must be open; you cannot use this ability to flank from a space that contains an object, creature, or barrier.",
+  "Gang Up": "You are adept at using greater numbers against foes",
+  "Hellcat Stealth": "You are difficult to see in the light",
+  "Horn of the Criosphinx": "You end your charge in a devastating two-handed attack",
+  "Improved Lightning Reflexes": "You have a knack for avoiding danger all around you",
+  "Jaguar Pounce": "Your ambushes are especially lethal",
+  "Lightning Reflexes": "You have faster ref lexes than normal",
+  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
+  "Martial Training I (Radiant Dawn)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Radiant Dawn)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Radiant Dawn)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Radiant Dawn)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Radiant Dawn)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Radiant Dawn)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Necromantic Affinity": "Long exposure to necromantic energies has granted you a small measure of resistance against them",
-  "Net Adept": "You have trained to use the net as a melee weapon",
-  "Night Dweller": "Your long time spent in darkness has made you accustomed to its terrors. you gain a +4 bonus on saving throws against fear, phantasm, darkness, shadow, and shadowmorph effects. the dc of intimidate checks made to demoralize you increases by 5.",
-  "Point-Blank Shot": "You are especially accurate when making ranged attacks against close targets",
-  "Pushing Assault": "A strike made with a two-handed weapon can push a similar sized opponent backward",
-  "Quick Draw": "You can draw weapons faster than most",
-  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
+  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
+  "Pikemans Training": "Militaries across the land rely on lines of pikemen carrying both their long spears and a shield. You are familiar with this fighting style. you can wield a normally two-handed polearm or spear in one hand, provided you are wielding a light or heavy shield in your other hand. when wielding a weapon in this manner, you treat it in all ways as being a one-handed weapon, rather than a weapon of its normal handedness.",
+  "Polearm Expertise (combat)": "Your expertise with reach weapons lets you strike foes that are adjacent to you. Normal You cannot strike an enemy that is adjacent to you while wielding a reach weapon. as a free action, you can shorten your grip on a reach weapon that you are proficient with to use it against adjacent targets. while doing so, the weapon does not have reach, instead threatening the area for a normal melee weapon. you have a 2 penalty on attack rolls while using this feat. you can use another free action to return to the normal grip and reach.",
+  "Powerful Throwing (combat)": "Your thrown weapons are as strong as they are accurate. Special Starting at 2nd level, a ranger with the thrown weaponACG combat style may select Powerful Throwing as a combat style feat. you can use your strength modifier for both your attack and damage rolls with thrown weapons.",
+  "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
+  "Reckless Offense": "You can shift your focus from defense to offense. when you use the attack action or full attack action in melee, you can take a penalty of 4 to your armor class and add a +2 bonus on your melee attack roll. the bonus on attack rolls and penalty to armor class last until the beginning of your next turn.",
+  "Shield of Swings": "A wild frenzy of attacks serves to bolster your defenses",
+  "Simple Weapon Proficiency": "You are trained in the use of basic weapons",
+  "Tandem Trip": "You know how to work together to trip your foes",
+  "Tribal Scars": "You endured the grueling coming-of-age rituals of your tribe or following, and proudly bear the scars that grant you the blessings of your tribe's ancestors or totem",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -576,131 +586,159 @@
  "initiator_level": 7,
  "int": 13,
  "item_changes_dict": {
-  "Amulet of Euphoric Healing": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "Anytime the wearer casts a healing spell or uses a spell-like ability on a single target, the recipient of the magical healing additionally must succeed at a dc [[13]] fortitude save or become addicted to the wearer's healing spells. The wearer can suppress this effect by shielding the amulet from view with a hand or held item as a free action."
-    }
-   ]
-  },
-  "Belt of Tumbling": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.acr",
-     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
-    }
-   ]
-  },
-  "Cap of Light": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The light can also be turned off on command."
-   ]
-  },
-  "Cloak of the Hedge Wizard": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The cloak grants its wearer the ability to use a certain number of spells on command (caster level 1st) based on its school of magic. It also grants the wearer the ability to use prestidigitation on command and at will. Abjuration : at will resistance ; 1/day endure elements , shield conjuration : at will acid splash ; 1/day mage armor , unseen servant divination : at will detect magic ; 1/day detect secret doors , true strike enchantment : at will daze ; 1/day charm person , sleep evocation : at will light ; 1/day floating disk , magic missile illusion : at will ghost sound ;"
-   ]
-  },
-  "Dark Life Ring": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "will",
-     "text": "A dark life ring grants its wearer a +[[2]] profane bonus on will saving throws against channeled negative energy and inflict spells (any spell with inflict in its name)."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "In addition, anytime the wearer takes damage from channeled negative energy or an inflict spell, she subtracts 5 from the damage taken (calculated after the wearer has rolled her will save against the effect), to a minimum of 0 points of damage."
-    }
-   ]
-  },
-  "Gloves of Pulverizing Disruption": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "cmb",
-     "text": "The next time the wearer attempts a dirty trick combat maneuver, the dust flies from the gloves, providing a +[[2]] bonus on that attempt."
-    },
-    {
-     "target": "attack",
-     "text": "Three times per day, the wearer can use these thick leather gloves to make a melee touch attack against an undead creature, a construct, or a nonmagical object and deal [[3d4]] points of damage to it. This creates dust that is stored within the gloves for [[24]] hours. If the wearer does not attempt a dirty trick combat maneuver before [[24]] hours elapses, the dust disappears."
-    }
-   ]
-  },
-  "Headband of Twisted Intellect": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "This strange metal headband of vast intellect +2 is crafted in the shape of intertwined tentacles and adorned with runes in the aboleth language."
-   ]
-  },
-  "Horseshoes of Crushing Blows +2": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "(Mount, all four shoes worn) The animal gains a +[[2]] enhancement bonus on attack and damage rolls with hoof attacks."
-    }
-   ]
-  },
-  "Ring of Swarming Stabs": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "Twice per day, when the wearer is flanking an opponent, he can as a swift action deal an additional [[1d6]] points of damage on a successful melee attack against that opponent."
-    }
-   ]
-  },
-  "Soulsight Goggles": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer can immediately see and discern magical auras within 60 feet, as arcane sight . Once per day on command, the wearer can amplify the goggles' ability to sense animating forces for 1 hour. This amplification allows the wearer the ability to notice, locate, and distinguish between living and undead creatures within 30 feet, just as if she had a psychopomp's spiritsense ability ."
-   ]
-  },
-  "Swallowtail Bracers": {
+  "Gloves of Improvised Might +1": {
    "changes": [
     {
      "formula": "1",
      "operator": "add",
      "priority": 0,
-     "target": "allSavingThrows",
-     "type": "luck"
+     "target": "damage",
+     "type": "enh"
     }
    ],
    "contextNotes": [
     {
-     "target": "allSavingThrows",
-     "text": "If the wearer worships desna, the bracers grant an additional boon: once per day, by speaking a command word and the name and/or title of the intended recipient, the wearer may cast dream . Such a wearer is also immune to nightmare , and when the wearer is targeted by that spell, the effects reflect back upon the caster."
+     "target": "attack",
+     "text": "Alternatively, the gloves can grant melee weapon special abilities, so long as they can be applied to melee or thrown weapons (see pages 136 137 of pathfinder rpg ultimate equipment for a list of abilities). Gloves of improvised might cannot have a modified bonus (enhancement bonus plus special ability bonus equivalents) higher than +[[5]]. The wearer still takes a 4 nonproficiency penalty on attack rolls with improvised weapons, as normal, unless he has the catch off-guard feat or a similar ability."
     }
    ]
   },
-  "Vest of the Cockroach": {
+  "Imperious Headband": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "An imperious headband grants its wearer a +[[4]] deflection bonus to his ac against any attack made by a hireling, a slave, a servant, or any other sentient creature in his employ."
+    },
+    {
+     "target": "allSavingThrows",
+     "text": "In addition, such creatures must succeed at a dc [[13]] will save or treat their master as if he were affected by a sanctuary spell. If such creatures are subject to magical compulsion to attack the wearer, they must roll all attack rolls and checks to overcome spell resistance against the wearer twice and take the lower result."
+    }
+   ]
+  },
+  "Praenomen": {
+   "changes": [
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.dip",
+     "type": "untyped"
+    },
+    {
+     "formula": "4",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "ac",
+     "text": "Once per day, the wearer can impose a geas on another creature, compelling the target to undertake a mission for the praenomen's master. The praenomen can be rededicated to a new master by replacing the front plate and engraving the name of its new master on the cartouche, requiring a successful dc [[21]] craft (jewelry) check. Its wearer gains a +[[2]] deflection bonus to armor class, and three times per day, the wearer can activate the praenomen to grant the benefits of heroism to all loyal subjects of its master within [[30]] feet."
+    }
+   ]
+  },
+  "Robe of Needles": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "If she already has this talent, activating the talent grants her 2 hit points per rogue level instead of 1."
+    "The needle counts as a thrown weapon with a range increment of 10 feet. If the needle hits, it embeds itself in the target's flesh, dealing 1 point of piercing damage and 1 point of bleed damage. A creature can pull out the needle as a full-round action, which ends the bleed effect."
    ]
+  },
+  "Slippers of Scampering": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Slippers of scampering function in almost every way like slippers of spider climbing , except the slippers can be used for 10 rounds per day, split up as the wearer chooses (minimum 1 round per use)."
+   ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 28,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     8
+    ]
+   ],
+   "hp": 105,
+   "hp_lines": [
+    [
+     "Armor",
+     35
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     40
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 35,
+   "hardness_lines": [
+    [
+     "Two-Handed Hafted",
+     5
+    ],
+    [
+     "Adamantine",
+     20
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "hp": 100,
+   "hp_lines": [
+    [
+     "Two-Handed Hafted",
+     10
+    ],
+    [
+     "Adamantine",
+     40
+    ],
+    [
+     "Enhancement",
+     50
+    ]
+   ],
+   "material": "adamantine",
+   "material_label": "Adamantine",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [],
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Giant",
-  "Auran",
   "Sphinx",
   "Infernal",
   "Goblin",
-  "Halfling"
+  "Halfling",
+  "Ignan",
+  "Protean"
  ],
  "level": 15,
  "level_up_stats": {
@@ -781,142 +819,142 @@
  "main_stat": "str",
  "maneuvers_choose_from": [
   [
-   "Eye of the Needle",
-   "Distant Gale"
+   "Staunching Strike",
+   "Dismiss"
   ],
   [
-   "Piercing Shot",
-   "Deflecting Shot"
+   "Curate's Strike",
+   "Healer's Bane"
   ],
   [
-   "Disarming Blast",
-   "Cascading Draft"
+   "Lifeburst Strike",
+   "Disrupt Essence"
   ],
   [
-   "Cutting Gale"
+   "Decree of Silence"
   ],
   [
-   "False Wind"
+   "Divide and Conquer"
   ],
   [
-   "Trick of the Wind"
+   "King's Castle"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Cascading Draft": {
-   "action": "1 standard action",
-   "description": "Reading the winds allows you to hit further and strike harder than any other martial artist. After you initiate this boost, your next ranged attack this round deals an additional +2 damage for every 20 feet of distance between you and the target up to a maximum of +20 damage.",
-   "discipline": "Tempest Gale",
-   "duration": "1 round",
+  "Armaments of the Empire": {
+   "action": "1 swift action",
+   "description": "A thin layer of akasha ows forth from you and covers your and your allies weapons. While you maintain this stance, you empower a number of weapons including natural weapons within close range 25 feet + 5 feet per 2 initiator levels up to your initiation modifier. Each empowered weapon gains the benefit of a weapon special ability with a market price of +1 bonus. This ability must be chosen from the list of weapon special abilities you could normally place on a mind blade see the enhanced mind blade class feature in Chapter 3 of Ultimate Psionics or in the Reference Materials section at the end of this book. At initiator 10th and every five levels thereafter, the market price of the weapon special ability you can grant a weapon increases to +2 bonus, then +3 bonus, and so on. A weapon can only gain a single ability through this stance, though you need not grant the same ability to each aected weapon. A weapon retains its new ability for as long as it remains within close range. You choose which weapons are empowered when you enter this stance, and you can change which weapons within range are empowered as a swift action or as part of reallocating essence.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
    "level": 3,
    "range": "Personal",
-   "type": "boost"
+   "type": "stance"
   },
-  "Cutting Gale": {
+  "Battle Against the Sun": {
+   "action": "1 swift action",
+   "description": "To challenge you is to challenge the sun itself: An exercise in futility. While you maintain this stance, you shed bright light, as if by a daylight spell, out to close range 25 feet + 5 feet per 2 levels. Once per round, as a free action that can be taken at any time including when it is not your turn, you may create a line with a length of 20 feet that originates anywhere within this light. Unlike normal line attacks, this line attack does not need to fire away from you; it may travel in any direction so long as the origin point is within your daylight range. Enemies within the area take damage equal to your initiator level. A successful Reflex save DC 16 + initiation modifier halves this damage. Allies caught within the line are instead healed for a number of hit points equal to your initiator level.",
+   "discipline": "Radiant Dawn",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Curate's Strike": {
    "action": "1 standard action",
-   "description": "Your arrows leave wounds which bleed more fiercely than the pinpricks of a thousand lesser archers. Make a ranged attack. If it hits, it deals weapon damage as normal plus an additional 5d6 points of damage and automatically overcomes damage reduction. In addition, a struck target must succeed at a Fortitude save DC 14 + your initiation modifier or take points of bleed damage equal to your initiation modifier. The target continues to bleed until the bleeding is stopped via magical healing or a successful DC 15 Heal check.",
-   "discipline": "Tempest Gale",
+   "description": "This strike was created by a kobold leader to fight both controlling magics and vicious wounds. Make an attack. If it hits, it deals weapon damage as normal, and you can heal yourself and allies within close range 25 feet + 5 feet per 2 initiator levels for a total number of hit points equal to twice your initiation modifier, divided as you choose between you and your allies. Alternatively, you may choose to grant a single ally within close range a saving throw against an ongoing effect on them that offers multiple saving throws over time to negate, or has its duration measured in rounds at the effects original DC, at the effects original DC. If it succeeds, the effect ends. This does not progress poison, diseases, or similar effects on a failed saving throw.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Decree of Silence": {
+   "action": "1 immediate action",
+   "description": "Your presence demands silence. Only those who you allow to speak may do so. You may initiate this counter in response to a creature within close range 25 feet + 5 feet per 2 initiator levels manifesting a power, casting a spell, or using a spell-like or psi-like ability. Roll damage as if youd made a successful attack with a weapon youre wielding; you dont deal this damage, but the target of this counter must succeed at a concentration check DC 10 + damage that would be dealt by this attack + the level of the spell being cast or power being manifested or lose the power, psi-like ability, spell, or spell-like ability as if it had been disrupted.",
+   "discipline": "Radiant Dawn",
    "duration": "Instantaneous",
    "level": 4,
-   "range": "Ranged attack",
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "counter"
+  },
+  "Dismiss": {
+   "action": "1 standard action",
+   "description": "This attack softly removes an enemy from your presence. Make an attack. If it hits, you deal damage as normal, and you can make a trip attempt against the target. If your trip attempt succeeds, the target is also pushed away as if you had successfully bull rushed them, using the same result as your trip attempt. You may not move with the target with this bull rush. Neither the trip attempt nor the targets movement during the bull rush provoke attacks of opportunity. When determining your combat maneuver bonus for this strike, you may use your initiator level in place of your base attack bonus, and may choose to use your Dexterity or initiation modifer in place of your Strength modifer.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee or ranged attack",
    "type": "strike"
   },
-  "Dancing Winds Stance": {
+  "Disrupt Essence": {
+   "action": "1 standard action",
+   "description": "A powerful blow that disrupts ones essence, inhibiting the use of abilities. Make an attack. If it hits, the target must make a Will save DC 10 + your initiation level + your initiation modifier or have a single Extraordinary Ex or supernatural Su ability that requires an action to activate, special sense, or special movement type of your choice disabled for rounds equal to your initiation modifier. You must be aware of the ability in order to disable it Such as a successful knowledge check, or having seen it in action.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous; see text",
+   "level": 3,
+   "range": "Melee or ranged attack.",
+   "type": "strike"
+  },
+  "Divide and Conquer": {
+   "action": "1 standard action",
+   "description": "This strike pulls essence from the target, creating an effigy of the creature. When the essence returns to its creature, it brings its wounds with it. Make an attack. If it hits, it deals an additional 3d6 points of damage, and the target must make a Will save DC 15 + initiation modifier or have its essence drawn into one effigy until the end of your next turn. This translucent effigy appears within close range 25 feet plus 5 feet per 2 levels of you. The effigy is the size of the target of this maneuver, but otherwise does not block movement or occupy spaces, and may be targeted by attacks, spells, or other abilities. Any attack, spell, or other ability used against the effigy or including it in its aected area is redirected against the target of this maneuver as if they were the original target regardless of range, and the target may defend themselves normally against these attacks.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous; see text",
+   "level": 5,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Healer's Bane": {
+   "action": "1 immediate action",
+   "description": "Made to combat other practitioners of the Radiant Dawn discipline, this maneuver hijacks healing for ones own purpose. You may initiate this counter in response to a target within range healing hit point damage. The target must make a will save DC 12 + initiation modifier or have their healing stolen. Instead of the target and any other creatures aected by that instance of the eect being healed, you draw the total amount of healing done into a pool, and may redistribute this pool of healing to allies within close range 25 feet + 5 feet per 2 initiator levels, divided as you choose between you and your allies. Targets that would have been healed by the healing then take damage equal to half of the healing stolen.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "counter"
+  },
+  "King's Castle": {
+   "action": "1 immediate action",
+   "description": "Your faithful respond to your call for help. You may initiate this counter in response to being attacked. One willing ally other than you teleports to a space adjacent to you and gains temporary hit points equal to your initiator level, as well as DR/ equal to your initiation modifier, both of which last for 1 round. Resolve the attack against the teleported ally instead of yourself. After the attack is resolved, the ally teleported may make a single melee or ranged attack at their highest base attack bonus against the creature that attacked you. This attack does not provoke attacks of opportunity.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 6,
+   "range": "Close 25 ft. + 5 ft./2 levels",
+   "type": "counter"
+  },
+  "Lifeburst Strike": {
+   "action": "1 standard action",
+   "description": "You strike out with a simple blow with an uncanny power to heal and harm. Make an attack. If it hits, it deals weapon damage as normal plus an additional 1d6 points of damage, and you can heal yourself and allies within close range 25 feet + 5 feet per 2 initiator levels for a total number of hit points equal to three times your initiation modifier, divided as you choose between you and your allies. Alternatively, you may choose to grant a single ally within close range a saving throw against an ongoing eect on them that oers a saving throw to negate, at the eects original DC. If it succeeds, the eect ends. This does not progress poison, diseases, or similar eects on a failed saving throw.",
+   "discipline": "Radiant Dawn",
+   "duration": "Instantaneous",
+   "level": 3,
+   "range": "Melee or ranged attack",
+   "type": "strike"
+  },
+  "Stance of the Sunlight Shield": {
    "action": "1 swift action",
-   "description": "The wind whips around you as you move, guarding you against attacks so long as you remain in motion. While you maintain this stance, in any round that you move at least 10 feet, you gain the benefits of the improved evasion ability and attacks made against you suffer a 20% miss chance until the start of your next turn.",
-   "discipline": "Tempest Gale",
+   "description": "This stance sits halfway between martial form and magic prowess, conjuring shields of light to defend yourself and others. While you maintain this stance, you may create sunlight shields. Creating a single sunlight shield is done as free action that can be done once per round, and is done automatically when you enter this stance. A sunlight shield can be created anywhere within close range 25 feet plus 5 feet per 2 levels of you to include in the air, where they oat until destroyed, dismissed, or removed. Treat a sunlight shield as a 10ft by 10ft by 1 inch thick wall of force, but with hardness equal to your initiator level plus your initiation modifier, and 1 hit point. They may be made smaller at the initiators discretion. You may have a number of sunlight shields equal to your initiation modifier, and these shields last indefinitely, or until they are no longer within close range of you, you dismiss them as a free action, or you leave this stance. These sunlight shields can be made at any angle, and are treated as normal terrain when stepped on. You may command these shields to y an amount of feet equal to your movement speed as a move action. You may also create a sunlight shield as an immediate action, but doing so is dangerous as the hasty construction leaves your essence tied to it. Until the start of your next turn, any damage that the shield takes before hardness is taken into account, or any spell that would fail because of the shields sudden appearance between its caster and its target is also inicted on you, regardless of distance. Creatures can attack other creatures on the other side of these shields, dealing damage to the shield first. If an attack would break the shield, the remainder of the damage is dealt to the creature if the original attack would have hit. When you enter this stance, you may designate any number of allies. These allies attacks and abilities are not impeded by your sunlight shields.",
+   "discipline": "Radiant Dawn",
    "duration": "Stance",
    "level": 5,
    "range": "Personal",
    "type": "stance"
   },
-  "Deflecting Shot": {
-   "action": "1 immediate action",
-   "description": "You know well that a sudden shot can disrupt the enemy and remove a potential threat. You can initiate this counter in response to an attack being made against you or an ally within 30 feet of you. Make a ranged disarm attempt against the attacker, using a Sleight of Hand check in place of your combat maneuver check. If your disarm attempt is successful, the attack is negated even if the weapon cannot actually be disarmed. This disarm attempt does not provoke an attack of opportunity.",
-   "discipline": "Tempest Gale",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "30 ft. see text",
-   "type": "counter"
-  },
-  "Disarming Blast": {
+  "Staunching Strike": {
    "action": "1 standard action",
-   "description": "With a combination of might and skill, you fire a shot that hits with such force it disarms the enemy. Make a ranged attack. If it hits, it deals weapon damage as normal plus an additional 3d6 points of damage, and you can make a disarm attempt against the target as a free action, using a Sleight of Hand check in place of your combat maneuver check. This disarm attempt does not provoke an attack of opportunity.",
-   "discipline": "Tempest Gale",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Ranged attack",
-   "type": "strike"
-  },
-  "Distant Gale": {
-   "action": "1 standard action",
-   "description": "Firing with the strength of the winds at your back, you unleash an attack that becomes more dangerous the more distance it travels. Make a ranged attack. If it hits, it deals weapon damage as normal plus an additional +1 point of damage for every 20 feet of distance between you and the target up to a maximum of +5.",
-   "discipline": "Tempest Gale",
+   "description": "To help your allies and harm your enemies is the most basic tenet of the Radiant Dawn discipline. Make an attack. If it hits, it deals weapon damage as normal, and you can heal yourself and allies within close range 25 feet + 5 feet per 2 initiator levels for a total number of hit points equal to your initiation modifier, divided as you choose between you and your allies.",
+   "discipline": "Radiant Dawn",
    "duration": "Instantaneous",
    "level": 1,
-   "range": "Ranged attack",
+   "range": "Melee or ranged attack",
    "type": "strike"
   },
-  "Eye of the Needle": {
+  "The Caged Sun": {
    "action": "1 swift action",
-   "description": "For most archers, an enemy engaged in melee is a difficult target at best, but for you a smaller target only presents greater opportunity. After you initiate this boost, your next ranged attack roll this round gains a +4 bonus if the target of the attack is engaged in melee.",
-   "discipline": "Tempest Gale",
-   "duration": "1 round",
-   "level": 1,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "False Wind": {
-   "action": "1 immediate action",
-   "description": "You unleash a rapid shot that distracts or disables an enemy, preventing them from harming you or your ally. You can initiate this counter in response to an attack being made against you or an ally by a creature you can see. Make a ranged attack against that creature. If it hits, it deals weapon damage as normal, and the ally targeted by the creature you attacked can move up to their speed as a free action, even if it isnt their turn. This movement does not provoke attacks of opportunity.",
-   "discipline": "Tempest Gale",
-   "duration": "Instantaneous",
-   "level": 5,
-   "range": "Ranged attack",
-   "type": "counter"
-  },
-  "Piercing Shot": {
-   "action": "1 standard action",
-   "description": "The power behind your ranged attacks is such that they can strike through one foe to pierce another behind them. When you initiate this strike, you create a 30-foot line that deals 3d6 points of damage. Creatures caught in the line can make a Reflex save DC 12 + your initiation modifier to take half damage.",
-   "discipline": "Tempest Gale",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "30 ft.",
-   "type": "strike"
-  },
-  "Snipers Eye Stance": {
-   "action": "1 swift action",
-   "description": "As a Tempest Gale disciple, distance is no obstacle to you. While you maintain this stance, you reduce the total penalty from attacking creatures beyond your weapons first range increment by 2, and you gain a +2 bonus on combat maneuver checks made with ranged attacks. For every four initiator levels you possess, the penalty to ranged attacks lessens by another 2, and the bonus to ranged combat maneuver checks increases by +2.",
-   "discipline": "Tempest Gale",
+   "description": "If you have 50% or fewer hit points, entering this stance can be done as a free action instead of a swift. While you maintain this stance, you cannot heal creatures other than yourself, but any healing you receive is increased by 50%. If you would be healed for more than your maximum amount of hit points, you instead gain an amount of temporary hit points equal to the excess healing. These temporary hit points stack with other temporary hit points granted by you, up to a maximum of your maximum hit points, and last for one minute, until initiative is rolled, or you abandon this stance.",
+   "discipline": "Radiant Dawn",
    "duration": "Stance",
    "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Tempest Gale Stance": {
-   "action": "1 swift action",
-   "description": "You move as swiftly as the wind, and strike with all the fury of the storm. While you maintain this stance, you add your initiation modifier to damage rolls made with ranged weapons and gain a bonus on ranged combat maneuver checks and the save DCs of Tempest Gale maneuvers you initiate equal to 1/4 your initiator level minimum +1.",
-   "discipline": "Tempest Gale",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Trick of the Wind": {
-   "action": "1 swift action",
-   "description": "Your skill at reading the wind is such that the very air itself seems to bend to your will. After initiating this boost, you can make a Sleight of Hand check in place of ranged attack rolls for your ranged attacks this round. Any bonuses and penalties that would be applied to a normal attack roll, such as weapon enhancements, spell effects, or the penalties for fighting with two weapons or shooting into melee, are applied to the skill check as well.",
-   "discipline": "Tempest Gale",
-   "duration": "1 round",
-   "level": 6,
-   "range": "Personal",
-   "type": "boost"
-  },
-  "Winds of Vengeance Stance": {
-   "action": "1 swift action",
-   "description": "Every move that your enemies make is an opportunity for you, and one that you relish taking advantage of. While you maintain this stance, you can make a number of additional attacks of opportunity each round equal to your initiation modifier. This stacks with the Combat Reflexes feat and other effects that increase the number of attacks of opportunity you can make in a round. In addition, any time an enemy hits an ally within 60 feet of you with an attack, you can make an attack of opportunity against that enemy using a ranged weapon you are wielding.",
-   "discipline": "Tempest Gale",
-   "duration": "Stance",
-   "level": 6,
    "range": "Personal",
    "type": "stance"
   }
@@ -940,20 +978,20 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Piercing Shot"
+   "Healer's Bane"
   ],
   [
-   "Cascading Draft",
-   "Disarming Blast"
+   "Lifeburst Strike",
+   "Disrupt Essence"
   ],
   [
-   "Cutting Gale"
+   "Decree of Silence"
   ],
   [
-   "False Wind"
+   "Divide and Conquer"
   ],
   [
-   "Trick of the Wind"
+   "King's Castle"
   ]
  ],
  "manifesters": [],
@@ -962,27 +1000,27 @@
   "Bites lower lip"
  ],
  "martial_disciplines": [
-  "Tempest Gale"
+  "Radiant Dawn"
  ],
  "mini_alignment": "lg",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Tempest Gale)",
-  "Martial Training III (Tempest Gale)",
-  "Martial Training V (Tempest Gale)"
+  "Martial Training I (Radiant Dawn)",
+  "Martial Training III (Radiant Dawn)",
+  "Martial Training V (Radiant Dawn)"
  ],
  "mythic": null,
  "normal_feat_amount": 6,
- "older_brothers": " you have 1 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, loving father, raised in a wealthy household",
+ "parents": "loving mother, dead father, raised in a wealthy household",
  "personality_traits": [
   "Reverent",
   "Analytical",
   "Doubtful"
  ],
- "platnium": 75.0,
+ "platnium": 10.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1483,6 +1521,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1548,89 +1587,111 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Empowered Abilities",
-  "Overcharge",
+  "Easy Focus",
   "Fortified Casting"
  ],
  "sphere_counts": {
-  "Leadership": {
+  "Warleader": {
    "advanced": 1,
    "feats": 0,
-   "normal": 1
+   "normal": 6
   }
  },
  "sphere_drawbacks": [
-  "Prepared Caster",
-  "Extended Casting",
-  "Draining Casting",
-  "Skilled Casting",
+  "Somatic Casting",
   "Material Casting",
-  "Focus Casting"
+  "Painful Magic",
+  "Prepared Caster"
  ],
  "sphere_feat_tax": {
-  "Extra Combat Talent (Cohort Attack / Friends In High Places)": [
+  "Extra Combat Talent (Call Attention / Advanced Notice)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Piercing Voice)": [
+   "Extra Combat Talent"
+  ],
+  "Extra Combat Talent (Projecting Voice / Disarming Roar)": [
    "Extra Combat Talent"
   ]
  },
  "sphere_feats": [
-  "Extra Combat Talent (Cohort Attack / Friends In High Places)"
+  "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)",
+  "Extra Combat Talent (Call Attention / Advanced Notice)",
+  "Extra Combat Talent (Projecting Voice / Disarming Roar)",
+  "Extra Combat Talent (Piercing Voice)"
  ],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Prepared Caster",
-  "Extended Casting",
-  "Draining Casting",
-  "Skilled Casting",
+  "Somatic Casting",
   "Material Casting",
-  "Focus Casting",
-  "Empowered Abilities",
-  "Overcharge",
+  "Painful Magic",
+  "Prepared Caster",
+  "Easy Focus",
   "Fortified Casting"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Leadership",
+   "sphere": "Warleader",
    "system": "might"
   }
  ],
  "stances_chosen": [
-  "Tempest Gale Stance",
-  "Dancing Winds Stance",
-  "Winds of Vengeance Stance",
-  "Snipers Eye Stance"
+  "The Caged Sun",
+  "Armaments of the Empire",
+  "Stance of the Sunlight Shield",
+  "Battle Against the Sun"
  ],
  "story_feat_tax_dict": {
-  "Net Adept": [
-   "net maneuvering",
-   "net trickery"
-  ],
-  "Point-Blank Shot": [
-   "charging hurler",
-   "disrupting shot",
-   "far shot",
-   "improved charging hurler",
-   "precise shot",
-   "rapid shot",
-   "reckless aim"
+  "Combat Reflexes": [
+   "bodyguard",
+   "in harm's way"
   ]
  },
  "story_feats": [
-  "Point-Blank Shot",
-  "Improved Shield Bash",
-  "Net Adept",
-  "Combat Medic"
+  "Polearm Expertise (combat)",
+  "Tandem Trip",
+  "Combat Reflexes",
+  "Malevolence"
  ],
  "str": 23,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 15,
  "total_rolled_hp": 140,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
+ "trainer_calibers": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)",
+  "(Trainer 4)",
+  "(Trainer 4)"
+ ],
  "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_feats": [
+  "Improved Lightning Reflexes",
+  "Pikemans Training",
+  "Powerful Throwing (combat)",
+  "Darting Viper",
+  "Flanking Specialist (combat)",
+  "Bloody Assault",
+  "Simple Weapon Proficiency",
+  "Shield of Swings"
+ ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "adamantine",
+ "weapon_material_damage": 0,
  "weapon_name": "Mattock",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

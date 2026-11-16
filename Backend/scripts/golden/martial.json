@@ -4,7 +4,7 @@
  "alignment": "Lawful Good",
  "animal_companion": null,
  "appearance": [
-  "Spectacled"
+  "Handsome"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Tactician\": {\n        \"source\": \"Ultimate Combat pg. 47 While many fighters focus on the fundamentals of melee and ranged combat, there are those who are trained to view the bigger picture on the battlefield. These fighters use their training and tactical acumen to overcome challenges that would overwhelm mere brute strength and skill at arms.\",\n        \"weapon and armor proficiency\": \"  A tactician is not proficient with heavy armor or tower shields.\",\n        \"strategic training (ex)\": \"  A tactician gains 4 skill points + a number of skill points equal to his Intelligence modifier at each level, instead of the normal 2 skill points + Intelligence modifier at each level. Furthermore, Diplomacy (Cha), Knowledge (geography) (Int), Knowledge (nobility) (Int), Linguistics (Int), and Sense Motive (Wis) are all class skills for the tactician. This ability replaces the bonus fighter combat feat gained at 1st level.\",\n        \"bonus feats\": \"  A tactician may choose Skill Focus or any teamwork feat, in addition to combat feats, as bonus feats.\",\n        \"tactical awareness (ex)\": \"  At 2nd level, a tactician gains a +1 bonus on initiative checks. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery.\",\n        \"tactician (ex)\": \"  At 5th level, a tactician gains this ability as the cavalier class feature. He may use this ability once per day at 5th level, plus one additional time for every five levels after 5th (to a maximum of four times at 20th level). If the tactician also has cavalier levels, these levels stack for determining the number of uses per day, and he can take the better progression. This ability replaces weapon training 1.\",\n        \"cooperative combatant (ex)\": \"  At 11th level, when a tactician uses the aid another special attack, he may affect one additional ally per point of Intelligence bonus. For each ally that a tactician aids, he can pick whether to grant that ally the +2 bonus on its next attack against the opponent or the +2 bonus to AC against the opponent's next attack on that ally, and can grant different allies different bonuses. This ability replaces armor training 3.\",\n        \"battle insight (ex)\": \"  At 15th level, as a swift action, a tactician can grant his Intelligence modifier as an insight bonus on the attack rolls made by a single ally within line of sight that can both see and hear the tactician. That ally gains the bonus until the end of the tactician's next turn. The tactician can use this ability a number of times per day equal to 3 + his Intelligence modifier. This ability replaces armor training 4.\"\n    }\n}",
@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "-7",
  "armor_enhancement_bonus": 5,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "0",
  "armor_name": "Half-plate",
  "armor_spell_failure": "40%",
@@ -38,14 +40,9 @@
  "casting_tradition": {
   "bonus_spell_points": 1,
   "boons": [
-   "Empowered Abilities",
    "Easy Focus"
   ],
   "boons_detail": [
-   {
-    "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
-    "name": "Empowered Abilities"
-   },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
     "name": "Easy Focus"
@@ -54,9 +51,8 @@
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
    "Magical Signs",
-   "Painful Magic",
-   "Addictive Casting",
-   "Draining Casting"
+   "Somatic Casting",
+   "Material Casting"
   ],
   "drawbacks_detail": [
    {
@@ -66,18 +62,13 @@
    },
    {
     "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 2,
-    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
-    "name": "Addictive Casting"
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
    },
    {
     "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "name": "Material Casting"
    }
   ]
  },
@@ -117,12 +108,9 @@
     "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 2 (Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
-   "Actions (Purchased)": {
-    "Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
-   },
    "Feats Not Taken (reference)": {
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
-    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
@@ -132,7 +120,7 @@
     "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point."
    },
    "Reserve": {
     "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
@@ -191,17 +179,27 @@
   "Fighter 14",
   "Fighter 16"
  ],
- "class_feat_tax_dict": {},
+ "class_feat_tax_dict": {
+  "Martial Training I (Brutal Crocodile)": [
+   "Martial Training II (Brutal Crocodile)"
+  ],
+  "Martial Training III (Brutal Crocodile)": [
+   "Martial Training IV (Brutal Crocodile)"
+  ],
+  "Martial Training V (Brutal Crocodile)": [
+   "Martial Training VI (Brutal Crocodile)"
+  ]
+ },
  "class_feats": [
-  "Death From Below",
-  "Ensemble",
-  "Bull Charge (combat)",
-  "Opening Volley",
-  "Mind Trick",
-  "Enduring Mind",
-  "Torch Handling",
-  "Polearm Expertise (combat)",
-  "Shield Wall"
+  "Careful Speaker",
+  "Pack Attack",
+  "Butterfly's Sting",
+  "Martial Training I (Brutal Crocodile)",
+  "Martial Training III (Brutal Crocodile)",
+  "Martial Training V (Brutal Crocodile)",
+  "Einhander",
+  "Catch Off-Guard",
+  "Dirgesinger"
  ],
  "class_feature_changes_dict": {
   "adaptable training (ex)": {
@@ -244,12 +242,9 @@
     "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 2 (Lucky Boy); permanent E-Kat acquisition is doubled (Double Down).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
-   "Actions (Purchased)": {
-    "Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
-   },
    "Feats Not Taken (reference)": {
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
-    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
+    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty.",
     "Feat: Stream of Luck": "[+1 Luck] Gain one E-Kat per session (character played), two if you have Double Down.",
     "Feat: Sweet Dreams": "[+1 Luck] Gain one E-Kat per in-game long rest, two if you have Double Down. (Applies once to timeskips longer than a day.)",
     "Feat: Very Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are increased to triple."
@@ -259,7 +254,7 @@
     "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: It Just Works": "[+4 Luck] Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
     "Feat: Lucky Boy": "[+1 Luck] E-Kat (roll based) bonuses are doubled.",
-    "Feat: Right of Deferment": "[+1 Luck] You may wait to apply E-Kats after a roll for no penalty."
+    "Feat: Middle Finger": "[+1 Luck] Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point."
    },
    "Reserve": {
     "Your reserve": "0 E-Kat(s) carried into play, of 25 earned at creation (1 spent on Luck Traits at 25 each). Storage cap 99."
@@ -324,130 +319,89 @@
  "deity_name": "Erastil",
  "dex": 16,
  "enhancement_desc_dict": {
-  "shock": "Upon command, a shock weapon is sheathed in crackling electricity that deals an extra 1d6 points of electricity damage on a successful hit. The electricity does not harm the wielder. The effect remains until another command is given.",
-  "spirit-hunting": "A spirit-hunting weapon excels against enemies with either the mystery or spirit class feature (but has no effect against a shaman who has a temporary bond to the appropriate spirit by way of the wandering spirit class feature or similar effect). Against a designated foe, the weapon's enhancement bonus is 2 better than its actual bonus. It also deals 2d6 additional points of damage against such foes. When combined with abilities like bane or blood-hunting , the enhancement bonus increases granted by these abilities do not stack, but an additional 1d6 points of damage are added to the additional damage for each special ability beyond the first. (For example, a bane spirit-hunting weapon would deal 3d6 additional points of damage, and a bane blood-hunting spirit-hunting weapon would deal 4d6 additional points of damage.) To randomly determine a weapon's designated foe, roll on the following table. Other designated foes are possible, but most of these weapons are tuned against creatures with the following mysteries or spirits. d% Designated Foe 01–10 Battle 11–20 Bones 21–30 Flame 31–40 Heavens 41–50 Life 51–60 Lore 61–70 Nature 71–80 Stone 81–90 Waves 91–00 Wind"
+  "concealed, lesser": "This special ability can be placed on only light or one-handed melee weapons. A lesser concealed weapon functions as a concealed weapon (above), but can transform into only a mundane object of the same size and general shape of the weapon (determined at the weapon's creation). A melee weapon cannot have both this special ability and the concealed special ability"
  },
  "enhancement_effects_dict": {
   "weapon": {
-   "Shock": {
-    "conditionals": [
-     {
-      "default": true,
-      "modifiers": [
-       {
-        "critical": "nonCrit",
-        "damageType": [
-         "electric"
-        ],
-        "formula": "1d6",
-        "subTarget": "allDamage",
-        "target": "damage",
-        "type": "untyped"
-       }
-      ],
-      "name": "Shock"
-     }
-    ],
-    "description": "Upon command, a shock weapon is sheathed in crackling electricity that deals an extra 1d6 points of electricity damage on a successful hit. The electricity does not harm the wielder. The effect remains until another command is given."
-   },
-   "Spirit-Hunting": {
+   "Concealed, Lesser": {
     "conditionals": [
      {
       "default": false,
-      "modifiers": [
-       {
-        "critical": "normal",
-        "damageType": [],
-        "formula": "2",
-        "subTarget": "allAttack",
-        "target": "attack",
-        "type": "enh"
-       },
-       {
-        "critical": "crit",
-        "damageType": [],
-        "formula": "2",
-        "subTarget": "allAttack",
-        "target": "attack",
-        "type": "enh"
-       },
-       {
-        "critical": "nonCrit",
-        "damageType": [],
-        "formula": "2d6",
-        "subTarget": "allDamage",
-        "target": "damage",
-        "type": "untyped"
-       }
-      ],
-      "name": "Spirit-Hunting: only vs the designated foe with a mystery or spirit class feature — the enhancement bonus is [[2]] better (the +[[2]] attack is on the roll); enh increases from bane/blood-hunting don't stack but each such ability past the first adds +[[1d6]] damage"
+      "modifiers": [],
+      "name": "Concealed, Lesser: on command, transforms into one specific mundane object of the same size and shape chosen at creation (standard action; move action to revert); doesn't register as magical while transformed"
      }
     ],
-    "description": "A spirit-hunting weapon excels against enemies with either the mystery or spirit class feature (but has no effect against a shaman who has a temporary bond to the appropriate spirit by way of the wandering spirit class feature or similar effect). Against a designated foe, the weapon's enhancement bonus is 2 better than its actual bonus. It also deals 2d6 additional points of damage against such foes. When combined with abilities like bane or blood-hunting , the enhancement bonus increases granted by these abilities do not stack, but an additional 1d6 points of damage are added to the additional damage for each special ability beyond the first. (For example, a bane spirit-hunting weapon would deal 3d6 additional points of damage, and a bane blood-hunting spirit-hunting weapon would deal 4d6 additional points of damage.) To randomly determine a weapon's designated foe, roll on the following table. Other designated foes are possible, but most of these weapons are tuned against creatures with the following mysteries or spirits. d% Designated Foe 01–10 Battle 11–20 Bones 21–30 Flame 31–40 Heavens 41–50 Life 51–60 Lore 61–70 Nature 71–80 Stone 81–90 Waves 91–00 Wind"
+    "description": "This special ability can be placed on only light or one-handed melee weapons. A lesser concealed weapon functions as a concealed weapon (above), but can transform into only a mundane object of the same size and general shape of the weapon (determined at the weapon's creation). A melee weapon cannot have both this special ability and the concealed special ability"
    }
   }
  },
  "equip_descrip": {
   "belts": {
-   "description": " this belt is worked with images of horses stampeding across\r a barren, windswept plain. The belt's wearer automatically\r succeeds at any check to guide with the knees, stay in the\r saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's\r wearer is wearing medium, light, or no armor. Furthermore, \r the belt grants a +4 competence bonus on all other ride checks, \r including ones made while the wearer is in heavy armor. ",
-   "item_name": "Equestrian Belt"
+   "description": " rather than being made of one continuous line\r of material, this belt consists of many bits of\r tanned leather joined together by thick metal\r studs. On command, the belt's wearer can\r transform the belt into a single masterwork\r slashing and/or piercing melee weapon of her\r choice. As long as she is holding the weapon, she can also revert it back to belt form with a command. Furthermore, the belt\r can be enchanted like a piercing and slashing melee weapon, \r using the cost of the belt as the cost of the masterwork item. ",
+   "item_name": "Bladed Belt"
   },
   "body": {
-   "description": " this normal-appearing garment is\r attuned to one of three types of\r alignment. It can be white (0145 on\r d%, good alignment), gray (4675, \r neither good nor evil alignment), or\r black (76100, evil alignment). To most\r wearers, the robe offers no powers\r or has no effects unless the wearer's\r alignment doesn't match that of the\r robe (see below). Only an arcane spellcaster can fully realize\r this potent magic item's powers once the robe is donned. \r these powers are as follows. +5 armor bonus to ac\r spell resistance 18\r +4 resistance bonus on all saving throws\r +2 enhancement bonus on caster level checks made to\r overcome spell resistance if a white robe is donned by an evil character, she\r immediately gains three permanent negative levels. The\r same is true with respect to a black robe donned by a good\r character. An evil or good character who puts on a gray\r robe, or a neutral character who dons either a white or black\r robe, gains two permanent negative levels. These negative\r levels remain as long as the garment is worn and cannot be\r overcome in any way (including through restoration spells). \r negative levels are immediately removed if the robe is\r removed from the wearer. ",
-   "item_name": "Robe of the Archmagi"
+   "description": " silver circles and conjuring runes decorate this black robe. \r three times per day when the wearer uses a summoning spell\r or spell-like ability to summon a variable number of creatures, \r he can choose to summon the maximum number of creatures\r possible. Creatures summoned in this way step from the\r shadowy folds of the robe, and appear adjacent to the wearer. \r if there isn't sufficient room for all the creatures to appear, the\r extra creatures are wasted and do not appear. If the wearer is a summoner, he can call upon the robe\r to summon his eidolon as a standard action once per day. It\r must appear adjacent to the summoner when called this way. ",
+   "item_name": "Robe of Gates"
   },
   "chest": {
-   "description": " this stylish silk shirt has a loose and flowing fit except for the sleeves, which cling snugly to the wearer's arms from elbow to wrist. The sleeves guide the wearer's attacks to take advantage of brief gaps in a foe's defenses. Five times per day, the wearer can make a lunging melee maneuver and extend his reach by 5 feet for a single melee attack. If the wearer has the lunge feat, he can instead use that feat five times per day without taking the normal 2 penalty. ",
-   "item_name": "Swordmaster's Shirt"
+   "description": " this leather vest is fitted with a number of pockets that are useful\r for storing the ingredients necessary for alchemical tinkering. \r the main ability of this vest, however, is to lessen the debilitating\r effects of an alchemist's mutagen. While under the effect of any\r type of mutagen, the wearer takes no penalty to mental ability\r scores from that mutagen. ",
+   "item_name": "Vest of Stable Mutation"
   },
   "eyes": {
-   "description": " these nondescript, brass-rimmed spectacles have green-tinted lenses and are favored by practicing doctors and adventurers alike. When worn, they grant the wearer a constant awareness of poisons and diseases as the detect poison and diagnose disease spells. Also, once per day on command the wearer can touch a single creature to use delay poison on that creature. ",
-   "item_name": "Physician's Spectacles"
+   "description": " this eye patch is woven entirely from gold cloth and features a skull and crossbones embroidered in black stitching. A pair of small sapphires is sewn into the cloth within the skull's eye sockets, making them appear as gleaming pinpricks of blue light. The wearer can see as if the eye patch were not there. The wearer gains a +2 competence bonus on appraise and intimidate checks. Once per day, the wearer can activate the patch in order to gain the benefits of see invisibility for 5 minutes. Additionally, once per day, he can activate the patch in order to see through solid objects for 1 minute, as though with a ring of x-ray vision ",
+   "item_name": "Pirate Lord's Patch"
   },
   "feet": {
-   "description": " this pair of magical softpaw boots (see above) allows the catfolk wearing them to gain extra maneuverability while moving through hazardous areas. As a free action, the wearer can click her heels together to grant herself a +5 competence bonus on acrobatics checks made to move through threatened squares or to move through an enemy's space without provoking attacks of opportunity for up to 10 rounds per day. The rounds need not be consecutive. Furthermore, anytime the wearer of the boots successfully moves though the space of an enemy without provoking an attack of opportunity, she gains a +2 bonus on attack rolls against that enemy until the end of her turn. ",
-   "item_name": "Daredevil Softpaws"
+   "description": " these knee-high black leather boots have prominent and\r irregularly shaped heels which seem to bulge from the rest of\r the shoe. As a swift action, the boots' wearer can cause the\r boots to let loose a spray of caltrops through the back of the\r heels as he moves during the remainder of his round. These\r caltrops fill each square the wearer moves into during that round. \r any creature, including the wearer, occupying or who steps into\r one of these squares suffers the normal effects of coming into\r contact with caltrops (core rulebook 155). Once produced, these\r caltrops remain in existence until removed from their square, at\r which point they immediately disappear. The shoes can be used\r for 10 rounds per day. These rounds need not be consecutive. ",
+   "item_name": "Caltrop Boots"
   },
   "hands": {
-   "description": " these fine silk wrappings-covered in mystic symbols and diagrams of the wearer's pressure points-wind around the wearer's hands and wrists. When the wearer spends ki to make an additional attack, he can spend 1 additional point of ki to use the stunning fist feat with the attack, even if he has already used the feat that round. If the wearer is a monk using an archetype that replaces stunning fist with a different feat that's usable a number times per day equal to his monk level, hand wraps of blinding ki allow that feat to be used a second time instead of allowing him to use stunning fist. ",
-   "item_name": "Hand Wraps of Blinding Ki"
+   "description": " wearing these form-fitting fingerless black gloves makes\r the wearer's arms and body more flexible. As a swift action, \r the wearer can lengthen his arms for up to 10 rounds per\r day, gaining an additional 5 feet of reach. These rounds\r need not be consecutive. Attacking with these extended\r arms is unwieldy, and the wearer takes a 2 penalty on\r attack rolls, increasing to 4 if he is using two-handed\r weapons. Even when his limbs aren't extended, the wearer\r gains a +5 enhancement bonus on escape artist checks and\r acrobatics checks to avoid falling damage. The wearer is still\r able to use hand-based natural attacks such as claws while\r wearing the gloves. ",
+   "item_name": "Pliant Gloves"
   },
   "head": {
-   "description": " the helm of electric radiance is similar to a helm of brilliance , \r except its spells focus on electricity rather than fire. Other\r aspects of the helm, such as detecting and damaging\r undead, remain unchanged. The helm has 10 sapphires that\r can be used for chain lightning , 20 pieces of amber that\r can be used for lightning bolt , 30 pieces of petrified wood\r that can be used for shocking sphere (as flaming sphere but dealing electricity damage), and 40 opals that can be\r used for daylight . In addition, the wearer gains resistance to\r electricity 30 and his weapons become shocking weapons\r instead of flaming weapons. ",
-   "item_name": "Helm of Electric Radiance"
+   "description": " this pale metal or ivory helm covers\r much of the head when worn. The\r wearer can use detect thoughts at will. \r furthermore, he can send a telepathic\r message to anyone whose surface\r thoughts he is reading (allowing twoway\r communication). Once per day, the\r wearer of the helm can implant a suggestion (as the spell, will\r dc 14 negates) along with his telepathic message. ",
+   "item_name": "Helm of Telepathy"
   },
   "headband": {
-   "description": " this simple yet elegant silver headband mentally warns the wearer before she commits a social misstep, which includes any action that would increase the dcs of diplomacy checks to alter the attitudes of those around her or worsen the attitude of a person that the wearer considers very important. This effect functions similarly to that of a phylactery of faithfulness , except no contemplation is required; the headband simply alerts the wearer of the consequences before she can perform the action. ",
-   "item_name": "Headband of Social Competence"
+   "description": " this banded agate attaches itself\r to its wearer's forehead and then, \r blinking and focusing, begins to act\r as an additional eye. When worn, the veiled eye has the same vision as\r the wearer (such as low-light vision, \r darkvision 60 ft. , or the oracle's clouded vision curse). It\r grants the wearer no particular advantages so long as\r his original eyes continue to function normally. However, \r should his original eyes stop working, whether because\r of the wearer becoming blinded or even his own decision\r to close them, he can see through the veiled eye instead. \r when the wearer is using the veiled eye as his only vision\r source, he takes a 2 penalty on ranged attack rolls but\r gains a +2 insight bonus on saves against gaze attacks. ",
+   "item_name": "Veiled Eye"
   },
   "neck": {
-   "description": " a hand-sized clay rebus of the master of masters (see the sidebar on page 86 for more information on irori's rebus), sometimes inlaid with copper or tiny gemstones, hangs from this braided hair necklace. It is normally worn under clothing against the skin, and grants the wearer a +2 resistance bonus on saving throws against disease and poison. Once per day, the wearer can use purify food and drink , cleansing 1 cubic foot of food and water. ",
-   "item_name": "Purification Talisman"
+   "description": " this elaborate key on a fine gold chain always glints, even in the dimmest light. The bearer can use it to lock (but not unlock) any nonmagical lock as if it were the proper key. Once per day, the bearer can turn the key clockwise once to activate a shield of faith upon herself (though if the wearer is chaotic it provides only a +1 deflection bonus). If abadar is the bearer's patron, the key counts as a holy symbol. Once per day, the bearer can speak a command word and summon a two-headed eagle as if using summon monster ii (the eagle's extra head does not grant it an extra attack). This eagle obeys the bearer's commands as if they shared a common language. While the key is worn as a pendant or held in hand, the bearer gains a +2 bonus on appraise checks to assess an object's value. ",
+   "item_name": "Key of the Second Vault"
+  },
+  "rings": {
+   "description": "This golden ring, set with seven brightly colored gems, functions as a ring of protection +1 . In addition, seven times per day, the wearer can use beast shape IV to transform into a songbird for 10 minutes (use statistics for a raven).",
+   "item_name": "Ring of Seven Lovely Colors"
   },
   "shoulders": {
-   "description": " this plain cloak only has any effect when worn by a member\r of a half-human race, such as a Half-Orc or Half-Elf. It alters\r the wearer's appearance similarly to a hat of disguise , but\r only to the extent that it conceals or alters the wearer's nonhuman\r physical traits so the creature appears fully human. \r any feature that is plausibly human remains. For example, \r a Half-Orc wearing the cloak loses his green or gray skin\r color and pointed ears, has no visible tusks, and is otherwise\r completely able to pass as a human version of his normal\r self. Likewise, a Half-Elf wearing the cloak has round ears, \r humanlike eyes, and no other traits indicating elven ancestry. \r the wearer has no control over the specific guise, and those\r familiar with his normal appearance can recognize him in his\r human guise. ",
-   "item_name": "Cloak of Human Guise"
+   "description": " this ruffled silk cloak is incredibly durable despite its soft, \r delicate construction. Anytime the wearer falls asleep\r (whether the sleep is natural or brought on by a magical\r effect), the cloak immediately transforms into sticky strands\r that envelop the wearer's body, hardening into a solid silk\r cocoon. While wrapped in the cocoon the wearer gains a\r +4 enhancement bonus to natural armor and is protected\r from critical hits and sneak attacks as if subject to the light\r fortification armor ability (25% chance for normal damage\r on a critical hit). The cocoon opens and transforms back into\r a cloak once the wearer awakens. ",
+   "item_name": "Cocoon Cloak"
   },
   "wrist": {
-   "description": " these translucent cloth tubes easily fit over their wearer's\r arms. The wearer of these sleeves can, when she slips them\r on, choose to transform the appearance of her current garments into any other\r nonmagical set of clothing. These new clothes fit her perfectly\r and are always clean and mended unless she specifically\r designates otherwise. When she removes the sleeves, her\r clothes revert to their original form. ",
-   "item_name": "Sleeves of Many Garments"
+   "description": " the following wondrous item is generally available only to members of the indicated race or ethnicity. This pair of leather bracers is marked by runes of bondage from ancient days. Each rune is deliberately incomplete, in order to invert its intended function. Once per day, when a shoanti wearer becomes possessed by magic jar , possession (pathfinder rpg occult adventures 180), or a similar effect, the bracers automatically expel the possessing creature. The possessing creature does not have a chance to take any actions (such as removing the bracers) before this occurs. ",
+   "item_name": "Broken Rune Bracers"
   }
  },
  "equipment_list": [
-  "Equestrian Belt",
-  "Robe of the Archmagi",
-  "Swordmaster's Shirt",
-  "Physician's Spectacles",
-  "Daredevil Softpaws",
-  "Hand Wraps of Blinding Ki",
-  "Helm of Electric Radiance",
-  "Headband of Social Competence",
-  "Purification Talisman",
-  "Cloak of Human Guise",
-  "Sleeves of Many Garments"
+  "Bladed Belt",
+  "Robe of Gates",
+  "Vest of Stable Mutation",
+  "Pirate Lord's Patch",
+  "Caltrop Boots",
+  "Pliant Gloves",
+  "Helm of Telepathy",
+  "Veiled Eye",
+  "Key of the Second Vault",
+  "Cocoon Cloak",
+  "Broken Rune Bracers",
+  "Ring of Natural Attunement (kami)",
+  "Ring of Seven Lovely Colors"
  ],
  "eye_color": [
-  "Green"
+  "Blue"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -458,34 +412,17 @@
   "profession": 4,
   "story": 4,
   "teamwork": 0,
-  "trainer": 0
+  "trainer": 2
  },
  "feat_changes_dict": {
-  "Sea Legs": {
-   "changes": [
+  "Careful Speaker": {
+   "changes": [],
+   "contextNotes": [
     {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.acr",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.clm",
-     "type": "untyped"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.swm",
-     "type": "untyped"
+     "target": "will",
+     "text": "+2 on Will saves against attempts to scry on you or read your mind; +2 on Bluff to fool someone or pass secret messages (not to feint in combat)."
     }
-   ],
-   "contextNotes": []
+   ]
   }
  },
  "feat_conditionals_dict": {
@@ -504,36 +441,35 @@
    "name": "Bloody Assault: Effect: melee attacks and combat maneuver checks also deal [[1d4]] bleed damage",
    "tier": "A"
   },
-  "Desperate Battler": {
+  "Butterfly's Sting": {
+   "default": false,
+   "modifiers": [],
+   "name": "Butterfly's Sting: Effect: forgo this critical hit's extra damage; the next ally who hits the target with a melee attack before the start of your next turn automatically confirms a critical hit",
+   "tier": "A"
+  },
+  "Furious Focus": {
    "default": false,
    "modifiers": [
     {
      "critical": "normal",
      "damageType": [],
-     "formula": "1",
+     "formula": "1+floor(@attributes.bab.total/4)",
      "subTarget": "allAttack",
      "target": "attack",
-     "type": "morale"
-    },
-    {
-     "critical": "crit",
-     "damageType": [],
-     "formula": "1",
-     "subTarget": "allAttack",
-     "target": "attack",
-     "type": "morale"
+     "type": "untyped"
     }
    ],
-   "name": "Desperate Battler: When no ally is within 10 feet and you are not benefiting from aid another: +1 morale bonus on melee attack rolls and +1 morale bonus on melee damage rolls."
+   "name": "Furious Focus: Effect: negate the Power Attack penalty on your first attack this turn (requires a two-handed weapon or two hands on a one-handed weapon)",
+   "tier": "A"
   }
  },
  "feats": [
-  "Arcane Vendetta",
-  "Ass Pull",
-  "Right of Deferment",
-  "It Just Works",
   "Double Down",
+  "Ass Pull",
+  "It Just Works",
+  "Middle Finger",
   "Lucky Boy",
+  "Siphon Poison",
   "Multi Talented",
   "True Calling",
   "Always Improving",
@@ -542,7 +478,7 @@
  "feats_feat_tax_dict": {},
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Sea Legs"
+  "Bloody Assault"
  ],
  "flaw": [
   "Motion Sickness",
@@ -572,55 +508,56 @@
    "tier": "major"
   }
  },
- "flaw_feat_tax_dict": {
-  "Siege Engineer": [
-   "siege gunner"
-  ]
- },
+ "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Siege Engineer",
-  "Desperate Battler"
+  "Heavy Armor Proficiency",
+  "Haft Strike"
  ],
- "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: AC Tank\n- Tactics: Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.\n- Stat Focus: Str\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n\nFamily\n- Absent Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Brothers\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Frizzy Blond\n- Eyes: Green\n- Build: Spectacled",
+ "formatted_bio": "Sébastien Dupuy\n- Alignment: Lawful Good\n- Deity: Erastil\n- Race: Human\n- Class: Level 16 Fighter\n- Archetype: AC Tank\n- Tactics: Plants itself between the enemy and everyone squishier and simply does not move. Its damage is modest; its job is that every swing aimed at it misses and every path around it costs an attack of opportunity.\n- Stat Focus: Str\n- Disciplines: Brutal Crocodile\n- Homeland: Tal-falko\n\nVocation\n- Profession: Court Jester (rank 16)\n- Profession: Raid Marauder (rank 11)\n- Profession: Storm-Wise Helmsman (rank 8)\n- Profession: Lookout Boy (rank 10)\n- Known for: Pickling\n- Training: An average trainer who taught them Furious Focus, Blind-Fight\n\nFamily\n- Dead Mother\n- Dead Father\n- Adopted Into A Middle Income Family\n- No Siblings\n\nPersonality\n- Personality: Fervent, Rebellious, Selfish, Fearsome\n- Mannerisms: Drums fingers, Yawns, Clenches fists\n- Flaws: Motion Sickness, Powerless Prophecy\n\nAppearance\n- Hair: Straight Blond\n- Eyes: Blue\n- Build: Handsome",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 3002,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 600,
+ "gold": 46700,
  "hair_color": [
   "Blond"
  ],
  "hair_type": [
-  "Frizzy"
+  "Straight"
  ],
  "height_number": "5'3\"",
- "hero_points": 3,
+ "hero_points": 2,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
-  "Animal Affinity": "You are skilled at working with animals and mounts",
-  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
   "Bloody Assault": "Sacrificing accuracy, you can inflict bloody wounds that are slow to heal",
-  "Bull Charge (combat)": "You rush into battle with a devastating attack. Normal Charging causes you to take a -2 penalty to your AC until the start of your next turn. you take no penalty to your ac when you make a charge attack. if you have the vital strike feat, you can use vital strike (or improved vital strike or greater vital strike, if you have them) in place of the attack at the end of a charge. the damage dice added by vital strike, improved vital strike, or greater vital strike are not doubled when charging with a lance while mounted.",
-  "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
-  "Death From Below": "You have been trained to fight flying creatures",
-  "Desperate Battler": "Your experiences fighting against numerous foes that have already overwhelmed your allies, friends, and family have forced you to excel at fighting on your own",
+  "Butterfly's Sting": "You can forgo a critical hit in order to pass it on to an ally",
+  "Careful Speaker": "The paranoid terror that comes from living in a region with a dangerous government (such as Cheliax or Galt) has made you unusually aware of what you say",
+  "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
+  "Dark Presence": "Those you have Claimed cannot escape your malice. creatures claimed by you provoke an attack of opportunity from you whenever they make a 5-foot step into or out of one of your threatened squares.",
+  "Dirgesinger": "You have learned to affect the undead with your bardic power. you may affect undead with your bardic performances as though they were not immune to mind-affecting abilities. mindless undead remain immune to your performances.",
   "Double Down": "Double permanent E-Kat acquisition.",
-  "Enduring Mind": "You are trained to resist mental damage. whenever you would suffer ability damage to a mental ability score, reduce that damage by 2 (to a minimum of 0). ability damage you deal to yourself (such as from one of your feats or powers) is not reduced in this fashion.",
-  "Ensemble": "You can create an ensemble of skilled and amateur performers to aid you in your performance",
+  "Einhander": "With grace, you sweep through your enemies with a single blade. In addition, once per round when a creature within your weapons reach misses you with a melee attack while you are wielding a light or one-handed weapon in one hand and no other weapons or shields in your off-hand, you may make an attack of opportunity against that creature. as long as you are only wielding a light or one-handed weapon in one hand and no other weapons or shields in your off-hand, you gain a +2 dodge bonus to your armor class.",
+  "Furious Focus": "Even in the midst of fierce and furious blows, you can find focus in the carnage and your seemingly wild blows strike home",
+  "Haft Strike": "Holding your polearm further up its length, you can strike adjacent foes as well as those further away. you can choose to take a 2 penalty to your ac to gain the ability to threaten all opponents within the reach of your reach weapon, rather than those you would normally threaten with your weapon. you must choose to use this feat before making an attack roll during your turn, and its effects last until the start of your next turn.",
+  "Heavy Armor Proficiency": "You are skilled at wearing heavy armor",
+  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
   "It Just Works": "Gain one free Hero Point per session that expires upon the session's end, +4 Luck.",
   "Lucky Boy": "E-Kat (roll based) bonuses are doubled.",
-  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
+  "Martial Training I (Brutal Crocodile)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Brutal Crocodile)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Brutal Crocodile)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Brutal Crocodile)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Brutal Crocodile)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Brutal Crocodile)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
+  "Middle Finger": "Gain 1 E-Kat anytime the GM has a hostile NPC utilize a Hero Point.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
-  "Opening Volley": "Your ranged assault leaves your foe disoriented and vulnerable to your melee attack",
-  "Polearm Expertise (combat)": "Your expertise with reach weapons lets you strike foes that are adjacent to you. Normal You cannot strike an enemy that is adjacent to you while wielding a reach weapon. as a free action, you can shorten your grip on a reach weapon that you are proficient with to use it against adjacent targets. while doing so, the weapon does not have reach, instead threatening the area for a normal melee weapon. you have a 2 penalty on attack rolls while using this feat. you can use another free action to return to the normal grip and reach.",
-  "Right of Deferment": "You may wait to apply E-Kats after a roll for no penalty.",
-  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
-  "Self-Sufficient": "You know how to get along in the wild and how to effectively treat wounds",
-  "Shield Wall": "You form a unified defense with those around you",
-  "Siege Engineer": "You are proficient with all siege weaponry",
-  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
+  "Pack Attack": "You are skilled at surrounding your enemies",
+  "Precise Strike": "You are skilled at striking where it counts, as long as an ally distracts your foe",
+  "Shield Proficiency": "You are trained in how to properly use a shield",
+  "Siphon Poison": "You can remove poison from afflicted creatures",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -632,87 +569,235 @@
   "wis": 0
  },
  "initiation_stat": "cha",
- "initiator_level": 0,
+ "initiator_level": 8,
  "int": 10,
  "item_changes_dict": {
-  "Daredevil Softpaws": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.acr",
-     "text": "As a free action, the wearer can click her heels together to grant herself a +[[5]] competence bonus on acrobatics checks made to move through threatened squares or to move through an enemy's space without provoking attacks of opportunity for up to [[10]] rounds per day."
-    },
-    {
-     "target": "attack",
-     "text": "Furthermore, anytime the wearer of the boots successfully moves though the space of an enemy without provoking an attack of opportunity, she gains a +[[2]] bonus on attack rolls against that enemy until the end of her turn."
-    }
-   ]
-  },
-  "Equestrian Belt": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.rid",
-     "text": "Furthermore, the belt grants a +[[4]] competence bonus on all other ride checks, including ones made while the wearer is in heavy armor."
-    }
-   ]
-  },
-  "Hand Wraps of Blinding Ki": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "When the wearer spends ki to make an additional attack, he can spend 1 additional point of ki to use the stunning fist feat with the attack, even if he has already used the feat that round."
-    }
-   ]
-  },
-  "Helm of Electric Radiance": {
+  "Bladed Belt": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The helm has 10 sapphires that can be used for chain lightning , 20 pieces of amber that can be used for lightning bolt , 30 pieces of petrified wood that can be used for shocking sphere (as flaming sphere but dealing electricity damage), and 40 opals that can be used for daylight . In addition, the wearer gains resistance to electricity 30 and his weapons become shocking weapons instead of flaming weapons."
+    "On command, the belt's wearer can transform the belt into a single masterwork slashing and/or piercing melee weapon of her choice."
    ]
   },
-  "Physician's Spectacles": {
+  "Caltrop Boots": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "Also, once per day on command the wearer can touch a single creature to use delay poison on that creature."
+    "As a swift action, the boots' wearer can cause the boots to let loose a spray of caltrops through the back of the heels as he moves during the remainder of his round. Any creature, including the wearer, occupying or who steps into one of these squares suffers the normal effects of coming into contact with caltrops (core rulebook 155). The shoes can be used for 10 rounds per day."
    ]
   },
-  "Purification Talisman": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "allSavingThrows",
-     "text": "A hand-sized clay rebus of the master of masters (see the sidebar on page 86 for more information on irori's rebus), sometimes inlaid with copper or tiny gemstones, hangs from this braided hair necklace. Once per day, the wearer can use purify food and drink , cleansing 1 cubic foot of food and water. It is normally worn under clothing against the skin, and grants the wearer a +[[2]] resistance bonus on saving throws against disease and poison."
-    }
-   ]
-  },
-  "Robe of the Archmagi": {
+  "Cocoon Cloak": {
    "changes": [],
    "contextNotes": [
     {
      "target": "ac",
-     "text": "It can be white (0145 on d%, good alignment), gray (4675, neither good nor evil alignment), or black (76100, evil alignment). +[[5]] armor bonus to ac spell resistance 18 +[[4]] resistance bonus on all saving throws +[[2]] enhancement bonus on caster level checks made to overcome spell resistance if a white robe is donned by an evil character, she immediately gains three permanent negative levels."
+     "text": "While wrapped in the cocoon the wearer gains a +[[4]] enhancement bonus to natural armor and is protected from critical hits and sneak attacks as if subject to the light fortification armor ability (25% chance for normal damage on a critical hit)."
     }
    ]
   },
-  "Swordmaster's Shirt": {
+  "Helm of Telepathy": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer can use detect thoughts at will. Once per day, the wearer of the helm can implant a suggestion (as the spell, will dc 14 negates) along with his telepathic message."
+   ]
+  },
+  "Key of the Second Vault": {
    "changes": [],
    "contextNotes": [
     {
+     "target": "skill.apr",
+     "text": "While the key is worn as a pendant or held in hand, the bearer gains a +[[2]] bonus on appraise checks to assess an object's value."
+    },
+    {
      "target": "attack",
-     "text": "Five times per day, the wearer can make a lunging melee maneuver and extend his reach by [[5]] feet for a single melee attack. If the wearer has the lunge feat, he can instead use that feat five times per day without taking the normal 2 penalty."
+     "text": "The bearer can use it to lock (but not unlock) any nonmagical lock as if it were the proper key. Once per day, the bearer can turn the key clockwise once to activate a shield of faith upon herself (though if the wearer is chaotic it provides only a +[[1]] deflection bonus). Once per day, the bearer can speak a command word and summon a two-headed eagle as if using summon monster ii (the eagle's extra head does not grant it an extra attack)."
     }
    ]
+  },
+  "Pirate Lord's Patch": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.apr",
+     "type": "competence"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.int",
+     "type": "competence"
+    }
+   ],
+   "contextNotes": [
+    {
+     "target": "skill.apr",
+     "text": "Once per day, the wearer can activate the patch in order to gain the benefits of see invisibility for [[5]] minutes. Additionally, once per day, he can activate the patch in order to see through solid objects for [[1]] minute, as though with a ring of x-ray vision"
+    }
+   ]
+  },
+  "Pliant Gloves": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "skill.acr",
+     "text": "Even when his limbs aren't extended, the wearer gains a +[[5]] enhancement bonus on escape artist checks and acrobatics checks to avoid falling damage."
+    },
+    {
+     "target": "attack",
+     "text": "As a swift action, the wearer can lengthen his arms for up to [[10]] rounds per day, gaining an additional [[5]] feet of reach. Attacking with these extended arms is unwieldy, and the wearer takes a 2 penalty on attack rolls, increasing to 4 if he is using two-handed weapons."
+    }
+   ]
+  },
+  "Ring of Natural Attunement (kami)": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "If the wearer can cast summon nature's ally spells, the wearer adds shikigami b3 to the 3rd-level list of monsters he can summon with those spells, adds kodama b3 to the 5th-level list, adds zuishin b3 to the 7th-level list, and adds toshigami b3 to the 9th-level list. Also, once per day on command the wearer can use this ring to summon a shikigami, as if by the summon nature's ally iii spell."
+   ]
+  },
+  "Ring of Seven Lovely Colors": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This golden ring, set with seven brightly colored gems, functions as a ring of protection +1 . In addition, seven times per day, the wearer can use beast shape iv to transform into a songbird for 10 minutes (use statistics for a raven)."
+   ]
+  },
+  "Robe of Gates": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "Three times per day when the wearer uses a summoning spell or spell-like ability to summon a variable number of creatures, he can choose to summon the maximum number of creatures possible. If the wearer is a summoner, he can call upon the robe to summon his eidolon as a standard action once per day."
+   ]
+  },
+  "Veiled Eye": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "The veiled eye has the same vision as the wearer (such as low-light vision, darkvision [[60]] ft. When the wearer is using the veiled eye as his only vision source, he takes a 2 penalty on ranged attack rolls but gains a +[[2]] insight bonus on saves against gaze attacks."
+    }
+   ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 30,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "hp": 120,
+   "hp_lines": [
+    [
+     "Armor",
+     40
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     50
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "shield": {
+   "hardness": 16,
+   "hardness_lines": [
+    [
+     "Light Wooden Shield",
+     5
+    ],
+    [
+     "Wood",
+     5
+    ],
+    [
+     "Enhancement",
+     6
+    ]
+   ],
+   "hp": 47,
+   "hp_lines": [
+    [
+     "Light Wooden Shield",
+     7
+    ],
+    [
+     "Wood",
+     10
+    ],
+    [
+     "Enhancement",
+     30
+    ]
+   ],
+   "material": "wood",
+   "material_label": "Wood",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 30,
+   "hardness_lines": [
+    [
+     "One-Handed Blade",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "hp": 85,
+   "hp_lines": [
+    [
+     "One-Handed Blade",
+     5
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     50
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [],
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Drow Sign Language"
+  "Goblin"
  ],
  "level": 16,
  "level_up_stats": {
@@ -760,7 +845,7 @@
     "spent": 15
    }
   },
-  "cap": 25,
+  "cap": 30,
   "derivation": [
    "Bought +6 (15 skill ranks, 15 HP)",
    "+11 from 5 E-Kat feat(s)",
@@ -771,10 +856,10 @@
   "e_kat_reserve": 0,
   "e_kat_store_cap": 99,
   "feats": [
-   "Ass Pull",
-   "Right of Deferment",
-   "It Just Works",
    "Double Down",
+   "Ass Pull",
+   "It Just Works",
+   "Middle Finger",
    "Lucky Boy"
   ],
   "floor": -50,
@@ -806,11 +891,11 @@
    "target": 6
   },
   "trait_benefits": {
-   "E-Kat Exchange: Loot Box": "Increase loot table roll by one category before the roll for 25 E-Kats."
+   "Expanded Luck": "Your luck cap is increased by +5."
   },
   "trait_changes": {},
   "traits": [
-   "E-Kat Exchange: Loot Box"
+   "Expanded Luck"
   ],
   "twist_fate_per_day": 0,
   "type": "Default",
@@ -824,34 +909,212 @@
  },
  "magic_talent_items": [],
  "main_stat": "str",
- "maneuvers_choose_from": [],
- "maneuvers_desc_dict": {},
- "maneuvers_known_list": [],
- "maneuvers_readied_list": [],
- "maneuvers_readied_names": [],
+ "maneuvers_choose_from": [
+  [
+   "Expert Grip",
+   "Ensnare"
+  ],
+  [
+   "Bestial Dash",
+   "Gar Rush"
+  ],
+  [
+   "Into the Earth",
+   "Monkey Vault"
+  ],
+  [
+   "Bonebreaker Riposte"
+  ],
+  [
+   "Meat Shield"
+  ],
+  [
+   "Atrophic Brutalization"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Atrophic Brutalization": {
+   "action": "1 standard action",
+   "description": "Crippling your foes muscles, you seize hold of your opponent and begin to compact them within your coils. Make an attack against a creature using a discipline weapon. On a successful hit, you initiate a grapple with the target while dealing 1d4 points of strength damage and 8d6 points of damage. You deal 8d6 points of damage each round that you successfully maintain the grapple this stacks with any damage you may deal with constrict.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Initiated grapple",
+   "level": 6,
+   "range": "Melee",
+   "type": "strike"
+  },
+  "Bestial Dash": {
+   "action": "1 standard action or [G]",
+   "description": "Prey in hand, the initiator rushes across the battlefield. Make a move action using your standard movement speed as opposed to your diminished grappled speed. This movement provokes attack of opportunity as normal. Creatures you are grappling move with you, maintaining the same relative position to you all throughout the movement. If a grappled creature would end its turn in the same space as another creature or object or would collide with an object or creature in a way that would stop it being moved, both entities take 2d10 damage.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
+   "level": 2,
+   "range": "Melee",
+   "type": "strike"
+  },
+  "Bonebreaker Riposte": {
+   "action": "1 immediate action",
+   "description": "When faced with an attacker, you have learned that your best hope is to incapacitate them, preventing them from further assaults. When a creature makes a melee attack roll against you, you may initiate this counter to make a Climb check against the creatures attack roll. On a success, the creatures attack is negated, and it cannot for any purpose use the limb it used to make the attack for the duration of this maneuver.",
+   "discipline": "Brutal Crocodile",
+   "duration": "1 round/level",
+   "level": 4,
+   "range": "Melee",
+   "type": "counter"
+  },
+  "Catfish Hold": {
+   "action": "1 swift action",
+   "description": "Bracing yourself against the terrain, you steel yourself to control and redirect any oncoming assaults. While in this stance, you ignore any size modifiers to CMB that you or any creatures you are attempting to grapple possess, and may grapple creatures of any size. In addition, when you maintain a grapple, you deal an additional amount of damage equal to your initiation modifier.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Ensnare": {
+   "action": "1 immediate action",
+   "description": "As you strike, you seize the opportunity and grab hold of your foe. When you hit a target with a melee attack using a discipline weapon, you may activate this boost to immediately initiate a grapple against the target.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
+   "level": 1,
+   "range": "Melee",
+   "type": "boost"
+  },
+  "Expert Grip": {
+   "action": "1 swift action",
+   "description": "You utilize your skill at carrying yourself to carry your foe much in the same way. After the initiating this boost, if you make a grapple check at any point in the round, you may make a climb check and use the result in place of your grapple check. You may add any bonuses from items, feats, or abilities that you possess to this check that would normally apply to grapple checks.",
+   "discipline": "Brutal Crocodile",
+   "duration": "1 round",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Gar Rush": {
+   "action": "1 full round action",
+   "description": "You rush at your quarry and thrash yourself to them as they struggle to avoid you. Make a charge at the target, initiating a grapple attempt that does not provoke an attack of opportunity rather than making an attack. You receive a +2 bonus on this grapple attempt. On a success, you deal 2d6 points of damage to the target, and 2d6 points of damage every time you maintain a grapple. This damage stacks with that from the constrict special ability.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Initiated grapple",
+   "level": 2,
+   "range": "Melee charge",
+   "type": "strike"
+  },
+  "Insatiable Warpath": {
+   "action": "1 swift action",
+   "description": "Your explosive instinct boils over, your ensnared targets becoming implements of destruction. While in this stance, your attacks with discipline weapons gain the grab property, and you may maintain a grapple as a free action this does not allow you to have or maintain multiple grapples against the same target. In addition, you may use grappled creatures as weapons, which have a base damage of 4d6 and a critical hit range of 20/x2. Any successful attacks with a grappled creature do the same amount of damage to the grappled creature as they do to the target.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Stance",
+   "level": 6,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Into the Earth": {
+   "action": "1 standard action or [G]",
+   "description": "You slam your prey down at your feet, dealing substantial injury from the force of your throw. The target is released from the grapple, but is immediately knocked prone and takes 2d10 points of damage.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
+   "level": 3,
+   "range": "Melee",
+   "type": "strike"
+  },
+  "Kraken's Coils": {
+   "action": "1 swift action",
+   "description": "Like a tentacled beast of the deep, you have learned to hold foes in your clutches without the slightest impairment. While in this stance, all attacks that you make with discipline weapons gain the grab property, and you do not gain the grappled condition when grappling a creature. In addition, every round that you maintain a grapple, the grappled creature takes one point of constitution damage.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Meat Shield": {
+   "action": "1 immediate action",
+   "description": "An attacker finds its assault intercepted by a hapless creature in your grasp. When a creature makes a melee or ranged attack against you or you are forced to make a Reflex saving throw, you may block the threat using a creature you are grappling, gaining the benefits of improved cover. If you avoid the attack or succeed on the saving throw, the creature you are grappling is considered hit by that attack or failing his saving throw, and thus takes damage instead of you. You must be grappling a creature in order to use this counter.",
+   "discipline": "Brutal Crocodile",
+   "duration": "",
+   "level": 5,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Monkey Vault": {
+   "action": "1 swift action",
+   "description": "Snagging an opponent, you use them as a base as you vault over or around them. Make a Climb check against the foes CMD. If successful, you may move to any square adjacent to the target, and the target is considered to be flat-footed until the end of your next turn.",
+   "discipline": "Brutal Crocodile",
+   "duration": "1 round",
+   "level": 3,
+   "range": "Melee",
+   "type": "boost"
+  },
+  "Painbringer": {
+   "action": "1 swift action",
+   "description": "You force yourself onto the opponent while grappling with them, complicating their resistance further. Any creature you are grappling has the dexterity penalty from grappling increased from -4 to -8, and takes a -4 penalty on attack rolls and combat maneuver checks rather than -2.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_list": [
+  0,
+  1,
+  2,
+  1,
+  1,
+  1
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Bestial Dash"
+  ],
+  [
+   "Into the Earth",
+   "Monkey Vault"
+  ],
+  [
+   "Bonebreaker Riposte"
+  ],
+  [
+   "Meat Shield"
+  ],
+  [
+   "Atrophic Brutalization"
+  ]
+ ],
  "manifesters": [],
  "mannerisms": [
   "Drums fingers",
   "Yawns",
   "Clenches fists"
  ],
- "martial_disciplines": [],
+ "martial_disciplines": [
+  "Brutal Crocodile"
+ ],
  "mini_alignment": "lg",
  "mod_char_sheet_var": false,
- "mt_feats": [],
+ "mt_feats": [
+  "Martial Training I (Brutal Crocodile)",
+  "Martial Training III (Brutal Crocodile)",
+  "Martial Training V (Brutal Crocodile)"
+ ],
  "mythic": null,
  "normal_feat_amount": 6,
- "older_brothers": " you have 2 older brothers",
+ "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "absent mother, loving father, raised in a poor household",
+ "parents": "dead mother, dead father, adopted into a middle income family",
  "personality_traits": [
   "Fervent",
   "Rebellious",
   "Selfish",
   "Fearsome"
  ],
- "platnium": 60.0,
+ "platnium": 4670.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1246,6 +1509,7 @@
  "shield_armor_check_penalty": "-2",
  "shield_enhancement_bonus": 3,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": "",
  "shield_name": "Light wooden quickdraw",
  "shield_spell_failure": "5%",
@@ -1310,50 +1574,76 @@
  "spellbooks": [],
  "spells_prepared_per_level": [],
  "sphere_boons": [
-  "Empowered Abilities",
   "Easy Focus"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
   "Magical Signs",
-  "Painful Magic",
-  "Addictive Casting",
-  "Draining Casting"
+  "Somatic Casting",
+  "Material Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
   "Magical Signs",
-  "Painful Magic",
-  "Addictive Casting",
-  "Draining Casting",
-  "Empowered Abilities",
+  "Somatic Casting",
+  "Material Casting",
   "Easy Focus"
  ],
  "spheres_chosen": [],
- "stances_chosen": [],
- "story_feat_tax_dict": {},
+ "stances_chosen": [
+  "Painbringer",
+  "Catfish Hold",
+  "Kraken's Coils",
+  "Insatiable Warpath"
+ ],
+ "story_feat_tax_dict": {
+  "Shield Proficiency": [
+   "improved shield bash",
+   "saving shield",
+   "shield focus",
+   "shield specialization",
+   "shield wall"
+  ]
+ },
  "story_feats": [
-  "Self-Sufficient",
-  "Dark Embrace",
-  "Bloody Assault",
-  "Animal Affinity"
+  "Precise Strike",
+  "Shield Proficiency",
+  "Dark Presence",
+  "Improved Implantation"
  ],
  "str": 19,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 16,
  "total_rolled_hp": 150,
- "trainer_calibers": [],
- "trainer_feat_labels": [],
- "trainer_feat_tax_dict": {},
- "trainer_feats": [],
+ "trainer_calibers": [
+  2
+ ],
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)"
+ ],
+ "trainer_feat_tax_dict": {
+  "Blind-Fight": [
+   "improved blind-fight",
+   "greater blind-fight"
+  ],
+  "Furious Focus": [
+   "dreadful carnage"
+  ]
+ },
+ "trainer_feats": [
+  "Furious Focus",
+  "Blind-Fight"
+ ],
  "weapon_enhancement_bonus": 5,
  "weapon_enhancement_chosen_list": [
-  "Shock",
-  "Spirit-Hunting"
+  "Concealed, Lesser"
  ],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Rapier",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

@@ -4,7 +4,7 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Self-assured"
+  "Sallow"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Storm Caller\": {\n        \"source\": \"Elemental Master's Handbook pg. 16 Many summoners beckon monsters from the Elemental Planes, but few are as specialized as storm callers, who channel the elemental energies of the Plane of Air. Storm callers are most commonly encountered in areas where thunderstorms appear frequently, including supernaturally stormy places like the Sodden Lands.\",\n        \"stormy eidolon\": \" A storm caller must select the resistance (electricity) or immunity (electricity) evolution for his eidolon. If the eidolon has neither of these evolutions, it becomes nauseated until it regains one of them. This ability alters eidolon.\",\n        \"summon storm's fury (sp)\": \" A storm caller can summon creatures infused with the power of the storm to help him. This functions as the summoner's summon monster I-IX abilities, except the storm caller can summon only the following creatures at the indicated spell levels: I-eagle; II-small air elemental, small lightning elemental B2 ; III-dire bat; IV-medium air elemental, medium lightning elemental B2 , pteranodon; V-large air elemental, large lightning elemental B2 ; VI-huge air elemental, huge lightning elemental B2 ; VII-roc; VIII-elder air elemental, elder lightning elemental B2 ; IX-advanced elder air elemental, advanced elder lightning elemental B2 . Any creatures summoned with this ability gain immunity to electricity. Alternatively, whenever his eidolon is not summoned, a storm caller can expend a daily use of this ability to summon a magical storm as a standard action. This functions as call lightning with a caster level equal to his summoner level, except as noted below. Each bolt of lightning deals 1d6 points of electricity damage. This damage increases by 1d6 at 3rd level and every 2 levels thereafter, to a maximum of 10d6 at 19th level. The prevailing weather has no effect on the damage of the lightning bolts. The Reflex save DC is equal to 10 + half the storm caller's summoner level + his Charisma modifier. If the storm caller uses this ability again before he has used all of his available bolts of lightning (to summon another magical storm, to summon a monster, or to use the gate spell), any unused bolts are expended with no effect. The storm caller adds call lightning to his summoner spell list as a 3rd-level spell and call lightning storm to his summoner spell list as a 5th-level spell, but he does not automatically add them to his list of spells known. This alters the summoner's summon monster I-IX abilities.\",\n        \"electrical polarity (su)\": \" At 4th level, a storm caller and his eidolon can temporarily form an electrical current between them. The storm caller can expend a use of his summon storm's fury ability as a standard action to create an instantaneous line of lightning between him and his eidolon, provided that the eidolon is within 60 feet of him. The lightning arc deals the same amount of damage to all creatures in the line and has the same save DC as a bolt of lightning from the summon storm's fury ability (unlike call lightning , this damage is dealt only once). The storm caller and his eidolon are not affected by this lightning. At 12th level, the storm caller gains the benefit of his eidolon's resistance (electricity) or immunity (electricity) evolution whenever he is within 30 feet of the eidolon. This ability replaces shield ally and greater shield ally.\",\n        \"storm's wings (su)\": \" At 6th level, a storm caller can borrow some of his eidolon's elemental might. He can gain the flight evolution ( Pathfinder Unchained 37) as though he were using the summoner's aspect ability, deducting 2 evolution points from the eidolon's evolution pool. If he does so, his eidolon is unable to take the flight evolution as long as the storm caller has that evolution. At 8th level, the storm caller's eidolon can have the flight evolution even if the storm caller has that evolution. At 10th level, the storm caller automatically gains the flight evolution without reducing the number of evolution points available to the eidolon. He can use the aspect ability (and at 18th level, the greater aspect ability) to gain additional evolutions. This ability replaces maker's call and transposition.\"\n    }\n}",
@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "0",
  "armor_enhancement_bonus": 2,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "",
  "armor_name": "Silken ceremonial",
  "armor_spell_failure": "0%",
@@ -82,20 +84,20 @@
  "c_class_display": "Summoner (Unchained)",
  "casting_level_str_foundry": "med",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
-   "Fortified Casting",
    "Empowered Abilities",
+   "Fortified Casting",
    "Easy Focus"
   ],
   "boons_detail": [
    {
-    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
-    "name": "Fortified Casting"
-   },
-   {
     "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
     "name": "Empowered Abilities"
+   },
+   {
+    "description": "(Pairs with Draining Casting) You shore up your lifeforce against draining magic; you may use Constitution as your casting ability modifier if it is higher than your usual one.",
+    "name": "Fortified Casting"
    },
    {
     "description": "(Counters Focus Casting) You no longer need to make a check to cast without your focus item, or you ignore part of the Focus Casting penalty; maintaining a sphere ability that needs a standard action to concentrate on requires only a move action.",
@@ -104,43 +106,31 @@
   ],
   "casting_ability_modifier": "Charisma",
   "drawbacks": [
-   "Addictive Casting",
-   "Painful Magic",
-   "Material Casting",
-   "Skilled Casting",
-   "Wild Magic",
-   "Focus Casting"
+   "Draining Casting",
+   "Prepared Caster",
+   "Extended Casting",
+   "Addictive Casting"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
+   },
    {
     "counts_as": 2,
     "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
     "name": "Addictive Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
-    "name": "Material Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
-    "name": "Focus Casting"
    }
   ]
  },
@@ -384,107 +374,86 @@
  "enhancement_desc_dict": {},
  "enhancement_effects_dict": {},
  "equip_descrip": {
-  "belts": {
-   "description": " this snakeskin belt's buckle is shaped\r like a serpent's head. The wearer\r gains a +2 enhancement bonus to\r strength and a +2 competence bonus\r on grapple combat maneuver checks. \r treat the enhancement bonus to strength as temporary ability\r bonus for the first 24 hours the belt is worn. In addition, the\r belt grants the wearer the constrict ability (bestiary 298) for\r 1d6 points of damage plus the wearer's strength modifier. ",
-   "item_name": "Anaconda's Coils"
-  },
-  "body": {
-   "description": " this coarse hempen robe seems made from a single strand of\r twine. The wearer can draw up to 30 feet of twine or up to 10\r feet of hemp rope per round from the robe without harming\r it. As an immediate action, the wearer can draw up to 150\r feet of twine or 50 feet of rope from the robe, but this gives\r the robe the broken condition and suppresses its powers until\r it is repaired. Twine or rope drawn from the robe remains\r connected until cut or torn, but is treated as common material\r rather than part of a magic item. Pieces removed become\r normal twine or rope. ",
-   "item_name": "Robe of Infinite Twine"
-  },
   "chest": {
-   "description": " these linen bandages have the same\r color and softness as the feathers of a\r dove, but their antiseptic smell suggests\r a less natural origin. Any creature\r wrapped in these bandages recovers\r from wounds and ability damage each\r day as if receiving complete bed rest, regardless of activity\r (core rulebook 191). A creature actually receiving long-term\r care (from the heal skill) or complete bed rest while wearing\r the bandages gains a +4 bonus to its effective level or hit\r dice when determining how many hit points it recovers each\r day. The bandages are destroyed once removed or when the\r wearer recovers all hit points and ability damage, whichever\r comes first. ",
-   "item_name": "Bandages of Rapid Recovery"
+   "description": " this leather vest is fitted with a number of pockets that are useful\r for storing the ingredients necessary for alchemical tinkering. \r the main ability of this vest, however, is to lessen the debilitating\r effects of an alchemist's mutagen. While under the effect of any\r type of mutagen, the wearer takes no penalty to mental ability\r scores from that mutagen. ",
+   "item_name": "Vest of Stable Mutation"
   },
-  "feet": {
-   "description": " these masterwork snowshoes (pathfinder rpg ultimate equipment 91) provide greater stability and weight distribution in snow. The snowshoes completely negate the effects of normal snow on movement, and reduce the movement penalties in heavy snow by half (i. E. , it only costs 2 squares of movement to enter a square covered with heavy snow instead of 4 squares of movement). In addition, the wearer can increase her land speed in snowy terrain by 10 feet for up to 10 rounds per day. This is considered an enhancement bonus and the duration need not be spent in consecutive rounds. Finally, as a standard action once per day, the snowshoes can generate a ripple effect that removes all trace of tracks left in the snow in a 60-foot radius. ",
-   "item_name": "Snowshoes of Northern Pursuit"
+  "head": {
+   "description": " this turban consists of 30 feet of cloth held in place by a brooch. The owner can command the turban to tie or untie itself as a move action. When the turban is tied on the wearer's head, the wearer gains the benefits of endure elements . Once per day when the turban is untied, the owner can use the fabric to perform a rope trick (as per the spell rope trick). In addition, the owner can spend 1 ki point as a swift action to cast animate rope ",
+   "item_name": "Traveling Master's Turban"
   }
  },
  "equipment_list": [
-  "Anaconda's Coils",
-  "Snowshoes of Northern Pursuit",
-  "Robe of Infinite Twine",
-  "Bandages of Rapid Recovery"
+  "Vest of Stable Mutation",
+  "Traveling Master's Turban"
  ],
  "eye_color": [
-  "Grey"
+  "Hazel"
  ],
  "feat_budget": {
   "bloodline": 0,
   "class": 0,
   "flavor": 1,
   "flaw": 2,
-  "normal": 10,
+  "normal": 3,
   "profession": 1,
   "story": 4,
   "teamwork": 0,
-  "trainer": 3
+  "trainer": 6
  },
  "feat_changes_dict": {
-  "Prodigy (Profession (Diplomat), Profession (Shadow Diabolist))": {
-   "changes": [
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    },
-    {
-     "formula": "4",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.pro",
-     "type": "untyped"
-    }
-   ],
-   "contextNotes": []
-  },
-  "Storm-Lashed": {
+  "Divine Defiance": {
    "changes": [],
    "contextNotes": [
     {
      "target": "allSavingThrows",
-     "text": "+2 on all saving throws against electrical effects."
-    }
-   ]
-  },
-  "Weather Eye": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "+4 on Survival checks made to predict the weather."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "+1 on saving throws to avoid the effects of extreme weather."
+     "text": "+2 on saving throws against divine spells and the spell-like abilities granted by divine casting classes."
     }
    ]
   }
  },
  "feat_conditionals_dict": {},
  "feats": [
-  "Field Repair",
-  "Discipline Mastery",
-  "Weather Eye",
-  "Ancestral Scorn",
-  "Torch Handling",
-  "Sickening Spell",
-  "Cosmopolitan",
-  "Nemesis",
-  "Extend Spell",
+  "Wild Talent",
+  "Masked Identity",
+  "Minor Spell Expertise",
+  "Basic Magic Training",
+  "Extra Magic Talent (Lens / Nimbus)",
+  "Extra Magic Talent (Doubled Nimbus / Fenestrate)",
+  "Extra Magic Talent (Beam / Repelling Light)",
+  "Extra Magic Talent (Style / Visual Overload)",
+  "Extra Magic Talent (Daylight)",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Extra Cantrips Or Orisons": [
-   "extra cantrips or orisons"
+  "Extra Magic Talent (Beam / Repelling Light)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Daylight)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Doubled Nimbus / Fenestrate)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Lens / Nimbus)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Style / Visual Overload)": [
+   "Extra Magic Talent"
+  ],
+  "Minor Spell Expertise": [
+   "major spell expertise"
   ]
  },
- "flavor_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {
+  "Divine Defiance": [
+   "atheist abjurations",
+   "divine denouncer",
+   "focused disbelief"
+  ]
+ },
  "flavor_feats": [
-  "Improved Implantation"
+  "Divine Defiance"
  ],
  "flaw": [
   "Animal Phobia",
@@ -516,10 +485,10 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Storm-Lashed",
-  "Conviction"
+  "Elemental Spell",
+  "Reach Spell"
  ],
- "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Javelineer (rank 1)\n- Profession: Page of the Court (rank 9)\n- Profession: Diplomat (rank 10)\n- Profession: Shadow Diabolist (rank 10)\n- Known for: Papermaking\n- Training: An average (Path of War) trainer who taught them Martial Training I (Primal Fury), Martial Training III (Primal Fury)\n- Training: A terrible (Spheres) trainer who taught them Ascetic Control\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Sister\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Straight Blond\n- Eyes: Grey\n- Build: Self-assured",
+ "formatted_bio": "Pauline Dupont\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 9 Summoner (Unchained) / Cleric\n- Archetype: Spellblade\n- Tactics: Loads a touch spell into its blade and delivers spell and sword damage in the same swing, spiking one target with everything at once. Banks spell slots between novas behind decent armor and self-buffs like shield or mirror image.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Javelineer (rank 1)\n- Profession: Page of the Court (rank 9)\n- Profession: Diplomat (rank 10)\n- Profession: Shadow Diabolist (rank 10)\n- Known for: Papermaking\n- Training: An average trainer who taught them Undermining Exploit, Ancestral Scorn\n- Training: An average trainer who taught them Divine Interference, Forge Ring\n- Training: An average trainer who taught them Unseen Terror, Additional Traits\n\nFamily\n- Absent Mother\n- Dead Father\n- Raised In An Orphanage\n- No Siblings\n\nPersonality\n- Personality: Enthusiastic, Agreeable, Goal-oriented, Judicious, Gregarious\n- Mannerisms: Taps pencil, Rub hands together, Bursts into laughter, Crouches\n- Flaws: Animal Phobia, Powerless Prophecy\n\nAppearance\n- Hair: Spiky Grey\n- Eyes: Hazel\n- Build: Sallow",
  "full_domain": [
   "Strength",
   "Community"
@@ -529,36 +498,39 @@
  "generator_version": "2026-07-15 racial-stats",
  "gold": 0,
  "hair_color": [
-  "Blond"
+  "Grey"
  ],
  "hair_type": [
-  "Straight"
+  "Spiky"
  ],
  "height_number": "5'8\"",
- "hero_points": 1,
+ "hero_points": 3,
  "homebrew_feat_desc_dict": {
+  "Additional Traits": "You have more traits than normal",
   "Ancestral Scorn": "The fury you harbor for your fiendish ancestors gives evil outsiders great reason to fear you",
-  "Conviction": "Your actions are bolstered by divine determination",
-  "Cosmopolitan": "Living in large, exotic cities has put you in touch with many diverse civilizations, cultures, and races",
-  "Discipline Mastery": "Youve learned to use certain skills in reference to your martial ability with practiced ease. you may take 10 on skill checks made with any associated skill of a discipline you possess (with 8 or more ranks) without increasing the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so.",
-  "Extend Spell": "You can make your spells last twice as long",
-  "Field Repair": "You can repair your broken weapon or armor to serviceability even without the benefits of artisan tools",
-  "Firesight": "Fire no longer blinds you, and smoke conceals nothing from your gaze",
-  "Focused Worker": "Your attention to detail provides you with an excess of some commodities, at the cost of others",
-  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
-  "Martial Training I (Primal Fury)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Primal Fury)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Primal Fury)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Primal Fury)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Basic Magic Training": "Benefit: Choose a sphere of magic. You gain access to this basic sphere. You gain an effective caster level of 1, a magic skill bonus of 1, a magic skill defense of 12, and a spell pool of 1. You may also select a casting tradition when you gain this feat. You are considered to possess the casting class feature, but do not gain the +2 magic talents a caster gains for their 1st level in a casting class.\n\nIf you later gain levels in a class granting the casting class feature, exchange this feat for the Extra Magic Talent feat.\n\nSpecial: For retraining purposes, having the casting class feature counts as Basic Magic Training.\nSphere/talent gained: Searing Light (Light)",
+  "Divine Defiance": "You distrust, disrespect, or doubt the gods, which helps you fight off their power",
+  "Divine Interference": "You can convert a spell to interfere with an enemy's attack",
+  "Elemental Channel": "Choose one elemental subtype, such as air, earth, fire, or water You can channel your divine energy to harm or heal outsiders that possess your chosen elemental subtype",
+  "Elemental Spell": "You can manipulate the elemental nature of your spells",
+  "Extra Magic Talent": "Benefit: Gain an additional sphere or a talent from a sphere you possess. You may take this feat multiple times. The effects stack.",
+  "Extra Magic Talent (Beam / Repelling Light)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Beam (Light): When you cause a glow effect to shed normal or bright light, you can focus this light into a cone (doubling the affected distance) or a line (quadrupling the affected distance). This also doubles or quadruples the distance to which light is increased one step to a maximum of normal light. You may ch\n- Repelling Light (Light): You may spend a spell point to create light that repels unwanted creatures. Choose one creature type. In the case of humanoids and outsiders, you must instead choose one subtype.  Any creature of this type or subtype within the area of bright light must succeed at a Fortitude save or be unable to mo",
+  "Extra Magic Talent (Daylight)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Daylight (Light): When causing an object to shed bright light, you may spend 2 additional spell points to cause the object to shed bright light for a 2 mile radius and normal light for 5 miles beyond that.",
+  "Extra Magic Talent (Doubled Nimbus / Fenestrate)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Doubled Nimbus (Light): By increasing the casting time of your glow by one step or by spending a spell point you may apply two (nimbus) talents to a single glow effect, causing it to shed light in the area defined in both (nimbus) talents. Alternatively, you may choose to apply a single (nimbus) talent while also shedding \n- Fenestrate (Light): You can create bright light that makes everything and everyone within the area of the bright light translucent enough that they can be seen through. This includes creatures, objects, structures, and even the ground itself. Objects are not invisible, however, and seeing through them is difficult. Obj",
+  "Extra Magic Talent (Lens / Nimbus)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Lens (Light): (Lens) effects allow a user of the Light sphere to bend or alter light and its properties. The caster may place a lens as a standard action on any target (or sometimes a space) within the same range as their glow. This requires a melee or ranged touch attack when used on unwilling targets, and is su\n- Nimbus (Light): Some Light talents are designated (nimbus), which notes a talent that alters the area of light shed by your glow effects, changing the area in which light is increased as well as where the effects of (light) talents are applied. You may only apply a single (nimbus) talent to a glow at a time but may",
+  "Extra Magic Talent (Style / Visual Overload)": "Extra Magic Talent > Extra Magic Talent (house rule: one slot, two talents).\nTalents gained:\n- Style (Light): Your glows may be composed of multiple colors, allowing you to outline or highlight specific portions of a glowing object or create art. When you cause your glow to shed light, you may also create patterns and different colors in the light it sheds, casting intricate designs on surfaces. These patte\n- Visual Overload (Light): When you cause a creature to glow, you may spend a spell point to overwhelm the target of the glow with visual stimulation. The target must succeed at a Will save each round the glow is in effect on them or be staggered for one round. When causing a glow to shed bright light the target must succeed ",
+  "Flaring Spell": "You dazzle creatures when you affect them with a spell that has the fire, light, or electricity descriptor",
+  "Forge Ring": "You can create magic rings",
+  "Improved Counterspell": "You are skilled at countering the spells of others using similar spells",
+  "Masked Identity": "Special You cannot select this feat if you have the dual identity class feature or a feature that grants you a second identity. you gain the dual identity class feature of a vigilante of your character level.",
+  "Minor Spell Expertise": "You are able to cast a 1st-level spell as a spell-like ability",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Nemesis": "A past enemy seeks your ruin",
-  "Prodigy (Profession (Diplomat), Profession (Shadow Diabolist))": "",
-  "Sickening Spell": "You can sicken creatures with your spells",
-  "Spheres Mentor": "<strong>Spheres funded:</strong> Enhancement (Power)<br><br>Extra Magic Talent<br><br>Ascetic Control (Enhancement)",
-  "Storm-Lashed": "A life spent enduring gales and storms has hardened your body to the elements",
-  "Sure Grasp": "Your quick ref lexes and skill at climbing keep you from falling to your doom",
-  "Torch Handling": "In your grasp, a simple torch becomes a beacon",
-  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
+  "Reach Spell": "Your spells go farther than normal",
+  "Secret Backup Plan": "\"Man, I never thought Id need to use this!\" you may, upon beating the dc to identify a monster by 10 or more, elect to spontaneously re-prepare a spell (or add a new spell to your list of spells known until it is used). you may use this ability a number of times per day equal to 1/2 your character level or 1/2 your intelligence modifier, whichever is greater.",
+  "Twilight Adept": "Benefit: Your Dark sphere talents or abilities continue to function in areas where you or someone else with the Twilight Adept feat cast a Light sphere talent or ability. Your Light sphere talents or abilities continue to function in areas where you or someone else with the Twilight Adept feat cast a Dark sphere talent or ability. The MSD to dispel a Light or Dark sphere effect overlapping in this way is increased by +2. You may choose to have your Dark and Light sphere talents or abilities interact normally if you wish. The light level in overlapping areas defaults to the ambient lighting conditions.\n\nNormal: If a Light sphere effect interacts with a darkness effect (such as from the Dark sphere) or vice versa, the creator of the second effect must succeed at a magic skill check against the creator of the first effect.",
+  "Undermining Exploit": "Your familiarity with earth and stone gives you a distinct advantage on rocky battlefields",
+  "Unseen Terror": "Creatures are naturally afraid of what they cannot see. Normal You can only make an Intimidate check to demoralize an opponent if it is within 30 feet and can clearly see and hear you. you can make intimidate checks to demoralize a creature even if it cannot see you. you must still influence it in some other way, such as by taunting, making sounds, or using visual effects such as silent image or light from a torch. you gain a +2 bonus on intimidate checks made while in dim light or darkness.",
+  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
  },
  "inherents": {
   "cha": 4,
@@ -569,55 +541,89 @@
   "wis": 0
  },
  "initiation_stat": "cha",
- "initiator_level": 7,
+ "initiator_level": 0,
  "int": 17,
  "item_changes_dict": {
-  "Anaconda's Coils": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "str",
-     "type": "enh"
-    },
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "cmb",
-     "type": "competence"
-    }
+  "Traveling Master's Turban": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This turban consists of 30 feet of cloth held in place by a brooch. The owner can command the turban to tie or untie itself as a move action. Once per day when the turban is untied, the owner can use the fabric to perform a rope trick (as per the spell rope trick). In addition, the owner can spend 1 ki point as a swift action to cast animate rope"
+   ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 14,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Cloth",
+     0
+    ],
+    [
+     "Enhancement",
+     4
+    ]
    ],
-   "contextNotes": [
-    {
-     "target": "strChecks",
-     "text": "Treat the enhancement bonus to strength as temporary ability bonus for the first [[24]] hours the belt is worn. In addition, the belt grants the wearer the constrict ability (bestiary 298) for [[1d6]] points of damage plus the wearer's strength modifier."
-    }
-   ]
+   "hp": 27,
+   "hp_lines": [
+    [
+     "Armor",
+     5
+    ],
+    [
+     "Cloth",
+     2
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "material": "cloth",
+   "material_label": "Cloth",
+   "size_lines": [],
+   "size_sources": []
   },
-  "Bandages of Rapid Recovery": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "Any creature wrapped in these bandages recovers from wounds and ability damage each day as if receiving complete bed rest, regardless of activity (core rulebook 191). A creature actually receiving long-term care (from the heal skill) or complete bed rest while wearing the bandages gains a +[[4]] bonus to its effective level or hit dice when determining how many hit points it recovers each day."
-    }
-   ]
-  },
-  "Robe of Infinite Twine": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer can draw up to 30 feet of twine or up to 10 feet of hemp rope per round from the robe without harming it. As an immediate action, the wearer can draw up to 150 feet of twine or 50 feet of rope from the robe, but this gives the robe the broken condition and suppresses its powers until it is repaired. Twine or rope drawn from the robe remains connected until cut or torn, but is treated as common material rather than part of a magic item."
-   ]
-  },
-  "Snowshoes of Northern Pursuit": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "These masterwork snowshoes (pathfinder rpg ultimate equipment 91) provide greater stability and weight distribution in snow. , it only costs 2 squares of movement to enter a square covered with heavy snow instead of 4 squares of movement). In addition, the wearer can increase her land speed in snowy terrain by 10 feet for up to 10 rounds per day. Finally, as a standard action once per day, the snowshoes can generate a ripple effect that removes all trace of tracks left in the snow in a 60-foot radius."
-   ]
+  "weapon": {
+   "hardness": 24,
+   "hardness_lines": [
+    [
+     "One-Handed Metal-Hafted",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     4
+    ]
+   ],
+   "hp": 70,
+   "hp_lines": [
+    [
+     "One-Handed Metal-Hafted",
+     20
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [
@@ -629,16 +635,16 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Infernal",
-  "Giant",
+  "Sylvan",
+  "Tengu",
+  "Dwarven",
+  "Halfling",
   "Ignan",
-  "Auran",
-  "Gnoll",
-  "Celestial",
-  "Drow Sign Language",
-  "Elven",
-  "Orc",
-  "Sylvan"
+  "Infernal",
+  "Aquan",
+  "Sphinx",
+  "Giant",
+  "Wayang"
  ],
  "level": 9,
  "level_up_stats": {
@@ -717,143 +723,122 @@
  },
  "magic_talent_items": [
   {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may create bright light that burns targets in its area. All creatures in the area suffer 1 point of fire damage per caster level per round they are within this area of bright light. Undead, oozes, and creatures harmed by daylight take 2 points of fire damage per caster level. This does not affect the target of the glow itself.\n\nCreatures who have a glow placed directly upon them (or their equipment) augmented by the Searing Light talent may as a full-round action attempt a Reflex save to extinguish the bright light, causing the glow to shed only normal light for the remainder of the effect and preventing further damage caused by Searing Light.",
+   "name": "Searing Light",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "(Lens) effects allow a user of the Light sphere to bend or alter light and its properties. The caster may place a lens as a standard action on any target (or sometimes a space) within the same range as their glow. This requires a melee or ranged touch attack when used on unwilling targets, and is subject to spell resistance. A lens lasts as long as you concentrate, but you may spend a spell point to allow a lens to remain for 1 hour per caster level without concentration.\n\nWhen you gain the Light sphere, you gain the following lens:",
+   "name": "Lens",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Some Light talents are designated (nimbus), which notes a talent that alters the area of light shed by your glow effects, changing the area in which light is increased as well as where the effects of (light) talents are applied. You may only apply a single (nimbus) talent to a glow at a time but may switch between them and the normal area of your glow as a free action, though any (light) talents affect only one area in a round.",
+   "name": "Nimbus",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "By increasing the casting time of your glow by one step or by spending a spell point you may apply two (nimbus) talents to a single glow effect, causing it to shed light in the area defined in both (nimbus) talents. Alternatively, you may choose to apply a single (nimbus) talent while also shedding light in the normal radius of your glow, or apply a single (nimbus) talent twice. Creatures in overlapping areas are still only affected by (light) talents and other effects of your glow once.",
+   "name": "Doubled Nimbus",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You can create bright light that makes everything and everyone within the area of the bright light translucent enough that they can be seen through. This includes creatures, objects, structures, and even the ground itself. Objects are not invisible, however, and seeing through them is difficult. Objects that grant cover still grant concealment, but any creature using such an object to hide receives a -10 penalty to their Stealth. Magical fog effects are countered by this Light talent the way magical darkness can be countered by Light talents. Effects based on light (such as most Light sphere abilities) can pass through to affect other objects, but other effects are still stopped by solid objects.\n\nThis light can be placed on a single structure to make it translucent. If the structure is larger than the area of the glow, then only part of the structure is made translucent.",
+   "name": "Fenestrate",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you cause a glow effect to shed normal or bright light, you can focus this light into a cone (doubling the affected distance) or a line (quadrupling the affected distance). This also doubles or quadruples the distance to which light is increased one step to a maximum of normal light. You may change the direction the light projects as well as switch whether the light is a cone, line, or an emanation each once per round as a free action.",
+   "name": "Beam",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "You may spend a spell point to create light that repels unwanted creatures. Choose one creature type. In the case of humanoids and outsiders, you must instead choose one subtype.\n\nAny creature of this type or subtype within the area of bright light must succeed at a Fortitude save or be unable to move closer to the source of the light. Affected creatures may move sideways or backwards, but cannot move closer, although the source of the light may move closer to them. Creatures who succeed at their saving throw but remain within the area of bright light must attempt a new saving throw every round to avoid being affected.\n\nIf a creature enters this area of bright light (or if the source of bright light moves close to them), they must immediately save or be affected.",
+   "name": "Repelling Light",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "Your glows may be composed of multiple colors, allowing you to outline or highlight specific portions of a glowing object or create art. When you cause your glow to shed light, you may also create patterns and different colors in the light it sheds, casting intricate designs on surfaces. These patterns may be highly detailed and complex, though creating art of high craftsmanship requires you to succeed on an appropriate Craft check, usually Craft (painting). You determine and create the pattern as part of making the glow or light, but may change it as a free action once per turn.\n\nAs a standard action you can cause one of your glows that is shedding light to stain a surface with its light, painting its current pattern on any portion of the glow's area. The ability to stain a surface is an instantaneous effect, so the resulting stain is non-magical and functions as a mundane dye that cannot be dispelled, though it may be cleaned off or painted over. Unwilling targets may attempt a Reflex save to avoid being stained, and a 5-foot cube may be cleaned of these stains with a full minute of work.\n\nIf you also possess the Dancing Lights talent, you may alter the shape and appearance of your light. It may be as large as a full 5-foot cube, or as small as a mote of dust, though its size has no impact on the light it sheds. Regardless of how intricate or well shaped your Dancing Light is, it is impossible to mistake as anything other than a magical light.",
+   "name": "Style",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
+   "advanced": false,
+   "changes": [],
+   "contextNotes": [],
+   "description": "When you cause a creature to glow, you may spend a spell point to overwhelm the target of the glow with visual stimulation. The target must succeed at a Will save each round the glow is in effect on them or be staggered for one round. When causing a glow to shed bright light the target must succeed at a Will save every round the bright light persists or become dazed for one round instead of staggered.\n\nTwo consecutive successful Will saves against the glow ends the effect.",
+   "name": "Visual Overload",
+   "sphere": "Light",
+   "system": "Spheres of Power",
+   "type": "base",
+   "uses": null
+  },
+  {
    "advanced": true,
    "changes": [],
    "contextNotes": [],
-   "description": "By spending 10 minutes and 2 spell points, you may downplay the needs of your body until they vanish entirely. While Ascetic Control is active, you do not bleed, and do not need to breathe, eat, drink, or sleep. Ascetic Control lasts 24 hours.",
-   "name": "Ascetic Control",
-   "sphere": "Enhancement",
+   "description": "When causing an object to shed bright light, you may spend 2 additional spell points to cause the object to shed bright light for a 2 mile radius and normal light for 5 miles beyond that.",
+   "name": "Daylight",
+   "sphere": "Light",
    "system": "Spheres of Power",
    "type": "advanced",
    "uses": null
   }
  ],
  "main_stat": "int",
- "maneuvers_choose_from": [
-  [
-   "Shoulder Rush",
-   "Primal Wrath"
-  ],
-  [
-   "Crippling Strike",
-   "Devastating Rush"
-  ],
-  [
-   "Frenzy Strike",
-   "Blade-Breaking Counter"
-  ],
-  [
-   "Furious Primal Wrath"
-  ]
- ],
- "maneuvers_desc_dict": {
-  "Blade-Breaking Counter": {
-   "action": "1 immediate action",
-   "description": "An opponent cannot hurt you with his weapon if a weapon does not exist to do it. The Primal Fury disciple takes this to heart with a powerful parrying blow designed to shatter the weapon that his opponent uses before it can strike him. When being attacked, this counter is initiated after a successful hit but before damage is inflicted. The initiator then makes an immediate sunder attempt with a +2 circumstance bonus on his foes weapon which does not provoke attacks of opportunity, and if the weapon is reduced to half of its hit points, then it gains the broken condition and the disciple takes half damage from the attack. If this sunder attempt reduces the opponents weapon to 0 hit points, then the weapon shatters and the disciple takes no damage. If the initiator possesses the Greater Sunder feat, excess damage is applied to the target as per normal.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Crippling Strike": {
-   "action": "1 standard action",
-   "description": "By specifically targeting a victims most vulnerable areas, the disciple is capable of rending arterial injuries into his foe. The initiator initiating this maneuver inflicts an additional 2d6 points of damage upon a successful melee attack, and his victim gains the bleeding condition suffering 1d3 points of damage per round until the application of any spell or effect that cures hit point damage or someone staunches the blood with a DC 15 Heal check.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Devastating Rush": {
-   "action": "1 standard action",
-   "description": "The disciple performing this attack executes a powerful attack that rushes in past a foes defenses to shatter them completely. The initiator inflicts an additional 2d6 points of damage upon a successful attack and his strike ignores the damage reduction of a subject or the hardness of an object he is attacking.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Frenzy Strike": {
-   "action": "1 standard action",
-   "description": "By emulating the ferocious assault of a raging great cat, the disciples knowledge of the natural world and the way its predators operate assists him in combat with a furious set of attacks. The initiator makes one attack with each weapon he has wielded or with both heads of a double weapon; this includes natural attacks and armor or shield spikes at his full base attack bonus. Upon a each successful attack, the initiator inflicts an additional 2d6 points of damage.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Furious Primal Wrath": {
-   "action": "1 standard action",
-   "description": "The disciples attacks grow strong with practiced fury and primal power, forgoing accuracy for pure deadly force. The initiator suffers a -4 penalty to his attack roll, and makes an attack against a target creature. If successful, this attack inflicts an additional 20 points of damage, or 35 if the weapon is wielded in two hands.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 4,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Primal Warrior Stance": {
-   "action": "1 swift action",
-   "description": "By taking a wide stance that invites the death of any before him, the mighty disciple of Primal Fury wields the power of overwhelming force to its greatest effects. The initiator ignores difficult terrain when charging while in this stance, and whenever he is subject to a size modifier for CMB checks or to his CMD, the disciple is treated as one size category larger if doing so would be advantageous to him. He is also considered to be one size larger when determining whether a creatures special attacks based on size such as grab or swallow whole can affect him. Additionally, any melee weapon, unarmed strike, or natural weapon is treated as if it were two sizes larger. The benefits of this stance stack with abilities or effects that increase the initiators size such asenlarge person.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Primal Wrath": {
-   "action": "1 standard action",
-   "description": "A wild but powerful strike is better than a frail and accurate one, says the disciple of Primal Fury. By sacrificing accuracy for potency, the disciple achieves his desired result. The initiator inflicts an additional 4 points of damage upon a successful attack, or an additional 6 points of damage if the initiator is wielding the weapon in two hands.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Running Hunters Stance": {
-   "action": "1 swift action",
-   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
-   "discipline": "Primal Fury",
-   "duration": "Stance",
-   "level": 1,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Shoulder Rush": {
-   "action": "1 standard action",
-   "description": "The disciple of Primal Fury uses his aggression to take opportunities whenever possible, and a solid shoulder into a foe at an opportune moment can tip the scales of war in the disciples favor. As a standard action, the initiator may make a bull rush or overrun attempt with a +4 circumstance bonus, and this attempt does not provoke attacks of opportunity.",
-   "discipline": "Primal Fury",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  }
- },
- "maneuvers_known_list": [
-  2,
-  2,
-  2,
-  1
- ],
- "maneuvers_readied_list": [
-  0,
-  1,
-  2,
-  1
- ],
- "maneuvers_readied_names": [
-  [],
-  [
-   "Devastating Rush"
-  ],
-  [
-   "Frenzy Strike",
-   "Blade-Breaking Counter"
-  ],
-  [
-   "Furious Primal Wrath"
-  ]
- ],
+ "maneuvers_choose_from": [],
+ "maneuvers_desc_dict": {},
+ "maneuvers_known_list": [],
+ "maneuvers_readied_list": [],
+ "maneuvers_readied_names": [],
  "manifesters": [],
  "mannerisms": [
   "Taps pencil",
@@ -861,21 +846,16 @@
   "Bursts into laughter",
   "Crouches"
  ],
- "martial_disciplines": [
-  "Primal Fury"
- ],
+ "martial_disciplines": [],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [
-  "Martial Training I (Primal Fury)",
-  "Martial Training III (Primal Fury)"
- ],
+ "mt_feats": [],
  "mythic": null,
  "normal_feat_amount": 9,
  "older_brothers": " you have 0 older brothers",
- "older_sisters": " you have 1 older sisters",
+ "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, loving father, raised in a wealthy household",
+ "parents": "absent mother, dead father, raised in an orphanage",
  "personality_traits": [
   "Enthusiastic",
   "Agreeable",
@@ -1093,12 +1073,6 @@
     }
    ],
    "ranks": 10,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Diplomat)"
   },
   {
@@ -1130,12 +1104,6 @@
     }
    ],
    "ranks": 10,
-   "skill_focus_bonuses": [
-    {
-     "bonus": 4,
-     "feat": "Prodigy"
-    }
-   ],
    "skill_label": "Profession (Shadow Diabolist)"
   }
  ],
@@ -1209,6 +1177,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1519,87 +1488,108 @@
   3
  ],
  "sphere_boons": [
-  "Fortified Casting",
   "Empowered Abilities",
+  "Fortified Casting",
   "Easy Focus"
  ],
  "sphere_counts": {
-  "Enhancement": {
+  "Light": {
    "advanced": 1,
    "feats": 0,
-   "normal": 0
+   "normal": 9
   }
  },
  "sphere_drawbacks": [
-  "Addictive Casting",
-  "Painful Magic",
-  "Material Casting",
-  "Skilled Casting",
-  "Wild Magic",
-  "Focus Casting"
+  "Draining Casting",
+  "Prepared Caster",
+  "Extended Casting",
+  "Addictive Casting"
  ],
- "sphere_feat_tax": {},
- "sphere_feats": [],
- "sphere_mana_pool": 6,
+ "sphere_feat_tax": {
+  "Extra Magic Talent (Beam / Repelling Light)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Daylight)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Doubled Nimbus / Fenestrate)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Lens / Nimbus)": [
+   "Extra Magic Talent"
+  ],
+  "Extra Magic Talent (Style / Visual Overload)": [
+   "Extra Magic Talent"
+  ]
+ },
+ "sphere_feats": [
+  "Basic Magic Training",
+  "Extra Magic Talent (Lens / Nimbus)",
+  "Extra Magic Talent (Doubled Nimbus / Fenestrate)",
+  "Extra Magic Talent (Beam / Repelling Light)",
+  "Extra Magic Talent (Style / Visual Overload)",
+  "Extra Magic Talent (Daylight)",
+  "Twilight Adept"
+ ],
+ "sphere_mana_pool": 5,
  "sphere_traits": [
+  "Draining Casting",
+  "Prepared Caster",
+  "Extended Casting",
   "Addictive Casting",
-  "Painful Magic",
-  "Material Casting",
-  "Skilled Casting",
-  "Wild Magic",
-  "Focus Casting",
-  "Fortified Casting",
   "Empowered Abilities",
+  "Fortified Casting",
   "Easy Focus"
  ],
  "spheres_chosen": [
   {
-   "sphere": "Enhancement",
+   "sphere": "Light",
    "system": "power"
   }
  ],
- "stances_chosen": [
-  "Running Hunters Stance",
-  "Primal Warrior Stance"
- ],
+ "stances_chosen": [],
  "story_feat_tax_dict": {
-  "Focused Worker": [
-   "focused overseer"
+  "Improved Counterspell": [
+   "parry spell"
   ]
  },
  "story_feats": [
-  "Firesight",
-  "Focused Worker",
-  "Sure Grasp",
-  "Prodigy (Profession (Diplomat), Profession (Shadow Diabolist))"
+  "Improved Counterspell",
+  "Elemental Channel",
+  "Flaring Spell",
+  "Secret Backup Plan"
  ],
  "str": 10,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 15,
  "total_rolled_hp": 112,
- "trainer_calibers": [],
- "trainer_feat_labels": [
-  "(Trainer 1 - Path of War)",
-  "(Trainer 1 - Path of War)",
-  "(Trainer 2 - Spheres)"
+ "trainer_calibers": [
+  2,
+  2,
+  2
  ],
- "trainer_feat_tax_dict": {
-  "Martial Training I (Primal Fury)": [
-   "Martial Training II (Primal Fury)"
-  ],
-  "Martial Training III (Primal Fury)": [
-   "Martial Training IV (Primal Fury)"
-  ],
-  "Spheres Mentor": []
- },
+ "trainer_feat_labels": [
+  "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
+  "(Trainer 2)",
+  "(Trainer 3)",
+  "(Trainer 3)"
+ ],
+ "trainer_feat_tax_dict": {},
  "trainer_feats": [
-  "Martial Training I (Primal Fury)",
-  "Martial Training III (Primal Fury)",
-  "Spheres Mentor"
+  "Undermining Exploit",
+  "Ancestral Scorn",
+  "Divine Interference",
+  "Forge Ring",
+  "Unseen Terror",
+  "Additional Traits"
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Morningstar",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

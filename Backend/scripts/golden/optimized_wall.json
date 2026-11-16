@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "-6",
  "armor_enhancement_bonus": 3,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "1",
  "armor_name": "Full plate",
  "armor_spell_failure": "35%",
@@ -746,6 +748,116 @@
    "contextNotes": []
   }
  },
+ "item_durability": {
+  "armor": {
+   "hardness": 26,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     6
+    ]
+   ],
+   "hp": 105,
+   "hp_lines": [
+    [
+     "Armor",
+     45
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     30
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "shield": {
+   "hardness": 24,
+   "hardness_lines": [
+    [
+     "Heavy Steel Shield",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     4
+    ]
+   ],
+   "hp": 70,
+   "hp_lines": [
+    [
+     "Heavy Steel Shield",
+     20
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 24,
+   "hardness_lines": [
+    [
+     "One-Handed Blade",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     4
+    ]
+   ],
+   "hp": 55,
+   "hp_lines": [
+    [
+     "One-Handed Blade",
+     5
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  }
+ },
  "known_list": [],
  "land_speed": 30,
  "language_text": [
@@ -1196,6 +1308,7 @@
  "shield_armor_check_penalty": "-2",
  "shield_enhancement_bonus": 2,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": "",
  "shield_name": "Heavy steel",
  "shield_spell_failure": "15%",
@@ -1346,6 +1459,8 @@
  ],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Scizore",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

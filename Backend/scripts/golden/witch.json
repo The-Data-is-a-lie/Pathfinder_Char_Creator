@@ -4,7 +4,7 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Braided hair"
+  "Squat"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Herb Witch\": {\n        \"source\": \"Ultimate Wilderness pg. 89 , Heroes of the Wild pg. 11 Some witches dedicate their lives to the mastery of herb lore. Herb witches brew foul-tasting medicines, sweet poisons, and other concoctions from the untamed plants of the wild.\",\n        \"patron spells\": \" An herb witch must choose a patron with a theme compatible with the needs of the natural world, selected from the following list: ancestors, animals, death, elements, healing, plague, strength, time, water, winter, wisdom, or woodlands. This alters the witch's patron spells.\",\n        \"herb lore (ex)\": \" Herb witches are masters of herbalism, and they can use what they gather from garden or grove to duplicate many of the effects of alchemy. An herb witch can attempt Profession (herbalist) checks in place of Craft (alchemy) checks, and she gains a bonus on Profession (herbalist) checks equal to half her class level. Herb witches are adept at brewing thick herbal cure-alls called remedies. An herb witch prepares these remedies while communing with her familiar, during which she can prepare a number of remedies equal to 3 + her Intelligence modifier (minimum 1 remedy). A remedy becomes inert if it leaves the herb witch's possession, reactivating as soon as it returns to her keeping. A witch can never have more remedies than 3 + her Intelligence modifier. As a standard action, the herb witch can administer a remedy to herself or a creature within reach which consumes the remedy. The herb witch attempts a Profession (herbalist) check against the save DC of any one disease or poison currently afflicting the consumer. If she is successful, the affliction is suppressed for 1 minute. At 10th level, if she exceeds the DC of the check by 10 or more, the affliction immediately ends. If the disease or poison doesn't allow saving throws, the remedy is ineffective. An herb witch can also use a remedy to attempt to remove the blinded, deafened, fatigued, nauseated, sickened, and staggered conditions. This requires a Profession (herbalist) check with a DC equal to the spell or effect that caused the condition, or a DC 25 check if the condition was caused by an effect that doesn't allow a saving throw. If the herb witch succeeds, the condition is removed unless the condition is permanent; at 10th level, if the herb witch succeeds by 10 or more, her remedy can remove a permanent condition. Only a single condition, disease, or poison can be removed with each application of a remedy, and a creature can only benefit from one herbal remedy each day, whether or not the herb witch succeeds at her skill check. This replaces the hexes gained at 1st and 10th levels.\",\n        \"hexes\": \" An herb witch must select cauldron as her hex at 2nd level. The following witch hexes complement the herb witch archetype: fortune, healing, poison steep, swamp hag.\",\n        \"major hexes\": \" The following major hexes complement the herb witch archetype: major healing, weather control, witch's brew.\",\n        \"grand hexes\": \" The following grand hex complements the herb witch archetype: life giver.\"\n    }\n}",
@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": 0,
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": 0,
  "armor_name": 0,
  "armor_spell_failure": 0,
@@ -289,29 +291,13 @@
   ],
   "casting_ability_modifier": "Intelligence",
   "drawbacks": [
-   "Prepared Caster",
-   "Painful Magic",
-   "Draining Casting",
    "Addictive Casting",
-   "Somatic Casting",
-   "Wild Magic"
+   "Draining Casting",
+   "Magical Signs",
+   "Focus Casting",
+   "Extended Casting"
   ],
   "drawbacks_detail": [
-   {
-    "counts_as": 1,
-    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
-    "name": "Prepared Caster"
-   },
-   {
-    "counts_as": 1,
-    "description": "Spending a spell point forces a Fortitude save (DC 10 + 1/2 caster level) or you become sickened (then nauseated, then stunned on repeated failures).",
-    "name": "Painful Magic"
-   },
-   {
-    "counts_as": 1,
-    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
-    "name": "Draining Casting"
-   },
    {
     "counts_as": 2,
     "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
@@ -319,13 +305,23 @@
    },
    {
     "counts_as": 1,
-    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
-    "name": "Somatic Casting"
+    "description": "Each time you spend a spell point you take a small amount of nonlethal damage (scaling with caster level) that can only be removed by rest, not by healing or DR.",
+    "name": "Draining Casting"
    },
    {
     "counts_as": 1,
-    "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
-    "name": "Wild Magic"
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "You must wield or wear a specific item (wand, staff, holy symbol, ring, etc.) to cast; without it you must make a concentration check (DC 20 + 1/2 caster level) or the ability fails.",
+    "name": "Focus Casting"
+   },
+   {
+    "counts_as": 2,
+    "description": "Every sphere ability takes one step longer to activate than normal (swift to move, move to standard, standard to full-round, etc.).",
+    "name": "Extended Casting"
    }
   ]
  },
@@ -593,32 +589,32 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this belt is worked with images of horses stampeding across\r a barren, windswept plain. The belt's wearer automatically\r succeeds at any check to guide with the knees, stay in the\r saddle, fight with a combat-trained mount, control a mount in battle, or make a fast mount or dismount, as long as the belt's\r wearer is wearing medium, light, or no armor. Furthermore, \r the belt grants a +4 competence bonus on all other ride checks, \r including ones made while the wearer is in heavy armor. ",
-   "item_name": "Equestrian Belt"
+   "description": " this belt functions as a plague rat belt , except it grants\r the wearer a +2 enhancement bonus to dexterity and\r constitution. Treat this as a temporary ability bonus for the\r first 24 hours the belt is worn. ",
+   "item_name": "Plague Rat Belt, Greater"
   },
   "body": {
-   "description": " this blue and white silk robe gives the impression of ice\r and frozen fog forming over its surface. The robe grants the\r wearer cold resistance 5 and increases the wearer's caster\r level for all spells with the cold descriptor by +1. Once per\r day on command, the wearer of the robe can emit a 20-footradius\r burst of cold. Creatures other than the wearer within\r the area take 2d6 points of cold damage (reflex dc 16 half). ",
-   "item_name": "Voidfrost Robe"
+   "description": " this dark, hooded robe has six long, \r silvery, razor-sharp needles protruding\r from the bottom of its loose sleeves, \r three on each side. The wearer can launch\r one needle as a ranged touch attack. The\r needle counts as a thrown weapon with a\r range increment of 10 feet. If the needle\r hits, it embeds itself in the target's flesh, \r dealing 1 point of piercing damage and 1\r point of bleed damage. A creature can pull out the needle as\r a full-round action, which ends the bleed effect. The needle\r is destroyed if an attack with it misses or when it is removed\r from a creature it was embedded in. The robe regrows all\r spent needles each morning. ",
+   "item_name": "Robe of Needles"
   },
   "chest": {
-   "description": " this shirt is made of light, gossamer-thin fabric embroidered\r with arrangements of winged feet. Once per day as a swift\r action, the wearer can take an additional move action to move\r and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability. ",
-   "item_name": "Quick Runner's Shirt"
+   "description": " the sacred stones, graven star-patterns, and wisdom-writings\r of the ancients on this chestplate increase the wearer's chance\r of success with augury , divination , and contact other plane . \r the wearer adds 1d6 to the d% roll each time she uses such\r a spell. When casting commune or commune with nature , the\r wearer may ask one additional question or gain one additional\r piece of information. ",
+   "item_name": "Prophet's Pectoral"
   },
   "eyes": {
    "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
    "item_name": "Patternward Spectacles"
   },
-  "headband": {
-   "description": " this simple bronze headband\r is decorated with an intricate\r pattern of fine green etchings. The\r headband grants the wearer an\r enhancement bonus to wisdom of +2, +4, or +6. Treat this as\r a temporary ability bonus for the first 24 hours the headband\r is worn. ",
-   "item_name": "Headband of Inspired Wisdom +2"
+  "feet": {
+   "description": " these high-soled blue boots provide a great deal of comfort and\r arch support while also making the wearer appear a little bit\r taller than normal. The boot's wearer always takes the minimum\r possible damage from falls (as if the gm had rolled a 1 on each\r die of damage incurred by the fall) and at the end of a fall always\r lands on his feet. ",
+   "item_name": "Boots of the Cat"
   }
  },
  "equipment_list": [
-  "Equestrian Belt",
-  "Voidfrost Robe",
-  "Headband of Inspired Wisdom +2",
-  "Quick Runner's Shirt",
-  "Patternward Spectacles"
+  "Plague Rat Belt, Greater",
+  "Prophet's Pectoral",
+  "Robe of Needles",
+  "Patternward Spectacles",
+  "Boots of the Cat"
  ],
  "eye_color": [
   "Amber"
@@ -632,28 +628,71 @@
   "profession": 1,
   "story": 3,
   "teamwork": 0,
-  "trainer": 5
+  "trainer": 0
  },
- "feat_changes_dict": {},
+ "feat_changes_dict": {
+  "Necromantic Affinity": {
+   "changes": [],
+   "contextNotes": [
+    {
+     "target": "allSavingThrows",
+     "text": "+2 bonus on saving throws to resist spells/effects that use negative energy, cause negative levels, or cause ability damage/drain/penalties."
+    }
+   ]
+  },
+  "Sea Legs": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  }
+ },
  "feat_conditionals_dict": {},
  "feats": [
-  "Heighten Spell",
-  "First Aid Training",
-  "Acrobatic",
-  "Secret Backup Plan",
-  "Black Market Dealings",
-  "Dispel Synergy",
-  "Discipline Mastery",
+  "Disruptive Spell",
+  "Gunsmithing",
+  "Selective Spell",
+  "Flaring Spell",
+  "Sea Legs",
+  "Outer Planes Traveler",
+  "Wild Talent",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
-  "Heighten Spell": [
-   "preferred spell"
+  "Martial Training I (Primal Fury)": [
+   "Martial Training II (Primal Fury)"
   ]
  },
- "flavor_feat_tax_dict": {},
+ "flavor_feat_tax_dict": {
+  "Spell Focus": [
+   "greater spell focus",
+   "spell specialization",
+   "varisian tattoo",
+   "greater spell specialization"
+  ]
+ },
  "flavor_feats": [
-  "Ability Focus (malefactions)"
+  "Spell Focus"
  ],
  "flaw": [
   "Rain Confounded",
@@ -685,43 +724,40 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Biomech Pilot",
-  "Silent Spell"
+  "Celestial Obedience",
+  "Arcane Vendetta"
  ],
- "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n- Training: An average trainer who taught them Half-Hearted Charge, Spell Bluff\n- Training: An excellent trainer who taught them Dragoncrafting, Deft Hands, Disruptive Spell\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Poor Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Unkempt Brown\n- Eyes: Amber\n- Build: Braided Hair",
+ "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Bald Black\n- Eyes: Amber\n- Build: Squat",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 9101,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 50,
+ "gold": 10,
  "hair_color": [
-  "Brown"
+  "Black"
  ],
  "hair_type": [
-  "Unkempt"
+  "Bald"
  ],
  "height_number": "5'7\"",
- "hero_points": 2,
+ "hero_points": 3,
  "homebrew_feat_desc_dict": {
-  "Ability Focus (malefactions)": "You have a knack for potent, complex curses. increase the dc of your malefactions by 2.",
-  "Acrobatic": "You are skilled at leaping, jumping, and flying",
-  "Additional Traits": "You have more traits than normal",
-  "Animal Affinity": "You are skilled at working with animals and mounts",
-  "Biomech Pilot": "Your mech incorporates many biological parts, offering it versatility not seen in other machines. The following mech enhancements can be selected by a mech pilot with this feat in addition to regular mech enhancements Special If you possess this feat as well as the ability to craft constructs, you may craft constructs with the biomech template and create mechs that use the mech enhancements listed above. your mech is at least partially biological, if not completely so, and as a result has access to many additional abilities. such entities are known as biomechs and possess the biomech template.",
-  "Black Market Dealings": "You walk dark alleys and trade in secrets. in addition, you can use the diplomacy skill to locate merchants who have deeper pockets in a black market or settlement. if you are looking inside a black market, the dc is equal to the black markets access dc. if you are looking more widely in a settlement, use the black markets access dc + 5 (if a settlement has no black market, the dc is 30; pcs can apply the settlements crime modifier to their checks). if successful, you can treat the black market or settlement as one step larger for the purposes of base value, items available, and purchase limit. if the settlement was already a metropolis, nearly all minor and medium magic items are for sale, as well as 3d8 major magic items; the base value is 32,000 gp; and the purchase limit is 200,000 gp. if the black market was already an underworld, nearly all minor and medium magic items are for sale, as well as 4d8 major magic items; the base value is 64,000 gp; and the purchase limit is 300,000 gp. this does not stack with other ways to increase the effective size of a black market or settlement (such as the black market connections rogue talent). you can attempt this check only once per week.",
-  "Craft Wand": "You can create magic wands",
-  "Deft Hands": "You have exceptional manual dexterity",
-  "Discipline Mastery": "Youve learned to use certain skills in reference to your martial ability with practiced ease. you may take 10 on skill checks made with any associated skill of a discipline you possess (with 8 or more ranks) without increasing the time needed to make the check, even if combat or distractions would otherwise prevent you from doing so.",
-  "Dispel Synergy": "By tearing away an opponent's magical defenses, you leave your enemy vulnerable, making it difficult for him to resist your spells",
+  "Antagonize": "Whether with biting remarks or hurtful words, you are adept at making creatures angry with you",
+  "Arcane Vendetta": "The mistreatment of your people by an arcane society (such as Numeria's Technic League or the White Witches of Irrisen) has made you particularly eager to inf lict harm on those who use arcane magic",
+  "Celestial Obedience": "Your reverence for an empyreal lord is so great that daily prayer and minor sacrifices grant you special boons",
   "Disruptive Spell": "Your magical energies cling to enemies, interfering with their spellcasting",
-  "Dragoncrafting": "You have the ability to create rare and valuable items from the bodies of fallen true dragons",
-  "First Aid Training": "You have been trained to identify and patch up wounds in preparation for more serious treatment. Special If you use an ability score other than Wisdom to determine your bonus on Heal checks, you use that ability score in place of Wisdom for determining the number of temporary hit points the target gains. when you make a heal check to perform first aid on a creature, that creature gains temporary hit points equal to your wisdom modifier plus your ranks in the heal skill. these temporary hit points last for 1 minute or until lost.",
-  "Half-Hearted Charge": "You hedge your bets - charging in but not quite throwing your all into it. when you make a charge, if you miss your attack you do not suffer the penalty to your ac like you normally do. if you hit with any attack made during the charge, you still suffer the penalty. when making a half-hearted charge you may not from the power attack or spirited charge feats.",
-  "Heighten Spell": "You can cast spells as if they were a higher level",
+  "Flaring Spell": "You dazzle creatures when you affect them with a spell that has the fire, light, or electricity descriptor",
+  "Gunsmithing": "You know the secrets of repairing and restoring firearms",
+  "Lastwall Phalanx": "When battling the terrifying hordes of Belkzen, you find strength in your shield brothers and sisters",
+  "Martial Training I (Primal Fury)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Primal Fury)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Multi Talented": "Your profession rank cap increases by 10.",
-  "Secret Backup Plan": "\"Man, I never thought Id need to use this!\" you may, upon beating the dc to identify a monster by 10 or more, elect to spontaneously re-prepare a spell (or add a new spell to your list of spells known until it is used). you may use this ability a number of times per day equal to 1/2 your character level or 1/2 your intelligence modifier, whichever is greater.",
-  "Silent Spell": "You can cast your spells without making any sound",
-  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment"
+  "Necromantic Affinity": "Long exposure to necromantic energies has granted you a small measure of resistance against them",
+  "Outer Planes Traveler": "You have seen the outer reaches of the multiverse, and have gleaned knowledge from these alien realms You have a special affinity for one of these realms in particular, and carry some of that plane's power within you",
+  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
+  "Selective Spell": "Your allies need not fear friendly fire",
+  "Spell Focus": "Choose a school of magic Any spells you cast of that school are more difficult to resist",
+  "Wild Talent": "Your mind wakes to a previously unrealized talent for psionics. your latent power of psionics flares to life, conferring upon you the designation of a psionic character. as a psionic character, you gain a reserve of 2 power points and can take psionic feats, metapsionic feats, and psionic item creation feats. you do not, however, gain the ability to manifest powers simply by virtue of having this feat."
  },
  "inherents": {
   "cha": 0,
@@ -732,33 +768,14 @@
   "wis": 0
  },
  "initiation_stat": "int",
- "initiator_level": 0,
+ "initiator_level": 6,
  "int": 21,
  "item_changes_dict": {
-  "Equestrian Belt": {
+  "Boots of the Cat": {
    "changes": [],
-   "contextNotes": [
-    {
-     "target": "skill.rid",
-     "text": "Furthermore, the belt grants a +[[4]] competence bonus on all other ride checks, including ones made while the wearer is in heavy armor."
-    }
-   ]
-  },
-  "Headband of Inspired Wisdom +2": {
-   "changes": [
-    {
-     "formula": "2",
-     "operator": "add",
-     "priority": 0,
-     "target": "wis",
-     "type": "enh"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "wisChecks",
-     "text": "Treat this as a temporary ability bonus for the first [[24]] hours the headband is worn."
-    }
+   "contextNotes": [],
+   "unplaced": [
+    "The boot's wearer always takes the minimum possible damage from falls (as if the gm had rolled a 1 on each die of damage incurred by the fall) and at the end of a fall always lands on his feet."
    ]
   },
   "Patternward Spectacles": {
@@ -768,19 +785,66 @@
     "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
    ]
   },
-  "Quick Runner's Shirt": {
+  "Plague Rat Belt, Greater": {
    "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "Once per day as a swift action, the wearer can take an additional move action to move and then immediately end his turn, losing any unspent actions. A character must wear this shirt continuously for 24 hours before he can activate this ability."
+   "contextNotes": [
+    {
+     "target": "dexChecks",
+     "text": "This belt functions as a plague rat belt , except it grants the wearer a +[[2]] enhancement bonus to dexterity and constitution. Treat this as a temporary ability bonus for the first [[24]] hours the belt is worn."
+    }
    ]
   },
-  "Voidfrost Robe": {
+  "Prophet's Pectoral": {
    "changes": [],
    "contextNotes": [],
    "unplaced": [
-    "The robe grants the wearer cold resistance 5 and increases the wearer's caster level for all spells with the cold descriptor by +1. Once per day on command, the wearer of the robe can emit a 20-footradius burst of cold. Creatures other than the wearer within the area take 2d6 points of cold damage (reflex dc 16 half)."
+    "The wearer adds 1d6 to the d% roll each time she uses such a spell."
    ]
+  },
+  "Robe of Needles": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The needle counts as a thrown weapon with a range increment of 10 feet. If the needle hits, it embeds itself in the target's flesh, dealing 1 point of piercing damage and 1 point of bleed damage. A creature can pull out the needle as a full-round action, which ends the bleed effect."
+   ]
+  }
+ },
+ "item_durability": {
+  "weapon": {
+   "hardness": 14,
+   "hardness_lines": [
+    [
+     "Projectile",
+     5
+    ],
+    [
+     "Darkwood",
+     5
+    ],
+    [
+     "Enhancement",
+     4
+    ]
+   ],
+   "hp": 35,
+   "hp_lines": [
+    [
+     "Projectile",
+     5
+    ],
+    [
+     "Darkwood",
+     10
+    ],
+    [
+     "Enhancement",
+     20
+    ]
+   ],
+   "material": "darkwood",
+   "material_label": "Darkwood",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [
@@ -795,13 +859,13 @@
  "land_speed": 30,
  "language_text": [
   "Common",
-  "Orc",
-  "Auran",
   "Celestial",
   "Aklo",
   "Protean",
   "Gnoll",
-  "Wayang"
+  "Orc",
+  "Aquan",
+  "Draconic"
  ],
  "level": 12,
  "level_up_stats": {
@@ -880,11 +944,78 @@
  },
  "magic_talent_items": [],
  "main_stat": "int",
- "maneuvers_choose_from": [],
- "maneuvers_desc_dict": {},
- "maneuvers_known_list": [],
- "maneuvers_readied_list": [],
- "maneuvers_readied_names": [],
+ "maneuvers_choose_from": [
+  [
+   "Crushing Blow",
+   "Panthera on the Hunt"
+  ],
+  [
+   "Bloody Riposte",
+   "Devastating Rush"
+  ]
+ ],
+ "maneuvers_desc_dict": {
+  "Bloody Riposte": {
+   "action": "1 immediate action",
+   "description": "Stoking the furnace of rage within him upon receiving injury, the disciple uses the momentary lapse in his attackers defenses when struck in combat to make a vicious riposte. Upon being struck in combat by an enemy, the initiator may make an immediate counter attack at his full base attack bonus that inflicts an additional 2d6 points of damage.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Crushing Blow": {
+   "action": "1 standard action",
+   "description": "By bringing his weapon high and bringing it down with ferocious finality, the disciples forceful blow is enough to weaken the defenses of his foe momentarily. The initiator makes an attack and if successful, the strike inflicts an additional 1d6 points of damage and may potentially render his foe flat-footed until its next turn on a failed Fortitude save DC 11 + initiation modifier.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Devastating Rush": {
+   "action": "1 standard action",
+   "description": "The disciple performing this attack executes a powerful attack that rushes in past a foes defenses to shatter them completely. The initiator inflicts an additional 2d6 points of damage upon a successful attack and his strike ignores the damage reduction of a subject or the hardness of an object he is attacking.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 2,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Panthera on the Hunt": {
+   "action": "1 full round action",
+   "description": "With a deep breath and the tightening of honed muscles, the Primal Fury disciple may launch off into a lightning-fast charge. The initiator initiating this maneuver gains +2 circumstance bonus to attack and damage rolls on his charge attack, and ignores attacks of opportunity from moving through threatened squares.",
+   "discipline": "Primal Fury",
+   "duration": "Instantaneous",
+   "level": 1,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Running Hunters Stance": {
+   "action": "1 swift action",
+   "description": "The swiftest hunter catches the prey, and the Primal Fury disciple has trained his body mercilessly to increase his speed and sharpen his senses. While in this stance, the initiator gains a +10 enhancement bonus to his base land speed and gains the scent special ability.",
+   "discipline": "Primal Fury",
+   "duration": "Stance",
+   "level": 1,
+   "range": "Personal",
+   "type": "stance"
+  }
+ },
+ "maneuvers_known_list": [
+  2,
+  2
+ ],
+ "maneuvers_readied_list": [
+  0,
+  2
+ ],
+ "maneuvers_readied_names": [
+  [],
+  [
+   "Bloody Riposte",
+   "Devastating Rush"
+  ]
+ ],
  "manifesters": [],
  "mannerisms": [
   "Rests hand on hip",
@@ -892,23 +1023,27 @@
   "Winks",
   "Lifts chin"
  ],
- "martial_disciplines": [],
+ "martial_disciplines": [
+  "Primal Fury"
+ ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
- "mt_feats": [],
+ "mt_feats": [
+  "Martial Training I (Primal Fury)"
+ ],
  "mythic": null,
  "normal_feat_amount": 7,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
- "parents": "dead mother, loving father, raised in a poor household",
+ "parents": "dead mother, loving father, raised in a middle income household",
  "personality_traits": [
   "Compassionate",
   "Cordial",
   "Intentional",
   "Realistic"
  ],
- "platnium": 5.0,
+ "platnium": 1.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1189,6 +1324,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1784,65 +1920,48 @@
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
-  "Prepared Caster",
-  "Painful Magic",
-  "Draining Casting",
   "Addictive Casting",
-  "Somatic Casting",
-  "Wild Magic"
+  "Draining Casting",
+  "Magical Signs",
+  "Focus Casting",
+  "Extended Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
-  "Prepared Caster",
-  "Painful Magic",
-  "Draining Casting",
   "Addictive Casting",
-  "Somatic Casting",
-  "Wild Magic",
+  "Draining Casting",
+  "Magical Signs",
+  "Focus Casting",
+  "Extended Casting",
   "Empowered Abilities",
   "Overcharge",
   "Easy Focus"
  ],
  "spheres_chosen": [],
- "stances_chosen": [],
+ "stances_chosen": [
+  "Running Hunters Stance"
+ ],
  "story_feat_tax_dict": {},
  "story_feats": [
-  "Craft Wand",
-  "Additional Traits",
-  "Animal Affinity"
+  "Necromantic Affinity",
+  "Antagonize",
+  "Lastwall Phalanx"
  ],
  "str": 12,
  "teamwork_feat_labels": [],
  "teamwork_feats": 0,
  "total_level": 12,
  "total_rolled_hp": 66,
- "trainer_calibers": [
-  2,
-  3
- ],
- "trainer_feat_labels": [
-  "(Trainer 1)",
-  "(Trainer 1)",
-  "(Trainer 2)",
-  "(Trainer 2)",
-  "(Trainer 2)"
- ],
- "trainer_feat_tax_dict": {
-  "Deft Hands": [
-   "close call"
-  ]
- },
- "trainer_feats": [
-  "Half-Hearted Charge",
-  "Spell Bluff",
-  "Dragoncrafting",
-  "Deft Hands",
-  "Disruptive Spell"
- ],
+ "trainer_calibers": [],
+ "trainer_feat_labels": [],
+ "trainer_feat_tax_dict": {},
+ "trainer_feats": [],
  "weapon_enhancement_bonus": 2,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "darkwood",
+ "weapon_material_damage": 0,
  "weapon_name": "Stonebow",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "-3",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "4",
  "armor_name": "Kikko",
  "armor_spell_failure": "20%",
@@ -456,6 +458,80 @@
    "unplaced": [
     "A vest of the deep creates a constant shell of magical energy that protects the wearer from extreme environmental pressure, such as that inflicted by water at a depth of over 100 feet."
    ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 22,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 65,
+   "hp_lines": [
+    [
+     "Armor",
+     25
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 12,
+   "hardness_lines": [
+    [
+     "Two-Handed Hafted",
+     5
+    ],
+    [
+     "Wood",
+     5
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 30,
+   "hp_lines": [
+    [
+     "Two-Handed Hafted",
+     10
+    ],
+    [
+     "Wood",
+     10
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "wood",
+   "material_label": "Wood",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [],
@@ -1102,6 +1178,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1256,6 +1333,8 @@
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Tiger fork",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

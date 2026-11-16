@@ -52,7 +52,7 @@
   }
  },
  "appearance": [
-  "Hunched"
+  "Pallid"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"Elemental Ally\": {\n        \"source\": \"Monster Summoner's Handbook pg. 16 An elemental ally is a druid who has crafted powerful bonds of trust and friendship with one ally from each of the four primary elemental planes. Elemental allies are most common in Qadira, where they are considered similar to genie-binders.\",\n        \"elemental eidolons\": \"  At 1st level, an elemental ally has four elemental eidolons she can summon, one each for the elements of air, earth, fire, and water. Their abilities and statistics are determined using the rules for elemental eidolons for the summoner class from page 33 of Pathfinder RPG Pathfinder Unchained , as if the elemental ally were a summoner of her druid level, except they gain no additional evolution pool ( just those evolutions from their base form and base evolutions from their subtype). Each of the four elementals has its own base form, skills, and feats. The elemental ally can summon one of these elementals with the same 1-minute ritual a summoner normally uses to do so. The elemental ally can't summon an eidolon or cast summon nature's ally if she currently has an eidolon summoned. She also can't summon an eidolon if she currently has a creature summoned through other means. If one of the elemental ally's eidolons is killed, she cannot summon any eidolons for 24 hours. The elemental ally can dismiss her eidolon as a standard action. As the elemental ally gains levels, her elemental eidolons' base statistics and base evolutions increase as if her druid level were her summoner level. The eidolons gain the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gain an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for elemental eidolons, though any ability that would grant evolution points to an animal companion does work. The elemental ally does not gain life link or any other class features a summoner gains in relation to her eidolon. This ability replaces nature's bond and wild shape.\",\n        \"elemental empathy (ex)\": \"  An elemental ally can improve the attitude of a creature of the elemental subtype. This ability functions just like a Diplomacy check to improve the attitude of a person. The elemental ally rolls 1d20 and adds her druid level and her Charisma modifier to determine the elemental empathy check result. To use elemental empathy, the elemental ally and the elemental must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, inf luencing an elemental in this way takes 1 minute, but as with influencing people, it might take more or less time. An elemental ally can also use this ability to influence a non-elemental outsider with the air, earth, fire, or water subtype, but she takes a -4 penalty on the check. This ability replaces wild empathy.\",\n        \"elemental magic\": \"  The elemental ally can target elementals (including her elemental eidolons) with any spell she casts that targets animals, even though elementals can't normally be targeted by such spells.\",\n        \"elemental resistance (ex)\": \"  At 4th level, an elemental ally gains resist acid, cold, electricity, and fire 5. This ability replaces resist nature's lure.\"\n    }\n}",
@@ -60,6 +60,8 @@
  "armor_armor_check_penalty": "0",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "6",
  "armor_name": "Leather",
  "armor_spell_failure": "10%",
@@ -361,10 +363,11 @@
  "c_class_display": "Druid",
  "casting_level_str_foundry": "high",
  "casting_tradition": {
-  "bonus_spell_points": 1,
+  "bonus_spell_points": 0,
   "boons": [
    "Fortified Casting",
-   "Empowered Abilities"
+   "Empowered Abilities",
+   "Overcharge"
   ],
   "boons_detail": [
    {
@@ -374,16 +377,42 @@
    {
     "description": "Your sphere abilities are more potent; for example, while your current spell points are at half your total or less you gain +1 caster level, rising to +2 at 0 spell points.",
     "name": "Empowered Abilities"
+   },
+   {
+    "description": "You can push your magic harder, taking +2 caster level on a sphere ability but becoming fatigued (then exhausted, then unconscious) afterward.",
+    "name": "Overcharge"
    }
   ],
   "casting_ability_modifier": "Wisdom",
   "drawbacks": [
+   "Magical Signs",
+   "Material Casting",
+   "Somatic Casting",
+   "Prepared Caster",
    "Wild Magic",
-   "Verbal Casting",
-   "Addictive Casting",
-   "Skilled Casting"
+   "Verbal Casting"
   ],
   "drawbacks_detail": [
+   {
+    "counts_as": 1,
+    "description": "Your casting is accompanied by an obvious tell-tale sign (glowing eyes, sound, smell, sigils) that reveals you are using magic and identifies you as the source.",
+    "name": "Magical Signs"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires expending consumable materials/components worth roughly 1 sp per caster level each time you use a sphere ability.",
+    "name": "Material Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "Your magic requires elaborate gestures; you need a free hand and suffer arcane-style spell failure in armor heavier than light. May be taken twice (no armor or shield at all without failure).",
+    "name": "Somatic Casting"
+   },
+   {
+    "counts_as": 1,
+    "description": "After resting you must pre-assign your spell points to specific spheres you possess; you may only spend points on the spheres you prepared until you next rest.",
+    "name": "Prepared Caster"
+   },
    {
     "counts_as": 1,
     "description": "Whenever you spend a spell point there is a base 10% chance (modified by caster level) to trigger an unexpected wild-magic event, rolled on the rod of wonder table.",
@@ -393,16 +422,6 @@
     "counts_as": 1,
     "description": "You must speak in a loud, clear voice to cast; your magic fails in areas of magical silence or when you cannot speak clearly, and casting breaks stealth.",
     "name": "Verbal Casting"
-   },
-   {
-    "counts_as": 2,
-    "description": "Your magic is addictive; each time you spend spell points you must make an escalating Fortitude save or risk gaining/intensifying an addiction, taking escalating penalties until you cast again.",
-    "name": "Addictive Casting"
-   },
-   {
-    "counts_as": 1,
-    "description": "Your magic is channeled through an activity tied to a specific Craft, Perform, or Profession skill; you must succeed on a skill check (DC 15 + the ability's caster level) for any sphere ability to take effect.",
-    "name": "Skilled Casting"
    }
   ]
  },
@@ -733,20 +752,20 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " the brass buckle on this stout leather\r belt is fashioned to resemble three\r demonic faces. Once each round, this\r belt's buckle can animate, lashing out\r at a creature that provokes an attack of\r opportunity within 5 feet. This attack uses its wearer's base\r attack bonus and strength modifier, with a +4 competence\r bonus. It deals damage as a bite attack made by a creature\r of its wearer's size (1d6 for a medium wearer; see table\r 31: natural attacks by size, bestiary 302) plus the wearer's\r strength modifier. This belt does not add to the normal\r number of attacks the wearer can make in a round; it offers\r another way in which to make attacks of opportunity. ",
-   "item_name": "Belt of Teeth"
+   "description": " at first glance, there is nothing at all unique about this length of woven brown wool; however, in the hands of a spellcaster it can be a devious resource. The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. Each piece torn from a diminishing sash (an action subsumed in the casting of a spell) provides components for one spell, and multiple pieces cannot be combined to provide more expensive components. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level. ",
+   "item_name": "Diminishing Sash"
   },
-  "neck": {
-   "description": " occasionally, half-elves find it socially advantageous to blend in fully with either elves or humans. As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human. The magic of this brooch actually changes the wearer's features physically, granting him a +20 circumstance bonus on disguise checks to appear as a member of the selected race. The transformation does not otherwise alter the wearer's features, and those who know him recognize him without a perception check. This change remains until the brooch is used again or removed. This change does not radiate magic and cannot be seen with detect magic , although true seeing does reveal the alteration. This item only functions for half-elves, but there are versions that exist for Half-Orcs as well. ",
-   "item_name": "Brooch of Blending"
+  "body": {
+   "description": " this coarse hempen robe seems made from a single strand of\r twine. The wearer can draw up to 30 feet of twine or up to 10\r feet of hemp rope per round from the robe without harming\r it. As an immediate action, the wearer can draw up to 150\r feet of twine or 50 feet of rope from the robe, but this gives\r the robe the broken condition and suppresses its powers until\r it is repaired. Twine or rope drawn from the robe remains\r connected until cut or torn, but is treated as common material\r rather than part of a magic item. Pieces removed become\r normal twine or rope. ",
+   "item_name": "Robe of Infinite Twine"
   }
  },
  "equipment_list": [
-  "Belt of Teeth",
-  "Brooch of Blending"
+  "Diminishing Sash",
+  "Robe of Infinite Twine"
  ],
  "eye_color": [
-  "Hazel"
+  "Amber"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -757,68 +776,114 @@
   "profession": 4,
   "story": 3,
   "teamwork": 1,
-  "trainer": 10
+  "trainer": 12
  },
  "feat_changes_dict": {
-  "Improved Reposition": {
+  "Harrowed": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "cmb",
-     "text": "+2 on combat maneuver checks made to reposition a foe."
-    },
-    {
-     "target": "cmd",
-     "text": "+2 to CMD when an opponent tries to reposition you."
+     "target": "will",
+     "text": "+1 on all Will saves made to resist enchantment effects."
     }
    ]
   },
-  "Stone Read": {
+  "Sea Legs": {
+   "changes": [
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.acr",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.clm",
+     "type": "untyped"
+    },
+    {
+     "formula": "2",
+     "operator": "add",
+     "priority": 0,
+     "target": "skill.swm",
+     "type": "untyped"
+    }
+   ],
+   "contextNotes": []
+  },
+  "Secret Signs": {
    "changes": [],
    "contextNotes": [
     {
      "target": "skills",
-     "text": "+2 on Perception checks while in a primarily underground or mountainous environment (+4 with 10+ ranks in Knowledge (dungeoneering))."
-    }
-   ]
-  },
-  "Weather Eye": {
-   "changes": [],
-   "contextNotes": [
-    {
-     "target": "skills",
-     "text": "+4 on Survival checks made to predict the weather."
-    },
-    {
-     "target": "allSavingThrows",
-     "text": "+1 on saving throws to avoid the effects of extreme weather."
+     "text": "+4 bonus on Bluff checks made to pass secret messages (not other Bluff uses)"
     }
    ]
   }
  },
- "feat_conditionals_dict": {},
+ "feat_conditionals_dict": {
+  "Arcane Strike": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "max(1, floor(@spells.primary.cl.total / 5))",
+     "subTarget": "allDamage",
+     "target": "damage",
+     "type": "untyped"
+    }
+   ],
+   "name": "Arcane Strike: Activation: swift action; Effect: +[[max(1, floor(@spells.primary.cl.total / 5))]] damage and weapons count as magic for 1 round",
+   "tier": "A"
+  },
+  "Harrowed": {
+   "default": false,
+   "modifiers": [
+    {
+     "critical": "normal",
+     "damageType": [],
+     "formula": "2",
+     "subTarget": "allAttack",
+     "target": "attack",
+     "type": "untyped"
+    }
+   ],
+   "name": "Harrowed: Cost: [[1]]/day (Harrow card draw); Activation: applied after the roll but before the result is known; Effect: +[[2]] bonus to the attack roll if the drawn card's suit matches",
+   "tier": "A"
+  }
+ },
  "feats": [
-  "Field Repair",
-  "Rugged Northerner",
-  "Urban Tracking",
-  "Racial Heritage",
+  "Lingering Shadows",
+  "Improved Initiative",
+  "Lunar Strike (combat)",
   "Double Slice",
+  "Martial Training I (Cursed Razor)",
   "Multi Talented",
   "True Calling",
   "Always Improving",
   "Multi Talented (2nd)"
  ],
  "feats_feat_tax_dict": {
-  "Martial Training I (Golden Lion)": [
-   "Martial Training II (Golden Lion)"
+  "Improved Initiative": [
+   "surprising combatant"
   ],
-  "Martial Training III (Golden Lion)": [
-   "Martial Training IV (Golden Lion)"
+  "Martial Training I (Cursed Razor)": [
+   "Martial Training II (Cursed Razor)"
+  ],
+  "Martial Training III (Cursed Razor)": [
+   "Martial Training IV (Cursed Razor)"
+  ],
+  "Martial Training V (Cursed Razor)": [
+   "Martial Training VI (Cursed Razor)"
   ]
  },
  "flavor_feat_tax_dict": {},
  "flavor_feats": [
-  "Maneuver Mastery"
+  "Tandemevasion"
  ],
  "flaw": [
   "Grudge Keeper",
@@ -850,55 +915,57 @@
  },
  "flaw_feat_tax_dict": {},
  "flaw_feats": [
-  "Siege Commander",
-  "Expert Driver"
+  "Dodge",
+  "Sea Legs"
  ],
- "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Toys\n- Training: An average trainer who taught them Tandem Trip, Spell Bluff\n- Training: An average trainer who taught them Shaping Focus, Mind Trick\n- Training: An average trainer who taught them Improved Reposition, Shadow Dodge\n- Training: An excellent trainer who taught them Rod Wielder, Malevolence, Weather Eye\n- Training: A terrible (Path of War) trainer who taught them Martial Training V (Golden Lion)\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Wealthy Household\n- 1 Older Brother\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Bald White\n- Eyes: Hazel\n- Build: Hunched",
+ "formatted_bio": "Laurène Long\n- Alignment: Neutral Good\n- Deity: Shelyn\n- Race: Human\n- Class: Level 4 Druid / Magus And Ranger And Samurai\n- Archetype: Beastmaster\n- Tactics: Fights as a two-body unit: the companion engages or flanks while the handler supports from the second rank with strikes, spells, or aid. Protects the companion like a second character sheet, because it is one.\n- Stat Focus: Wis\n- Disciplines: Cursed Razor\n- Homeland: Tal-falko\n\nVocation\n- Profession: Equine Dentist (rank 15)\n- Profession: Wizard (rank 10)\n- Profession: Torchbearer (rank 8)\n- Profession: Wayfarer's Lackey (rank 2)\n- Profession: Ledger Clerk (rank 4)\n- Known for: Toys\n- Training: An excellent trainer who taught them Demonologist, Improved Implantation, Secret Signs\n- Training: An excellent trainer who taught them Renown, Martial Charge, Wand Desperado\n- Training: An excellent trainer who taught them Disruptive Spell, Free Step, Harrowed\n- Training: An average trainer who taught them Piercing Strike, Arcane Shield\n- Training: A terrible trainer who taught them Arcane Strike\n\nFamily\n- Absent Mother\n- Absent Father\n- Adopted Into A Poor Family\n- 1 Older Sister\n\nPersonality\n- Personality: Astute, Energetic, Chill\n- Mannerisms: Flexes muscles, Withdraws into oneself, Covers eyes, Cracks knuckles\n- Flaws: Grudge Keeper, Haunted\n\nAppearance\n- Hair: Flowing Grey\n- Eyes: Amber\n- Build: Pallid",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 7899,
  "generator_version": "2026-07-15 racial-stats",
  "gold": 0,
  "hair_color": [
-  "White"
+  "Grey"
  ],
  "hair_type": [
-  "Bald"
+  "Flowing"
  ],
  "height_number": "5'1\"",
  "hero_points": 0,
  "homebrew_feat_desc_dict": {
   "Always Improving": "You can spend ordinary skill ranks in your chosen profession. (Requires True Calling and 15 ranks.)",
+  "Arcane Shield": "You can convert any spell into a defense",
+  "Arcane Strike": "You draw upon your arcane power to enhance your weapons with magical energy",
+  "Demonologist": "You have immersed yourself deeply in studies of the nature of the Abyss and its inhabitants",
+  "Disruptive Spell": "Your magical energies cling to enemies, interfering with their spellcasting",
+  "Dodge": "Your training and ref lexes allow you to react swiftly to avoid an opponents' attacks",
   "Double Slice": "Your off-hand weapon while dual-wielding strikes with greater power",
-  "Expert Driver": "When driving a chosen type of vehicle, you exhibit incredible control, maneuvering the vehicle with greater ease and stopping with uncanny precision",
-  "Field Repair": "You can repair your broken weapon or armor to serviceability even without the benefits of artisan tools",
-  "Hero's Fortune": "Even at the start of your career, it was clear that you had a chance at greatness, and your legend continues to grow with every adventure",
-  "Improved Reposition": "You have learned how to force your enemies to move around the battlefield",
-  "Malevolence": "Your Claim carries a hindering curse. creatures claimed by you become cursed and take a 2 penalty on combat maneuver checks and skill checks for as long as they are claimed.",
-  "Maneuver Mastery": "",
-  "Martial Training I (Golden Lion)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Golden Lion)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Golden Lion)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Golden Lion)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training V (Golden Lion)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training VI (Golden Lion)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
-  "Master Craftsman": "Your superior crafting skills allow you to create simple magic items",
-  "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
+  "Free Step": "",
+  "Half-Hearted Charge": "You hedge your bets - charging in but not quite throwing your all into it. when you make a charge, if you miss your attack you do not suffer the penalty to your ac like you normally do. if you hit with any attack made during the charge, you still suffer the penalty. when making a half-hearted charge you may not from the power attack or spirited charge feats.",
+  "Harrowed": "Numerous Harrow readings early in your life seem to have hit the mark precisely, increasing your belief that you are destined for a specific purpose in life",
+  "Healer's Mercy": "Sometimes a creature is beyond your ability to heal, but you know how to grant them a swift and painless death. when you use a coup de grace action, you can substitute a heal check in place of the normal damage roll for your weapon, but still use your weapons normal critical multiplier. in addition, if the creature you are coup de gracing has regeneration of a type that can be overcome, you suppress that creatures regeneration for the duration of the round in which you coup de grace them",
+  "Improved Implantation": "Your body has been trained to sustain additional implantations to your mind and nervous system your constitution and intelligence scores are both treated as 4 higher for the purpose of the maximum implantation value of cybertech within your system.",
+  "Improved Initiative": "Your quick ref lexes allow you to react rapidly to danger",
+  "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
+  "Lunar Strike (combat)": "A surge of pale moonlight disorients foes you strike. you can use this a number of times per day equal to your wisdom modifier (minimum 1). you can choose to use this ability as a free action after you hit the enemy with the attack. this is a supernatural ability.",
+  "Martial Charge": "You have learned how to initiate a martial strike on the move, delivering them at the end of a charge attack. as a full-round action, you can make a special charge attack. first, move up to twice your speed in a straight line towards a creature, obeying the normal restrictions on movement during a charge, as well as applying any effects or you might have to such movement. then, at the end of your movement, you can initiate a strike on the creature you moved towards with an initiation action of 1 standard action. you gain a +2 bonus on attack rolls during the strike, and take a 2 penalty to your ac until the start of your next turn. during the strike, you do not gain any other you would have gained for charging, such as pounce.",
+  "Martial Training I (Cursed Razor)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Cursed Razor)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Cursed Razor)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Cursed Razor)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training V (Cursed Razor)": "You are truly enlightened with using your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 5th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 4th level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training VI (Cursed Razor)": "You have reached your limits in mastering your chosen discipline. you may select two new maneuvers or one new maneuver and one new stance from your chosen discipline of up to 6th level, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 5th level. you must meet the minimum initiator level to select any maneuver.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Multi Talented (2nd)": "Your profession rank cap increases by 10. This is the 2nd time you have taken this feat.",
+  "Piercing Strike": "",
   "Racial Heritage": "The blood of a non-human ancestor flows in your veins",
-  "Rod Mastery": "",
-  "Rod Wielder": "",
-  "Rugged Northerner": "You live a hard life in a cold climate and gain some benefit from it",
-  "Shadow Dodge": "You use light and darkness to your advantage, confusing your enemies and confounding their senses",
-  "Shaping Focus": "Your powers of shapeshifting outstrip your dabbling in the druidic faith",
-  "Siege Commander": "Under your leadership, the time required to assemble and move a siege engine is greatly reduced",
-  "Spell Bluff": "You know the principles of arcane dueling, and when fighting other spellcasters, you have learned to hide the true nature of your spells until the last possible moment",
-  "Stone Read": "Even the faint movement and vibrations of stone can alert you to trouble",
-  "Tandem Trip": "You know how to work together to trip your foes",
+  "Renown": "Word of your pre-Pathf inder accomplishments precedes you, and you know how to make the most of your previous reputation",
+  "Sea Legs": "You have a sailor's instincts for moving about while aboard seagoing vessels",
+  "Secret Signs": "You are particularly adept at communicating with others via innuendo, gestures, and secret hand signs",
+  "Tandemevasion": "You and your allies help each other evade deadly attacks",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession.",
   "Urban Tracking": "You can track down the location of missing persons or wanted individuals within communities. Normal A character without this feat can use Diplomacy to find out information about a particular individual, but each check takes 1d4+1 hours and doesnt allow effective trailing. Special A character with 5 ranks in Knowledge (local) gains a +2 bonus on the Diplomacy checks to gather information to use this feat. You can cut the time between Diplomacy checks to gather information in half (to 30 minutes per check rather than 1 hour), but you take a -5 penalty on the check. to find the trail of an individual or to follow it for 1 hour requires a diplomacy check to gather information. you must make another diplomacy check every hour of the search, as well as each time the trail becomes difficult to follow, such as when it moves to a different area of town. the dc of the check, and the number of checks required to track down your quarry, depends on the community size and the conditions. if you fail a diplomacy check, you can retry after 1 hour of questioning. the game master should roll the number of checks required secretly, so that the player doesnt know exactly how long the task will require.",
-  "Weather Eye": "Your constant attention to the natural order and your place in it has given you a keen sense for the ebb and flow of the seasons"
+  "Wand Desperado": "Magical weaponry is a form of weaponry just as versatile as any whenever you use a martial maneuver that would allow an attack with a weapon, you may make a use magic device check with a wand or staff which allows a touch attack corresponding to the maneuver range (melee touch if with a melee weapon, ranged touch or ray if with a ranged weapon) to use the wand or staffs spell as a weapon for the purpose of the maneuver. the attack is made against regular ac rather than touch ac, but elsewise the spell operates normally and applies any effects of the maneuver to it (such as extra damage or debilitating effects). if the spell allows multiple touch attacks for fires multiple rays (such as scorching ray), the maneuvers effects are only applied to the first ray or touch."
  },
  "inherents": {
   "cha": 0,
@@ -912,31 +979,93 @@
  "initiator_level": 7,
  "int": 13,
  "item_changes_dict": {
-  "Belt of Teeth": {
+  "Diminishing Sash": {
    "changes": [],
-   "contextNotes": [
-    {
-     "target": "attack",
-     "text": "Once each round, this belt's buckle can animate, lashing out at a creature that provokes an attack of opportunity within [[5]] feet. This attack uses its wearer's base attack bonus and strength modifier, with a +[[4]] competence bonus. It deals damage as a bite attack made by a creature of its wearer's size ([[1d6]] for a medium wearer; See table 31: natural attacks by size, bestiary 302) plus the wearer's strength modifier."
-    }
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer of a diminishing sash can tear off a piece of the item and use it as a substitute for spell components worth up to 50. After providing the components for 50 spells, a diminishing sash becomes a nonmagical piece of cloth. If the sash is used to generate material components for a spell that normally uses no components or components that cost 1or less, the wearer casts the spell at +1 caster level."
    ]
   },
-  "Brooch of Blending": {
-   "changes": [
-    {
-     "formula": "20",
-     "operator": "add",
-     "priority": 0,
-     "target": "skill.dis",
-     "type": "circumstance"
-    }
-   ],
-   "contextNotes": [
-    {
-     "target": "skill.dis",
-     "text": "As a standard action, the wearer of this brooch can transform his features to appear either entirely elven or entirely human."
-    }
+  "Robe of Infinite Twine": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "The wearer can draw up to 30 feet of twine or up to 10 feet of hemp rope per round from the robe without harming it. As an immediate action, the wearer can draw up to 150 feet of twine or 50 feet of rope from the robe, but this gives the robe the broken condition and suppresses its powers until it is repaired. Twine or rope drawn from the robe remains connected until cut or torn, but is treated as common material rather than part of a magic item."
    ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 14,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Leather",
+     2
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 25,
+   "hp_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Leather",
+     5
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "leather",
+   "material_label": "Leather",
+   "size_lines": [],
+   "size_sources": []
+  },
+  "weapon": {
+   "hardness": 22,
+   "hardness_lines": [
+    [
+     "Light Metal-Hafted",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 50,
+   "hp_lines": [
+    [
+     "Light Metal-Hafted",
+     10
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [],
@@ -944,11 +1073,11 @@
  "language_text": [
   "Common",
   "Druidic",
-  "Celestial",
-  "Aquan",
-  "Grippli",
-  "Infernal",
-  "Protean"
+  "Protean",
+  "Abyssal",
+  "Drow Sign Language",
+  "Gnoll",
+  "Dwarven"
  ],
  "level": 4,
  "level_up_stats": {
@@ -1029,144 +1158,144 @@
  "main_stat": "wis",
  "maneuvers_choose_from": [
   [
-   "Demoralizing Roar",
-   "Pride Movement"
+   "Luck Shifting",
+   "Stutter Strike"
   ],
   [
-   "Call to Action",
-   "Defending the Pride"
+   "Mockery",
+   "Bad Karma"
   ],
   [
-   "Kill the Wounded",
-   "Circling the Prey"
+   "Sorcerers Sidestep",
+   "Dogpile Strike"
   ],
   [
-   "Direct the Pride"
+   "Hangmans Curse"
   ],
   [
-   "Guard the Pride"
+   "Witchs Revenge"
   ],
   [
-   "Lions Feast"
+   "Curse of Chains"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Call to Action": {
+  "Aura of Shared Misery": {
+   "action": "1 swift action",
+   "description": "AuraRange: 20\nonlyOthers;\n\nThis baleful aura spreads the despair you inflict and drains at the life of your victims. While you maintain this stance, whenever a creature within 20 feet of you becomes cursed as a result of another effect, you may select a different creature within 20 feet. That creature becomes cursed for a number of rounds equal to your initiation modifier. In addition, cursed creatures within 20 feet of you take additional points of damage equal to 1/4 your initiator level minimum 1 per damage die whenever they take damage from an attack or effect.",
+   "discipline": "Cursed Razor",
+   "duration": "Stance",
+   "level": 3,
+   "range": "Personal",
+   "type": "stance"
+  },
+  "Bad Karma": {
+   "action": "1 immediate action",
+   "description": "Invoking the basic laws of fortune and punishment, you curse a creature that attempts to harm you. You can initiate this counter in response to being targeted by an attack, ability, maneuver, power, or spell. The creature targeting you must succeed at aWillsave DC 12 + your initiation modifier or become cursed and take a 4 penalty on all d20 rolls for 1d4 rounds.",
+   "discipline": "Cursed Razor",
+   "duration": "Instant",
+   "level": 2,
+   "range": "Personal",
+   "type": "counter"
+  },
+  "Curse of Chains": {
    "action": "1 standard action",
-   "description": "With a mighty blow, the disciple aids an ally by providing an opening in combat to move by an opponent. The initiator makes a melee attack, inflicting an additional 2d6 points of damage and granting an adjacent ally an immediate move action.",
-   "discipline": "Golden Lion",
+   "description": "Phantom chains trail in the wake of your strike and spread through your enemies like wildfire. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at aWillsave DC 16 + your initiation modifier or become cursed andparalyzedfor a number of rounds equal to your initiation modifier. While the target isparalyzedby this strike, opponent that ends its turn adjacent must succeed at aWillsave DC 16 + your initiation modifier or also become cursed andparalyzedfor a number of rounds equal to your initiation modifier. Only the initial target spreads its curse in this manner. This strike can paralyze creatures normally immune toparalysis, though such creatures gain a +6 competence bonus on their saving throws.",
+   "discipline": "Cursed Razor",
+   "duration": "Instant",
+   "level": 6,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Dogpile Strike": {
+   "action": "1 standard action",
+   "description": "This vicious strike preys upon the weak and persecuted. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 2d6 points of damage, and the target must succeed at aReflexsave DC 13 + your initiation modifier or be knockedprone. If the target isflankedeither by you or by other creatures, this strikes additional damage increases to 4d6.",
+   "discipline": "Cursed Razor",
+   "duration": "Instant",
+   "level": 3,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Hangmans Curse": {
+   "action": "1 standard action",
+   "description": "This grim curse afflicts its victims with a breathless exhaustion, and a dark bruise forms around their necks. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at aFortitudesave DC 14 + your initiation modifier or become cursed andexhaustedfor a number of rounds equal to your initiator level.",
+   "discipline": "Cursed Razor",
+   "duration": "Instant",
+   "level": 4,
+   "range": "Melee attack",
+   "type": "strike"
+  },
+  "Luck Shifting": {
+   "action": "1 swift action",
+   "description": "One mans ill luck is another mans fortune. After initiating this boost, you gain a +1luck bonusto your AC until the start of your next turn for each cursed opponent within medium range 100 feet + 10 feet per initiator level, up to a maximum bonus of +5.",
+   "discipline": "Cursed Razor",
+   "duration": "1 round",
+   "level": 1,
+   "range": "Personal",
+   "type": "boost"
+  },
+  "Mockery": {
+   "action": "1 standard action",
+   "description": "This strike amplifies the misfortune already afflicting an enemy, turning their curse into deep wounds. Make a melee attack. If it hits, it deals weapon damage as normal plus an additional 1d6 points of damage. If the target is cursed, this strikes additional damage increases to 3d6.",
+   "discipline": "Cursed Razor",
    "duration": "Instant",
    "level": 2,
    "range": "Melee attack",
    "type": "strike"
   },
-  "Circling the Prey": {
+  "Oathbreakers Aura": {
    "action": "1 swift action",
-   "description": "With practiced precision and a quick shout, the disciple and his allies move in unison for better strategic advantage. The initiators shout grants himself and his allies a free 5-ft. step that must be taken when this boost is used.",
-   "discipline": "Golden Lion",
-   "duration": "Instant",
-   "level": 3,
-   "range": "60-ft.",
-   "type": "boost"
-  },
-  "Defending the Pride": {
-   "action": "1 swift action",
-   "description": "With a cry to defend themselves from incoming attacks, the inspirational words of the disciple aid his allies in their defense. As a swift action, the initiator grants all allies within 60-ft. a +4 morale bonus to their AC for one round.",
-   "discipline": "Golden Lion",
-   "duration": "One round",
-   "level": 2,
-   "range": "60-ft.",
-   "type": "boost"
-  },
-  "Demoralizing Roar": {
-   "action": "1 swift action",
-   "description": "With a shout of rage and defiance, the Golden Lion disciple wades into battle with fearless determination, shattering the resolve of his foes. As a swift action the initiators attacks become filled with the dread of defeat, causing his target opponent to be shaken for one round Will save DC 11 + initiation modifier negates.",
-   "discipline": "Golden Lion",
-   "duration": "One round",
-   "level": 1,
-   "range": "Any attack",
-   "type": "boost"
-  },
-  "Direct the Pride": {
-   "action": "1 swift action",
-   "description": "Cooperation and teamwork form the backbone of tactical warfare, and through his knowledge of all of these things, the Golden Lion disciple may help direct the actions of his ally to greater effectiveness. As a swift action, the initiator targets an adjacent ally who has not yet acted this turn. That initiator may now act immediately following the Golden Lion disciples action as if his initiative result was one lower than the disciple. The following round, the target of this boost returns to his previous initiative result.",
-   "discipline": "Golden Lion",
-   "duration": "Instant",
-   "level": 4,
-   "range": "Adjacent ally",
-   "type": "boost"
-  },
-  "Golden Commander Stance": {
-   "action": "1 swift action",
-   "description": "AuraRange: 30\nonlyOthers;\n\nThrough the use of the Golden Lion disciples superior tactical ability, he is able to direct his allies in combat for maximum effectiveness. As long as his allies within 30-ft. of him can clearly hear his shouts and understand his language, he grants his allies the ability to gain flanking with all adjacent allies that are fighting in melee against the same opponent i.e. if two allies of the initiator are 20-ft. away fighting a target together, and the initiator has another ally assisting him in combat against a different target, both pairs gain flanking bonuses against their foes even if they are not normally in flanking position.",
-   "discipline": "Golden Lion",
-   "duration": "Stance",
-   "level": 3,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Golden Generals Attitude": {
-   "action": "1 swift action",
-   "description": "AuraRange: 60\nonlyOthers;\n\nA true Golden Lion disciple is a beacon of command on the field of battle, inspiring his troops by his mere presence. All allies within 60-ft. of the initiator gain a +1 morale bonus to attack and damage rolls, and to saves vs fear effects per four initiator levels.",
-   "discipline": "Golden Lion",
+   "description": "AuraRange: 30\nonlyOthers;\n\nThis malevolent aura robs its victims of theirsupernaturaledges and interferes with their oaths. While you maintain this stance, opponents within 30 feet of you lose the benefits of anyanarchic,axiomatic,insight,profane, or sacred bonuses they possess they regain the benefits of these bonuses when they leave the area or you assume a different stance. In addition, any creature you hit with a melee weapon including natural weapons becomes cursed for a number of rounds equal to your initiation modifier. This stances effect resolves after other effects relating to the attack such as strikes or weapon properties.",
+   "discipline": "Cursed Razor",
    "duration": "Stance",
    "level": 6,
    "range": "Personal",
    "type": "stance"
   },
-  "Golden Lion Charger": {
-   "action": "1 swift action",
-   "description": "A student of the art of war and of the Golden Lion, a disciple who has training in the art of engaging an enemy knows that sometimes a powerful opening charge can be the edge the warrior needs. While in this stance and performing a charge, the initiator gains an additional +2 bonus to hit making the bonus received from the charge attack a total of +4 and when charging through a threatened square, the initiator does not provoke attacks of opportunity.",
-   "discipline": "Golden Lion",
-   "duration": "Stance",
-   "level": 4,
-   "range": "Personal",
-   "type": "stance"
-  },
-  "Guard the Pride": {
+  "Sorcerers Sidestep": {
    "action": "1 immediate action",
-   "description": "By trusting the awareness of the celestial realm, the discipline trusts in his heavenly sense of the battle around him to see where the next attack is coming and move away from danger. As an immediate action, the initiator grants a circumstance bonus to the target adjacent allys Armor Class for one round equal to half the disciples initiator level.",
-   "discipline": "Golden Lion",
+   "description": "Drawing on your mystical connection with fortune for good and ill, you avoid even magical and unusual attacks. You can initiate this counter at any time to gain a +2luck bonuson all saving throws for one round. This bonus improves by +1 for each cursed opponent within medium range 100 feet + 10 feet per initiator level, up to a maximum bonus of +10.",
+   "discipline": "Cursed Razor",
    "duration": "1 round",
-   "level": 5,
-   "range": "Adjacent ally",
+   "level": 3,
+   "range": "Personal",
    "type": "counter"
   },
-  "Kill the Wounded": {
+  "Stutter Strike": {
    "action": "1 standard action",
-   "description": "The Golden Lion disciple makes a ferocious assault on his foe, opening the enemys defenses to the attacks of his allies. The initiator makes a melee attack against a foe and if successful, subsequent attacks made by the initiators allies inflict an additional 2d6 points of damage per successful attack until the initiators next turn.",
-   "discipline": "Golden Lion",
-   "duration": "One round",
-   "level": 3,
-   "range": "Any attack",
+   "description": "With just the faintest edge of dark energies, you can afflict your victims with a word-eating curse. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at aWillsave DC 11 + your initiation modifier or take a 4 penalty on language-based skill checks and suffer a 25% chance of failure when casting spells including divine spells with a verbal component for a number of rounds equal to your initiator level. In addition, a struck target becomes cursed for a number of rounds equal to your initiator level, regardless of whether or not it succeeded on its save.",
+   "discipline": "Cursed Razor",
+   "duration": "Instant",
+   "level": 1,
+   "range": "Melee attack",
    "type": "strike"
   },
-  "Lions Feast": {
+  "The Dragon Knows": {
    "action": "1 swift action",
-   "description": "As the thrill of a successful hunt invigorates a pride of lions on the plains, so does the thrill of victory over foes invigorate the disciples allies. By initiating this boost as a swift action, enemies that are subsequently reduced to 0 or fewer hit points within 20-ft. of the initiator grant all adjacent allies to the initiator temporary hit points equal to twice the fallen enemys Hit Dice.",
-   "discipline": "Golden Lion",
-   "duration": "1 round",
-   "level": 6,
-   "range": "All adjacent allies",
-   "type": "boost"
+   "description": "By meditating on your ill intentions and dark thoughts, you gain senses beyond the normal ken. While you maintain this stance, you gain theblindsightability with a range of 60 feet, and cursed opponents automatically failAcrobaticschecks to move through yourthreatenedspace without provokingattacks of opportunity.",
+   "discipline": "Cursed Razor",
+   "duration": "Stance",
+   "level": 5,
+   "range": "Personal",
+   "type": "stance"
   },
-  "Pride Leaders Stance": {
+  "Touch of the Witch": {
    "action": "1 swift action",
-   "description": "AuraRange: 20 + 10*floor((@attributes.hd.total - 1) / 5)\n\nBy adopting the mannerisms of commanding lions of the great savannahs, the disciple inspires heroics by his presence. By adopting this stance, the initiator and all allies within 20-ft. of his position gain a +4 morale bonus to saves vs fear effects and demoralization effects. The radius of this effect increases by 10-ft. per five initiator levels starting at initiator level 6.",
-   "discipline": "Golden Lion",
+   "description": "Your weapons become charged with malicious energies. While you maintain this stance, any creature you hit with a melee weapon including natural weapons becomes cursed for a number of rounds equal to your initiation modifier. This stances effect resolves after other effects relating to the attack such as strikes or weapon properties.",
+   "discipline": "Cursed Razor",
    "duration": "Stance",
    "level": 1,
    "range": "Personal",
    "type": "stance"
   },
-  "Pride Movement": {
-   "action": "1 swift action",
-   "description": "By having a watchful eye on the flow of combat, the disciple knows when to spur an ally into a better position. As a swift action, the initiator may grant a move action to an adjacent ally. This ally may then use this move action immediately to move up to his base speed, as if it were a free action taken on the initiators turn.",
-   "discipline": "Golden Lion",
+  "Witchs Revenge": {
+   "action": "1 standard action",
+   "description": "This ancient strike utterly cripples a foes abilities. Make a melee attack. If it hits, it deals weapon damage as normal, and the target must succeed at aFortitudesave DC 15 + your initiation modifier or take a 4 penalty to an ability score of your choice. If the target is cursed, you can choose to either increase this penalty to 6, or cause the target to take a second 4 penalty to another ability score of your choice. These penalties last for a number of rounds equal to your initiator level. In addition, a struck target becomes cursed for a number of rounds equal to your initiator level, regardless of whether or not it succeeded on its save.",
+   "discipline": "Cursed Razor",
    "duration": "Instant",
-   "level": 1,
-   "range": "",
-   "type": "boost"
+   "level": 5,
+   "range": "Melee attack",
+   "type": "strike"
   }
  },
  "maneuvers_known_list": [
@@ -1188,20 +1317,20 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Call to Action"
+   "Bad Karma"
   ],
   [
-   "Circling the Prey",
-   "Kill the Wounded"
+   "Sorcerers Sidestep",
+   "Dogpile Strike"
   ],
   [
-   "Direct the Pride"
+   "Hangmans Curse"
   ],
   [
-   "Guard the Pride"
+   "Witchs Revenge"
   ],
   [
-   "Lions Feast"
+   "Curse of Chains"
   ]
  ],
  "manifesters": [],
@@ -1212,21 +1341,21 @@
   "Cracks knuckles"
  ],
  "martial_disciplines": [
-  "Golden Lion"
+  "Cursed Razor"
  ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Golden Lion)",
-  "Martial Training III (Golden Lion)",
-  "Martial Training V (Golden Lion)"
+  "Martial Training I (Cursed Razor)",
+  "Martial Training III (Cursed Razor)",
+  "Martial Training V (Cursed Razor)"
  ],
  "mythic": null,
  "normal_feat_amount": 5,
- "older_brothers": " you have 1 older brothers",
- "older_sisters": " you have 0 older sisters",
+ "older_brothers": " you have 0 older brothers",
+ "older_sisters": " you have 1 older sisters",
  "opposing_school": "N/A",
- "parents": "loving mother, loving father, raised in a wealthy household",
+ "parents": "absent mother, absent father, adopted into a poor family",
  "personality_traits": [
   "Astute",
   "Energetic",
@@ -1576,6 +1705,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1871,96 +2001,102 @@
  ],
  "sphere_boons": [
   "Fortified Casting",
-  "Empowered Abilities"
+  "Empowered Abilities",
+  "Overcharge"
  ],
  "sphere_counts": {},
  "sphere_drawbacks": [
+  "Magical Signs",
+  "Material Casting",
+  "Somatic Casting",
+  "Prepared Caster",
   "Wild Magic",
-  "Verbal Casting",
-  "Addictive Casting",
-  "Skilled Casting"
+  "Verbal Casting"
  ],
  "sphere_feat_tax": {},
  "sphere_feats": [],
  "sphere_mana_pool": 0,
  "sphere_traits": [
+  "Magical Signs",
+  "Material Casting",
+  "Somatic Casting",
+  "Prepared Caster",
   "Wild Magic",
   "Verbal Casting",
-  "Addictive Casting",
-  "Skilled Casting",
   "Fortified Casting",
-  "Empowered Abilities"
+  "Empowered Abilities",
+  "Overcharge"
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Pride Leaders Stance",
-  "Golden Commander Stance",
-  "Golden Lion Charger",
-  "Golden Generals Attitude"
+  "Touch of the Witch",
+  "Aura of Shared Misery",
+  "The Dragon Knows",
+  "Oathbreakers Aura"
  ],
- "story_feat_tax_dict": {
-  "Extra Arcane Pool": [
-   "extra arcane pool"
-  ]
- },
+ "story_feat_tax_dict": {},
  "story_feats": [
-  "Stone Read",
-  "Master Craftsman",
-  "Rod Mastery"
+  "Urban Tracking",
+  "Racial Heritage",
+  "Healer's Mercy"
  ],
  "str": 8,
  "teamwork_feat_labels": [
   "Samurai 1"
  ],
  "teamwork_feats": [
-  "Hero's Fortune"
+  "Half-Hearted Charge"
  ],
  "total_level": 14,
  "total_rolled_hp": 116,
  "trainer_calibers": [
+  3,
+  3,
+  3,
   2,
-  2,
-  2,
-  3
+  1
  ],
  "trainer_feat_labels": [
   "(Trainer 1)",
   "(Trainer 1)",
+  "(Trainer 1)",
+  "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 2)",
   "(Trainer 3)",
   "(Trainer 3)",
+  "(Trainer 3)",
   "(Trainer 4)",
   "(Trainer 4)",
-  "(Trainer 4)",
-  "(Trainer 5 - Path of War)"
+  "(Trainer 5)"
  ],
  "trainer_feat_tax_dict": {
-  "Improved Reposition": [
-   "greater reposition",
-   "quick reposition",
-   "repositioning strike",
-   "tactical reposition",
-   "wings of the androsphinx"
+  "Arcane Strike": [
+   "deadly dealer",
+   "sunlit strike"
   ],
-  "Martial Training V (Golden Lion)": [
-   "Martial Training VI (Golden Lion)"
+  "Demonologist": [
+   "demon grafter"
   ]
  },
  "trainer_feats": [
-  "Tandem Trip",
-  "Spell Bluff",
-  "Shaping Focus",
-  "Mind Trick",
-  "Improved Reposition",
-  "Shadow Dodge",
-  "Rod Wielder",
-  "Malevolence",
-  "Weather Eye",
-  "Martial Training V (Golden Lion)"
+  "Demonologist",
+  "Improved Implantation",
+  "Secret Signs",
+  "Renown",
+  "Martial Charge",
+  "Wand Desperado",
+  "Disruptive Spell",
+  "Free Step",
+  "Harrowed",
+  "Piercing Strike",
+  "Arcane Shield",
+  "Arcane Strike"
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Traveling kettle",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,

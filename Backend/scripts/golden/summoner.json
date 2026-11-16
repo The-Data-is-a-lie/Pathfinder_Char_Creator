@@ -4,7 +4,7 @@
  "alignment": "Neutral Good",
  "animal_companion": null,
  "appearance": [
-  "Protruding ears"
+  "Spiky hair"
  ],
  "archetype1": null,
  "archetype_info": "{\n    \"First Worlder\": {\n        \"source\": \"Inner Sea Magic pg. 35 Most summoners have a close connection to creatures from the farthest reaches of the planes. A few have a primal connection to nature, and their power is tied to the First World. It is not unusual for these summoners to associate with druids, for like druids, first worlders have a powerful tie to the natural world. Some first worlders are driven half-mad by the strange energies and intelligences that seep into their minds and bodies, though, and these poor souls are prone to lash out at loggers, druids, or innocent passersby without considering whether or not they are threats. A first worlder's eidolon usually resembles a fey creature or a plant monster, though some are fantastic otherworldly animals with exaggerated features. A first worlder has the following class features.\",\n        \"summon nature's ally (sp)\": \"  Starting at 1st level, a first worlder can cast summon nature's ally a number of times per day equal to 3 + his Charisma modifier. At levels where a summoner would gain a more powerful summon monster spell as a spell-like ability, he instead gains the equivalent summon nature's ally spell (at 19th level, he can use summon nature's ally IX or gate ). When a first worlder gains a summon nature's ally spell as a spell-like ability, he adds it to his class spell list (he must still select it as a spell known if he wants to cast it as an actual spell). This ability otherwise replaces the summon monster ability of a normal summoner.\",\n        \"fey summons (su)\": \"  At 3rd level, a first worlder adds the following creatures to the lists of what he can summon with his summon nature's ally spell-like ability: Summon nature's ally II : gremlin ( jinkin, pugwampi, or vexgit, see Bestiary 2). Summon nature's ally III : gremlin (nuglub, see Bestiary 2). Summon nature's ally IV : unicorn. Summon nature's ally V : pixie, satyr. Summon nature's ally VII : nymph.\",\n        \"eidolon\": \"  Instead of an outsider, a first worlder's eidolon has the fey creature type and the extraplanar subtype. Its statistics are changed from a standard eidolon as follows: Hit Dice : d6 Hit Die (instead of d10). BAB : Equal to 1/2 the eidolon's Hit Dice. Good/Bad Saves : The eidolon's good saves area always Reflex and Will. Skills : The eidolon's class skills are Acrobatics, Bluff, Climb, Craft, Diplomacy, Disguise, Escape Artist, Fly, Knowledge (geography), Knowledge (nature), Perception, Perform, Sense Motive, Sleight of Hand, Stealth, Swim, and Use Magic Device. Senses : The eidolon gains low-light vision instead of darkvision. The summoner can grant the eidolon darkvision 60 ft. as a 1-point evolution. Damage Reduction : If the first worlder chooses this evolution, he may select DR/cold iron instead of one of the alignment-based types of damage reduction. This otherwise works like and replaces the eidolon ability of a normal summoner.\"\n    }\n}",
@@ -12,6 +12,8 @@
  "armor_armor_check_penalty": "0",
  "armor_enhancement_bonus": 1,
  "armor_enhancement_chosen_list": [],
+ "armor_material": "",
+ "armor_material_dr": 0,
  "armor_max_dex_bonus": "4",
  "armor_name": "Lamellar cuirass",
  "armor_spell_failure": "5%",
@@ -614,8 +616,8 @@
  "enhancement_effects_dict": {},
  "equip_descrip": {
   "belts": {
-   "description": " this thin and flexible cotton cord is meant to be wrapped\r several times around wearer's waist. The belt's wearer gains\r a +4 competence bonus on acrobatics checks made to move\r through a threatened square or through an enemy's space. ",
-   "item_name": "Belt of Tumbling"
+   "description": " this 8-foot length of corroded, broken chain is threaded with a leather strap to hold it together; it is worn like a belt and must be tied in place, as it lacks a buckle. Once per day, the wearer can call upon its power to summon an evil creature from the summon monster i list; the creature attacks the wearer's enemies if any are present, but it is not under the wearer's control and attacks the wearer or the wearer's allies if there are no more enemies to kill. If rovagug is the wearer's patron, the wearer can gain the benefits of a rage spell once per day by speaking the god's name. If the wearer is ever bound, shackled, or otherwise rendered helpless while still conscious, this rage ability automatically activates if the wearer hasn't already used it that day. ",
+   "item_name": "Broken Chain of the Beast"
   },
   "body": {
    "description": " this sleeveless white tabard, worn over armor or other clothing, prominently bears the symbol of the glorious reclamation and can be used as a divine focus by members of the glorious reclamation who are followers of iomedae. Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +2 sacred bonus to her ac and on saving throws for 10 minutes. Both bonuses apply only against attacks made or effects created by outsiders with the evil subtype or creatures with an evil aura. A greater glorious tabard bears the symbol of the glorious reclamation in gold. It has all the powers of a lesser glorious tabard but can be used twice per day. In addition, whenever a greater glorious tabard is activated, all longswords within 20 feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for 3 rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5. A glorious tabard functions only for wearers who are both members of the glorious reclamation and followers of iomedae. ",
@@ -625,17 +627,13 @@
    "description": " these linen bandages have the same\r color and softness as the feathers of a\r dove, but their antiseptic smell suggests\r a less natural origin. Any creature\r wrapped in these bandages recovers\r from wounds and ability damage each\r day as if receiving complete bed rest, regardless of activity\r (core rulebook 191). A creature actually receiving long-term\r care (from the heal skill) or complete bed rest while wearing\r the bandages gains a +4 bonus to its effective level or hit\r dice when determining how many hit points it recovers each\r day. The bandages are destroyed once removed or when the\r wearer recovers all hit points and ability damage, whichever\r comes first. ",
    "item_name": "Bandages of Rapid Recovery"
   },
-  "eyes": {
-   "description": " these spectacles fit firmly over eyes and are held in place by two crystalline stems. The lenses are initially clear and don't hinder the wearer's vision. When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Once the spectacles absorb a spell and become opaque, the wearer becomes blinded until the spectacles are removed (a swift action). Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower; higher-level effects affect the wearer as normal. Once the spectacles absorb an effect, they lose their magic. ",
-   "item_name": "Patternward Spectacles"
-  },
   "hands": {
    "description": " the wearer of these simple gloves can\r speak a command word create a glowing\r disembodied hand. As a swift action, the\r wearer can have the hand assist him with\r a task as if using the aid another action. \r the hand uses the wearer's base attack\r bonus or skill ranks when making the check to see if aid another is\r successful (it does not gain the benefit of the wearer's ability scores\r or other bonuses). The hand remains until it has attempted one\r action or until 1 minute passes, whichever comes first, at which\r time the gloves become nonmagical. ",
    "item_name": "Assisting Gloves"
   },
-  "head": {
-   "description": " this porous wooden mask fits against the wearer's face much more tightly than its bulky, abstract design suggests. The mask is capable of storing air; the wearer can breathe normally underwater for 5 minutes before he has to hold his breath. While underwater, so long as there is still air left in the mask, it converts speech into vibrations in the water and vice versa, allowing the wearer to speak normally and hear the speech of other creatures wearing hollow masks within 60 feet as though they were not underwater. After a wearer has used the mask underwater, the mask needs an equal amount of time (maximum 5 minutes) to replenish its air supply. ",
-   "item_name": "Hollow Mask"
+  "shoulders": {
+   "description": " this silvery cape furls and ripples\r like a flag with every step its\r owner takes. As a swift action, \r the wearer can order the cape to\r transform into a faint sphere of\r force that surrounds him on all\r sides. The field grants the wearer\r concealment (20% miss chance)\r against ranged attacks and lasts for 1 minute or until the\r wearer is missed by a ranged attack due to the power of the\r cloak, whichever comes first. When the field is used, all magic\r is lost from the cloak, leaving only a mundane silvery garment. ",
+   "item_name": "Catching Cape"
   },
   "wrist": {
    "description": " these scarred and worn armbands have clearly seen rough\r use, and are constructed out of coarse leather and fastened\r with thick leather straps. They grant their wearer a +1\r competence bonus on grapple checks and checks to break\r a grapple. ",
@@ -643,16 +641,15 @@
   }
  },
  "equipment_list": [
-  "Hollow Mask",
+  "Broken Chain of the Beast",
   "Armbands of the Brawler",
-  "Belt of Tumbling",
   "Glorious Tabard, Lesser",
   "Bandages of Rapid Recovery",
-  "Patternward Spectacles",
-  "Assisting Gloves"
+  "Assisting Gloves",
+  "Catching Cape"
  ],
  "eye_color": [
-  "Grey"
+  "Amber"
  ],
  "feat_budget": {
   "bloodline": 0,
@@ -699,17 +696,17 @@
   "Persuasive",
   "Celestial Obedience",
   "Spell Bluff",
-  "Martial Training I (Veiled Moon)",
+  "Martial Training I (Brutal Crocodile)",
   "Multi Talented",
   "True Calling",
   "Always Improving"
  ],
  "feats_feat_tax_dict": {
-  "Martial Training I (Veiled Moon)": [
-   "Martial Training II (Veiled Moon)"
+  "Martial Training I (Brutal Crocodile)": [
+   "Martial Training II (Brutal Crocodile)"
   ],
-  "Martial Training III (Veiled Moon)": [
-   "Martial Training IV (Veiled Moon)"
+  "Martial Training III (Brutal Crocodile)": [
+   "Martial Training IV (Brutal Crocodile)"
   ],
   "Persuasive": [
    "rhetorical flourish"
@@ -739,17 +736,17 @@
  "flaw_feats": [
   "Versatile Spontaneity"
  ],
- "formatted_bio": "Léna Dubois\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 12 Summoner\n- Archetype: Eidolon Master\n- Tactics: Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.\n- Stat Focus: Int\n- Disciplines: Veiled Moon\n- Homeland: Tal-falko\n\nVocation\n- Profession: Crypt-Crawler (rank 15)\n- Profession: Apprentice Smith (rank 12)\n- Profession: Scribe (rank 2)\n- Profession: Animal Nutritionist (rank 3)\n- Known for: Brewing\n- Training: An average trainer who taught them Skilled Driver, Enhance Manifestation\n- Training: An excellent trainer who taught them Collective Recollection, Blighted Critical, Plague Doctor\n- Training: An average trainer who taught them Elemental Focus, Natural Telekinetic\n- Training: An excellent trainer who taught them Lingering Shadows, Nemesis, Undermine\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 3 Older Sisters\n\nPersonality\n- Personality: Trusting, Dependable, Devoted, Elegant\n- Mannerisms: Withdraws into oneself, Taps foot, Leans forward\n- Flaws: Motion Sickness\n\nAppearance\n- Hair: Bald Brown\n- Eyes: Grey\n- Build: Protruding Ears",
+ "formatted_bio": "Léna Dubois\n- Alignment: Neutral Good\n- Deity: Sarenrae\n- Race: Human\n- Class: Level 12 Summoner\n- Archetype: Eidolon Master\n- Tactics: Sends the eidolon into melee and treats its own turns as the eidolon's support crew -- buffs, repositioning, and emergency summons. Personal offense is a last resort; if the eidolon falls, it flees or floods the field with summoned cover.\n- Stat Focus: Int\n- Disciplines: Brutal Crocodile\n- Homeland: Tal-falko\n\nVocation\n- Profession: Crypt-Crawler (rank 15)\n- Profession: Apprentice Smith (rank 12)\n- Profession: Scribe (rank 2)\n- Profession: Animal Nutritionist (rank 3)\n- Known for: Brewing\n- Training: An average trainer who taught them Skilled Driver, Enhance Manifestation\n- Training: An excellent trainer who taught them Collective Recollection, Blighted Critical, Plague Doctor\n- Training: An average trainer who taught them Elemental Focus, Natural Telekinetic\n- Training: An excellent trainer who taught them Lingering Shadows, Nemesis, Undermine\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Middle Income Household\n- 1 Older Brother\n- 3 Older Sisters\n\nPersonality\n- Personality: Trusting, Dependable, Devoted, Elegant\n- Mannerisms: Withdraws into oneself, Taps foot, Leans forward\n- Flaws: Motion Sickness\n\nAppearance\n- Hair: Straight White\n- Eyes: Amber\n- Build: Spiky Hair",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 8555,
  "generator_version": "2026-07-15 racial-stats",
- "gold": 170,
+ "gold": 20,
  "hair_color": [
-  "Brown"
+  "White"
  ],
  "hair_type": [
-  "Bald"
+  "Straight"
  ],
  "height_number": "6'3\"",
  "hero_points": 0,
@@ -762,10 +759,10 @@
   "Elemental Focus": "Your spells of a certain element are more difficult to resist",
   "Enhance Manifestation": "You pour additional psychic power into your attacks to assert your superiority in psychic combat When creating an offensive manifestation, you may spend additional MP to extend the duration of a condition you inflict on your foe by a number of rounds equal the amount of additional MP spent. When creating a defensive manifestation, you may increase or reduce a numerical alteration by the amount of additional MP spent. When creating a thought-form creature, increase the max MP limit on all of its augmentations by 2. while engaged in a psychic duel, you may enhance your manifestations by spending additional mp.",
   "Lingering Shadows": "Your darkness spells are harder to suppress and even more difficult to counter. Normal Most spells that lower lighting conditions (such as darkness) can have the area brightened by a light spell at least one level higher than the darkness spell. Most spells with the light descriptor can be used to counter and dispel a darkness spell of the same spell level or lower. magical light sources cannot increase the light level within the area of spells you cast with the darkness descriptor (such as darkness) unless the light spell is at least two spell levels higher than your darkness spell. spells with the light descriptor cannot be used to counter or dispel your darkness spells unless they are at least two spell levels higher than your darkness spells.",
-  "Martial Training I (Veiled Moon)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
-  "Martial Training II (Veiled Moon)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training III (Veiled Moon)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
-  "Martial Training IV (Veiled Moon)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training I (Brutal Crocodile)": "Youve learned the basics in a martial discipline. Special If you ever gain levels in a martial adept class or possess them previously, these maneuvers continue to use their own initiator level and recovery method, independent of your martial adept level. Those wishing to add new maneuvers from a discipline that is already available to their class should instead select the Advanced Study feat instead. select a martial discipline. the associated skill for this discipline is now a class skill. your initiation modifier is chosen from intelligence, wisdom, or charisma. your martial initiator level for maneuvers granted by this feat (and subsequent martial training feats) is equal to half your character level + your initiation modifier. you may select any two maneuvers from the 1st level maneuvers from this discipline, and you may ready one of your maneuvers for use. you may recover one maneuver by expending a full round action to recover it.",
+  "Martial Training II (Brutal Crocodile)": "Youve continued to progress your martial studies. you may select two new maneuvers and one stance from your chosen discipline of up to 2nd level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training III (Brutal Crocodile)": "Your mastery of your martial discipline improves. you may select an additional new maneuver from your chosen discipline of up to 3rd level, plus one new stance, and you may ready an additional maneuver. you may also trade out any one maneuver from your chosen discipline you know and replace it with a different maneuver from that discipline of up to 2nd level. you must meet the minimum initiator level to select any maneuver.",
+  "Martial Training IV (Brutal Crocodile)": "You are fast approaching mastery of your chosen discipline. you may select two new maneuvers from your chosen discipline of up to 4th level, and you may ready an additional maneuver. you must meet the minimum initiator level to select any maneuver.",
   "Mind Trick": "This is not the one you are looking for. Special You can take this feat multiple times. Its effects do not stack; you must select a different class skill each time you take this feat. select 1 class skill which uses dexterity as its associated ability score, such as sleight of hand or stealth. you can use charisma as its associated ability score instead (this allows you to ignore armor check penalty for the chosen skill). in addition, when you use the aid another action to provide a bonus to another creature attempting a check with the selected skill, increase that bonus by your charisma modifier.",
   "Multi Talented": "Your profession rank cap increases by 10.",
   "Natural Telekinetic": "You have an in-born ability to move things with your mind. you gain far hand as a psi-like ability, usable at will. however, the weight limit of this ability increases by 5 pound for every hit die you possess.",
@@ -821,12 +818,19 @@
     }
    ]
   },
-  "Belt of Tumbling": {
+  "Broken Chain of the Beast": {
+   "changes": [],
+   "contextNotes": [],
+   "unplaced": [
+    "This 8-foot length of corroded, broken chain is threaded with a leather strap to hold it together; Once per day, the wearer can call upon its power to summon an evil creature from the summon monster i list; If rovagug is the wearer's patron, the wearer can gain the benefits of a rage spell once per day by speaking the god's name."
+   ]
+  },
+  "Catching Cape": {
    "changes": [],
    "contextNotes": [
     {
-     "target": "skill.acr",
-     "text": "The belt's wearer gains a +[[4]] competence bonus on acrobatics checks made to move through a threatened square or through an enemy's space."
+     "target": "attack",
+     "text": "As a swift action, the wearer can order the cape to transform into a faint sphere of force that surrounds him on all sides. The field grants the wearer concealment (20% miss chance) against ranged attacks and lasts for [[1]] minute or until the wearer is missed by a ranged attack due to the power of the cloak, whichever comes first."
     }
    ]
   },
@@ -838,20 +842,80 @@
      "text": "Once per day, the wearer of a lesser glorious tabard can activate the tabard to gain a +[[2]] sacred bonus to her ac and on saving throws for [[10]] minutes. In addition, whenever a greater glorious tabard is activated, all longswords within [[20]] feet shed light as per a torch and ignore the dr of evil creatures (except dr/epic) for [[3]] rounds. When a greater glorious tabard is used as a divine focus to cast a spell, the wearer does not need any material components that cost more than 5."
     }
    ]
+  }
+ },
+ "item_durability": {
+  "armor": {
+   "hardness": 14,
+   "hardness_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Leather",
+     2
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 25,
+   "hp_lines": [
+    [
+     "Armor",
+     10
+    ],
+    [
+     "Leather",
+     5
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "leather",
+   "material_label": "Leather",
+   "size_lines": [],
+   "size_sources": []
   },
-  "Hollow Mask": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "The wearer can breathe normally underwater for 5 minutes before he has to hold his breath. While underwater, so long as there is still air left in the mask, it converts speech into vibrations in the water and vice versa, allowing the wearer to speak normally and hear the speech of other creatures wearing hollow masks within 60 feet as though they were not underwater. After a wearer has used the mask underwater, the mask needs an equal amount of time (maximum 5 minutes) to replenish its air supply."
-   ]
-  },
-  "Patternward Spectacles": {
-   "changes": [],
-   "contextNotes": [],
-   "unplaced": [
-    "When the wearer is targeted with an illusion spell or spell-like ability of the pattern subschool (such as color spray), the spectacles absorb the magic and darken, protecting the wearer from the pattern effect. Patternward spectacles protect against spells or spell-like abilities of only 3rd level or lower;"
-   ]
+  "weapon": {
+   "hardness": 22,
+   "hardness_lines": [
+    [
+     "Light Metal-Hafted",
+     10
+    ],
+    [
+     "Iron",
+     10
+    ],
+    [
+     "Enhancement",
+     2
+    ]
+   ],
+   "hp": 50,
+   "hp_lines": [
+    [
+     "Light Metal-Hafted",
+     10
+    ],
+    [
+     "Iron",
+     30
+    ],
+    [
+     "Enhancement",
+     10
+    ]
+   ],
+   "material": "steel",
+   "material_label": "Iron",
+   "size_lines": [],
+   "size_sources": []
   }
  },
  "known_list": [
@@ -864,18 +928,18 @@
  "land_speed": 30,
  "language_text": [
   "Common",
+  "Halfling",
+  "Aklo",
+  "Orc",
   "Drow Sign Language",
   "Abyssal",
   "Grippli",
   "Aquan",
   "Ignan",
   "Kelish",
-  "Orc",
   "Gnoll",
-  "Infernal",
-  "Tengu",
-  "Elven",
-  "Giant"
+  "Protean",
+  "Celestial"
  ],
  "level": 12,
  "level_up_stats": {
@@ -956,102 +1020,102 @@
  "main_stat": "int",
  "maneuvers_choose_from": [
   [
-   "Disturbing Blow",
-   "Inner Sense"
+   "Expert Grip",
+   "Trampling Pin"
   ],
   [
-   "Half-Gone",
-   "Fading Strike"
+   "Bestial Dash",
+   "Anaconda's Coils"
   ],
   [
-   "Brilliant Moon",
-   "Ghostwalk"
+   "Monkey Vault",
+   "Trapping Jaws"
   ],
   [
-   "Breath of the Moon"
+   "Alligator Suplex"
   ]
  ],
  "maneuvers_desc_dict": {
-  "Breath of the Moon": {
-   "action": "1 standard action",
-   "description": "The moon is a source of madness, so the legend goes, and by using the principles of lunar cycles on the psyche of mortals, the disciple may temporarily relieve a target of its sanity for a few moments in combat. The initiator must make a melee attack against a target creature, and if successful, in addition to damage the target must make a Will save DC 14 + initiation modifier or be confused as the spell confusion for 1d4 rounds. After the application of this maneuver, the subject briefly forgets that the initiator exists and thus may not target the initiator while confused.",
-   "discipline": "Veiled Moon",
-   "duration": "1d4 rounds",
+  "Alligator Suplex": {
+   "action": "1 standard action or [G]",
+   "description": "Wrapping your arms around a grappled target, you slam them into the ground with immense force. The creature takes an amount of damage equal to 4d10 damage and must make a Fortitude save or be dazed for one round DC 14 + your initiation modifier. Initiating this maneuver automatically releases the creature from your grapple.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
    "level": 4,
-   "range": "Melee or ranged attack",
+   "range": "Melee",
    "type": "strike"
   },
-  "Brilliant Moon": {
-   "action": "1 standard action",
-   "description": "By partially phasing a portion of his attack out of this reality, the disciple may ignore certain obstacles, such as armor, when striking at an opponent. The initiator makes an attack roll and ignores the targets armor bonus to AC unless this armor bonus comes from a force effect, such asmage armor. A successful hit inflicts an additional 4d4 points of force damage from the spiritual power the disciple infuses into the attack.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 3,
-   "range": "Melee or ranged attack",
-   "type": "strike"
-  },
-  "Disturbing Blow": {
-   "action": "1 standard action",
-   "description": "By establishing counter-resonance within the spirit of an enemy with a well-placed blow, the disciple may disrupt and disturb its next action. The initiator must make a melee attack against a target creature, and if successful, cause the target to suffer a -4 penalty to the next d20 roll that he makes.",
-   "discipline": "Veiled Moon",
-   "duration": "Special",
-   "level": 1,
-   "range": "Melee attack",
-   "type": "strike"
-  },
-  "Fading Strike": {
-   "action": "1 standard action",
-   "description": "The disciple learns the basic technique at this level for walking between worlds to reach locations that previously could be inaccessible on the mortal world and potentially attack foes at those locales. As a standard action, the initiator may either teleport to a location no farther away than his maximum movement speed, and make an attack action against an opponent as part of the same standard action, or attack an adjacent target and then teleport to a location no farther away than his maximum movement speed. The teleportation destination must be clearly seen by the disciple to teleport to that location, and it must be unoccupied.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
+  "Anaconda's Coils": {
+   "action": "1 swift",
+   "description": "In a flash, you pounce on your opponent and slam them into the ground, pressing all of your weight on top of them. When you initiate this boost, make a Climb check. If the result exceeds the targets CMD, you immediately pin the creature.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
    "level": 2,
-   "range": "Personal",
+   "range": "Melee",
+   "type": "boost"
+  },
+  "Bestial Dash": {
+   "action": "1 standard action or [G]",
+   "description": "Prey in hand, the initiator rushes across the battlefield. Make a move action using your standard movement speed as opposed to your diminished grappled speed. This movement provokes attack of opportunity as normal. Creatures you are grappling move with you, maintaining the same relative position to you all throughout the movement. If a grappled creature would end its turn in the same space as another creature or object or would collide with an object or creature in a way that would stop it being moved, both entities take 2d10 damage.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
+   "level": 2,
+   "range": "Melee",
    "type": "strike"
   },
-  "Formless Dance": {
+  "Catfish Hold": {
    "action": "1 swift action",
-   "description": "The Veiled Moon disciple immerses himself in a sort of dimensional flux, causing him to be able to see what cannot be perceived and seemingly be in many places at once. While in this stance, the initiator gains the benefits of asee invisibilityspell and theblurspell.",
-   "discipline": "Veiled Moon",
+   "description": "Bracing yourself against the terrain, you steel yourself to control and redirect any oncoming assaults. While in this stance, you ignore any size modifiers to CMB that you or any creatures you are attempting to grapple possess, and may grapple creatures of any size. In addition, when you maintain a grapple, you deal an additional amount of damage equal to your initiation modifier.",
+   "discipline": "Brutal Crocodile",
    "duration": "Stance",
    "level": 3,
    "range": "Personal",
    "type": "stance"
   },
-  "Ghostwalk": {
+  "Expert Grip": {
    "action": "1 swift action",
-   "description": "The initiator steps through to the borderland between the Material and the Ethereal planes, becoming an incorporeal figure in both realities for a few moments. Until the beginning of his next turn, the initiator gains the incorporeal subtype. This is an Ethereal plane using maneuver.",
-   "discipline": "Veiled Moon",
-   "duration": "One round",
-   "level": 3,
+   "description": "You utilize your skill at carrying yourself to carry your foe much in the same way. After the initiating this boost, if you make a grapple check at any point in the round, you may make a climb check and use the result in place of your grapple check. You may add any bonuses from items, feats, or abilities that you possess to this check that would normally apply to grapple checks.",
+   "discipline": "Brutal Crocodile",
+   "duration": "1 round",
+   "level": 1,
    "range": "Personal",
    "type": "boost"
   },
-  "Half-Gone": {
-   "action": "1 immediate action",
-   "description": "By momentarily slipping through the barrier between the Material and the Astral planes, the Veiled Moon disciple may attempt to avoid an attack by being incorporeal. The initiator makes an opposed Stealth check against the attackers Perception check; if successful the initiator is incorporeal for that attack resolve the attack against the initiator as normal for striking an incorporeal target. This counter may be attempted to defend against targeted and area of effect spells, making a Stealth check in place of a Reflex save.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 2,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Inner Sense": {
-   "action": "1 immediate action",
-   "description": "By sensing ripples in the spiritual world around him, the Veiled Moon disciple is capable of better avoiding dangerous effects and situations. This counter grants the disciple a +2 insight bonus to a single saving throw.",
-   "discipline": "Veiled Moon",
-   "duration": "Instantaneous",
-   "level": 1,
-   "range": "Personal",
-   "type": "counter"
-  },
-  "Spirit Sensing Stance": {
+  "Monkey Vault": {
    "action": "1 swift action",
-   "description": "By sensing the different patterns all beings that exist have, the senses of the Veiled Moon disciple exceed that of natural beings and move into the realm of supernatural awareness. While in this stance, the initiators gains the scent special ability and he may detect creatures on the Ethereal plane that are near the Material plane within 30-ft. of his position.",
-   "discipline": "Veiled Moon",
+   "description": "Snagging an opponent, you use them as a base as you vault over or around them. Make a Climb check against the foes CMD. If successful, you may move to any square adjacent to the target, and the target is considered to be flat-footed until the end of your next turn.",
+   "discipline": "Brutal Crocodile",
+   "duration": "1 round",
+   "level": 3,
+   "range": "Melee",
+   "type": "boost"
+  },
+  "Painbringer": {
+   "action": "1 swift action",
+   "description": "You force yourself onto the opponent while grappling with them, complicating their resistance further. Any creature you are grappling has the dexterity penalty from grappling increased from -4 to -8, and takes a -4 penalty on attack rolls and combat maneuver checks rather than -2.",
+   "discipline": "Brutal Crocodile",
    "duration": "Stance",
    "level": 1,
    "range": "Personal",
    "type": "stance"
+  },
+  "Trampling Pin": {
+   "action": "1 standard action or [G]",
+   "description": "You slam your foe into the ground with excessive force and hold them down. This maneuver causes the target to gain the pinned condition and deals 2d8 points of damage. You still keep the grappled condition so long as you continue to pin the opponent.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Instant",
+   "level": 1,
+   "range": "Grappled",
+   "type": "strike"
+  },
+  "Trapping Jaws": {
+   "action": "1 immediate action",
+   "description": "You snag your opponent in the midst of their attack, refusing to let go. When a creature makes a melee attack roll against you, you may initiate this counter to make a grapple check against the target. On a success, the creatures attack is negated, and you begin grappling the target. While grappling the creature, you deal 2d6 points of damage each round that you maintain the grapple this stacks with any damage you may deal with constrict.",
+   "discipline": "Brutal Crocodile",
+   "duration": "Initiated grapple",
+   "level": 3,
+   "range": "Melee",
+   "type": "counter"
   }
  },
  "maneuvers_known_list": [
@@ -1069,14 +1133,14 @@
  "maneuvers_readied_names": [
   [],
   [
-   "Half-Gone"
+   "Bestial Dash"
   ],
   [
-   "Brilliant Moon",
-   "Ghostwalk"
+   "Monkey Vault",
+   "Trapping Jaws"
   ],
   [
-   "Breath of the Moon"
+   "Alligator Suplex"
   ]
  ],
  "manifesters": [],
@@ -1086,13 +1150,13 @@
   "Leans forward"
  ],
  "martial_disciplines": [
-  "Veiled Moon"
+  "Brutal Crocodile"
  ],
  "mini_alignment": "ng",
  "mod_char_sheet_var": false,
  "mt_feats": [
-  "Martial Training I (Veiled Moon)",
-  "Martial Training III (Veiled Moon)"
+  "Martial Training I (Brutal Crocodile)",
+  "Martial Training III (Brutal Crocodile)"
  ],
  "mythic": null,
  "normal_feat_amount": 5,
@@ -1106,7 +1170,7 @@
   "Devoted",
   "Elegant"
  ],
- "platnium": 17.0,
+ "platnium": 2.0,
  "powers_desc_dict": {},
  "profession_ability_items": [
   {
@@ -1403,6 +1467,7 @@
  "shield_armor_check_penalty": " ",
  "shield_enhancement_bonus": 0,
  "shield_enhancement_chosen_list": [],
+ "shield_material": "",
  "shield_max_dex_bonus": " ",
  "shield_name": " ",
  "shield_spell_failure": " ",
@@ -1682,8 +1747,8 @@
  ],
  "spheres_chosen": [],
  "stances_chosen": [
-  "Spirit Sensing Stance",
-  "Formless Dance"
+  "Painbringer",
+  "Catfish Hold"
  ],
  "story_feat_tax_dict": {},
  "story_feats": [
@@ -1733,6 +1798,8 @@
  ],
  "weapon_enhancement_bonus": 1,
  "weapon_enhancement_chosen_list": [],
+ "weapon_material": "",
+ "weapon_material_damage": 0,
  "weapon_name": "Traveling kettle",
  "weapon_size": "Medium",
  "weapon_size_attack_penalty": 0,
