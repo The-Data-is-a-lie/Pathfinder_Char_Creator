@@ -440,6 +440,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **The build archetype now reads every feat the character holds** *(2026-11-15;
+  `main_test.py`, the `_build` dict handed to `build_archetype.choose_build_archetype`)*. The
+  scorer was given the general feat track alone. Class bonus feats, the story / flaw / flavor /
+  trainer rows and every feat the house feat tax bundles onto a primary were invisible to it, so
+  a fighter who took Two-Weapon Fighting as a bonus feat was not read as a Dual Wielder, and
+  under the feat tax most of a feat chain (Precise Shot and Rapid Shot behind Point-Blank Shot)
+  never counted at all. The buckets are presentation slots; the character fights with all of
+  them. Found while building the build pin, which could not steer feats the scorer did not see.
+  - *What changes for existing output:* `build_archetype`, `build_tactics` and the line of the
+    bio that quotes them can differ on characters whose defining feats sat outside the general
+    track. Three of the twelve goldens moved, on those keys only: the warlord `initiator` from HP
+    Tank to Brawler, the fighter `optimized_striker` from Bruiser to Keep Away Fighter (it holds
+    Lunge and the attack-of-opportunity feats as bundled chain feats), and `witch` from Debuffer
+    to Magic Battlefield Controller.
+  - *Rejected:* leaving the scorer's input alone and reading all held feats only for characters
+    with a pinned build -- two measuring sticks for one label. And leaving it alone outright,
+    which keeps the build pin from ever landing a feat-defined build under the feat tax.
+  - *If the new labels read worse:* the place to answer that is the weights in
+    `build_archetypes.json`, which were tuned against the narrower input; this entry's commit is
+    separate so it can be reverted on its own.
 - **The web sheet moved under you on every repaint and every drag** *(sibling repo: the web sheet,
   `scripts/sheet.js`, `scripts/ui.js`, 2026-09-07)*. Three separate causes, one symptom. A repaint —
   a drop, an inline edit, a checkbox — rebuilds every pane, and the *document* is the scroller, so a

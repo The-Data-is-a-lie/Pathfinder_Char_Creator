@@ -2963,7 +2963,16 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 			'weapon_groups': _weapon_groups,
 			'armor': armor_name if isinstance(armor_name, str) else '',
 			'shield': shield_name if character.shield_flag else '',
-			'feats': feats,
+			# EVERY feat the character holds, not the general track alone: the class bonus feats,
+			# the story / flaw / flavor / trainer rows and the feat-tax children bundled onto a
+			# primary are all feats it fights with. `feats` by itself hid a fighter's bonus feats
+			# and every chain the house feat tax bundles, so Two-Weapon Fighting taken as a
+			# fighter bonus feat did not make a Dual Wielder. The buckets are presentation slots
+			# (the same lesson phase_luck_resolution's _held_feat_names records).
+			'feats': [*feats, *story_feats, *flaw_feats, *flavor_feats, *class_feats, *trainer_feats,
+					  *(child for bundle in (feats_feat_tax_dict, story_feat_tax_dict, flaw_feat_tax_dict,
+											 flavor_feat_tax_dict, class_feat_tax_dict, trainer_feat_tax_dict)
+						for children in (bundle or {}).values() for child in children or [])],
 			'disciplines': pw.martial_disciplines,
 			'stances': pw.stances_chosen,
 			'maneuvers': [n for _grp in pw.maneuvers_readied_names for n in (_grp if isinstance(_grp, list) else [_grp])],
