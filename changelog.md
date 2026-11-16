@@ -591,6 +591,34 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **Foundry module: "Update All" no longer stops on a confirmation every release** *(2026-11-16;
+  module repo `release.ps1`, `pf1e_random_char_generator/module.json`, gate
+  `tools/manifest.test.mjs`)*. The `manifest` URL inside `module.json` was pinned to the release
+  tag, like `download`. An installed copy re-reads that URL to ask whether anything is newer, so
+  an installed 2.5.0 asked the `v2.5.0` tag forever and was always told "2.5.0".
+  - *What Foundry then did* (read from the installed app, 13.351, `dist/packages/views.mjs`
+    `checkPackage` and the setup client's `#promptTrackChange`): it fell back to the package
+    registry, saw a newer version under a different manifest URL, and treated it as a "track
+    change" -- a "Manifest Update" dialog per package, in Update All too. Declining is stored
+    (core setting `declinedManifestUpgrades`) and that installed version is never offered the
+    update again.
+  - *Decision:* two URLs with two jobs. `module.json` carries the STABLE manifest
+    (`.../-/raw/main/pf1e_random_char_generator/module.json`); the registry is still given the
+    tag-pinned manifest for each version, and `download` stays pinned, so a given version always
+    installs the code that shipped with it. `release.ps1` writes both, checks both, and now
+    pushes the tag BEFORE main so the zip exists before any installed copy is told to fetch it.
+  - *Rejected:* keeping everything pinned (Foundry's "immutable per release" advice is about the
+    registry's per-version manifest, not the one an installed copy polls); GitLab's
+    "latest release" permalink (it needs release asset links, and this project's Releases API
+    has refused before); moving the old tags so existing installs see the new manifest (rewrites
+    published releases).
+  - *What it cannot fix:* installs of 2.5.0 and older still carry the pinned URL, so their update
+    to 2.6.0 shows the dialog one last time. From 2.6.0 on it is silent.
+  - *Standing rule this creates:* `module.json` on the module's `main` is what every installed
+    copy reads. Only `release.ps1` may bump its version; the test fails a version with no tag
+    behind its `download`.
+  - Also: `release.ps1 -EnvFile <path>` reads the tokens from another checkout's `.env`, because
+    a git worktree has none of its own.
 - **A human's bonus feat is no longer drawn and thrown away** *(2026-11-16;
   `utils/class_func/flag_assign.py::human_flag_assigner`)*. The extra feat was added to the
   number of feats DRAWN but not to the size of the general track, and the track's count
