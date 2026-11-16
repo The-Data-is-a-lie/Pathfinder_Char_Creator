@@ -26,14 +26,26 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   payload with every ability at 10, no feats, traits, spells or gear -- and a new key, **`slots`**:
   one `{section, kind, label, class, level, bucket}` row per thing the character is owed and has
   not chosen. `slots` is on every payload, `[]` for a generated character.
-  - *What gets a slot:* each general feat (labelled with the level it is gained at), class bonus,
-    teamwork, bloodline and monk bonus feats, every class choice (rogue talents, rage powers,
-    weapon training, ...), two traits, each ability score increase, spells known per spell level
-    for the classes that choose them, and the skill ranks per class. With the house rules on:
-    story, flavor and flaw feats, the two creation feats, and a minor and a major flaw.
+  - *What gets a slot:* each general feat, class bonus, teamwork, bloodline and monk bonus
+    feats, every class choice (rogue talents, rage powers, weapon training, ...) and eight
+    traits. With the house rules on: story, flavor and flaw feats, the two creation feats, a
+    minor and a major flaw, and -- when trainers are on -- half the trainers the character could
+    have studied under.
   - *Decided with Daniel 2026-11-15:* the inputs are classes (multiclass allowed), a level each
-    and a race; a slot is one placeholder each; class choices get slots; the extras are ability
-    increases, two traits, spells known and a skill-ranks reminder.
+    and a race; a slot is one placeholder each; class choices get slots.
+  - *Revised 2026-11-16, after Daniel looked at the first sheets:*
+    - A slot's `label` is a bare tag -- `Fighter 4`, `Trainer 1`, `Flaw, Minor` -- and the general,
+      story, flavor and flaw feat rows carry only their tag word, because the module numbers
+      those the way it numbers a generated character's. *Rejected:* the first cut's prose
+      labels ("Fighter Bonus Feat (Level 4)"), which read like nothing else on the sheet.
+    - Eight trait slots, the generator's own count (`traits.TRAIT_COUNT`), not PF1's two.
+    - Trainers: `ceil(max / 2)` slots, one each (`blank.BLANK_TRAINER_SHARE`). A generated
+      character rolls from none to the maximum and one to four feats per trainer; half, one
+      row each, is room for trainers without a sheet of rows to delete. *Rejected:* none, and
+      the maximum at four rows each.
+    - No ability-increase, spells-known or skill-rank slot. The sheet already carries the item
+      a generated character records ability increases on (the `level_up_stats` buff, here all
+      zeros), and the other two are the sheet's own Spells and Skills tabs.
   - *How it is made, and what was rejected.* The request runs the ordinary pipeline with the
     classes pinned, and `blank.apply` then empties the finished payload BY TYPE (a list becomes
     `[]`, a dict `{}`), keeps the few keys the classes, levels and race decide, and rebuilds a
@@ -42,14 +54,13 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
     by hand, forever in step with `PAYLOAD_KEYS`), and a guard in every chooser to switch it off.
   - *The counts are not restated.* Every slot count is read from the function that owns it --
     `update_level`, `normal_feat_slot_levels`, `class_bonus_feat_slots`, `teamwork_feat_slots`,
-    `class_choice_schedule.json` via `levels_for`, `update_level_ability_score`,
-    `class_skill_points` -- so a house-rule or schedule change moves the blank sheet with it.
+    `class_choice_schedule.json` via `levels_for`, `traits.TRAIT_COUNT`,
+    `trainers.max_trainer_slots` -- so a house-rule or schedule change moves the blank sheet with
+    it.
   - *Decided while building:*
     - Hit points are the full hit die at the first level and the PF1 average after, from each
       class's own hit die. *Rejected:* leaving 0, which makes a sheet nobody can use, and keeping
       the rolled value, which is a roll.
-    - Spells known are one slot per spell LEVEL with the count in its label, not one per spell.
-      *Rejected:* one per spell, which is seventy placeholders on a mid-level wizard.
     - A blank request honours the class pins and nothing else in `selection`: an active build
       concept must not turn Spheres on or spend feats behind a sheet that shows none of it.
     - Racial ability modifiers are not applied to the scores (they stay 10); the race item the
@@ -59,7 +70,7 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - *What changed for existing output:* the new key only. All twelve goldens moved by exactly
     `"slots": []`.
   - *Gates:* `validate_blank.py` (the manifest, the request vocabulary, a POST through Flask) and
-    `test_blank.py` -- 1,235 sheets. Its main check is that the SAME request under two seeds
+    `test_blank.py` -- over 1,200 sheets. Its main check is that the SAME request under two seeds
     gives the SAME sheet for every rollable class at four levels: whatever differs was rolled.
     Its first runs found four leaks (a shield value typed two ways, a companion name, the armor
     fields, a wizard's rolled spellbook size), which is what it is for. Slot counts are
@@ -75,7 +86,12 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   actor through the same build pipeline as a generated character. Each `slots` row becomes one
   placeholder item under the heading a real pick would sit under; class choices are written into
   the fields the class-features stage already lays out, so they land in their class's band under
-  their own divider. *Rejected:* computing the slots in the module, which has never carried the
+  their own divider. A placeholder is a tag and nothing else -- `(Feat 3)`, `(Story Feat 5)`,
+  `(Fighter 4)`, `(Rogue Talent 2)`, `(Flaw, Minor)` -- with an empty description (revised
+  2026-11-16). The general, story, flavor and flaw feats are numbered through
+  `feats.js::FEAT_ROW_NUMBERING`, the same table a generated character's rows now read, so the
+  two kinds of sheet cannot drift apart. *Rejected:* computing the slots in the module, which
+  has never carried the
   feat or class-choice arithmetic and would be a second copy of it. A blank sheet skips the gear
   stages: their "Longsword" / "Leather Armor" fallbacks would arm an empty sheet.
 - **Build concepts can pin a build** *(2026-11-15; backend `utils/class_func/build_steer.py`,
