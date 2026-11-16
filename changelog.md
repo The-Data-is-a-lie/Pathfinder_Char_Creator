@@ -19,6 +19,56 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Build concepts can pin a build** *(2026-11-15; backend `utils/class_func/build_steer.py`,
+  with a Build section in the FoundryVTT module's concept editor)*. A `selection` may now carry
+  `build`, the name of one of the generic build archetypes ("Bruiser", "AC Tank", "Archer", ...).
+  A pinned build changes what is generated: the class when none is pinned, which ability gets
+  which rolled score, the weapon, the armor band, the shield, the spells favoured and the feats.
+  - *A build is steered, not assigned -- and why.* `build_archetype` on the payload is measured
+    from the finished character by `build_archetype.choose_build_archetype`. The pin moves the
+    choices that measurement reads and the scorer keeps the last word; a character that still
+    comes out as something else is reported in `selection_report` ("came out as Dual Wielder: the
+    character lacks ..."), like any other unmet pin. *Rejected:* writing the pinned name onto the
+    sheet, which labels a character as a build it does not play as.
+  - *The scorer is the only description of a build.* Every steered choice shows the scorer an
+    option and takes the one that leaves the pinned entry standing best against the rest of the
+    roster (`build_steer._standing`). Nothing in the steer says what a Bruiser is, so tuning
+    `build_archetypes.json` moves the label and the steer together. *Rejected:* a hand-written
+    recipe per build (33 more things to keep in step with the JSON), and a sampled
+    build-to-class reach table (stale the moment an entry is tuned; the class fit is computed
+    from the roster and the class data instead).
+  - *How well it works, measured.* Over every offered build at three seeds, 66 of 93 pinned
+    characters came out as their build; the same seeds unpinned matched 3 of 93. Builds defined
+    by class, weapon, armor or feats land almost every time. Builds defined by which spells are
+    known land about half the time, and the rest is the dice.
+  - *What is not steered:* spheres, Path of War disciplines, companions and mounts. A concept can
+    pin a build together with the spheres or disciplines that make it.
+  - *What is offered.* `GET /selection_options` gains `builds` (name, family, definition, and the
+    classes that fit best). A build no class can be is not offered: Sharpshooter needs a firearm
+    as the character's weapon and `weapons_data.json` carries none, so it would be reported every
+    time. It is still accepted by name.
+  - *Precedence.* An explicit class, stat priority or feat pin always outranks the build, and so
+    does a class chosen in the generator's own class input. With `optimize` on, the build orders
+    the scores ahead of the role.
+  - *Decided while building:*
+    - A class whose identity is another build (an alchemist is a Mad Bomber, a summoner an
+      Eidolon Master) is ranked down for every other build. *Rejected:* treating all casters or
+      all full-attack classes alike, which sent "Spellblade" to summoners.
+    - A `caster_tier` veto ranks classes instead of barring them, because it trips with level.
+    - Only the spell family an entry weights most is favoured when spells are picked. *Rejected:*
+      favouring every family it likes, which handed a controller a summoner's spell list.
+    - Feat wishes go through the feats pin's slot reservation and prerequisite test; a wish that
+      cannot be taken is skipped silently, and the steer stops wishing once nothing left helps.
+  - *What changed for existing output:* nothing. Every steer function answers "no opinion" and
+    draws nothing when no build is pinned; the goldens did not move in this change.
+  - *Gates:* `validate_selection.py` (the offered builds are the ones some class can be, and each
+    round-trips) and the new `test_build_steer.py` (the hit share and its lift over the dice, a
+    miss is always reported, explicit pins win; proven by switching the steer off).
+- **The Foundry module's concept editor has a Build section** *(sibling repo: the FoundryVTT
+  module, `scripts/selection-concepts.js`, branch `feat/selection-feats-build`, 2026-11-15)*. A
+  dropdown of the backend's builds grouped by family, with a line under it that says what the
+  chosen build is and which classes fit it best. Against a backend that does not offer builds
+  the section is not drawn and a concept's stored build is carried through a save untouched.
 - **Build concepts can pin feats** *(2026-11-15; backend `utils/class_func/selection.py` +
   `feats.py::pinned_feat_chooser`, with a Feats section in the FoundryVTT module's concept
   editor)*. A `selection` may now carry `feats`, a list of feat names. Each pinned feat is taken
