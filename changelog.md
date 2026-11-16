@@ -34,9 +34,10 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   - *Decided with Daniel 2026-11-15:* the inputs are classes (multiclass allowed), a level each
     and a race; a slot is one placeholder each; class choices get slots.
   - *Revised 2026-11-16, after Daniel looked at the first sheets:*
-    - A slot's `label` is a bare tag -- `Fighter 4`, `Trainer 1`, `Flaw, Minor` -- and the general,
-      story, flavor and flaw feat rows carry only their tag word, because the module numbers
-      those the way it numbers a generated character's. *Rejected:* the first cut's prose
+    - A slot's `label` is a bare tag -- `Fighter 4`, `Trainer 1`, `Flaw, Minor`. A general feat
+      row is tagged with its source (`Human`, `Creation 1`, `Feat 5`), the same names a
+      generated character's `feat_labels` carry; the story, flavor and flaw feat rows carry
+      only their tag word, because the module numbers those. *Rejected:* the first cut's prose
       labels ("Fighter Bonus Feat (Level 4)"), which read like nothing else on the sheet.
     - Eight trait slots, the generator's own count (`traits.TRAIT_COUNT`), not PF1's two.
     - Trainers: `ceil(max / 2)` slots, one each (`blank.BLANK_TRAINER_SHARE`). A generated
@@ -535,6 +536,31 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   two-weapon character scores its TWD honestly too.
 
 ### Changed
+- **Every general feat row now says where it comes from** *(2026-11-16; backend
+  `utils/class_func/feat_sources.py`, read by the FoundryVTT module's `build/feats.js`)*. The
+  payload gains **`feat_labels`**, one label per row of `feats`: `Human`, `Creation 1`,
+  `Creation 2`, `Feat 1`, `Feat 3` ... for the free choices, and `Profession N`,
+  `Martial Training N`, `Sphere N`, `E-Kat N`, `Luck N`, `Granted N` for a row that is a slot
+  spent or a feat handed over. The module shows them as `(Human) Alertness`, `(Feat 5) Dodge`.
+  - *Why.* The sheet numbered the whole list by position in twos, as if every row were a level
+    feat. A 20th-level character showed `(Feat 21)` and `(Feat 23)`; a human's racial feat was an
+    anonymous `(Feat 1)`; nothing said which rows had been spent on a profession or a martial
+    path. Found when Daniel made a blank 20th-level rogue and got feats numbered to 25.
+  - *Ruled 2026-11-16:* name each source -- the human feat `(Human)`, the two house creation
+    feats `(Creation 1)` / `(Creation 2)`, level feats by the level they are gained at, spent
+    slots by what they were spent on. Story, flavor and flaw feats keep the labels they had.
+    *Rejected:* keeping the position count, and labelling a spent slot with the level-feat
+    number of the slot it used (which hides that it was spent).
+  - *How rows get a name.* A spent or granted row is recognised by the lists the pipeline
+    already keeps (profession feats, Martial Training and style feats, sphere feats, E-Kat
+    picks, luck purchases, gear enablers). Every other row takes the next slot name in order:
+    the 1st-level sources first, then up the level ladder. The slot list is
+    `feat_sources.general_slot_labels`, which a blank sheet shows whole.
+  - *What changes for existing output:* the new key on every payload, and the three fixes
+    under **Fixed** below. A backend's older clients ignore the key.
+  - *Gate:* `tests/test_feat_sources.py` -- 348 characters: the labels are parallel to the
+    feats, the free-choice rows carry the slot names in order and never pass the character's
+    level, and the track is exactly the size its sources add up to.
 - **The four list-shaped class-choice buckets are dicts now, stamped like every other pick**
   (`favored_enemies`, `favored_terrains`, the brawler's `manuevers`, the gunslinger's
   `gun training`; class-choices ticket 04, build slice 1). They were the whole failure set of the
@@ -565,6 +591,24 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
   per-run progress feedback for a request that can take a minute, not a standing warning.
 
 ### Fixed
+- **A human's bonus feat is no longer drawn and thrown away** *(2026-11-16;
+  `utils/class_func/flag_assign.py::human_flag_assigner`)*. The extra feat was added to the
+  number of feats DRAWN but not to the size of the general track, and the track's count
+  guarantee trims the list to that size -- so a human ended up with exactly the feats an elf
+  had (measured: a human and an elf rogue 20 both held 12 general feats). The track is now one
+  row longer for a human, and that row is labelled `(Human)`.
+- **A monk's bonus feats and a ranger's combat style feats now reach the sheet** *(2026-11-16;
+  `main_test.py::phase_feat_selection` / `phase_feat_tax_and_swaps`,
+  `feat_sources.class_grant_rows`)*. They were merged into the general feat list, where the
+  same count guarantee trimmed most of them off: a monk 10 was granted four bonus feats and
+  kept one, a ranger 10 three combat style feats and kept none or one. They are class bonus
+  feats, so they now join `class_feats` after the general track is settled, labelled with the
+  class level each came at (`Monk 2`, `Ranger 6`), and `feat_budget.class` counts them.
+  *Rejected:* raising the general track by their number, which keeps them but leaves them
+  unlabelled among the level feats.
+  - *What changes for existing output:* humans, monks and rangers hold more feats than they
+    did. Every golden gained `feat_labels`; the ones with a human in them also gained a feat
+    (and whatever followed from holding it), and the ranger one gained its class feats.
 - **The build archetype now reads every feat the character holds** *(2026-11-15;
   `main_test.py`, the `_build` dict handed to `build_archetype.choose_build_archetype`)*. The
   scorer was given the general feat track alone. Class bonus feats, the story / flaw / flavor /
