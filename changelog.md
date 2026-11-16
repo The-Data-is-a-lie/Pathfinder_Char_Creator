@@ -19,6 +19,47 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Weapons, armor and shields can now be made of a special material, and carry a hardness /
+  hit point breakdown** *(2026-11-15; backend `utils/class_func/item_materials.py` +
+  `Backend/json/item_materials.json`, with the FoundryVTT module rendering it)*. Two changes that
+  ship together and are gated differently:
+  - **Special materials (plain PF1e, every random-mode character).** Adamantine, mithral, cold
+    iron, alchemical silver and darkwood. Each carried item rolls a chance that rises with its
+    share of the enhancement gold; a hit buys one legal material **before** the +N tier is
+    priced, capped at half that item's share, so a material thins the enchantment rather than
+    replacing it. The effects are applied, not just labelled: mithral armor shows its own max
+    Dex, check penalty, spell failure and weight; darkwood halves weight and eases a shield's
+    check penalty; adamantine armor's DR and silver's -1 damage travel as `armor_material_dr` /
+    `weapon_material_damage`. New payload keys `weapon_material`, `armor_material`,
+    `shield_material` hold the pf1 system's own material id (`''` for an ordinary item).
+  - **Durability breakdown (Sieg's Guide house rule, only with house rules on).** New payload
+    key `item_durability`: per item, a hardness total and a hit point total with the labelled
+    lines that sum to them -- weapon type (or armor bonus x 5) + substance + enhancement +
+    Impervious, then hit points x2 per size category above Medium and halved per category
+    below. Always on a Medium basis: the Foundry item stays size Medium and the size is a line
+    in the breakdown. `{}` with house rules off.
+  - *The decisions (grilled 2026-11-14/15), with what was rejected:*
+    materials roll for every character because they are printed PF1e (rejected: house-rules
+    only, and default-material-only with rolling deferred); **optimized builds roll none** and
+    make none of the new RNG draws, because the role ladders are tuned against a power metric
+    that does not score materials (rejected: same chance roll for everyone); the breakdown is
+    gated on `misc_homebrew_rules` through one helper, `item_materials.homebrew_enabled`, so the
+    planned master `homebrew` key is a one-line change (rejected: building that key first, a
+    dedicated switch, and maintaining a second printed-PF1e formula); the enhancement line
+    counts the **total effective bonus** -- flat +N plus each ability's bonus-equivalent, with
+    gold-priced abilities counting zero (rejected: flat +N only); **no mythic multiplier** --
+    the `x2 Mythic` line on the hand-built Spombagorn greatsword that the formula was read
+    from is not modelled, by ruling.
+  - *What changed for existing output:* random-mode characters make new RNG draws in the gear
+    phase, so nine goldens were re-baselined; the three `optimized_*` goldens and `initiator`
+    changed only by gaining the six new keys. `validate_item_materials.py` gates the table and
+    the code, including the greatsword example (hardness 40, 280 hit points) and four
+    sabotage-proven failure modes.
+  - *Known limits:* the weapon -> material / hardness-row map is a hand judgement over 305
+    weapons (the gate enforces coverage, not correctness -- correct a row in
+    `item_materials.json`); weapon `Impervious` carries inconsistent budget costs in
+    `weapon_qualities.json` (2 melee, 1 ranged) that this change reads around rather than
+    fixes; the power metric and the standalone web sheet do not read the new keys yet.
 - **A feature can now be dragged into a category the character has none of** *(sibling repo: the
   standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
   sheet and using the move dropdown, because a drag could only land in a list already on screen —

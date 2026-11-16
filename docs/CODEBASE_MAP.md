@@ -342,6 +342,34 @@ Canonical pool list + walker: `SECTIONS` / `dig()` / `entry_text()` / `norm_name
     `Foundry_VTT_Pf_1e_Handy_Macros/Base_Weapon_Damage_Dice.JS` (resource `sizefordamage`, two
     ladder positions per size category), with CRB Table 6-5 kept as a `raw_reference` recording
     the deliberate divergence. The backend never scales dice — it emits a marker; see below.
+- **Special materials + durability** — `item_materials.json` (curated; its `_readme` explains
+  every block) and `class_func/item_materials.py`, gated by `gates/validate_item_materials.py`.
+  Two things with **different gates**, on purpose:
+  - **Materials are printed PF1e and roll for every random-mode character** —
+    `item_materials.buy_material`, called per slot from `plan_enhancements`, pays for the
+    material out of that slot's own share *before* the +N tier is priced. The three tuning
+    constants (`MATERIAL_CHANCE_*`, `MATERIAL_MAX_SHARE_FRACTION`) live there and nowhere else.
+    **Optimized builds never reach it** (`role is None` guard in `plan_enhancements`): no draw,
+    no purchase, and the `optimized_*` goldens are the proof.
+  - **The durability breakdown is a Sieg's Guide house rule** — `durability_block` returns `{}`
+    unless `item_materials.homebrew_enabled` says so. That wrapper is the single line the
+    planned master `homebrew` key changes.
+  - **Every weapon needs a group.** `weapons_data.json` cannot say what a weapon is made of or
+    which hardness-table row it is, so `item_materials.json::weapons` is a hand-curated map and
+    the gate fails on any rollable weapon, armor or shield that is in no group. Adding a weapon
+    to `weapons_data.json` means adding it there too.
+  - **Material ids are the pf1 system's own** (`pf1.registry.materials`: `coldIron`,
+    `alchemicalSilver`, …), so the module writes them into `system.material` unmapped.
+  - **A material rewrites `armor_dict` / `shield_dict` with a COPY** of the row
+    (`material_effects`) — never the row, which is the dataset's own dict. Armor bonus never
+    moves. Adamantine DR and silver's damage penalty are not armor.json fields, so they travel
+    as `armor_material_dr` / `weapon_material_damage`.
+  - **Which abilities count toward the effective bonus is `bonus_equivalent`'s call**, read off
+    the quality's `price` cell — the `enhancement` int exists for *every* ability because the
+    budget needs a cost, including gold-priced ones like weapon Impervious, which must count 0.
+  - The block is built at **payload time**, not in the gear phase: it multiplies hit points by
+    the weapon's size, and `weapon_size_marker` is the first thing to know that.
+    Foundry items stay `size: med`; size is a line in the breakdown, never a field.
 - **Item names must resolve to `foundry_item_names.json`'s own spelling** —
   `item_and_price.ItemNameResolver` (exact case-insensitive → parenthesised variant, both
   directions → Title-Case as a deliberate miss). Title-Casing alone stranded every `" of "` name —
@@ -367,7 +395,8 @@ intersection of taboos, capped so a rolled arcane caster is not broken; `shield_
 `shield_band` / `shield_allowlist` / `shield_flag_func` — the ~20% roll, curated ten, tower by
 proficiency; `two_hand_shield_enabler` — the D7 ladder; `weapon_size_marker` — the oversize marker,
 called at the END of the pipeline because three of its five sources are feats) /
-armor_and_enhancements.py /
+armor_and_enhancements.py / item_materials.py (special materials: the per-slot purchase, the
+stat effects, and the house durability breakdown — see the data-directory entry) /
 item_and_price.py · path_of_war.py / path_of_war_funcs.py · psionics.py (power selection, power
 points, manifester level, the `manifesters` payload block, soulknife mind blade) · spheres.py ·
 wizard_school.py ·

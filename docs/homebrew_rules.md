@@ -31,6 +31,7 @@ the behaviour in the code. If the two disagree, the code wins and the bundle has
 | Homebrew feat pool, custom races | `house-rules/homebrew-content.md` | `feats.py` (disabled branch), `data/Metzofitz_Feats.csv` |
 | Feat tax / exemptions | `house-rules/feat-tax.md` | prerequisite checks in `feats.py`, `feat_tax.py` |
 | Optional systems turned on | `house-rules/optional-systems.md` | Path of War, Spheres, Skill Unlocks … |
+| Item durability (hardness / hit points built from type + substance + enhancement, hit points scaled by size) | *Combat References* sub-doc — no bundle page yet | `item_materials.py::durability_block`, tables in `Backend/json/item_materials.json`; on only when `item_materials.homebrew_enabled` |
 
 ## Implementation backlog
 
@@ -154,7 +155,7 @@ Highest-value, most generation-relevant first:
 | [Feat Tax / Exemptions](https://docs.google.com/document/d/1wv2IGBWFh4QUoCr_H5UtAsT1xxTVGNR1E_4sP-7_--w/edit) | ✅ | High |
 | [Deities](https://docs.google.com/document/d/1uDLW8VEryGgC_YcvG58rn6ef0oLEtx3IhRGKkvqWFxM/edit) | ⏳ | Med (deity randomization) |
 | [Rulesets/Fiats](https://docs.google.com/document/d/14EA3U5LZiBPIv0CzrcYv1--G368IcqaQ0lWSSVpXhOI/edit) | ⏳ | Med |
-| [Combat References](https://docs.google.com/document/d/1ANXtDCF8-6gzV1GeRiMHHtRKFFbXA7i2SLZMCUv-zas/edit) | ⏳ | Med |
+| [Combat References](https://docs.google.com/document/d/1ANXtDCF8-6gzV1GeRiMHHtRKFFbXA7i2SLZMCUv-zas/edit) | ⏳ | Med — **partly read:** **Equipment Hardness/Hitpoints + Substance Chart read and built 2026-11-15** (`item_materials.json`); the rest (object table, break DCs, combat maneuvers, conditions) is still unread |
 | [Luck](https://docs.google.com/document/d/1po0ieGEU2efK9iyj2QNeG0eeEyS9mXgIf6ptHE8v1pU/edit) | ✅ | **BUILT 2026-08-08** (generator side) — `class_func/luck.py`, spec §13; score, E-Kat feats, the 34 Luck Traits and the spent reserve; in-play d100 table still open |
 | [Techniques](https://docs.google.com/document/d/1j7mPSoMalZE5wLs9wmwRzycNpyfNwCRhqOiCP2tG-iA/edit) | ⏳ | Med (Path-of-War-like) |
 | [Spellcrafting](https://docs.google.com/document/d/1h5-RPODN97x-cs5cNkz10d65xY5-r1Y2mdikQQBbKC8/edit) | ⏳ | Med |
