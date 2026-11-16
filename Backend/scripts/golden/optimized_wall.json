@@ -565,6 +565,16 @@
    "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
   }
  },
+ "feat_labels": [
+  "Creation 1",
+  "E-Kat 1",
+  "E-Kat 2",
+  "E-Kat 3",
+  "Creation 2",
+  "Sphere 1",
+  "Sphere 2",
+  "Profession 1"
+ ],
  "feats": [
   "Animal Affinity",
   "Ass Pull",

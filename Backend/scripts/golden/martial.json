@@ -463,6 +463,19 @@
    "tier": "A"
   }
  },
+ "feat_labels": [
+  "E-Kat 1",
+  "E-Kat 2",
+  "E-Kat 3",
+  "E-Kat 4",
+  "E-Kat 5",
+  "Human",
+  "Creation 1",
+  "Profession 1",
+  "Profession 2",
+  "Profession 3",
+  "Profession 4"
+ ],
  "feats": [
   "Double Down",
   "Ass Pull",
@@ -470,6 +483,7 @@
   "Middle Finger",
   "Lucky Boy",
   "Siphon Poison",
+  "Technologist",
   "Multi Talented",
   "True Calling",
   "Always Improving",
@@ -558,6 +572,7 @@
   "Precise Strike": "You are skilled at striking where it counts, as long as an ally distracts your foe",
   "Shield Proficiency": "You are trained in how to properly use a shield",
   "Siphon Poison": "You can remove poison from afflicted creatures",
+  "Technologist": "You are familiar with the basic mechanics of technology. Normal You treat all skill checks made against technology as if they were untrained skill checks. This may mean that you cannot attempt certain skill checks, even if you possess ranks in the skill in question. you are considered to be trained in any skill used against a technology-based subject. if the skill in question requires training to use even against non-technological subjects, you must still have ranks in that skill in order to gain the of technologist.",
   "True Calling": "Your natural Profession rank cap rises to 15 in one qualifying profession."
  },
  "inherents": {
@@ -1103,7 +1118,7 @@
   "Martial Training V (Brutal Crocodile)"
  ],
  "mythic": null,
- "normal_feat_amount": 6,
+ "normal_feat_amount": 7,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",

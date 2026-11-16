@@ -635,6 +635,19 @@
    "name": "Demon Hunter (vs demons): +2 morale on attack rolls"
   }
  },
+ "feat_labels": [
+  "Human",
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Feat 3",
+  "Feat 5",
+  "Feat 7",
+  "Feat 9",
+  "Feat 11",
+  "Profession 1",
+  "Profession 2"
+ ],
  "feats": [
   "Prodigy (Profession (Sigil-Scribe), Profession (Whittler))",
   "Persuasive",
@@ -644,6 +657,7 @@
   "Shielded Caster",
   "Scholar",
   "Demon Hunter",
+  "Craft Construct",
   "Multi Talented",
   "True Calling"
  ],
@@ -739,6 +753,7 @@
  "hero_points": 1,
  "homebrew_feat_desc_dict": {
   "Alertness": "You often notice things that others might miss",
+  "Craft Construct": "You can create construct creatures like golems",
   "Craft Staff": "You can create magic staves",
   "Dazing Spell": "You can daze creatures with the power of your spells",
   "Deceitful": "You are skilled at deceiving others, both with the spoken word and with physical disguises",
@@ -1095,7 +1110,7 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "mythic": null,
- "normal_feat_amount": 8,
+ "normal_feat_amount": 9,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": [

@@ -447,6 +447,19 @@
    "name": "Shield of Swings: full-attack with a two-handed weapon, reduce your weapon damage by [[1/2]] to gain a +[[4]] shield bonus to AC and a +[[4]] shield bonus to CMD until your next turn"
   }
  },
+ "feat_labels": [
+  "Martial Training 1",
+  "Martial Training 2",
+  "Human",
+  "Sphere 1",
+  "Sphere 2",
+  "Sphere 3",
+  "Sphere 4",
+  "Profession 1",
+  "Profession 2",
+  "Profession 3",
+  "Profession 4"
+ ],
  "feats": [
   "Martial Training I (Radiant Dawn)",
   "Martial Training III (Radiant Dawn)",
@@ -454,6 +467,7 @@
   "Extra Combat Talent (Fortifying Phalanx / Invigorating Call)",
   "Extra Combat Talent (Call Attention / Advanced Notice)",
   "Extra Combat Talent (Projecting Voice / Disarming Roar)",
+  "Extra Combat Talent (Piercing Voice)",
   "Multi Talented",
   "True Calling",
   "Always Improving",
@@ -1010,7 +1024,7 @@
   "Martial Training V (Radiant Dawn)"
  ],
  "mythic": null,
- "normal_feat_amount": 6,
+ "normal_feat_amount": 7,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",

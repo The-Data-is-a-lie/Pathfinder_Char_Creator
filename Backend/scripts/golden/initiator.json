@@ -331,6 +331,15 @@
   }
  },
  "feat_conditionals_dict": {},
+ "feat_labels": [
+  "Creation 1",
+  "E-Kat 1",
+  "E-Kat 2",
+  "E-Kat 3",
+  "Creation 2",
+  "Profession 1",
+  "Profession 2"
+ ],
  "feats": [
   "Storm-Lashed",
   "Right of Deferment",

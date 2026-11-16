@@ -643,6 +643,19 @@
    "tier": "A"
   }
  },
+ "feat_labels": [
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Sphere 1",
+  "Sphere 2",
+  "Sphere 3",
+  "Sphere 4",
+  "Sphere 5",
+  "Sphere 6",
+  "Profession 1",
+  "Profession 2"
+ ],
  "feats": [
   "Saving Shield",
   "Life's Blood",

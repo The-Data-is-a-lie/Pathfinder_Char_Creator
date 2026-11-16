@@ -454,6 +454,18 @@
    "name": "Focused Discipline: +2 morale on attack rolls, weapon damage, and CMB vs a creature whose fear effect you just resisted (1 round)."
   }
  },
+ "feat_labels": [
+  "Human",
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Feat 3",
+  "Feat 5",
+  "Feat 7",
+  "Feat 9",
+  "Feat 11",
+  "Profession 1"
+ ],
  "feats": [
   "Arcane Weaponry (combat)",
   "Swarm Strike",
@@ -463,6 +475,7 @@
   "Prodigy (Profession (Coin-Picker), Profession (Squire-at-Arms))",
   "Liquid Courage",
   "Martial Training I",
+  "Critical Focus",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {},
@@ -546,6 +559,7 @@
   "Cleave": "You can strike two adjacent foes with a single swing",
   "Combat Medic": "You know the urgency of treating wounds in the heat of battle, applying first aid to your allies with such speed that you assure no one gets left behind",
   "Coordinated Charge": "You are an expert at leading your allies into the fray",
+  "Critical Focus": "You are trained in the art of causing pain",
   "Dark Embrace": "Shadows magically ward you, shielding you from harm. while in dim light, darkness, or supernatural darkness, you gain a +1 bonus to all saving throws. this is a supernatural effect.",
   "Deadly Finish": "Your attacks don't just fell your opponents-they kill them outright",
   "Focused Discipline": "Familiarity with the military traditions of your homeland inspires uncommon valor in you",
@@ -888,7 +902,7 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "mythic": null,
- "normal_feat_amount": 8,
+ "normal_feat_amount": 9,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",

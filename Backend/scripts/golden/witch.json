@@ -668,6 +668,17 @@
   }
  },
  "feat_conditionals_dict": {},
+ "feat_labels": [
+  "Human",
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Feat 3",
+  "Feat 5",
+  "Feat 7",
+  "Martial Training 1",
+  "Profession 1"
+ ],
  "feats": [
   "Disruptive Spell",
   "Gunsmithing",
@@ -676,6 +687,7 @@
   "Sea Legs",
   "Outer Planes Traveler",
   "Wild Talent",
+  "Martial Training I (Primal Fury)",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
@@ -1032,7 +1044,7 @@
   "Martial Training I (Primal Fury)"
  ],
  "mythic": null,
- "normal_feat_amount": 7,
+ "normal_feat_amount": 8,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",

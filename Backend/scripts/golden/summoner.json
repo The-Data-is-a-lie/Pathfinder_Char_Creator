@@ -691,12 +691,24 @@
   }
  },
  "feat_conditionals_dict": {},
+ "feat_labels": [
+  "Human",
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Martial Training 1",
+  "Martial Training 2",
+  "Profession 1",
+  "Profession 2",
+  "Profession 3"
+ ],
  "feats": [
   "Sea Legs",
   "Persuasive",
   "Celestial Obedience",
   "Spell Bluff",
   "Martial Training I (Brutal Crocodile)",
+  "Martial Training III (Brutal Crocodile)",
   "Multi Talented",
   "True Calling",
   "Always Improving"
@@ -1159,7 +1171,7 @@
   "Martial Training III (Brutal Crocodile)"
  ],
  "mythic": null,
- "normal_feat_amount": 5,
+ "normal_feat_amount": 6,
  "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 3 older sisters",
  "opposing_school": "N/A",

@@ -123,9 +123,6 @@
     "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
    },
-   "Actions (Purchased)": {
-    "Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
-   },
    "Feats Not Taken (reference)": {
     "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
     "Feat: Luck God": "[+4 Luck] All E-Kat costs (excluding the 99 tier and purchasing new Luck Traits) are cut in half; you gain a +2 bonus to all saves, attacks, ability checks, skill checks, AC, and Caster Level Checks. You gain a +4 Luck, and once per day can force a reroll in your favor.",
@@ -262,9 +259,6 @@
     "99 E-Kats: survive anything": "You may exchange 99 E-Kats to survive anything.",
     "Active modifiers": "Roll-based E-Kat bonuses are multiplied by 3 (Very Lucky Boy).",
     "Hero point for 5 E-Kats": "1 non-temporary Hero Point can be exchanged for 5 E-Kats (not multiplied by Lucky Boy)."
-   },
-   "Actions (Purchased)": {
-    "Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
    },
    "Feats Not Taken (reference)": {
     "Feat: Double Down": "[+1 Luck] Double permanent E-Kat acquisition.",
@@ -537,6 +531,19 @@
    "tier": "A"
   }
  },
+ "feat_labels": [
+  "Human",
+  "E-Kat 1",
+  "E-Kat 2",
+  "E-Kat 3",
+  "E-Kat 4",
+  "E-Kat 5",
+  "Creation 1",
+  "Creation 2",
+  "Feat 1",
+  "Feat 3",
+  "Profession 1"
+ ],
  "feats": [
   "Combat Reflexes",
   "Ass Pull",
@@ -547,6 +554,7 @@
   "Noble Scion",
   "Iron Will",
   "Vicious Stomp",
+  "Blind-Fight",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
@@ -634,6 +642,7 @@
  "hero_points": 3,
  "homebrew_feat_desc_dict": {
   "Ass Pull": "Gain 4 E-Kats per session that expire upon the session's end, and a +4 Luck.",
+  "Blind-Fight": "You are skilled at attacking opponents that you cannot clearly perceive",
   "Catch Off-Guard": "Foes are surprised by your skilled use of unorthodox and improvised weapons",
   "Combat Reflexes": "You can make additional attacks of opportunity",
   "Cooperative Crafting": "Your assistance makes item crafting far more efficient",
@@ -1001,11 +1010,11 @@
    "target": 6
   },
   "trait_benefits": {
-   "E-Kat Exchange: Auto-Dodge": "After an enemy crit, they reroll twice and if neither attacks crit, avoid the attack altogether 10 E-Kats."
+   "Lucky Survivor": "Each Luck Point can reduce damage by 2 rather than one."
   },
   "trait_changes": {},
   "traits": [
-   "E-Kat Exchange: Auto-Dodge"
+   "Lucky Survivor"
   ],
   "twist_fate_per_day": 0,
   "type": "Default",
@@ -1213,7 +1222,7 @@
   "Martial Training V (Roaring Mouse)"
  ],
  "mythic": null,
- "normal_feat_amount": 9,
+ "normal_feat_amount": 10,
  "older_brothers": " you have 1 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",

@@ -413,6 +413,19 @@
   }
  },
  "feat_conditionals_dict": {},
+ "feat_labels": [
+  "Human",
+  "Creation 1",
+  "Creation 2",
+  "Sphere 1",
+  "Sphere 2",
+  "Sphere 3",
+  "Sphere 4",
+  "Sphere 5",
+  "Sphere 6",
+  "Sphere 7",
+  "Profession 1"
+ ],
  "feats": [
   "Wild Talent",
   "Masked Identity",
@@ -423,6 +436,7 @@
   "Extra Magic Talent (Beam / Repelling Light)",
   "Extra Magic Talent (Style / Visual Overload)",
   "Extra Magic Talent (Daylight)",
+  "Twilight Adept",
   "Multi Talented"
  ],
  "feats_feat_tax_dict": {
@@ -851,7 +865,7 @@
  "mod_char_sheet_var": false,
  "mt_feats": [],
  "mythic": null,
- "normal_feat_amount": 9,
+ "normal_feat_amount": 10,
  "older_brothers": " you have 0 older brothers",
  "older_sisters": " you have 0 older sisters",
  "opposing_school": "N/A",
