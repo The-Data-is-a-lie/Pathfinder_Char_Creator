@@ -29,8 +29,8 @@
  "bloodline_feats": [],
  "bonded_creatures": [],
  "buff_gaps": [],
- "build_archetype": "HP Tank",
- "build_tactics": "Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.",
+ "build_archetype": "Brawler",
+ "build_tactics": "Flurries unarmed strikes every round it can stand still, mixing in stunning or ki riders to stack conditions onto the damage. Uses superior speed to pick fights and unarmored defenses to survive them.",
  "c_class": "warlord",
  "c_class_2": "",
  "c_class_display": "Warlord",
@@ -368,7 +368,7 @@
  "flaw_feats": [
   "Athletic"
  ],
- "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: HP Tank\n- Tactics: Wades in and lets the enemy hit it -- rage, damage reduction, and a deep hit-point pool mean the math favors it in any war of attrition. Holds attention by being impossible to ignore and too tough to finish.\n- Stat Focus: Cha\n- Disciplines: Thrashing Dragon, Primal Fury, Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Distance Thrower, Lunge, Swarm Strike\n- Training: An average trainer who taught them Siphon Poison, Nimble Moves\n- Training: An average trainer who taught them Bloodletting, Defensive Combat Training\n- Training: An average (Path of War) trainer who taught them Primal Fury Style, Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Bald Red\n- Eyes: Grey\n- Build: Old-fashioned",
+ "formatted_bio": "Pascal Bertin\n- Alignment: Lawful Neutral\n- Deity: Ragathiel\n- Race: Half-Orc\n- Class: Level 10 Warlord\n- Archetype: Brawler\n- Tactics: Flurries unarmed strikes every round it can stand still, mixing in stunning or ki riders to stack conditions onto the damage. Uses superior speed to pick fights and unarmored defenses to survive them.\n- Stat Focus: Cha\n- Disciplines: Thrashing Dragon, Primal Fury, Golden Lion\n- Homeland: Tal-falko\n\nVocation\n- Profession: Fishing Boat Captain (rank 15)\n- Profession: Penitent Novice (rank 6)\n- Profession: Privateer (rank 4)\n- Known for: Basketweaving\n- Training: An excellent trainer who taught them Distance Thrower, Lunge, Swarm Strike\n- Training: An average trainer who taught them Siphon Poison, Nimble Moves\n- Training: An average trainer who taught them Bloodletting, Defensive Combat Training\n- Training: An average (Path of War) trainer who taught them Primal Fury Style, Thrashing Dragon Style\n\nFamily\n- Loving Mother\n- Loving Father\n- Raised In A Poor Household\n- 2 Older Sisters\n\nPersonality\n- Personality: Wise, Egotistic, Assertive, Just, Disruptive, Self-sufficient\n- Mannerisms: Grits teeth, Leans back\n- Flaws: Beady Eyes\n\nAppearance\n- Hair: Bald Red\n- Eyes: Grey\n- Build: Old-fashioned",
  "full_domain": [],
  "gender": "Male",
  "generation_seed": 1004,

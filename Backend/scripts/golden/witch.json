@@ -262,8 +262,8 @@
   }
  ],
  "buff_gaps": [],
- "build_archetype": "Debuffer",
- "build_tactics": "Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.",
+ "build_archetype": "Magic Battlefield Controller",
+ "build_tactics": "Never races the enemy's damage -- changes the terms instead: a wall splits their line, a pit deletes a flanker, fog blinds the archers. Each round it removes options until the survivors stand exactly where its party wants them.",
  "c_class": "witch",
  "c_class_2": "",
  "c_class_display": "Witch",
@@ -727,7 +727,7 @@
   "Celestial Obedience",
   "Arcane Vendetta"
  ],
- "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Debuffer\n- Tactics: Targets the enemy's weakest save and stacks penalties until failure is arithmetic -- then the hold, hex, or curse ends that combatant without a damage roll. Spreads afflictions wide when no single target dominates the fight.\n- Stat Focus: Int\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Bald Black\n- Eyes: Amber\n- Build: Squat",
+ "formatted_bio": "Lucie Giguère\n- Alignment: Neutral Good\n- Deity: Kurgess\n- Race: Human\n- Class: Level 12 Witch\n- Archetype: Magic Battlefield Controller\n- Tactics: Never races the enemy's damage -- changes the terms instead: a wall splits their line, a pit deletes a flanker, fog blinds the archers. Each round it removes options until the survivors stand exactly where its party wants them.\n- Stat Focus: Int\n- Disciplines: Primal Fury\n- Homeland: Tal-falko\n\nVocation\n- Profession: Ship's Clerk (rank 10)\n- Profession: Clerk (rank 7)\n- Profession: Friar (rank 10)\n- Known for: Winemaking\n\nFamily\n- Dead Mother\n- Loving Father\n- Raised In A Middle Income Household\n- No Siblings\n\nPersonality\n- Personality: Compassionate, Cordial, Intentional, Realistic\n- Mannerisms: Rests hand on hip, Peers over glasses, Winks, Lifts chin\n- Flaws: Rain Confounded, Haunted\n\nAppearance\n- Hair: Bald Black\n- Eyes: Amber\n- Build: Squat",
  "full_domain": [],
  "gender": "Female",
  "generation_seed": 9101,
