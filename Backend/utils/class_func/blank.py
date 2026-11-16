@@ -40,17 +40,17 @@ score increases, spells known and skill ranks. The sheet already carries the ite
 character records its ability increases on (the ``level_up_stats`` buff, here with every value 0),
 and the other two are the sheet's own Spells and Skills tabs -- a placeholder for them was clutter.
 
-THE NAMES ARE THE CLIENT'S. A row's ``label`` is the bare tag text ("Fighter 4", "Trainer 1",
-"Flaw, Minor"); the FoundryVTT module wraps it as "(Fighter 4)" and numbers the general, story,
-flavor and flaw feats itself, with the same numbering it gives a generated character's feats, so
-a blank sheet and a generated one read alike.
+A ROW'S LABEL IS A BARE TAG ("Fighter 4", "Trainer 1", "Flaw, Minor"), which the FoundryVTT module
+wraps as "(Fighter 4)". A general feat row is tagged with its SOURCE -- "Human", "Creation 1",
+"Feat 5" (``feat_sources.general_slot_labels``), the names a generated character's ``feat_labels``
+carry too. The story, flavor and flaw feats the module numbers itself, as it always has.
 """
 import re
 from math import ceil
 
-from .extra_combat_feats import (bloodline_bonus_feat_levels, class_bonus_feat_levels,
-                                 class_bonus_feat_slots, teamwork_feat_slots)
-from .feat_level_assignment import normal_feat_slot_levels
+from .extra_combat_feats import (bloodline_bonus_feat_levels, class_bonus_feat_slots,
+                                 teamwork_feat_slots)
+from .feat_sources import class_grant_slots, general_slot_labels
 from .flag_assign import human_flag_assigner
 from .generic_func import levels_for
 from .level_and_bab import update_level
@@ -167,9 +167,10 @@ def slots(character, trainers_enabled=False):
     nothing in particular does), and ``bucket`` the class-choice bucket for a ``class_features``
     row.
 
-    The general, story, flavor and flaw feat rows carry only their tag word as a label: the
-    client numbers those rows itself, the way it numbers a generated character's. Their ``level``
-    is still the level each general feat is really gained at, for a client that wants it.
+    The story, flavor and flaw feat rows carry only their tag word as a label: the client numbers
+    those rows itself, the way it numbers a generated character's. A general feat row's label is
+    its source -- "Human", "Creation 1", "Feat 5" -- from ``feat_sources.general_slot_labels``,
+    the same names a generated character's ``feat_labels`` use.
     """
     rows = []
 
@@ -181,12 +182,13 @@ def slots(character, trainers_enabled=False):
     # The feat economy, asked of its owner for THIS sheet: the pinned level, and the flaws a blank
     # sheet leaves room for (which is what sizes the flaw-feat grant).
     update_level(character, character.level, len(BLANK_FLAWS) if house_flaws else 0)
-    general = character.normal_feat_amount
     human_flag_assigner(character)
-    general += 1 if getattr(character, 'human_flag', False) else 0
 
-    for level in normal_feat_slot_levels(character, general):
-        add('feats', 'feat', 'Feat', level=level)
+    # The general track, one row per slot, each named for where it comes from: "Human",
+    # "Creation 1", "Feat 5" (feat_sources.py). On a blank sheet no slot has been spent on a
+    # profession or a martial path, so every slot is still there.
+    for label in general_slot_labels(character):
+        add('feats', 'feat', label)
     for _index in range(character.story_feat_amount):
         add('story_feats', 'feat', 'Story Feat')
     for _index in range(character.flavor_feat_amount):
@@ -197,15 +199,12 @@ def slots(character, trainers_enabled=False):
     # "<Class> <level>": the shape the payload's own class_feat_labels have.
     for display, level in class_bonus_feat_slots(character):
         add('class_feats', 'feat', f'{display} {level}', cls=display, level=level)
+    # The monk's bonus feats and the ranger's combat style feats: class bonus feats too, granted
+    # from lists of the class's own (feat_sources.class_grant_slots).
+    for display, level in class_grant_slots(character):
+        add('class_feats', 'feat', f'{display} {level}', cls=display, level=level)
     for entry in character.classes:
         name, display = entry['name'], entry['display']
-        # The monk's bonus feats are outside class_bonus_feat_slots (the generator picks them from
-        # the monk's own list and deals them into the general feat rows), so they are not
-        # `class_feats` in the payload's sense -- but they are owed, and on a blank sheet they
-        # belong with the bonus feats. Hence their own section.
-        if _base_name(name) == 'monk':
-            for level in class_bonus_feat_levels('monk', entry['level']):
-                add('monk_feats', 'feat', f'{display} {level}', cls=display, level=level)
         for level in bloodline_bonus_feat_levels(name, entry['level']):
             add('bloodline_feats', 'feat', f'{display} {level}', cls=display, level=level)
     for display, level in teamwork_feat_slots(character):

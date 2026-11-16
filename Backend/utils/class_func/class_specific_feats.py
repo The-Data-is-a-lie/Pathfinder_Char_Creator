@@ -18,11 +18,21 @@ def class_specific_feats_chooser(character, c_class, name_1, name_2, name_3=None
         character.total_feats.extend(extra_feat_list)
     return []
 
+# The ranger levels that grant a combat style feat. Named because feat_sources.py labels each
+# granted feat with the level it came at ("Ranger 6").
+RANGER_STYLE_FEAT_LEVELS = (2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42)
+
+
+def ranger_style_feat_levels(level):
+    """The ranger levels, up to ``level``, at which a combat style feat is granted."""
+    return [at for at in RANGER_STYLE_FEAT_LEVELS if at <= level]
+
+
 def ranger_feats_chooser(character):
     class_entry = class_entry_for(character, 'ranger')
     if class_entry is not None:
         ranger_class_level = class_entry['level']
-        ranger_feats = [2,6,10,14,18,22,26,30,34,38,42]
+        ranger_feats = list(RANGER_STYLE_FEAT_LEVELS)
         choice = list(character.ranger.keys())
         random_combat_style = random.choice(choice)
         ranger_feats_chosen_list=set()

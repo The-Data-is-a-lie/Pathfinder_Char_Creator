@@ -59,6 +59,8 @@ REBUILT = {'str', 'dex', 'con', 'int', 'wis', 'cha', 'inherents', 'level_up_stat
 EMPTY = ([], {}, '', 0, None, False)
 # Slot sections a blank sheet does not carry (ability increases, spells known, skill ranks).
 RULED_OUT_SECTIONS = {'abilities', 'spells', 'skills'}
+# The classes whose bonus feats come from a list of the class's own (feat_sources.class_grant_slots).
+LIST_GRANTED = {'monk', 'ranger'}
 # A label is a tag the client wraps in parentheses -- "Barbarian (Unchained) 12" is the long end.
 MAX_LABEL = 40
 
@@ -142,9 +144,19 @@ def check_counts_are_the_generators(report):
         sections = Counter(row['section'] for row in sheet['slots'])
         for section, key in (('class_feats', 'class_feats'), ('teamwork_feats', 'teamwork_feats'),
                              ('story_feats', 'story_feats')):
-            report.check(sections[section] == len(real.get(key) or []),
+            held = len(real.get(key) or [])
+            if section == 'class_feats' and name.replace(' (unchained)', '') in LIST_GRANTED:
+                # The monk and the ranger are granted bonus feats from a list of the class's own,
+                # and a pick can come to nothing on a generated character: the list runs out, or
+                # the pick is one of the feats the campaign gives everyone free. The class still
+                # OWES the slot, which is what a blank sheet shows -- so at least one, never more.
+                report.check(1 <= held <= sections[section],
+                             f'{where}: {sections[section]} {section} slots, but a generated {name} 10 '
+                             f'has {held} {key}')
+                continue
+            report.check(sections[section] == held,
                          f'{where}: {sections[section]} {section} slots, but a generated {name} 10 '
-                         f'has {len(real.get(key) or [])} {key}')
+                         f'has {held} {key}')
         # Every class choice the generated character picked in has a slot bucket on the blank one.
         # (Not the reverse: an archetype can trade a bucket away, and a blank sheet has none.)
         offered = {str(row['bucket']).replace('_', ' ').lower() for row in sheet['slots']

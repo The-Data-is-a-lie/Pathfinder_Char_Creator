@@ -72,6 +72,7 @@ from utils.class_func.feats 						import (build_selector, chooseable_list, choos
 from utils.class_func.feats_to_chooseable 			import add_feats_to_chooseable
 from utils.class_func.feats						import pinned_feat_chooser
 from utils.class_func								import blank
+from utils.class_func								import feat_sources
 from utils.class_func.feat_tax 						import feat_tax_func, feat_spell_searcher
 from utils.class_func.feat_skill_choice 			import FREE_AT_BAB1, filter_free_feats, specialize_skill_choice_feats
 from utils.class_func.weapon_focus_buffs import weapon_focus_changes
@@ -1751,12 +1752,14 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 		build_selector_feats = build_selector(character)
 		character.feats.extend(build_selector_feats)
 
-	# Merge the class-specific bonus feats selected above (monk bonus feats / ranger combat-style
-	# feats) into the feat list. The truly-random branch reassigns character.feats, so we add them
-	# here for BOTH paths so they survive (single merge point, replacing the choosers' old extend).
-	# capitalize_feats normalizes names so they match Foundry's compendium lookup (as bloodline feats do).
-	character.feats.extend(capitalize_feats(character, list(grants.ranger_style_feats)))
-	character.feats.extend(capitalize_feats(character, list(grants.monk_bonus_feats)))
+	# The class-specific bonus feats selected above (monk bonus feats / ranger combat-style feats)
+	# are NOT merged into this list any more. They used to be, and the general track's count
+	# guarantee -- which holds the list to normal_feat_amount exactly -- then trimmed most of them
+	# straight back off: a monk 10 was granted four bonus feats and kept one, a ranger 10 three
+	# combat style feats and kept none or one (measured 2026-11-16). They are class bonus feats,
+	# so they join class_feats with their own "Monk 2" / "Ranger 6" labels once the general track
+	# is settled (generate_random_char, via feat_sources.class_grant_rows). They stay registered
+	# in character.chooseable, so nothing here re-picks one.
 	# E-Kat picks join here, in canonical casing straight from the curated table -- the Foundry
 	# module and the resolution phase both match on these names, and capitalize_feats would re-case
 	# them. They ride the same dedupe and the same feat-tax/swap pass as everything else, which is
@@ -1782,9 +1785,9 @@ def phase_feat_selection(character, grants, skill_ranks, truly_random_feats, tea
 
 	# Shared shortfall top-up (both feat paths): the type/caster-filtered pools can run dry
 	# before the budget is met (and the dedupe above can drop a cross-source duplicate).
-	# Target = the requested budget plus the class-granted ranger/monk merges, which sit on
-	# top of character.feat_amounts (only their unfilled surplus was folded into it).
-	_expected_feat_total = character.feat_amounts + len(grants.ranger_style_feats) + len(grants.monk_bonus_feats)
+	# Target = the requested budget. (The ranger / monk class grants are no longer in this list;
+	# only the slots their lists could not fill were folded into feat_amounts.)
+	_expected_feat_total = character.feat_amounts
 	if len(character.feats) < _expected_feat_total:
 		character.feats.extend(topup_feat_chooser(character, casting_level_str, _expected_feat_total - len(character.feats)))
 
@@ -1890,7 +1893,6 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 		"class": character.class_feats_amount,
 		"normal": character.feat_amounts - character.story_feat_amount - character.flaw_feat_amount
 			- character.flavor_feat_amount - character.class_feats_amount
-			+ len(grants.ranger_style_feats) + len(grants.monk_bonus_feats)
 			+ len(pw.mt_feats) + len(pw.style_feats) - pw._pow_funded_n,
 		"teamwork": character.teamwork_feats,
 		"bloodline": len(grants.bloodline_feats),
@@ -2195,6 +2197,20 @@ def phase_feat_tax_and_swaps(character, feats, grants, pw, casting_level_str,
 		feats.extend(profession_feats)
 		for _pf_name, _pf_desc in profession_feat_desc.items():
 			pw.homebrew_feat_desc_dict[_pf_name] = _pf_desc
+
+	# The monk's bonus feats and the ranger's combat style feats join the class bonus feats HERE,
+	# after the general track is settled, labelled with the class level each came at (see the note
+	# in phase_feat_selection for why they are no longer in the general list). The label list is
+	# padded first so the new rows stay aligned with their feats, and the class budget grows by
+	# the same rows so the feat-row audit still reads true.
+	_grant_names, _grant_labels = feat_sources.class_grant_rows(
+		character, grants.monk_bonus_feats, grants.ranger_style_feats,
+		lambda names: filter_free_feats(capitalize_feats(character, names)))
+	if _grant_names:
+		class_feat_labels = list(class_feat_labels) + [None] * (len(class_feats) - len(class_feat_labels))
+		class_feats = [*class_feats, *_grant_names]
+		class_feat_labels = [*class_feat_labels, *_grant_labels]
+		feat_budget['class'] = feat_budget.get('class', 0) + len(_grant_names)
 
 	return PhaseRecord(
 		feats=feats,
@@ -3404,6 +3420,17 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# BLANK MODE: what a blank sheet is owed and has not chosen. Always present and always a
 		# list -- `[]` for every generated character, filled only by blank.apply below.
 		payload["slots"] = []
+		# Where each general feat row comes from -- see utils/class_func/feat_sources.py. Read off
+		# the final list, so it is parallel to what the payload actually carries.
+		payload["feat_labels"] = feat_sources.general_feat_labels(
+			character, payload.get("feats") or [],
+			feat_sources.spent_sources(
+				profession=profession_feats,
+				martial=[*(pw.mt_feats or []), *(pw.style_feats or [])],
+				sphere=pw.sphere_feats,
+				e_kat=getattr(character, 'e_kat_feats_chosen', None),
+				luck=getattr(character, 'luck_bought_feats', None),
+				granted=_enabler_feats))
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
 			for _gap_line in format_gaps(_buff_gaps):

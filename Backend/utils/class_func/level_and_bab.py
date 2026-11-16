@@ -157,6 +157,16 @@ def _sync_legacy_class_aliases(character):
         character.capped_level_2 = 0
 
 
+# The house feat economy's creation feats (oks/pathfinder/house-rules/feat-economy.md: "+2 at
+# character creation"). Named because feat_sources.py labels those two slots on the sheet.
+CREATION_FEATS = 2
+
+
+def level_feat_count(level):
+    """How many feats a character has from its levels alone: PF1's one at every odd level."""
+    return ceil(level / 2)
+
+
 #should this be update feats, since we're updating feat amount [it 100% depends on level]
 def update_level(character, level, flaw_amount=None):
     """House feat economy (oks/pathfinder/house-rules/feat-economy.md): on top of the PF1 odd-level
@@ -168,13 +178,13 @@ def update_level(character, level, flaw_amount=None):
     character.level = level
     flaws = flaw_amount or 0
 
-    character.normal_feat_amount = ceil(character.level / 2)
+    character.normal_feat_amount = level_feat_count(character.level)
     character.flaw_feat_amount = (min(floor(flaws / 2 + 1), 3)
                                   if flaws and misc_homebrew_enabled(character) else 0)
     character.story_feat_amount = 0
     character.flavor_feat_amount = 0
     if character.homebrew_feat_amount not in ('N', 'n'):
-        character.normal_feat_amount += 2   # creation feats
+        character.normal_feat_amount += CREATION_FEATS
         character.story_feat_amount = 1 + floor(character.level / 5)
         character.flavor_feat_amount = 1
 

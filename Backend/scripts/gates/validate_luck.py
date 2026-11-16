@@ -500,7 +500,7 @@ def check_payload_contract():
                           'weapon_size_source', 'weapon_size_attack_penalty',
                           'weapon_material', 'armor_material', 'shield_material',
                           'armor_material_dr', 'weapon_material_damage', 'item_durability',
-                          'selection_report', 'slots'},
+                          'selection_report', 'slots', 'feat_labels'},
                  f"'luck' must sit at the tail of the content keys so no existing key shifts "
                  f"position; keys after it: {sorted(tail)}")
 

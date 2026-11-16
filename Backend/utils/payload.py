@@ -270,6 +270,10 @@ PAYLOAD_KEYS = (
 	# not chosen -- `{section, kind, label, class, level, bucket}`. Always present and always a
 	# list; `[]` on every generated character, so a client draws placeholders only for a blank one.
 	'slots',
+	# One source label per row of `feats`, parallel to it (utils/class_func/feat_sources.py):
+	# "Human", "Creation 1", "Feat 3", "Profession 1", "Martial Training 2", ... A client wraps it
+	# as "(Feat 3) <name>". `[]` on a blank sheet, whose feat rows are `slots`.
+	'feat_labels',
 	'generator_version',
 	'license_url',
 )
