@@ -19,6 +19,46 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **Build concepts can pin feats** *(2026-11-15; backend `utils/class_func/selection.py` +
+  `feats.py::pinned_feat_chooser`, with a Feats section in the FoundryVTT module's concept
+  editor)*. A `selection` may now carry `feats`, a list of feat names. Each pinned feat is taken
+  before any random feat is drawn and sits in an ordinary feat slot.
+  - *Working toward a feat (ruled 2026-11-15).* A prerequisite that is itself a feat is taken
+    first -- pin Great Cleave and Cleave comes with it -- each costing a slot. When no stat
+    priority is pinned, a rolled score that is already high enough is moved to an ability a
+    pinned feat needs (`stats.meet_ability_floors`: scores are swapped, never raised, and the
+    class's main stats are never the donor). What still cannot be met -- a base attack bonus, an
+    ability no rolled score reaches, a class level, no slot left -- is dropped and named in
+    `selection_report` with the requirement that failed. *Rejected:* dropping a pin whose
+    prerequisite feats are missing, which makes almost every chain fail unless every link is
+    pinned by hand; and granting the feat regardless, which produces characters that are not
+    rules-legal.
+  - *Legality is the generator's own test.* A pin is checked against `character.chooseable` with
+    the same prerequisite fragments the random chooser reads, so a pin can never be taken on
+    terms a random pick could not. *Rejected:* a second prerequisite parser for pins.
+  - *No free feats.* Pinned feats come out of the feat budget, as pinned spheres' talents do. A
+    feat the character already holds by rule or by class (the free feats at base attack bonus
+    +1) is honoured without a slot.
+  - *Where they sit.* Under the ordinary Feats heading; pins beyond the ordinary slots spill into
+    class bonus feat slots (a fighter who pins eight feats has the slots for them). Story, flaw
+    and flavor slots are not used. When the feat track is oversubscribed, pinned feats are the
+    last rows trimmed. *Rejected:* letting pins be dealt into story/flaw/flavor slots like any
+    other pick, which labels a feat the player asked for by name as a flaw feat.
+  - *Names.* A feat is pinned by its base name; "Weapon Focus (longsword)" pins Weapon Focus,
+    because the generator does not model that choice. `GET /selection_options` gains `feats`
+    (name, type, and whether it is from the homebrew library); a homebrew feat pinned with
+    homebrew feats off is reported. Mythic, E-Kat, luck and Martial Training feats are not
+    pinnable -- each belongs to a subsystem with its own currency.
+  - *What changed for existing output:* nothing. No pin, no draw: the goldens did not move.
+  - *Gates:* `validate_selection.py` (every offered feat resolves; the ability-floor swaps) and
+    `test_selection.py` (pinned feats land, chains are pulled in, pinning does not lengthen any
+    feat row, an unmeetable pin is reported; sabotage-proven like the other pins).
+- **The Foundry module's concept editor has a Feats section** *(sibling repo: the FoundryVTT
+  module, `scripts/selection-concepts.js`, branch `feat/selection-feats-build`, 2026-11-15)*. A
+  text box with type-ahead over the backend's feat list, an Add button, and a removable chip per
+  pinned feat. *Rejected:* a checkbox or multi-select list, which is unusable at well over a
+  thousand feats. Against a backend that does not offer feats the section is not drawn, and a
+  concept's stored feats are carried through a save untouched.
 - **Selection mode: pin a build concept and let the generator roll the rest** *(2026-11-15;
   backend `utils/class_func/selection.py`, with the FoundryVTT module's build-concept editor)*.
   Until now only the first class could be asked for; multiclass partners, the level split, wizard
