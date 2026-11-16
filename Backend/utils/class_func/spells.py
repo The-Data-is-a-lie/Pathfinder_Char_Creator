@@ -352,6 +352,11 @@ def spells_known_selection(character, class_entry):
         if _role and not _role.get('casting'):
             from utils.class_func.power_role import buff_spell_names
             query_i.loc[query_i['name'].str.lower().isin(buff_spell_names()), 'weight'] *= 1000
+        # SELECTION MODE: a pinned build favours the spell families its entry weights (a Healer's
+        # cures, a Blaster's fireballs) and disfavours the ones it weights against. Untouched
+        # without a pinned build, or when the entry names no spell family.
+        from utils.class_func import build_steer
+        query_i = build_steer.weight_spells(character, query_i)
         # Don't want more spells selected than there are in the list
         select_spell=min(select_spell_list[i], len(query_i), select_spell)
         # only sample required number of spells

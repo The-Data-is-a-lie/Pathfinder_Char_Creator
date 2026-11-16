@@ -316,6 +316,12 @@ def shield_chooser(character, dictionary):
     role = getattr(character, 'role', None)
     if role and role.get('weapon_policy') == 'one_handed_shield':
         carries = True
+    # SELECTION MODE: a pinned build that weights, requires or vetoes the shield decides it, after
+    # the roll for the same reason. None (no build, or no opinion) leaves the roll standing.
+    from utils.class_func import build_steer
+    steered = build_steer.wants_shield(character)
+    if steered is not None:
+        carries = steered
 
     if not carries:
         return None
@@ -390,6 +396,12 @@ def list_selection(character, name, limits=None, shield_flag=True, allow=None):
         choice_2 = None
         if name == 'weapons_data':
             choice_2 = optimized_weapon_pick(character, section, useable_weapons)
+            if choice_2 is None:
+                # SELECTION MODE: a pinned build picks its weapon STYLE from the same legal pool
+                # (random among the weapons the entry likes best). None -> the draw below.
+                from utils.class_func import build_steer
+                choice_2 = build_steer.weapon_pick(
+                    character, section, [item for item in result if item in useable_weapons])
         elif name == 'armor':
             choice_2 = optimized_armor_pick(character, section)
         if choice_2 is None:
@@ -498,6 +510,18 @@ def _legal_band(character):
 
 
 # here to help create AC calculation
+def _band_wearable(character, band):
+    """Whether anything in ``band``'s section survives the character's armor taboo (None, wearing
+    nothing, always does). The same test _legal_band walks down with."""
+    if band is None:
+        return True
+    allowed = getattr(character, 'armor_allow', None)
+    if allowed is None:
+        return True
+    sections = getattr(character, 'armor', {}) or {}
+    return bool(set(allowed) & set(sections.get(BAND_SECTION[band], {})))
+
+
 def armor_chooser(character):
     """Set `character.armor_type` to the heaviest band the character may legally wear.
 
@@ -509,6 +533,16 @@ def armor_chooser(character):
     # This is the first of the two gear choosers, so it OWNS the reset; shield_chooser appends.
     character.enabler_feats = []
     character.armor_type = _legal_band(character)
+    # SELECTION MODE: a pinned build may want LESS armor than the character could wear (an
+    # unarmored archer, a lightly armored charger). Only bands at or below the legal one are
+    # offered, so this can never put a character in armor it is not proficient with.
+    from utils.class_func import build_steer
+    legal = character.armor_type
+    wearable = [band for band in ARMOR_BANDS[:ARMOR_BANDS.index(legal) + 1]
+                if _band_wearable(character, band)]
+    character.armor_type = build_steer.armor_band(character, legal, wearable)
+    if character.armor_type is None:
+        character.asf_exposed_by = None          # no armor, no spell failure to answer for
 
     # D13's other half. A caster that chose to wear armour its class does not exempt "just needs to
     # commit to one of the feats that decrease spell failure" -- so it is handed the cheapest one,

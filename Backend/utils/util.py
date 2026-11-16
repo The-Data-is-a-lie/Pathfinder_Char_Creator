@@ -248,6 +248,14 @@ def chooseClass(character, class_choice, chosen_BAB, chosen_caster_level=None):
     if not class_choice in available_classes:
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes, "bab", chosen_BAB)
         available_classes_manip = ensure_BAB_and_caster_level(character, available_classes_manip, "casting level", chosen_caster_level)
+        # SELECTION MODE: a pinned build with no pinned class draws from the classes that can
+        # BE that build (build_steer.fitting_classes), inside whatever the BAB / caster-level /
+        # group filters above left. No build pinned -> [] -> the draw below is the one it always
+        # was, from the same list.
+        from utils.class_func import build_steer
+        fitting = build_steer.fitting_classes(character, available_classes_manip or available_classes)
+        if fitting:
+            available_classes_manip = fitting
         try:
             class_choice = random.choice(available_classes_manip)
         except:

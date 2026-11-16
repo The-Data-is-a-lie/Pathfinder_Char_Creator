@@ -3002,6 +3002,8 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# deterministic scorer runs (identically) either way.
 		_arch_result = choose_build_archetype(_build, use_api=str(use_backstory_api).upper() == "Y")
 		build_archetype = str(_arch_result)
+		# SELECTION MODE: a pinned build is a steer, and this is where it is measured.
+		selection.audit_build(character, _build, _arch_result)
 		build_tactics = _arch_result.tactics
 		print(f"build archetype -> {build_archetype} ({_arch_result.confidence} confidence, "
 			  f"contenders {_arch_result.contenders})")

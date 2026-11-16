@@ -23,6 +23,10 @@ def roll_stats(character, num_dice, num_sides, inherent_flag='Y'):
     if '/' in main_stat:
         main_stat_parts = main_stat.split('/')
         main_stat = random.choice(main_stat_parts)
+        # SELECTION MODE: a pinned build that weights one of the alternatives takes that one. The
+        # draw above still happens, so the stream is the same either way.
+        from utils.class_func import build_steer
+        main_stat = build_steer.preferred_main_stat(character, main_stat_parts, main_stat)
 
     character.main_stat = main_stat
     character.main_stat_2 = main_stat_2

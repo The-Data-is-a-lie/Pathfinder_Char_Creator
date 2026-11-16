@@ -34,7 +34,8 @@ The choosers that honour a pin, each at its own site (grep the accessor):
 (``pinned_class_levels``), ``power_role.stat_order`` (``pinned_stat_priority``),
 ``spells.spell_theme_func`` / ``limit_school_func`` and ``wizard_school`` (``school_pins``),
 ``path_of_war`` (``pinned_disciplines`` / ``pinned_paths``), ``spheres`` (``pinned_spheres``),
-``feats.pinned_feat_chooser`` (``pinned_feats``).
+``feats.pinned_feat_chooser`` (``pinned_feats``), and ``build_steer`` (``pinned_build``) -- the
+one pin that is a STEER rather than a guarantee; its module docstring says why.
 """
 import re
 
@@ -44,7 +45,7 @@ from .pipeline import phase
 
 # The keys a `selection` object may carry. Anything else is reported rather than ignored: an
 # unrecognised key is almost always a misspelled one, and silence would read as "honoured".
-REQUEST_KEYS = ('classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats')
+REQUEST_KEYS = ('classes', 'stat_priority', 'schools', 'spheres', 'path_of_war', 'feats', 'build')
 
 # A3: an ordered list of one to four classes, the first being the primary.
 MAX_PINNED_CLASSES = 4
@@ -52,6 +53,9 @@ MAX_PINNED_CLASSES = 4
 # pf1 has three spellbook slots (primary / secondary / tertiary); a fourth casting class would lose
 # its spellbook on the Foundry sheet. util.select_classes enforces the same cap on the random pool.
 MAX_CASTER_CLASSES = 3
+
+# How many best-fitting classes `options()` names beside each build.
+BUILD_CLASS_HINTS = 6
 
 ABILITIES = ('str', 'dex', 'con', 'int', 'wis', 'cha')
 _ABILITY_ALIASES = {
@@ -317,6 +321,25 @@ def _resolve_feats(character, raw):
     return out
 
 
+def _resolve_build(character, raw):
+    """The pinned build archetype, spelled as build_archetypes.json spells it, or None.
+
+    One name. The scorer's fallback label is not offered: it is what a character is called when it
+    is nothing in particular, which is not something to steer toward.
+    """
+    if raw in (None, '', [], {}):
+        return None
+    if not isinstance(raw, str):
+        unmet(character, 'build', 'expected the name of one build')
+        return None
+    from . import build_steer
+    known = {_norm(name): name for name in build_steer.roster()}
+    name = known.get(_norm(raw))
+    if name is None:
+        unmet(character, f'build: {raw}', 'no build by that name')
+    return name
+
+
 @phase(requires=[], provides=['selection', 'selection_report'])
 def phase_selection(character, request):
     """Resolve the `selection` request onto the character, before any class is picked.
@@ -343,9 +366,11 @@ def phase_selection(character, request):
         'spheres': _resolve_spheres(character, request.get('spheres')),
         'path_of_war': _resolve_path_of_war(character, request.get('path_of_war')),
         'feats': _resolve_feats(character, request.get('feats')),
+        'build': _resolve_build(character, request.get('build')),
     }
     schools, martial = plan['schools'], plan['path_of_war']
     pinned_anything = (plan['classes'] or plan['stat_priority'] or plan['spheres'] or plan['feats']
+                       or plan['build']
                        or schools['specialty'] or schools['preferred'] or schools['opposition']
                        or martial['disciplines'] or martial['paths'] is not None)
     if pinned_anything:
@@ -406,6 +431,12 @@ def pinned_feats(character):
     """Pinned feat names in pin order, spelled as the feat data spells them."""
     plan = _plan(character)
     return list(plan['feats']) if plan else []
+
+
+def pinned_build(character):
+    """The pinned build archetype's name, or None."""
+    plan = _plan(character)
+    return plan['build'] if plan else None
 
 
 def pinned_paths(character):
@@ -493,6 +524,20 @@ def audit_disciplines(character, disciplines):
                   if not have else 'its Martial Training chain could not be realized')
 
 
+def audit_build(character, build, label):
+    """Report a pinned build the finished character was not named as.
+
+    ``build`` is the dict main_test hands the scorer and ``label`` what the scorer called it. The
+    label is a measurement, so this is the one audit that can fail with every chooser having done
+    its part: the reason names the gate the character missed, or says another build simply fit
+    better.
+    """
+    target = pinned_build(character)
+    if target and str(label) != target:
+        from . import build_steer
+        unmet(character, f'build: {target}', build_steer.miss_reason(build, target, str(label)))
+
+
 def audit_feats(character, held, tax_dicts=()):
     """Report every pinned feat the finished character does not hold.
 
@@ -529,6 +574,8 @@ def options(character):
     from . import path_of_war as pow_module
     from .level_and_bab import MAX_CHARACTER_LEVEL
     from .feats import pinnable_feat_index
+    from . import build_steer
+    from utils.util import _available_class_pool
 
     groups = {}
     for token, label, roster in data.CLASS_GROUPS:
@@ -563,4 +610,11 @@ def options(character):
                         if pow_module._dnorm(name) in resolvable],
         'feats': [{'name': info['name'], 'type': info['type'], 'homebrew': info['homebrew']}
                   for _key, info in sorted(pinnable_feat_index().items())],
+        # `classes` is a hint for the picker, best fit first: the classes a build with no class
+        # pinned is drawn from come from this same ranking (build_steer.fitting_classes).
+        'builds': [{'name': name, 'family': build_steer.roster()[name].get('family', ''),
+                    'definition': build_steer.roster()[name].get('definition', ''),
+                    'classes': fitting[:BUILD_CLASS_HINTS]}
+                   for name, fitting in build_steer.offered(
+                       character, sorted(_available_class_pool(character))).items()],
     }

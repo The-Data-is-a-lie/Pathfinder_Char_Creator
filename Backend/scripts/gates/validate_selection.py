@@ -44,7 +44,8 @@ _bs.OLLAMA_AVAILABLE = False
 _bs._try_ollama = lambda *a, **k: ''
 import main_test                                                                    # noqa: E402
 from utils import data                                                              # noqa: E402
-from utils.class_func import selection, spells, stats                               # noqa: E402
+from utils.class_func import build_steer, selection, spells, stats                  # noqa: E402
+from utils.util import _available_class_pool                                        # noqa: E402
 from utils.class_func.feats import pinnable_feat_index                              # noqa: E402
 from utils.class_func import spheres as spheres_module                              # noqa: E402
 from utils.class_func.level_and_bab import MAX_CHARACTER_LEVEL, _split_levels       # noqa: E402
@@ -105,6 +106,18 @@ def check_options_are_the_data(options):
     REPORT.check(any(row['homebrew'] for row in options['feats'])
                  and not all(row['homebrew'] for row in options['feats']),
                  'options.feats should carry both printed and homebrew rows, told apart by `homebrew`')
+    offered = build_steer.offered(character, sorted(_available_class_pool(character)))
+    REPORT.check([row['name'] for row in options['builds']] == list(offered),
+                 'options.builds is not build_steer.offered(), the builds some class can be')
+    roster = build_steer.roster()
+    for row in options['builds']:
+        REPORT.check(row['classes'] == offered[row['name']][:selection.BUILD_CLASS_HINTS] and row['classes'],
+                     f'options.builds[{row["name"]}].classes is not its best-fitting classes')
+        REPORT.check(row['family'] == roster[row['name']].get('family')
+                     and row['definition'] == roster[row['name']].get('definition'),
+                     f'options.builds[{row["name"]}] restates family/definition instead of reading the roster')
+    REPORT.check(build_steer.scorer._FALLBACK.label not in offered,
+                 'the scorer\'s fallback label is offered as a build to pin')
     REPORT.check(options['keys'] == list(selection.REQUEST_KEYS),
                  'options.keys is not selection.REQUEST_KEYS')
 
@@ -142,6 +155,9 @@ def check_options_round_trip(options):
     for name in options['disciplines']:
         expect({'path_of_war': {'disciplines': [name]}},
                lambda plan, n=name: plan['path_of_war']['disciplines'] == [n], f'discipline {name!r}')
+    for row in options['builds']:
+        for spelling in (row['name'], row['name'].lower(), row['name'].replace(' ', '-')):
+            expect({'build': spelling}, lambda plan, n=row['name']: plan['build'] == n, f'build {spelling!r}')
     # Feats in ONE request: there are well over a thousand, and resolution is per name, so pinning
     # them together asks the same question of each without building a character apiece.
     names = [row['name'] for row in options['feats']]
@@ -281,7 +297,8 @@ def main():
         f'{len(options["classes"])} classes, '
         f'{sum(len(v) for v in options["schools"]["specialty"].values())} arcane schools, '
         f'{sum(len(v) for v in options["spheres"].values())} spheres and '
-        f'{len(options["disciplines"])} disciplines and {len(options["feats"])} feats round-trip; '
+        f'{len(options["disciplines"])} disciplines, {len(options["builds"])} builds and '
+        f'{len(options["feats"])} feats round-trip; '
         f'A4 level arithmetic; ability floors; request path')
 
 

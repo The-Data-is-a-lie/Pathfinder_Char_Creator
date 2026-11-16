@@ -456,7 +456,7 @@ def check_nothing_pinned(report):
                          f'{where}: selection_report is {baseline.get("selection_report")!r}, expected []')
             text = json.dumps(baseline, sort_keys=True, default=str)
             for empty in ({}, {'classes': [], 'spheres': [], 'schools': {}, 'path_of_war': {},
-                               'feats': []}):
+                               'feats': [], 'build': ''}):
                 other = json.dumps(generate(seed, empty, **overrides), sort_keys=True, default=str)
                 report.check(other == text,
                              f'{where}: selection={empty!r} changed the character -- an empty '

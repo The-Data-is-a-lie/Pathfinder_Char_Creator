@@ -211,6 +211,12 @@ def stat_order(character):
     pinned = selection.pinned_stat_priority(character)
     if pinned:
         return pinned
+    # A pinned BUILD orders the scores next: below an explicit stat priority (the caller's own
+    # answer), above the role (pins win over the optimizer). None when no build is pinned.
+    from utils.class_func import build_steer
+    steered = build_steer.stat_priority(character)
+    if steered:
+        return steered
     role = getattr(character, 'role', None)
     if not role:
         return None

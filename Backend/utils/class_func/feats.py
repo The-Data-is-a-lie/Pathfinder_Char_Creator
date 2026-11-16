@@ -405,9 +405,12 @@ def pinned_feat_ability_floors(character):
     to place a rolled score that is already high enough where a pinned feat needs it -- part of
     working toward a pin. {} when no feat is pinned.
     """
-    from utils.class_func import selection
-    pins = selection.pinned_feats(character)
-    if not pins:
+    from utils.class_func import selection, build_steer
+    # A pinned BUILD's gate feats count too: the feats it cannot be that build without
+    # (build_steer.gate_feats -- Two-Weapon Fighting for a Dual Wielder), which it will wish for.
+    wanted = [name.lower() for name in selection.pinned_feats(character)]
+    wanted += [name for name in build_steer.gate_feats(character) if name not in wanted]
+    if not wanted:
         return {}
     index = pinnable_feat_index()
     floors, seen = {}, set()
@@ -426,8 +429,8 @@ def pinned_feat_ability_floors(character):
                 if parent:
                     walk(parent)
 
-    for name in pins:
-        walk(name.lower())
+    for name in wanted:
+        walk(name)
     return floors
 
 
@@ -452,10 +455,11 @@ def pinned_feat_chooser(character, budget):
 
     Returns the feats taken, in the order taken, spelled as the data spells them.
     """
-    from utils.class_func import selection
+    from utils.class_func import selection, build_steer
     character.pinned_feats_held = []
     pins = selection.pinned_feats(character)
-    if not pins:
+    steering = build_steer.entry_for(character) is not None
+    if not pins and not steering:
         return []
     index = pinnable_feat_index()
     homebrew = homebrew_enabled(character)
@@ -494,6 +498,20 @@ def pinned_feat_chooser(character, budget):
         reason = take(key, frozenset())
         if reason:
             selection.unmet(character, f'feats: {name}', reason)
+
+    # A pinned BUILD wishes for feats after the explicit pins have theirs, through the same slots
+    # and the same legality test. A wish is a steer, not a pin: one that cannot be taken is simply
+    # not taken, and build_steer stops wishing when nothing left would help the build -- whatever
+    # slots remain are the dice's.
+    if steering:
+        tried = set()
+        while len(picked) < budget:
+            wish = build_steer.next_feat_wish(character, picked, tried, index)
+            if wish is None:
+                break
+            tried.add(wish)
+            if wish not in character.chooseable:
+                take(wish, frozenset())
     return picked
 
 
