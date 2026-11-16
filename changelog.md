@@ -19,6 +19,13 @@ On release: rename "[Unreleased]" to "[x.y.z] - YYYY-MM-DD" and start a fresh Un
 ## [Unreleased]
 
 ### Added
+- **The brawler's Awesome Blow now gets a weapon conditional** *(2026-11-15)*. It is a chassis
+  feature no class "picks", so it was never a candidate in the scraped choice pools and the applier
+  skipped its item. It is curated in the `core_features` overrides section as a tier-A, default-off
+  entry that carries the activation and effect text (standard-action combat maneuver, damage as a
+  close weapon or unarmed strike, knocked 10 feet and prone, 1d6 to both on hitting an obstacle)
+  and no roll modifiers -- the maneuver deals the weapon's ordinary damage, so there is nothing to
+  add to the roll, only a rule to have in front of you when it is used.
 - **A feature can now be dragged into a category the character has none of** *(sibling repo: the
   standalone web sheet, `scripts/tabs/features.js`, 2026-09-07)*. Re-filing a feat meant opening its
   sheet and using the move dropdown, because a drag could only land in a list already on screen —

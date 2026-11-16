@@ -1225,6 +1225,16 @@
     }
   },
   "core_features": {
+    "awesome blow": {
+      "conditionals": [
+        {
+          "default": false,
+          "modifiers": [],
+          "name": "Awesome Blow: Activation: standard action combat maneuver against a corporeal creature your size or smaller; Effect: on a success it takes damage as if hit by your close weapon or unarmed strike, is knocked [[10]] feet in a straight line of your choice and falls prone; if an obstacle stops it, it and the obstacle each take [[1d6]] damage",
+          "tier": "A"
+        }
+      ]
+    },
     "bane": {
       "conditionals": [
         {
