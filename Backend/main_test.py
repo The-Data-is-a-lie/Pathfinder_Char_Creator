@@ -49,7 +49,8 @@ from utils.class_func.appearance 					import randomize_apperance_attr, randomize
 from utils.class_func.armor_and_enhancements 		import plan_enhancements, enhancement_chooser#, enhancement_limits
 from utils.class_func.armor_and_weapon_chooser 		import (armor_chooser, weapon_chooser, list_selection, shield_chooser, 
                                                                  shield_flag_func, ac_bonus_calculator, weapon_type_flag_func,
-                                                                 weapon_size_marker)
+                                                                 weapon_size_marker, _wielder_size, SIZES)
+from utils.class_func 								import item_materials
 from utils.class_func.chooseable 					import chooseable_list, chooseable_list_race, chooseable_list_archetypes#, chooseable_list_class
 from utils.class_func.class_abilities 				import get_class_abilities, get_class_abilties_desc  
 from utils.class_func.class_specific_feats 			import class_specific_feats_chooser, monk_feats_chooser, ranger_feats_chooser
@@ -952,7 +953,7 @@ def phase_professions_and_skills(character, truly_random_feats, skill_rank_level
 
 @phase(requires=['armor_type', 'gold'],
 	   provides=['armor_dict', 'weapon_type', 'weapon_dict', 'shield_flag', 'shield_dict',
-				 'shield_allow', 'enabler_feats', 'mind_blade'],
+				 'shield_allow', 'enabler_feats', 'mind_blade', 'item_materials'],
 	   returns=['weapon_name', 'equipment_list', 'equip_descrip', 'armor_ac', 'shield_ac',
 				'weapon_enhancement_chosen_list', 'weapon_enhancement_bonus',
 				'armor_enhancement_chosen_list', 'armor_enhancement_bonus',
@@ -991,6 +992,13 @@ def phase_gear_and_equipment(character):
 	# Magic enhancements get first claim on a reserved share of the purse (utils/class_func/
 	# armor_and_enhancements.py: ENHANCEMENT_SHARE / ENHANCEMENT_SPLIT). Runs here, after
 	# shield_flag is known, so a shieldless character is charged nothing for a shield.
+	#
+	# Special materials (utils/class_func/item_materials.py) are bought inside the same pass, out
+	# of each slot's own share and ahead of its +N tier. `item_materials` is reset here so the
+	# attribute exists for every character, including the optimized ones that never roll one.
+	# A material rewrites `armor_dict` / `shield_dict` with a modified COPY of the row, which is
+	# why `armor_ac` below is read afterwards -- and why it cannot move: no material changes it.
+	character.item_materials = {}
 	_enhancements = plan_enhancements(character)
 	armor_enhancement = _enhancements['armor']
 	weapon_enhancement = _enhancements['weapon']
@@ -3287,6 +3295,34 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		payload["weapon_size"], payload["weapon_size_steps"], payload["weapon_size_source"], \
 			payload["weapon_size_attack_penalty"] = weapon_size_marker(character,
 																	   _render_feat_names)
+
+		# SPECIAL MATERIALS + DURABILITY. The three `*_material` keys are the special material's
+		# pf1 id ('' for an ordinary item) and are plain PF1e, so they are always emitted;
+		# `armor_material_dr` / `weapon_material_damage` are the two effects that are not already
+		# folded into the armor fields above. `item_durability` is the Sieg's Guide breakdown --
+		# {} unless the house rules are on -- and is built HERE rather than in the gear phase
+		# because it multiplies hit points by the weapon's size, which the marker just above is
+		# the first thing to know. Every number comes out of item_materials.py; a renderer only
+		# prints the lines.
+		_materials = getattr(character, 'item_materials', None) or {}
+		payload["weapon_material"] = _materials.get('weapon', '')
+		payload["armor_material"] = _materials.get('armor', '')
+		payload["shield_material"] = _materials.get('shield', '')
+		payload["armor_material_dr"] = item_materials.armor_material_dr(character)
+		payload["weapon_material_damage"] = item_materials.weapon_material_damage(character)
+		payload["item_durability"] = item_materials.durability_block(
+			character,
+			weapon_bonus=gear.weapon_enhancement_bonus,
+			weapon_qualities=gear.weapon_enhancement_chosen_list,
+			armor_bonus=gear.armor_enhancement_bonus,
+			armor_qualities=gear.armor_enhancement_chosen_list,
+			shield_bonus=gear.shield_enhancement_bonus,
+			shield_qualities=gear.shield_enhancement_chosen_list,
+			weapon_size=payload["weapon_size"],
+			weapon_size_source=payload["weapon_size_source"],
+			wearer_size=_wielder_size(character),
+			sizes=SIZES,
+			melee=weapon_type_flag_func(character, character.weapon_dict) == 'Melee')
 		if _buff_gaps:
 			print(f"buff gaps: {len(_buff_gaps)} curated entr(y/ies) not matched")
 			for _gap_line in format_gaps(_buff_gaps):

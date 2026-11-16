@@ -95,6 +95,16 @@ def main():
                 REPORT.error(f'{role}/{cls} L{level} seed {seed}: generation raised {exc!r}')
                 continue
             generated += 2
+            # Special materials are random mode's alone: the role's gold ladder is tuned against
+            # a metric that does not score them, so a material here is gold the floors below
+            # never agreed to give up. (That an optimized build also makes none of the material
+            # RNG draws is validate_item_materials' check, and the optimized_* goldens' proof.)
+            carried = [slot for slot in ('weapon', 'armor', 'shield')
+                       if optimized.get(f'{slot}_material')]
+            REPORT.check(not carried,
+                         f'{role}/{cls} L{level} seed {seed}: an optimized build bought a special '
+                         f'material for its {carried} -- item_materials.buy_material must not run '
+                         f'when character.role is set')
             prof = power_metric.profile_for(optimized)
             twin_prof = power_metric.profile_for(twin)
 

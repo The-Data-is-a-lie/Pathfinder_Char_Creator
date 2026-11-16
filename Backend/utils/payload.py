@@ -252,6 +252,16 @@ PAYLOAD_KEYS = (
 	'weapon_size_steps',
 	'weapon_size_source',
 	'weapon_size_attack_penalty',
+	# Special materials (utils/class_func/item_materials.py). The three ids are the pf1 system's
+	# own material ids ('' for an ordinary item), so the module writes them straight into
+	# `system.material`. `item_durability` is the Sieg's Guide hardness / hit point breakdown,
+	# {} unless the house rules are on; its lines already sum to its totals.
+	'weapon_material',
+	'armor_material',
+	'shield_material',
+	'armor_material_dr',
+	'weapon_material_damage',
+	'item_durability',
 	'generator_version',
 	'license_url',
 )

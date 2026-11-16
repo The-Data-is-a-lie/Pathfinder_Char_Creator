@@ -1,4 +1,5 @@
 from utils import data
+from utils.class_func import item_materials
 import random, re
 # Start enhnacement to Armor + Weapons
 
@@ -34,6 +35,11 @@ def plan_enhancements(character, share=ENHANCEMENT_SHARE, has_shield=None):
     Tiers come from ``data.enhancement_bonus_mapping`` (cost -> +N). Each slot takes the largest tier
     at or below its slice, and every purchase is also checked against ACTUAL gold, so the reserve can
     never overdraw the purse.
+
+    A special material (``item_materials.buy_material``) is bought out of the slot's own slice
+    BEFORE the tier is priced, so adamantine costs its wielder enchantment instead of arriving free.
+    Random mode only: an optimized build skips the call, makes none of its RNG draws, and spends
+    exactly the gold it always has.
     """
     mapping = getattr(data, 'enhancement_bonus_mapping')
     out = {'weapon': 0, 'armor': 0, 'shield': 0}
@@ -60,11 +66,18 @@ def plan_enhancements(character, share=ENHANCEMENT_SHARE, has_shield=None):
         if slot not in split:
             continue
         budget = int(reserve * split[slot])
-        affordable = [key for key in mapping if key <= budget and key <= character.gold]
+        # `surcharge` is what the material adds to the cost of enchanting at all (cold iron's
+        # 2,000 gp): owed only if a tier is actually bought, so it is charged with the tier.
+        surcharge = 0
+        if role is None:
+            material_price, surcharge = item_materials.buy_material(character, slot, budget)
+            budget -= material_price
+        affordable = [key for key in mapping
+                      if key + surcharge <= budget and key + surcharge <= character.gold]
         if not affordable:
             continue
         best_key = max(affordable)
-        character.gold -= best_key
+        character.gold -= best_key + surcharge
         out[slot] = mapping[best_key]
     return out
 

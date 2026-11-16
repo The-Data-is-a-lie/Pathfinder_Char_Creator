@@ -1,0 +1,263 @@
+{
+  "_readme": ["Curated. The one data owner for item materials and the Sieg's Guide durability breakdown; read by utils/class_func/item_materials.py and gated by scripts/gates/validate_item_materials.py.", "weapon_base / shield_base / armor_base / enhancement and the first ten substances are transcribed from the Sieg's Guide 'Combat References' doc (Equipment Hardness/Hitpoints + Substance Chart). coldIron, alchemicalSilver and darkwood are not on that chart; their rows are the printed PF1e values.", "Material ids are the pf1 system's own (pf1.registry.materials), so the Foundry module can write them straight into system.material.", "weapons: every weapons_data.json name appears in exactly one group. `row` is the hardness-table row, `material` the substance the durability breakdown adds, `metal_parts` marks a wooden-hafted weapon whose head can still be a special metal. armor / shields: the same idea for armor.json.", "special_materials.price, per slot: `flat` gp; `per_pound` gp x the item's listed weight; `by_category` keyed by weapon category or armor section; `cost_multiplier` x the item's own cost; `enchant_surcharge` gp owed only if the item is also enchanted."],
+  "substances": {
+    "glass": {"label": "Glass", "hardness": 1, "hp": 1},
+    "cloth": {"label": "Cloth", "hardness": 0, "hp": 2},
+    "rope": {"label": "Rope", "hardness": 0, "hp": 2},
+    "ice": {"label": "Ice", "hardness": 0, "hp": 3},
+    "leather": {"label": "Leather", "hardness": 2, "hp": 5},
+    "wood": {"label": "Wood", "hardness": 5, "hp": 10},
+    "stone": {"label": "Stone", "hardness": 8, "hp": 15},
+    "steel": {"label": "Iron", "hardness": 10, "hp": 30},
+    "mithral": {"label": "Mithral", "hardness": 15, "hp": 30},
+    "adamantine": {"label": "Adamantine", "hardness": 20, "hp": 40},
+    "coldIron": {"label": "Cold Iron", "hardness": 10, "hp": 30},
+    "alchemicalSilver": {"label": "Alchemical Silver", "hardness": 8, "hp": 10},
+    "darkwood": {"label": "Darkwood", "hardness": 5, "hp": 10}
+  },
+  "special_materials": {
+    "adamantine": {
+      "base": "steel",
+      "slots": ["weapon", "armor"],
+      "price": {
+        "weapon": {"flat": 3000},
+        "armor": {
+          "by_category": {"Light": 5000, "Medium": 10000, "Heavy": 15000}
+        }
+      },
+      "armor_dr": {"Light": 1, "Medium": 2, "Heavy": 3}
+    },
+    "mithral": {
+      "base": "steel",
+      "slots": ["weapon", "armor", "shield"],
+      "price": {
+        "weapon": {"per_pound": 500},
+        "armor": {
+          "by_category": {"Light": 1000, "Medium": 4000, "Heavy": 9000}
+        },
+        "shield": {"flat": 1000}
+      },
+      "weight_multiplier": 0.5,
+      "armor": {"max_dex": 2, "acp": 3, "asf": -10},
+      "shield": {"acp": 3, "asf": -10}
+    },
+    "coldIron": {
+      "base": "steel",
+      "slots": ["weapon"],
+      "price": {
+        "weapon": {"cost_multiplier": 1, "enchant_surcharge": 2000}
+      }
+    },
+    "alchemicalSilver": {
+      "base": "steel",
+      "slots": ["weapon"],
+      "price": {
+        "weapon": {
+          "by_category": {"Light": 20, "One-Handed": 90, "Two-Handed": 180, "Ranged": 90}
+        }
+      },
+      "weapon_damage": -1
+    },
+    "darkwood": {
+      "base": "wood",
+      "slots": ["weapon", "armor", "shield"],
+      "price": {
+        "weapon": {"per_pound": 10},
+        "armor": {"per_pound": 10},
+        "shield": {"per_pound": 10}
+      },
+      "weight_multiplier": 0.5,
+      "shield": {"acp": 2}
+    }
+  },
+  "weapon_base": {
+    "light blade": {"hardness": 10, "hp": 2},
+    "one-handed blade": {"hardness": 10, "hp": 5},
+    "two-handed blade": {"hardness": 10, "hp": 10},
+    "light metal-hafted": {"hardness": 10, "hp": 10},
+    "one-handed metal-hafted": {"hardness": 10, "hp": 20},
+    "light hafted": {"hardness": 5, "hp": 2},
+    "one-handed hafted": {"hardness": 5, "hp": 5},
+    "two-handed hafted": {"hardness": 5, "hp": 10},
+    "projectile": {"hardness": 5, "hp": 5}
+  },
+  "shield_base": {
+    "buckler": {"hardness": 10, "hp": 5},
+    "light wooden shield": {"hardness": 5, "hp": 7},
+    "heavy wooden shield": {"hardness": 5, "hp": 15},
+    "light steel shield": {"hardness": 10, "hp": 10},
+    "heavy steel shield": {"hardness": 10, "hp": 20},
+    "tower shield": {"hardness": 5, "hp": 40}
+  },
+  "armor_base": {"hardness": 10, "hp_per_armor_bonus": 5},
+  "enhancement": {"hardness_per_bonus": 2, "hp_per_bonus": 10},
+  "weapons": [
+    {
+      "row": "light blade",
+      "material": "glass",
+      "names": ["Crystal chakram"]
+    },
+    {
+      "row": "light blade",
+      "material": "steel",
+      "names": ["Axe-gauntlet, dwarven light", "Barbazu beard", "Bich'hwa", "Blade boot", "Brass knife", "Butterfly knife", "Butterfly sword", "Chakram", "Claw blades", "Dagger", "Dart", "Deer horn knife", "Dogslicer", "Dueling dagger", "Elven leafblade", "Emei piercer", "Fighting fan", "Flying talon", "Gladius", "Hook hand", "Hunga munga", "Hurlbat", "Iron brush", "Jolting dart", "Kama", "Kasatha spinal sword", "Katar, tri-bladed", "Kerambit", "Knuckle axe", "Kobold tail, razored", "Kobold tail, spiked", "Kukri", "Kunai", "Lungchuan tamo", "Machete", "Pata", "Punching dagger", "Quadrens", "Razor, drow", "Sanpkhang", "Sea-knife", "Shang gou", "Short sword", "Shuriken (5)", "Siangham", "Sica", "Sickle", "Spider-leg sickle", "Spiked gauntlet", "Spring blade", "Starknife", "Switchblade knife", "Swordbreaker dagger", "Tailblade, ratfolk", "Tekko-kagi", "Thorn bracer", "Wakizashi", "War razor", "Waveblade", "Wushu dart"]
+    },
+    {
+      "row": "light hafted",
+      "material": "cloth",
+      "names": ["Handwraps"]
+    },
+    {
+      "row": "light hafted",
+      "material": "leather",
+      "names": ["Cat-o'-nine-tails", "Kobold tail, long lash", "Madu (leather/steel)", "Sap", "Scorpion whip"]
+    },
+    {
+      "row": "light hafted",
+      "material": "rope",
+      "names": ["Battle poi", "Halfling rope-shot", "Rope gauntlet"]
+    },
+    {
+      "row": "light hafted",
+      "material": "wood",
+      "names": ["Aklys", "Boomerang", "Dan bong", "Hanbo", "Nunchaku", "Tonfa", "Wooden stake"]
+    },
+    {
+      "row": "light hafted",
+      "material": "wood",
+      "metal_parts": true,
+      "names": ["Boarding axe", "Dwarven maulaxe", "Handaxe", "Light hammer", "Throwing axe"]
+    },
+    {
+      "row": "light metal-hafted",
+      "material": "steel",
+      "names": ["Battle aspergillum", "Brass knuckles", "Cestus", "Gauntlet", "Gnome pincher", "Grappling hook", "Helmet, dwarven boulder", "Jutte", "Kobold tail, pounder", "Kobold tail, sweeper", "Light mace", "Light pick", "Light shield", "Sai", "Spiked armor", "Spiked light shield", "Throwing shield", "Traveling kettle", "War-shield, dwarven"]
+    },
+    {
+      "row": "one-handed blade",
+      "material": "steel",
+      "names": ["Aldori dueling sword", "Axe-gauntlet, dwarven heavy", "Bastard sword", "Broken-back seax", "Combat scabbard, sharpened", "Cutlass", "Double chicken saber", "Elven thornblade", "Estoc", "Falcata", "Gandasa", "Katana", "Khopesh", "Klar", "Longsword", "Manople", "Nine-ring broadsword", "Rapier", "Rhoka sword", "Sawtooth sabre", "Scimitar", "Scizore", "Shotel", "Sickle-sword", "Spiral rapier", "Split-blade sword", "Sword cane", "Temple sword", "Terbutje, steel", "Urumi"]
+    },
+    {
+      "row": "one-handed blade",
+      "material": "wood",
+      "names": ["Great terbutje", "Terbutje"]
+    },
+    {
+      "row": "one-handed hafted",
+      "material": "leather",
+      "names": ["Whip"]
+    },
+    {
+      "row": "one-handed hafted",
+      "material": "stone",
+      "names": ["Mere club"]
+    },
+    {
+      "row": "one-handed hafted",
+      "material": "wood",
+      "names": ["Baston fighting stick", "Club", "Knobkerrie", "Taiaha", "Wahaika"]
+    },
+    {
+      "row": "one-handed hafted",
+      "material": "wood",
+      "metal_parts": true,
+      "names": ["Ankus", "Battleaxe", "Doru", "Dwarven double waraxe", "Dwarven waraxe", "Hooked axe", "Javelin", "Pilum", "Shortspear", "Shrillshaft javelin", "Sibat", "Stormshaft javelin", "Tongi", "Trident", "Warhammer"]
+    },
+    {
+      "row": "one-handed metal-hafted",
+      "material": "steel",
+      "names": ["Chain-hammer", "Combat scabbard", "Dire flail", "Flindbar", "Gnome flick-mace", "Heavy flail", "Heavy mace", "Heavy pick", "Heavy shield", "Light flail", "Meteor hammer", "Morningstar", "Nine-section whip", "Ram hammer, dwarven", "Spiked heavy shield"]
+    },
+    {
+      "row": "projectile",
+      "material": "leather",
+      "names": ["Amentum", "Halfling double sling", "Halfling stitched sling", "Kestros", "Sling", "Sling glove", "Stingchuck"]
+    },
+    {
+      "row": "projectile",
+      "material": "rope",
+      "names": ["Bolas", "Dire bolas", "Lasso", "Net", "Rope dart", "Shoanti bolas", "Snag net", "Throwing arrow cord"]
+    },
+    {
+      "row": "projectile",
+      "material": "steel",
+      "names": ["Phaleros"]
+    },
+    {
+      "row": "projectile",
+      "material": "wood",
+      "names": ["Atlatl", "Blowgun", "Composite longbow", "Composite shortbow", "Double crossbow", "Flask thrower", "Gastraphetes", "Halfling sling staff", "Hand crossbow", "Heavy crank crossbow", "Heavy crossbow", "Heavy slaver's crossbow", "Heavy wrist launcher", "Hornbow, orc", "Horse bow", "Launching crossbow", "Light crank crossbow", "Light crossbow", "Light slaver's crossbow", "Longbow", "Pelletbow, dwarven heavy", "Pelletbow, dwarven light", "Poisoned sand tube", "Reflex bow", "Repeating hand crossbow", "Repeating heavy crossbow", "Repeating light crossbow", "Shortbow", "Spear-sling", "Stonebow", "Thorn bow", "Tube arrow shooter", "Underwater heavy crossbow", "Underwater light crossbow", "Wrist launcher"]
+    },
+    {
+      "row": "two-handed blade",
+      "material": "cloth",
+      "names": ["Bladed scarf"]
+    },
+    {
+      "row": "two-handed blade",
+      "material": "steel",
+      "names": ["Bayonet", "Chain spear", "Double-chained kama", "Elven curve blade", "Falchion", "Flambard", "Flying blade", "Greatsword", "Katana, double walking stick", "Kusarigama", "Kyoketsu shoge", "Nodachi", "Rhomphaia", "Seven-branched sword", "Spiked chain", "Tri-point double-edged sword", "Two-bladed sword"]
+    },
+    {
+      "row": "two-handed hafted",
+      "material": "rope",
+      "names": ["Garrote"]
+    },
+    {
+      "row": "two-handed hafted",
+      "material": "wood",
+      "names": ["Battle ladder, gnome", "Bo staff", "Crook", "Greatclub", "Lantern staff", "Orc skull ram", "Quarterstaff", "Sansetsukon", "Tepoztopilli", "Totem spear"]
+    },
+    {
+      "row": "two-handed hafted",
+      "material": "wood",
+      "metal_parts": true,
+      "names": ["Barbed spear", "Bardiche", "Bec de corbin", "Bill", "Boar spear", "Boarding gaff", "Boarding pike", "Butchering axe", "Dorn-dergar, dwarven", "Double spear", "Dwarven urgrosh", "Earth breaker", "Elven branched spear", "Fauchard", "Flailpole", "Flask pike", "Giant-sticker, dwarven", "Glaive", "Glaive-guisarme", "Gnome hooked hammer", "Greataxe", "Guisarme", "Halberd", "Harpoon", "Hooked lance", "Horsechopper", "Injection spear", "Kumade", "Kumade, collapsible", "Lance", "Lizard king war trident", "Longaxe, dwarven", "Longhammer, dwarven", "Longspear", "Lucerne hammer", "Mancatcher", "Mattock", "Monk's spade", "Naginata", "Ogre hook", "Orc double axe", "Pickaxe", "Piston maul, gnome", "Planson", "Ranseur", "Ripsaw glaive, gnome", "Sarissa", "Scythe", "Spear", "Sphinx hammer, dwarven", "Switchscythe", "Syringe spear", "Tetsubo", "Tiger fork", "Weighted spear"]
+    }
+  ],
+  "armor": {
+    "cloth": ["Haramaki", "Martial arts training gear", "Padded", "Quilted cloth", "Reinforced tunic", "Silken ceremonial", "Spider-silk bodysuit", "Varisian dancing scarves"],
+    "leather": ["Armored coat", "Armored kilt", "Erutaki coat", "Hellknight leather", "Hide", "Hide shirt", "Horn lamellar", "Lamellar cuirass", "Leather", "Leather lamellar", "Studded leather"],
+    "wood": ["Leaf armor", "Rosewood armor", "Wooden"],
+    "stone": ["Stone lamellar", "Stoneplate"],
+    "steel": ["Agile breastplate", "Agile half-plate", "Alkenstar fortress plate", "Banded mail", "Breastplate", "Chain coat", "Chain shirt", "Chainmail", "Do-maru", "Field plate", "Four-mirror", "Full plate", "Gray maiden plate", "Half-plate", "Hellknight half-plate", "Hellknight plate", "Iron lamellar", "Kikko", "Kusari gusoku", "Mountain pattern", "O-yoroi", "Parade", "Scale mail", "Splint mail", "Steel lamellar", "Tatami-do"]
+  },
+  "shields": [
+    {
+      "row": "buckler",
+      "material": "steel",
+      "names": ["Buckler", "Poisoner's Buckler"]
+    },
+    {
+      "row": "light steel shield",
+      "material": "steel",
+      "names": ["Klar", "Light steel", "Light steel quickdraw", "Madu (steel)", "War-shield, dwarven"]
+    },
+    {
+      "row": "light wooden shield",
+      "material": "wood",
+      "names": ["Light wooden", "Light wooden quickdraw"]
+    },
+    {
+      "row": "light wooden shield",
+      "material": "leather",
+      "names": ["Madu (leather)"]
+    },
+    {
+      "row": "heavy steel shield",
+      "material": "steel",
+      "names": ["Heavy steel", "Snarlshield, steel"]
+    },
+    {
+      "row": "heavy wooden shield",
+      "material": "wood",
+      "names": ["Heavy wooden", "Snarlshield, wooden"]
+    },
+    {
+      "row": "tower shield",
+      "material": "wood",
+      "names": ["Tower"]
+    }
+  ]
+}
