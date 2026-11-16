@@ -2,9 +2,9 @@
 
 A blank character is a class (or several) at a level, a race, and NOTHING CHOSEN: every ability at
 10, no feats, no spells, no gear -- and in their place a list of ``slots``, one row per thing the
-character is owed (a feat at 3rd level, a fighter bonus feat at 4th, a rogue talent at 2nd, a minor
-flaw, an ability score increase at 8th). The client draws one placeholder per row and the player
-drags the real thing onto the sheet.
+character is owed (a feat, a fighter bonus feat at 4th level, a rogue talent at 2nd, a trait, a
+minor flaw). The client draws one placeholder per row and the player drags the real thing onto the
+sheet.
 
 HOW IT IS MADE: GENERATE, THEN BLANK
 ------------------------------------
@@ -24,31 +24,40 @@ The request runs the ordinary pipeline with the classes and levels pinned (selec
 of some 190 keys by hand and keeping that list in step with ``payload.PAYLOAD_KEYS`` forever. And
 running the pipeline with every chooser switched off, which is a guard in each of fifty modules.
 
-``scripts/gates/validate_blank.py`` holds this to its promise: the same request under two seeds
-must produce the same sheet, so anything random that leaks through ``KEEP`` or a rebuild fails
-there rather than on a player's screen.
+``scripts/tests/test_blank.py`` holds this to its promise: the same request under two seeds must
+produce the same sheet, so anything random that leaks through ``KEEP`` or a rebuild fails there
+rather than on a player's screen.
 
 THE COUNTS ARE NOT RESTATED. Each slot count is read from its owner: the feat economy from
-``level_and_bab.update_level`` and ``feat_level_assignment.normal_feat_slot_levels``, class bonus
-and teamwork feats from ``extra_combat_feats``, class choices from ``class_choice_schedule.json``
-through ``generic_func.levels_for``, ability increases from
-``level_and_bab.update_level_ability_score``, spells known from the spellbooks the pipeline built,
-skill ranks from ``skill_ranks.class_skill_points``. House-rule slots (story, flavor and flaw
-feats, the two creation feats, the flaws themselves) appear exactly when those owners grant them.
+``level_and_bab.update_level``, class bonus and teamwork feats from ``extra_combat_feats``, class
+choices from ``class_choice_schedule.json`` through ``generic_func.levels_for``, traits from
+``traits.TRAIT_COUNT``, trainers from ``trainers.max_trainer_slots``. House-rule slots (story,
+flavor and flaw feats, the two creation feats, the flaws themselves, trainers) appear exactly when
+those owners grant them.
+
+WHAT IS DELIBERATELY NOT A SLOT (ruled 2026-11-16, after the first sheets were looked at): ability
+score increases, spells known and skill ranks. The sheet already carries the item a generated
+character records its ability increases on (the ``level_up_stats`` buff, here with every value 0),
+and the other two are the sheet's own Spells and Skills tabs -- a placeholder for them was clutter.
+
+THE NAMES ARE THE CLIENT'S. A row's ``label`` is the bare tag text ("Fighter 4", "Trainer 1",
+"Flaw, Minor"); the FoundryVTT module wraps it as "(Fighter 4)" and numbers the general, story,
+flavor and flaw feats itself, with the same numbering it gives a generated character's feats, so
+a blank sheet and a generated one read alike.
 """
 import re
-from types import SimpleNamespace
-
-from utils import data
+from math import ceil
 
 from .extra_combat_feats import (bloodline_bonus_feat_levels, class_bonus_feat_levels,
                                  class_bonus_feat_slots, teamwork_feat_slots)
 from .feat_level_assignment import normal_feat_slot_levels
 from .flag_assign import human_flag_assigner
 from .generic_func import levels_for
-from .level_and_bab import update_level, update_level_ability_score
-from .skill_ranks import class_skill_points, misc_homebrew_enabled
+from .level_and_bab import update_level
+from .skill_ranks import misc_homebrew_enabled
 from .spells import caster_formula, spells_known_attr
+from .trainers import max_trainer_slots
+from .traits import TRAIT_COUNT
 
 ABILITIES = ('str', 'dex', 'con', 'int', 'wis', 'cha')
 # Every ability on a blank sheet. PF1's average score: no modifier either way.
@@ -56,8 +65,14 @@ BLANK_ABILITY = 10
 # The flaws a blank sheet leaves room for, in the order the house rule deals them (the first flaw
 # is minor, the second major -- flaws.pick_flaws).
 BLANK_FLAWS = ('Minor', 'Major')
-# Traits are dragged on rather than rolled; PF1's standard allotment is two.
-BLANK_TRAITS = 2
+# As many trait slots as the generator gives a character traits (ruled 2026-11-16; it was PF1's
+# two until the first blank sheets were compared with generated ones).
+BLANK_TRAITS = TRAIT_COUNT
+# The share of a character's possible trainers a blank sheet leaves room for (ruled 2026-11-16).
+# A generated character rolls anywhere from none to the maximum, each teaching one to four feats;
+# half the maximum, one slot each, is a sheet with room for trainers that is not mostly rows to
+# delete.
+BLANK_TRAINER_SHARE = 0.5
 
 # Keys that pass through untouched: decided by the request (region), the race, or the pinned
 # classes and levels, and by nothing the dice touch. Anything not here is emptied by type.
@@ -83,8 +98,6 @@ NEUTRAL = {
     'animal_companion': None,
 }
 
-_ORDINALS = ('0-level', '1st-level', '2nd-level', '3rd-level', '4th-level', '5th-level',
-             '6th-level', '7th-level', '8th-level', '9th-level')
 _HIT_DIE = re.compile(r'd(\d+)')
 
 
@@ -139,26 +152,24 @@ def hit_points(character):
     return total
 
 
-def _ability_increase_levels(level):
-    """The character levels at which an ability score increase arrives, up to ``level`` -- read off
-    the owner (level_and_bab.update_level_ability_score) by asking it level by level, so its
-    cadence is not written down a second time."""
-    probe, levels, held = SimpleNamespace(), [], 0
-    for at in range(1, int(level) + 1):
-        update_level_ability_score(probe, at)
-        if probe.extra_ability_score_levels > held:
-            levels.extend([at] * (probe.extra_ability_score_levels - held))
-            held = probe.extra_ability_score_levels
-    return levels
+def trainer_slots(character):
+    """How many trainers a blank sheet leaves room for: ``BLANK_TRAINER_SHARE`` of the most this
+    character could have studied under, rounded up so a 1st-level character still has one."""
+    return ceil(max_trainer_slots(character) * BLANK_TRAINER_SHARE)
 
 
-def slots(character):
+def slots(character, trainers_enabled=False):
     """One row per thing the character is owed and has not chosen.
 
     ``{'section', 'kind', 'label', 'class', 'level', 'bucket'}``: ``section`` is where the client
-    files the placeholder (its dividers), ``kind`` what would fill it, ``label`` what to call it,
-    ``class`` / ``level`` what grants it (``''`` / ``None`` when nothing in particular does), and
-    ``bucket`` the class-choice bucket for a ``class_features`` row.
+    files the placeholder (its dividers), ``kind`` what would fill it, ``label`` the bare tag text
+    the client wraps in parentheses, ``class`` / ``level`` what grants it (``''`` / ``None`` when
+    nothing in particular does), and ``bucket`` the class-choice bucket for a ``class_features``
+    row.
+
+    The general, story, flavor and flaw feat rows carry only their tag word as a label: the
+    client numbers those rows itself, the way it numbers a generated character's. Their ``level``
+    is still the level each general feat is really gained at, for a client that wants it.
     """
     rows = []
 
@@ -175,29 +186,34 @@ def slots(character):
     general += 1 if getattr(character, 'human_flag', False) else 0
 
     for level in normal_feat_slot_levels(character, general):
-        add('feats', 'feat', f'Feat (Level {level})', level=level)
-    for index in range(character.story_feat_amount):
-        add('story_feats', 'feat', f'Story Feat {index + 1}')
-    for index in range(character.flavor_feat_amount):
-        add('flavor_feats', 'feat', 'Flavor Feat' if character.flavor_feat_amount == 1 else f'Flavor Feat {index + 1}')
-    for index in range(character.flaw_feat_amount):
-        add('flaw_feats', 'feat', f'Flaw Feat {index + 1}')
+        add('feats', 'feat', 'Feat', level=level)
+    for _index in range(character.story_feat_amount):
+        add('story_feats', 'feat', 'Story Feat')
+    for _index in range(character.flavor_feat_amount):
+        add('flavor_feats', 'feat', 'Flavor')
+    for _index in range(character.flaw_feat_amount):
+        add('flaw_feats', 'feat', 'Flaw')
 
+    # "<Class> <level>": the shape the payload's own class_feat_labels have.
     for display, level in class_bonus_feat_slots(character):
-        add('class_feats', 'feat', f'{display} Bonus Feat (Level {level})', cls=display, level=level)
+        add('class_feats', 'feat', f'{display} {level}', cls=display, level=level)
     for entry in character.classes:
         name, display = entry['name'], entry['display']
         # The monk's bonus feats are outside class_bonus_feat_slots (the generator picks them from
-        # the monk's own list), but they are owed all the same.
-        # Their own section: the generator deals them into the general feat rows, so they are not
-        # `class_feats` in the payload's sense, but on a blank sheet they belong with the bonus feats.
+        # the monk's own list and deals them into the general feat rows), so they are not
+        # `class_feats` in the payload's sense -- but they are owed, and on a blank sheet they
+        # belong with the bonus feats. Hence their own section.
         if _base_name(name) == 'monk':
             for level in class_bonus_feat_levels('monk', entry['level']):
-                add('monk_feats', 'feat', f'{display} Bonus Feat (Level {level})', cls=display, level=level)
+                add('monk_feats', 'feat', f'{display} {level}', cls=display, level=level)
         for level in bloodline_bonus_feat_levels(name, entry['level']):
-            add('bloodline_feats', 'feat', f'{display} Bloodline Feat (Level {level})', cls=display, level=level)
+            add('bloodline_feats', 'feat', f'{display} {level}', cls=display, level=level)
     for display, level in teamwork_feat_slots(character):
-        add('teamwork_feats', 'feat', f'{display} Teamwork Feat (Level {level})', cls=display, level=level)
+        add('teamwork_feats', 'feat', f'{display} {level}', cls=display, level=level)
+
+    if trainers_enabled:
+        for number in range(1, trainer_slots(character) + 1):
+            add('trainer_feats', 'feat', f'Trainer {number}', level=number)
 
     schedule = (getattr(character, 'class_choice_schedule', None) or {}).get('classes', {})
     for entry in character.classes:
@@ -206,7 +222,7 @@ def slots(character):
         for bucket in row.get('buckets') or {}:
             for level in levels_for(character, name, bucket, entry['level']):
                 add('class_features', 'class_feature',
-                    f'{str(bucket).replace("_", " ").title()} ({display} {level})',
+                    f'{str(bucket).replace("_", " ").title()} {level}',
                     cls=display, level=level, bucket=bucket)
 
     if house_flaws:
@@ -214,25 +230,6 @@ def slots(character):
             add('flaws', 'flaw', f'Flaw, {severity}')
     for index in range(BLANK_TRAITS):
         add('traits', 'trait', f'Trait {index + 1}')
-
-    for level in _ability_increase_levels(character.level):
-        add('abilities', 'ability_increase', f'Ability Score Increase (Level {level})', level=level)
-
-    for book in getattr(character, 'spellbooks', None) or []:
-        if book.get('name') in data.divine_casters:
-            continue                    # a divine caster knows its whole list; nothing to choose
-        for spell_level, count in enumerate(_blank_spellbook(character, book)['spells_known_list']):
-            if isinstance(count, int) and not isinstance(count, bool) and count > 0 and spell_level < len(_ORDINALS):
-                add('spells', 'spells_known',
-                    f'{book.get("display", book.get("name", ""))} Spells Known, {_ORDINALS[spell_level]}: {count}',
-                    cls=book.get('display', ''), level=spell_level)
-
-    for entry in character.classes:
-        per_level = class_skill_points(character, entry['name'])
-        add('skills', 'skill_ranks',
-            f'Skill Ranks: {entry["display"]} {per_level} per level x {entry["level"]} = '
-            f'{per_level * entry["level"]} (plus Int modifier per level)',
-            cls=entry['display'], level=entry['level'])
     return rows
 
 
@@ -253,9 +250,13 @@ def _blank_spellbook(character, book):
     return out
 
 
-def apply(character):
+def apply(character, trainers_enabled=False):
     """Rewrite ``character.data_dict`` -- the finished payload -- as a blank sheet, in place and in
-    the same key order. Call it last, after everything else has been written to the payload."""
+    the same key order. Call it last, after everything else has been written to the payload.
+
+    ``trainers_enabled`` is the request's own trainers switch (generate_random_char resolves it):
+    a blank sheet leaves room for trainers exactly when a generated one could have them.
+    """
     sheet = character.data_dict
     blanked = {key: (value if key in KEEP else _empty(value)) for key, value in sheet.items()}
 
@@ -277,7 +278,7 @@ def apply(character):
     # The feat budget keeps its keys (the client reads them by name) with nothing owed through it:
     # what the character is owed is in `slots`.
     blanked['feat_budget'] = {key: 0 for key in (sheet.get('feat_budget') or {})}
-    blanked['slots'] = slots(character)
+    blanked['slots'] = slots(character, trainers_enabled)
 
     sheet.clear()
     sheet.update(blanked)

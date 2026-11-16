@@ -24,14 +24,20 @@ from utils.class_func.feats_to_chooseable import add_feats_to_chooseable
 CALIBER_NAMES = {1: "terrible", 2: "average", 3: "excellent", 4: "mythical"}
 
 
-def roll_trainer_slots(character):
-    """How many trainers this character actually studied under: a roll from 0 to the maximum
-    ``1 + hit_dice//3 + mythic_rank`` (mythic rank is live since the mythic map -- the stake
-    phase sets it before any budget, so a mythic character studies under more trainers)."""
+def max_trainer_slots(character):
+    """The most trainers a character can have studied under: ``1 + hit_dice//3 + mythic_rank``
+    (mythic rank is live since the mythic map -- the stake phase sets it before any budget, so a
+    mythic character studies under more trainers). Its own function because blank mode sizes a
+    blank sheet's trainer slots from it (blank.trainer_slots) and must not restate the formula."""
     level = getattr(character, "level", 0) or 0
     mythic = getattr(character, "mythic_rank", 0) or 0
-    max_slots = 1 + level // 3 + mythic
-    return random.randint(0, max_slots)
+    return 1 + level // 3 + mythic
+
+
+def roll_trainer_slots(character):
+    """How many trainers this character actually studied under: a roll from 0 to
+    ``max_trainer_slots``."""
+    return random.randint(0, max_trainer_slots(character))
 
 
 def roll_caliber():

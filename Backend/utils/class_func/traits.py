@@ -26,6 +26,11 @@ HOUSE_WALL_TRAIT = {
 }
 
 
+# How many traits a generated character is given. Named because blank mode leaves room for the
+# same number (blank.BLANK_TRAITS).
+TRAIT_COUNT = 8
+
+
 def trait_selector(character, count):
     trait_data = _trait_data()
     extraction_list = ['name', 'description']

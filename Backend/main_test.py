@@ -124,7 +124,7 @@ from utils.class_func.spell_alphabetize_and_dedupe 	import spell_alphabetize_and
 from utils.class_func.stats 						import roll_stats, assign_stats, calc_ability_mod 
 from utils.class_func.separate_feats_func 			import separate_feats_func
 from utils.class_func.feat_level_assignment import assign_feats_to_levels, normal_feat_slot_levels
-from utils.class_func.traits 						import trait_selector
+from utils.class_func.traits 						import trait_selector, TRAIT_COUNT
 from utils.class_func.versatile_performance 		import versatile_perfomance
 from utils.class_func.wizard_school 				import wizard_school_chooser, wizard_opposing_school
 
@@ -1074,7 +1074,7 @@ def phase_appearance_and_traits(character, skill_ranks):
 
 	requires `chosen_race`: the appearance tables and the racial language list are keyed by race.
 	'''
-	selected_traits = trait_selector(character, 8)
+	selected_traits = trait_selector(character, TRAIT_COUNT)
 	# pre export data manip start
 	hero_points = hero_point_generator()
 
@@ -3498,7 +3498,7 @@ def generate_random_char(create_new_char='Y', userInput_region="Tal-Falko", user
 		# as "this one needs a licence and that one doesn't".
 		character.data_dict['license_url'] = LICENSE_PATH
 		if blank_mode:
-			blank.apply(character)
+			blank.apply(character, trainers_enabled)
 		return character.data_dict
 
 # CLI smoke test only: importing this module (e.g. app.py does `from main_test import ...`) must NOT

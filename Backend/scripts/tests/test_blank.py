@@ -19,7 +19,10 @@ drifts from what the generator actually gives. Each is checked on generated shee
    teamwork feat and story feat slots as a generated character of the same class and level has
    feats in those rows, and a slot for every class choice that character made a pick in.
 5. **House rules follow the request.** With the house feat economy and the misc house rules off,
-   there is no story, flavor or flaw-feat slot and no flaw slot; the PF1 feats remain.
+   there is no story, flavor or flaw-feat slot and no flaw slot; the PF1 feats remain. Trainer
+   slots are half the possible trainers when trainers are on, and absent when they are off.
+6. **Only what was asked for is a slot.** Eight traits; no ability-increase, spells-known or
+   skill-rank row (ruled out 2026-11-16); and every label is a bare tag with no prose in it.
 
 PROVEN BY BREAKING IT. The sweep ends by making ``blank._empty`` return its argument unchanged --
 the emptying switched off -- and re-running check 1 against a scratch report. It must FAIL.
@@ -39,7 +42,7 @@ from utils.class_func import backstory as _bs                                   
 _bs.OLLAMA_AVAILABLE = False
 _bs._try_ollama = lambda *a, **k: ''
 import main_test                                                                    # noqa: E402
-from utils.class_func import blank                                                  # noqa: E402
+from utils.class_func import blank, trainers, traits                                # noqa: E402
 from utils.createACharacter import CreateNewCharacter                               # noqa: E402
 from utils.payload import PAYLOAD_KEYS                                              # noqa: E402
 from utils.util import _available_class_pool                                        # noqa: E402
@@ -54,6 +57,10 @@ REBUILT = {'str', 'dex', 'con', 'int', 'wis', 'cha', 'inherents', 'level_up_stat
            'classes', 'spellbooks', 'main_stat', 'character_full_name', 'total_rolled_hp', 'Total_HP',
            'sheet_health', 'feat_budget', 'slots'}
 EMPTY = ([], {}, '', 0, None, False)
+# Slot sections a blank sheet does not carry (ability increases, spells known, skill ranks).
+RULED_OUT_SECTIONS = {'abilities', 'spells', 'skills'}
+# A label is a tag the client wraps in parentheses -- "Barbarian (Unchained) 12" is the long end.
+MAX_LABEL = 40
 
 
 def generate(seed, classes, race='Human', blank_request='Y', **overrides):
@@ -110,6 +117,14 @@ def check_same_under_any_seed(report):
         report.check(rows and all(set(row) == {'section', 'kind', 'label', 'class', 'level', 'bucket'}
                                   and row['label'] for row in rows),
                      f'{where}: slots is empty or a row is malformed')
+        sections = Counter(row['section'] for row in rows)
+        report.check(sections['traits'] == traits.TRAIT_COUNT,
+                     f'{where}: {sections["traits"]} trait slots; a generated character has '
+                     f'{traits.TRAIT_COUNT} traits')
+        gone = sorted(set(sections) & RULED_OUT_SECTIONS)
+        report.check(not gone, f'{where}: slot sections that were ruled out are back: {gone}')
+        wordy = [row['label'] for row in rows if len(row['label']) > MAX_LABEL]
+        report.check(not wordy, f'{where}: a label is more than a bare tag: {wordy[:3]}')
         for book in first['spellbooks']:
             report.check(not book.get('spell_list_choose_from'), f'{where}: a spellbook still lists spells')
 
@@ -160,9 +175,31 @@ def check_house_rules_follow_the_request(report):
                  f'not {plain_sections["feats"]}')
     report.check(plain_sections['class_feats'] == 6,
                  f'house rules off: a fighter 10 is owed 6 bonus feats, not {plain_sections["class_feats"]}')
-    report.check(plain_sections['traits'] == blank.BLANK_TRAITS and plain_sections['abilities'] == 2,
-                 f'house rules off: traits / ability increases are {plain_sections["traits"]} / '
-                 f'{plain_sections["abilities"]}')
+    report.check(plain_sections['traits'] == blank.BLANK_TRAITS,
+                 f'house rules off: {plain_sections["traits"]} trait slots, not {blank.BLANK_TRAITS}')
+    # Trainers: half the most a character of this level can have, rounded up, and only when the
+    # request has trainers on.
+    probe = CreateNewCharacter(main_test.character_json_config)
+    for level in (1, 4, 10, 20):
+        probe.level = level
+        most = trainers.max_trainer_slots(probe)
+        with_trainers = generate(SEEDS[0], [{'name': 'fighter', 'level': level}])
+        without = generate(SEEDS[0], [{'name': 'fighter', 'level': level}], trainers_flag='N')
+        if not report.check('error' not in with_trainers and 'error' not in without,
+                            f'trainers [fighter {level}]: generation failed'):
+            continue
+        rows = [row for row in with_trainers['slots'] if row['section'] == 'trainer_feats']
+        report.check(len(rows) == -(-most // 2) and len(rows) >= 1,
+                     f'trainers [fighter {level}]: {len(rows)} trainer slots for a maximum of {most}')
+        report.check([row['label'] for row in rows] == [f'Trainer {n}' for n in range(1, len(rows) + 1)],
+                     f'trainers [fighter {level}]: labels are {[row["label"] for row in rows]}')
+        report.check(not any(row['section'] == 'trainer_feats' for row in without['slots']),
+                     f'trainers [fighter {level}]: trainer slots with trainers switched off')
+    labels = [row['label'] for row in house['slots'] if row['section'] == 'class_feats']
+    report.check(labels == ['Fighter 1', 'Fighter 2', 'Fighter 4', 'Fighter 6', 'Fighter 8', 'Fighter 10'],
+                 f'a fighter 10 class-feat labels are {labels}')
+    report.check([row['label'] for row in house['slots'] if row['section'] == 'flaws']
+                 == ['Flaw, Minor', 'Flaw, Major'], 'the two flaw slots are not Minor then Major')
     # A blank request ignores every pin but the classes.
     with redirect_stdout(io.StringIO()):
         pinned = main_test.generate_random_char(
