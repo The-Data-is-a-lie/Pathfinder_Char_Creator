@@ -1233,6 +1233,7 @@
   },
   "unlock_html": "<h2>Heal</h2><p><strong>5 Ranks</strong>: When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for a full day.</p><p><strong>10 Ranks</strong>: When you treat deadly wounds, the target recovers as if it had rested a full day with long-term care.</p><p><strong>15 Ranks</strong>: When you treat deadly wounds, the target recovers hit points and ability damage as if it had rested for 3 days.</p><p><strong>20 Ranks</strong>: When you treat deadly wounds, the target recovers as if it had rested 3 days with long-term care.</p>"
  },
+ "slots": [],
  "specialty_schools": [
   "divination",
   "evocation"

@@ -1364,6 +1364,7 @@
   },
   "unlock_html": "<h2>Appraise</h2><p><strong>5 Ranks</strong>: You can detect whether an item is magical (DC 20) and reveal its properties (DC 25 + caster level), and you automatically identify non-written forgeries.</p><p><strong>10 Ranks</strong>: As a standard action you can determine the most expensive object a creature wears or wields (DC 20); you never make wildly inaccurate appraisals.</p><p><strong>15 Ranks</strong>: Determining the most expensive object is a move action, and you may substitute an Appraise check at -10 for a Will save against figments and glamers.</p><p><strong>20 Ranks</strong>: Identifying the priciest object is a move action, and observing an item grants a +2 circumstance bonus on steal and disarm checks against its bearer for 1 minute.</p>"
  },
+ "slots": [],
  "specialty_schools": [
   "abjuration",
   "enchantment"

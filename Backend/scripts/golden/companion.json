@@ -1761,6 +1761,7 @@
   },
   "unlock_html": "<h2>Ride</h2><p><strong>5 Ranks</strong>: Your mount gains a +2 bonus (increasing per 5 ranks) on Fortitude saves or Constitution checks to avoid becoming fatigued or exhausted.</p><p><strong>10 Ranks</strong>: When you spur your mount, its speed increases by 20 feet and it gains a +2 bonus on Reflex saves and a +2 dodge bonus to AC.</p><p><strong>15 Ranks</strong>: While mounted, you can substitute your Ride check for your CMD against bull rush, drag, overrun, reposition, and trip aimed at you or your mount.</p><p><strong>20 Ranks</strong>: Spurring your mount increases its speed by 30 feet and grants a +4 bonus on Reflex saves and a +4 dodge bonus to AC.</p>"
  },
+ "slots": [],
  "specialty_schools": [
   "transmutation",
   "enchantment"

@@ -1449,6 +1449,7 @@
   },
   "unlock_html": "<h2>Stealth</h2><p><strong>5 Ranks</strong>: Reduce the Stealth penalty from sniping by 10.</p><p><strong>10 Ranks</strong>: Stealth penalties for moving at full speed are halved (including the 5-rank sniping ability).</p><p><strong>15 Ranks</strong>: After a successful Stealth-based attack, your target is denied its Dexterity bonus against all attacks you make before the end of your turn.</p><p><strong>20 Ranks</strong>: After a successful Stealth-based attack, your target is denied its Dexterity bonus against all your attacks before the beginning of your next turn.</p>"
  },
+ "slots": [],
  "specialty_schools": [
   "transmutation"
  ],

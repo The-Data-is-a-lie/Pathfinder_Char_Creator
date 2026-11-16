@@ -1577,6 +1577,7 @@
   },
   "unlock_html": "<h2>Spellcraft</h2><p><strong>5 Ranks</strong>: Identifying magic items takes 1 full round, and the time to learn a spell from a spellbook is halved.</p><p><strong>10 Ranks</strong>: You can identify magic items without using detect magic, though the DC is increased by 10.</p><p><strong>15 Ranks</strong>: Identifying magic items is a standard action, and learning a spell takes 1 minute per spell level.</p><p><strong>20 Ranks</strong>: When attempting a caster level check, you can attempt a Spellcraft check at -20 against the same DC; success grants a +2 circumstance bonus.</p>"
  },
+ "slots": [],
  "specialty_schools": [
   "transmutation",
   "abjuration"
